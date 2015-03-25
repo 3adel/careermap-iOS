@@ -19,13 +19,17 @@
 }
 
 @synthesize userLocation;
-
+//@synthesize locationManager;
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
     self.locationManager = [[CLLocationManager alloc] init];
+
+    //[self.locationManager startUpdatingLocation];
+    
     // [self.locationManager requestAlwaysAuthorization];
     [self.locationManager requestWhenInUseAuthorization];
     
@@ -38,7 +42,12 @@
     
     
   //  NSLog(@"User is here: %@", [self getUserLocation]);
-    [self getUserLocation];
+    [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *geoPoint, NSError *error) {
+        if (!error) {
+            self.userLocation = geoPoint;
+            [self loadObjects];
+        }
+    }];
     
 }
 
@@ -51,6 +60,15 @@
 
 - (id)initWithCoder:(NSCoder *)aCoder
 {
+    
+    
+
+    
+    
+    
+    
+    
+   // [self getUserLocation];
     self = [super initWithCoder:aCoder];
     if (self) {
         // The className to query on
@@ -65,7 +83,10 @@
         
         // Whether the built-in pagination is enabled
         self.paginationEnabled = YES;
-        self.objectsPerPage = 10;
+        self.objectsPerPage = 5;
+        
+        //[self getUserLocation];
+
     }
     return self;
 }
@@ -75,10 +96,47 @@
     
     //Get all jobs and include pointers to employer, status tables and sort them
     
+
+   // [self getUserLocation];
+    
+    
+    /*
+    
+    //dispatch calculating location on another thread
+    myQueue = dispatch_queue_create("com.adel.mapsapp", NULL);
+    dispatch_async(myQueue, ^{[self getUserLocation];
+    
+    
+    
+    
+    });*/
+    
+    
+    if (!self.userLocation) {
+        return nil;
+    }
+    
+    
+    
+    
     PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];
+   // [query whereKey:@"geolocation" nearGeoPoint:self.userLocation];
     [query includeKey:@"employer"];
     [query includeKey:@"status"];
-    [query orderByDescending:@"geolocation"];
+    [query whereKey:@"geolocation" nearGeoPoint:self.userLocation withinKilometers:10];
+    [query orderByDescending:@"createdAt"];
+
+    
+    if (!self.userLocation) {
+        NSLog(@"Error: I can't get user location");
+    }
+    
+    else{
+        NSLog(@"Success getting location");
+            }
+    
+    
+
    // query.cachePolicy = kPFCachePolicyCacheThenNetwork;
     
     
@@ -182,7 +240,7 @@
           //  return userLocation;
             self.userLocation= geoPoint;
             
-
+            [self queryForTable];
             
         }
         
