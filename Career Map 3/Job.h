@@ -12,6 +12,8 @@
 
 
 @property (nonatomic, strong) NSString *title; // job title
+@property (nonatomic, strong) NSString *employer; // job Employer
+
 
 
 

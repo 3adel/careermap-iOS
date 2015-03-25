@@ -11,5 +11,7 @@
 @interface JobCustomTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *jobTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *jobEmployer;
+@property (weak, nonatomic) IBOutlet UILabel *jobStatus;
+
 
 @end

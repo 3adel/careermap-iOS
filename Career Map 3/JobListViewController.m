@@ -12,13 +12,15 @@
 
 @implementation JobListViewController{
     
-     NSArray *jobs;
+    NSArray *jobs;
+   // PFQuery *employerQuery;
     
 }
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    //[self retrieveJobData];
     
 }
 
@@ -37,23 +39,32 @@
         self.parseClassName = @"Job";
         
         // The key of the PFObject to display in the label of the default cell style
-       // self.textKey = @"title";
+        // self.textKey = @"title";
+        
         
         // Whether the built-in pull-to-refresh is enabled
         self.pullToRefreshEnabled = YES;
         
         // Whether the built-in pagination is enabled
         self.paginationEnabled = YES;
-        self.objectsPerPage = 10;
+        self.objectsPerPage = 5;
     }
     return self;
 }
 
 - (PFQuery *)queryForTable
 {
-    PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];
-    query.cachePolicy = kPFCachePolicyCacheThenNetwork;
     
+    //Get all jobs and include pointers to employer, status tables
+    
+    PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];
+    [query includeKey:@"employer"];
+    [query includeKey:@"status"];
+   // query.cachePolicy = kPFCachePolicyCacheThenNetwork;
+    
+    
+
+
     return query;
 }
 
@@ -71,39 +82,47 @@
  //   thumbnailImageView.file = thumbnail;
   //  [thumbnailImageView loadInBackground];
     
+    
+    
+    //set table cell labels with reference to pointers
+    
     cell.jobTitleLabel.text = [object objectForKey:@"title"];
-    
-   // NSLog(@"Job Object:%@", object);
-    
-    
+    cell.jobEmployer.text=[object[@"employer"] objectForKey:@"employerName"];
+    cell.jobStatus.text=[object[@"status"] objectForKey:@"description"];
     
     
+    NSLog(@"Employer %ld:%@",indexPath.row, [object[@"employer"] objectForKey:@"employerName"]);
     
-    //create an object for the employer
-    PFObject *employer = [object objectForKey:@"employer"];
-    [employer fetchInBackgroundWithBlock:^(PFObject *object, NSError *error){cell.jobEmployer.text=[object objectForKey:@"employerName"];}];
-    
-    
-    
-    
-    
-   // NSLog(@"Employer:%@", employer);
-    
-    
-    
-    
-    
-  //  cell.jobEmployer.text=[object objectForKey:@"employer"];
-    
-    
-    
-    
-   // cell.prepTimeLabel.text = [object objectForKey:@"prepTime"];
     
     return cell;
 }
 
-
+//inactive
+- (void) retrieveJobData{
+    
+    
+    /*
+    
+    PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];
+    query.cachePolicy = kPFCachePolicyCacheThenNetwork;
+    
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            // The find succeeded.
+            NSLog(@"Successfully retrieved %lu scores.", (unsigned long)objects.count);
+            // Do something with the found objects
+            for (PFObject *object in objects) {
+                NSLog(@"%@", object.objectId);
+            }
+        } else {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];*/
+    ;
+    
+}
 
 
 
