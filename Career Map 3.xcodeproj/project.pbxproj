@@ -29,6 +29,9 @@
 		F59759241AC1D3DD0099A978 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F59759231AC1D3DD0099A978 /* StoreKit.framework */; };
 		F59759261AC1D3E60099A978 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F59759251AC1D3E60099A978 /* SystemConfiguration.framework */; };
 		F59759291AC1D5420099A978 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F59759281AC1D5420099A978 /* libsqlite3.0.dylib */; };
+		F597592F1AC1D7F00099A978 /* JobListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F597592E1AC1D7F00099A978 /* JobListViewController.m */; };
+		F59759321AC1DBDF0099A978 /* Job.m in Sources */ = {isa = PBXBuildFile; fileRef = F59759311AC1DBDF0099A978 /* Job.m */; };
+		F59759351AC1DC7D0099A978 /* JobCustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F59759341AC1DC7D0099A978 /* JobCustomTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +72,12 @@
 		F59759231AC1D3DD0099A978 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		F59759251AC1D3E60099A978 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		F59759281AC1D5420099A978 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
+		F597592D1AC1D7F00099A978 /* JobListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobListViewController.h; sourceTree = "<group>"; };
+		F597592E1AC1D7F00099A978 /* JobListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobListViewController.m; sourceTree = "<group>"; };
+		F59759301AC1DBDF0099A978 /* Job.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Job.h; sourceTree = "<group>"; };
+		F59759311AC1DBDF0099A978 /* Job.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Job.m; sourceTree = "<group>"; };
+		F59759331AC1DC7D0099A978 /* JobCustomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobCustomTableViewCell.h; sourceTree = "<group>"; };
+		F59759341AC1DC7D0099A978 /* JobCustomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobCustomTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +137,12 @@
 		F59758AB1AC159B40099A978 /* Career Map 3 */ = {
 			isa = PBXGroup;
 			children = (
+				F597592D1AC1D7F00099A978 /* JobListViewController.h */,
+				F597592E1AC1D7F00099A978 /* JobListViewController.m */,
+				F59759331AC1DC7D0099A978 /* JobCustomTableViewCell.h */,
+				F59759341AC1DC7D0099A978 /* JobCustomTableViewCell.m */,
+				F59759301AC1DBDF0099A978 /* Job.h */,
+				F59759311AC1DBDF0099A978 /* Job.m */,
 				F59758B01AC159B40099A978 /* AppDelegate.h */,
 				F59758B11AC159B40099A978 /* AppDelegate.m */,
 				F59758B91AC159B40099A978 /* Main.storyboard */,
@@ -286,8 +301,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F59759351AC1DC7D0099A978 /* JobCustomTableViewCell.m in Sources */,
 				F59758B21AC159B40099A978 /* AppDelegate.m in Sources */,
 				F59758AF1AC159B40099A978 /* main.m in Sources */,
+				F597592F1AC1D7F00099A978 /* JobListViewController.m in Sources */,
+				F59759321AC1DBDF0099A978 /* Job.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

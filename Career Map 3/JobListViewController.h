@@ -1,5 +1,5 @@
 //
-//  AppDelegate.h
+//  JobListViewController.h
 //  Career Map 3
 //
 //  Created by Adel  Shehadeh on 3/24/15.
@@ -9,12 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 #import <ParseUI/ParseUI.h>
+#import "Job.h"
 
-
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
-
-@property (strong, nonatomic) UIWindow *window;
-
+@interface JobListViewController : PFQueryTableViewController
 
 @end
-
