@@ -12,6 +12,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *jobTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *jobEmployer;
 @property (weak, nonatomic) IBOutlet UILabel *jobStatus;
+@property (weak, nonatomic) IBOutlet UILabel *jobDateAdded;
 
+@property (weak, nonatomic) IBOutlet UILabel *jobDistanceFromUser;
 
 @end

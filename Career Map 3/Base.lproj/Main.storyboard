@@ -53,6 +53,15 @@
                                                 <rect key="frame" x="8" y="95" width="119" height="21"/>
                                             </variation>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date Added" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="awk-od-Uke">
+                                            <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                            <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                                <rect key="frame" x="8" y="124" width="279" height="21"/>
+                                            </variation>
+                                        </label>
                                     </subviews>
                                     <variation key="default">
                                         <mask key="subviews">
@@ -60,6 +69,7 @@
                                             <exclude reference="1Qa-a6-TFF"/>
                                             <exclude reference="3sW-hB-upE"/>
                                             <exclude reference="aU7-0p-S2X"/>
+                                            <exclude reference="awk-od-Uke"/>
                                         </mask>
                                     </variation>
                                     <variation key="heightClass=regular-widthClass=compact">
@@ -68,10 +78,13 @@
                                             <include reference="1Qa-a6-TFF"/>
                                             <include reference="3sW-hB-upE"/>
                                             <include reference="aU7-0p-S2X"/>
+                                            <include reference="awk-od-Uke"/>
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="jobDateAdded" destination="awk-od-Uke" id="1aj-QQ-WIr"/>
+                                    <outlet property="jobDistanceFromUser" destination="aU7-0p-S2X" id="gNe-Iw-BOJ"/>
                                     <outlet property="jobEmployer" destination="3sW-hB-upE" id="YU3-vv-PD3"/>
                                     <outlet property="jobStatus" destination="1Qa-a6-TFF" id="oCs-Bd-7FT"/>
                                     <outlet property="jobTitleLabel" destination="N0w-wi-4Fa" id="Waq-fs-b9q"/>

@@ -13,14 +13,32 @@
 @implementation JobListViewController{
     
     NSArray *jobs;
+   // PFGeoPoint *userLocation;
    // PFQuery *employerQuery;
     
 }
 
+@synthesize userLocation;
+
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //[self retrieveJobData];
+    
+    self.locationManager = [[CLLocationManager alloc] init];
+    // [self.locationManager requestAlwaysAuthorization];
+    [self.locationManager requestWhenInUseAuthorization];
+    
+    // [self.locationManager startUpdatingLocation];
+    
+  //  self.mapView.delegate =self;
+    
+    //  self.locationManager.delegate =self;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
+    
+    
+  //  NSLog(@"User is here: %@", [self getUserLocation]);
+    [self getUserLocation];
     
 }
 
@@ -47,7 +65,7 @@
         
         // Whether the built-in pagination is enabled
         self.paginationEnabled = YES;
-        self.objectsPerPage = 5;
+        self.objectsPerPage = 10;
     }
     return self;
 }
@@ -55,11 +73,12 @@
 - (PFQuery *)queryForTable
 {
     
-    //Get all jobs and include pointers to employer, status tables
+    //Get all jobs and include pointers to employer, status tables and sort them
     
     PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];
     [query includeKey:@"employer"];
     [query includeKey:@"status"];
+    [query orderByDescending:@"geolocation"];
    // query.cachePolicy = kPFCachePolicyCacheThenNetwork;
     
     
@@ -82,17 +101,35 @@
  //   thumbnailImageView.file = thumbnail;
   //  [thumbnailImageView loadInBackground];
     
-    
+    NSLog(@"Object: %@", object.createdAt);
     
     //set table cell labels with reference to pointers
+    
+    NSDateFormatter *formatter;
+    formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"dd-MM-yyyy HH:mm"];
+    
     
     cell.jobTitleLabel.text = [object objectForKey:@"title"];
     cell.jobEmployer.text=[object[@"employer"] objectForKey:@"employerName"];
     cell.jobStatus.text=[object[@"status"] objectForKey:@"description"];
+    cell.jobDateAdded.text=[formatter stringFromDate:[object createdAt]];
+  //  cell.jobDistanceFromUser.text = [self.userLocation distanceInKilometersTo:[object objectForKey:@"geolocation"]];
+    
+    NSLog(@"Distance = %f", [self.userLocation distanceInKilometersTo:[object objectForKey:@"geolocation"]]);
+    
+    //[self.userLocation distanceInKilometersTo:[object objectForKey:@"geolocation"]];
     
     
-    NSLog(@"Employer %ld:%@",indexPath.row, [object[@"employer"] objectForKey:@"employerName"]);
+   // NSLog(@"Employer %ld:%@",indexPath.row, [object[@"employer"] objectForKey:@"employerName"]);
     
+   // NSString        *dateString;
+    
+
+    
+    
+    
+   /// NSLog(@"Date Added:%@",[formatter stringFromDate:[object createdAt]]);
     
     return cell;
 }
@@ -125,7 +162,40 @@
 }
 
 
+- (PFGeoPoint *) getUserLocation{
+    
+    NSLog(@"running user location");
+   //PFGeoPoint *i = [[PFGeoPoint alloc] init];
+    //retrieve user location
+    [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *geoPoint, NSError *error) {
+        if (!error) {
+            NSLog(@"LAT: %f, LONG: %f", geoPoint.latitude, geoPoint.longitude);
+            
+          //  PFQuery *query = [PFQuery queryWithClassName:@"Careers"];
+        
+            
+           // userLocation = geoPoint;
+          //  return userLocation;
+            self.userLocation= geoPoint;
+            
 
+            
+        }
+        
+        else{
+            NSLog(@"Error getting user location: %@", error);
+        }
+    }];
+    
+    
+  //  NSLog(@"LAT: %f, LONG: %f", userLocation.latitude, userLocation.longitude);
+    
+    
+    
+    
+    return userLocation;
+
+}
 
 
 @end
