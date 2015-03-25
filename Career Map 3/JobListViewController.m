@@ -72,6 +72,32 @@
   //  [thumbnailImageView loadInBackground];
     
     cell.jobTitleLabel.text = [object objectForKey:@"title"];
+    
+   // NSLog(@"Job Object:%@", object);
+    
+    
+    
+    
+    
+    //create an object for the employer
+    PFObject *employer = [object objectForKey:@"employer"];
+    [employer fetchInBackgroundWithBlock:^(PFObject *object, NSError *error){cell.jobEmployer.text=[object objectForKey:@"employerName"];}];
+    
+    
+    
+    
+    
+   // NSLog(@"Employer:%@", employer);
+    
+    
+    
+    
+    
+  //  cell.jobEmployer.text=[object objectForKey:@"employer"];
+    
+    
+    
+    
    // cell.prepTimeLabel.text = [object objectForKey:@"prepTime"];
     
     return cell;
