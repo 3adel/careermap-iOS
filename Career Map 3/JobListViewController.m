@@ -114,9 +114,13 @@
     cell.jobEmployer.text=[object[@"employer"] objectForKey:@"employerName"];
     cell.jobStatus.text=[object[@"status"] objectForKey:@"description"];
     cell.jobDateAdded.text=[formatter stringFromDate:[object createdAt]];
-  //  cell.jobDistanceFromUser.text = [self.userLocation distanceInKilometersTo:[object objectForKey:@"geolocation"]];
+   // NSNumber *jobDistanceNumber = [NSNumber numberWithDouble:[self.userLocation distanceInKilometersTo:[object objectForKey:@"geolocation"]]];
     
-    NSLog(@"Distance = %f", [self.userLocation distanceInKilometersTo:[object objectForKey:@"geolocation"]]);
+    
+    
+    cell.jobDistanceFromUser.text = [NSString stringWithFormat:@"%.2f",[self.userLocation distanceInKilometersTo:[object objectForKey:@"geolocation"]]];
+    
+    NSLog(@"Distance = %.2f", [self.userLocation distanceInKilometersTo:[object objectForKey:@"geolocation"]]);
     
     //[self.userLocation distanceInKilometersTo:[object objectForKey:@"geolocation"]];
     
