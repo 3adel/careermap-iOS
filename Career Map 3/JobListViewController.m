@@ -215,7 +215,16 @@
     cell.jobDistanceFromUser.text = [NSString stringWithFormat:@"%.2f",[self.userLocation distanceInKilometersTo:[tempObject objectForKey:@"geolocation"]]];
     
     
+    cell.jobVoteLabel.text =[NSString stringWithFormat:@"%@",[tempObject objectForKey:@"applyCount"]];;
     
+    //add a tag to the voting button to indicate the current row index
+    [cell.jobVoteUpButton setTag:indexPath.row];
+    [cell.jobVoteUpButton addTarget:self action:@selector(jobVoteUpPressed:) forControlEvents:UIControlEventTouchUpInside];
+    
+    ///[cell.jobVoteLabel setTag:indexPath.row];
+    
+    [cell.jobVoteDownButton setTag:indexPath.row];
+    [cell.jobVoteDownButton addTarget:self action:@selector(jobVoteDownPressed:) forControlEvents:UIControlEventTouchUpInside];
     
     
     // Configure the cell
@@ -357,4 +366,95 @@
 }
 
 
+- (IBAction)jobVoteUpPressed:(UIButton *)sender {
+    
+    
+    NSLog(@"job vote up pressed");
+    PFObject *tempObject = [jobsArray objectAtIndex:sender.tag];
+    NSLog(@"Tag=%ld", (long)sender.tag);
+  //  NSLog(@"%@", tempObject);
+    
+    
+    // NSLog(@"insert reocord");
+    
+  //  PFObject *jobRecord = [PFObject objectWithClassName:@"Job"];
+   // PFGeoPoint *jobLocationPoint = [PFGeoPoint geoPointWithLatitude:point.coordinate.latitude longitude:point.coordinate.longitude];
+  //   tempObject[@"description"]=@"Description jkljkl jkl jk";   // [jobRecord incrementKey:@"applyCount"];
+    [tempObject incrementKey:@"applyCount" byAmount:[NSNumber numberWithInteger:1]];
+   // jobRecord[@"jobCountry"]=@"JO";
+   // jobRecord[@"jobStatus"]=[NSNumber numberWithInt:1];
+   // jobRecord[@"postedDate"]=[NSDate date];
+   // jobRecord[@"jobTitle"] = @"This is a job title";
+   // jobRecord[@"jobCity"] = placemark.locality;
+   // jobRecord[@"jobStreet"] = placemark.thoroughfare;
+   // jobRecord[@"jobLocation"] =jobLocationPoint;
+    
+    
+    
+    //jobRecord[@"playerName"] = @"Sean Plott";
+    //jobRecord[@"cheatMode"] = @NO;
+    [tempObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (succeeded) {
+            NSLog(@"Career object saved");
+            NSLog(@"%@", tempObject);
+            [ self.jobTable reloadData];
+            
+           // cell.jobVoteUpButton.text =tempObject[@"applyCount"];
+        } else {
+            NSLog(@"Error saving career object");
+        }
+    }];
+    
+    
+    
+    
+}
+
+- (IBAction)jobVoteDownPressed:(UIButton *)sender {
+    
+    
+    NSLog(@"job vote down pressed");
+    PFObject *tempObject = [jobsArray objectAtIndex:sender.tag];
+    NSLog(@"Tag=%ld", (long)sender.tag);
+    //  NSLog(@"%@", tempObject);
+    
+    
+    // NSLog(@"insert reocord");
+    
+    //  PFObject *jobRecord = [PFObject objectWithClassName:@"Job"];
+    // PFGeoPoint *jobLocationPoint = [PFGeoPoint geoPointWithLatitude:point.coordinate.latitude longitude:point.coordinate.longitude];
+    //   tempObject[@"description"]=@"Description jkljkl jkl jk";   // [jobRecord incrementKey:@"applyCount"];
+    [tempObject incrementKey:@"applyCount" byAmount:[NSNumber numberWithInteger:-1]];
+    // jobRecord[@"jobCountry"]=@"JO";
+    // jobRecord[@"jobStatus"]=[NSNumber numberWithInt:1];
+    // jobRecord[@"postedDate"]=[NSDate date];
+    // jobRecord[@"jobTitle"] = @"This is a job title";
+    // jobRecord[@"jobCity"] = placemark.locality;
+    // jobRecord[@"jobStreet"] = placemark.thoroughfare;
+    // jobRecord[@"jobLocation"] =jobLocationPoint;
+    
+    
+    
+    //jobRecord[@"playerName"] = @"Sean Plott";
+    //jobRecord[@"cheatMode"] = @NO;
+    [tempObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (succeeded) {
+            NSLog(@"Career object saved");
+            NSLog(@"%@", tempObject);
+            [ self.jobTable reloadData];
+            
+            
+            // cell.jobVoteUpButton.text =tempObject[@"applyCount"];
+        } else {
+            NSLog(@"Error saving career object");
+        }
+    }];
+    
+    
+    
+
+    
+    
+    
+}
 @end
