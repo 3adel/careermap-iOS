@@ -27,6 +27,39 @@
     [super viewDidLoad];
     
     
+    PFUser *user = [PFUser user];
+    user.username = @"adelshehadeh";
+    user.password = @"passwordjkljk";
+    user.email = @"email@example.com";
+    
+    // other fields can be set just like with PFObject
+    //user[@"phone"] = @"415-392-0202";
+    
+    /*
+    [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (!error) {
+            NSLog(@"User logged");
+        } else {
+           
+            
+            NSLog(@"error with login");
+        }
+    }];*/
+    
+    //login
+    [PFUser logInWithUsernameInBackground:user.username password:user.password
+                                    block:^(PFUser *user, NSError *error) {
+                                        if (user) {
+                                            NSLog(@"User logged");
+                                        } else {
+                                            NSLog(@"error with login");
+                                        }
+                                    }];
+    
+    
+    
+    
+    
     self.locationManager = [[CLLocationManager alloc] init];
     // [self.locationManager requestAlwaysAuthorization];
     [self.locationManager requestWhenInUseAuthorization];
@@ -368,44 +401,107 @@
 
 - (IBAction)jobVoteUpPressed:(UIButton *)sender {
     
+    UIButton *tempJobVoteUpButton =  (UIButton *)sender;
     
-    NSLog(@"job vote up pressed");
-    PFObject *tempObject = [jobsArray objectAtIndex:sender.tag];
-    NSLog(@"Tag=%ld", (long)sender.tag);
-  //  NSLog(@"%@", tempObject);
-    
-    
-    // NSLog(@"insert reocord");
-    
-  //  PFObject *jobRecord = [PFObject objectWithClassName:@"Job"];
-   // PFGeoPoint *jobLocationPoint = [PFGeoPoint geoPointWithLatitude:point.coordinate.latitude longitude:point.coordinate.longitude];
-  //   tempObject[@"description"]=@"Description jkljkl jkl jk";   // [jobRecord incrementKey:@"applyCount"];
-    [tempObject incrementKey:@"applyCount" byAmount:[NSNumber numberWithInteger:1]];
-   // jobRecord[@"jobCountry"]=@"JO";
-   // jobRecord[@"jobStatus"]=[NSNumber numberWithInt:1];
-   // jobRecord[@"postedDate"]=[NSDate date];
-   // jobRecord[@"jobTitle"] = @"This is a job title";
-   // jobRecord[@"jobCity"] = placemark.locality;
-   // jobRecord[@"jobStreet"] = placemark.thoroughfare;
-   // jobRecord[@"jobLocation"] =jobLocationPoint;
-    
-    
-    
-    //jobRecord[@"playerName"] = @"Sean Plott";
-    //jobRecord[@"cheatMode"] = @NO;
-    [tempObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        if (succeeded) {
-            NSLog(@"Career object saved");
-            NSLog(@"%@", tempObject);
-            [ self.jobTable reloadData];
+    NSLog(@"vote button pressed");
+
+    if (!tempJobVoteUpButton.isSelected) {
+        
+        NSLog(@"like:%d",tempJobVoteUpButton.isSelected);
+        
+        [tempJobVoteUpButton  setSelected:!tempJobVoteUpButton.isSelected];
+        NSLog(@"like:%d",tempJobVoteUpButton.isSelected);
+        
+        
+        NSLog(@"job vote up pressed");
+        PFObject *tempObject = [jobsArray objectAtIndex:sender.tag];
+      //  NSLog(@"Tag=%ld", (long)sender.tag);
+        //  NSLog(@"%@", tempObject);
+        
+        
+        // NSLog(@"insert reocord");
+        
+        //  PFObject *jobRecord = [PFObject objectWithClassName:@"Job"];
+        // PFGeoPoint *jobLocationPoint = [PFGeoPoint geoPointWithLatitude:point.coordinate.latitude longitude:point.coordinate.longitude];
+        //   tempObject[@"description"]=@"Description jkljkl jkl jk";   // [jobRecord incrementKey:@"applyCount"];
+        [tempObject incrementKey:@"applyCount" byAmount:[NSNumber numberWithInteger:1]];
+        // jobRecord[@"jobCountry"]=@"JO";
+        // jobRecord[@"jobStatus"]=[NSNumber numberWithInt:1];
+        // jobRecord[@"postedDate"]=[NSDate date];
+        // jobRecord[@"jobTitle"] = @"This is a job title";
+        // jobRecord[@"jobCity"] = placemark.locality;
+        // jobRecord[@"jobStreet"] = placemark.thoroughfare;
+        // jobRecord[@"jobLocation"] =jobLocationPoint;
+        
+        
+        
+        //jobRecord[@"playerName"] = @"Sean Plott";
+        //jobRecord[@"cheatMode"] = @NO;
+        [tempObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (succeeded) {
+                NSLog(@"Career object saved");
+                // NSLog(@"%@", tempObject);
+                
+                //Save in the voted up items of the user
+                [[PFUser currentUser] addUniqueObject:tempObject.objectId forKey:@"jobVotedUp"];
+                [[PFUser currentUser] saveInBackground];
+                
+                
+                
+                [ self.jobTable reloadData];
+                
+                // cell.jobVoteUpButton.text =tempObject[@"applyCount"];
+            } else {
+                NSLog(@"Error saving career object");
+            }
             
-           // cell.jobVoteUpButton.text =tempObject[@"applyCount"];
-        } else {
-            NSLog(@"Error saving career object");
-        }
-    }];
+            
+            
+            
+            
+        }];
+        
+        
+
+        
+    }
+    
+    else{
+        
+        NSLog(@"else statement");
+        PFObject *tempObject = [jobsArray objectAtIndex:sender.tag];
+        [tempObject incrementKey:@"applyCount" byAmount:[NSNumber numberWithInteger:-1]];
+        [tempObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (succeeded) {
+                NSLog(@"Career object saved");
+                // NSLog(@"%@", tempObject);
+                
+                //Save in the voted up items of the user
+              //  [[PFUser currentUser] addUniqueObject:tempObject.objectId forKey:@"jobVotedDown"];
+              //  [[PFUser currentUser] saveInBackground];
+                [ self.jobTable reloadData];
+                
+                // cell.jobVoteUpButton.text =tempObject[@"applyCount"];
+            } else {
+                NSLog(@"Error saving career object");
+            }
+            
+        }];
+        
+
+        [tempJobVoteUpButton  setSelected:!tempJobVoteUpButton.isSelected];
+        
+
+    }
     
     
+    
+    /*
+    if (tempJobVoteUpButton.isSelected) {
+        [tempJobVoteUpButton  setImage:[UIImage imageNamed:@"like-default.png"] forState:UIControlStateNormal];
+    }else {
+        [tempJobVoteUpButton  setImage:[UIImage imageNamed:@"like-active.png"] forState:UIControlStateSelected];
+    }*/
     
     
 }
@@ -441,10 +537,11 @@
         if (succeeded) {
             NSLog(@"Career object saved");
             NSLog(@"%@", tempObject);
+            //JobCustomTableViewCell *cell = [[JobCustomTableViewCell alloc] init];
+           // [cell.jobVoteUpButton setHidden:YES];
             [ self.jobTable reloadData];
             
-            
-            // cell.jobVoteUpButton.text =tempObject[@"applyCount"];
+           
         } else {
             NSLog(@"Error saving career object");
         }
