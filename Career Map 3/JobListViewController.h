@@ -11,7 +11,7 @@
 #import <ParseUI/ParseUI.h>
 #import "Job.h"
 
-@interface JobListViewController : PFQueryTableViewController <CLLocationManagerDelegate>{
+@interface JobListViewController : UITableViewController <CLLocationManagerDelegate>{
     
   //  dispatch_queue_t myQueue;
 
@@ -20,8 +20,9 @@
 }
 
 - (PFGeoPoint *) getUserLocation;
+- (void) retrieveFromParse;
 
-
+@property (strong, nonatomic) IBOutlet UITableView *jobTable;
 
 
 @property (nonatomic,strong) CLLocationManager* locationManager;

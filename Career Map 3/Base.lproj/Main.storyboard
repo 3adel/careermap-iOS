@@ -9,6 +9,7 @@
             <objects>
                 <tableViewController id="iC0-Pg-6cA" customClass="JobListViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="169" sectionHeaderHeight="22" sectionFooterHeight="22" id="oVI-xq-eSF">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -98,6 +99,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="oss-5G-Sd9"/>
+                    <connections>
+                        <outlet property="jobTable" destination="oVI-xq-eSF" id="gZ5-Af-aWm"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fTZ-GB-uuF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -112,6 +116,7 @@
                         <viewControllerLayoutGuide type="bottom" id="zZB-0S-X7L"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="bxF-tv-BTZ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -123,7 +128,6 @@
         <!--My Resume-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
                 <viewController id="8rJ-Kc-sve" customClass="SecondViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="L7p-HK-0SC"/>
@@ -149,6 +153,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="My Resume" image="first" id="cPa-gy-q4n"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1221" y="477"/>
         </scene>
