@@ -12,13 +12,14 @@
 
 @implementation JobListViewController{
     
-    NSArray *jobs;
+   // NSArray *jobs;
    // PFGeoPoint *userLocation;
    // PFQuery *employerQuery;
     
 }
 
 @synthesize userLocation;
+@synthesize jobsArray;
 //@synthesize locationManager;
 
 
@@ -123,8 +124,8 @@
    // [query whereKey:@"geolocation" nearGeoPoint:self.userLocation];
     [query includeKey:@"employer"];
     [query includeKey:@"status"];
-    [query whereKey:@"geolocation" nearGeoPoint:self.userLocation withinKilometers:10];
-    [query orderByDescending:@"createdAt"];
+    [query whereKey:@"geolocation" nearGeoPoint:self.userLocation withinKilometers:100000000];
+   // [query orderByDescending:@"createdAt"];
 
     
     if (!self.userLocation) {
@@ -197,31 +198,7 @@
 }
 
 //inactive
-- (void) retrieveJobData{
-    
-    
-    /*
-    
-    PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];
-    query.cachePolicy = kPFCachePolicyCacheThenNetwork;
-    
-    
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (!error) {
-            // The find succeeded.
-            NSLog(@"Successfully retrieved %lu scores.", (unsigned long)objects.count);
-            // Do something with the found objects
-            for (PFObject *object in objects) {
-                NSLog(@"%@", object.objectId);
-            }
-        } else {
-            // Log details of the failure
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
-        }
-    }];*/
-    ;
-    
-}
+
 
 
 - (PFGeoPoint *) getUserLocation{

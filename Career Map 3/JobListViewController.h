@@ -13,13 +13,12 @@
 
 @interface JobListViewController : PFQueryTableViewController <CLLocationManagerDelegate>{
     
-    dispatch_queue_t myQueue;
+  //  dispatch_queue_t myQueue;
 
     
     
 }
 
-- (void) retrieveJobData;
 - (PFGeoPoint *) getUserLocation;
 
 
@@ -27,7 +26,7 @@
 
 @property (nonatomic,strong) CLLocationManager* locationManager;
 @property (nonatomic, strong) PFGeoPoint *userLocation;
-
+@property (nonatomic, strong) NSArray *jobsArray;
 
 
 
