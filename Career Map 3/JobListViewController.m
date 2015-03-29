@@ -26,11 +26,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
+    /*
     PFUser *user = [PFUser user];
     user.username = @"adelshehadehjj";
     user.password = @"passwordjkljjjjk342";
-    user.email = @"email@examplfffeu.com";
+    user.email = @"email@examplfffeu.com";*/
     
     // other fields can be set just like with PFObject
     //user[@"phone"] = @"415-392-0202";
@@ -47,14 +47,14 @@
     }];*/
     
     //login
-    [PFUser logInWithUsernameInBackground:user.username password:user.password
+  /*  [PFUser logInWithUsernameInBackground:user.username password:user.password
                                     block:^(PFUser *user, NSError *error) {
                                         if (user) {
                                             NSLog(@"User logged");
                                         } else {
                                             NSLog(@"error with login");
                                         }
-                                    }];
+                                    }];*/
     
     
     
