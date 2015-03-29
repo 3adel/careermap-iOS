@@ -74,6 +74,17 @@
     
 }
 
+//i am already registered button
+- (IBAction)registeredButton:(UIButton *)sender {
+    [UIView animateWithDuration:0.3 animations:^{
+        _loginOverlayView.frame = self.view.frame;
+    
+    
+    
+    }];
+    
+}
+
 
 
 - (void) registerNewUser{
