@@ -17,7 +17,7 @@
    // PFQuery *employerQuery;
     
 }
-
+@synthesize refreshControl;
 @synthesize userLocation;
 @synthesize jobsArray;
 //@synthesize locationManager;
@@ -89,6 +89,10 @@
     
     
     
+
+    
+    
+    
 }
 
 - (void) retrieveFromParse {
@@ -119,6 +123,7 @@
         if (!error) {
             jobsArray = [[NSArray alloc] initWithArray:objects];
          //   NSLog(@"%@", jobsArray);
+
         }
         [self.jobTable reloadData];
     }];
@@ -287,8 +292,11 @@
     // NSNumber *jobDistanceNumber = [NSNumber numberWithDouble:[self.userLocation distanceInKilometersTo:[object objectForKey:@"geolocation"]]];
     
     
+  //  NSString *k=
     
-    cell.jobDistanceFromUser.text = [NSString stringWithFormat:@"%.2f",[self.userLocation distanceInKilometersTo:[tempObject objectForKey:@"geolocation"]]];
+    cell.jobDistanceFromUser.text = [NSString stringWithFormat:@"%@ km away",[NSString stringWithFormat:@"%.2f",[self.userLocation distanceInKilometersTo:[tempObject objectForKey:@"geolocation"]]] ];
+    
+    
     
     
     cell.jobVoteLabel.text =[NSString stringWithFormat:@"%@",[tempObject objectForKey:@"applyCount"]];;
@@ -851,6 +859,22 @@
     
     
 }
+
+
+-(void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    ;
+}
+
+
+
+- (void)refresh:(id)sender
+{
+    // do your refresh here and reload the tablview
+    [self.jobTable reloadData];
+}
+
 
 
 

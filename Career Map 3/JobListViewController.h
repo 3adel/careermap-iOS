@@ -24,7 +24,7 @@
 
 @property (strong, nonatomic) IBOutlet UITableView *jobTable;
 
-
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (nonatomic,strong) CLLocationManager* locationManager;
 @property (nonatomic, strong) PFGeoPoint *userLocation;
 @property (nonatomic, strong) NSArray *jobsArray;
