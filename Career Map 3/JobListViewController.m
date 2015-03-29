@@ -324,7 +324,11 @@
             if ([[object objectForKey:@"jobVotedUp"] containsObject:tempObject.objectId]) {
                 NSLog(@"foundddddddddd");
                 
-            
+
+                
+               // [cell.jobVoteUpButton.titleLabel setFont:[UIFont boldSystemFontOfSize:15.f]];
+              
+                //[self.jobTable reloadData];
                // [cell.jobVoteUpButton setSelected:YES];
              //   cell.backgroundColor = [UIColor blueColor];
             }
@@ -559,111 +563,7 @@
 }
 
 
-- (IBAction)jobVoteUpPressed:(UIButton *)sender {
-    
-    UIButton *tempJobVoteUpButton =  (UIButton *)sender;
-    
-    NSLog(@"VOTE UP PRESSED");
 
-    if (!tempJobVoteUpButton.isSelected) {
-        
-        NSLog(@"like:%d",tempJobVoteUpButton.isSelected);
-        
-        [tempJobVoteUpButton  setSelected:!tempJobVoteUpButton.isSelected];
-        NSLog(@"like:%d",tempJobVoteUpButton.isSelected);
-        
-        
-        NSLog(@"job vote up pressed");
-        PFObject *tempObject = [jobsArray objectAtIndex:sender.tag];
-
-
-        [tempObject incrementKey:@"applyCount" byAmount:[NSNumber numberWithInteger:1]];
-
-
-        [tempObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-            if (succeeded) {
-                NSLog(@"Career object saved");
-                
-                //Save in the voted up items of the user
-                [[PFUser currentUser] addUniqueObject:tempObject.objectId forKey:@"jobVotedUp"];
-                [[PFUser currentUser] saveInBackground];
-                
-                NSIndexPath* cellIndexPath1= [NSIndexPath indexPathForRow:sender.tag inSection:0];
-              //  NSIndexPath* cellIndexPath2= [NSIndexPath indexPathForRow:4 inSection:1];
-               // SIndexPath* indexPath1 = [NSIndexPath indexPathForRow:3 inSection:2];
-               // NSArray* indexArray = [NSArray arrayWithObjects:cellIndexPath1,cellIndexPath2,nil];
-                
-                NSLog(@"Index Array = %@", cellIndexPath1);
-                
-               // [self.jobTable reloadRowsAtIndexPaths:indexArray withRowAnimation:UITableViewRowAnimationNone];
-                
-                [self.jobTable beginUpdates];
-                [self.jobTable reloadRowsAtIndexPaths:@[cellIndexPath1] withRowAnimation:UITableViewRowAnimationFade];
-                [self.jobTable endUpdates];
-                
-                
-                
-                
-               // [ self.jobTable reloadData];
-                
-            } else {
-                NSLog(@"Error saving career object");
-            }
-            
-            
-            
-            
-            
-        }];
-        
-        
-
-        
-    }
-    
-    //if voted up already, undo the upvoting and substract 1 from parse votes
-    else{
-        
-        NSLog(@"else statement");
-        PFObject *tempObject = [jobsArray objectAtIndex:sender.tag];
-        [tempObject incrementKey:@"applyCount" byAmount:[NSNumber numberWithInteger:-1]];
-      
-        [tempObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-            if (succeeded) {
-                NSLog(@"Career object removed");
-              //  [[PFUser currentUser] removeObject:tempObject.objectId forKey:forKey:@"jobVotedUp"];
-                [[PFUser currentUser] removeObject:tempObject.objectId forKey:@"jobVotedUp"];
-                [[PFUser currentUser] saveInBackground];
-                
-                NSIndexPath* cellIndexPath1= [NSIndexPath indexPathForRow:sender.tag inSection:0];
-                //  NSIndexPath* cellIndexPath2= [NSIndexPath indexPathForRow:4 inSection:1];
-                // SIndexPath* indexPath1 = [NSIndexPath indexPathForRow:3 inSection:2];
-                // NSArray* indexArray = [NSArray arrayWithObjects:cellIndexPath1,cellIndexPath2,nil];
-                
-                NSLog(@"Index Array = %@", cellIndexPath1);
-                
-                // [self.jobTable reloadRowsAtIndexPaths:indexArray withRowAnimation:UITableViewRowAnimationNone];
-                
-                [self.jobTable beginUpdates];
-                [self.jobTable reloadRowsAtIndexPaths:@[cellIndexPath1] withRowAnimation:UITableViewRowAnimationFade];
-                [self.jobTable endUpdates];
-
-             //   [ self.jobTable reloadData];
-                
-            } else {
-                NSLog(@"Error saving career object");
-            }
-            
-        }];
-        
-
-        [tempJobVoteUpButton  setSelected:!tempJobVoteUpButton.isSelected];
-        
-
-    }
-    
-
-}
 
 - (IBAction)jobVoteDownPressed:(UIButton *)sender {
     
@@ -839,7 +739,7 @@
                 NSLog(@"foundddddddddd");
                 
                 [tempObject incrementKey:@"applyCount" byAmount:[NSNumber numberWithInteger:1]];
-                
+
                 
                 
                 //if the user has already pressed vote down before pressing the up
@@ -870,6 +770,10 @@
                         [self.jobTable reloadRowsAtIndexPaths:@[cellIndexPath1] withRowAnimation:UITableViewRowAnimationFade];
                         [self.jobTable endUpdates];
                         
+                        //[sender reloadInputViews];
+                        
+                        
+                        //[sender setNeedsDisplay];
                         //   [ self.jobTable reloadData];
                         
                     } else {
@@ -887,6 +791,7 @@
             
             //if the user already voted, decrease count and refresh
             else{
+
                 
                 NSLog(@"The user already voted up for this");
                 

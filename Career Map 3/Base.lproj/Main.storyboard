@@ -8,12 +8,12 @@
         <scene sceneID="MEq-eT-Xdc">
             <objects>
                 <tableViewController id="iC0-Pg-6cA" customClass="JobListViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="290" sectionHeaderHeight="22" sectionFooterHeight="22" id="oVI-xq-eSF">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="170" sectionHeaderHeight="22" sectionFooterHeight="22" id="oVI-xq-eSF">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="jobCell" rowHeight="290" id="vdI-DA-Dn3" customClass="JobCustomTableViewCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="jobCell" rowHeight="170" id="vdI-DA-Dn3" customClass="JobCustomTableViewCell">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vdI-DA-Dn3" id="Bsq-Cm-a6P">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -24,7 +24,7 @@
                                             <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                             <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                                <rect key="frame" x="8" y="8" width="351" height="21"/>
+                                                <rect key="frame" x="8" y="8" width="242" height="21"/>
                                             </variation>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Qa-a6-TFF">
@@ -66,39 +66,40 @@
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L0W-f3-b5s">
                                             <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                             <color key="backgroundColor" red="0.99104379220374095" green="1" blue="0.0058329476989320561" alpha="1" colorSpace="calibratedRGB"/>
-                                            <state key="normal" title="Vote Up">
+                                            <fontDescription key="fontDescription" type="system" pointSize="42"/>
+                                            <state key="normal" title="⬆">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                                <rect key="frame" x="8" y="158" width="84" height="50"/>
+                                                <rect key="frame" x="258" y="8" width="50" height="50"/>
                                             </variation>
                                             <connections>
                                                 <action selector="jobVoteUpPressedV2:" destination="iC0-Pg-6cA" eventType="touchUpInside" id="RAJ-x2-ZWL"/>
                                             </connections>
                                         </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oiv-2C-cYR">
-                                            <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                            <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                            <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                                <rect key="frame" x="152" y="158" width="76" height="43"/>
-                                            </variation>
-                                        </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="80R-rM-uDg">
                                             <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                             <color key="backgroundColor" red="0.99104379220000005" green="1" blue="0.005832947699" alpha="1" colorSpace="calibratedRGB"/>
-                                            <state key="normal" title="Vote Dwn">
+                                            <fontDescription key="fontDescription" type="system" pointSize="42"/>
+                                            <state key="normal" title="⬇">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                                <rect key="frame" x="8" y="216" width="84" height="48"/>
+                                                <rect key="frame" x="258" y="110" width="50" height="50"/>
                                             </variation>
                                             <connections>
                                                 <action selector="jobVoteDownPressed:" destination="iC0-Pg-6cA" eventType="touchUpInside" id="6h6-Qv-Yyw"/>
                                             </connections>
                                         </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oiv-2C-cYR">
+                                            <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                            <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                                <rect key="frame" x="254" y="68" width="59" height="33"/>
+                                            </variation>
+                                        </label>
                                     </subviews>
                                     <variation key="default">
                                         <mask key="subviews">
@@ -108,8 +109,8 @@
                                             <exclude reference="aU7-0p-S2X"/>
                                             <exclude reference="awk-od-Uke"/>
                                             <exclude reference="L0W-f3-b5s"/>
-                                            <exclude reference="oiv-2C-cYR"/>
                                             <exclude reference="80R-rM-uDg"/>
+                                            <exclude reference="oiv-2C-cYR"/>
                                         </mask>
                                     </variation>
                                     <variation key="heightClass=regular-widthClass=compact">
@@ -120,8 +121,8 @@
                                             <include reference="aU7-0p-S2X"/>
                                             <include reference="awk-od-Uke"/>
                                             <include reference="L0W-f3-b5s"/>
-                                            <include reference="oiv-2C-cYR"/>
                                             <include reference="80R-rM-uDg"/>
+                                            <include reference="oiv-2C-cYR"/>
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
