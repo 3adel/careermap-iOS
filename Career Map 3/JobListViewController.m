@@ -413,7 +413,7 @@
     
     //add a tag to the voting button to indicate the current row index
     [cell.jobVoteUpButton setTag:indexPath.row];
-    [cell.jobVoteUpButton addTarget:self action:@selector(jobVoteUpPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [cell.jobVoteUpButton addTarget:self action:@selector(jobVoteUpPressedV2:) forControlEvents:UIControlEventTouchUpInside];
     
     ///[cell.jobVoteLabel setTag:indexPath.row];
     
@@ -741,4 +741,144 @@
     
     
 }
+
+
+
+
+- (IBAction)jobVoteUpPressedV2:(UIButton *)sender {
+    
+    
+    PFObject *tempObject = [jobsArray objectAtIndex:sender.tag];
+    // NSLog(@"%@Jobs array", jobsArray);
+    //if the user already voted up, mark upvote button as selected
+    PFQuery *votedQuery = [PFQuery queryWithClassName:@"_User"];
+    [votedQuery whereKey:@"jobVotedUp" equalTo:tempObject.objectId];
+    [votedQuery whereKey:@"objectId" equalTo:[[PFUser currentUser] objectId] ];
+    
+    
+    NSLog(@"V2 Current user ID=%@",[[PFUser currentUser] objectId]);
+    
+    
+    [votedQuery getObjectInBackgroundWithId:[[PFUser currentUser] objectId] block:^(PFObject *object, NSError *error) {
+        
+        
+        if (!error) {
+            //jobsArray = [[NSArray alloc] initWithArray:objects];
+            NSLog(@"Users Query Objects: %@", object);
+            // [cell.jobVoteUpButton setSelected:YES];
+            
+            // if a record is found in the user table in the voted up
+            
+            // NSLog(@"print object =%@",[object objectForKey:@"jobVotedUp"]);
+            // NSLog(@"object ID temp: %@",tempObject.objectId);
+            
+            
+            
+            //if the user did not vote yet
+            if (![[object objectForKey:@"jobVotedUp"] containsObject:tempObject.objectId]) {
+                NSLog(@"foundddddddddd");
+                
+                [tempObject incrementKey:@"applyCount" byAmount:[NSNumber numberWithInteger:1]];
+                
+                [tempObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                    if (succeeded) {
+                        NSLog(@"Career object removed");
+                        //  [[PFUser currentUser] removeObject:tempObject.objectId forKey:forKey:@"jobVotedUp"];
+                        [[PFUser currentUser] addUniqueObject:tempObject.objectId forKey:@"jobVotedUp"];
+                        [[PFUser currentUser] saveInBackground];
+                        NSIndexPath* cellIndexPath1= [NSIndexPath indexPathForRow:sender.tag inSection:0];
+                        //  NSIndexPath* cellIndexPath2= [NSIndexPath indexPathForRow:4 inSection:1];
+                        // SIndexPath* indexPath1 = [NSIndexPath indexPathForRow:3 inSection:2];
+                        // NSArray* indexArray = [NSArray arrayWithObjects:cellIndexPath1,cellIndexPath2,nil];
+                        
+                        NSLog(@"Index Array = %@", cellIndexPath1);
+                        
+                        // [self.jobTable reloadRowsAtIndexPaths:indexArray withRowAnimation:UITableViewRowAnimationNone];
+                        
+                        [self.jobTable beginUpdates];
+                        [self.jobTable reloadRowsAtIndexPaths:@[cellIndexPath1] withRowAnimation:UITableViewRowAnimationFade];
+                        [self.jobTable endUpdates];
+                        
+                        //   [ self.jobTable reloadData];
+                        
+                    } else {
+                        NSLog(@"Error saving career object");
+                    }
+                    
+                }];
+                
+                
+                
+                // [cell.jobVoteUpButton setSelected:YES];
+                //   cell.backgroundColor = [UIColor blueColor];
+            }
+            
+            
+            //if the user already voted, decrease count and refresh
+            else{
+                
+                NSLog(@"The user already voted up for this");
+                
+                [tempObject incrementKey:@"applyCount" byAmount:[NSNumber numberWithInteger:-1]];
+                
+                [tempObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                    if (succeeded) {
+                       // NSLog(@"Career object removed");
+                        //  [[PFUser currentUser] removeObject:tempObject.objectId forKey:forKey:@"jobVotedUp"];
+                       // [[PFUser currentUser] addUniqueObject:tempObject.objectId forKey:@"jobVotedUp"];
+                        [[PFUser currentUser] removeObject:tempObject.objectId forKey:@"jobVotedUp"];
+                        [[PFUser currentUser] saveInBackground];
+                        NSIndexPath* cellIndexPath1= [NSIndexPath indexPathForRow:sender.tag inSection:0];
+                        //  NSIndexPath* cellIndexPath2= [NSIndexPath indexPathForRow:4 inSection:1];
+                        // SIndexPath* indexPath1 = [NSIndexPath indexPathForRow:3 inSection:2];
+                        // NSArray* indexArray = [NSArray arrayWithObjects:cellIndexPath1,cellIndexPath2,nil];
+                        
+                        NSLog(@"Index Array = %@", cellIndexPath1);
+                        
+                        // [self.jobTable reloadRowsAtIndexPaths:indexArray withRowAnimation:UITableViewRowAnimationNone];
+                        
+                        [self.jobTable beginUpdates];
+                        [self.jobTable reloadRowsAtIndexPaths:@[cellIndexPath1] withRowAnimation:UITableViewRowAnimationFade];
+                        [self.jobTable endUpdates];
+                        
+                        //   [ self.jobTable reloadData];
+                        
+                    } else {
+                        NSLog(@"Error saving career object");
+                    }
+                    
+                }];
+                
+                
+                
+                // [cell.jobVoteUpButton setSelected:YES];
+                //   cell.backgroundColor = [UIColor blueColor];
+                
+                
+                
+            }
+            
+            
+            
+            
+        }
+        else{
+            NSLog(@"weeeeeeeeeeeeee");
+            
+            
+        }
+        
+    }];
+    
+    
+    
+    
+    
+}
+
+
+
+
+
+
 @end
