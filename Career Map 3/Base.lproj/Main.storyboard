@@ -171,6 +171,64 @@
             </objects>
             <point key="canvasLocation" x="2832" y="-216.75"/>
         </scene>
+        <!--Settings-->
+        <scene sceneID="kcf-7j-AcG">
+            <objects>
+                <viewController id="T0L-SA-EyQ" customClass="settingsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qng-CE-1A6"/>
+                        <viewControllerLayoutGuide type="bottom" id="X0l-eH-wba"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="LGa-cj-DDk">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j46-hO-NRy">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <items>
+                                    <tabBarItem image="first" id="w76-tg-2fK"/>
+                                    <tabBarItem systemItem="more" id="084-pX-IK7"/>
+                                </items>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="751" width="400" height="49"/>
+                                </variation>
+                            </tabBar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2zg-aD-6qS">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.018539993599999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Logout">
+                                    <color key="titleColor" red="1" green="0.98506008810543688" blue="0.94679395477926742" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="16" y="448" width="290" height="44"/>
+                                </variation>
+                                <connections>
+                                    <action selector="logoutButtonPressed:" destination="T0L-SA-EyQ" eventType="touchUpInside" id="6h8-JS-MaH"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="j46-hO-NRy"/>
+                                <exclude reference="2zg-aD-6qS"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="j46-hO-NRy"/>
+                                <include reference="2zg-aD-6qS"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Settings" image="first" id="cBR-XE-qPT"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h6b-8L-WNh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-7.5" y="738"/>
+        </scene>
         <!--My Resume-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
@@ -212,6 +270,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Kyo-aE-CsG"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="jtc-H4-eiW">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UnN-V3-6sf">
@@ -294,6 +353,7 @@
                     <connections>
                         <segue destination="u4i-H2-sYV" kind="relationship" relationship="viewControllers" id="UxA-w6-8cU"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
+                        <segue destination="T0L-SA-EyQ" kind="relationship" relationship="viewControllers" id="fSu-U5-AC5"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>

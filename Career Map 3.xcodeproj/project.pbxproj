@@ -38,6 +38,7 @@
 		F5BAC3CD1AC7EDFE003E899C /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5BAC3C81AC7EDFE003E899C /* ParseFacebookUtils.framework */; };
 		F5BAC3CE1AC7EDFE003E899C /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5BAC3C91AC7EDFE003E899C /* ParseUI.framework */; };
 		F5BAC3D11AC85BB7003E899C /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5BAC3D01AC85BB7003E899C /* LoginViewController.m */; };
+		F5BAC3D41AC875E5003E899C /* settingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5BAC3D31AC875E5003E899C /* settingsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +92,8 @@
 		F5BAC3C91AC7EDFE003E899C /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseUI.framework; path = "../../Libraries/iOS/parse-library-1.6.3/ParseUI.framework"; sourceTree = "<group>"; };
 		F5BAC3CF1AC85BB7003E899C /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		F5BAC3D01AC85BB7003E899C /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		F5BAC3D21AC875E5003E899C /* settingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = settingsViewController.h; sourceTree = "<group>"; };
+		F5BAC3D31AC875E5003E899C /* settingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = settingsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +167,8 @@
 				F59758B01AC159B40099A978 /* AppDelegate.h */,
 				F59758B11AC159B40099A978 /* AppDelegate.m */,
 				F59758B91AC159B40099A978 /* Main.storyboard */,
+				F5BAC3D21AC875E5003E899C /* settingsViewController.h */,
+				F5BAC3D31AC875E5003E899C /* settingsViewController.m */,
 				F5BAC3CF1AC85BB7003E899C /* LoginViewController.h */,
 				F5BAC3D01AC85BB7003E899C /* LoginViewController.m */,
 				F59758BC1AC159B40099A978 /* Images.xcassets */,
@@ -327,6 +332,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F59759351AC1DC7D0099A978 /* JobCustomTableViewCell.m in Sources */,
+				F5BAC3D41AC875E5003E899C /* settingsViewController.m in Sources */,
 				F59758B21AC159B40099A978 /* AppDelegate.m in Sources */,
 				F5BAC3D11AC85BB7003E899C /* LoginViewController.m in Sources */,
 				F59758AF1AC159B40099A978 /* main.m in Sources */,
