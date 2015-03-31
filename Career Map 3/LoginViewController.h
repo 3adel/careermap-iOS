@@ -15,8 +15,14 @@
 @property (weak, nonatomic) IBOutlet UITextField *emailField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
 @property (weak, nonatomic) IBOutlet UIView *loginOverlayView;
+
+@property (weak, nonatomic) IBOutlet UITextField *loginUsernameField;
+
+@property (weak, nonatomic) IBOutlet UITextField *loginPasswordField;
+
 - (IBAction)registerUser:(UIButton *)sender;
 - (void) checkFieldsComplete;
 - (IBAction)registeredButton:(UIButton *)sender;
+- (IBAction)loginButton:(UIButton *)sender;
 
 @end

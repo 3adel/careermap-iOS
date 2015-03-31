@@ -334,21 +334,16 @@
                                         <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
                                             <rect key="frame" x="137" y="237" width="38" height="30"/>
                                         </variation>
+                                        <connections>
+                                            <action selector="loginButton:" destination="LvE-VE-i2d" eventType="touchUpInside" id="hAa-Ak-SFD"/>
+                                        </connections>
                                     </button>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0qW-nM-w7V">
                                         <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="80" y="99" width="144" height="30"/>
-                                        </variation>
-                                    </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rvQ-e9-UC2">
-                                        <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                                        <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="80" y="137" width="144" height="30"/>
+                                            <rect key="frame" x="8" y="45" width="290" height="30"/>
                                         </variation>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zKH-wb-54a">
@@ -360,23 +355,31 @@
                                             <rect key="frame" x="253" y="137" width="37" height="30"/>
                                         </variation>
                                     </button>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rvQ-e9-UC2">
+                                        <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                        <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                            <rect key="frame" x="8" y="89" width="290" height="30"/>
+                                        </variation>
+                                    </textField>
                                 </subviews>
                                 <color key="backgroundColor" name="controlHighlightColor" catalog="System" colorSpace="catalog"/>
                                 <variation key="default">
                                     <mask key="subviews">
                                         <exclude reference="EMT-rR-gYl"/>
                                         <exclude reference="0qW-nM-w7V"/>
-                                        <exclude reference="rvQ-e9-UC2"/>
                                         <exclude reference="zKH-wb-54a"/>
+                                        <exclude reference="rvQ-e9-UC2"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="20" width="313" height="428"/>
+                                    <rect key="frame" x="320" y="0.0" width="313" height="428"/>
                                     <mask key="subviews">
                                         <include reference="EMT-rR-gYl"/>
                                         <include reference="0qW-nM-w7V"/>
-                                        <include reference="rvQ-e9-UC2"/>
                                         <include reference="zKH-wb-54a"/>
+                                        <include reference="rvQ-e9-UC2"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -406,6 +409,8 @@
                     <connections>
                         <outlet property="emailField" destination="UnN-V3-6sf" id="JyR-rt-u4n"/>
                         <outlet property="loginOverlayView" destination="cS9-fn-zxL" id="T02-ai-rwu"/>
+                        <outlet property="loginPasswordField" destination="rvQ-e9-UC2" id="N3D-zC-2b2"/>
+                        <outlet property="loginUsernameField" destination="0qW-nM-w7V" id="TzV-Kx-1Ra"/>
                         <outlet property="passwordField" destination="DVh-jk-MEt" id="bIr-q2-2YC"/>
                         <outlet property="usernameField" destination="TdS-gP-fkv" id="zZJ-de-enS"/>
                         <segue destination="49e-Tb-3d3" kind="presentation" identifier="login" modalTransitionStyle="flipHorizontal" id="0do-qJ-Jzh"/>

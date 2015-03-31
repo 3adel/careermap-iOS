@@ -74,16 +74,9 @@
     
 }
 
-//i am already registered button
-- (IBAction)registeredButton:(UIButton *)sender {
-    [UIView animateWithDuration:0.3 animations:^{
-        _loginOverlayView.frame = self.view.frame;
-    
-    
-    
-    }];
-    
-}
+
+
+
 
 
 
@@ -102,6 +95,14 @@
         if (!error) {
             NSLog(@"Registration success");
            
+            //reset fields
+            _loginUsernameField.text = nil;
+            _loginPasswordField.text = nil;
+            _usernameField.text = nil;
+            _emailField.text = nil;
+            _passwordField.text = nil;
+            
+            
             //take me to the app
             [self performSegueWithIdentifier:@"login" sender:self];
             
@@ -116,6 +117,55 @@
             [alert show];
 
         }
+    }];
+    
+    
+    
+}
+
+
+//i am already registered button
+- (IBAction)registeredButton:(UIButton *)sender {
+    [UIView animateWithDuration:0.3 animations:^{
+        _loginOverlayView.frame = self.view.frame;
+        
+            
+    }];
+    
+}
+
+
+
+//validate login credentials
+- (IBAction)loginButton:(UIButton *)sender {
+    
+    
+    
+    [PFUser logInWithUsernameInBackground:_loginUsernameField.text password:_loginPasswordField.text block:^(PFUser *user, NSError *error) {
+        
+        if (!error) {
+            NSLog(@"Success: Logged the user");
+            
+            //reset fields
+            _loginUsernameField.text = nil;
+            _loginPasswordField.text = nil;
+            _usernameField.text = nil;
+            _emailField.text = nil;
+            _passwordField.text = nil;
+            
+            
+            [self performSegueWithIdentifier:@"login" sender:self];
+
+        }
+        
+        if (error) {
+            UIAlertView *alert= [[UIAlertView alloc]initWithTitle:@"Error!" message:error.description delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
+            
+            [alert show];
+        }
+        
+        
+        
     }];
     
     
