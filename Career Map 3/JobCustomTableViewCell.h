@@ -19,5 +19,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *jobVoteDownButton;
 
 @property (weak, nonatomic) IBOutlet UILabel *jobVoteLabel;
+@property (weak, nonatomic) IBOutlet UILabel *jobVoteUpFlag;
 
 @end

@@ -100,6 +100,15 @@
                                                 <rect key="frame" x="254" y="68" width="59" height="33"/>
                                             </variation>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NCC-8D-xhG">
+                                            <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                            <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                                <rect key="frame" x="316" y="22" width="42" height="21"/>
+                                            </variation>
+                                        </label>
                                     </subviews>
                                     <variation key="default">
                                         <mask key="subviews">
@@ -111,6 +120,7 @@
                                             <exclude reference="L0W-f3-b5s"/>
                                             <exclude reference="80R-rM-uDg"/>
                                             <exclude reference="oiv-2C-cYR"/>
+                                            <exclude reference="NCC-8D-xhG"/>
                                         </mask>
                                     </variation>
                                     <variation key="heightClass=regular-widthClass=compact">
@@ -123,6 +133,7 @@
                                             <include reference="L0W-f3-b5s"/>
                                             <include reference="80R-rM-uDg"/>
                                             <include reference="oiv-2C-cYR"/>
+                                            <include reference="NCC-8D-xhG"/>
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
@@ -135,6 +146,7 @@
                                     <outlet property="jobVoteDownButton" destination="80R-rM-uDg" id="pFj-ei-b6t"/>
                                     <outlet property="jobVoteLabel" destination="oiv-2C-cYR" id="JQR-jm-OtD"/>
                                     <outlet property="jobVoteUpButton" destination="L0W-f3-b5s" id="aGz-qH-ASQ"/>
+                                    <outlet property="jobVoteUpFlag" destination="NCC-8D-xhG" id="9ft-RH-zbC"/>
                                     <segue destination="oBD-2n-Moc" kind="show" id="LBn-AI-AAP"/>
                                 </connections>
                             </tableViewCell>

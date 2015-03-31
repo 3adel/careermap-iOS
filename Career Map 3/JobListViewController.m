@@ -20,6 +20,7 @@
 @synthesize refreshControl;
 @synthesize userLocation;
 @synthesize jobsArray;
+@synthesize jobsArrayWithUsersVotes;
 //@synthesize locationManager;
 
 
@@ -97,85 +98,75 @@
 
 - (void) retrieveFromParse {
     
+    
     PFQuery *retrieveJobs = [PFQuery queryWithClassName:@"Job"];
-    //  [retrieveJobs whereKey:@"geolocation" nearGeoPoint:self.userLocation];
     [retrieveJobs includeKey:@"employer"];
     [retrieveJobs includeKey:@"status"];
     //[retrieveJobs whereKey:@"geolocation" nearGeoPoint:self.userLocation withinKilometers:100000000];
     [retrieveJobs orderByDescending:@"createdAt"];
-    /*
-     
-     if (!self.userLocation) {
-     NSLog(@"Error: I can't get user location");
-     }
-     
-     else{
-     NSLog(@"Success getting location");
-     }*/
     
     
     
     // query.cachePolicy = kPFCachePolicyCacheThenNetwork;
+   // jobsArrayWithUsersVotes = [[NSMutableArray alloc]init];
     
-    
-    //this will modify the arry to account fof jobs that the current user voted up
     [retrieveJobs findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             jobsArray = [[NSMutableArray alloc] initWithArray:objects];
-            //  NSLog(@"%@", jobsArray);
+             // NSLog(@"%@", jobsArray);
             
-            // [tempObject objectForKey:@"title"];
+            
+            NSUInteger count = 0;
             for (PFObject *i in jobsArray) {
+              //  NSLog(@"Index = %lu, ObjID = %@, Title=%@", (unsigned long)count, i.objectId, [i objectForKey:@"title"]);
                 
                 
+               // [i setObject:@"1" forKey:@"currentUserVotedUpThisJob"];
+               // NSLog(@"Title # %ld: %@, votedUp = %@",count,[i objectForKey:@"title"], [i objectForKey:@"currentUserVotedUpThisJob"]);
+              //  NSLog(@"Title # %ld: %@, votedUp = %@",count,[i objectForKey:@"title"], [i objectForKey:@"currentUserVotedUpThisJob"]);
+
                 
-                //if this job exists in the usr table voteUP, set the flag to 1 else set it to 0
+        
+                
                 
                 PFQuery *votedQuery = [PFQuery queryWithClassName:@"_User"];
+                
                 [votedQuery whereKey:@"jobVotedUp" equalTo:i.objectId];
                 [votedQuery getObjectInBackgroundWithId:[[PFUser currentUser] objectId] block:^(PFObject *object, NSError *error) {
                     
                     
                     if (!error) {
-                        //jobsArray = [[NSArray alloc] initWithArray:objects];
-                        //NSLog(@"Users Query Objects: %@", object);
-                        // [cell.jobVoteUpButton setSelected:YES];
-                        
-                        // if a record is found in the user table in the voted up
-                        
-                        // NSLog(@"print object =%@",[object objectForKey:@"jobVotedUp"]);
-                        // NSLog(@"object ID temp: %@",tempObject.objectId);
-                        
                         
                         if ([[object objectForKey:@"jobVotedUp"] containsObject:i.objectId]) {
-                            //NSLog(@"foundddddddddd");
                             
+                            [(PFObject *)[jobsArray objectAtIndex:count] setObject:@"1" forKey:@"currentUserVotedUpThisJob"];
+                            NSLog(@"1");
+
                             
-                            //bool votedUP = YES;
-                            [i setObject:@"1" forKey:@"currentUserVotedUpThisJob"];
-                            //  NSLog(@"object: %@", i);
-                            
-                            // [cell.jobVoteUpButton.titleLabel setFont:[UIFont boldSystemFontOfSize:15.f]];
-                            
-                            //[self.jobTable reloadData];
-                            // [cell.jobVoteUpButton setSelected:YES];
-                            //   cell.backgroundColor = [UIColor blueColor];
                         }
                         
                         else{
-                            [i setObject:@"0" forKey:@"currentUserVotedUpThisJob"];
+                            [(PFObject *)[jobsArray objectAtIndex:count] setObject:@"0" forKey:@"currentUserVotedUpThisJob"];
+                            NSLog(@"0");
+
+                            
                             
                         }
                         
-                        NSLog(@"object ID temp: %@",i.objectId);
-                        NSLog(@"voting up result for that job: %@", [i objectForKey:@"currentUserVotedUpThisJob"]);
+                        // NSLog(@"object ID temp: %@",i.objectId);
+                        
+                        // NSLog(@"UpVote: %@ Title: %@", [i objectForKey:@"currentUserVotedUpThisJob"], [i objectForKey:@"title"]);
                         
                         
                     }
                     
                     
+                    
+                    
+                    
+                    
                     else{
-                        NSLog(@"weeeeeeeeeeeeee");
+                        NSLog(@"weeeeeeeeeeeee");
                         
                         
                     }
@@ -189,39 +180,23 @@
                 
                 
                 
-                
+
+                count++;
             }
-            
+            NSLog(@"%@", jobsArray);
+
+
             
             
         }
         [self.jobTable reloadData];
     }];
     
+
     
     
     
-    //NSLog(@"Current user ID=%@",[[PFUser currentUser] objectId]);
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    /*
-     [votedQuery getObjectInBackgroundWithId:tempObject.objectId block:^(PFObject *object, NSError *error) {
-     if (!error) {
-     //jobsArray = [[NSArray alloc] initWithArray:objects];
-     NSLog(@"jjjjjjjjjj: %@", object);
-     [cell.jobVoteUpButton setSelected:YES];
-     }
-     //[self.jobTable reloadData];
-     }];*/
-    
-    
+
     
     
     
@@ -245,20 +220,20 @@
 /*
 - (id)initWithCoder:(NSCoder *)aCoder
 {
-    
-    
+ 
+ 
 
-    
-    
-    
-    
-    
+ 
+ 
+ 
+ 
+ 
    // [self getUserLocation];
     self = [super initWithCoder:aCoder];
     if (self) {
         // The className to query on
         self.parseClassName = @"Job";
-        
+ 
         // The key of the PFObject to display in the label of the default cell style
         // self.textKey = @"title";
         
@@ -350,11 +325,19 @@
     PFObject *tempObject = [jobsArray objectAtIndex:indexPath.row];
     cell.jobTitleLabel.text = [tempObject objectForKey:@"title"];
     
+    
+    
+    
     NSDateFormatter *formatter;
     formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"dd-MM-yyyy HH:mm"];
     
+  //  NSLog(@"VotingUp= %@ %@", [tempObject objectForKey:@"currentUserVotedUpThisJob"],[tempObject objectForKey:@"title"]);
     
+    
+    cell.jobVoteUpFlag.text =[tempObject objectForKey:@"currentUserVotedUpThisJob"];
+
+   // cell.jobVoteUpButton.titleLabel.text =[tempObject objectForKey:@"currentUserVotedUpThisJob"];
     cell.jobTitleLabel.text = [tempObject objectForKey:@"title"];
     cell.jobEmployer.text=[tempObject[@"employer"] objectForKey:@"employerName"];
     cell.jobStatus.text=[tempObject[@"status"] objectForKey:@"description"];
@@ -382,7 +365,7 @@
    // [votedQuery whereKey:@"objectId" equalTo:[[PFUser currentUser] objectId] ];
     
     
-    NSLog(@"Current user ID=%@",[[PFUser currentUser] objectId]);
+   // NSLog(@"Current user ID=%@",[[PFUser currentUser] objectId]);
     
     
     [votedQuery getObjectInBackgroundWithId:[[PFUser currentUser] objectId] block:^(PFObject *object, NSError *error) {
@@ -400,7 +383,7 @@
             
             
             if ([[object objectForKey:@"jobVotedUp"] containsObject:tempObject.objectId]) {
-                NSLog(@"foundddddddddd");
+                //NSLog(@"foundddddddddd");
                 
 
                 
@@ -653,7 +636,7 @@
     [votedQuery whereKey:@"objectId" equalTo:[[PFUser currentUser] objectId] ];
     
     
-    NSLog(@"V2 Current user ID=%@",[[PFUser currentUser] objectId]);
+   // NSLog(@"V2 Current user ID=%@",[[PFUser currentUser] objectId]);
     
     
     [votedQuery getObjectInBackgroundWithId:[[PFUser currentUser] objectId] block:^(PFObject *object, NSError *error) {
@@ -672,7 +655,7 @@
             
             //if the user did not vote down yet
             if (![[object objectForKey:@"jobVotedDown"] containsObject:tempObject.objectId]) {
-                NSLog(@"foundddddddddd");
+               /// NSLog(@"foundddddddddd");
                 
                 //if the user has already pressed vote up before pressing the down
                 if ([[object objectForKey:@"jobVotedUp"] containsObject:tempObject.objectId]) {
@@ -794,7 +777,7 @@
     [votedQuery whereKey:@"objectId" equalTo:[[PFUser currentUser] objectId] ];
     
     
-    NSLog(@"V2 Current user ID=%@",[[PFUser currentUser] objectId]);
+  //  NSLog(@"V2 Current user ID=%@",[[PFUser currentUser] objectId]);
     
     
     [votedQuery getObjectInBackgroundWithId:[[PFUser currentUser] objectId] block:^(PFObject *object, NSError *error) {
@@ -814,7 +797,7 @@
             
             //if the user did not vote yet
             if (![[object objectForKey:@"jobVotedUp"] containsObject:tempObject.objectId]) {
-                NSLog(@"foundddddddddd");
+               // NSLog(@"foundddddddddd");
                 
                 [tempObject incrementKey:@"applyCount" byAmount:[NSNumber numberWithInteger:1]];
 
