@@ -98,47 +98,117 @@
 - (void) retrieveFromParse {
     
     PFQuery *retrieveJobs = [PFQuery queryWithClassName:@"Job"];
-  //  [retrieveJobs whereKey:@"geolocation" nearGeoPoint:self.userLocation];
+    //  [retrieveJobs whereKey:@"geolocation" nearGeoPoint:self.userLocation];
     [retrieveJobs includeKey:@"employer"];
     [retrieveJobs includeKey:@"status"];
     //[retrieveJobs whereKey:@"geolocation" nearGeoPoint:self.userLocation withinKilometers:100000000];
-     [retrieveJobs orderByDescending:@"createdAt"];
+    [retrieveJobs orderByDescending:@"createdAt"];
     /*
-    
-    if (!self.userLocation) {
-        NSLog(@"Error: I can't get user location");
-    }
-    
-    else{
-        NSLog(@"Success getting location");
-    }*/
+     
+     if (!self.userLocation) {
+     NSLog(@"Error: I can't get user location");
+     }
+     
+     else{
+     NSLog(@"Success getting location");
+     }*/
     
     
     
     // query.cachePolicy = kPFCachePolicyCacheThenNetwork;
     
-
     
+    //this will modify the arry to account fof jobs that the current user voted up
     [retrieveJobs findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
-            jobsArray = [[NSArray alloc] initWithArray:objects];
-         //   NSLog(@"%@", jobsArray);
-
+            jobsArray = [[NSMutableArray alloc] initWithArray:objects];
+            //  NSLog(@"%@", jobsArray);
+            
+            // [tempObject objectForKey:@"title"];
+            for (PFObject *i in jobsArray) {
+                
+                
+                
+                //if this job exists in the usr table voteUP, set the flag to 1 else set it to 0
+                
+                PFQuery *votedQuery = [PFQuery queryWithClassName:@"_User"];
+                [votedQuery whereKey:@"jobVotedUp" equalTo:i.objectId];
+                [votedQuery getObjectInBackgroundWithId:[[PFUser currentUser] objectId] block:^(PFObject *object, NSError *error) {
+                    
+                    
+                    if (!error) {
+                        //jobsArray = [[NSArray alloc] initWithArray:objects];
+                        //NSLog(@"Users Query Objects: %@", object);
+                        // [cell.jobVoteUpButton setSelected:YES];
+                        
+                        // if a record is found in the user table in the voted up
+                        
+                        // NSLog(@"print object =%@",[object objectForKey:@"jobVotedUp"]);
+                        // NSLog(@"object ID temp: %@",tempObject.objectId);
+                        
+                        
+                        if ([[object objectForKey:@"jobVotedUp"] containsObject:i.objectId]) {
+                            //NSLog(@"foundddddddddd");
+                            
+                            
+                            //bool votedUP = YES;
+                            [i setObject:@"1" forKey:@"currentUserVotedUpThisJob"];
+                            //  NSLog(@"object: %@", i);
+                            
+                            // [cell.jobVoteUpButton.titleLabel setFont:[UIFont boldSystemFontOfSize:15.f]];
+                            
+                            //[self.jobTable reloadData];
+                            // [cell.jobVoteUpButton setSelected:YES];
+                            //   cell.backgroundColor = [UIColor blueColor];
+                        }
+                        
+                        else{
+                            [i setObject:@"0" forKey:@"currentUserVotedUpThisJob"];
+                            
+                        }
+                        
+                        NSLog(@"object ID temp: %@",i.objectId);
+                        NSLog(@"voting up result for that job: %@", [i objectForKey:@"currentUserVotedUpThisJob"]);
+                        
+                        
+                    }
+                    
+                    
+                    else{
+                        NSLog(@"weeeeeeeeeeeeee");
+                        
+                        
+                    }
+                    
+                }];
+                
+                
+                
+                
+                
+                
+                
+                
+                
+            }
+            
+            
+            
         }
         [self.jobTable reloadData];
     }];
     
     
     
-
+    
     //NSLog(@"Current user ID=%@",[[PFUser currentUser] objectId]);
     
     
     
-        
     
-
-
+    
+    
+    
     
     
     /*
@@ -153,7 +223,7 @@
     
     
     
-   
+    
     
     
     
