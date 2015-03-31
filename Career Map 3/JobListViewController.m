@@ -273,7 +273,7 @@
     
     
    // JobCustomTableViewCell *cell = [[JobCustomTableViewCell alloc] init];
-    JobCustomTableViewCell *cell = (JobCustomTableViewCell *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    JobCustomTableViewCell *cell = [_jobTable dequeueReusableCellWithIdentifier:CellIdentifier];
     
     
     //cell.accessoryType = UITableViewCellAccessoryNone;
