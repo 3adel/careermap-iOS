@@ -150,15 +150,12 @@
                             
                             
                             
-                            NSLog(@" #%ld: object found VOTED UP", count);
+                           // NSLog(@" #%ld: object found VOTED UP", count);
                             [(PFObject *)[jobsArrayWithUsersVotes objectAtIndex:count] setObject:@"1" forKey:@"currentUserVotedUpThisJob"];
                            // NSLog(@"1: %@", [i objectForKey:@"title"]);
 
                             
-                            NSIndexPath* cellIndexPath1= [NSIndexPath indexPathForRow:count inSection:0];
-                            [self.jobTable beginUpdates];
-                            [self.jobTable reloadRowsAtIndexPaths:@[cellIndexPath1] withRowAnimation:UITableViewRowAnimationFade];
-                            [self.jobTable endUpdates];
+                     
                             
                             
                             
@@ -169,16 +166,13 @@
                         }
                         
                         else{
-                            NSLog(@" #%ld: object NOT found VOTED UP", count);
+                            //NSLog(@" #%ld: object NOT found VOTED UP", count);
 
                             [(PFObject *)[jobsArrayWithUsersVotes objectAtIndex:count] setObject:@"0" forKey:@"currentUserVotedUpThisJob"];
                            // NSLog(@"0: %@", [i objectForKey:@"title"]);
                            // [self.jobTable reloadData];
 
-                            NSIndexPath* cellIndexPath1= [NSIndexPath indexPathForRow:count inSection:0];
-                            [self.jobTable beginUpdates];
-                            [self.jobTable reloadRowsAtIndexPaths:@[cellIndexPath1] withRowAnimation:UITableViewRowAnimationFade];
-                            [self.jobTable endUpdates];
+                         
                             
                             
                         }
@@ -200,6 +194,11 @@
                         
                         
                     }
+                    
+                    NSIndexPath* cellIndexPath1= [NSIndexPath indexPathForRow:count inSection:0];
+                    [self.jobTable beginUpdates];
+                    [self.jobTable reloadRowsAtIndexPaths:@[cellIndexPath1] withRowAnimation:UITableViewRowAnimationFade];
+                    [self.jobTable endUpdates];
                     
                 }];
                 
@@ -222,15 +221,11 @@
                             
                             
                             
-                            NSLog(@" #%ld: object found VOTED down", count);
+                          //  NSLog(@" #%ld: object found VOTED down", count);
                             [(PFObject *)[jobsArrayWithUsersVotes objectAtIndex:count] setObject:@"1" forKey:@"currentUserVotedDownThisJob"];
                             // NSLog(@"1: %@", [i objectForKey:@"title"]);
                             
                             
-                            NSIndexPath* cellIndexPath1= [NSIndexPath indexPathForRow:count inSection:0];
-                            [self.jobTable beginUpdates];
-                            [self.jobTable reloadRowsAtIndexPaths:@[cellIndexPath1] withRowAnimation:UITableViewRowAnimationFade];
-                            [self.jobTable endUpdates];
                             
                             
                             
@@ -241,16 +236,13 @@
                         }
                         
                         else{
-                            NSLog(@" #%ld: object NOT found VOTED Down", count);
+                          //  NSLog(@" #%ld: object NOT found VOTED Down", count);
                             
                             [(PFObject *)[jobsArrayWithUsersVotes objectAtIndex:count] setObject:@"0" forKey:@"currentUserVotedDownThisJob"];
                             // NSLog(@"0: %@", [i objectForKey:@"title"]);
                             // [self.jobTable reloadData];
                             
-                            NSIndexPath* cellIndexPath1= [NSIndexPath indexPathForRow:count inSection:0];
-                            [self.jobTable beginUpdates];
-                            [self.jobTable reloadRowsAtIndexPaths:@[cellIndexPath1] withRowAnimation:UITableViewRowAnimationFade];
-                            [self.jobTable endUpdates];
+                           
                             
                             
                         }
@@ -272,6 +264,12 @@
                         
                         
                     }
+                    
+                    NSLog(@"refresh cells run");
+                    NSIndexPath* cellIndexPath1= [NSIndexPath indexPathForRow:count inSection:0];
+                    [self.jobTable beginUpdates];
+                    [self.jobTable reloadRowsAtIndexPaths:@[cellIndexPath1] withRowAnimation:UITableViewRowAnimationFade];
+                    [self.jobTable endUpdates];
                     
                 }];
 
@@ -453,7 +451,7 @@
     //cell.accessoryType = UITableViewCellAccessoryNone;
     PFObject *tempObject = [jobsArrayWithUsersVotes objectAtIndex:indexPath.row];
     cell.jobTitleLabel.text = [tempObject objectForKey:@"title"];
-    NSLog(@"%@",[tempObject objectForKey:@"currentUserVotedUpThisJob"]);
+   // NSLog(@"%@",[tempObject objectForKey:@"currentUserVotedUpThisJob"]);
 
     
     
