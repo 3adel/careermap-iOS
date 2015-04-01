@@ -10,4 +10,8 @@
 
 @implementation JobCustomTableViewCell
 
+
+
+
+
 @end

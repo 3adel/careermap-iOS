@@ -434,10 +434,20 @@
     static NSString *CellIdentifier = @"jobCell";
     
     
+
+    
+    
+    
+    
    // JobCustomTableViewCell *cell = [[JobCustomTableViewCell alloc] init];
     JobCustomTableViewCell *cell = [_jobTable dequeueReusableCellWithIdentifier:CellIdentifier];
     
    // NSLog(@"All objects: %@", jobsArrayWithUsersVotes);
+    
+    
+    //[testButton addTarget:<#(id)#> action:<#(SEL)#> forControlEvents:<#(UIControlEvents)#>]
+    
+    
     
     
     //cell.accessoryType = UITableViewCellAccessoryNone;
@@ -453,6 +463,35 @@
     [formatter setDateFormat:@"dd-MM-yyyy HH:mm"];
     
   //  NSLog(@"VotingUp= %@ %@", [tempObject objectForKey:@"currentUserVotedUpThisJob"],[tempObject objectForKey:@"title"]);
+    
+    
+    // programattic upvote button
+    UIButton *voteUpButtonTest = [[UIButton alloc] initWithFrame:
+                            CGRectMake(250, 10, 50, 50)];
+    [voteUpButtonTest setTitle:[tempObject objectForKey:@"currentUserVotedUpThisJob"] forState:UIControlStateNormal];
+    voteUpButtonTest.backgroundColor = [UIColor redColor ];
+    [voteUpButtonTest setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    //imageView.image = [UIImage imageNamed:@"Icon.png"];
+    [cell addSubview:voteUpButtonTest];
+    [voteUpButtonTest setTag:indexPath.row];
+    [voteUpButtonTest addTarget:self action:@selector(jobVoteUpPressedV2:) forControlEvents:UIControlEventTouchUpInside];
+
+    
+    
+    // programattic downvote button
+    UIButton *voteDownButtonTest = [[UIButton alloc] initWithFrame:
+                                  CGRectMake(250, 100, 50, 50)];
+    [voteDownButtonTest setTitle:[tempObject objectForKey:@"currentUserVotedDownThisJob"] forState:UIControlStateNormal];
+    voteDownButtonTest.backgroundColor = [UIColor redColor ];
+    [voteDownButtonTest setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    //imageView.image = [UIImage imageNamed:@"Icon.png"];
+    [cell addSubview:voteDownButtonTest];
+    [voteDownButtonTest setTag:indexPath.row];
+
+    [voteDownButtonTest addTarget:self action:@selector(jobVoteDownPressed:) forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    
     
     
     cell.jobVoteUpFlag.text =[tempObject objectForKey:@"currentUserVotedUpThisJob"];
@@ -1103,8 +1142,10 @@
     [self.jobTable reloadData];
 }
 
-
-
+- (IBAction)testButton:(UIButton *)sender {
+    
+    NSLog(@"test button clicked");
+}
 
 
 
