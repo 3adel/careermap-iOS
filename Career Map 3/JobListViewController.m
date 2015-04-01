@@ -76,7 +76,7 @@
         if (!error) {
             self.userLocation = geoPoint;
             [self performSelector:@selector(retrieveFromParse)];
-            [self.jobTable reloadData];
+           // [self.jobTable reloadData];
            // NSLog(@"jobs data reloaded");
         }
         else{
@@ -1139,7 +1139,7 @@
 - (void)refresh:(id)sender
 {
     // do your refresh here and reload the tablview
-    [self.jobTable reloadData];
+   // [self.jobTable reloadData];
 }
 
 - (IBAction)testButton:(UIButton *)sender {
