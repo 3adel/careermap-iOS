@@ -67,11 +67,11 @@
                                             <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                             <color key="backgroundColor" red="0.99104379220374095" green="1" blue="0.0058329476989320561" alpha="1" colorSpace="calibratedRGB"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="42"/>
-                                            <state key="normal" title="⬆">
+                                            <state key="normal" title="-">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                                <rect key="frame" x="258" y="8" width="50" height="50"/>
+                                                <rect key="frame" x="258" y="8" width="50" height="63"/>
                                             </variation>
                                             <connections>
                                                 <action selector="jobVoteUpPressedV2:" destination="iC0-Pg-6cA" eventType="touchUpInside" id="RAJ-x2-ZWL"/>
@@ -81,11 +81,11 @@
                                             <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                             <color key="backgroundColor" red="0.99104379220000005" green="1" blue="0.005832947699" alpha="1" colorSpace="calibratedRGB"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="42"/>
-                                            <state key="normal" title="⬇">
+                                            <state key="normal" title="-">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                                <rect key="frame" x="258" y="110" width="50" height="50"/>
+                                                <rect key="frame" x="258" y="110" width="50" height="63"/>
                                             </variation>
                                             <connections>
                                                 <action selector="jobVoteDownPressed:" destination="iC0-Pg-6cA" eventType="touchUpInside" id="6h6-Qv-Yyw"/>
@@ -100,13 +100,21 @@
                                                 <rect key="frame" x="254" y="68" width="59" height="33"/>
                                             </variation>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NCC-8D-xhG">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wdt-6P-ICt">
                                             <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                             <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                                <rect key="frame" x="316" y="22" width="42" height="21"/>
+                                                <rect key="frame" x="316" y="124" width="76" height="30"/>
+                                            </variation>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NCC-8D-xhG">
+                                            <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                            <nil key="highlightedColor"/>
+                                            <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                                <rect key="frame" x="316" y="8" width="70" height="59"/>
                                             </variation>
                                         </label>
                                     </subviews>
@@ -120,6 +128,7 @@
                                             <exclude reference="L0W-f3-b5s"/>
                                             <exclude reference="80R-rM-uDg"/>
                                             <exclude reference="oiv-2C-cYR"/>
+                                            <exclude reference="Wdt-6P-ICt"/>
                                             <exclude reference="NCC-8D-xhG"/>
                                         </mask>
                                     </variation>
@@ -133,6 +142,7 @@
                                             <include reference="L0W-f3-b5s"/>
                                             <include reference="80R-rM-uDg"/>
                                             <include reference="oiv-2C-cYR"/>
+                                            <include reference="Wdt-6P-ICt"/>
                                             <include reference="NCC-8D-xhG"/>
                                         </mask>
                                     </variation>
@@ -144,6 +154,7 @@
                                     <outlet property="jobStatus" destination="1Qa-a6-TFF" id="oCs-Bd-7FT"/>
                                     <outlet property="jobTitleLabel" destination="N0w-wi-4Fa" id="Waq-fs-b9q"/>
                                     <outlet property="jobVoteDownButton" destination="80R-rM-uDg" id="pFj-ei-b6t"/>
+                                    <outlet property="jobVoteDownFlag" destination="Wdt-6P-ICt" id="r7x-Ow-AKs"/>
                                     <outlet property="jobVoteLabel" destination="oiv-2C-cYR" id="JQR-jm-OtD"/>
                                     <outlet property="jobVoteUpButton" destination="L0W-f3-b5s" id="aGz-qH-ASQ"/>
                                     <outlet property="jobVoteUpFlag" destination="NCC-8D-xhG" id="9ft-RH-zbC"/>
