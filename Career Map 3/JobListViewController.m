@@ -459,7 +459,7 @@
     cell.jobVoteDownFlag.text =[tempObject objectForKey:@"currentUserVotedDownThisJob"];
     
     
-    //cell.jobVoteUpButton.titleLabel.text =[tempObject objectForKey:@"currentUserVotedUpThisJob"];
+    cell.jobVoteUpButton.titleLabel.text =[tempObject objectForKey:@"currentUserVotedUpThisJob"];
     cell.jobTitleLabel.text = [tempObject objectForKey:@"title"];
     cell.jobEmployer.text=[tempObject[@"employer"] objectForKey:@"employerName"];
     cell.jobStatus.text=[tempObject[@"status"] objectForKey:@"description"];
