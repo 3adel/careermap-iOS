@@ -102,7 +102,7 @@
     PFQuery *retrieveJobs = [PFQuery queryWithClassName:@"Job"];
     [retrieveJobs includeKey:@"employer"];
     [retrieveJobs includeKey:@"status"];
-    //[retrieveJobs whereKey:@"geolocation" nearGeoPoint:self.userLocation withinKilometers:100000000];
+    [retrieveJobs whereKey:@"geolocation" nearGeoPoint:self.userLocation withinKilometers:100000000];
     [retrieveJobs orderByDescending:@"createdAt"];
     
     
