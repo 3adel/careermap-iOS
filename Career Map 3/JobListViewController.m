@@ -465,7 +465,7 @@
     
     // programattic upvote button
     UIButton *voteUpButtonTest = [[UIButton alloc] initWithFrame:
-                            CGRectMake(250, 10, 50, 50)];
+                            CGRectMake(260, 0, 40, 40)];
     [voteUpButtonTest setTitle:[tempObject objectForKey:@"currentUserVotedUpThisJob"] forState:UIControlStateNormal];
     //voteUpButtonTest.backgroundColor = [UIColor redColor ];
     [voteUpButtonTest setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -492,7 +492,7 @@
     
     // programattic downvote button
     UIButton *voteDownButtonTest = [[UIButton alloc] initWithFrame:
-                                  CGRectMake(250, 100, 50, 50)];
+                                  CGRectMake(260, 50, 40, 40)];
     [voteDownButtonTest setTitle:[tempObject objectForKey:@"currentUserVotedDownThisJob"] forState:UIControlStateNormal];
     //voteDownButtonTest.backgroundColor = [UIColor redColor ];
     [voteDownButtonTest setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -522,6 +522,16 @@
     cell.jobVoteUpButton.titleLabel.text =[tempObject objectForKey:@"currentUserVotedUpThisJob"];
     cell.jobTitleLabel.text = [tempObject objectForKey:@"title"];
     cell.jobEmployer.text=[tempObject[@"employer"] objectForKey:@"employerName"];
+    
+    /*
+    //set job status color. Remember status is a pointer
+    if ([[tempObject objectForKey:@"status"] isEqualToString:@"1"]) {
+        [voteDownButtonTest setImage:[UIImage imageNamed:@"JobVoteDwn-selected"] forState:UIControlStateNormal];
+    } else{
+        
+        [voteDownButtonTest setImage:[UIImage imageNamed:@"JobVoteDwn-no-selected"] forState:UIControlStateNormal];
+    }*/
+    
     cell.jobStatus.text=[tempObject[@"status"] objectForKey:@"description"];
     cell.jobDateAdded.text=[formatter stringFromDate:[tempObject createdAt]];
     // NSNumber *jobDistanceNumber = [NSNumber numberWithDouble:[self.userLocation distanceInKilometersTo:[object objectForKey:@"geolocation"]]];
@@ -529,7 +539,7 @@
     
   //  NSString *k=
     
-    cell.jobDistanceFromUser.text = [NSString stringWithFormat:@"%@ km away",[NSString stringWithFormat:@"%.2f",[self.userLocation distanceInKilometersTo:[tempObject objectForKey:@"geolocation"]]] ];
+    cell.jobDistanceFromUser.text = [NSString stringWithFormat:@"%@ km",[NSString stringWithFormat:@"%.2f",[self.userLocation distanceInKilometersTo:[tempObject objectForKey:@"geolocation"]]] ];
     
     
     
