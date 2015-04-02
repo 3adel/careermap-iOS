@@ -217,7 +217,7 @@
                     
                     if (!error) {
                         
-                        if ([[object objectForKey:@"jobVotedUpDown"] containsObject:i.objectId]) {
+                        if ([[object objectForKey:@"jobVotedDown"] containsObject:i.objectId]) {
                             
                             
                             
