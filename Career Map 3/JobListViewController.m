@@ -197,7 +197,7 @@
                     
                     NSIndexPath* cellIndexPath1= [NSIndexPath indexPathForRow:count inSection:0];
                     [self.jobTable beginUpdates];
-                    [self.jobTable reloadRowsAtIndexPaths:@[cellIndexPath1] withRowAnimation:UITableViewRowAnimationFade];
+                    [self.jobTable reloadRowsAtIndexPaths:@[cellIndexPath1] withRowAnimation:UITableViewRowAnimationNone];
                     [self.jobTable endUpdates];
                     
                 }];
@@ -268,7 +268,7 @@
                     NSLog(@"refresh cells run");
                     NSIndexPath* cellIndexPath1= [NSIndexPath indexPathForRow:count inSection:0];
                     [self.jobTable beginUpdates];
-                    [self.jobTable reloadRowsAtIndexPaths:@[cellIndexPath1] withRowAnimation:UITableViewRowAnimationFade];
+                    [self.jobTable reloadRowsAtIndexPaths:@[cellIndexPath1] withRowAnimation:UITableViewRowAnimationNone];
                     [self.jobTable endUpdates];
                     
                 }];
@@ -473,6 +473,10 @@
     [cell addSubview:voteUpButtonTest];
     [voteUpButtonTest setTag:indexPath.row];
     [voteUpButtonTest addTarget:self action:@selector(jobVoteUpPressedV2:) forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    //set the image of the upvote button
+    //[voteUpButtonTest setImage:[UIImage imageNamed:@"navigate-yup-icon.png"] forState:UIControlStateNormal];
 
     
     
@@ -852,7 +856,7 @@
                                 // [self.jobTable reloadRowsAtIndexPaths:indexArray withRowAnimation:UITableViewRowAnimationNone];
                                 
                                 [self.jobTable beginUpdates];
-                                [self.jobTable reloadRowsAtIndexPaths:@[cellIndexPath1] withRowAnimation:UITableViewRowAnimationFade];
+                                [self.jobTable reloadRowsAtIndexPaths:@[cellIndexPath1] withRowAnimation:UITableViewRowAnimationNone];
                                 [self.jobTable endUpdates];
                             }
                         }];
@@ -909,7 +913,7 @@
                                 // [self.jobTable reloadRowsAtIndexPaths:indexArray withRowAnimation:UITableViewRowAnimationNone];
                                 
                                 [self.jobTable beginUpdates];
-                                [self.jobTable reloadRowsAtIndexPaths:@[cellIndexPath1] withRowAnimation:UITableViewRowAnimationFade];
+                                [self.jobTable reloadRowsAtIndexPaths:@[cellIndexPath1] withRowAnimation:UITableViewRowAnimationNone];
                                 [self.jobTable endUpdates];
                             }
                         }];
@@ -1026,7 +1030,7 @@
                                 // [self.jobTable reloadRowsAtIndexPaths:indexArray withRowAnimation:UITableViewRowAnimationNone];
                                 
                                 [self.jobTable beginUpdates];
-                                [self.jobTable reloadRowsAtIndexPaths:@[cellIndexPath1] withRowAnimation:UITableViewRowAnimationFade];
+                                [self.jobTable reloadRowsAtIndexPaths:@[cellIndexPath1] withRowAnimation:UITableViewRowAnimationNone];
                                 [self.jobTable endUpdates];
                             }
                         }];
@@ -1084,7 +1088,7 @@
                                 // [self.jobTable reloadRowsAtIndexPaths:indexArray withRowAnimation:UITableViewRowAnimationNone];
                                 
                                 [self.jobTable beginUpdates];
-                                [self.jobTable reloadRowsAtIndexPaths:@[cellIndexPath1] withRowAnimation:UITableViewRowAnimationFade];
+                                [self.jobTable reloadRowsAtIndexPaths:@[cellIndexPath1] withRowAnimation:UITableViewRowAnimationNone];
                                 [self.jobTable endUpdates];
                             }
                         }];
