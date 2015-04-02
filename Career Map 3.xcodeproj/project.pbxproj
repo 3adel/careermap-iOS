@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F50142D91ACD19CD000DDBE3 /* JobVoteDwn-no-selected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F50142D51ACD19CD000DDBE3 /* JobVoteDwn-no-selected@3x.png */; };
+		F50142DA1ACD19CD000DDBE3 /* JobVoteDwn-selected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F50142D61ACD19CD000DDBE3 /* JobVoteDwn-selected@3x.png */; };
+		F50142DB1ACD19CD000DDBE3 /* JobVoteUp-no-selected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F50142D71ACD19CD000DDBE3 /* JobVoteUp-no-selected@3x.png */; };
+		F50142DC1ACD19CD000DDBE3 /* JobVoteUp-selected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F50142D81ACD19CD000DDBE3 /* JobVoteUp-selected@3x.png */; };
 		F59758AF1AC159B40099A978 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F59758AE1AC159B40099A978 /* main.m */; };
 		F59758B21AC159B40099A978 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F59758B11AC159B40099A978 /* AppDelegate.m */; };
 		F59758BB1AC159B40099A978 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F59758B91AC159B40099A978 /* Main.storyboard */; };
@@ -27,7 +31,6 @@
 		F597592F1AC1D7F00099A978 /* JobListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F597592E1AC1D7F00099A978 /* JobListViewController.m */; };
 		F59759321AC1DBDF0099A978 /* Job.m in Sources */ = {isa = PBXBuildFile; fileRef = F59759311AC1DBDF0099A978 /* Job.m */; };
 		F59759351AC1DC7D0099A978 /* JobCustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F59759341AC1DC7D0099A978 /* JobCustomTableViewCell.m */; };
-		F597BBF81ACC775F00AC1968 /* navigate-yup-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F597BBF71ACC775F00AC1968 /* navigate-yup-icon.png */; };
 		F5BAC3C01AC7EDEF003E899C /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5BAC3BB1AC7EDEF003E899C /* Bolts.framework */; };
 		F5BAC3C11AC7EDEF003E899C /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5BAC3BC1AC7EDEF003E899C /* Parse.framework */; };
 		F5BAC3C21AC7EDEF003E899C /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5BAC3BD1AC7EDEF003E899C /* ParseCrashReporting.framework */; };
@@ -53,6 +56,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F50142D51ACD19CD000DDBE3 /* JobVoteDwn-no-selected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "JobVoteDwn-no-selected@3x.png"; sourceTree = "<group>"; };
+		F50142D61ACD19CD000DDBE3 /* JobVoteDwn-selected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "JobVoteDwn-selected@3x.png"; sourceTree = "<group>"; };
+		F50142D71ACD19CD000DDBE3 /* JobVoteUp-no-selected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "JobVoteUp-no-selected@3x.png"; sourceTree = "<group>"; };
+		F50142D81ACD19CD000DDBE3 /* JobVoteUp-selected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "JobVoteUp-selected@3x.png"; sourceTree = "<group>"; };
 		F59758A91AC159B40099A978 /* Career Map 3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Career Map 3.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F59758AD1AC159B40099A978 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F59758AE1AC159B40099A978 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -81,7 +88,6 @@
 		F59759311AC1DBDF0099A978 /* Job.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Job.m; sourceTree = "<group>"; };
 		F59759331AC1DC7D0099A978 /* JobCustomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobCustomTableViewCell.h; sourceTree = "<group>"; };
 		F59759341AC1DC7D0099A978 /* JobCustomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobCustomTableViewCell.m; sourceTree = "<group>"; };
-		F597BBF71ACC775F00AC1968 /* navigate-yup-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navigate-yup-icon.png"; sourceTree = "<group>"; };
 		F5BAC3BB1AC7EDEF003E899C /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "../../Libraries/iOS/parse-library-1.6.3/Bolts.framework"; sourceTree = "<group>"; };
 		F5BAC3BC1AC7EDEF003E899C /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = "../../Libraries/iOS/parse-library-1.6.3/Parse.framework"; sourceTree = "<group>"; };
 		F5BAC3BD1AC7EDEF003E899C /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseCrashReporting.framework; path = "../../Libraries/iOS/parse-library-1.6.3/ParseCrashReporting.framework"; sourceTree = "<group>"; };
@@ -137,6 +143,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F50142D01ACD1643000DDBE3 /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				F50142D51ACD19CD000DDBE3 /* JobVoteDwn-no-selected@3x.png */,
+				F50142D61ACD19CD000DDBE3 /* JobVoteDwn-selected@3x.png */,
+				F50142D71ACD19CD000DDBE3 /* JobVoteUp-no-selected@3x.png */,
+				F50142D81ACD19CD000DDBE3 /* JobVoteUp-selected@3x.png */,
+			);
+			name = Icons;
+			sourceTree = "<group>";
+		};
 		F59758A01AC159B40099A978 = {
 			isa = PBXGroup;
 			children = (
@@ -183,7 +200,7 @@
 		F59758AC1AC159B40099A978 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				F597BBF71ACC775F00AC1968 /* navigate-yup-icon.png */,
+				F50142D01ACD1643000DDBE3 /* Icons */,
 				F59759271AC1D4200099A978 /* Frameworks */,
 				F59758AD1AC159B40099A978 /* Info.plist */,
 				F59758AE1AC159B40099A978 /* main.m */,
@@ -314,9 +331,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F597BBF81ACC775F00AC1968 /* navigate-yup-icon.png in Resources */,
+				F50142DA1ACD19CD000DDBE3 /* JobVoteDwn-selected@3x.png in Resources */,
 				F59758BB1AC159B40099A978 /* Main.storyboard in Resources */,
+				F50142D91ACD19CD000DDBE3 /* JobVoteDwn-no-selected@3x.png in Resources */,
 				F59758C01AC159B40099A978 /* LaunchScreen.xib in Resources */,
+				F50142DB1ACD19CD000DDBE3 /* JobVoteUp-no-selected@3x.png in Resources */,
+				F50142DC1ACD19CD000DDBE3 /* JobVoteUp-selected@3x.png in Resources */,
 				F59758BD1AC159B40099A978 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

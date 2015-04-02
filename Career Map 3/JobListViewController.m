@@ -467,7 +467,7 @@
     UIButton *voteUpButtonTest = [[UIButton alloc] initWithFrame:
                             CGRectMake(250, 10, 50, 50)];
     [voteUpButtonTest setTitle:[tempObject objectForKey:@"currentUserVotedUpThisJob"] forState:UIControlStateNormal];
-    voteUpButtonTest.backgroundColor = [UIColor redColor ];
+    //voteUpButtonTest.backgroundColor = [UIColor redColor ];
     [voteUpButtonTest setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     //imageView.image = [UIImage imageNamed:@"Icon.png"];
     [cell addSubview:voteUpButtonTest];
@@ -478,19 +478,38 @@
     //set the image of the upvote button
     //[voteUpButtonTest setImage:[UIImage imageNamed:@"navigate-yup-icon.png"] forState:UIControlStateNormal];
 
+    //set downvoting button icons
+    if ([[tempObject objectForKey:@"currentUserVotedUpThisJob"] isEqualToString:@"1"]) {
+        [voteUpButtonTest setImage:[UIImage imageNamed:@"JobVoteUp-selected"] forState:UIControlStateNormal];
+    } else{
+        
+        [voteUpButtonTest setImage:[UIImage imageNamed:@"JobVoteUp-no-selected"] forState:UIControlStateNormal];
+    }
+    
+    
+    
     
     
     // programattic downvote button
     UIButton *voteDownButtonTest = [[UIButton alloc] initWithFrame:
                                   CGRectMake(250, 100, 50, 50)];
     [voteDownButtonTest setTitle:[tempObject objectForKey:@"currentUserVotedDownThisJob"] forState:UIControlStateNormal];
-    voteDownButtonTest.backgroundColor = [UIColor redColor ];
+    //voteDownButtonTest.backgroundColor = [UIColor redColor ];
     [voteDownButtonTest setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     //imageView.image = [UIImage imageNamed:@"Icon.png"];
     [cell addSubview:voteDownButtonTest];
     [voteDownButtonTest setTag:indexPath.row];
 
     [voteDownButtonTest addTarget:self action:@selector(jobVoteDownPressed:) forControlEvents:UIControlEventTouchUpInside];
+    
+   
+    //set downvoting button icons
+    if ([[tempObject objectForKey:@"currentUserVotedDownThisJob"] isEqualToString:@"1"]) {
+        [voteDownButtonTest setImage:[UIImage imageNamed:@"JobVoteDwn-selected"] forState:UIControlStateNormal];
+    } else{
+        
+        [voteDownButtonTest setImage:[UIImage imageNamed:@"JobVoteDwn-no-selected"] forState:UIControlStateNormal];
+    }
     
     
     
