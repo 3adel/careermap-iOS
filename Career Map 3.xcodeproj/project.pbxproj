@@ -11,6 +11,7 @@
 		F50142DA1ACD19CD000DDBE3 /* JobVoteDwn-selected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F50142D61ACD19CD000DDBE3 /* JobVoteDwn-selected@3x.png */; };
 		F50142DB1ACD19CD000DDBE3 /* JobVoteUp-no-selected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F50142D71ACD19CD000DDBE3 /* JobVoteUp-no-selected@3x.png */; };
 		F50142DC1ACD19CD000DDBE3 /* JobVoteUp-selected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F50142D81ACD19CD000DDBE3 /* JobVoteUp-selected@3x.png */; };
+		F535A9A71AD06E500091E70B /* ExistingUserLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F535A9A61AD06E500091E70B /* ExistingUserLoginViewController.m */; };
 		F59758AF1AC159B40099A978 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F59758AE1AC159B40099A978 /* main.m */; };
 		F59758B21AC159B40099A978 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F59758B11AC159B40099A978 /* AppDelegate.m */; };
 		F59758BB1AC159B40099A978 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F59758B91AC159B40099A978 /* Main.storyboard */; };
@@ -60,6 +61,8 @@
 		F50142D61ACD19CD000DDBE3 /* JobVoteDwn-selected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "JobVoteDwn-selected@3x.png"; sourceTree = "<group>"; };
 		F50142D71ACD19CD000DDBE3 /* JobVoteUp-no-selected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "JobVoteUp-no-selected@3x.png"; sourceTree = "<group>"; };
 		F50142D81ACD19CD000DDBE3 /* JobVoteUp-selected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "JobVoteUp-selected@3x.png"; sourceTree = "<group>"; };
+		F535A9A51AD06E500091E70B /* ExistingUserLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExistingUserLoginViewController.h; sourceTree = "<group>"; };
+		F535A9A61AD06E500091E70B /* ExistingUserLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExistingUserLoginViewController.m; sourceTree = "<group>"; };
 		F59758A91AC159B40099A978 /* Career Map 3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Career Map 3.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F59758AD1AC159B40099A978 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F59758AE1AC159B40099A978 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -186,10 +189,12 @@
 				F59758B01AC159B40099A978 /* AppDelegate.h */,
 				F59758B11AC159B40099A978 /* AppDelegate.m */,
 				F59758B91AC159B40099A978 /* Main.storyboard */,
-				F5BAC3D21AC875E5003E899C /* settingsViewController.h */,
-				F5BAC3D31AC875E5003E899C /* settingsViewController.m */,
 				F5BAC3CF1AC85BB7003E899C /* LoginViewController.h */,
 				F5BAC3D01AC85BB7003E899C /* LoginViewController.m */,
+				F535A9A51AD06E500091E70B /* ExistingUserLoginViewController.h */,
+				F535A9A61AD06E500091E70B /* ExistingUserLoginViewController.m */,
+				F5BAC3D21AC875E5003E899C /* settingsViewController.h */,
+				F5BAC3D31AC875E5003E899C /* settingsViewController.m */,
 				F59758BC1AC159B40099A978 /* Images.xcassets */,
 				F59758BE1AC159B40099A978 /* LaunchScreen.xib */,
 				F59758AC1AC159B40099A978 /* Supporting Files */,
@@ -357,6 +362,7 @@
 			files = (
 				F59759351AC1DC7D0099A978 /* JobCustomTableViewCell.m in Sources */,
 				F5BAC3D41AC875E5003E899C /* settingsViewController.m in Sources */,
+				F535A9A71AD06E500091E70B /* ExistingUserLoginViewController.m in Sources */,
 				F59758B21AC159B40099A978 /* AppDelegate.m in Sources */,
 				F5BAC3D11AC85BB7003E899C /* LoginViewController.m in Sources */,
 				F59758AF1AC159B40099A978 /* main.m in Sources */,

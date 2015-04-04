@@ -226,10 +226,13 @@
                         </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" image="first" id="cBR-XE-qPT"/>
+                    <connections>
+                        <segue destination="LvE-VE-i2d" kind="presentation" identifier="logout" modalTransitionStyle="flipHorizontal" id="UcH-bi-o6h"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h6b-8L-WNh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-7.5" y="738"/>
+            <point key="canvasLocation" x="0.0" y="685.5"/>
         </scene>
         <!--My Resume-->
         <scene sceneID="wg7-f3-ORb">
@@ -263,6 +266,88 @@
             </objects>
             <point key="canvasLocation" x="1221" y="477"/>
         </scene>
+        <!--Existing User Login View Controller-->
+        <scene sceneID="2Og-dQ-mZO">
+            <objects>
+                <viewController id="1Ke-aG-mbt" customClass="ExistingUserLoginViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="FzW-jc-jFO"/>
+                        <viewControllerLayoutGuide type="bottom" id="02Q-oT-dbl"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="b7n-E0-6Aj">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7a2-AK-jrw">
+                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="16" y="48" width="290" height="30"/>
+                                </variation>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bb8-zb-0bC">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.50196081399917603" blue="0.25098040699958801" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Login">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="16" y="145" width="290" height="44"/>
+                                </variation>
+                                <connections>
+                                    <action selector="loginButton:" destination="1Ke-aG-mbt" eventType="touchUpInside" id="0BS-aX-XcS"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SCF-AU-oKX">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="New user?">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="138" y="218" width="74" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="dismissLoginScreen:" destination="1Ke-aG-mbt" eventType="touchUpInside" id="R81-Ef-m8d"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1bh-Bv-W3e">
+                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="16" y="98" width="290" height="30"/>
+                                </variation>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="7a2-AK-jrw"/>
+                                <exclude reference="bb8-zb-0bC"/>
+                                <exclude reference="SCF-AU-oKX"/>
+                                <exclude reference="1bh-Bv-W3e"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="7a2-AK-jrw"/>
+                                <include reference="bb8-zb-0bC"/>
+                                <include reference="SCF-AU-oKX"/>
+                                <include reference="1bh-Bv-W3e"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="loginPasswordField" destination="1bh-Bv-W3e" id="B4C-Uc-3YW"/>
+                        <outlet property="loginUsernameField" destination="7a2-AK-jrw" id="nUV-gz-rKP"/>
+                        <segue destination="49e-Tb-3d3" kind="presentation" identifier="loginSuccess" modalTransitionStyle="flipHorizontal" id="UCD-x7-uVZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BH4-N5-tKz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-805.5" y="753"/>
+        </scene>
         <!--Login View Controller-->
         <scene sceneID="Csg-S3-ojD">
             <objects>
@@ -288,22 +373,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="16" y="151" width="290" height="30"/>
+                                    <rect key="frame" x="16" y="144" width="290" height="30"/>
                                 </variation>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cJD-m2-mOJ">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <color key="backgroundColor" red="1" green="0.87195579700606485" blue="0.16118920118873692" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="I am a New User">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="16" y="209" width="290" height="44"/>
-                                </variation>
-                                <connections>
-                                    <action selector="registerUser:" destination="LvE-VE-i2d" eventType="touchUpInside" id="9A9-aI-tPf"/>
-                                </connections>
-                            </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TdS-gP-fkv">
                                 <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -314,113 +386,64 @@
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IpW-mT-Hpt">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <color key="backgroundColor" red="0.28411431970000001" green="1" blue="0.7644479488" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="I Have an Account">
+                                <color key="backgroundColor" red="0.25098040699958801" green="0.50196081399917603" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="I have an account">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="16" y="282" width="290" height="44"/>
+                                    <rect key="frame" x="16" y="275" width="290" height="44"/>
                                 </variation>
                                 <connections>
                                     <action selector="registeredButton:" destination="LvE-VE-i2d" eventType="touchUpInside" id="c4k-ao-bxy"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cS9-fn-zxL">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EMT-rR-gYl">
-                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                        <state key="normal" title="Login">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="137" y="237" width="38" height="30"/>
-                                        </variation>
-                                        <connections>
-                                            <action selector="loginButton:" destination="LvE-VE-i2d" eventType="touchUpInside" id="hAa-Ak-SFD"/>
-                                        </connections>
-                                    </button>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0qW-nM-w7V">
-                                        <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                        <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="8" y="45" width="290" height="30"/>
-                                        </variation>
-                                    </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zKH-wb-54a">
-                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                        <state key="normal" title="show">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="253" y="137" width="37" height="30"/>
-                                        </variation>
-                                    </button>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rvQ-e9-UC2">
-                                        <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                                        <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="8" y="89" width="290" height="30"/>
-                                        </variation>
-                                    </textField>
-                                </subviews>
-                                <color key="backgroundColor" name="controlHighlightColor" catalog="System" colorSpace="catalog"/>
-                                <variation key="default">
-                                    <mask key="subviews">
-                                        <exclude reference="EMT-rR-gYl"/>
-                                        <exclude reference="0qW-nM-w7V"/>
-                                        <exclude reference="zKH-wb-54a"/>
-                                        <exclude reference="rvQ-e9-UC2"/>
-                                    </mask>
-                                </variation>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cJD-m2-mOJ">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.50196081399917603" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="I am a new user">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="320" y="0.0" width="313" height="428"/>
-                                    <mask key="subviews">
-                                        <include reference="EMT-rR-gYl"/>
-                                        <include reference="0qW-nM-w7V"/>
-                                        <include reference="zKH-wb-54a"/>
-                                        <include reference="rvQ-e9-UC2"/>
-                                    </mask>
+                                    <rect key="frame" x="16" y="209" width="290" height="44"/>
                                 </variation>
-                            </view>
+                                <connections>
+                                    <action selector="registerUser:" destination="LvE-VE-i2d" eventType="touchUpInside" id="9A9-aI-tPf"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="UnN-V3-6sf"/>
                                 <exclude reference="DVh-jk-MEt"/>
-                                <exclude reference="cJD-m2-mOJ"/>
                                 <exclude reference="TdS-gP-fkv"/>
                                 <exclude reference="IpW-mT-Hpt"/>
-                                <exclude reference="cS9-fn-zxL"/>
+                                <exclude reference="cJD-m2-mOJ"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
                                 <include reference="UnN-V3-6sf"/>
                                 <include reference="DVh-jk-MEt"/>
-                                <include reference="cJD-m2-mOJ"/>
                                 <include reference="TdS-gP-fkv"/>
                                 <include reference="IpW-mT-Hpt"/>
-                                <include reference="cS9-fn-zxL"/>
+                                <include reference="cJD-m2-mOJ"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
                         <outlet property="emailField" destination="UnN-V3-6sf" id="JyR-rt-u4n"/>
-                        <outlet property="loginOverlayView" destination="cS9-fn-zxL" id="T02-ai-rwu"/>
-                        <outlet property="loginPasswordField" destination="rvQ-e9-UC2" id="N3D-zC-2b2"/>
-                        <outlet property="loginUsernameField" destination="0qW-nM-w7V" id="TzV-Kx-1Ra"/>
                         <outlet property="passwordField" destination="DVh-jk-MEt" id="bIr-q2-2YC"/>
                         <outlet property="usernameField" destination="TdS-gP-fkv" id="zZJ-de-enS"/>
                         <segue destination="49e-Tb-3d3" kind="presentation" identifier="login" modalTransitionStyle="flipHorizontal" id="0do-qJ-Jzh"/>
+                        <segue destination="1Ke-aG-mbt" kind="presentation" identifier="iHaveAnAccountAlready" modalTransitionStyle="flipHorizontal" id="Mug-Hz-kgD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KQK-8D-Y99" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-805.5" y="0.0"/>
+            <point key="canvasLocation" x="-805.5" y="-33"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -466,4 +489,7 @@
         <image name="first" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="UCD-x7-uVZ"/>
+    </inferredMetricsTieBreakers>
 </document>

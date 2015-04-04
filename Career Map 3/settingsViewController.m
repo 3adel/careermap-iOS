@@ -14,7 +14,8 @@
     
     
     [PFUser logOut];
-    [self dismissViewControllerAnimated:YES completion:nil];
+    //[self dismissViewControllerAnimated:YES completion:nil];
+    [self performSegueWithIdentifier:@"logout" sender:self];
     
     
 }
