@@ -9,6 +9,7 @@
 #import "JobListViewController.h"
 #import "JobCustomTableViewCell.h"
 #import "Job.h"
+#import "settingsViewController.h"
 
 @implementation JobListViewController{
     
@@ -27,70 +28,101 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    /*
-    PFUser *user = [PFUser user];
-    user.username = @"adelshehadehjj";
-    user.password = @"passwordjkljjjjk342";
-    user.email = @"email@examplfffeu.com";*/
-    
-    // other fields can be set just like with PFObject
-    //user[@"phone"] = @"415-392-0202";
-    
-    /*
-    [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        if (!error) {
-            NSLog(@"User logged");
-        } else {
-           
-            
-            NSLog(@"error with login");
-        }
-    }];*/
-    
-    //login
-  /*  [PFUser logInWithUsernameInBackground:user.username password:user.password
-                                    block:^(PFUser *user, NSError *error) {
-                                        if (user) {
-                                            NSLog(@"User logged");
-                                        } else {
-                                            NSLog(@"error with login");
-                                        }
-                                    }];*/
+    //if the user is already logged in
+                //do nothing and just view the list.
+    //if the user is not logged in, create an anynymous user and hide the logout button
     
     
     
+    //if the user is already logged in with an anynymous user, don't create an anoymous user and just disable the logout button instead
     
     
-    self.locationManager = [[CLLocationManager alloc] init];
-    // [self.locationManager requestAlwaysAuthorization];
-    [self.locationManager requestWhenInUseAuthorization];
-    
-    // [self.locationManager startUpdatingLocation];
-    
-    //  self.locationManager.delegate =self;
-    self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
-    
-    
-  //  NSLog(@"User is here: %@", [self getUserLocation]);
-    [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *geoPoint, NSError *error) {
-        if (!error) {
-            self.userLocation = geoPoint;
-            [self performSelector:@selector(retrieveFromParse)];
-           // [self.jobTable reloadData];
-           // NSLog(@"jobs data reloaded");
-        }
-        else{
-            UIAlertView *needUserLocationAlert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"You need to enable user location for this app to function properly" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-            
-            [needUserLocationAlert show];
-            
-            NSLog(@"Can't get user location");
-        }
-    }];
-    
-    
-    
+   // settingsViewController *i = [[settingsViewController alloc] init];
+   // settingsViewController *i = [[settingsViewController alloc] initWithNibName:@"settingsViewController" bundle:nil];
+ //   settingsViewController *i = [self.storyboard instantiateViewControllerWithIdentifier:@"settingsViewController"];
 
+   // i.checkIfUserIsAnonymous = NO;
+    
+    
+    if ([PFAnonymousUtils isLinkedWithUser:[PFUser currentUser]]) {
+       // i.checkIfUserIsAnonymous =YES;
+        
+         //[i disableLogoutButton];
+        
+        
+    } else {
+        //No anonymous users are already created, create one please
+       // [i enableLogoutButton];
+        NSLog(@"user is NOT anonymous detected");
+        
+     
+    }
+    
+        
+        /*
+         PFUser *user = [PFUser user];
+         user.username = @"adelshehadehjj";
+         user.password = @"passwordjkljjjjk342";
+         user.email = @"email@examplfffeu.com";*/
+        
+        // other fields can be set just like with PFObject
+        //user[@"phone"] = @"415-392-0202";
+        
+        /*
+         [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+         if (!error) {
+         NSLog(@"User logged");
+         } else {
+         
+         
+         NSLog(@"error with login");
+         }
+         }];*/
+        
+        //login
+        /*  [PFUser logInWithUsernameInBackground:user.username password:user.password
+         block:^(PFUser *user, NSError *error) {
+         if (user) {
+         NSLog(@"User logged");
+         } else {
+         NSLog(@"error with login");
+         }
+         }];*/
+        
+        
+        
+        
+        
+        self.locationManager = [[CLLocationManager alloc] init];
+        // [self.locationManager requestAlwaysAuthorization];
+        [self.locationManager requestWhenInUseAuthorization];
+        
+        // [self.locationManager startUpdatingLocation];
+        
+        //  self.locationManager.delegate =self;
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
+        
+        
+        //  NSLog(@"User is here: %@", [self getUserLocation]);
+        [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *geoPoint, NSError *error) {
+            if (!error) {
+                self.userLocation = geoPoint;
+                [self performSelector:@selector(retrieveFromParse)];
+                // [self.jobTable reloadData];
+                // NSLog(@"jobs data reloaded");
+            }
+            else{
+                UIAlertView *needUserLocationAlert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"You need to enable user location for this app to function properly" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                
+                [needUserLocationAlert show];
+                
+                NSLog(@"Can't get user location");
+            }
+        }];
+        
+        
+        
+        
     
     
     
@@ -265,7 +297,7 @@
                         
                     }
                     
-                    NSLog(@"refresh cells run");
+                   // NSLog(@"refresh cells run");
                     NSIndexPath* cellIndexPath1= [NSIndexPath indexPathForRow:count inSection:0];
                     [self.jobTable beginUpdates];
                     [self.jobTable reloadRowsAtIndexPaths:@[cellIndexPath1] withRowAnimation:UITableViewRowAnimationNone];

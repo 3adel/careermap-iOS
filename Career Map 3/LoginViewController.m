@@ -16,17 +16,33 @@
 - (void)viewDidAppear:(BOOL)animated{
     
     
-    //Check if the user is already logged in and transfer to app accordingly
-    PFUser *user = [PFUser currentUser];
-    
-    if (user.username !=nil) {
-        NSLog(@"User is already logged");
+    //check if the user is loggedin with an anoymous user, if so, show the login/registration screen
+    if (![PFAnonymousUtils isLinkedWithUser:[PFUser currentUser]]) {
         
-        //take me to app
-        [self performSegueWithIdentifier:@"login" sender:self];
         
-       // [self performSegueWithIdentifier:<#(NSString *)#> sender:<#(id)#>]
+        
+        //Check if the user is already logged in and transfer to app accordingly
+        PFUser *user = [PFUser currentUser];
+        
+        if (user.username !=nil) {
+            NSLog(@"User is already logged");
+            
+            //take me to app
+            [self performSegueWithIdentifier:@"login" sender:self];
+            
+            // [self performSegueWithIdentifier:<#(NSString *)#> sender:<#(id)#>]
+        }
+        
+        
+        
+        
     }
+
+    
+    
+    
+    
+    
 }
 
 

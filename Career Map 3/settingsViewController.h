@@ -11,5 +11,11 @@
 
 @interface settingsViewController : UIViewController
 - (IBAction)logoutButtonPressed:(UIButton *)sender;
+@property (weak, nonatomic) IBOutlet UIButton *logoutButton;
+@property BOOL checkIfUserIsAnonymous;
+
+- (void) disableLogoutButton;
+- (void) enableLogoutButton;
+- (IBAction)loginButtonPressed:(UIButton *)sender;
 
 @end

@@ -29,6 +29,10 @@
 @property (nonatomic, strong) PFGeoPoint *userLocation;
 @property (nonatomic, strong) NSMutableArray *jobsArray;
 @property (nonatomic, strong) NSMutableArray *jobsArrayWithUsersVotes;
+
+
+
+
 - (IBAction)jobVoteUpPressed:(UIButton *)sender;
 - (IBAction)jobVoteUpPressedV2:(UIButton *)sender;
 

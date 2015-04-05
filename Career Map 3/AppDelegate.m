@@ -21,7 +21,10 @@
     //configure parse project
     [Parse setApplicationId:@"tlHTprDlMSewDUTLFD0IiXchTlAmG43nHKbPiOxD" clientKey:@"pEFQ3jdtGu7L9q3P13kfdX6pwZMp2i3e3M0bH9OV"];
     
-    
+    //creae an automatic user all the time
+    [PFUser enableAutomaticUser];
+    //[[PFUser currentUser] incrementKey:@"RunCount"];
+    [[PFUser currentUser] saveInBackground];
     
     
     return YES;
