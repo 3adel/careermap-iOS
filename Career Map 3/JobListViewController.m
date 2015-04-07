@@ -1283,11 +1283,11 @@
         JobDetailsViewController *destViewController = segue.destinationViewController;
        // Recipe *recipe = [recipes objectAtIndex:indexPath.row];
         destViewController.jobTitle = [tempObject objectForKey:@"title"];
+        destViewController.jobDescription = [tempObject objectForKey:@"description"];
+
         
         
-      //  NSLog(@"row tapped");
-       // NSLog(@"Index: %d", indexPath.row);
-        NSLog(@"%@", [tempObject objectForKey:@"title"]);
+        NSLog(@"%@", tempObject);
     }
 }
 

@@ -16,7 +16,8 @@
 
 @synthesize jobTitle;
 @synthesize jobTitleLabel;
-
+@synthesize jobDescription;
+@synthesize jobDescriptionLabel;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -25,6 +26,7 @@
     
     //set the values of view controller
     self.jobTitleLabel.text = self.jobTitle;
+    self.jobDescriptionLabel.text=self.jobDescription;
 }
 
 - (void)didReceiveMemoryWarning {
