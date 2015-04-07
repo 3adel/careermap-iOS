@@ -63,7 +63,7 @@
                                     <outlet property="jobStatus" destination="1Qa-a6-TFF" id="oCs-Bd-7FT"/>
                                     <outlet property="jobTitleLabel" destination="N0w-wi-4Fa" id="Waq-fs-b9q"/>
                                     <outlet property="jobVoteLabel" destination="oiv-2C-cYR" id="JQR-jm-OtD"/>
-                                    <segue destination="oBD-2n-Moc" kind="push" id="LBn-AI-AAP"/>
+                                    <segue destination="oBD-2n-Moc" kind="push" identifier="showJob" id="LBn-AI-AAP"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -81,10 +81,10 @@
             </objects>
             <point key="canvasLocation" x="1119.2" y="-222.94"/>
         </scene>
-        <!--View Controller-->
+        <!--Job Details View Controller-->
         <scene sceneID="04e-1I-DIt">
             <objects>
-                <viewController id="oBD-2n-Moc" sceneMemberID="viewController">
+                <viewController id="oBD-2n-Moc" customClass="JobDetailsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="b7N-fe-EAJ"/>
                         <viewControllerLayoutGuide type="bottom" id="zZB-0S-X7L"/>
@@ -93,30 +93,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yGu-uv-pI5">
-                                <rect key="frame" x="16" y="145" width="146" height="48"/>
-                                <color key="backgroundColor" red="0.0" green="0.50196081399917603" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Apply with CV">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jwe-dU-Np8">
-                                <rect key="frame" x="170" y="144" width="146" height="47.5"/>
-                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Apply without CV">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8EM-iS-J0g">
+                                <rect key="frame" x="16" y="82" width="264" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="Vjd-w7-ijy"/>
+                    <connections>
+                        <outlet property="jobTitleLabel" destination="8EM-iS-J0g" id="Ldn-62-mQ8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mba-f7-lR5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1622.4000000000001" y="-222.94"/>
+            <point key="canvasLocation" x="1586" y="-223"/>
         </scene>
         <!--Settings-->
         <scene sceneID="kcf-7j-AcG">

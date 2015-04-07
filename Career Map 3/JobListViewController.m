@@ -388,7 +388,7 @@
                 count++;
                 
                 if (count == jobsArray.count) {
-                    NSLog(@"LAST ITEM REACHED=%ld",count);
+                    NSLog(@"LAST ITEM REACHED=%ld",(unsigned long)count);
                 }
                 
             }
@@ -1272,6 +1272,27 @@
     
     NSLog(@"test button clicked");
 }
+
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"showJob"]) {
+        
+        NSIndexPath *indexPath = [self.jobTable indexPathForSelectedRow];
+        PFObject *tempObject = [jobsArrayWithUsersVotes objectAtIndex:indexPath.row];
+        
+        JobDetailsViewController *destViewController = segue.destinationViewController;
+       // Recipe *recipe = [recipes objectAtIndex:indexPath.row];
+        destViewController.jobTitle = [tempObject objectForKey:@"title"];
+        
+        
+      //  NSLog(@"row tapped");
+       // NSLog(@"Index: %d", indexPath.row);
+        NSLog(@"%@", [tempObject objectForKey:@"title"]);
+    }
+}
+
+
+
 
 
 

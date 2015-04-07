@@ -12,6 +12,7 @@
 #import "Job.h"
 //#import "WelcomeAppChoiceViewController.h"
 #import "WelcomeAppChoiceViewController.h"
+#import "JobDetailsViewController.h"
 @interface JobListViewController : UITableViewController <CLLocationManagerDelegate>{
     
   //  dispatch_queue_t myQueue;

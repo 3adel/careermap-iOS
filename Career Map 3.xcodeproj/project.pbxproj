@@ -15,6 +15,7 @@
 		F535AA641AD3CE270091E70B /* WelcomeAppChoiceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F535AA631AD3CE270091E70B /* WelcomeAppChoiceView.xib */; };
 		F535AA671AD3CE7E0091E70B /* WelcomeAppChoiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F535AA661AD3CE7E0091E70B /* WelcomeAppChoiceViewController.m */; };
 		F535AA691AD401BA0091E70B /* myLocation.gpx in Resources */ = {isa = PBXBuildFile; fileRef = F535AA681AD401BA0091E70B /* myLocation.gpx */; };
+		F535AA721AD449BA0091E70B /* JobDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F535AA711AD449BA0091E70B /* JobDetailsViewController.m */; };
 		F59758AF1AC159B40099A978 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F59758AE1AC159B40099A978 /* main.m */; };
 		F59758B21AC159B40099A978 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F59758B11AC159B40099A978 /* AppDelegate.m */; };
 		F59758BB1AC159B40099A978 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F59758B91AC159B40099A978 /* Main.storyboard */; };
@@ -70,6 +71,8 @@
 		F535AA651AD3CE7E0091E70B /* WelcomeAppChoiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeAppChoiceViewController.h; sourceTree = "<group>"; };
 		F535AA661AD3CE7E0091E70B /* WelcomeAppChoiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeAppChoiceViewController.m; sourceTree = "<group>"; };
 		F535AA681AD401BA0091E70B /* myLocation.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = myLocation.gpx; path = ../myLocation.gpx; sourceTree = "<group>"; };
+		F535AA701AD449BA0091E70B /* JobDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobDetailsViewController.h; sourceTree = "<group>"; };
+		F535AA711AD449BA0091E70B /* JobDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobDetailsViewController.m; sourceTree = "<group>"; };
 		F59758A91AC159B40099A978 /* Career Map 3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Career Map 3.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F59758AD1AC159B40099A978 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F59758AE1AC159B40099A978 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -201,6 +204,8 @@
 				F597592E1AC1D7F00099A978 /* JobListViewController.m */,
 				F59759331AC1DC7D0099A978 /* JobCustomTableViewCell.h */,
 				F59759341AC1DC7D0099A978 /* JobCustomTableViewCell.m */,
+				F535AA701AD449BA0091E70B /* JobDetailsViewController.h */,
+				F535AA711AD449BA0091E70B /* JobDetailsViewController.m */,
 			);
 			name = "Job List";
 			sourceTree = "<group>";
@@ -246,8 +251,8 @@
 				F59758B11AC159B40099A978 /* AppDelegate.m */,
 				F59758B01AC159B40099A978 /* AppDelegate.h */,
 				F59758B91AC159B40099A978 /* Main.storyboard */,
-				F535AA6C1AD438710091E70B /* Login-Registration */,
 				F535AA6D1AD438C80091E70B /* Job List */,
+				F535AA6C1AD438710091E70B /* Login-Registration */,
 				F535AA6B1AD438440091E70B /* Welcome Section */,
 				F535AA6A1AD4380A0091E70B /* Settings */,
 				F535AA6F1AD439600091E70B /* Model */,
@@ -426,6 +431,7 @@
 				F535A9A71AD06E500091E70B /* ExistingUserLoginViewController.m in Sources */,
 				F59758B21AC159B40099A978 /* AppDelegate.m in Sources */,
 				F5BAC3D11AC85BB7003E899C /* LoginViewController.m in Sources */,
+				F535AA721AD449BA0091E70B /* JobDetailsViewController.m in Sources */,
 				F59758AF1AC159B40099A978 /* main.m in Sources */,
 				F535AA671AD3CE7E0091E70B /* WelcomeAppChoiceViewController.m in Sources */,
 				F597592F1AC1D7F00099A978 /* JobListViewController.m in Sources */,
