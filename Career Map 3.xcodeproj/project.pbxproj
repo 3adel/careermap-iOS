@@ -14,6 +14,7 @@
 		F535A9A71AD06E500091E70B /* ExistingUserLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F535A9A61AD06E500091E70B /* ExistingUserLoginViewController.m */; };
 		F535AA641AD3CE270091E70B /* WelcomeAppChoiceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F535AA631AD3CE270091E70B /* WelcomeAppChoiceView.xib */; };
 		F535AA671AD3CE7E0091E70B /* WelcomeAppChoiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F535AA661AD3CE7E0091E70B /* WelcomeAppChoiceViewController.m */; };
+		F535AA691AD401BA0091E70B /* myLocation.gpx in Resources */ = {isa = PBXBuildFile; fileRef = F535AA681AD401BA0091E70B /* myLocation.gpx */; };
 		F59758AF1AC159B40099A978 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F59758AE1AC159B40099A978 /* main.m */; };
 		F59758B21AC159B40099A978 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F59758B11AC159B40099A978 /* AppDelegate.m */; };
 		F59758BB1AC159B40099A978 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F59758B91AC159B40099A978 /* Main.storyboard */; };
@@ -68,6 +69,7 @@
 		F535AA631AD3CE270091E70B /* WelcomeAppChoiceView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WelcomeAppChoiceView.xib; sourceTree = "<group>"; };
 		F535AA651AD3CE7E0091E70B /* WelcomeAppChoiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeAppChoiceViewController.h; sourceTree = "<group>"; };
 		F535AA661AD3CE7E0091E70B /* WelcomeAppChoiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeAppChoiceViewController.m; sourceTree = "<group>"; };
+		F535AA681AD401BA0091E70B /* myLocation.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = myLocation.gpx; path = ../myLocation.gpx; sourceTree = "<group>"; };
 		F59758A91AC159B40099A978 /* Career Map 3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Career Map 3.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F59758AD1AC159B40099A978 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F59758AE1AC159B40099A978 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 		F59758AC1AC159B40099A978 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F535AA681AD401BA0091E70B /* myLocation.gpx */,
 				F50142D01ACD1643000DDBE3 /* Icons */,
 				F59759271AC1D4200099A978 /* Frameworks */,
 				F59758AD1AC159B40099A978 /* Info.plist */,
@@ -349,6 +352,7 @@
 				F50142D91ACD19CD000DDBE3 /* JobVoteDwn-no-selected@3x.png in Resources */,
 				F535AA641AD3CE270091E70B /* WelcomeAppChoiceView.xib in Resources */,
 				F59758C01AC159B40099A978 /* LaunchScreen.xib in Resources */,
+				F535AA691AD401BA0091E70B /* myLocation.gpx in Resources */,
 				F50142DB1ACD19CD000DDBE3 /* JobVoteUp-no-selected@3x.png in Resources */,
 				F50142DC1ACD19CD000DDBE3 /* JobVoteUp-selected@3x.png in Resources */,
 				F59758BD1AC159B40099A978 /* Images.xcassets in Resources */,
