@@ -25,6 +25,7 @@
     } else {
         //No anonymous users are already created, create one please
          [self enableLogoutButton];
+        [_loginButton setHidden:YES];
         NSLog(@"user is NOT anonymous detected");
         
         
