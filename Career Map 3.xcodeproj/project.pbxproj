@@ -250,8 +250,8 @@
 				F535AA6D1AD438C80091E70B /* Job List */,
 				F535AA6B1AD438440091E70B /* Welcome Section */,
 				F535AA6A1AD4380A0091E70B /* Settings */,
-				F59758AC1AC159B40099A978 /* Supporting Files */,
 				F535AA6F1AD439600091E70B /* Model */,
+				F59758AC1AC159B40099A978 /* Supporting Files */,
 			);
 			path = "Career Map 3";
 			sourceTree = "<group>";
