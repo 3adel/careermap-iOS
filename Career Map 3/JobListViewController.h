@@ -10,7 +10,8 @@
 #import <Parse/Parse.h>
 #import <ParseUI/ParseUI.h>
 #import "Job.h"
-
+//#import "WelcomeAppChoiceViewController.h"
+#import "WelcomeAppChoiceViewController.h"
 @interface JobListViewController : UITableViewController <CLLocationManagerDelegate>{
     
   //  dispatch_queue_t myQueue;

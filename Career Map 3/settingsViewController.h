@@ -17,5 +17,6 @@
 - (void) disableLogoutButton;
 - (void) enableLogoutButton;
 - (IBAction)loginButtonPressed:(UIButton *)sender;
+@property (weak, nonatomic) IBOutlet UIButton *loginButton;
 
 @end

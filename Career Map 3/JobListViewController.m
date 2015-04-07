@@ -11,6 +11,7 @@
 #import "Job.h"
 #import "settingsViewController.h"
 
+
 @implementation JobListViewController{
     
    // NSArray *jobs;
@@ -25,8 +26,68 @@
 //@synthesize locationManager;
 
 
+- (void) viewDidAppear:(BOOL)animated{
+    
+    //make sure the app choice screen shows one time only
+    
+    if (![@"1" isEqualToString:[[NSUserDefaults standardUserDefaults]
+                                objectForKey:@"screenShown"]]) {
+        [[NSUserDefaults standardUserDefaults] setValue:@"1" forKey:@"screenShown"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        
+        NSLog(@"Screen showedddddddddd");
+        
+        WelcomeAppChoiceViewController  *appChoice = [[WelcomeAppChoiceViewController alloc] initWithNibName:@"WelcomeAppChoiceView" bundle:nil];
+        [self.tabBarController presentViewController:appChoice
+                                            animated:YES
+                                          completion:nil];
+        
+    }
+    
+    else{
+        
+        //   [self performSegueWithIdentifier:@"jobSeeker" sender:self];
+        
+        
+    }
+    // TestWelcomeView
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    /*
+    //make sure the app choice screen shows one time only
+    
+    if (![@"1" isEqualToString:[[NSUserDefaults standardUserDefaults]
+                                objectForKey:@"screenShown"]]) {
+        [[NSUserDefaults standardUserDefaults] setValue:@"1" forKey:@"screenShown"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        
+        NSLog(@"Screen showed");
+        
+        UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Main"
+                                                             bundle:nil];
+        WelcomeAppChoiceViewController *appChoice =
+        [storyboard instantiateViewControllerWithIdentifier:@"WelcomeAppChoiceViewController"];
+        
+        [self presentViewController:appChoice
+                           animated:YES
+                         completion:nil];
+        
+    }
+    
+    else{
+        
+     //   [self performSegueWithIdentifier:@"jobSeeker" sender:self];
+        
+        
+    }
+    
+    */
+    
+    
+    
     
     //if the user is already logged in
                 //do nothing and just view the list.
