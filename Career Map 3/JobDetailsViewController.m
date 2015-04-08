@@ -27,6 +27,11 @@
     //set the values of view controller
     self.jobTitleLabel.text = self.jobTitle;
     self.jobDescriptionLabel.text=self.jobDescription;
+    self.jobTitleTextView.text= self.jobTitle;
+    
+    
+  //  jobTitleLabel.lineBreakMode= NSLineBreakByWordWrapping;
+   // jobTitleLabel.numberOfLines = 0;
 }
 
 - (void)didReceiveMemoryWarning {

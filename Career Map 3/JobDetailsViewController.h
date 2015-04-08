@@ -13,6 +13,7 @@
 //outlets
 @property (weak, nonatomic) IBOutlet UILabel *jobTitleLabel;
 @property (weak, nonatomic) IBOutlet UITextView *jobDescriptionLabel;
+@property (weak, nonatomic) IBOutlet UITextView *jobTitleTextView;
 
 //data
 @property (nonatomic, strong) NSString *jobTitle;
