@@ -15,7 +15,7 @@
 @implementation JobDetailsViewController
 
 @synthesize jobTitle;
-@synthesize jobTitleLabel;
+//@synthesize jobTitleLabel;
 @synthesize jobDescription;
 @synthesize jobDescriptionLabel;
 - (void)viewDidLoad {
@@ -25,10 +25,14 @@
     
     
     //set the values of view controller
-    self.jobTitleLabel.text = self.jobTitle;
+   // self.jobTitleLabel.text = self.jobTitle;
     self.jobDescriptionLabel.text=self.jobDescription;
     self.jobTitleTextView.text= self.jobTitle;
-    
+    self.jobAreaLabel.text = self.jobArea;
+    self.jobDateAddedLabel.text = self.jobDateAdded;
+    self.jobEmployerLabel.text = self.jobEmployer;
+    self.jobVoteLabel.text =self.jobVote;
+    self.jobDistanceFromUserLabel.text = self.jobDistanceFromUser;
     
   //  jobTitleLabel.lineBreakMode= NSLineBreakByWordWrapping;
    // jobTitleLabel.numberOfLines = 0;

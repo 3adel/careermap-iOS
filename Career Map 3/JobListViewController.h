@@ -32,7 +32,7 @@
 @property (nonatomic, strong) PFGeoPoint *userLocation;
 @property (nonatomic, strong) NSMutableArray *jobsArray;
 @property (nonatomic, strong) NSMutableArray *jobsArrayWithUsersVotes;
-
+@property (nonatomic, strong) NSDateFormatter *formatter;
 
 
 

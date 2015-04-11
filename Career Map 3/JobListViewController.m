@@ -23,6 +23,7 @@
 @synthesize userLocation;
 @synthesize jobsArray;
 @synthesize jobsArrayWithUsersVotes;
+@synthesize formatter;
 //@synthesize locationManager;
 
 
@@ -600,7 +601,7 @@
     
     
     
-    NSDateFormatter *formatter;
+    
     formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"dd-MM-yyyy HH:mm"];
     
@@ -1334,7 +1335,15 @@
        // Recipe *recipe = [recipes objectAtIndex:indexPath.row];
         destViewController.jobTitle = [tempObject objectForKey:@"title"];
         destViewController.jobDescription = [tempObject objectForKey:@"description"];
+        destViewController.jobDistanceFromUser = [NSString stringWithFormat:@"%@ km",[NSString stringWithFormat:@"%.2f",[self.userLocation distanceInKilometersTo:[tempObject objectForKey:@"geolocation"]]] ];
+        destViewController.jobEmployer =[tempObject[@"employer"] objectForKey:@"employerName"];
+        destViewController.jobVote = [NSString stringWithFormat:@"%@",[tempObject objectForKey:@"voteCount"]];
+        destViewController.jobDateAdded =[formatter stringFromDate:[tempObject createdAt]];
+        destViewController.jobArea =[tempObject objectForKey:@"area"];
+        
+     //   cell.jobArea.text =[tempObject objectForKey:@"area"];
 
+        
         
         
         NSLog(@"%@", tempObject);

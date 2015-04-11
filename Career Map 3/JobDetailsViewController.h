@@ -11,12 +11,33 @@
 @interface JobDetailsViewController : UIViewController
 
 //outlets
-@property (weak, nonatomic) IBOutlet UILabel *jobTitleLabel;
+
 @property (weak, nonatomic) IBOutlet UITextView *jobDescriptionLabel;
 @property (weak, nonatomic) IBOutlet UITextView *jobTitleTextView;
+@property (weak, nonatomic) IBOutlet UILabel *jobEmployerLabel;
+@property (weak, nonatomic) IBOutlet UILabel *jobDateAddedLabel;
+@property (weak, nonatomic) IBOutlet UILabel *jobDistanceFromUserLabel;
+@property (weak, nonatomic) IBOutlet UILabel *jobVoteLabel;
+@property (weak, nonatomic) IBOutlet UILabel *jobAreaLabel;
+@property (weak, nonatomic) IBOutlet UILabel *jobStatusLabel;
+@property (weak, nonatomic) IBOutlet UIButton *jobVoteUpButton;
+@property (weak, nonatomic) IBOutlet UIButton *jobVoteDownButton;
+
 
 //data
 @property (nonatomic, strong) NSString *jobTitle;
 @property (nonatomic, strong) NSString *jobDescription;
+@property (nonatomic, strong) NSString *jobEmployer;
+@property (nonatomic, strong) NSString *jobDateAdded;
+@property (nonatomic, strong) NSString *jobDistanceFromUser;
+@property (nonatomic, strong) NSString *jobVote;
+@property (nonatomic, strong) NSString *jobArea;
+@property (nonatomic, strong) NSString *jobStatus;
+
+
+
+
+
+
 
 @end
