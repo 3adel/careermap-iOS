@@ -16,6 +16,7 @@
 		F535AA671AD3CE7E0091E70B /* WelcomeAppChoiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F535AA661AD3CE7E0091E70B /* WelcomeAppChoiceViewController.m */; };
 		F535AA691AD401BA0091E70B /* myLocation.gpx in Resources */ = {isa = PBXBuildFile; fileRef = F535AA681AD401BA0091E70B /* myLocation.gpx */; };
 		F535AA721AD449BA0091E70B /* JobDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F535AA711AD449BA0091E70B /* JobDetailsViewController.m */; };
+		F535AADA1AD947BF0091E70B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F535AAD91AD947BF0091E70B /* MapKit.framework */; };
 		F59758AF1AC159B40099A978 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F59758AE1AC159B40099A978 /* main.m */; };
 		F59758B21AC159B40099A978 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F59758B11AC159B40099A978 /* AppDelegate.m */; };
 		F59758BB1AC159B40099A978 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F59758B91AC159B40099A978 /* Main.storyboard */; };
@@ -73,6 +74,7 @@
 		F535AA681AD401BA0091E70B /* myLocation.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = myLocation.gpx; path = ../myLocation.gpx; sourceTree = "<group>"; };
 		F535AA701AD449BA0091E70B /* JobDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobDetailsViewController.h; sourceTree = "<group>"; };
 		F535AA711AD449BA0091E70B /* JobDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobDetailsViewController.m; sourceTree = "<group>"; };
+		F535AAD91AD947BF0091E70B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		F59758A91AC159B40099A978 /* Career Map 3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Career Map 3.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F59758AD1AC159B40099A978 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F59758AE1AC159B40099A978 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F535AADA1AD947BF0091E70B /* MapKit.framework in Frameworks */,
 				F59759291AC1D5420099A978 /* libsqlite3.0.dylib in Frameworks */,
 				F59759261AC1D3E60099A978 /* SystemConfiguration.framework in Frameworks */,
 				F5BAC3C01AC7EDEF003E899C /* Bolts.framework in Frameworks */,
@@ -230,6 +233,7 @@
 		F59758A01AC159B40099A978 = {
 			isa = PBXGroup;
 			children = (
+				F535AAD91AD947BF0091E70B /* MapKit.framework */,
 				F59758AB1AC159B40099A978 /* Career Map 3 */,
 				F59758C81AC159B40099A978 /* Career Map 3Tests */,
 				F59758AA1AC159B40099A978 /* Products */,

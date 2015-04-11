@@ -36,6 +36,12 @@
     
   //  jobTitleLabel.lineBreakMode= NSLineBreakByWordWrapping;
    // jobTitleLabel.numberOfLines = 0;
+    
+    
+    //add job skills view
+   // [self.jobDetailsScrollView addSubview:self.jobSkillsView];
+    [self.jobSkillsView setBackgroundColor:[UIColor grayColor]];
+    
 }
 
 - (void)didReceiveMemoryWarning {

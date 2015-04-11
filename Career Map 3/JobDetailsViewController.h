@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import <MapKit/MapKit.h>
 @interface JobDetailsViewController : UIViewController
 
 //outlets
@@ -23,6 +23,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *jobVoteUpButton;
 @property (weak, nonatomic) IBOutlet UIButton *jobVoteDownButton;
 
+@property (weak, nonatomic) IBOutlet MKMapView *jobMap;
+@property (weak, nonatomic) IBOutlet UIView *jobSkillsView;
+@property (weak, nonatomic) IBOutlet UIScrollView *jobDetailsScrollView;
 
 //data
 @property (nonatomic, strong) NSString *jobTitle;
