@@ -639,7 +639,7 @@
     
     
     
-    cell.jobVoteLabel.text =[NSString stringWithFormat:@"%@",[tempObject objectForKey:@"applyCount"]];;
+    cell.jobVoteLabel.text =[NSString stringWithFormat:@"%@",[tempObject objectForKey:@"voteCount"]];;
     
   
     
@@ -946,14 +946,14 @@
                 
                 //if the user has already pressed vote up before pressing the down
                 if ([[object objectForKey:@"jobVotedUp"] containsObject:tempObject.objectId]) {
-                    [tempObject incrementKey:@"applyCount" byAmount:[NSNumber numberWithInteger:-1]];
+                    [tempObject incrementKey:@"voteCount" byAmount:[NSNumber numberWithInteger:-1]];
                     [[PFUser currentUser] removeObject:tempObject.objectId forKey:@"jobVotedUp"];
                     [(PFObject *)[jobsArrayWithUsersVotes objectAtIndex:sender.tag] setObject:@"0" forKey:@"currentUserVotedUpThisJob"];
 
                 }
                 
                 
-                [tempObject incrementKey:@"applyCount" byAmount:[NSNumber numberWithInteger:-1]];
+                [tempObject incrementKey:@"voteCount" byAmount:[NSNumber numberWithInteger:-1]];
                 
                 [tempObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                     if (succeeded) {
@@ -1010,7 +1010,7 @@
                 
                 NSLog(@"The user already voted up for this");
                 
-                [tempObject incrementKey:@"applyCount" byAmount:[NSNumber numberWithInteger:1]];
+                [tempObject incrementKey:@"voteCount" byAmount:[NSNumber numberWithInteger:1]];
                 
                 [tempObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                     if (succeeded) {
@@ -1113,13 +1113,13 @@
             if (![[object objectForKey:@"jobVotedUp"] containsObject:tempObject.objectId]) {
                // NSLog(@"foundddddddddd");
                 
-                [tempObject incrementKey:@"applyCount" byAmount:[NSNumber numberWithInteger:1]];
+                [tempObject incrementKey:@"voteCount" byAmount:[NSNumber numberWithInteger:1]];
 
                 
                 
                 //if the user has already pressed vote down before pressing the up
                 if ([[object objectForKey:@"jobVotedDown"] containsObject:tempObject.objectId]) {
-                    [tempObject incrementKey:@"applyCount" byAmount:[NSNumber numberWithInteger:1]];
+                    [tempObject incrementKey:@"voteCount" byAmount:[NSNumber numberWithInteger:1]];
                     [[PFUser currentUser] removeObject:tempObject.objectId forKey:@"jobVotedDown"];
                     [(PFObject *)[jobsArrayWithUsersVotes objectAtIndex:sender.tag] setObject:@"0" forKey:@"currentUserVotedDownThisJob"];
                     
@@ -1185,7 +1185,7 @@
                 
                 NSLog(@"The user already voted up for this");
                 
-                [tempObject incrementKey:@"applyCount" byAmount:[NSNumber numberWithInteger:-1]];
+                [tempObject incrementKey:@"voteCount" byAmount:[NSNumber numberWithInteger:-1]];
                 
                 [tempObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                     if (succeeded) {
