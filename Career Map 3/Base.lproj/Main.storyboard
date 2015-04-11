@@ -127,16 +127,8 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xMH-5h-pDA">
-                                        <rect key="frame" x="0.0" y="224" width="107" height="48"/>
-                                        <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <state key="normal" title="Apply Direct">
-                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dS8-uI-oid">
-                                        <rect key="frame" x="115" y="224" width="100" height="48"/>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dS8-uI-oid">
+                                        <rect key="frame" x="155" y="224" width="100" height="48"/>
                                         <color key="backgroundColor" red="0.0" green="0.50196081399917603" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Apply CV">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -155,11 +147,23 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xMH-5h-pDA">
+                                        <rect key="frame" x="22" y="224" width="107" height="48"/>
+                                        <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Apply Direct">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="dS8-uI-oid" firstAttribute="leading" secondItem="xMH-5h-pDA" secondAttribute="trailing" constant="5" id="IDf-cF-jMr"/>
+                                    <constraint firstItem="xMH-5h-pDA" firstAttribute="leading" secondItem="PjM-Ma-zcP" secondAttribute="leading" constant="5" id="NGK-Ea-hZ9"/>
+                                    <constraint firstItem="dS8-uI-oid" firstAttribute="width" secondItem="xMH-5h-pDA" secondAttribute="width" id="X1K-Ux-Raj"/>
                                     <constraint firstAttribute="trailing" secondItem="ol1-9c-Ylq" secondAttribute="trailing" id="eDy-vT-6bM"/>
+                                    <constraint firstAttribute="trailing" secondItem="dS8-uI-oid" secondAttribute="trailing" constant="5" id="fLU-EK-D5H"/>
                                     <constraint firstItem="ol1-9c-Ylq" firstAttribute="leading" secondItem="PjM-Ma-zcP" secondAttribute="leading" id="qE5-HL-3DF"/>
                                     <constraint firstItem="ol1-9c-Ylq" firstAttribute="top" secondItem="PjM-Ma-zcP" secondAttribute="top" constant="50" id="qMl-hD-Gjm"/>
                                     <constraint firstAttribute="centerX" secondItem="ol1-9c-Ylq" secondAttribute="centerX" id="rGS-ne-5qC"/>
