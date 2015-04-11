@@ -195,7 +195,7 @@
     PFQuery *retrieveJobs = [PFQuery queryWithClassName:@"Job"];
     [retrieveJobs includeKey:@"employer"];
     [retrieveJobs includeKey:@"status"];
-    [retrieveJobs whereKey:@"geolocation" nearGeoPoint:self.userLocation withinKilometers:30];
+    [retrieveJobs whereKey:@"geolocation" nearGeoPoint:self.userLocation withinKilometers:1000000];
   // [retrieveJobs orderByDescending:@"geolocation"];
     [retrieveJobs orderByDescending:@"createdAt"];
 
@@ -231,6 +231,55 @@
 
                 [jobsArrayWithUsersVotes addObject:i];
         
+                
+                
+                
+                //get area of job
+                
+                 //area of the job
+                
+              //  NSLog(@"job = %@", i);
+                
+                CLLocation *jobLocation = [[CLLocation alloc] initWithLatitude:[[i objectForKey:@"geolocation"] latitude] longitude:[[i objectForKey:@"geolocation"] longitude]];
+                 CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+                 [geocoder reverseGeocodeLocation:jobLocation completionHandler:^(NSArray *placemarks, NSError *error) {
+                 // NSLog(@"Found placemarks: %@, error: %@", placemarks, error);
+                 if (error == nil && [placemarks count] > 0)
+                 {
+                 
+                 
+                     CLPlacemark *placemark = [placemarks lastObject];
+                     if ([[placemarks lastObject] locality] != nil ) {
+                         [(PFObject *)[jobsArrayWithUsersVotes objectAtIndex:count] setObject:[placemark locality] forKey:@"area"];
+                         NSLog(@"%@", [placemark locality]);
+                     }
+                     else{
+                         [(PFObject *)[jobsArrayWithUsersVotes objectAtIndex:count] setObject:@"N/A" forKey:@"area"];
+                         
+                     }
+                     
+                     
+                     
+                 
+                 //NSLog(@"Job: %@",[tempObject objectForKey:@"title"] );
+                 //   CLPlacemark *placemark =
+                 
+                 //  cell.jobArea.text =placemark.locality;
+                 
+                 }
+                 
+                 else{
+                 
+                 NSLog(@"Error = %@", error);
+                 // cell.jobArea.text =@"-";
+                 }
+                 
+                 }];
+
+                
+                
+                
+                
                 
                 
                 PFQuery *votedQuery = [PFQuery queryWithClassName:@"_User"];
@@ -643,8 +692,9 @@
     
   
     
-    
-    
+    //set job area
+    NSLog(@"Area of job = %@", [tempObject objectForKey:@"area"]);
+    cell.jobArea.text =[tempObject objectForKey:@"area"];
     
     //if the user already voted up, mark upvote button as selected
     PFQuery *votedQuery = [PFQuery queryWithClassName:@"_User"];

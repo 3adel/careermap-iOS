@@ -22,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *jobVoteUpFlag;
 @property (weak, nonatomic) IBOutlet UILabel *jobVoteDownFlag;
 
+@property (weak, nonatomic) IBOutlet UILabel *jobArea;
 
 
 

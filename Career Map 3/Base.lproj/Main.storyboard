@@ -26,7 +26,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Status" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Qa-a6-TFF">
-                                            <rect key="frame" x="112" y="66" width="57" height="21"/>
+                                            <rect key="frame" x="216" y="68" width="57" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
@@ -44,7 +44,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date Added" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="awk-od-Uke">
-                                            <rect key="frame" x="8" y="66" width="91" height="21"/>
+                                            <rect key="frame" x="112" y="68" width="91" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
@@ -55,9 +55,16 @@
                                             <color key="textColor" name="controlShadowColor" catalog="System" colorSpace="catalog"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="area" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nCM-4a-sOv">
+                                            <rect key="frame" x="8" y="68" width="82" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="jobArea" destination="nCM-4a-sOv" id="yU9-YR-yXl"/>
                                     <outlet property="jobDateAdded" destination="awk-od-Uke" id="1aj-QQ-WIr"/>
                                     <outlet property="jobDistanceFromUser" destination="aU7-0p-S2X" id="gNe-Iw-BOJ"/>
                                     <outlet property="jobEmployer" destination="3sW-hB-upE" id="YU3-vv-PD3"/>
@@ -80,7 +87,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fTZ-GB-uuF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1119.2" y="-222.94"/>
+            <point key="canvasLocation" x="1119" y="-223"/>
         </scene>
         <!--Job Details View Controller-->
         <scene sceneID="04e-1I-DIt">
