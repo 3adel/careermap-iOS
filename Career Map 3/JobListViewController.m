@@ -1340,13 +1340,13 @@
         destViewController.jobVote = [NSString stringWithFormat:@"%@",[tempObject objectForKey:@"voteCount"]];
         destViewController.jobDateAdded =[formatter stringFromDate:[tempObject createdAt]];
         destViewController.jobArea =[tempObject objectForKey:@"area"];
-        
+        destViewController.jobRequiredSkills = [tempObject objectForKey:@"skillsRequired"];
      //   cell.jobArea.text =[tempObject objectForKey:@"area"];
 
         
         
         
-        NSLog(@"%@", tempObject);
+       // NSLog(@"%@", tempObject);
     }
 }
 

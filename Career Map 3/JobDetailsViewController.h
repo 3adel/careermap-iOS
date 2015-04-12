@@ -26,6 +26,7 @@
 @property (weak, nonatomic) IBOutlet MKMapView *jobMap;
 @property (weak, nonatomic) IBOutlet UIView *jobSkillsView;
 @property (weak, nonatomic) IBOutlet UIScrollView *jobDetailsScrollView;
+@property (weak, nonatomic) IBOutlet UITextView *jobsSkillsTextView;
 
 //data
 @property (nonatomic, strong) NSString *jobTitle;
@@ -36,6 +37,7 @@
 @property (nonatomic, strong) NSString *jobVote;
 @property (nonatomic, strong) NSString *jobArea;
 @property (nonatomic, strong) NSString *jobStatus;
+@property (nonatomic, strong) NSArray *jobRequiredSkills;
 
 
 
