@@ -104,7 +104,7 @@
     jobZoomLocation= self.jobLocation.coordinate;
     MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(jobZoomLocation, 2000, 2000);
     [_jobMap setRegion:viewRegion animated:YES];
-    
+    [_jobMap setScrollEnabled:NO];
     
     //add job annotation
     // Add an annotation

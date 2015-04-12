@@ -150,7 +150,20 @@
          NSLog(@"error with login");
          }
          }];*/
-        
+    
+    
+    
+    // Initialize the refresh control.
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    self.refreshControl.backgroundColor = [UIColor lightGrayColor];
+    self.refreshControl.tintColor = [UIColor whiteColor];
+    [self.refreshControl addTarget:self
+                            action:@selector(reloadData)
+                  forControlEvents:UIControlEventValueChanged];
+    [self.jobTable addSubview:self.refreshControl];
+
+    
+    
         
         
         
@@ -450,6 +463,12 @@
                 
                 if (count == jobsArray.count) {
                     NSLog(@"LAST ITEM REACHED=%ld",(unsigned long)count);
+                   
+                    //end refreshing
+                    if (self.refreshControl) {
+                        
+                        [self.refreshControl endRefreshing];
+                    }
                 }
                 
             }
@@ -460,8 +479,13 @@
             
         }
         [self.jobTable reloadData];
+        
+        
+        
     }];
     
+    
+
 
     
     
@@ -1363,7 +1387,17 @@
 }
 
 
-
+-(void) reloadData{
+    
+    // Reload table data
+    [self retrieveFromParse];
+    //[self.jobTable reloadData];
+    NSLog(@"rolad data called");
+    
+    //end refreshing
+    
+    
+}
 
 
 
