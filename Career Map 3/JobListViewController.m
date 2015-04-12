@@ -590,9 +590,6 @@
     
 
     
-    
-    
-    
    // JobCustomTableViewCell *cell = [[JobCustomTableViewCell alloc] init];
     JobCustomTableViewCell *cell = [_jobTable dequeueReusableCellWithIdentifier:CellIdentifier];
     
@@ -716,7 +713,7 @@
     
    // NSLog(@"Current user ID=%@",[[PFUser currentUser] objectId]);
     
-    
+    /*
     [votedQuery getObjectInBackgroundWithId:[[PFUser currentUser] objectId] block:^(PFObject *object, NSError *error) {
         
         
@@ -755,7 +752,7 @@
         
     }];
     
-    
+    */
    /*
     
     [votedQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
