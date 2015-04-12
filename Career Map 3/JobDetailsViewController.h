@@ -45,4 +45,8 @@
 
 
 
+//methods
+
+- (void) showJobDirection;
+
 @end

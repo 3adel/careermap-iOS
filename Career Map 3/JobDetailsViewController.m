@@ -137,4 +137,32 @@
     
     NSLog(@"map annotation selected selected");
 }
+
+
+//custom annotation view
+- (MKAnnotationView *) mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>) annotation
+{
+    if ([[annotation title] isEqualToString:@"Current Location"]) {
+        return nil;
+    }
+    
+    
+    MKAnnotationView *jobAnnView = [[MKAnnotationView alloc ] initWithAnnotation:annotation reuseIdentifier:@"jobLocation"];
+    jobAnnView.image = [ UIImage imageNamed:@"job-annotation-icon.png" ];
+    
+    UIButton *showDirectionsButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+    [showDirectionsButton addTarget:self action:@selector(showJobDirection) forControlEvents:UIControlEventTouchUpInside];
+    
+    jobAnnView.rightCalloutAccessoryView = showDirectionsButton;
+    jobAnnView.canShowCallout = YES;
+    return jobAnnView;
+}
+
+- (void) showJobDirection{
+    
+    NSLog(@"show me job directions please");
+}
+
+
+
 @end
