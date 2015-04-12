@@ -20,6 +20,10 @@
 @synthesize jobDescriptionLabel;
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+
+    
+    
     // Do any additional setup after loading the view.
     
     //zoom to job location
@@ -34,10 +38,10 @@
     self.jobEmployerLabel.text = self.jobEmployer;
     self.jobVoteLabel.text =self.jobVote;
     self.jobDistanceFromUserLabel.text = self.jobDistanceFromUser;
-    
+    self.jobEducationTextView.text = self.jobEducation;
     
     self.jobMap.delegate = self;
-    
+    self.jobMap.mapType = MKMapTypeStandard;
   //  jobTitleLabel.lineBreakMode= NSLineBreakByWordWrapping;
    // jobTitleLabel.numberOfLines = 0;
     
@@ -66,10 +70,12 @@
        // string1 = @"This is ";
        // string2 = @"my string.";
         
-        _jobsSkillsTextView.text = [_jobsSkillsTextView.text stringByAppendingString:skill];
+        
+        
+        _jobsSkillsTextView.text = [_jobsSkillsTextView.text stringByAppendingString:[NSString stringWithFormat:@"- %@",skill]];
         
         if (!(count == ([self.jobRequiredSkills count])-1)) {
-            _jobsSkillsTextView.text = [_jobsSkillsTextView.text stringByAppendingString:@", "];
+            _jobsSkillsTextView.text = [_jobsSkillsTextView.text stringByAppendingString:@"\n"];
         }
         
         
@@ -99,12 +105,34 @@
 - (void) zoomToJobLocation{
     
     
+    
+    /*
+    //convert job cllocation to parse point to be used for zooming
+    PFGeoPoint *jobLocationPoint = [[PFGeoPoint alloc] init];
+    jobLocationPoint.latitude =self.jobLocation.coordinate.latitude;
+    jobLocationPoint.longitude =self.jobLocation.coordinate.longitude;
+    
+*/
+    
+    //double k = ;
+   // NSLog(@"distance is = %f",k);
+    
+    
     //zoom to job location
     CLLocationCoordinate2D jobZoomLocation;
     jobZoomLocation= self.jobLocation.coordinate;
-    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(jobZoomLocation, 2000, 2000);
+  //  MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(jobZoomLocation, ([self.userLocation distanceInKilometersTo: jobLocationPoint])*250, ([self.userLocation distanceInKilometersTo: jobLocationPoint])*250);
+    
+    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(jobZoomLocation, 50, 50);
     [_jobMap setRegion:viewRegion animated:YES];
     [_jobMap setScrollEnabled:NO];
+    
+   
+  //  NSNumber *jobDistanceNumber = [NSNumber numberWithDouble:[self.userLocation2 distanceInKilometersTo:self.jobLocation]];
+   // NSLog(@"user location %@", jobDistanceNumber);
+
+    
+    //[self.joblocation distanceInKilometersTo
     
     //add job annotation
     // Add an annotation

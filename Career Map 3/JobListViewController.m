@@ -1379,6 +1379,8 @@
         destViewController.jobDateAdded =[formatter stringFromDate:[tempObject createdAt]];
         destViewController.jobArea =[tempObject objectForKey:@"area"];
         destViewController.jobRequiredSkills = [tempObject objectForKey:@"skillsRequired"];
+        destViewController.jobEducation =[tempObject objectForKey:@"education"];
+        destViewController.userLocation = self.userLocation;
       //  destViewController.jobLocation = _jobLocation;
      //   cell.jobArea.text =[tempObject objectForKey:@"area"];
 

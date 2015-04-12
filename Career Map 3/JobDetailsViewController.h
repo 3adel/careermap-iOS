@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
-@interface JobDetailsViewController : UIViewController <MKMapViewDelegate>
+#import <Parse/Parse.h>
+@interface JobDetailsViewController : UIViewController <MKMapViewDelegate,CLLocationManagerDelegate>
 
 //outlets
 
@@ -27,6 +28,7 @@
 @property (weak, nonatomic) IBOutlet UIView *jobSkillsView;
 @property (weak, nonatomic) IBOutlet UIScrollView *jobDetailsScrollView;
 @property (weak, nonatomic) IBOutlet UITextView *jobsSkillsTextView;
+@property (weak, nonatomic) IBOutlet UITextView *jobEducationTextView;
 
 //data
 @property (nonatomic, strong) NSString *jobTitle;
@@ -39,8 +41,10 @@
 @property (nonatomic, strong) NSString *jobStatus;
 @property (nonatomic, strong) NSArray *jobRequiredSkills;
 @property (nonatomic, strong) CLLocation *jobLocation;
+@property (nonatomic, strong) PFGeoPoint *userLocation;
 @property (nonatomic,strong) NSString *jobAddressLine;
-
+@property (nonatomic, strong) NSString *jobEducation;
+@property (nonatomic,strong) CLLocationManager* locationManager;
 
 
 
