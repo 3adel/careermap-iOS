@@ -22,7 +22,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    
+    //zoom to job location
+    [self zoomToJobLocation];
     
     //set the values of view controller
    // self.jobTitleLabel.text = self.jobTitle;
@@ -34,6 +35,8 @@
     self.jobVoteLabel.text =self.jobVote;
     self.jobDistanceFromUserLabel.text = self.jobDistanceFromUser;
     
+    
+    self.jobMap.delegate = self;
     
   //  jobTitleLabel.lineBreakMode= NSLineBreakByWordWrapping;
    // jobTitleLabel.numberOfLines = 0;
@@ -69,13 +72,6 @@
             _jobsSkillsTextView.text = [_jobsSkillsTextView.text stringByAppendingString:@", "];
         }
         
-    
-    
-        
-        
-        
-       // result = [result stringByAppendingString:string1];
-        //result = [result stringByAppendingString:string2];
         
         
         count++;
@@ -98,4 +94,47 @@
 }
 */
 
+
+
+- (void) zoomToJobLocation{
+    
+    
+    //zoom to job location
+    CLLocationCoordinate2D jobZoomLocation;
+    jobZoomLocation= self.jobLocation.coordinate;
+    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(jobZoomLocation, 2000, 2000);
+    [_jobMap setRegion:viewRegion animated:YES];
+    
+    
+    //add job annotation
+    // Add an annotation
+    MKPointAnnotation *jobPoint = [[MKPointAnnotation alloc] init];
+    jobPoint.coordinate = self.jobLocation.coordinate;
+    jobPoint.title = self.jobTitle;
+    jobPoint.subtitle = [self.jobDistanceFromUser stringByAppendingString:[NSString stringWithFormat:@", %@", self.jobAddressLine]];
+    [_jobMap addAnnotation:jobPoint];
+    
+    
+    
+    
+    
+}
+
+
+
+- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
+{
+   // [mapView deselectAnnotation:view.annotation animated:YES];
+    
+ //   DetailsViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"DetailsPopover"];
+  //  controller.annotation = view.annotation;
+   // self.popover = [[UIPopoverController alloc] initWithContentViewController:controller];
+   // self.popover.delegate = self;
+   // [self.popover presentPopoverFromRect:view.frame
+          //                        inView:view.superview
+           //     permittedArrowDirections:UIPopoverArrowDirectionAny
+                      //          animated:YES];
+    
+    NSLog(@"map annotation selected selected");
+}
 @end

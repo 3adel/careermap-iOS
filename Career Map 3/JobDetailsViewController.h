@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
-@interface JobDetailsViewController : UIViewController
+@interface JobDetailsViewController : UIViewController <MKMapViewDelegate>
 
 //outlets
 
@@ -38,8 +38,8 @@
 @property (nonatomic, strong) NSString *jobArea;
 @property (nonatomic, strong) NSString *jobStatus;
 @property (nonatomic, strong) NSArray *jobRequiredSkills;
-
-
+@property (nonatomic, strong) CLLocation *jobLocation;
+@property (nonatomic,strong) NSString *jobAddressLine;
 
 
 

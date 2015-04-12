@@ -241,7 +241,7 @@
                 
               //  NSLog(@"job = %@", i);
                 
-                CLLocation *jobLocation = [[CLLocation alloc] initWithLatitude:[[i objectForKey:@"geolocation"] latitude] longitude:[[i objectForKey:@"geolocation"] longitude]];
+                CLLocation  *jobLocation = [[CLLocation alloc] initWithLatitude:[[i objectForKey:@"geolocation"] latitude] longitude:[[i objectForKey:@"geolocation"] longitude]];
                  CLGeocoder *geocoder = [[CLGeocoder alloc] init];
                  [geocoder reverseGeocodeLocation:jobLocation completionHandler:^(NSArray *placemarks, NSError *error) {
                  // NSLog(@"Found placemarks: %@, error: %@", placemarks, error);
@@ -253,6 +253,17 @@
                      if ([[placemarks lastObject] locality] != nil ) {
                          [(PFObject *)[jobsArrayWithUsersVotes objectAtIndex:count] setObject:[placemark locality] forKey:@"area"];
                          NSLog(@"%@", [placemark locality]);
+                         //  NSLog(@"%@", [placemark addressDictionary[@"FormattedAddressLines"]);
+                         
+                         
+                         //add the address line as a component
+                         NSArray *lines = placemark.addressDictionary[ @"FormattedAddressLines"];
+                         NSString *addressString = [lines componentsJoinedByString:@"\n"];
+                         
+                         [(PFObject *)[jobsArrayWithUsersVotes objectAtIndex:count] setObject:addressString forKey:@"addressLine"];
+                         NSLog(@"Address: %@", addressString);
+                         
+                         
                      }
                      else{
                          [(PFObject *)[jobsArrayWithUsersVotes objectAtIndex:count] setObject:@"N/A" forKey:@"area"];
@@ -1341,12 +1352,16 @@
         destViewController.jobDateAdded =[formatter stringFromDate:[tempObject createdAt]];
         destViewController.jobArea =[tempObject objectForKey:@"area"];
         destViewController.jobRequiredSkills = [tempObject objectForKey:@"skillsRequired"];
+      //  destViewController.jobLocation = _jobLocation;
      //   cell.jobArea.text =[tempObject objectForKey:@"area"];
 
+         CLLocation  *jobLocation = [[CLLocation alloc] initWithLatitude:[[tempObject objectForKey:@"geolocation"] latitude] longitude:[[tempObject objectForKey:@"geolocation"] longitude]];
+        destViewController.jobLocation = jobLocation;
         
         
+        destViewController.jobAddressLine = [tempObject objectForKey:@"addressLine"];
         
-       // NSLog(@"%@", tempObject);
+       NSLog(@"%@", [tempObject objectForKey:@"geolocation"]);
     }
 }
 

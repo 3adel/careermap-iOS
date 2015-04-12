@@ -30,11 +30,12 @@
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (nonatomic,strong) CLLocationManager* locationManager;
 @property (nonatomic, strong) PFGeoPoint *userLocation;
+
 @property (nonatomic, strong) NSMutableArray *jobsArray;
 @property (nonatomic, strong) NSMutableArray *jobsArrayWithUsersVotes;
 @property (nonatomic, strong) NSDateFormatter *formatter;
 @property (nonatomic, strong) NSArray *jobRequireSkills;
-
+//@property (nonatomic, strong) CLLocation *jobLocation;
 
 - (IBAction)jobVoteUpPressed:(UIButton *)sender;
 - (IBAction)jobVoteUpPressedV2:(UIButton *)sender;

@@ -117,56 +117,30 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" scrollEnabled="NO" editable="NO" text="Job description" translatesAutoresizingMaskIntoConstraints="NO" id="4IS-Nq-Qj6" userLabel="Job description text view">
-                                        <rect key="frame" x="17" y="265.5" width="203" height="31.5"/>
+                                        <rect key="frame" x="17" y="312.5" width="203" height="31.5"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dS8-uI-oid">
-                                        <rect key="frame" x="157" y="154" width="100" height="23"/>
+                                        <rect key="frame" x="157" y="154" width="131" height="30"/>
                                         <color key="backgroundColor" red="0.0" green="0.50196081399917603" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <state key="normal" title="Apply CV">
+                                        <state key="normal" title="Message Employer">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="area" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SJl-Rf-FBT">
-                                        <rect key="frame" x="120" y="125" width="34" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xMH-5h-pDA">
-                                        <rect key="frame" x="17" y="154" width="107" height="22"/>
+                                        <rect key="frame" x="17" y="154" width="107" height="30"/>
                                         <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="Hag-Bq-dbZ"/>
                                         </constraints>
-                                        <state key="normal" title="Apply Direct">
+                                        <state key="normal" title="Apply with CV">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QJs-lu-dCg">
-                                        <rect key="frame" x="235" y="76" width="30" height="30"/>
-                                        <state key="normal" title="Up">
-                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YwB-sw-Y5n">
-                                        <rect key="frame" x="235" y="125" width="30" height="30"/>
-                                        <state key="normal" title="dwn">
-                                            <color key="titleColor" red="0.0" green="0.50196081399917603" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iEg-rN-A74">
-                                        <rect key="frame" x="231" y="108" width="39" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="post date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="so5-tk-zYr" userLabel="Job post date label">
                                         <rect key="frame" x="17" y="125" width="73" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
@@ -180,28 +154,22 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <mapView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sny-d6-UOB">
-                                        <rect key="frame" x="17" y="192" width="226" height="32"/>
+                                        <rect key="frame" x="17" y="239" width="226" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="150" id="Qzm-i1-O7D"/>
                                         </constraints>
                                     </mapView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Job Description" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x8B-ot-tqI" userLabel="Job description label">
-                                        <rect key="frame" x="17" y="232" width="121" height="21"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Skills Required" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cGp-XX-uyV" userLabel="Job skills label">
-                                        <rect key="frame" x="17" y="306" width="121" height="21"/>
+                                        <rect key="frame" x="17" y="279" width="121" height="21"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cVp-jb-txK" userLabel="Job skills view">
-                                        <rect key="frame" x="16" y="356" width="227" height="65"/>
+                                        <rect key="frame" x="17" y="382" width="227" height="50"/>
                                         <subviews>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PAy-ON-HxY">
-                                                <rect key="frame" x="19" y="18" width="178" height="33"/>
+                                                <rect key="frame" x="18" y="8" width="178" height="33"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -216,11 +184,22 @@
                                             <constraint firstItem="PAy-ON-HxY" firstAttribute="leading" secondItem="cVp-jb-txK" secondAttribute="leading" id="ltw-fg-kWp"/>
                                         </constraints>
                                     </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Skills Required" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cGp-XX-uyV" userLabel="Job skills label">
+                                        <rect key="frame" x="17" y="353" width="121" height="21"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="area" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SJl-Rf-FBT">
+                                        <rect key="frame" x="17" y="184" width="34" height="21"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="bnJ-MN-T1c" firstAttribute="leading" secondItem="SJl-Rf-FBT" secondAttribute="leading" id="4Z4-jN-izb"/>
                                     <constraint firstItem="so5-tk-zYr" firstAttribute="top" secondItem="8KK-5d-Dtd" secondAttribute="bottom" constant="5" id="4dN-Ai-cSJ"/>
                                     <constraint firstItem="so5-tk-zYr" firstAttribute="leading" secondItem="8KK-5d-Dtd" secondAttribute="leading" id="7O6-HE-RiX"/>
                                     <constraint firstItem="bnJ-MN-T1c" firstAttribute="centerY" secondItem="8KK-5d-Dtd" secondAttribute="centerY" id="Dg9-2V-pl4"/>
@@ -228,13 +207,13 @@
                                     <constraint firstItem="x8B-ot-tqI" firstAttribute="leading" secondItem="cGp-XX-uyV" secondAttribute="leading" id="FUU-r0-ZRu"/>
                                     <constraint firstItem="xMH-5h-pDA" firstAttribute="top" secondItem="so5-tk-zYr" secondAttribute="bottom" constant="10" id="Ffp-6o-odu"/>
                                     <constraint firstItem="ol1-9c-Ylq" firstAttribute="leading" secondItem="8KK-5d-Dtd" secondAttribute="leading" id="GYu-37-C4j"/>
-                                    <constraint firstAttribute="trailing" secondItem="bnJ-MN-T1c" secondAttribute="trailing" constant="96" id="IC6-ao-nkL"/>
                                     <constraint firstItem="dS8-uI-oid" firstAttribute="leading" secondItem="xMH-5h-pDA" secondAttribute="trailing" constant="10" id="IDf-cF-jMr"/>
                                     <constraint firstAttribute="trailing" secondItem="Sny-d6-UOB" secondAttribute="trailing" id="IMx-Tq-I59"/>
                                     <constraint firstItem="cVp-jb-txK" firstAttribute="leading" secondItem="PjM-Ma-zcP" secondAttribute="leading" id="JNY-q2-1In"/>
                                     <constraint firstItem="Sny-d6-UOB" firstAttribute="leading" secondItem="PjM-Ma-zcP" secondAttribute="leading" id="JoX-xv-1ml"/>
                                     <constraint firstItem="8KK-5d-Dtd" firstAttribute="top" secondItem="ol1-9c-Ylq" secondAttribute="bottom" constant="10" id="L3Z-ia-nPQ"/>
                                     <constraint firstItem="xMH-5h-pDA" firstAttribute="leading" secondItem="PjM-Ma-zcP" secondAttribute="leading" id="NGK-Ea-hZ9"/>
+                                    <constraint firstItem="so5-tk-zYr" firstAttribute="leading" secondItem="SJl-Rf-FBT" secondAttribute="leading" id="S1o-ge-gh6"/>
                                     <constraint firstItem="cVp-jb-txK" firstAttribute="top" secondItem="cGp-XX-uyV" secondAttribute="bottom" constant="5" id="UNV-yq-ba7"/>
                                     <constraint firstItem="dS8-uI-oid" firstAttribute="width" secondItem="xMH-5h-pDA" secondAttribute="width" id="X1K-Ux-Raj"/>
                                     <constraint firstAttribute="bottom" secondItem="cVp-jb-txK" secondAttribute="bottom" constant="200" id="awC-tI-juA"/>
@@ -245,13 +224,14 @@
                                     <constraint firstAttribute="trailing" secondItem="cVp-jb-txK" secondAttribute="trailing" id="gql-tt-3a0"/>
                                     <constraint firstItem="xMH-5h-pDA" firstAttribute="height" secondItem="dS8-uI-oid" secondAttribute="height" id="hlx-fA-Wnp"/>
                                     <constraint firstAttribute="trailing" secondItem="4IS-Nq-Qj6" secondAttribute="trailing" id="i7K-3H-7fB"/>
-                                    <constraint firstItem="so5-tk-zYr" firstAttribute="centerY" secondItem="SJl-Rf-FBT" secondAttribute="centerY" id="iiD-1B-xTD"/>
                                     <constraint firstItem="4IS-Nq-Qj6" firstAttribute="leading" secondItem="PjM-Ma-zcP" secondAttribute="leading" id="meF-iM-UI6"/>
                                     <constraint firstItem="x8B-ot-tqI" firstAttribute="top" secondItem="Sny-d6-UOB" secondAttribute="bottom" constant="15" id="moi-OE-daQ"/>
-                                    <constraint firstItem="Sny-d6-UOB" firstAttribute="top" secondItem="xMH-5h-pDA" secondAttribute="bottom" constant="10" id="nFh-AI-85B"/>
+                                    <constraint firstItem="Sny-d6-UOB" firstAttribute="top" secondItem="SJl-Rf-FBT" secondAttribute="bottom" constant="5" id="oFF-rL-SlJ"/>
                                     <constraint firstItem="ol1-9c-Ylq" firstAttribute="leading" secondItem="PjM-Ma-zcP" secondAttribute="leading" id="qE5-HL-3DF"/>
                                     <constraint firstItem="ol1-9c-Ylq" firstAttribute="top" secondItem="PjM-Ma-zcP" secondAttribute="top" constant="-50" id="qMl-hD-Gjm"/>
+                                    <constraint firstItem="SJl-Rf-FBT" firstAttribute="top" secondItem="xMH-5h-pDA" secondAttribute="bottom" constant="15" id="qXh-uu-ks5"/>
                                     <constraint firstAttribute="centerX" secondItem="ol1-9c-Ylq" secondAttribute="centerX" id="rGS-ne-5qC"/>
+                                    <constraint firstItem="bnJ-MN-T1c" firstAttribute="leading" secondItem="8KK-5d-Dtd" secondAttribute="trailing" constant="30" id="udY-DJ-CBa"/>
                                     <constraint firstItem="xMH-5h-pDA" firstAttribute="centerY" secondItem="dS8-uI-oid" secondAttribute="centerY" id="vS9-DD-D7D"/>
                                     <constraint firstItem="cGp-XX-uyV" firstAttribute="top" secondItem="4IS-Nq-Qj6" secondAttribute="bottom" constant="15" id="ytB-lx-5ik"/>
                                 </constraints>
@@ -277,9 +257,6 @@
                         <outlet property="jobMap" destination="Sny-d6-UOB" id="5nS-VO-DuA"/>
                         <outlet property="jobSkillsView" destination="cVp-jb-txK" id="dKf-Qc-qLb"/>
                         <outlet property="jobTitleTextView" destination="ol1-9c-Ylq" id="EPd-kX-Ifu"/>
-                        <outlet property="jobVoteDownButton" destination="YwB-sw-Y5n" id="k3u-N4-Znb"/>
-                        <outlet property="jobVoteLabel" destination="iEg-rN-A74" id="W1K-MN-lrK"/>
-                        <outlet property="jobVoteUpButton" destination="QJs-lu-dCg" id="UVi-aS-QcQ"/>
                         <outlet property="jobsSkillsTextView" destination="PAy-ON-HxY" id="8AI-8a-jnz"/>
                     </connections>
                 </viewController>
