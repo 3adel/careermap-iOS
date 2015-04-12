@@ -41,7 +41,7 @@
     self.jobEducationTextView.text = self.jobEducation;
     
     self.jobMap.delegate = self;
-    self.jobMap.mapType = MKMapTypeStandard;
+    self.jobMap.mapType = MKMapTypeHybrid;
   //  jobTitleLabel.lineBreakMode= NSLineBreakByWordWrapping;
    // jobTitleLabel.numberOfLines = 0;
     
@@ -139,7 +139,8 @@
     MKPointAnnotation *jobPoint = [[MKPointAnnotation alloc] init];
     jobPoint.coordinate = self.jobLocation.coordinate;
     jobPoint.title = self.jobTitle;
-    jobPoint.subtitle = [self.jobDistanceFromUser stringByAppendingString:[NSString stringWithFormat:@", %@", self.jobAddressLine]];
+   // jobPoint.subtitle = [self.jobDistanceFromUser stringByAppendingString:[NSString stringWithFormat:@", %@", self.jobAddressLine]];
+    jobPoint.subtitle = self.jobAddressLine;
     [_jobMap addAnnotation:jobPoint];
     
     
