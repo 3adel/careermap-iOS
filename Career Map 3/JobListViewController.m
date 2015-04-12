@@ -206,9 +206,13 @@
 - (void) retrieveFromParse {
     
     //query #1 for jobs
-    PFQuery *retrieveJobs = [PFQuery queryWithClassName:@"Job"];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:
+                              @"voteCount >=-4"];
+    PFQuery *retrieveJobs = [PFQuery queryWithClassName:@"Job" predicate:predicate];
     [retrieveJobs includeKey:@"employer"];
     [retrieveJobs includeKey:@"status"];
+    
+    //[retrieveJobs whereKey:@"voteCount" <=-5];
     [retrieveJobs whereKey:@"geolocation" nearGeoPoint:self.userLocation withinKilometers:1000000];
   // [retrieveJobs orderByDescending:@"geolocation"];
     [retrieveJobs orderByDescending:@"createdAt"];
@@ -469,6 +473,8 @@
                         
                         [self.refreshControl endRefreshing];
                     }
+                    
+                    
                 }
                 
             }
