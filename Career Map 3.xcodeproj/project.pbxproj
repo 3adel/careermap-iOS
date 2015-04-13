@@ -19,6 +19,8 @@
 		F535AADA1AD947BF0091E70B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F535AAD91AD947BF0091E70B /* MapKit.framework */; };
 		F535AAE21ADA63EC0091E70B /* job-annotation-icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F535AAE11ADA63EC0091E70B /* job-annotation-icon@3x.png */; };
 		F535AAE61ADC38580091E70B /* JobMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F535AAE51ADC38580091E70B /* JobMapViewController.m */; };
+		F535AAE81ADC66240091E70B /* job-annotation-icon2@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F535AAE71ADC66240091E70B /* job-annotation-icon2@3x.png */; };
+		F535AAEA1ADC66920091E70B /* job-annotation-icon3@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F535AAE91ADC66920091E70B /* job-annotation-icon3@3x.png */; };
 		F59758AF1AC159B40099A978 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F59758AE1AC159B40099A978 /* main.m */; };
 		F59758B21AC159B40099A978 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F59758B11AC159B40099A978 /* AppDelegate.m */; };
 		F59758BB1AC159B40099A978 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F59758B91AC159B40099A978 /* Main.storyboard */; };
@@ -80,6 +82,8 @@
 		F535AAE11ADA63EC0091E70B /* job-annotation-icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "job-annotation-icon@3x.png"; sourceTree = "<group>"; };
 		F535AAE41ADC38580091E70B /* JobMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JobMapViewController.h; path = ../JobMapViewController.h; sourceTree = "<group>"; };
 		F535AAE51ADC38580091E70B /* JobMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JobMapViewController.m; path = ../JobMapViewController.m; sourceTree = "<group>"; };
+		F535AAE71ADC66240091E70B /* job-annotation-icon2@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "job-annotation-icon2@3x.png"; sourceTree = "<group>"; };
+		F535AAE91ADC66920091E70B /* job-annotation-icon3@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "job-annotation-icon3@3x.png"; sourceTree = "<group>"; };
 		F59758A91AC159B40099A978 /* Career Map 3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Career Map 3.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F59758AD1AC159B40099A978 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F59758AE1AC159B40099A978 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -167,6 +171,8 @@
 		F50142D01ACD1643000DDBE3 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				F535AAE91ADC66920091E70B /* job-annotation-icon3@3x.png */,
+				F535AAE71ADC66240091E70B /* job-annotation-icon2@3x.png */,
 				F535AAE11ADA63EC0091E70B /* job-annotation-icon@3x.png */,
 				F50142D51ACD19CD000DDBE3 /* JobVoteDwn-no-selected@3x.png */,
 				F50142D61ACD19CD000DDBE3 /* JobVoteDwn-selected@3x.png */,
@@ -425,8 +431,10 @@
 				F50142D91ACD19CD000DDBE3 /* JobVoteDwn-no-selected@3x.png in Resources */,
 				F535AA641AD3CE270091E70B /* WelcomeAppChoiceView.xib in Resources */,
 				F59758C01AC159B40099A978 /* LaunchScreen.xib in Resources */,
+				F535AAEA1ADC66920091E70B /* job-annotation-icon3@3x.png in Resources */,
 				F535AA691AD401BA0091E70B /* myLocation.gpx in Resources */,
 				F50142DB1ACD19CD000DDBE3 /* JobVoteUp-no-selected@3x.png in Resources */,
+				F535AAE81ADC66240091E70B /* job-annotation-icon2@3x.png in Resources */,
 				F535AAE21ADA63EC0091E70B /* job-annotation-icon@3x.png in Resources */,
 				F50142DC1ACD19CD000DDBE3 /* JobVoteUp-selected@3x.png in Resources */,
 				F59758BD1AC159B40099A978 /* Images.xcassets in Resources */,

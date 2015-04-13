@@ -178,7 +178,7 @@
     
     
     MKAnnotationView *jobAnnView = [[MKAnnotationView alloc ] initWithAnnotation:annotation reuseIdentifier:@"jobLocation"];
-    jobAnnView.image = [ UIImage imageNamed:@"job-annotation-icon.png" ];
+    jobAnnView.image = [ UIImage imageNamed:@"job-annotation-icon3.png" ];
     
     UIButton *showDirectionsButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
     [showDirectionsButton addTarget:self action:@selector(showJobDirection) forControlEvents:UIControlEventTouchUpInside];
