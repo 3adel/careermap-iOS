@@ -22,7 +22,8 @@
 @synthesize refreshControl;
 @synthesize userLocation;
 @synthesize jobsArray;
-@synthesize jobsArrayWithUsersVotes;
+@synthesize jobsArrayWithUsersVotesVolatile;
+@synthesize jobsArrayWithUsersVotesStable;
 @synthesize formatter;
 //@synthesize locationManager;
 
@@ -205,6 +206,9 @@
 
 - (void) retrieveFromParse {
     
+    NSLog(@"Retrive from parse called");
+    
+    
     //query #1 for jobs
     NSPredicate *predicate = [NSPredicate predicateWithFormat:
                               @"voteCount >=-4"];
@@ -226,7 +230,7 @@
     //[votedQuery whereKey:@"jobVotedUp" equalTo:];
 
 
-    jobsArrayWithUsersVotes = [[NSMutableArray alloc] init];
+    jobsArrayWithUsersVotesVolatile= [[NSMutableArray alloc] init];
 
     
     // query.cachePolicy = kPFCachePolicyCacheThenNetwork;
@@ -247,7 +251,7 @@
                // NSLog(@"Title # %ld: %@, votedUp = %@",count,[i objectForKey:@"title"], [i objectForKey:@"currentUserVotedUpThisJob"]);
               //  NSLog(@"Title # %ld: %@, votedUp = %@",count,[i objectForKey:@"title"], [i objectForKey:@"currentUserVotedUpThisJob"]);
 
-                [jobsArrayWithUsersVotes addObject:i];
+                [jobsArrayWithUsersVotesVolatile addObject:i];
         
                 
                 
@@ -268,7 +272,7 @@
                  
                      CLPlacemark *placemark = [placemarks lastObject];
                      if ([[placemarks lastObject] locality] != nil ) {
-                         [(PFObject *)[jobsArrayWithUsersVotes objectAtIndex:count] setObject:[placemark locality] forKey:@"area"];
+                         [(PFObject *)[jobsArrayWithUsersVotesVolatile objectAtIndex:count] setObject:[placemark locality] forKey:@"area"];
                          NSLog(@"%@", [placemark locality]);
                          //  NSLog(@"%@", [placemark addressDictionary[@"FormattedAddressLines"]);
                          
@@ -277,13 +281,13 @@
                          NSArray *lines = placemark.addressDictionary[ @"FormattedAddressLines"];
                          NSString *addressString = [lines componentsJoinedByString:@"\n"];
                          
-                         [(PFObject *)[jobsArrayWithUsersVotes objectAtIndex:count] setObject:addressString forKey:@"addressLine"];
+                         [(PFObject *)[jobsArrayWithUsersVotesVolatile objectAtIndex:count] setObject:addressString forKey:@"addressLine"];
                          NSLog(@"Address: %@", addressString);
                          
                          
                      }
                      else{
-                         [(PFObject *)[jobsArrayWithUsersVotes objectAtIndex:count] setObject:@"N/A" forKey:@"area"];
+                         [(PFObject *)[jobsArrayWithUsersVotesVolatile objectAtIndex:count] setObject:@"N/A" forKey:@"area"];
                          
                      }
                      
@@ -324,7 +328,7 @@
                             
                             
                            // NSLog(@" #%ld: object found VOTED UP", count);
-                            [(PFObject *)[jobsArrayWithUsersVotes objectAtIndex:count] setObject:@"1" forKey:@"currentUserVotedUpThisJob"];
+                            [(PFObject *)[jobsArrayWithUsersVotesVolatile objectAtIndex:count] setObject:@"1" forKey:@"currentUserVotedUpThisJob"];
                            // NSLog(@"1: %@", [i objectForKey:@"title"]);
 
                             
@@ -341,7 +345,7 @@
                         else{
                             //NSLog(@" #%ld: object NOT found VOTED UP", count);
 
-                            [(PFObject *)[jobsArrayWithUsersVotes objectAtIndex:count] setObject:@"0" forKey:@"currentUserVotedUpThisJob"];
+                            [(PFObject *)[jobsArrayWithUsersVotesVolatile objectAtIndex:count] setObject:@"0" forKey:@"currentUserVotedUpThisJob"];
                            // NSLog(@"0: %@", [i objectForKey:@"title"]);
                            // [self.jobTable reloadData];
 
@@ -395,7 +399,7 @@
                             
                             
                           //  NSLog(@" #%ld: object found VOTED down", count);
-                            [(PFObject *)[jobsArrayWithUsersVotes objectAtIndex:count] setObject:@"1" forKey:@"currentUserVotedDownThisJob"];
+                            [(PFObject *)[jobsArrayWithUsersVotesVolatile objectAtIndex:count] setObject:@"1" forKey:@"currentUserVotedDownThisJob"];
                             // NSLog(@"1: %@", [i objectForKey:@"title"]);
                             
                             
@@ -411,7 +415,7 @@
                         else{
                           //  NSLog(@" #%ld: object NOT found VOTED Down", count);
                             
-                            [(PFObject *)[jobsArrayWithUsersVotes objectAtIndex:count] setObject:@"0" forKey:@"currentUserVotedDownThisJob"];
+                            [(PFObject *)[jobsArrayWithUsersVotesVolatile objectAtIndex:count] setObject:@"0" forKey:@"currentUserVotedDownThisJob"];
                             // NSLog(@"0: %@", [i objectForKey:@"title"]);
                             // [self.jobTable reloadData];
                             
@@ -484,6 +488,8 @@
             
             
         }
+        //this will guarantee a stable index for the jobs table view. 
+        jobsArrayWithUsersVotesStable = [[NSMutableArray alloc] initWithArray:jobsArrayWithUsersVotesVolatile];
         [self.jobTable reloadData];
         
         
@@ -632,7 +638,7 @@
     
     
     //cell.accessoryType = UITableViewCellAccessoryNone;
-    PFObject *tempObject = [jobsArrayWithUsersVotes objectAtIndex:indexPath.row];
+    PFObject *tempObject = [jobsArrayWithUsersVotesStable objectAtIndex:indexPath.row];
     cell.jobTitleLabel.text = [tempObject objectForKey:@"title"];
    // NSLog(@"%@",[tempObject objectForKey:@"currentUserVotedUpThisJob"]);
 
@@ -1004,7 +1010,7 @@
 
 - (IBAction)jobVoteDownPressed:(UIButton *)sender {
     
-    PFObject *tempObject = [jobsArrayWithUsersVotes objectAtIndex:sender.tag];
+    PFObject *tempObject = [jobsArrayWithUsersVotesVolatile objectAtIndex:sender.tag];
     // NSLog(@"%@Jobs array", jobsArray);
     //if the user already voted up, mark upvote button as selected
     PFQuery *votedQuery = [PFQuery queryWithClassName:@"_User"];
@@ -1037,7 +1043,7 @@
                 if ([[object objectForKey:@"jobVotedUp"] containsObject:tempObject.objectId]) {
                     [tempObject incrementKey:@"voteCount" byAmount:[NSNumber numberWithInteger:-1]];
                     [[PFUser currentUser] removeObject:tempObject.objectId forKey:@"jobVotedUp"];
-                    [(PFObject *)[jobsArrayWithUsersVotes objectAtIndex:sender.tag] setObject:@"0" forKey:@"currentUserVotedUpThisJob"];
+                    [(PFObject *)[jobsArrayWithUsersVotesVolatile objectAtIndex:sender.tag] setObject:@"0" forKey:@"currentUserVotedUpThisJob"];
 
                 }
                 
@@ -1054,7 +1060,7 @@
                             if (!error) {
                                 
                                 //don't forget to update the main array.
-                                [(PFObject *)[jobsArrayWithUsersVotes objectAtIndex:sender.tag] setObject:@"1" forKey:@"currentUserVotedDownThisJob"];
+                                [(PFObject *)[jobsArrayWithUsersVotesVolatile objectAtIndex:sender.tag] setObject:@"1" forKey:@"currentUserVotedDownThisJob"];
                               
                                 
                                 
@@ -1111,7 +1117,7 @@
                             if (!error) {
                                 
                                 //don't forget to update the main array.
-                                [(PFObject *)[jobsArrayWithUsersVotes objectAtIndex:sender.tag] setObject:@"0" forKey:@"currentUserVotedDownThisJob"];
+                                [(PFObject *)[jobsArrayWithUsersVotesVolatile objectAtIndex:sender.tag] setObject:@"0" forKey:@"currentUserVotedDownThisJob"];
                                 
                                 
                                 
@@ -1172,7 +1178,7 @@
 - (IBAction)jobVoteUpPressedV2:(UIButton *)sender {
     
     
-    PFObject *tempObject = [jobsArrayWithUsersVotes objectAtIndex:sender.tag];
+    PFObject *tempObject = [jobsArrayWithUsersVotesVolatile objectAtIndex:sender.tag];
     // NSLog(@"%@Jobs array", jobsArray);
     //if the user already voted up, mark upvote button as selected
     PFQuery *votedQuery = [PFQuery queryWithClassName:@"_User"];
@@ -1210,7 +1216,7 @@
                 if ([[object objectForKey:@"jobVotedDown"] containsObject:tempObject.objectId]) {
                     [tempObject incrementKey:@"voteCount" byAmount:[NSNumber numberWithInteger:1]];
                     [[PFUser currentUser] removeObject:tempObject.objectId forKey:@"jobVotedDown"];
-                    [(PFObject *)[jobsArrayWithUsersVotes objectAtIndex:sender.tag] setObject:@"0" forKey:@"currentUserVotedDownThisJob"];
+                    [(PFObject *)[jobsArrayWithUsersVotesVolatile objectAtIndex:sender.tag] setObject:@"0" forKey:@"currentUserVotedDownThisJob"];
                     
                 }
                 
@@ -1227,7 +1233,7 @@
                             if (!error) {
                                 
                                 //don't forget to update the main array.
-                                [(PFObject *)[jobsArrayWithUsersVotes objectAtIndex:sender.tag] setObject:@"1" forKey:@"currentUserVotedUpThisJob"];
+                                [(PFObject *)[jobsArrayWithUsersVotesVolatile objectAtIndex:sender.tag] setObject:@"1" forKey:@"currentUserVotedUpThisJob"];
                                 
                                 
                                 
@@ -1286,7 +1292,7 @@
                             if (!error) {
                                 
                                 //don't forget to update the main array.
-                                [(PFObject *)[jobsArrayWithUsersVotes objectAtIndex:sender.tag] setObject:@"0" forKey:@"currentUserVotedUpThisJob"];
+                                [(PFObject *)[jobsArrayWithUsersVotesVolatile objectAtIndex:sender.tag] setObject:@"0" forKey:@"currentUserVotedUpThisJob"];
                                 
                                 
                                 
@@ -1367,7 +1373,7 @@
     if ([segue.identifier isEqualToString:@"showJob"]) {
         
         NSIndexPath *indexPath = [self.jobTable indexPathForSelectedRow];
-        PFObject *tempObject = [jobsArrayWithUsersVotes objectAtIndex:indexPath.row];
+        PFObject *tempObject = [jobsArrayWithUsersVotesVolatile objectAtIndex:indexPath.row];
         
         JobDetailsViewController *destViewController = segue.destinationViewController;
        // Recipe *recipe = [recipes objectAtIndex:indexPath.row];
@@ -1398,6 +1404,8 @@
 -(void) reloadData{
     
     // Reload table data
+   // self.jobsArray =nil;
+    //self.jobsArrayWithUsersVotes = nil;
     [self retrieveFromParse];
     //[self.jobTable reloadData];
     NSLog(@"rolad data called");
