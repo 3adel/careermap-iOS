@@ -41,7 +41,7 @@
     self.jobEducationTextView.text = self.jobEducation;
     
     self.jobMap.delegate = self;
-    self.jobMap.mapType = MKMapTypeHybrid;
+    self.jobMap.mapType = MKMapTypeStandard;
   //  jobTitleLabel.lineBreakMode= NSLineBreakByWordWrapping;
    // jobTitleLabel.numberOfLines = 0;
     
@@ -165,6 +165,7 @@
                       //          animated:YES];
     
     NSLog(@"map annotation selected selected");
+
 }
 
 
@@ -190,7 +191,25 @@
 - (void) showJobDirection{
     
     NSLog(@"show me job directions please");
+        [self performSegueWithIdentifier:@"jobMap" sender:self];
 }
+
+
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"jobMap"]) {
+        
+
+        JobMapViewController *destViewController = segue.destinationViewController;
+        destViewController.jobLocation = self.jobLocation;
+        
+        NSLog(@"go to map");
+    }
+}
+
+
+
+
 
 
 

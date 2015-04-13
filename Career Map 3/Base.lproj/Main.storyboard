@@ -277,11 +277,73 @@
                         <outlet property="jobSkillsView" destination="cVp-jb-txK" id="dKf-Qc-qLb"/>
                         <outlet property="jobTitleTextView" destination="ol1-9c-Ylq" id="EPd-kX-Ifu"/>
                         <outlet property="jobsSkillsTextView" destination="PAy-ON-HxY" id="8AI-8a-jnz"/>
+                        <segue destination="f8E-eG-jBp" kind="modal" identifier="jobMap" modalTransitionStyle="coverVertical" id="jiS-YI-dCJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mba-f7-lR5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1586" y="-223"/>
+            <point key="canvasLocation" x="1584" y="-207"/>
+        </scene>
+        <!--Job Map View Controller-->
+        <scene sceneID="7bk-RI-1M0">
+            <objects>
+                <viewController id="f8E-eG-jBp" customClass="JobMapViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="b2m-M3-MOU"/>
+                        <viewControllerLayoutGuide type="bottom" id="1rm-DZ-kgc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="o9s-KO-AsH">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xvc-lO-91h">
+                                <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                <items>
+                                    <navigationItem id="O97-VM-5gc">
+                                        <nil key="title"/>
+                                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="au7-N3-buz">
+                                            <rect key="frame" x="60" y="7" width="200" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <segments>
+                                                <segment title="Standart"/>
+                                                <segment title="Hybrid"/>
+                                                <segment title="Satellite"/>
+                                            </segments>
+                                            <connections>
+                                                <action selector="selectMapTypePressed:" destination="f8E-eG-jBp" eventType="valueChanged" id="jag-ll-O35"/>
+                                            </connections>
+                                        </segmentedControl>
+                                        <barButtonItem key="rightBarButtonItem" title="[X]" id="hvE-F9-C7O">
+                                            <connections>
+                                                <action selector="closeMapButtonPressed:" destination="f8E-eG-jBp" id="zWr-ZR-4o0"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IB0-Zi-9M6">
+                                <rect key="frame" x="0.0" y="73" width="320" height="495"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="IB0-Zi-9M6" firstAttribute="leading" secondItem="o9s-KO-AsH" secondAttribute="leadingMargin" constant="-16" id="B9b-f4-7Dl"/>
+                            <constraint firstItem="IB0-Zi-9M6" firstAttribute="top" secondItem="b2m-M3-MOU" secondAttribute="bottom" constant="53" id="OMb-7N-J7N"/>
+                            <constraint firstItem="IB0-Zi-9M6" firstAttribute="top" secondItem="Xvc-lO-91h" secondAttribute="bottom" constant="1" id="dui-KQ-uss"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="IB0-Zi-9M6" secondAttribute="trailing" constant="-16" id="fDI-3Q-tpG"/>
+                            <constraint firstItem="Xvc-lO-91h" firstAttribute="centerX" secondItem="IB0-Zi-9M6" secondAttribute="centerX" id="hU0-5L-SWa"/>
+                            <constraint firstItem="1rm-DZ-kgc" firstAttribute="top" secondItem="IB0-Zi-9M6" secondAttribute="bottom" id="oxA-2I-uX4"/>
+                            <constraint firstItem="Xvc-lO-91h" firstAttribute="leading" secondItem="o9s-KO-AsH" secondAttribute="leading" id="tUc-Q0-iAb"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="jobMap" destination="IB0-Zi-9M6" id="gnF-4T-Yng"/>
+                        <outlet property="selectMapTypeSegmentedControl" destination="au7-N3-buz" id="sH8-CF-cNv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Eja-eb-RF6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2047" y="-207"/>
         </scene>
         <!--Settings-->
         <scene sceneID="kcf-7j-AcG">

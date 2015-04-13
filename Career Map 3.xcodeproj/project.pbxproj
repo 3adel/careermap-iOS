@@ -18,6 +18,7 @@
 		F535AA721AD449BA0091E70B /* JobDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F535AA711AD449BA0091E70B /* JobDetailsViewController.m */; };
 		F535AADA1AD947BF0091E70B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F535AAD91AD947BF0091E70B /* MapKit.framework */; };
 		F535AAE21ADA63EC0091E70B /* job-annotation-icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F535AAE11ADA63EC0091E70B /* job-annotation-icon@3x.png */; };
+		F535AAE61ADC38580091E70B /* JobMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F535AAE51ADC38580091E70B /* JobMapViewController.m */; };
 		F59758AF1AC159B40099A978 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F59758AE1AC159B40099A978 /* main.m */; };
 		F59758B21AC159B40099A978 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F59758B11AC159B40099A978 /* AppDelegate.m */; };
 		F59758BB1AC159B40099A978 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F59758B91AC159B40099A978 /* Main.storyboard */; };
@@ -77,6 +78,8 @@
 		F535AA711AD449BA0091E70B /* JobDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobDetailsViewController.m; sourceTree = "<group>"; };
 		F535AAD91AD947BF0091E70B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		F535AAE11ADA63EC0091E70B /* job-annotation-icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "job-annotation-icon@3x.png"; sourceTree = "<group>"; };
+		F535AAE41ADC38580091E70B /* JobMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JobMapViewController.h; path = ../JobMapViewController.h; sourceTree = "<group>"; };
+		F535AAE51ADC38580091E70B /* JobMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JobMapViewController.m; path = ../JobMapViewController.m; sourceTree = "<group>"; };
 		F59758A91AC159B40099A978 /* Career Map 3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Career Map 3.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F59758AD1AC159B40099A978 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F59758AE1AC159B40099A978 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -210,8 +213,6 @@
 				F597592E1AC1D7F00099A978 /* JobListViewController.m */,
 				F59759331AC1DC7D0099A978 /* JobCustomTableViewCell.h */,
 				F59759341AC1DC7D0099A978 /* JobCustomTableViewCell.m */,
-				F535AA701AD449BA0091E70B /* JobDetailsViewController.h */,
-				F535AA711AD449BA0091E70B /* JobDetailsViewController.m */,
 			);
 			name = "Job List";
 			sourceTree = "<group>";
@@ -231,6 +232,17 @@
 				F59759301AC1DBDF0099A978 /* Job.h */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		F535AAE31ADC381B0091E70B /* Job Details */ = {
+			isa = PBXGroup;
+			children = (
+				F535AA701AD449BA0091E70B /* JobDetailsViewController.h */,
+				F535AA711AD449BA0091E70B /* JobDetailsViewController.m */,
+				F535AAE41ADC38580091E70B /* JobMapViewController.h */,
+				F535AAE51ADC38580091E70B /* JobMapViewController.m */,
+			);
+			name = "Job Details";
 			sourceTree = "<group>";
 		};
 		F59758A01AC159B40099A978 = {
@@ -259,6 +271,7 @@
 				F59758B01AC159B40099A978 /* AppDelegate.h */,
 				F59758B91AC159B40099A978 /* Main.storyboard */,
 				F535AA6D1AD438C80091E70B /* Job List */,
+				F535AAE31ADC381B0091E70B /* Job Details */,
 				F535AA6C1AD438710091E70B /* Login-Registration */,
 				F535AA6B1AD438440091E70B /* Welcome Section */,
 				F535AA6A1AD4380A0091E70B /* Settings */,
@@ -440,6 +453,7 @@
 				F59758B21AC159B40099A978 /* AppDelegate.m in Sources */,
 				F5BAC3D11AC85BB7003E899C /* LoginViewController.m in Sources */,
 				F535AA721AD449BA0091E70B /* JobDetailsViewController.m in Sources */,
+				F535AAE61ADC38580091E70B /* JobMapViewController.m in Sources */,
 				F59758AF1AC159B40099A978 /* main.m in Sources */,
 				F535AA671AD3CE7E0091E70B /* WelcomeAppChoiceViewController.m in Sources */,
 				F597592F1AC1D7F00099A978 /* JobListViewController.m in Sources */,

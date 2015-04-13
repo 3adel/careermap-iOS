@@ -241,14 +241,13 @@
             NSLog(@"%lu", (unsigned long)jobsArray.count);
             
       
-            //Moved inside the block. this will prevent the a crash at job list tableview
+            //Moved inside the block. This will prevent the a crash at job list tableview
             jobsArrayWithUsersVotesVolatile= [[NSMutableArray alloc] init];
 
             
             //init jobsVolatileArray with nsnulls
             
-            
-            
+
             
             NSUInteger count = 0;
             for (PFObject *i in jobsArray) {
@@ -1422,6 +1421,10 @@
     
     
 }
+
+
+
+
 
 
 
