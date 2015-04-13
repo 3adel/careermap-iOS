@@ -230,7 +230,6 @@
     //[votedQuery whereKey:@"jobVotedUp" equalTo:];
 
 
-    jobsArrayWithUsersVotesVolatile= [[NSMutableArray alloc] init];
 
     
     // query.cachePolicy = kPFCachePolicyCacheThenNetwork;
@@ -239,7 +238,16 @@
     [retrieveJobs findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             jobsArray = [[NSMutableArray alloc] initWithArray:objects];
-             // NSLog(@"%@", jobsArray);
+            NSLog(@"%lu", (unsigned long)jobsArray.count);
+            
+      
+            //Moved inside the block. this will prevent the a crash at job list tableview
+            jobsArrayWithUsersVotesVolatile= [[NSMutableArray alloc] init];
+
+            
+            //init jobsVolatileArray with nsnulls
+            
+            
             
             
             NSUInteger count = 0;
@@ -273,7 +281,7 @@
                      CLPlacemark *placemark = [placemarks lastObject];
                      if ([[placemarks lastObject] locality] != nil ) {
                          [(PFObject *)[jobsArrayWithUsersVotesVolatile objectAtIndex:count] setObject:[placemark locality] forKey:@"area"];
-                         NSLog(@"%@", [placemark locality]);
+                         NSLog(@"%lu: LOCALITY: %@",(unsigned long)count, [placemark locality]);
                          //  NSLog(@"%@", [placemark addressDictionary[@"FormattedAddressLines"]);
                          
                          
@@ -282,7 +290,7 @@
                          NSString *addressString = [lines componentsJoinedByString:@"\n"];
                          
                          [(PFObject *)[jobsArrayWithUsersVotesVolatile objectAtIndex:count] setObject:addressString forKey:@"addressLine"];
-                         NSLog(@"Address: %@", addressString);
+                         //NSLog(@"Address: %@", addressString);
                          
                          
                      }
@@ -485,11 +493,11 @@
           //  NSLog(@"%@", jobsArray);
 
 
-            
+            //this will guarantee a stable index for the jobs table view.
+            jobsArrayWithUsersVotesStable = [[NSMutableArray alloc] initWithArray:jobsArrayWithUsersVotesVolatile];
             
         }
-        //this will guarantee a stable index for the jobs table view. 
-        jobsArrayWithUsersVotesStable = [[NSMutableArray alloc] initWithArray:jobsArrayWithUsersVotesVolatile];
+        
         [self.jobTable reloadData];
         
         
@@ -738,7 +746,7 @@
   
     
     //set job area
-    NSLog(@"Area of job = %@", [tempObject objectForKey:@"area"]);
+   // NSLog(@"Area of job = %@", [tempObject objectForKey:@"area"]);
     cell.jobArea.text =[tempObject objectForKey:@"area"];
     
     //if the user already voted up, mark upvote button as selected
@@ -972,12 +980,12 @@
 
 - (PFGeoPoint *) getUserLocation{
     
-    NSLog(@"running user location");
+  //  NSLog(@"running user location");
    //PFGeoPoint *i = [[PFGeoPoint alloc] init];
     //retrieve user location
     [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *geoPoint, NSError *error) {
         if (!error) {
-            NSLog(@"LAT: %f, LONG: %f", geoPoint.latitude, geoPoint.longitude);
+           // NSLog(@"LAT: %f, LONG: %f", geoPoint.latitude, geoPoint.longitude);
             
           //  PFQuery *query = [PFQuery queryWithClassName:@"Careers"];
         
