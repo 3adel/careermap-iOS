@@ -168,7 +168,7 @@
     [messageQuery includeKey:@"messageFrom"];
     [messageQuery includeKey:@"messageTo"];
    //cell.jobEmployer.text=[tempObject[@"employer"] objectForKey:@"employerName"];
-    [messageQuery orderByDescending:@"createdAt"];
+    [messageQuery orderByAscending:@"createdAt"];
     [messageQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         
         if (!error) {
@@ -178,8 +178,9 @@
             
             for (PFObject *message in objects) {
                 // NSLog(@"%@", message[@"messageContent"]);
-                NSLog(@"From: %@: %@",[message[@"messageFrom"] objectForKey:@"username"], message[@"messageContent"]);
-                [self.messagesArray addObject:message[@"messageContent"]];
+                NSLog(@"%@ %@: %@",message.createdAt,[message[@"messageFrom"] objectForKey:@"username"], message[@"messageContent"]);
+              //  NSLog(@"%@", message);
+             [self.messagesArray addObject:message.createdAt.description];
                 
             }
         }
