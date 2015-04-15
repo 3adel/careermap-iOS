@@ -13,31 +13,40 @@
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="q3r-8C-b1s" id="UAu-fb-2Wi">
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="messageContent" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SkM-4S-Wex">
-                        <rect key="frame" x="8" y="46" width="130.5" height="20.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Author" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ty-ix-qEP">
-                        <rect key="frame" x="8" y="12" width="38" height="14.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ty-ix-qEP">
+                        <rect key="frame" x="8" y="13" width="100" height="14.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="100" id="EZs-T4-Lnl"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Date Posted" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vfL-Gx-X8m">
-                        <rect key="frame" x="174" y="12" width="64" height="13.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date Posted" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vfL-Gx-X8m">
+                        <rect key="frame" x="128" y="13.5" width="64" height="13.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7o3-LA-nYR">
+                        <rect key="frame" x="8" y="32.5" width="304" height="159"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    </textView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="6ty-ix-qEP" firstAttribute="top" secondItem="UAu-fb-2Wi" secondAttribute="topMargin" constant="5" id="88h-1W-ITA"/>
                     <constraint firstItem="6ty-ix-qEP" firstAttribute="leading" secondItem="vfL-Gx-X8m" secondAttribute="leading" id="Fxi-FH-ZAr"/>
-                    <constraint firstItem="SkM-4S-Wex" firstAttribute="leading" secondItem="vfL-Gx-X8m" secondAttribute="leading" id="S8v-86-r9R"/>
-                    <constraint firstItem="SkM-4S-Wex" firstAttribute="top" secondItem="vfL-Gx-X8m" secondAttribute="bottom" constant="5" id="eRV-H0-XrM"/>
+                    <constraint firstItem="7o3-LA-nYR" firstAttribute="leading" secondItem="6ty-ix-qEP" secondAttribute="leading" id="OjE-ep-4gc"/>
+                    <constraint firstItem="6ty-ix-qEP" firstAttribute="centerY" secondItem="vfL-Gx-X8m" secondAttribute="centerY" id="Owp-Uv-86o"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="7o3-LA-nYR" secondAttribute="trailing" id="jrp-QJ-fEh"/>
+                    <constraint firstItem="6ty-ix-qEP" firstAttribute="leading" secondItem="UAu-fb-2Wi" secondAttribute="leadingMargin" id="kou-l4-K3n"/>
                     <constraint firstItem="6ty-ix-qEP" firstAttribute="leading" secondItem="UAu-fb-2Wi" secondAttribute="leadingMargin" id="nFJ-6Z-brs"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="7o3-LA-nYR" secondAttribute="bottom" id="oAX-b2-o7Y"/>
+                    <constraint firstItem="6ty-ix-qEP" firstAttribute="top" secondItem="UAu-fb-2Wi" secondAttribute="topMargin" constant="5" id="p5s-Qd-3jQ"/>
+                    <constraint firstItem="vfL-Gx-X8m" firstAttribute="leading" secondItem="6ty-ix-qEP" secondAttribute="trailing" constant="20" id="vWD-Jr-X0P"/>
+                    <constraint firstItem="7o3-LA-nYR" firstAttribute="top" secondItem="6ty-ix-qEP" secondAttribute="bottom" constant="5" id="zWs-9r-jcx"/>
                     <constraint firstItem="vfL-Gx-X8m" firstAttribute="top" secondItem="6ty-ix-qEP" secondAttribute="bottom" constant="5" id="zcx-wR-vYh"/>
                 </constraints>
                 <variation key="default">
@@ -46,17 +55,15 @@
                         <exclude reference="Fxi-FH-ZAr"/>
                         <exclude reference="nFJ-6Z-brs"/>
                         <exclude reference="zcx-wR-vYh"/>
-                        <exclude reference="S8v-86-r9R"/>
-                        <exclude reference="eRV-H0-XrM"/>
                     </mask>
                 </variation>
             </tableViewCellContentView>
             <connections>
                 <outlet property="messageAuthorLable" destination="6ty-ix-qEP" id="N1w-MB-N24"/>
-                <outlet property="messageContentLabel" destination="SkM-4S-Wex" id="IEa-HB-BEk"/>
+                <outlet property="messageContentTextView" destination="7o3-LA-nYR" id="ofz-g5-2FW"/>
                 <outlet property="messagePostDateLabel" destination="vfL-Gx-X8m" id="zRn-Sz-c2C"/>
             </connections>
-            <point key="canvasLocation" x="202" y="231.5"/>
+            <point key="canvasLocation" x="202" y="231"/>
         </tableViewCell>
     </objects>
 </document>
