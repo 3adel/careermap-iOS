@@ -9,29 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Career Map 3/JobListViewController.m"
-            timestampString = "450639146.506833"
+            filePath = "JobChatViewController.m"
+            timestampString = "450824869.281251"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "283"
-            endingLineNumber = "283"
-            landmarkName = "-retrieveFromParse"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Career Map 3/JobListViewController.m"
-            timestampString = "450639146.506833"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "287"
-            endingLineNumber = "287"
-            landmarkName = "-retrieveFromParse"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

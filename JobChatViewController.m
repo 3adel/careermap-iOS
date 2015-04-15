@@ -7,6 +7,7 @@
 //
 
 #import "JobChatViewController.h"
+#import "JobChatMessageCell.h"
 
 @interface JobChatViewController ()
 
@@ -26,7 +27,7 @@
     self.messageTextField.delegate =self;
     
     _messagesArray = [[NSMutableArray alloc] init];
-    [self.messagesArray addObject:@"test"];
+    //[self.messagesArray addObject:@"test"];
    //  NSLog(@"Array length = %d", _messagesArray.count);
     // Do any additional setup after loading the view from its nib.
     
@@ -60,7 +61,7 @@
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    
+    /*
     static NSString *CellIdentifier = @"SimpleTableItem";
 
     
@@ -71,12 +72,56 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
                                       reuseIdentifier:CellIdentifier];
+    }*/
+    PFObject *chatMessageObject = [self.messagesArray objectAtIndex:indexPath.row];
+
+    
+   // PFObject *tempObject = [jobsArrayWithUsersVotesStable objectAtIndex:indexPath.row];
+ //   cell.jobTitleLabel.text = [tempObject objectForKey:@"title"];
+    // NSLog(@"%@",[tempObject objectForKey:@"currentUserVotedUpThisJob"]);
+    
+    
+  //  NSLog(@"temp object: %@", tempObject);
+    
+    
+    
+    
+    NSLog(@"%@",chatMessageObject.createdAt.description);
+    
+    
+    static NSString *simpleTableIdentifier = @"JobChatMessageCell";
+    
+    JobChatMessageCell *cell = (JobChatMessageCell *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+    if (cell == nil)
+    {
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"JobChatMessageCell" owner:self options:nil];
+        cell = [nib objectAtIndex:0];
     }
+
+  //  cell.messageContentLabel.text = [_messagesArray objectAtIndex:indexPath.row];
+    
+  //  NSLog(@"%@", chatMessageObject);
     
     
    // NSLog(@"Array length = %d", _messagesArray.count);
-    cell.textLabel.text = [_messagesArray objectAtIndex:indexPath.row];
-
+  //  cell.messageContentLabel.text = [[(PFObject *)[_messagesArray objectAtIndex:indexPath] objectForKey:@"messageContent"];ject
+    
+    cell.messageContentLabel.text = [chatMessageObject objectForKey:@"messageContent"];
+    cell.messageAuthorLable.text = [[chatMessageObject objectForKey:@"messageFrom"] objectForKey:@"username"];
+    cell.messagePostDateLabel.text = chatMessageObject.createdAt.description;
+   // NSLog(@"%@", chatMessageObject);
+    
+  //  NSLog(@"%@", [[_messagesArray objectAtIndex:indexPath.row] objectForKey:@"messageContent"]);
+    
+   // NSLog(@"%@", _messagesArray);
+    //[tempObject[@"employer"] objectForKey:@"employerName"];
+                                     
+                                     
+   // cell.messageContentLabel.text = [(pfobject *)[self.messagesArray ]]
+    
+  //  [object objectForKey:@"jobVotedUp"]);
+    
+    
     
     return cell;
     
@@ -176,11 +221,11 @@
             self.messagesArray = [NSMutableArray new];
             
             
-            for (PFObject *message in objects) {
+            for (id message in objects) {
                 // NSLog(@"%@", message[@"messageContent"]);
-                NSLog(@"%@ %@: %@",message.createdAt,[message[@"messageFrom"] objectForKey:@"username"], message[@"messageContent"]);
-              //  NSLog(@"%@", message);
-             [self.messagesArray addObject:message.createdAt.description];
+               // NSLog(@"%@ %@: %@",message.createdAt,[message[@"messageFrom"] objectForKey:@"username"], message[@"messageContent"]);
+           //  NSLog(@"%@", message);
+             [self.messagesArray addObject:message ];
                 
             }
         }
@@ -191,6 +236,9 @@
         }
         
         //always update ui on main thread
+        
+      //  [self.jobChatTable reloadData];
+        
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.jobChatTable reloadData];
         });

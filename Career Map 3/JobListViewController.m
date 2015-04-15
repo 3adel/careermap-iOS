@@ -280,7 +280,7 @@
                      CLPlacemark *placemark = [placemarks lastObject];
                      if ([[placemarks lastObject] locality] != nil ) {
                          [(PFObject *)[jobsArrayWithUsersVotesVolatile objectAtIndex:count] setObject:[placemark locality] forKey:@"area"];
-                       //  NSLog(@"%lu: LOCALITY: %@",(unsigned long)count, [placemark locality]);
+                         NSLog(@"%lu: LOCALITY: %@",(unsigned long)count, [placemark locality]);
                          //  NSLog(@"%@", [placemark addressDictionary[@"FormattedAddressLines"]);
                          
                          
@@ -650,7 +650,7 @@
    // NSLog(@"%@",[tempObject objectForKey:@"currentUserVotedUpThisJob"]);
 
     
-    
+    NSLog(@"temp object: %@", tempObject);
     
     
     formatter = [[NSDateFormatter alloc] init];

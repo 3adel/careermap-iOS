@@ -23,6 +23,8 @@
 		F535AAEA1ADC66920091E70B /* job-annotation-icon3@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F535AAE91ADC66920091E70B /* job-annotation-icon3@3x.png */; };
 		F535ABC41ADE52CF0091E70B /* JobChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F535ABC21ADE52CF0091E70B /* JobChatViewController.m */; };
 		F535ABC51ADE52CF0091E70B /* JobChatView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F535ABC31ADE52CF0091E70B /* JobChatView.xib */; };
+		F535AC4E1ADEC9860091E70B /* JobChatMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F535AC4D1ADEC9860091E70B /* JobChatMessageCell.xib */; };
+		F535AC511ADEC9B50091E70B /* JobChatMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F535AC501ADEC9B50091E70B /* JobChatMessageCell.m */; };
 		F59758AF1AC159B40099A978 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F59758AE1AC159B40099A978 /* main.m */; };
 		F59758B21AC159B40099A978 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F59758B11AC159B40099A978 /* AppDelegate.m */; };
 		F59758BB1AC159B40099A978 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F59758B91AC159B40099A978 /* Main.storyboard */; };
@@ -89,6 +91,9 @@
 		F535ABC11ADE52CF0091E70B /* JobChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobChatViewController.h; sourceTree = "<group>"; };
 		F535ABC21ADE52CF0091E70B /* JobChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobChatViewController.m; sourceTree = "<group>"; };
 		F535ABC31ADE52CF0091E70B /* JobChatView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JobChatView.xib; sourceTree = "<group>"; };
+		F535AC4D1ADEC9860091E70B /* JobChatMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JobChatMessageCell.xib; sourceTree = "<group>"; };
+		F535AC4F1ADEC9B50091E70B /* JobChatMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobChatMessageCell.h; sourceTree = "<group>"; };
+		F535AC501ADEC9B50091E70B /* JobChatMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobChatMessageCell.m; sourceTree = "<group>"; };
 		F59758A91AC159B40099A978 /* Career Map 3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Career Map 3.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F59758AD1AC159B40099A978 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F59758AE1AC159B40099A978 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -266,6 +271,9 @@
 		F59758A01AC159B40099A978 = {
 			isa = PBXGroup;
 			children = (
+				F535AC4D1ADEC9860091E70B /* JobChatMessageCell.xib */,
+				F535AC4F1ADEC9B50091E70B /* JobChatMessageCell.h */,
+				F535AC501ADEC9B50091E70B /* JobChatMessageCell.m */,
 				F535ABC11ADE52CF0091E70B /* JobChatViewController.h */,
 				F535ABC21ADE52CF0091E70B /* JobChatViewController.m */,
 				F535ABC31ADE52CF0091E70B /* JobChatView.xib */,
@@ -453,6 +461,7 @@
 				F535ABC51ADE52CF0091E70B /* JobChatView.xib in Resources */,
 				F535AAE81ADC66240091E70B /* job-annotation-icon2@3x.png in Resources */,
 				F535AAE21ADA63EC0091E70B /* job-annotation-icon@3x.png in Resources */,
+				F535AC4E1ADEC9860091E70B /* JobChatMessageCell.xib in Resources */,
 				F50142DC1ACD19CD000DDBE3 /* JobVoteUp-selected@3x.png in Resources */,
 				F59758BD1AC159B40099A978 /* Images.xcassets in Resources */,
 			);
@@ -474,6 +483,7 @@
 			files = (
 				F535ABC41ADE52CF0091E70B /* JobChatViewController.m in Sources */,
 				F59759351AC1DC7D0099A978 /* JobCustomTableViewCell.m in Sources */,
+				F535AC511ADEC9B50091E70B /* JobChatMessageCell.m in Sources */,
 				F5BAC3D41AC875E5003E899C /* settingsViewController.m in Sources */,
 				F535A9A71AD06E500091E70B /* ExistingUserLoginViewController.m in Sources */,
 				F59758B21AC159B40099A978 /* AppDelegate.m in Sources */,
