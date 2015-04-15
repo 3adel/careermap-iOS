@@ -53,7 +53,7 @@
     
     int count =0;
     for (NSString *skill in self.jobRequiredSkills) {
-        NSLog(@"Job skills array =%@", skill);
+       // NSLog(@"Job skills array =%@", skill);
         
         //add skills to the skills view
         /*
@@ -99,7 +99,6 @@
     // Pass the selected object to the new view controller.
 }
 */
-
 
 
 - (void) zoomToJobLocation{
@@ -196,6 +195,8 @@
 
 
 
+
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"jobMap"]) {
         
@@ -208,6 +209,19 @@
 }
 
 
+//start chat with employer
+- (IBAction)chatWithEmployerButtonPressed:(UIButton *)sender {
+    
+    NSLog(@"Chat with employer button pressed");
+    
+    JobChatViewController  *jobChatScreen = [[JobChatViewController alloc] initWithNibName:@"JobChatView" bundle:nil];
+    /*
+    [self.tabBarController presentViewController:appChoice
+                                        animated:YES
+                                      completion:nil];*/
+    
+    [self presentViewController:jobChatScreen animated:YES completion:nil];
+}
 
 
 

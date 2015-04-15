@@ -21,6 +21,8 @@
 		F535AAE61ADC38580091E70B /* JobMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F535AAE51ADC38580091E70B /* JobMapViewController.m */; };
 		F535AAE81ADC66240091E70B /* job-annotation-icon2@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F535AAE71ADC66240091E70B /* job-annotation-icon2@3x.png */; };
 		F535AAEA1ADC66920091E70B /* job-annotation-icon3@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F535AAE91ADC66920091E70B /* job-annotation-icon3@3x.png */; };
+		F535ABC41ADE52CF0091E70B /* JobChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F535ABC21ADE52CF0091E70B /* JobChatViewController.m */; };
+		F535ABC51ADE52CF0091E70B /* JobChatView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F535ABC31ADE52CF0091E70B /* JobChatView.xib */; };
 		F59758AF1AC159B40099A978 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F59758AE1AC159B40099A978 /* main.m */; };
 		F59758B21AC159B40099A978 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F59758B11AC159B40099A978 /* AppDelegate.m */; };
 		F59758BB1AC159B40099A978 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F59758B91AC159B40099A978 /* Main.storyboard */; };
@@ -84,6 +86,9 @@
 		F535AAE51ADC38580091E70B /* JobMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JobMapViewController.m; path = ../JobMapViewController.m; sourceTree = "<group>"; };
 		F535AAE71ADC66240091E70B /* job-annotation-icon2@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "job-annotation-icon2@3x.png"; sourceTree = "<group>"; };
 		F535AAE91ADC66920091E70B /* job-annotation-icon3@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "job-annotation-icon3@3x.png"; sourceTree = "<group>"; };
+		F535ABC11ADE52CF0091E70B /* JobChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobChatViewController.h; sourceTree = "<group>"; };
+		F535ABC21ADE52CF0091E70B /* JobChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobChatViewController.m; sourceTree = "<group>"; };
+		F535ABC31ADE52CF0091E70B /* JobChatView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JobChatView.xib; sourceTree = "<group>"; };
 		F59758A91AC159B40099A978 /* Career Map 3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Career Map 3.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F59758AD1AC159B40099A978 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F59758AE1AC159B40099A978 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -251,9 +256,19 @@
 			name = "Job Details";
 			sourceTree = "<group>";
 		};
+		F535ABB61ADE49460091E70B /* Job Chat */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Job Chat";
+			sourceTree = "<group>";
+		};
 		F59758A01AC159B40099A978 = {
 			isa = PBXGroup;
 			children = (
+				F535ABC11ADE52CF0091E70B /* JobChatViewController.h */,
+				F535ABC21ADE52CF0091E70B /* JobChatViewController.m */,
+				F535ABC31ADE52CF0091E70B /* JobChatView.xib */,
 				F535AAD91AD947BF0091E70B /* MapKit.framework */,
 				F59758AB1AC159B40099A978 /* Career Map 3 */,
 				F59758C81AC159B40099A978 /* Career Map 3Tests */,
@@ -277,6 +292,7 @@
 				F59758B01AC159B40099A978 /* AppDelegate.h */,
 				F59758B91AC159B40099A978 /* Main.storyboard */,
 				F535AA6D1AD438C80091E70B /* Job List */,
+				F535ABB61ADE49460091E70B /* Job Chat */,
 				F535AAE31ADC381B0091E70B /* Job Details */,
 				F535AA6C1AD438710091E70B /* Login-Registration */,
 				F535AA6B1AD438440091E70B /* Welcome Section */,
@@ -434,6 +450,7 @@
 				F535AAEA1ADC66920091E70B /* job-annotation-icon3@3x.png in Resources */,
 				F535AA691AD401BA0091E70B /* myLocation.gpx in Resources */,
 				F50142DB1ACD19CD000DDBE3 /* JobVoteUp-no-selected@3x.png in Resources */,
+				F535ABC51ADE52CF0091E70B /* JobChatView.xib in Resources */,
 				F535AAE81ADC66240091E70B /* job-annotation-icon2@3x.png in Resources */,
 				F535AAE21ADA63EC0091E70B /* job-annotation-icon@3x.png in Resources */,
 				F50142DC1ACD19CD000DDBE3 /* JobVoteUp-selected@3x.png in Resources */,
@@ -455,6 +472,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F535ABC41ADE52CF0091E70B /* JobChatViewController.m in Sources */,
 				F59759351AC1DC7D0099A978 /* JobCustomTableViewCell.m in Sources */,
 				F5BAC3D41AC875E5003E899C /* settingsViewController.m in Sources */,
 				F535A9A71AD06E500091E70B /* ExistingUserLoginViewController.m in Sources */,

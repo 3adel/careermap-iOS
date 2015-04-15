@@ -10,7 +10,7 @@
 #import <MapKit/MapKit.h>
 #import <Parse/Parse.h>
 #import "JobMapViewController.h"
-
+#import "JobChatViewController.h"
 
 @interface JobDetailsViewController : UIViewController <MKMapViewDelegate,CLLocationManagerDelegate>
 
@@ -55,5 +55,7 @@
 //methods
 
 - (void) showJobDirection;
+
+- (IBAction)chatWithEmployerButtonPressed:(UIButton *)sender;
 
 @end
