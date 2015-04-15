@@ -15,6 +15,8 @@
 @implementation JobChatViewController 
 
 - (void)viewDidLoad {
+    
+    NSLog(@"job chat viewdidload called");
     [super viewDidLoad];
     self.jobChatTable.delegate =self;
     self.jobChatTable.dataSource =self;
@@ -102,6 +104,11 @@
     [self.messageTextField resignFirstResponder];
     
 
+}
+
+- (IBAction)closeJobChatButtonPressed:(UIBarButtonItem *)sender {
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 

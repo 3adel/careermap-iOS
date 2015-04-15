@@ -18,5 +18,6 @@
 @property (weak, nonatomic) IBOutlet UITableView *jobChatTable;
 @property (strong, nonatomic) NSMutableArray *messagesArray;
 - (IBAction)sendButtonPressed:(UIButton *)sender;
+- (IBAction)closeJobChatButtonPressed:(UIBarButtonItem *)sender;
 
 @end
