@@ -20,7 +20,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="trT-Vz-UHI">
-                    <rect key="frame" x="8" y="8" width="304" height="510"/>
+                    <rect key="frame" x="8" y="28" width="304" height="490"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NIA-Hp-y9m" userLabel="DockView">
@@ -59,7 +59,7 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="trT-Vz-UHI" firstAttribute="leading" secondItem="oLo-7F-q2H" secondAttribute="leadingMargin" id="7jF-Bg-G0c"/>
-                <constraint firstItem="trT-Vz-UHI" firstAttribute="top" secondItem="oLo-7F-q2H" secondAttribute="topMargin" id="X0g-vF-9fY"/>
+                <constraint firstItem="trT-Vz-UHI" firstAttribute="top" secondItem="oLo-7F-q2H" secondAttribute="topMargin" constant="20" id="X0g-vF-9fY"/>
                 <constraint firstAttribute="bottom" secondItem="NIA-Hp-y9m" secondAttribute="bottom" id="Z8y-v9-kAX"/>
                 <constraint firstItem="NIA-Hp-y9m" firstAttribute="top" secondItem="trT-Vz-UHI" secondAttribute="bottom" id="eAH-D7-RAe"/>
                 <constraint firstAttribute="trailing" secondItem="NIA-Hp-y9m" secondAttribute="trailing" id="egT-OU-rAX"/>

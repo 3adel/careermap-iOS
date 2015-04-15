@@ -35,6 +35,10 @@
     
     
     
+    //retrieve all message (test)
+    [self retrieveMessages];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -132,6 +136,69 @@
     [self.messageTextField resignFirstResponder];
     NSLog(@"table tapppe");
 }
+
+
+- (void) retrieveMessages{
+    
+    
+    
+    //create a new pfquery
+
+    
+    
+    //NSPredicate *predicate = [NSPredicate predicateWithFormat:
+      //                        @"voteCount >=-4"];
+   // PFQuery *retrieveJobs = [PFQuery queryWithClassName:@"Job" predicate:predicate];
+
+    
+    //[retrieveJobs whereKey:@"voteCount" <=-5];
+   // [retrieveJobs whereKey:@"geolocation" nearGeoPoint:self.userLocation withinKilometers:1000000];
+    // [retrieveJobs orderByDescending:@"geolocation"];
+  
+    
+    
+    PFQuery *messageQuery = [PFQuery queryWithClassName:@"Messages"];
+    [messageQuery includeKey:@"messageFrom"];
+    [messageQuery includeKey:@"messageTo"];
+   //cell.jobEmployer.text=[tempObject[@"employer"] objectForKey:@"employerName"];
+    [messageQuery orderByDescending:@"createdAt"];
+    [messageQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        
+        if (!error) {
+            //clear the message array first
+            self.messagesArray = [NSMutableArray new];
+            
+            
+            for (PFObject *message in objects) {
+                // NSLog(@"%@", message[@"messageContent"]);
+                NSLog(@"From: %@: %@",[message[@"messageFrom"] objectForKey:@"username"], message[@"messageContent"]);
+                [self.messagesArray addObject:message[@"messageContent"]];
+                
+            }
+        }
+        
+        else{
+            
+            NSLog(@"Error retrieving messages");
+        }
+        
+        //always update ui on main thread
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.jobChatTable reloadData];
+        });
+        
+        
+
+        
+    }];
+    
+
+    
+    //call find objects in background
+}
+
+
+
 
 
 @end
