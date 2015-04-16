@@ -115,8 +115,25 @@
     
     cell.messageContentTextView.text = [chatMessageObject objectForKey:@"messageContent"];
     
-    
+   // NSLog(@"Chat object%@")
     cell.messageAuthorLable.text = [[chatMessageObject objectForKey:@"messageFrom"] objectForKey:@"username"];
+    
+    if ([[[chatMessageObject objectForKey:@"messageFrom"] objectId] isEqualToString:[[PFUser currentUser] objectId]]) {
+        NSLog(@"MAAAAAATCH");
+        
+        cell.messageAuthorLable.text = @"You (Anonymous)";
+    }
+    else{
+        
+        cell.messageAuthorLable.text = [[chatMessageObject objectForKey:@"messageFrom"] objectForKey:@"username"];
+    }
+    
+    
+    //NSLog(@"%@", [[chatMessageObject objectForKey:@"messageFrom"] objectForKey:@"objectId"]);
+    
+    
+    
+   // NSLog(@"Chat messsage object = %@", chatMessageObject);
     cell.messagePostDateLabel.text = chatMessageObject.createdAt.description;
    // NSLog(@"%@", chatMessageObject);
     
