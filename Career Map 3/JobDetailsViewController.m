@@ -229,7 +229,7 @@
     
     //pass the user id of the job poster to the destination chat screen.
     jobChatScreen.jobEmployerUserObjectID =_jobEmployerUserObjectID;
-
+    jobChatScreen.jobPosterPFUser = _jobPosterPFUser;
     
     
     [self presentViewController:jobChatScreen animated:YES completion:nil];

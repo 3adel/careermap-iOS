@@ -182,8 +182,17 @@
     
     //post the message to parse
     PFObject *newMessageObject = [PFObject objectWithClassName:@"Messages" ];
-    newMessageObject[@"messageContent"]= _chatMessageCellOutlet.messageContentTextView.text;
+    newMessageObject[@"messageContent"]= _messageTextField.text;
+    newMessageObject[@"messageFrom"]= [PFUser currentUser];
+    newMessageObject[@"messageTo"]=_jobPosterPFUser;
     
+    //PFUser *user = [[PFUser alloc] initWithClassName:@"_User"];
+    //user.objectId = _jobEmployerUserObjectID;
+
+   // newMessageObject[@"messageTo"] = user;
+    
+    
+    // destViewController.jobEmployerUserObjectID= [[tempObject objectForKey:@"postedByUser"] objectId];
     
     
     [newMessageObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {

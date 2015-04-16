@@ -1406,6 +1406,10 @@
         
         //this is basically an employer userID from the users table
         destViewController.jobEmployerUserObjectID= [[tempObject objectForKey:@"postedByUser"] objectId];
+        destViewController.jobPosterPFUser =[tempObject objectForKey:@"postedByUser"];
+        NSLog(@"Employer User = %@", [tempObject objectForKey:@"postedByUser"]);
+        
+        
         NSLog(@"Posted by User: username: %@ objectID: %@", [[tempObject objectForKey:@"postedByUser"] objectForKey:@"username"],[[tempObject objectForKey:@"postedByUser"] objectId] );
        NSLog(@"Employer Name: %@", [tempObject[@"employer"] objectForKey:@"employerName"]);
        NSLog(@"UserType: %@", [tempObject[@"employer"] objectForKey:@"userType"]);
