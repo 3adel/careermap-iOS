@@ -36,6 +36,7 @@
 @property (nonatomic, strong) NSMutableArray *jobsArrayWithUsersVotesStable;
 @property (nonatomic, strong) NSDateFormatter *formatter;
 @property (nonatomic, strong) NSArray *jobRequireSkills;
+@property (nonatomic, strong) NSString *jobEmployerObjID;
 //@property (nonatomic, strong) CLLocation *jobLocation;
 
 - (IBAction)jobVoteUpPressed:(UIButton *)sender;

@@ -215,6 +215,7 @@
     PFQuery *retrieveJobs = [PFQuery queryWithClassName:@"Job" predicate:predicate];
     [retrieveJobs includeKey:@"employer"];
     [retrieveJobs includeKey:@"status"];
+    [retrieveJobs includeKey:@"postedByUser"];
     
     //[retrieveJobs whereKey:@"voteCount" <=-5];
     [retrieveJobs whereKey:@"geolocation" nearGeoPoint:self.userLocation withinKilometers:1000000];
@@ -280,7 +281,7 @@
                      CLPlacemark *placemark = [placemarks lastObject];
                      if ([[placemarks lastObject] locality] != nil ) {
                          [(PFObject *)[jobsArrayWithUsersVotesVolatile objectAtIndex:count] setObject:[placemark locality] forKey:@"area"];
-                         NSLog(@"%lu: LOCALITY: %@",(unsigned long)count, [placemark locality]);
+                       //  NSLog(@"%lu: LOCALITY: %@",(unsigned long)count, [placemark locality]);
                          //  NSLog(@"%@", [placemark addressDictionary[@"FormattedAddressLines"]);
                          
                          
@@ -650,7 +651,7 @@
    // NSLog(@"%@",[tempObject objectForKey:@"currentUserVotedUpThisJob"]);
 
     
-    NSLog(@"temp object: %@", tempObject);
+  //  NSLog(@"temp object: %@", tempObject);
     
     
     formatter = [[NSDateFormatter alloc] init];
@@ -1403,7 +1404,17 @@
         
         destViewController.jobAddressLine = [tempObject objectForKey:@"addressLine"];
         
-       NSLog(@"%@", [tempObject objectForKey:@"geolocation"]);
+        //this is basically an employer userID from the users table
+        destViewController.jobEmployerObjID= [[tempObject objectForKey:@"postedByUser"] objectId];
+        NSLog(@"Posted by User: username: %@ objectID: %@", [[tempObject objectForKey:@"postedByUser"] objectForKey:@"username"],[[tempObject objectForKey:@"postedByUser"] objectId] );
+       NSLog(@"Employer Name: %@", [tempObject[@"employer"] objectForKey:@"employerName"]);
+       NSLog(@"UserType: %@", [tempObject[@"employer"] objectForKey:@"userType"]);
+        //NSLog(@"%@", [tempObject[@"employer"] objectForKey:@"aboutEmployer"]);
+
+
+        
+        
+        
     }
 }
 

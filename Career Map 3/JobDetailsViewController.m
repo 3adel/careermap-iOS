@@ -7,6 +7,7 @@
 //
 
 #import "JobDetailsViewController.h"
+#import "JobChatViewController.h"
 
 @interface JobDetailsViewController ()
 
@@ -212,6 +213,12 @@
 //start chat with employer
 - (IBAction)chatWithEmployerButtonPressed:(UIButton *)sender {
     
+    
+    
+  //  JobChatViewController *jobChatViewController = [[JobChatViewController alloc] initWithNib:@"JobChatView" bundle:nil];
+   // [self pushViewController:viewControllerB animated:YES];
+    
+    
     NSLog(@"Chat with employer button pressed");
     
     JobChatViewController  *jobChatScreen = [[JobChatViewController alloc] initWithNibName:@"JobChatView" bundle:nil];
@@ -219,6 +226,11 @@
     [self.tabBarController presentViewController:appChoice
                                         animated:YES
                                       completion:nil];*/
+    
+    //pass the user id of the job poster to the destination chat screen.
+    jobChatScreen.jobEmployerObjID =_jobEmployerObjID;
+
+    
     
     [self presentViewController:jobChatScreen animated:YES completion:nil];
 }

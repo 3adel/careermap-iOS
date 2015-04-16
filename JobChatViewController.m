@@ -17,7 +17,14 @@
 
 - (void)viewDidLoad {
     
-    NSLog(@"job chat viewdidload called");
+    NSLog(@"Job Employer User ID = %@", _jobEmployerObjID);
+    NSLog(@"Curernt User  objectID = %@", [[PFUser currentUser] objectId]);
+    
+    //jobChatScreen.employerID =_jobEmployerObjID;
+
+    
+    
+    //NSLog(@"job chat viewdidload called");
     [super viewDidLoad];
     self.jobChatTable.delegate =self;
     self.jobChatTable.dataSource =self;
@@ -86,7 +93,7 @@
     
     
     
-    NSLog(@"%@",chatMessageObject.createdAt.description);
+    //NSLog(@"%@",chatMessageObject.createdAt.description);
     
     
     static NSString *simpleTableIdentifier = @"JobChatMessageCell";
