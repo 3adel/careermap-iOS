@@ -19,13 +19,13 @@
                             <constraint firstAttribute="width" constant="100" id="EZs-T4-Lnl"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="textColor" red="0.0" green="0.50196081399917603" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date Posted" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vfL-Gx-X8m">
-                        <rect key="frame" x="128" y="13.5" width="64" height="13.5"/>
+                        <rect key="frame" x="248" y="13.5" width="64" height="13.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7o3-LA-nYR">
@@ -45,7 +45,8 @@
                     <constraint firstItem="6ty-ix-qEP" firstAttribute="leading" secondItem="UAu-fb-2Wi" secondAttribute="leadingMargin" id="nFJ-6Z-brs"/>
                     <constraint firstAttribute="bottomMargin" secondItem="7o3-LA-nYR" secondAttribute="bottom" id="oAX-b2-o7Y"/>
                     <constraint firstItem="6ty-ix-qEP" firstAttribute="top" secondItem="UAu-fb-2Wi" secondAttribute="topMargin" constant="5" id="p5s-Qd-3jQ"/>
-                    <constraint firstItem="vfL-Gx-X8m" firstAttribute="leading" secondItem="6ty-ix-qEP" secondAttribute="trailing" constant="20" id="vWD-Jr-X0P"/>
+                    <constraint firstItem="vfL-Gx-X8m" firstAttribute="leading" secondItem="6ty-ix-qEP" secondAttribute="trailing" constant="40" id="vWD-Jr-X0P"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="vfL-Gx-X8m" secondAttribute="trailing" id="xiV-7g-7sK"/>
                     <constraint firstItem="7o3-LA-nYR" firstAttribute="top" secondItem="6ty-ix-qEP" secondAttribute="bottom" constant="5" id="zWs-9r-jcx"/>
                     <constraint firstItem="vfL-Gx-X8m" firstAttribute="top" secondItem="6ty-ix-qEP" secondAttribute="bottom" constant="5" id="zcx-wR-vYh"/>
                 </constraints>
@@ -54,6 +55,7 @@
                         <exclude reference="88h-1W-ITA"/>
                         <exclude reference="Fxi-FH-ZAr"/>
                         <exclude reference="nFJ-6Z-brs"/>
+                        <exclude reference="vWD-Jr-X0P"/>
                         <exclude reference="zcx-wR-vYh"/>
                     </mask>
                 </variation>

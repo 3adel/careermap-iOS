@@ -114,6 +114,8 @@
   //  cell.messageContentLabel.text = [[(PFObject *)[_messagesArray objectAtIndex:indexPath] objectForKey:@"messageContent"];ject
     
     cell.messageContentTextView.text = [chatMessageObject objectForKey:@"messageContent"];
+    
+    
     cell.messageAuthorLable.text = [[chatMessageObject objectForKey:@"messageFrom"] objectForKey:@"username"];
     cell.messagePostDateLabel.text = chatMessageObject.createdAt.description;
    // NSLog(@"%@", chatMessageObject);
