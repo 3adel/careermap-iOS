@@ -58,7 +58,7 @@
                 <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fuy-ZB-dYL">
                     <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                     <items>
-                        <navigationItem title="Title" id="6cW-aV-ReA">
+                        <navigationItem title="Job Chat" id="6cW-aV-ReA">
                             <barButtonItem key="rightBarButtonItem" title="[X]" id="pe5-Kd-Qij">
                                 <connections>
                                     <action selector="closeJobChatButtonPressed:" destination="-1" id="1S4-cH-hb2"/>

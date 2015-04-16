@@ -15,6 +15,19 @@
 
 @implementation JobChatViewController 
 
+
+
+/*
+- (void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    if (self.jobChatTable.contentSize.height > self.jobChatTable.frame.size.height)
+    {
+        CGPoint offset = CGPointMake(0, self.jobChatTable.contentSize.height -     self.jobChatTable.frame.size.height);
+        [self.jobChatTable setContentOffset:offset animated:YES];
+    }
+}*/
+
 - (void)viewDidLoad {
     
     NSLog(@"Job Employer who posted the job User ID = %@", _jobEmployerUserObjectID);
@@ -199,6 +212,11 @@
         if (succeeded) {
             NSLog(@"Success saving message object");
             [self retrieveMessages];
+            
+            //[self.jobChatTable setContentOffset:CGPointMake(0, CGFLOAT_MAX) animated:NO];
+            
+            
+            
         } else {
             NSLog(@"Error saving message object");
         }
@@ -209,6 +227,16 @@
             [self.messageTextField setEnabled:YES];
             [self.sendButton setEnabled:YES];
             self.messageTextField.text = @"";
+            /*
+            if (self.jobChatTable.contentSize.height > self.jobChatTable.frame.size.height)
+            {
+                CGPoint offset = CGPointMake(0, self.jobChatTable.contentSize.height -     self.jobChatTable.frame.size.height);
+                [self.jobChatTable setContentOffset:offset animated:YES];
+            }*/
+
+            
+            
+            
         });
         
         
