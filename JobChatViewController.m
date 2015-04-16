@@ -174,6 +174,38 @@
     //done editing
     [self.messageTextField resignFirstResponder];
     
+    
+    
+    //disable send button and text field temporarily as the data is being posted
+    [self.messageTextField setEnabled:NO];
+    [self.sendButton setEnabled:NO];
+    
+    //post the message to parse
+    PFObject *newMessageObject = [PFObject objectWithClassName:@"Messages" ];
+    newMessageObject[@"messageContent"]= _chatMessageCellOutlet.messageContentTextView.text;
+    
+    
+    
+    [newMessageObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (succeeded) {
+            NSLog(@"Success saving message object");
+            [self retrieveMessages];
+        } else {
+            NSLog(@"Error saving message object");
+        }
+        
+        //Reenable send button and text field after process is done
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.messageTextField setEnabled:YES];
+            [self.sendButton setEnabled:YES];
+            self.messageTextField.text = @"";
+        });
+        
+        
+        
+    }];
+    
 
 }
 
