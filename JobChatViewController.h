@@ -16,7 +16,7 @@
 
 //hold the value of the employer objID temporarily. This will be used to extract the job poster ID
 @property (nonatomic, strong) NSString *employerID;
-@property (nonatomic, strong) NSString *jobEmployerObjID;
+@property (nonatomic, strong) NSString *jobEmployerUserObjectID;
 
 //@property (weak, nonatomic) IBOutlet UIView *jobChatView;
 @property (weak, nonatomic) IBOutlet UITableView *jobChatTable;

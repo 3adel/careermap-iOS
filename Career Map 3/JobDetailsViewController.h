@@ -48,7 +48,7 @@
 @property (nonatomic,strong) NSString *jobAddressLine;
 @property (nonatomic, strong) NSString *jobEducation;
 @property (nonatomic,strong) CLLocationManager* locationManager;
-@property (nonatomic, strong) NSString *jobEmployerObjID;
+@property (nonatomic, strong) NSString *jobEmployerUserObjectID;
 
 
 

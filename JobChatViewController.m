@@ -17,10 +17,10 @@
 
 - (void)viewDidLoad {
     
-    NSLog(@"Job Employer User ID = %@", _jobEmployerObjID);
+    NSLog(@"Job Employer who posted the job User ID = %@", _jobEmployerUserObjectID);
     NSLog(@"Curernt User  objectID = %@", [[PFUser currentUser] objectId]);
     
-    //jobChatScreen.employerID =_jobEmployerObjID;
+    //jobChatScreen.employerID =_jobEmployerUserObjectID;
 
     
     
@@ -215,12 +215,91 @@
     // [retrieveJobs orderByDescending:@"geolocation"];
   
     
+  //  _jobEmployerUserObjectID
+    //
+   // [[PFUser currentUser] objectId]
     
-    PFQuery *messageQuery = [PFQuery queryWithClassName:@"Messages"];
+   // [mesageFrom.objectId] = [[PFUser currentUser] objectId]
+    NSString *content = @"3. I want to apply.";
+    
+   // NSPredicate *predicate = [NSPredicate predicateWithFormat:@"messageContent = content"];
+
+   // [[messageFrom objectForKey:@"postedByUser"] objectId];
+    
+    
+  //  PFQuery *messageQuery = [PFQuery queryWithClassName:@"Messages"];
+    
+  //  [mess whereKey:@"playerEmail" equalTo:@"dstemkoski@example.com"];
+   // [messageQuery includeKey:@"messageFrom"];
+   // [messageQuery includeKey:@"messageTo"];
+    //[messageQuery whereKey:@"messageContent" equalTo:@"Q5md5dlEYL"];
+   // [messageQuery whereKey:<#(NSString *)#> equalTo:<#(id)#>]
+    
+    // Assume PFObject *myPost was previously created.
+   // PFQuery *query = [PFQuery queryWithClassName:@"Comment"];
+    //[messageQuery whereKey:@"messageFrom" equalTo:myPost];
+    
+    /*
+    [messageQuery whereKey:@"messageTo"
+            equalTo:[PFObject objectWithoutDataWithClassName:@"_User" objectId:_jobEmployerUserObjectID]];
+    */
+    //[messageQuery whereKey:@"messageFrom"
+     //        equalTo:[PFObject objectWithoutDataWithClassName:@"_User" objectId:[[PFUser currentUser] objectId]]];
+    
+    
+    //[messageQuery where]
+    
+    //we need to include the messagge between those two users only. The current user and the job poster
+     // where (messageFrom is from current user && messageTo is of job poster
+    
+    PFQuery *query1 =[PFQuery queryWithClassName:@"Messages"];
+
+    [query1 whereKey:@"messageTo"
+                   equalTo:[PFObject objectWithoutDataWithClassName:@"_User" objectId:[[PFUser currentUser] objectId]]];
+   
+    PFQuery *query2 =[query1 whereKey:@"messageFrom"
+equalTo:[PFObject objectWithoutDataWithClassName:@"_User" objectId:_jobEmployerUserObjectID]];
+
+   // [query1 whereKey:@"messageTo"
+       //      equalTo:[PFObject objectWithoutDataWithClassName:@"_User" objectId:_jobEmployerUserObjectID]];
+    
+    
+    PFQuery *query3 =[PFQuery queryWithClassName:@"Messages"];
+    
+    [query3 whereKey:@"messageTo"
+             equalTo:[PFObject objectWithoutDataWithClassName:@"_User" objectId:_jobEmployerUserObjectID]];
+    
+    PFQuery *query4 =[query3 whereKey:@"messageFrom"
+                              equalTo:[PFObject objectWithoutDataWithClassName:@"_User" objectId:[[PFUser currentUser] objectId]]];
+    
+    // [query1 whereKey:@"messageTo"
+    //      equalTo:[PFObject objectWithoutDataWithClassName:@"_User" objectId:_jobEmployerUserObjectID]];
+    
+    
+    
+    
+    PFQuery *messageQuery = [PFQuery orQueryWithSubqueries:@[query2,query4]];
+    
+   // [PFQuery orQueryWithSubqueries:@[fewWins,lotsOfWins]];
+    
+    
+  //  [messageQuery whereKey:@"messageFrom"
+  //                 equalTo:[PFObject objectWithoutDataWithClassName:@"_User" objectId:[[PFUser currentUser] objectId]]];
+    
+    
+    //|| (messageFrom is job poster and message to is current user )
+    
+    
+    
+   //cell.jobEmployer.text=[tempObject[@"employer"] objectForKey:@"employerName"];
     [messageQuery includeKey:@"messageFrom"];
     [messageQuery includeKey:@"messageTo"];
-   //cell.jobEmployer.text=[tempObject[@"employer"] objectForKey:@"employerName"];
     [messageQuery orderByAscending:@"createdAt"];
+    
+    
+    
+    
+    
     [messageQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         
         if (!error) {

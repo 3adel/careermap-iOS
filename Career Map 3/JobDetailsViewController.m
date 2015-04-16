@@ -228,7 +228,7 @@
                                       completion:nil];*/
     
     //pass the user id of the job poster to the destination chat screen.
-    jobChatScreen.jobEmployerObjID =_jobEmployerObjID;
+    jobChatScreen.jobEmployerUserObjectID =_jobEmployerUserObjectID;
 
     
     
