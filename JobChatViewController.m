@@ -131,6 +131,19 @@
    // NSLog(@"Chat object%@")
     cell.messageAuthorLable.text = [[chatMessageObject objectForKey:@"messageFrom"] objectForKey:@"username"];
     
+    
+    
+    if ([PFAnonymousUtils isLinkedWithUser:[chatMessageObject objectForKey:@"messageFrom"]]) {
+        cell.messageAuthorLable.text = @"You (Anonymous)";
+        
+        
+    } else {
+         cell.messageAuthorLable.text = [[chatMessageObject objectForKey:@"messageFrom"] objectForKey:@"username"];
+        
+        
+    }
+    /*
+    
     if ([[[chatMessageObject objectForKey:@"messageFrom"] objectId] isEqualToString:[[PFUser currentUser] objectId]]) {
         NSLog(@"MAAAAAATCH");
         
@@ -139,7 +152,7 @@
     else{
         
         cell.messageAuthorLable.text = [[chatMessageObject objectForKey:@"messageFrom"] objectForKey:@"username"];
-    }
+    }*/
     
     
     //NSLog(@"%@", [[chatMessageObject objectForKey:@"messageFrom"] objectForKey:@"objectId"]);
