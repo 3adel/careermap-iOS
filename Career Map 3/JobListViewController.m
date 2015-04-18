@@ -11,12 +11,8 @@
 #import "Job.h"
 #import "settingsViewController.h"
 
-
 @implementation JobListViewController{
     
-   // NSArray *jobs;
-   // PFGeoPoint *userLocation;
-   // PFQuery *employerQuery;
     
 }
 @synthesize refreshControl;
@@ -25,19 +21,15 @@
 @synthesize jobsArrayWithUsersVotesVolatile;
 @synthesize jobsArrayWithUsersVotesStable;
 @synthesize formatter;
-//@synthesize locationManager;
 
 
 - (void) viewDidAppear:(BOOL)animated{
     
     //make sure the app choice screen shows one time only
-    
     if (![@"1" isEqualToString:[[NSUserDefaults standardUserDefaults]
                                 objectForKey:@"screenShown"]]) {
         [[NSUserDefaults standardUserDefaults] setValue:@"1" forKey:@"screenShown"];
         [[NSUserDefaults standardUserDefaults] synchronize];
-        
-        NSLog(@"Screen showedddddddddd");
         
         WelcomeAppChoiceViewController  *appChoice = [[WelcomeAppChoiceViewController alloc] initWithNibName:@"WelcomeAppChoiceView" bundle:nil];
         [self.tabBarController presentViewController:appChoice
@@ -46,112 +38,10 @@
         
     }
     
-    else{
-        
-        //   [self performSegueWithIdentifier:@"jobSeeker" sender:self];
-        
-        
-    }
-    // TestWelcomeView
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    /*
-    //make sure the app choice screen shows one time only
-    
-    if (![@"1" isEqualToString:[[NSUserDefaults standardUserDefaults]
-                                objectForKey:@"screenShown"]]) {
-        [[NSUserDefaults standardUserDefaults] setValue:@"1" forKey:@"screenShown"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-        
-        NSLog(@"Screen showed");
-        
-        UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Main"
-                                                             bundle:nil];
-        WelcomeAppChoiceViewController *appChoice =
-        [storyboard instantiateViewControllerWithIdentifier:@"WelcomeAppChoiceViewController"];
-        
-        [self presentViewController:appChoice
-                           animated:YES
-                         completion:nil];
-        
-    }
-    
-    else{
-        
-     //   [self performSegueWithIdentifier:@"jobSeeker" sender:self];
-        
-        
-    }
-    
-    */
-    
-    
-    
-    
-    //if the user is already logged in
-                //do nothing and just view the list.
-    //if the user is not logged in, create an anynymous user and hide the logout button
-    
-    
-    
-    //if the user is already logged in with an anynymous user, don't create an anoymous user and just disable the logout button instead
-    
-    
-   // settingsViewController *i = [[settingsViewController alloc] init];
-   // settingsViewController *i = [[settingsViewController alloc] initWithNibName:@"settingsViewController" bundle:nil];
- //   settingsViewController *i = [self.storyboard instantiateViewControllerWithIdentifier:@"settingsViewController"];
-
-   // i.checkIfUserIsAnonymous = NO;
-    
-    
-    if ([PFAnonymousUtils isLinkedWithUser:[PFUser currentUser]]) {
-       // i.checkIfUserIsAnonymous =YES;
-        
-         //[i disableLogoutButton];
-        
-        
-    } else {
-        //No anonymous users are already created, create one please
-       // [i enableLogoutButton];
-        NSLog(@"user is NOT anonymous detected");
-        
-     
-    }
-    
-        
-        /*
-         PFUser *user = [PFUser user];
-         user.username = @"adelshehadehjj";
-         user.password = @"passwordjkljjjjk342";
-         user.email = @"email@examplfffeu.com";*/
-        
-        // other fields can be set just like with PFObject
-        //user[@"phone"] = @"415-392-0202";
-        
-        /*
-         [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-         if (!error) {
-         NSLog(@"User logged");
-         } else {
-         
-         
-         NSLog(@"error with login");
-         }
-         }];*/
-        
-        //login
-        /*  [PFUser logInWithUsernameInBackground:user.username password:user.password
-         block:^(PFUser *user, NSError *error) {
-         if (user) {
-         NSLog(@"User logged");
-         } else {
-         NSLog(@"error with login");
-         }
-         }];*/
-    
     
     
     // Initialize the refresh control.
@@ -166,26 +56,17 @@
     
     
         
-        
-        
+    
         
         self.locationManager = [[CLLocationManager alloc] init];
-        // [self.locationManager requestAlwaysAuthorization];
         [self.locationManager requestWhenInUseAuthorization];
-        
-        // [self.locationManager startUpdatingLocation];
-        
-        //  self.locationManager.delegate =self;
         self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
-        
-        
-        //  NSLog(@"User is here: %@", [self getUserLocation]);
+    
         [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *geoPoint, NSError *error) {
             if (!error) {
                 self.userLocation = geoPoint;
                 [self performSelector:@selector(retrieveFromParse)];
-                // [self.jobTable reloadData];
-                // NSLog(@"jobs data reloaded");
+
             }
             else{
                 UIAlertView *needUserLocationAlert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"You need to enable user location for this app to function properly" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
@@ -196,19 +77,13 @@
             }
         }];
         
-        
-        
-        
-    
-    
-    
+
 }
 
 - (void) retrieveFromParse {
     
     NSLog(@"Retrive from parse called");
-    
-    
+
     //query #1 for jobs
     NSPredicate *predicate = [NSPredicate predicateWithFormat:
                               @"voteCount >=-4"];
@@ -216,26 +91,8 @@
     [retrieveJobs includeKey:@"employer"];
     [retrieveJobs includeKey:@"status"];
     [retrieveJobs includeKey:@"postedByUser"];
-    
-    //[retrieveJobs whereKey:@"voteCount" <=-5];
     [retrieveJobs whereKey:@"geolocation" nearGeoPoint:self.userLocation withinKilometers:1000000];
-  // [retrieveJobs orderByDescending:@"geolocation"];
     [retrieveJobs orderByDescending:@"createdAt"];
-
-    
-    
-    
-    //query #2 for voting up data inclusion
-    //PFQuery *votedQuery = [PFQuery queryWithClassName:@"_User"];
-    //[votedQuery whereKey:@"objectID" equalTo:[[PFUser currentUser] objectId]];
-    //[votedQuery whereKey:@"jobVotedUp" equalTo:];
-
-
-
-    
-    // query.cachePolicy = kPFCachePolicyCacheThenNetwork;
-   // jobsArrayWithUsersVotes = [[NSMutableArray alloc]init];
-    
     [retrieveJobs findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             jobsArray = [[NSMutableArray alloc] initWithArray:objects];
@@ -244,68 +101,32 @@
       
             //Moved inside the block. This will prevent the a crash at job list tableview
             jobsArrayWithUsersVotesVolatile= [[NSMutableArray alloc] init];
-
-            
-            //init jobsVolatileArray with nsnulls
-            
-
             
             NSUInteger count = 0;
             for (PFObject *i in jobsArray) {
-              //  NSLog(@"Index = %lu, ObjID = %@, Title=%@", (unsigned long)count, i.objectId, [i objectForKey:@"title"]);
-                
-                
-               // [i setObject:@"1" forKey:@"currentUserVotedUpThisJob"];
-               // NSLog(@"Title # %ld: %@, votedUp = %@",count,[i objectForKey:@"title"], [i objectForKey:@"currentUserVotedUpThisJob"]);
-              //  NSLog(@"Title # %ld: %@, votedUp = %@",count,[i objectForKey:@"title"], [i objectForKey:@"currentUserVotedUpThisJob"]);
-
                 [jobsArrayWithUsersVotesVolatile addObject:i];
-        
-                
-                
-                
-                //get area of job
-                
-                 //area of the job
-                
-              //  NSLog(@"job = %@", i);
-                
                 CLLocation  *jobLocation = [[CLLocation alloc] initWithLatitude:[[i objectForKey:@"geolocation"] latitude] longitude:[[i objectForKey:@"geolocation"] longitude]];
                  CLGeocoder *geocoder = [[CLGeocoder alloc] init];
                  [geocoder reverseGeocodeLocation:jobLocation completionHandler:^(NSArray *placemarks, NSError *error) {
-                 // NSLog(@"Found placemarks: %@, error: %@", placemarks, error);
                  if (error == nil && [placemarks count] > 0)
                  {
-                 
-                 
+
                      CLPlacemark *placemark = [placemarks lastObject];
                      if ([[placemarks lastObject] locality] != nil ) {
                          [(PFObject *)[jobsArrayWithUsersVotesVolatile objectAtIndex:count] setObject:[placemark locality] forKey:@"area"];
-                       //  NSLog(@"%lu: LOCALITY: %@",(unsigned long)count, [placemark locality]);
-                         //  NSLog(@"%@", [placemark addressDictionary[@"FormattedAddressLines"]);
-                         
-                         
+
                          //add the address line as a component
                          NSArray *lines = placemark.addressDictionary[ @"FormattedAddressLines"];
                          NSString *addressString = [lines componentsJoinedByString:@"\n"];
                          
                          [(PFObject *)[jobsArrayWithUsersVotesVolatile objectAtIndex:count] setObject:addressString forKey:@"addressLine"];
-                         //NSLog(@"Address: %@", addressString);
-                         
-                         
+
                      }
                      else{
                          [(PFObject *)[jobsArrayWithUsersVotesVolatile objectAtIndex:count] setObject:@"N/A" forKey:@"area"];
                          
                      }
                      
-                     
-                     
-                 
-                 //NSLog(@"Job: %@",[tempObject objectForKey:@"title"] );
-                 //   CLPlacemark *placemark =
-                 
-                 //  cell.jobArea.text =placemark.locality;
                  
                  }
                  
@@ -317,12 +138,7 @@
                  
                  }];
 
-                
-                
-                
-                
-                
-                
+
                 PFQuery *votedQuery = [PFQuery queryWithClassName:@"_User"];
                 
                 [votedQuery whereKey:@"jobVotedUp" equalTo:i.objectId];
@@ -381,9 +197,12 @@
                     }
                     
                     NSIndexPath* cellIndexPath1= [NSIndexPath indexPathForRow:count inSection:0];
-                    [self.jobTable beginUpdates];
-                    [self.jobTable reloadRowsAtIndexPaths:@[cellIndexPath1] withRowAnimation:UITableViewRowAnimationNone];
-                    [self.jobTable endUpdates];
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        
+                        [self.jobTable beginUpdates];
+                        [self.jobTable reloadRowsAtIndexPaths:@[cellIndexPath1] withRowAnimation:UITableViewRowAnimationNone];
+                        [self.jobTable endUpdates];
+                    });
                     
                 }];
                 
@@ -498,9 +317,10 @@
             
         }
         
-        [self.jobTable reloadData];
         
-        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.jobTable reloadData];
+        });
         
     }];
     
@@ -669,7 +489,7 @@
     //imageView.image = [UIImage imageNamed:@"Icon.png"];
     [cell addSubview:voteUpButtonTest];
     [voteUpButtonTest setTag:indexPath.row];
-    [voteUpButtonTest addTarget:self action:@selector(jobVoteUpPressedV2:) forControlEvents:UIControlEventTouchUpInside];
+    [voteUpButtonTest addTarget:self action:@selector(jobVoteUpPressed:) forControlEvents:UIControlEventTouchUpInside];
     
     
     //set the image of the upvote button
@@ -867,7 +687,7 @@
     
     //add a tag to the voting button to indicate the current row index
     [cell.jobVoteUpButton setTag:indexPath.row];
-    [cell.jobVoteUpButton addTarget:self action:@selector(jobVoteUpPressedV2:) forControlEvents:UIControlEventTouchUpInside];
+    [cell.jobVoteUpButton addTarget:self action:@selector(jobVoteUpPressed:) forControlEvents:UIControlEventTouchUpInside];
     
     ///[cell.jobVoteLabel setTag:indexPath.row];
     
@@ -1082,9 +902,15 @@
                                 
                                 // [self.jobTable reloadRowsAtIndexPaths:indexArray withRowAnimation:UITableViewRowAnimationNone];
                                 
-                                [self.jobTable beginUpdates];
-                                [self.jobTable reloadRowsAtIndexPaths:@[cellIndexPath1] withRowAnimation:UITableViewRowAnimationNone];
-                                [self.jobTable endUpdates];
+                                
+                                dispatch_async(dispatch_get_main_queue(), ^{
+                                    
+                                    [self.jobTable beginUpdates];
+                                    [self.jobTable reloadRowsAtIndexPaths:@[cellIndexPath1] withRowAnimation:UITableViewRowAnimationNone];
+                                    [self.jobTable endUpdates];
+                                });
+                                
+
                             }
                         }];
 
@@ -1139,9 +965,15 @@
                                 
                                 // [self.jobTable reloadRowsAtIndexPaths:indexArray withRowAnimation:UITableViewRowAnimationNone];
                                 
-                                [self.jobTable beginUpdates];
-                                [self.jobTable reloadRowsAtIndexPaths:@[cellIndexPath1] withRowAnimation:UITableViewRowAnimationNone];
-                                [self.jobTable endUpdates];
+                                
+                                dispatch_async(dispatch_get_main_queue(), ^{
+                                    
+                                    [self.jobTable beginUpdates];
+                                    [self.jobTable reloadRowsAtIndexPaths:@[cellIndexPath1] withRowAnimation:UITableViewRowAnimationNone];
+                                    [self.jobTable endUpdates];
+                                });
+                                
+
                             }
                         }];
                         
@@ -1183,7 +1015,7 @@
 
 
 
-- (IBAction)jobVoteUpPressedV2:(UIButton *)sender {
+- (IBAction)jobVoteUpPressed:(UIButton *)sender {
     
     
     PFObject *tempObject = [jobsArrayWithUsersVotesVolatile objectAtIndex:sender.tag];
@@ -1256,9 +1088,12 @@
                                 
                                 // [self.jobTable reloadRowsAtIndexPaths:indexArray withRowAnimation:UITableViewRowAnimationNone];
                                 
-                                [self.jobTable beginUpdates];
-                                [self.jobTable reloadRowsAtIndexPaths:@[cellIndexPath1] withRowAnimation:UITableViewRowAnimationNone];
-                                [self.jobTable endUpdates];
+                                dispatch_async(dispatch_get_main_queue(), ^{
+                                    
+                                    [self.jobTable beginUpdates];
+                                    [self.jobTable reloadRowsAtIndexPaths:@[cellIndexPath1] withRowAnimation:UITableViewRowAnimationNone];
+                                    [self.jobTable endUpdates];
+                                });
                             }
                         }];
                        
@@ -1314,9 +1149,12 @@
                                 
                                 // [self.jobTable reloadRowsAtIndexPaths:indexArray withRowAnimation:UITableViewRowAnimationNone];
                                 
-                                [self.jobTable beginUpdates];
-                                [self.jobTable reloadRowsAtIndexPaths:@[cellIndexPath1] withRowAnimation:UITableViewRowAnimationNone];
-                                [self.jobTable endUpdates];
+                                dispatch_async(dispatch_get_main_queue(), ^{
+                                    
+                                    [self.jobTable beginUpdates];
+                                    [self.jobTable reloadRowsAtIndexPaths:@[cellIndexPath1] withRowAnimation:UITableViewRowAnimationNone];
+                                    [self.jobTable endUpdates];
+                                });
                             }
                         }];
 
@@ -1363,18 +1201,6 @@
     ;
 }
 
-
-
-- (void)refresh:(id)sender
-{
-    // do your refresh here and reload the tablview
-   // [self.jobTable reloadData];
-}
-
-- (IBAction)testButton:(UIButton *)sender {
-    
-    NSLog(@"test button clicked");
-}
 
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

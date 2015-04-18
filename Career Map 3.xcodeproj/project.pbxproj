@@ -88,12 +88,12 @@
 		F535AAE51ADC38580091E70B /* JobMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JobMapViewController.m; path = ../JobMapViewController.m; sourceTree = "<group>"; };
 		F535AAE71ADC66240091E70B /* job-annotation-icon2@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "job-annotation-icon2@3x.png"; sourceTree = "<group>"; };
 		F535AAE91ADC66920091E70B /* job-annotation-icon3@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "job-annotation-icon3@3x.png"; sourceTree = "<group>"; };
-		F535ABC11ADE52CF0091E70B /* JobChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobChatViewController.h; sourceTree = "<group>"; };
-		F535ABC21ADE52CF0091E70B /* JobChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobChatViewController.m; sourceTree = "<group>"; };
-		F535ABC31ADE52CF0091E70B /* JobChatView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JobChatView.xib; sourceTree = "<group>"; };
-		F535AC4D1ADEC9860091E70B /* JobChatMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JobChatMessageCell.xib; sourceTree = "<group>"; };
-		F535AC4F1ADEC9B50091E70B /* JobChatMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobChatMessageCell.h; sourceTree = "<group>"; };
-		F535AC501ADEC9B50091E70B /* JobChatMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobChatMessageCell.m; sourceTree = "<group>"; };
+		F535ABC11ADE52CF0091E70B /* JobChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JobChatViewController.h; path = ../JobChatViewController.h; sourceTree = "<group>"; };
+		F535ABC21ADE52CF0091E70B /* JobChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JobChatViewController.m; path = ../JobChatViewController.m; sourceTree = "<group>"; };
+		F535ABC31ADE52CF0091E70B /* JobChatView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = JobChatView.xib; path = ../JobChatView.xib; sourceTree = "<group>"; };
+		F535AC4D1ADEC9860091E70B /* JobChatMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = JobChatMessageCell.xib; path = ../JobChatMessageCell.xib; sourceTree = "<group>"; };
+		F535AC4F1ADEC9B50091E70B /* JobChatMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JobChatMessageCell.h; path = ../JobChatMessageCell.h; sourceTree = "<group>"; };
+		F535AC501ADEC9B50091E70B /* JobChatMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JobChatMessageCell.m; path = ../JobChatMessageCell.m; sourceTree = "<group>"; };
 		F59758A91AC159B40099A978 /* Career Map 3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Career Map 3.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F59758AD1AC159B40099A978 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F59758AE1AC159B40099A978 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -264,6 +264,12 @@
 		F535ABB61ADE49460091E70B /* Job Chat */ = {
 			isa = PBXGroup;
 			children = (
+				F535AC4D1ADEC9860091E70B /* JobChatMessageCell.xib */,
+				F535AC4F1ADEC9B50091E70B /* JobChatMessageCell.h */,
+				F535AC501ADEC9B50091E70B /* JobChatMessageCell.m */,
+				F535ABC11ADE52CF0091E70B /* JobChatViewController.h */,
+				F535ABC21ADE52CF0091E70B /* JobChatViewController.m */,
+				F535ABC31ADE52CF0091E70B /* JobChatView.xib */,
 			);
 			name = "Job Chat";
 			sourceTree = "<group>";
@@ -271,12 +277,6 @@
 		F59758A01AC159B40099A978 = {
 			isa = PBXGroup;
 			children = (
-				F535AC4D1ADEC9860091E70B /* JobChatMessageCell.xib */,
-				F535AC4F1ADEC9B50091E70B /* JobChatMessageCell.h */,
-				F535AC501ADEC9B50091E70B /* JobChatMessageCell.m */,
-				F535ABC11ADE52CF0091E70B /* JobChatViewController.h */,
-				F535ABC21ADE52CF0091E70B /* JobChatViewController.m */,
-				F535ABC31ADE52CF0091E70B /* JobChatView.xib */,
 				F535AAD91AD947BF0091E70B /* MapKit.framework */,
 				F59758AB1AC159B40099A978 /* Career Map 3 */,
 				F59758C81AC159B40099A978 /* Career Map 3Tests */,
