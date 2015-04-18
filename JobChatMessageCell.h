@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface JobChatMessageCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *messageContentLabel;
 @property (weak, nonatomic) IBOutlet UILabel *messageAuthorLable;
 @property (weak, nonatomic) IBOutlet UILabel *messagePostDateLabel;
 @property (weak, nonatomic) IBOutlet UITextView *messageContentTextView;
