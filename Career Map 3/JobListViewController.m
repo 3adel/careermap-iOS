@@ -96,7 +96,7 @@
     [retrieveJobs findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             jobsArray = [[NSMutableArray alloc] initWithArray:objects];
-            NSLog(@"%lu", (unsigned long)jobsArray.count);
+            //NSLog(@"%lu", (unsigned long)jobsArray.count);
             
       
             //Moved inside the block. This will prevent the a crash at job list tableview
@@ -149,52 +149,21 @@
                         
                         if ([[object objectForKey:@"jobVotedUp"] containsObject:i.objectId]) {
                             
-                            
-                            
-                           // NSLog(@" #%ld: object found VOTED UP", count);
+       
                             [(PFObject *)[jobsArrayWithUsersVotesVolatile objectAtIndex:count] setObject:@"1" forKey:@"currentUserVotedUpThisJob"];
-                           // NSLog(@"1: %@", [i objectForKey:@"title"]);
 
-                            
-                     
-                            
-                            
-                            
-                            
-                            
-
-                            
                         }
                         
                         else{
-                            //NSLog(@" #%ld: object NOT found VOTED UP", count);
 
                             [(PFObject *)[jobsArrayWithUsersVotesVolatile objectAtIndex:count] setObject:@"0" forKey:@"currentUserVotedUpThisJob"];
-                           // NSLog(@"0: %@", [i objectForKey:@"title"]);
-                           // [self.jobTable reloadData];
 
-                         
-                            
-                            
                         }
-                        
-                        // NSLog(@"object ID temp: %@",i.objectId);
-                        
-                        // NSLog(@"UpVote: %@ Title: %@", [i objectForKey:@"currentUserVotedUpThisJob"], [i objectForKey:@"title"]);
-                        
+
                         
                     }
                     
-                    
-                    
-                    
-                    
-                    
-                    else{
-                        NSLog(@"weeeeeeeeeeeee");
-                        
-                        
-                    }
+
                     
                     NSIndexPath* cellIndexPath1= [NSIndexPath indexPathForRow:count inSection:0];
                     dispatch_async(dispatch_get_main_queue(), ^{
@@ -211,10 +180,7 @@
                 
                 
                 //query for voting down
-                
-                
                 PFQuery *votedQuery2 = [PFQuery queryWithClassName:@"_User"];
-                
                 [votedQuery2 whereKey:@"jobVotedDown" equalTo:i.objectId];
                 [votedQuery2 getObjectInBackgroundWithId:[[PFUser currentUser] objectId] block:^(PFObject *object, NSError *error) {
                     
@@ -225,79 +191,39 @@
                             
                             
                             
-                          //  NSLog(@" #%ld: object found VOTED down", count);
                             [(PFObject *)[jobsArrayWithUsersVotesVolatile objectAtIndex:count] setObject:@"1" forKey:@"currentUserVotedDownThisJob"];
-                            // NSLog(@"1: %@", [i objectForKey:@"title"]);
                             
-                            
-                            
-                            
-                            
-                            
-                            
-                            
+
                             
                         }
                         
                         else{
-                          //  NSLog(@" #%ld: object NOT found VOTED Down", count);
                             
                             [(PFObject *)[jobsArrayWithUsersVotesVolatile objectAtIndex:count] setObject:@"0" forKey:@"currentUserVotedDownThisJob"];
-                            // NSLog(@"0: %@", [i objectForKey:@"title"]);
-                            // [self.jobTable reloadData];
-                            
-                           
-                            
-                            
+
                         }
-                        
-                        // NSLog(@"object ID temp: %@",i.objectId);
-                        
-                        // NSLog(@"UpVote: %@ Title: %@", [i objectForKey:@"currentUserVotedUpThisJob"], [i objectForKey:@"title"]);
-                        
+
                         
                     }
+
                     
-                    
-                    
-                    
-                    
-                    
-                    else{
-                        NSLog(@"weeeeeeeeeeeee");
-                        
-                        
-                    }
-                    
-                   // NSLog(@"refresh cells run");
                     NSIndexPath* cellIndexPath1= [NSIndexPath indexPathForRow:count inSection:0];
-                    [self.jobTable beginUpdates];
-                    [self.jobTable reloadRowsAtIndexPaths:@[cellIndexPath1] withRowAnimation:UITableViewRowAnimationNone];
-                    [self.jobTable endUpdates];
+                    
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        
+                        [self.jobTable beginUpdates];
+                        [self.jobTable reloadRowsAtIndexPaths:@[cellIndexPath1] withRowAnimation:UITableViewRowAnimationNone];
+                        [self.jobTable endUpdates];
+                    });
+
                     
                 }];
 
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
 
                 count++;
                 
                 if (count == jobsArray.count) {
-                    NSLog(@"LAST ITEM REACHED=%ld",(unsigned long)count);
+                    //NSLog(@"LAST ITEM REACHED=%ld",(unsigned long)count);
                    
                     //end refreshing
                     if (self.refreshControl) {
@@ -309,8 +235,6 @@
                 }
                 
             }
-          //  NSLog(@"%@", jobsArray);
-
 
             //this will guarantee a stable index for the jobs table view.
             jobsArrayWithUsersVotesStable = [[NSMutableArray alloc] initWithArray:jobsArrayWithUsersVotesVolatile];
@@ -323,24 +247,9 @@
         });
         
     }];
-    
-    
 
-
-    
-    
-    
-
-    
     NSLog(@"end of parse data reached");
-    //[self.jobTable reloadData];
 
-    
-    
-    
-    
-    
-    
 }
 
 
@@ -351,83 +260,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-- (id)initWithCoder:(NSCoder *)aCoder
-{
- 
- 
-
- 
- 
- 
- 
- 
-   // [self getUserLocation];
-    self = [super initWithCoder:aCoder];
-    if (self) {
-        // The className to query on
-        self.parseClassName = @"Job";
- 
-        // The key of the PFObject to display in the label of the default cell style
-        // self.textKey = @"title";
-        
-        
-        // Whether the built-in pull-to-refresh is enabled
-        self.pullToRefreshEnabled = YES;
-        
-        // Whether the built-in pagination is enabled
-        self.paginationEnabled = YES;
-        self.objectsPerPage = 5;
-        
-        //[self getUserLocation];
-
-    }
-    return self;
-}
-*/
-/*
-- (PFQuery *)queryForTable
-{
-    
-    //Get all jobs and include pointers to employer, status tables and sort them
-    
-
-    
-    
-    if (!self.userLocation) {
-        return nil;
-    }
-    
-    
-    
-    
-    PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];
-   // [query whereKey:@"geolocation" nearGeoPoint:self.userLocation];
-    [query includeKey:@"employer"];
-    [query includeKey:@"status"];
-    [query whereKey:@"geolocation" nearGeoPoint:self.userLocation withinKilometers:100000000];
-   // [query orderByDescending:@"createdAt"];
-
-    
-    if (!self.userLocation) {
-        NSLog(@"Error: I can't get user location");
-    }
-    
-    else{
-        NSLog(@"Success getting location");
-            }
-    
-    
-
-   // query.cachePolicy = kPFCachePolicyCacheThenNetwork;
-    
-    
-
-
-    return query;
-}*/
-
 
 //get number of sections in tableview
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -441,87 +273,46 @@
 }
 
 
-
-
-
-
-
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    
     static NSString *CellIdentifier = @"jobCell";
-    
-    
-
-    
-   // JobCustomTableViewCell *cell = [[JobCustomTableViewCell alloc] init];
     JobCustomTableViewCell *cell = [_jobTable dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-   // NSLog(@"All objects: %@", jobsArrayWithUsersVotes);
-    
-    
-    //[testButton addTarget:<#(id)#> action:<#(SEL)#> forControlEvents:<#(UIControlEvents)#>]
-    
-    
-    
-    
-    //cell.accessoryType = UITableViewCellAccessoryNone;
-    PFObject *tempObject = [jobsArrayWithUsersVotesStable objectAtIndex:indexPath.row];
-    cell.jobTitleLabel.text = [tempObject objectForKey:@"title"];
-   // NSLog(@"%@",[tempObject objectForKey:@"currentUserVotedUpThisJob"]);
-
-    
-  //  NSLog(@"temp object: %@", tempObject);
-    
-    
+    PFObject *jobObject = [jobsArrayWithUsersVotesStable objectAtIndex:indexPath.row];
+    cell.jobTitleLabel.text = [jobObject objectForKey:@"title"];
     formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"dd-MM-yyyy HH:mm"];
-    
-  //  NSLog(@"VotingUp= %@ %@", [tempObject objectForKey:@"currentUserVotedUpThisJob"],[tempObject objectForKey:@"title"]);
-    
+
     
     // programattic upvote button
     UIButton *voteUpButtonTest = [[UIButton alloc] initWithFrame:
                             CGRectMake(260, 0, 40, 40)];
-    [voteUpButtonTest setTitle:[tempObject objectForKey:@"currentUserVotedUpThisJob"] forState:UIControlStateNormal];
-    //voteUpButtonTest.backgroundColor = [UIColor redColor ];
+    [voteUpButtonTest setTitle:[jobObject objectForKey:@"currentUserVotedUpThisJob"] forState:UIControlStateNormal];
     [voteUpButtonTest setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    //imageView.image = [UIImage imageNamed:@"Icon.png"];
     [cell addSubview:voteUpButtonTest];
     [voteUpButtonTest setTag:indexPath.row];
     [voteUpButtonTest addTarget:self action:@selector(jobVoteUpPressed:) forControlEvents:UIControlEventTouchUpInside];
-    
-    
-    //set the image of the upvote button
-    //[voteUpButtonTest setImage:[UIImage imageNamed:@"navigate-yup-icon.png"] forState:UIControlStateNormal];
 
+    //set the image of the upvote button
     //set downvoting button icons
-    if ([[tempObject objectForKey:@"currentUserVotedUpThisJob"] isEqualToString:@"1"]) {
+    if ([[jobObject objectForKey:@"currentUserVotedUpThisJob"] isEqualToString:@"1"]) {
         [voteUpButtonTest setImage:[UIImage imageNamed:@"JobVoteUp-selected"] forState:UIControlStateNormal];
     } else{
         
         [voteUpButtonTest setImage:[UIImage imageNamed:@"JobVoteUp-no-selected"] forState:UIControlStateNormal];
     }
-    
-    
-    
-    
-    
+
     // programattic downvote button
     UIButton *voteDownButtonTest = [[UIButton alloc] initWithFrame:
                                   CGRectMake(260, 50, 40, 40)];
-    [voteDownButtonTest setTitle:[tempObject objectForKey:@"currentUserVotedDownThisJob"] forState:UIControlStateNormal];
-    //voteDownButtonTest.backgroundColor = [UIColor redColor ];
+    [voteDownButtonTest setTitle:[jobObject objectForKey:@"currentUserVotedDownThisJob"] forState:UIControlStateNormal];
     [voteDownButtonTest setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    //imageView.image = [UIImage imageNamed:@"Icon.png"];
     [cell addSubview:voteDownButtonTest];
     [voteDownButtonTest setTag:indexPath.row];
 
     [voteDownButtonTest addTarget:self action:@selector(jobVoteDownPressed:) forControlEvents:UIControlEventTouchUpInside];
-    
-   
+
     //set downvoting button icons
-    if ([[tempObject objectForKey:@"currentUserVotedDownThisJob"] isEqualToString:@"1"]) {
+    if ([[jobObject objectForKey:@"currentUserVotedDownThisJob"] isEqualToString:@"1"]) {
         [voteDownButtonTest setImage:[UIImage imageNamed:@"JobVoteDwn-selected"] forState:UIControlStateNormal];
     } else{
         
@@ -532,289 +323,44 @@
     
     
     
-    cell.jobVoteUpFlag.text =[tempObject objectForKey:@"currentUserVotedUpThisJob"];
-    cell.jobVoteDownFlag.text =[tempObject objectForKey:@"currentUserVotedDownThisJob"];
-    
-    
-    cell.jobVoteUpButton.titleLabel.text =[tempObject objectForKey:@"currentUserVotedUpThisJob"];
-    cell.jobTitleLabel.text = [tempObject objectForKey:@"title"];
-    cell.jobEmployer.text=[tempObject[@"employer"] objectForKey:@"employerName"];
-    
-    /*
-    //set job status color. Remember status is a pointer
-    if ([[tempObject objectForKey:@"status"] isEqualToString:@"1"]) {
-        [voteDownButtonTest setImage:[UIImage imageNamed:@"JobVoteDwn-selected"] forState:UIControlStateNormal];
-    } else{
-        
-        [voteDownButtonTest setImage:[UIImage imageNamed:@"JobVoteDwn-no-selected"] forState:UIControlStateNormal];
-    }*/
-    
-    cell.jobStatus.text=[tempObject[@"status"] objectForKey:@"description"];
-    cell.jobDateAdded.text=[formatter stringFromDate:[tempObject createdAt]];
-    // NSNumber *jobDistanceNumber = [NSNumber numberWithDouble:[self.userLocation distanceInKilometersTo:[object objectForKey:@"geolocation"]]];
-    
-    
-  //  NSString *k=
-    
-    cell.jobDistanceFromUser.text = [NSString stringWithFormat:@"%@ km",[NSString stringWithFormat:@"%.2f",[self.userLocation distanceInKilometersTo:[tempObject objectForKey:@"geolocation"]]] ];
-    
-    
-    
-    
-    cell.jobVoteLabel.text =[NSString stringWithFormat:@"%@",[tempObject objectForKey:@"voteCount"]];;
-    
-  
+    cell.jobVoteUpFlag.text =[jobObject objectForKey:@"currentUserVotedUpThisJob"];
+    cell.jobVoteDownFlag.text =[jobObject objectForKey:@"currentUserVotedDownThisJob"];
+    cell.jobVoteUpButton.titleLabel.text =[jobObject objectForKey:@"currentUserVotedUpThisJob"];
+    cell.jobTitleLabel.text = [jobObject objectForKey:@"title"];
+    cell.jobEmployer.text=[jobObject[@"employer"] objectForKey:@"employerName"];
+    cell.jobStatus.text=[jobObject[@"status"] objectForKey:@"description"];
+    cell.jobDateAdded.text=[formatter stringFromDate:[jobObject createdAt]];
+    cell.jobDistanceFromUser.text = [NSString stringWithFormat:@"%@ km",[NSString stringWithFormat:@"%.2f",[self.userLocation distanceInKilometersTo:[jobObject objectForKey:@"geolocation"]]] ];
+    cell.jobVoteLabel.text =[NSString stringWithFormat:@"%@",[jobObject objectForKey:@"voteCount"]];;
     
     //set job area
-   // NSLog(@"Area of job = %@", [tempObject objectForKey:@"area"]);
-    cell.jobArea.text =[tempObject objectForKey:@"area"];
+    cell.jobArea.text =[jobObject objectForKey:@"area"];
     
     //if the user already voted up, mark upvote button as selected
     PFQuery *votedQuery = [PFQuery queryWithClassName:@"_User"];
-    [votedQuery whereKey:@"jobVotedUp" equalTo:tempObject.objectId];
-   // [votedQuery whereKey:@"objectId" equalTo:[[PFUser currentUser] objectId] ];
+    [votedQuery whereKey:@"jobVotedUp" equalTo:jobObject.objectId];
     
-    
-   // NSLog(@"Current user ID=%@",[[PFUser currentUser] objectId]);
-    
-    /*
-    [votedQuery getObjectInBackgroundWithId:[[PFUser currentUser] objectId] block:^(PFObject *object, NSError *error) {
-        
-        
-        if (!error) {
-            //jobsArray = [[NSArray alloc] initWithArray:objects];
-            //NSLog(@"Users Query Objects: %@", object);
-             // [cell.jobVoteUpButton setSelected:YES];
-            
-            // if a record is found in the user table in the voted up
-            
-           // NSLog(@"print object =%@",[object objectForKey:@"jobVotedUp"]);
-           // NSLog(@"object ID temp: %@",tempObject.objectId);
-            
-            
-            if ([[object objectForKey:@"jobVotedUp"] containsObject:tempObject.objectId]) {
-                //NSLog(@"foundddddddddd");
-                
-
-                
-               // [cell.jobVoteUpButton.titleLabel setFont:[UIFont boldSystemFontOfSize:15.f]];
-              
-                //[self.jobTable reloadData];
-               // [cell.jobVoteUpButton setSelected:YES];
-             //   cell.backgroundColor = [UIColor blueColor];
-            }
-            
-            
-            
-            
-        }
-          else{
-            NSLog(@"weeeeeeeeeeeeee");
-            
-            
-        }
-        
-    }];
-    
-    */
-   /*
-    
-    [votedQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (!error) {
-            //jobsArray = [[NSArray alloc] initWithArray:objects];
-            NSLog(@"Users Query Objects: %@", objects);
-            //  [cell.jobVoteUpButton setSelected:YES];
-            
-            // if a record is found in the user table in the voted up
-            
-            if ([objects objectAtIndex:0]) {
-                ;
-            }
-            
-            
-        }
-        
-        else{
-            
-            NSLog(@"weeeeeeeeeeeeee");
-        }
-        //[self.jobTable reloadData];
-    }];
-    
-    
-    */
-    
-    
-    
-    
-    
-    
-    
-    //  NSLog(@"Temp object: %@", tempObject);
-    
-    
-    
-    /*
-    
-    if (condition) {
-        [cell.jobVoteUpButton setSelected:YES];
-    }
-    
-    [query whereKey:@"arrayKey" equalTo:@"individualItem"];
-
-    
-    PFQuery *retrieveJobs = [PFQuery queryWithClassName:@"Job"];
-    //  [retrieveJobs whereKey:@"geolocation" nearGeoPoint:self.userLocation];
-    [retrieveJobs includeKey:@"employer"];
-    [retrieveJobs includeKey:@"status"];
-    //[retrieveJobs whereKey:@"geolocation" nearGeoPoint:self.userLocation withinKilometers:100000000];
-    [retrieveJobs orderByDescending:@"createdAt"];
-    
-*/
-    
-     
-     
-     
-     
-     
-     
-     
-     
-     
-    
-    
-    
-    
-    //add a tag to the voting button to indicate the current row index
+        //add a tag to the voting button to indicate the current row index
     [cell.jobVoteUpButton setTag:indexPath.row];
     [cell.jobVoteUpButton addTarget:self action:@selector(jobVoteUpPressed:) forControlEvents:UIControlEventTouchUpInside];
-    
-    ///[cell.jobVoteLabel setTag:indexPath.row];
-    
     [cell.jobVoteDownButton setTag:indexPath.row];
     [cell.jobVoteDownButton addTarget:self action:@selector(jobVoteDownPressed:) forControlEvents:UIControlEventTouchUpInside];
     
-    
-    // Configure the cell
-    //   PFFile *thumbnail = [object objectForKey:@"image"];
-    //  PFImageView *thumbnailImageView = (PFImageView*)cell.thumbnailImageView;
-    // thumbnailImageView.image = [UIImage imageNamed:@"placeholder.jpg"];
-    //   thumbnailImageView.file = thumbnail;
-    //  [thumbnailImageView loadInBackground];
-    
-   // NSLog(@"Object: %@", object.createdAt);
-    
-    //set table cell labels with reference to pointers
-    /*
-    NSDateFormatter *formatter;
-    formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"dd-MM-yyyy HH:mm"];
-    
-    
-    cell.jobTitleLabel.text = [object objectForKey:@"title"];
-    cell.jobEmployer.text=[object[@"employer"] objectForKey:@"employerName"];
-    cell.jobStatus.text=[object[@"status"] objectForKey:@"description"];
-    cell.jobDateAdded.text=[formatter stringFromDate:[object createdAt]];
-    // NSNumber *jobDistanceNumber = [NSNumber numberWithDouble:[self.userLocation distanceInKilometersTo:[object objectForKey:@"geolocation"]]];
-    
-    
-    
-    cell.jobDistanceFromUser.text = [NSString stringWithFormat:@"%.2f",[self.userLocation distanceInKilometersTo:[object objectForKey:@"geolocation"]]];
-    
-    NSLog(@"Distance = %.2f", [self.userLocation distanceInKilometersTo:[object objectForKey:@"geolocation"]]);
-    
-    //[self.userLocation distanceInKilometersTo:[object objectForKey:@"geolocation"]];
-    
-    
-    // NSLog(@"Employer %ld:%@",indexPath.row, [object[@"employer"] objectForKey:@"employerName"]);
-    
-    // NSString        *dateString;
-    
-    */
-    
-    
-    
-    /// NSLog(@"Date Added:%@",[formatter stringFromDate:[object createdAt]]);
-    
-    return cell;
+        return cell;
     
     
     
 }
 
 
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(PFObject *)object
-{
-    static NSString *CellIdentifier = @"jobCell";
-    
-    JobCustomTableViewCell *cell = (JobCustomTableViewCell *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    // Configure the cell
- //   PFFile *thumbnail = [object objectForKey:@"image"];
-  //  PFImageView *thumbnailImageView = (PFImageView*)cell.thumbnailImageView;
-   // thumbnailImageView.image = [UIImage imageNamed:@"placeholder.jpg"];
- //   thumbnailImageView.file = thumbnail;
-  //  [thumbnailImageView loadInBackground];
-    
-    NSLog(@"Object: %@", object.createdAt);
-    
-    //set table cell labels with reference to pointers
-    
-    NSDateFormatter *formatter;
-    formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"dd-MM-yyyy HH:mm"];
-    
-    
-    cell.jobTitleLabel.text = [object objectForKey:@"title"];
-    cell.jobEmployer.text=[object[@"employer"] objectForKey:@"employerName"];
-    cell.jobStatus.text=[object[@"status"] objectForKey:@"description"];
-    cell.jobDateAdded.text=[formatter stringFromDate:[object createdAt]];
-   // NSNumber *jobDistanceNumber = [NSNumber numberWithDouble:[self.userLocation distanceInKilometersTo:[object objectForKey:@"geolocation"]]];
-    
-    
-    
-    cell.jobDistanceFromUser.text = [NSString stringWithFormat:@"%.2f",[self.userLocation distanceInKilometersTo:[object objectForKey:@"geolocation"]]];
-    
-    NSLog(@"Distance = %.2f", [self.userLocation distanceInKilometersTo:[object objectForKey:@"geolocation"]]);
-    
-    //[self.userLocation distanceInKilometersTo:[object objectForKey:@"geolocation"]];
-    
-    
-   // NSLog(@"Employer %ld:%@",indexPath.row, [object[@"employer"] objectForKey:@"employerName"]);
-    
-   // NSString        *dateString;
-    
-
-    
-    
-    
-   /// NSLog(@"Date Added:%@",[formatter stringFromDate:[object createdAt]]);
-    
-    return cell;
-}*/
-
-//inactive
-
-
 
 - (PFGeoPoint *) getUserLocation{
-    
-  //  NSLog(@"running user location");
-   //PFGeoPoint *i = [[PFGeoPoint alloc] init];
+
     //retrieve user location
     [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *geoPoint, NSError *error) {
         if (!error) {
-           // NSLog(@"LAT: %f, LONG: %f", geoPoint.latitude, geoPoint.longitude);
-            
-          //  PFQuery *query = [PFQuery queryWithClassName:@"Careers"];
-        
-            
-           // userLocation = geoPoint;
-          //  return userLocation;
+
             self.userLocation= geoPoint;
-            
-         //   [self queryForTable];
             
         }
         
@@ -822,13 +368,7 @@
             NSLog(@"Error getting user location: %@", error);
         }
     }];
-    
-    
-  //  NSLog(@"LAT: %f, LONG: %f", userLocation.latitude, userLocation.longitude);
-    
-    
-    
-    
+
     return userLocation;
 
 }
@@ -838,51 +378,37 @@
 
 - (IBAction)jobVoteDownPressed:(UIButton *)sender {
     
-    PFObject *tempObject = [jobsArrayWithUsersVotesVolatile objectAtIndex:sender.tag];
-    // NSLog(@"%@Jobs array", jobsArray);
+    PFObject *jobObject = [jobsArrayWithUsersVotesVolatile objectAtIndex:sender.tag];
+    
     //if the user already voted up, mark upvote button as selected
     PFQuery *votedQuery = [PFQuery queryWithClassName:@"_User"];
-    [votedQuery whereKey:@"jobVotedDown" equalTo:tempObject.objectId];
+    [votedQuery whereKey:@"jobVotedDown" equalTo:jobObject.objectId];
     [votedQuery whereKey:@"objectId" equalTo:[[PFUser currentUser] objectId] ];
-    
-    
-   // NSLog(@"V2 Current user ID=%@",[[PFUser currentUser] objectId]);
-    
-    
     [votedQuery getObjectInBackgroundWithId:[[PFUser currentUser] objectId] block:^(PFObject *object, NSError *error) {
         
         if (!error) {
-            //jobsArray = [[NSArray alloc] initWithArray:objects];
-            NSLog(@"Users Query Objects: %@", object);
-            // [cell.jobVoteUpButton setSelected:YES];
+            //NSLog(@"Users Query Objects: %@", object);
             
             // if a record is found in the user table in the voted up
-            
-            // NSLog(@"print object =%@",[object objectForKey:@"jobVotedUp"]);
-            // NSLog(@"object ID temp: %@",tempObject.objectId);
-            
-            
-            
             //if the user did not vote down yet
-            if (![[object objectForKey:@"jobVotedDown"] containsObject:tempObject.objectId]) {
-               /// NSLog(@"foundddddddddd");
+            if (![[object objectForKey:@"jobVotedDown"] containsObject:jobObject.objectId]) {
                 
                 //if the user has already pressed vote up before pressing the down
-                if ([[object objectForKey:@"jobVotedUp"] containsObject:tempObject.objectId]) {
-                    [tempObject incrementKey:@"voteCount" byAmount:[NSNumber numberWithInteger:-1]];
-                    [[PFUser currentUser] removeObject:tempObject.objectId forKey:@"jobVotedUp"];
+                if ([[object objectForKey:@"jobVotedUp"] containsObject:jobObject.objectId]) {
+                    [jobObject incrementKey:@"voteCount" byAmount:[NSNumber numberWithInteger:-1]];
+                    [[PFUser currentUser] removeObject:jobObject.objectId forKey:@"jobVotedUp"];
                     [(PFObject *)[jobsArrayWithUsersVotesVolatile objectAtIndex:sender.tag] setObject:@"0" forKey:@"currentUserVotedUpThisJob"];
 
                 }
                 
                 
-                [tempObject incrementKey:@"voteCount" byAmount:[NSNumber numberWithInteger:-1]];
+                [jobObject incrementKey:@"voteCount" byAmount:[NSNumber numberWithInteger:-1]];
                 
-                [tempObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                [jobObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                     if (succeeded) {
-                        NSLog(@"Career object removed");
-                          [[PFUser currentUser] removeObject:tempObject.objectId forKey:@"jobVotedUp"];
-                        [[PFUser currentUser] addUniqueObject:tempObject.objectId forKey:@"jobVotedDown"];
+                        //NSLog(@"Career object removed");
+                          [[PFUser currentUser] removeObject:jobObject.objectId forKey:@"jobVotedUp"];
+                        [[PFUser currentUser] addUniqueObject:jobObject.objectId forKey:@"jobVotedDown"];
                         
                         [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                             if (!error) {
@@ -894,15 +420,10 @@
                                 
                                 
                                 NSIndexPath* cellIndexPath1= [NSIndexPath indexPathForRow:sender.tag inSection:0];
-                                //  NSIndexPath* cellIndexPath2= [NSIndexPath indexPathForRow:4 inSection:1];
-                                // SIndexPath* indexPath1 = [NSIndexPath indexPathForRow:3 inSection:2];
-                                // NSArray* indexArray = [NSArray arrayWithObjects:cellIndexPath1,cellIndexPath2,nil];
+
                                 
-                                NSLog(@"NO ERRORS: Index Array = %@", cellIndexPath1);
-                                
-                                // [self.jobTable reloadRowsAtIndexPaths:indexArray withRowAnimation:UITableViewRowAnimationNone];
-                                
-                                
+                                //NSLog(@"NO ERRORS: Index Array = %@", cellIndexPath1);
+
                                 dispatch_async(dispatch_get_main_queue(), ^{
                                     
                                     [self.jobTable beginUpdates];
@@ -914,58 +435,31 @@
                             }
                         }];
 
-                        
-                        
-                        
-                        
-                    
-                    
-                    
                     } else {
                         NSLog(@"Error saving career object");
                     }
                     
                 }];
-                
-                
-                
-                // [cell.jobVoteUpButton setSelected:YES];
-                //   cell.backgroundColor = [UIColor blueColor];
+
             }
             
             
             //if the user already voted, decrease count and refresh
             else{
                 
-                NSLog(@"The user already voted up for this");
+                [jobObject incrementKey:@"voteCount" byAmount:[NSNumber numberWithInteger:1]];
                 
-                [tempObject incrementKey:@"voteCount" byAmount:[NSNumber numberWithInteger:1]];
-                
-                [tempObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                [jobObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                     if (succeeded) {
-                        // NSLog(@"Career object removed");
-                        //  [[PFUser currentUser] removeObject:tempObject.objectId forKey:forKey:@"jobVotedUp"];
-                        // [[PFUser currentUser] addUniqueObject:tempObject.objectId forKey:@"jobVotedUp"];
-                        [[PFUser currentUser] removeObject:tempObject.objectId forKey:@"jobVotedDown"];
+                        [[PFUser currentUser] removeObject:jobObject.objectId forKey:@"jobVotedDown"];
                         [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                             if (!error) {
                                 
                                 //don't forget to update the main array.
                                 [(PFObject *)[jobsArrayWithUsersVotesVolatile objectAtIndex:sender.tag] setObject:@"0" forKey:@"currentUserVotedDownThisJob"];
-                                
-                                
-                                
-                                
+
                                 NSIndexPath* cellIndexPath1= [NSIndexPath indexPathForRow:sender.tag inSection:0];
-                                //  NSIndexPath* cellIndexPath2= [NSIndexPath indexPathForRow:4 inSection:1];
-                                // SIndexPath* indexPath1 = [NSIndexPath indexPathForRow:3 inSection:2];
-                                // NSArray* indexArray = [NSArray arrayWithObjects:cellIndexPath1,cellIndexPath2,nil];
-                                
-                                NSLog(@"NO ERRORS: Index Array = %@", cellIndexPath1);
-                                
-                                // [self.jobTable reloadRowsAtIndexPaths:indexArray withRowAnimation:UITableViewRowAnimationNone];
-                                
-                                
+
                                 dispatch_async(dispatch_get_main_queue(), ^{
                                     
                                     [self.jobTable beginUpdates];
@@ -977,20 +471,13 @@
                             }
                         }];
                         
-                        //   [ self.jobTable reloadData];
                         
                     } else {
                         NSLog(@"Error saving career object");
                     }
                     
                 }];
-                
-                
-                
-                // [cell.jobVoteUpButton setSelected:YES];
-                //   cell.backgroundColor = [UIColor blueColor];
-                
-                
+
                 
             }
             
@@ -998,11 +485,7 @@
             
             
         }
-        else{
-            NSLog(@"weeeeeeeeeeeeee");
-            
-            
-        }
+
         
     }];
     
@@ -1018,11 +501,11 @@
 - (IBAction)jobVoteUpPressed:(UIButton *)sender {
     
     
-    PFObject *tempObject = [jobsArrayWithUsersVotesVolatile objectAtIndex:sender.tag];
-    // NSLog(@"%@Jobs array", jobsArray);
+    PFObject *jobObject = [jobsArrayWithUsersVotesVolatile objectAtIndex:sender.tag];
+    
     //if the user already voted up, mark upvote button as selected
     PFQuery *votedQuery = [PFQuery queryWithClassName:@"_User"];
-    [votedQuery whereKey:@"jobVotedUp" equalTo:tempObject.objectId];
+    [votedQuery whereKey:@"jobVotedUp" equalTo:jobObject.objectId];
     [votedQuery whereKey:@"objectId" equalTo:[[PFUser currentUser] objectId] ];
     
     
@@ -1033,41 +516,29 @@
         
         
         if (!error) {
-            //jobsArray = [[NSArray alloc] initWithArray:objects];
-            NSLog(@"Users Query Objects: %@", object);
-            // [cell.jobVoteUpButton setSelected:YES];
-            
+            //NSLog(@"Users Query Objects: %@", object);
+        
             // if a record is found in the user table in the voted up
-            
-            // NSLog(@"print object =%@",[object objectForKey:@"jobVotedUp"]);
-            // NSLog(@"object ID temp: %@",tempObject.objectId);
-            
-            
-            
             //if the user did not vote up yet
-            if (![[object objectForKey:@"jobVotedUp"] containsObject:tempObject.objectId]) {
-               // NSLog(@"foundddddddddd");
+            if (![[object objectForKey:@"jobVotedUp"] containsObject:jobObject.objectId]) {
                 
-                [tempObject incrementKey:@"voteCount" byAmount:[NSNumber numberWithInteger:1]];
+                [jobObject incrementKey:@"voteCount" byAmount:[NSNumber numberWithInteger:1]];
 
-                
-                
                 //if the user has already pressed vote down before pressing the up
-                if ([[object objectForKey:@"jobVotedDown"] containsObject:tempObject.objectId]) {
-                    [tempObject incrementKey:@"voteCount" byAmount:[NSNumber numberWithInteger:1]];
-                    [[PFUser currentUser] removeObject:tempObject.objectId forKey:@"jobVotedDown"];
+                if ([[object objectForKey:@"jobVotedDown"] containsObject:jobObject.objectId]) {
+                    [jobObject incrementKey:@"voteCount" byAmount:[NSNumber numberWithInteger:1]];
+                    [[PFUser currentUser] removeObject:jobObject.objectId forKey:@"jobVotedDown"];
                     [(PFObject *)[jobsArrayWithUsersVotesVolatile objectAtIndex:sender.tag] setObject:@"0" forKey:@"currentUserVotedDownThisJob"];
                     
                 }
                 
                 
                 
-                [tempObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                [jobObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                     if (succeeded) {
-                        NSLog(@"Career object removed");
-                        //  [[PFUser currentUser] removeObject:tempObject.objectId forKey:forKey:@"jobVotedUp"];
-                        [[PFUser currentUser] addUniqueObject:tempObject.objectId forKey:@"jobVotedUp"];
-                       // [[PFUser currentUser] saveInBackground];
+                        //NSLog(@"Career object removed");
+
+                        [[PFUser currentUser] addUniqueObject:jobObject.objectId forKey:@"jobVotedUp"];
                         
                         [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                             if (!error) {
@@ -1080,13 +551,7 @@
                                 
                                 
                                 NSIndexPath* cellIndexPath1= [NSIndexPath indexPathForRow:sender.tag inSection:0];
-                                //  NSIndexPath* cellIndexPath2= [NSIndexPath indexPathForRow:4 inSection:1];
-                                // SIndexPath* indexPath1 = [NSIndexPath indexPathForRow:3 inSection:2];
-                                // NSArray* indexArray = [NSArray arrayWithObjects:cellIndexPath1,cellIndexPath2,nil];
-                                
-                                NSLog(@"NO ERRORS: Index Array = %@", cellIndexPath1);
-                                
-                                // [self.jobTable reloadRowsAtIndexPaths:indexArray withRowAnimation:UITableViewRowAnimationNone];
+
                                 
                                 dispatch_async(dispatch_get_main_queue(), ^{
                                     
@@ -1096,24 +561,14 @@
                                 });
                             }
                         }];
-                       
-                        
-                        //[sender reloadInputViews];
-                        
-                        
-                        //[sender setNeedsDisplay];
-                        //   [ self.jobTable reloadData];
+
                         
                     } else {
                         NSLog(@"Error saving career object");
                     }
                     
                 }];
-                
-                
-                
-                // [cell.jobVoteUpButton setSelected:YES];
-                //   cell.backgroundColor = [UIColor blueColor];
+
             }
             
             
@@ -1121,16 +576,14 @@
             else{
 
                 
-                NSLog(@"The user already voted up for this");
+                //NSLog(@"The user already voted up for this");
                 
-                [tempObject incrementKey:@"voteCount" byAmount:[NSNumber numberWithInteger:-1]];
+                [jobObject incrementKey:@"voteCount" byAmount:[NSNumber numberWithInteger:-1]];
                 
-                [tempObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                [jobObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                     if (succeeded) {
-                       // NSLog(@"Career object removed");
-                        //  [[PFUser currentUser] removeObject:tempObject.objectId forKey:forKey:@"jobVotedUp"];
-                       // [[PFUser currentUser] addUniqueObject:tempObject.objectId forKey:@"jobVotedUp"];
-                        [[PFUser currentUser] removeObject:tempObject.objectId forKey:@"jobVotedUp"];
+
+                        [[PFUser currentUser] removeObject:jobObject.objectId forKey:@"jobVotedUp"];
                         [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                             if (!error) {
                                 
@@ -1141,14 +594,7 @@
                                 
                                 
                                 NSIndexPath* cellIndexPath1= [NSIndexPath indexPathForRow:sender.tag inSection:0];
-                                //  NSIndexPath* cellIndexPath2= [NSIndexPath indexPathForRow:4 inSection:1];
-                                // SIndexPath* indexPath1 = [NSIndexPath indexPathForRow:3 inSection:2];
-                                // NSArray* indexArray = [NSArray arrayWithObjects:cellIndexPath1,cellIndexPath2,nil];
-                                
-                                NSLog(@"NO ERRORS: Index Array = %@", cellIndexPath1);
-                                
-                                // [self.jobTable reloadRowsAtIndexPaths:indexArray withRowAnimation:UITableViewRowAnimationNone];
-                                
+
                                 dispatch_async(dispatch_get_main_queue(), ^{
                                     
                                     [self.jobTable beginUpdates];
@@ -1159,18 +605,12 @@
                         }];
 
                         
-                        //   [ self.jobTable reloadData];
-                        
                     } else {
                         NSLog(@"Error saving career object");
                     }
                     
                 }];
-                
-                
-                
-                // [cell.jobVoteUpButton setSelected:YES];
-                //   cell.backgroundColor = [UIColor blueColor];
+
                 
                 
                 
@@ -1180,11 +620,7 @@
             
             
         }
-        else{
-            NSLog(@"weeeeeeeeeeeeee");
-            
-            
-        }
+      
         
     }];
     
@@ -1195,56 +631,43 @@
 }
 
 
--(void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    
-    ;
-}
-
-
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"showJob"]) {
         
         NSIndexPath *indexPath = [self.jobTable indexPathForSelectedRow];
-        PFObject *tempObject = [jobsArrayWithUsersVotesVolatile objectAtIndex:indexPath.row];
+        PFObject *jobObject = [jobsArrayWithUsersVotesVolatile objectAtIndex:indexPath.row];
         
         JobDetailsViewController *destViewController = segue.destinationViewController;
        // Recipe *recipe = [recipes objectAtIndex:indexPath.row];
-        destViewController.jobTitle = [tempObject objectForKey:@"title"];
-        destViewController.jobDescription = [tempObject objectForKey:@"description"];
-        destViewController.jobDistanceFromUser = [NSString stringWithFormat:@"%@ km",[NSString stringWithFormat:@"%.2f",[self.userLocation distanceInKilometersTo:[tempObject objectForKey:@"geolocation"]]] ];
-        destViewController.jobEmployer =[tempObject[@"employer"] objectForKey:@"employerName"];
-        destViewController.jobVote = [NSString stringWithFormat:@"%@",[tempObject objectForKey:@"voteCount"]];
-        destViewController.jobDateAdded =[formatter stringFromDate:[tempObject createdAt]];
-        destViewController.jobArea =[tempObject objectForKey:@"area"];
-        destViewController.jobRequiredSkills = [tempObject objectForKey:@"skillsRequired"];
-        destViewController.jobEducation =[tempObject objectForKey:@"education"];
+        destViewController.jobTitle = [jobObject objectForKey:@"title"];
+        destViewController.jobDescription = [jobObject objectForKey:@"description"];
+        destViewController.jobDistanceFromUser = [NSString stringWithFormat:@"%@ km",[NSString stringWithFormat:@"%.2f",[self.userLocation distanceInKilometersTo:[jobObject objectForKey:@"geolocation"]]] ];
+        destViewController.jobEmployer =[jobObject[@"employer"] objectForKey:@"employerName"];
+        destViewController.jobVote = [NSString stringWithFormat:@"%@",[jobObject objectForKey:@"voteCount"]];
+        destViewController.jobDateAdded =[formatter stringFromDate:[jobObject createdAt]];
+        destViewController.jobArea =[jobObject objectForKey:@"area"];
+        destViewController.jobRequiredSkills = [jobObject objectForKey:@"skillsRequired"];
+        destViewController.jobEducation =[jobObject objectForKey:@"education"];
         destViewController.userLocation = self.userLocation;
-      //  destViewController.jobLocation = _jobLocation;
-     //   cell.jobArea.text =[tempObject objectForKey:@"area"];
 
-         CLLocation  *jobLocation = [[CLLocation alloc] initWithLatitude:[[tempObject objectForKey:@"geolocation"] latitude] longitude:[[tempObject objectForKey:@"geolocation"] longitude]];
+
+         CLLocation  *jobLocation = [[CLLocation alloc] initWithLatitude:[[jobObject objectForKey:@"geolocation"] latitude] longitude:[[jobObject objectForKey:@"geolocation"] longitude]];
         destViewController.jobLocation = jobLocation;
         
         
-        destViewController.jobAddressLine = [tempObject objectForKey:@"addressLine"];
+        destViewController.jobAddressLine = [jobObject objectForKey:@"addressLine"];
         
         //this is basically an employer userID from the users table
-        destViewController.jobEmployerUserObjectID= [[tempObject objectForKey:@"postedByUser"] objectId];
-        destViewController.jobPosterPFUser =[tempObject objectForKey:@"postedByUser"];
-        NSLog(@"Employer User = %@", [tempObject objectForKey:@"postedByUser"]);
+        destViewController.jobEmployerUserObjectID= [[jobObject objectForKey:@"postedByUser"] objectId];
+        destViewController.jobPosterPFUser =[jobObject objectForKey:@"postedByUser"];
+        //NSLog(@"Employer User = %@", [jobObject objectForKey:@"postedByUser"]);
         
         
-        NSLog(@"Posted by User: username: %@ objectID: %@", [[tempObject objectForKey:@"postedByUser"] objectForKey:@"username"],[[tempObject objectForKey:@"postedByUser"] objectId] );
-       NSLog(@"Employer Name: %@", [tempObject[@"employer"] objectForKey:@"employerName"]);
-       NSLog(@"UserType: %@", [tempObject[@"employer"] objectForKey:@"userType"]);
-        //NSLog(@"%@", [tempObject[@"employer"] objectForKey:@"aboutEmployer"]);
+        //NSLog(@"Posted by User: username: %@ objectID: %@", [[jobObject objectForKey:@"postedByUser"] objectForKey:@"username"],[[jobObject objectForKey:@"postedByUser"] objectId] );
+       //NSLog(@"Employer Name: %@", [jobObject[@"employer"] objectForKey:@"employerName"]);
+       //NSLog(@"UserType: %@", [jobObject[@"employer"] objectForKey:@"userType"]);
+        //NSLog(@"%@", [jobObject[@"employer"] objectForKey:@"aboutEmployer"]);
 
-
-        
-        
-        
     }
 }
 
@@ -1252,14 +675,7 @@
 -(void) reloadData{
     
     // Reload table data
-   // self.jobsArray =nil;
-    //self.jobsArrayWithUsersVotes = nil;
     [self retrieveFromParse];
-    //[self.jobTable reloadData];
-    NSLog(@"rolad data called");
-    
-    //end refreshing
-    
     
 }
 
