@@ -545,12 +545,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UnN-V3-6sf">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="*Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UnN-V3-6sf">
                                 <rect key="frame" x="16" y="110" width="568" height="40"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DVh-jk-MEt">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="*Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DVh-jk-MEt">
                                 <rect key="frame" x="16" y="160" width="568" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="y0A-Xq-Ibw"/>
@@ -558,7 +558,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TdS-gP-fkv">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="*Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TdS-gP-fkv">
                                 <rect key="frame" x="16" y="60" width="568" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Q7K-d6-28F"/>
@@ -672,6 +672,6 @@
         <image name="second" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="phv-aF-IUg"/>
+        <segue reference="0do-qJ-Jzh"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -12,6 +12,26 @@
 
 
 
+- (void) viewDidLoad{
+    
+    
+    
+    //set the border color of mandatory fields to red
+    _usernameField.layer.cornerRadius=5.0f;
+    _usernameField.layer.borderColor=[[UIColor redColor]CGColor];
+    _usernameField.layer.borderWidth= .5f;
+    
+    _passwordField.layer.cornerRadius=5.0f;
+    _passwordField.layer.borderColor=[[UIColor redColor]CGColor];
+    _passwordField.layer.borderWidth= .5f;
+    
+    _emailField.layer.cornerRadius=5.0f;
+    _emailField.layer.borderColor=[[UIColor redColor]CGColor];
+    _emailField.layer.borderWidth= .5f;
+    
+    
+}
+
 
 - (void)viewDidAppear:(BOOL)animated{
     
