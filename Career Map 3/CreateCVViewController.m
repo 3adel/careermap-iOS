@@ -37,4 +37,9 @@
 - (IBAction)closeCreateCVButtonPressed:(UIBarButtonItem *)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+- (IBAction)saveCVButtonPressed:(UIBarButtonItem *)sender {
+    
+    NSLog(@"Save cv button pressed");
+}
 @end

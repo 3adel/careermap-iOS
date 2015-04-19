@@ -6,6 +6,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CreateCVViewController">
             <connections>
+                <outlet property="CVjobSeekerCurrentTitleTextView" destination="BAr-2X-f0G" id="Xxd-11-yOB"/>
+                <outlet property="CVjobSeekerFirstNameTextView" destination="EPF-TK-n6P" id="RnW-lV-FBj"/>
+                <outlet property="CVjobSeekerLastNameTextView" destination="nxu-Mx-j1n" id="yK8-Gl-5zH"/>
+                <outlet property="CVjobSeekerThumb" destination="QeQ-gb-fAX" id="RJF-j6-HCb"/>
                 <outlet property="view" destination="2op-C1-VX5" id="bkN-bK-lkY"/>
             </connections>
         </placeholder>
@@ -18,14 +22,38 @@
                     <rect key="frame" x="0.0" y="14" width="320" height="44"/>
                     <items>
                         <navigationItem title="Edit Micro CV" id="UVb-ZI-fS1">
-                            <barButtonItem key="rightBarButtonItem" title="[X]" id="Glu-Sj-p10">
+                            <barButtonItem key="leftBarButtonItem" title="Cancel" id="Glu-Sj-p10">
                                 <connections>
                                     <action selector="closeCreateCVButtonPressed:" destination="-1" id="DcJ-uk-Yr2"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem key="rightBarButtonItem" title="Save" id="1Rj-9o-Dya">
+                                <connections>
+                                    <action selector="saveCVButtonPressed:" destination="-1" id="Eb3-gb-PRD"/>
                                 </connections>
                             </barButtonItem>
                         </navigationItem>
                     </items>
                 </navigationBar>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QeQ-gb-fAX">
+                    <rect key="frame" x="111" y="84" width="99" height="101"/>
+                    <color key="backgroundColor" red="0.40000000596046448" green="1" blue="0.80000001192092896" alpha="1" colorSpace="calibratedRGB"/>
+                </imageView>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EPF-TK-n6P">
+                    <rect key="frame" x="8" y="218" width="136" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nxu-Mx-j1n">
+                    <rect key="frame" x="8" y="269" width="136" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Current Title" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BAr-2X-f0G">
+                    <rect key="frame" x="8" y="313" width="136" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <point key="canvasLocation" x="264" y="92"/>

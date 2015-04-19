@@ -9,6 +9,25 @@
 #import <UIKit/UIKit.h>
 
 @interface CreateCVViewController : UIViewController
+
+
+//Outlets
+
+@property (weak, nonatomic) IBOutlet UIImageView *CVjobSeekerThumb;
+@property (weak, nonatomic) IBOutlet UITextField *CVjobSeekerFirstNameTextView;
+
+@property (weak, nonatomic) IBOutlet UITextField *CVjobSeekerLastNameTextView;
+@property (weak, nonatomic) IBOutlet UITextField *CVjobSeekerCurrentTitleTextView;
+
+
+//Data
+
+
+
+
+
+//actions
 - (IBAction)closeCreateCVButtonPressed:(UIBarButtonItem *)sender;
+- (IBAction)saveCVButtonPressed:(UIBarButtonItem *)sender;
 
 @end
