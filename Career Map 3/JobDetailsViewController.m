@@ -272,13 +272,7 @@
                     NSLog(@"user did not apply");
                     //user has cv but did NOT apply apply
                     //Make them apply now
-                    
 
-                   // NSLog(@"applied by user: %@",self.jobObject  );
-
-                    
-                    
-                    
                     //Update job table. Add user objectId to who applied
                     PFQuery *query = [PFQuery queryWithClassName:@"Job"];
                     [query includeKey:@"appliedByUsers"];
@@ -323,24 +317,7 @@
                         
                     }];
 
-                    
-                    //NSLog(@"job id =%@", _jobObject.objectId);
-                    
-                    
-                   // [[applyObject objectForKey:_jobObject.objectId] addUniqueObject:[[PFUser currentUser] objectId] forKey:@"appliedByUsers"];
-                    
-                    
-                   // [[PFUser currentUser] addUniqueObject:applyObject.objectId forKey:@"appliedByUsers"];
-                    
-                   // [[PFUser currentUser] addun]
-                    
-   
-                    
-                    
-                   // [self.applyWithCVButton setNeedsDisplay];
-                    
-                    
-                    //update UI accordingly
+
                 }
                 
                 
@@ -350,8 +327,19 @@
             
             else{
                 
+                _createCVAlert.delegate = self;
                 NSLog(@"No cv has been found, create one then");
+                 _createCVAlert =[[UIAlertView alloc] initWithTitle:@"Create Micro CV" message:@"It will take you seconds!" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Create Micro CV ", nil];
+
                 
+                
+                
+                
+                //[createCVAlert addButtonWithTitle:@"Foo" block:^{ NSLog(@"Foo"); }];
+                //[createCVAlert addButtonWithTitle:<#(NSString *)#>]
+                
+                
+               [_createCVAlert show];
                 //The user doesn't have a CV,take to cv creation flow
             }
             
@@ -383,6 +371,23 @@
 }
 
 
+//handle different alert views
+-(void)alertView:(UIAlertView *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if(actionSheet== _createCVAlert) {//alertLogout
+        if (buttonIndex == 0){
+            NSLog(@"0: Cancel");
+            
+        }
+        
+        else if(buttonIndex==1){
+            
+            NSLog(@"Create CV flow");
+            
+        }
+    }
+
+    
+}
 
 
 

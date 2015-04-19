@@ -12,7 +12,7 @@
 #import "JobMapViewController.h"
 #import "JobChatViewController.h"
 
-@interface JobDetailsViewController : UIViewController <MKMapViewDelegate,CLLocationManagerDelegate>
+@interface JobDetailsViewController : UIViewController <MKMapViewDelegate,CLLocationManagerDelegate,UIAlertViewDelegate>
 
 //outlets
 
@@ -33,6 +33,8 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *jobDetailsScrollView;
 @property (weak, nonatomic) IBOutlet UITextView *jobsSkillsTextView;
 @property (weak, nonatomic) IBOutlet UITextView *jobEducationTextView;
+@property (strong, nonatomic) UIAlertView *createCVAlert;
+
 
 //data
 @property (nonatomic, strong) NSString *jobTitle;
