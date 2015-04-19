@@ -119,7 +119,8 @@
 - (void) registerNewUser{
     
     PFUser *newUser = [PFUser user];
-    newUser.username = _usernameField.text;
+    //always convert usernames to lowercase
+    newUser.username = [_usernameField.text lowercaseString];
     newUser.password = _passwordField.text;
     newUser.email = _emailField.text;
     

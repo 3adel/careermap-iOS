@@ -36,8 +36,8 @@
 
 - (IBAction)loginButton:(UIButton *)sender {
     
-    
-    [PFUser logInWithUsernameInBackground:_loginUsernameField.text password:_loginPasswordField.text block:^(PFUser *user, NSError *error) {
+    //always convert username to lowercase
+    [PFUser logInWithUsernameInBackground:[_loginUsernameField.text lowercaseString] password:_loginPasswordField.text block:^(PFUser *user, NSError *error) {
         
         if (!error) {
             NSLog(@"Success: Logged the user");
