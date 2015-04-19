@@ -32,6 +32,14 @@
     _CVjobSeekerLastNameTextView.layer.borderWidth= .5f;
     
     
+    
+    
+    //detect when theview is tapped while the text is being edited
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapped)];
+    [self.view addGestureRecognizer:tapGesture];
+    
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -91,6 +99,17 @@
     }
     
     
+    
+}
+
+
+//dismiss keyboard when view is tapped
+-(void) viewTapped{
+    
+    [_CVjobSeekerLastNameTextView resignFirstResponder];
+    [_CVjobSeekerFirstNameTextView resignFirstResponder];
+    [_CVjobSeekerCurrentTitleTextView resignFirstResponder];
+    NSLog(@"view is tapped");
     
 }
 
