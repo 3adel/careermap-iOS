@@ -11,6 +11,8 @@
 		F50142DA1ACD19CD000DDBE3 /* JobVoteDwn-selected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F50142D61ACD19CD000DDBE3 /* JobVoteDwn-selected@3x.png */; };
 		F50142DB1ACD19CD000DDBE3 /* JobVoteUp-no-selected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F50142D71ACD19CD000DDBE3 /* JobVoteUp-no-selected@3x.png */; };
 		F50142DC1ACD19CD000DDBE3 /* JobVoteUp-selected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F50142D81ACD19CD000DDBE3 /* JobVoteUp-selected@3x.png */; };
+		F533345F1AE3CE4D0029BFF7 /* CreateCVView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F533345E1AE3CE4D0029BFF7 /* CreateCVView.xib */; };
+		F53334621AE3CEB40029BFF7 /* CreateCVViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F53334611AE3CEB40029BFF7 /* CreateCVViewController.m */; };
 		F535A9A71AD06E500091E70B /* ExistingUserLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F535A9A61AD06E500091E70B /* ExistingUserLoginViewController.m */; };
 		F535AA641AD3CE270091E70B /* WelcomeAppChoiceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F535AA631AD3CE270091E70B /* WelcomeAppChoiceView.xib */; };
 		F535AA671AD3CE7E0091E70B /* WelcomeAppChoiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F535AA661AD3CE7E0091E70B /* WelcomeAppChoiceViewController.m */; };
@@ -74,6 +76,9 @@
 		F50142D61ACD19CD000DDBE3 /* JobVoteDwn-selected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "JobVoteDwn-selected@3x.png"; sourceTree = "<group>"; };
 		F50142D71ACD19CD000DDBE3 /* JobVoteUp-no-selected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "JobVoteUp-no-selected@3x.png"; sourceTree = "<group>"; };
 		F50142D81ACD19CD000DDBE3 /* JobVoteUp-selected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "JobVoteUp-selected@3x.png"; sourceTree = "<group>"; };
+		F533345E1AE3CE4D0029BFF7 /* CreateCVView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateCVView.xib; sourceTree = "<group>"; };
+		F53334601AE3CEB40029BFF7 /* CreateCVViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreateCVViewController.h; path = "Career Map 3/CreateCVViewController.h"; sourceTree = "<group>"; };
+		F53334611AE3CEB40029BFF7 /* CreateCVViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreateCVViewController.m; path = "Career Map 3/CreateCVViewController.m"; sourceTree = "<group>"; };
 		F535A9A51AD06E500091E70B /* ExistingUserLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExistingUserLoginViewController.h; sourceTree = "<group>"; };
 		F535A9A61AD06E500091E70B /* ExistingUserLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExistingUserLoginViewController.m; sourceTree = "<group>"; };
 		F535AA631AD3CE270091E70B /* WelcomeAppChoiceView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WelcomeAppChoiceView.xib; sourceTree = "<group>"; };
@@ -192,6 +197,17 @@
 			name = Icons;
 			sourceTree = "<group>";
 		};
+		F533345B1AE3CCB70029BFF7 /* CV */ = {
+			isa = PBXGroup;
+			children = (
+				F533345E1AE3CE4D0029BFF7 /* CreateCVView.xib */,
+				F53334601AE3CEB40029BFF7 /* CreateCVViewController.h */,
+				F53334611AE3CEB40029BFF7 /* CreateCVViewController.m */,
+			);
+			name = CV;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		F535AA6A1AD4380A0091E70B /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -264,12 +280,12 @@
 		F535ABB61ADE49460091E70B /* Job Chat */ = {
 			isa = PBXGroup;
 			children = (
-				F535AC4D1ADEC9860091E70B /* JobChatMessageCell.xib */,
-				F535AC4F1ADEC9B50091E70B /* JobChatMessageCell.h */,
-				F535AC501ADEC9B50091E70B /* JobChatMessageCell.m */,
 				F535ABC11ADE52CF0091E70B /* JobChatViewController.h */,
 				F535ABC21ADE52CF0091E70B /* JobChatViewController.m */,
 				F535ABC31ADE52CF0091E70B /* JobChatView.xib */,
+				F535AC4D1ADEC9860091E70B /* JobChatMessageCell.xib */,
+				F535AC4F1ADEC9B50091E70B /* JobChatMessageCell.h */,
+				F535AC501ADEC9B50091E70B /* JobChatMessageCell.m */,
 			);
 			name = "Job Chat";
 			sourceTree = "<group>";
@@ -299,6 +315,7 @@
 				F59758B11AC159B40099A978 /* AppDelegate.m */,
 				F59758B01AC159B40099A978 /* AppDelegate.h */,
 				F59758B91AC159B40099A978 /* Main.storyboard */,
+				F533345B1AE3CCB70029BFF7 /* CV */,
 				F535AA6D1AD438C80091E70B /* Job List */,
 				F535ABB61ADE49460091E70B /* Job Chat */,
 				F535AAE31ADC381B0091E70B /* Job Details */,
@@ -456,6 +473,7 @@
 				F535AA641AD3CE270091E70B /* WelcomeAppChoiceView.xib in Resources */,
 				F59758C01AC159B40099A978 /* LaunchScreen.xib in Resources */,
 				F535AAEA1ADC66920091E70B /* job-annotation-icon3@3x.png in Resources */,
+				F533345F1AE3CE4D0029BFF7 /* CreateCVView.xib in Resources */,
 				F535AA691AD401BA0091E70B /* myLocation.gpx in Resources */,
 				F50142DB1ACD19CD000DDBE3 /* JobVoteUp-no-selected@3x.png in Resources */,
 				F535ABC51ADE52CF0091E70B /* JobChatView.xib in Resources */,
@@ -492,6 +510,7 @@
 				F535AAE61ADC38580091E70B /* JobMapViewController.m in Sources */,
 				F59758AF1AC159B40099A978 /* main.m in Sources */,
 				F535AA671AD3CE7E0091E70B /* WelcomeAppChoiceViewController.m in Sources */,
+				F53334621AE3CEB40029BFF7 /* CreateCVViewController.m in Sources */,
 				F597592F1AC1D7F00099A978 /* JobListViewController.m in Sources */,
 				F59759321AC1DBDF0099A978 /* Job.m in Sources */,
 			);

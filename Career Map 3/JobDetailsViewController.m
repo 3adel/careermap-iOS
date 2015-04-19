@@ -383,6 +383,12 @@
             
             NSLog(@"Create CV flow");
             
+            CreateCVViewController *createCVScreen = [[CreateCVViewController alloc] initWithNibName:@"CreateCVView" bundle:nil];
+            
+            
+            
+            [self presentViewController:createCVScreen animated:YES completion:nil];
+            
         }
     }
 

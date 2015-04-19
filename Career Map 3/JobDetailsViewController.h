@@ -11,6 +11,7 @@
 #import <Parse/Parse.h>
 #import "JobMapViewController.h"
 #import "JobChatViewController.h"
+#import "CreateCVViewController.h"
 
 @interface JobDetailsViewController : UIViewController <MKMapViewDelegate,CLLocationManagerDelegate,UIAlertViewDelegate>
 
