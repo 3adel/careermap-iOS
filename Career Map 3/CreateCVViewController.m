@@ -94,7 +94,7 @@
         
         
         NSLog(@"Save cv to backend");
-        
+        [self saveCVToParse];
         
     }
     
@@ -110,6 +110,63 @@
     [_CVjobSeekerFirstNameTextView resignFirstResponder];
     [_CVjobSeekerCurrentTitleTextView resignFirstResponder];
     NSLog(@"view is tapped");
+    
+}
+
+
+- (void) saveCVToParse{
+    
+    
+    
+    
+    //if cv is already in DB, update, else add
+    
+    //{code to be added}
+
+    
+    
+    
+    
+    //else, just add the cv
+        //create an object for the cv
+        //save the object in the jobSeeker table linking it to the current user
+    
+    PFObject *cvObject = [PFObject objectWithClassName:@"jobSeeker"];
+    cvObject[@"firstName"] = _CVjobSeekerFirstNameTextView.text;
+    cvObject[@"lastName"] = _CVjobSeekerLastNameTextView.text;
+    cvObject[@"currentTitle"] = _CVjobSeekerCurrentTitleTextView.text;
+
+    
+    [cvObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (succeeded) {
+            NSLog(@"success saving cv");
+            
+            
+            //now update the user table accordingly
+            PFQuery *query = [PFQuery queryWithClassName:@"_User"];
+            [query getObjectInBackgroundWithId:[[PFUser currentUser] objectId] block:^(PFObject *userObject, NSError *error) {
+                userObject[@"aJobSeekerID"] = cvObject;
+                 [userObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                     if (succeeded) {
+                         NSLog(@"user table updated successfully with cv reference");
+                     } else{
+                         
+                         NSLog(@"Error: user table update with cv reference: %@", error);
+                         
+                     }
+                 }];
+            }];
+            
+            
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }
+        
+        else{
+            
+            NSLog(@"error saving cv");
+        }
+    }];
+    
     
 }
 
