@@ -274,12 +274,14 @@
                     //Make them apply now
                     
 
-                    
+                   // NSLog(@"applied by user: %@",self.jobObject  );
+
                     
                     
                     
                     //Update job table. Add user objectId to who applied
                     PFQuery *query = [PFQuery queryWithClassName:@"Job"];
+                    [query includeKey:@"appliedByUsers"];
                     [query getObjectInBackgroundWithId:_jobObject.objectId block:^(PFObject *jobObject, NSError *error) {
                         
                         if (!error) {
@@ -287,10 +289,23 @@
                             [jobObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                                 if (succeeded) {
                                     NSLog(@"Applied to job successfully");
-                                    //update apply button
-                                    [_applyWithCVButton setTitle:@"You Applied" forState:UIControlStateNormal];
-                                    [_applyWithCVButton setBackgroundColor:[UIColor grayColor]];
-                                    self.applyWithCVButton.enabled =NO;
+                                    
+                                    
+                                    
+                                    //update apply button (you already applied)
+                                    dispatch_async(dispatch_get_main_queue(), ^{
+                                        [_applyWithCVButton setTitle:@"You Applied" forState:UIControlStateNormal];
+                                        [_applyWithCVButton setBackgroundColor:[UIColor grayColor]];
+                                        self.applyWithCVButton.enabled =NO;
+                                    });
+                                    
+                                    [_jobObject addUniqueObject:[[PFUser currentUser] objectId] forKey:@"appliedByUsers"];
+                                    
+                                    //now sync the local _job object to reflect the job application
+
+                                    
+                                    NSLog(@"applied by user: %@",[_jobObject objectForKey:@"appliedByUsers"]  );
+
                                     
                                 } else {
                                     NSLog(@"Error applying to job");
