@@ -17,6 +17,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    
+    //set the border color of mandatory fields to red
+ //   _CVjobSeekerFirstNameTextView.layer.borderColor = [[UIColor redColor] CGColor];
+    _CVjobSeekerFirstNameTextView.layer.cornerRadius=5.0f;
+    //_CVjobSeekerFirstNameTextView.layer.masksToBounds=YES;
+    _CVjobSeekerFirstNameTextView.layer.borderColor=[[UIColor redColor]CGColor];
+    _CVjobSeekerFirstNameTextView.layer.borderWidth= .5f;
+    
+    _CVjobSeekerLastNameTextView.layer.cornerRadius=5.0f;
+    //_CVjobSeekerFirstNameTextView.layer.masksToBounds=YES;
+    _CVjobSeekerLastNameTextView.layer.borderColor=[[UIColor redColor]CGColor];
+    _CVjobSeekerLastNameTextView.layer.borderWidth= .5f;
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -41,5 +56,44 @@
 - (IBAction)saveCVButtonPressed:(UIBarButtonItem *)sender {
     
     NSLog(@"Save cv button pressed");
+    
+    
+    //dismiss keyboard
+    [_CVjobSeekerFirstNameTextView resignFirstResponder];
+    [_CVjobSeekerLastNameTextView resignFirstResponder];
+    [_CVjobSeekerCurrentTitleTextView resignFirstResponder];
+    
+
+    [self checkFieldsComplete];
+    
+    //validate fields, mandatory fields should not be empty
+    
+    
 }
+
+
+- (void) checkFieldsComplete{
+    
+    //validate mandatory fields only
+    if ([_CVjobSeekerFirstNameTextView.text isEqualToString:@""] || [_CVjobSeekerLastNameTextView.text isEqualToString:@""]) {
+        UIAlertView *alert= [[UIAlertView alloc]initWithTitle:@"Error!" message:@"You need to complete all madnatory fields" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
+        
+        [alert show];
+    }
+    
+    
+    else{
+        
+        
+        NSLog(@"Save cv to backend");
+        
+        
+    }
+    
+    
+    
+}
+
+
+
 @end

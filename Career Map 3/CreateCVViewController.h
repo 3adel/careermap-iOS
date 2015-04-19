@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import <QuartzCore/QuartzCore.h>
 @interface CreateCVViewController : UIViewController
 
 
@@ -29,5 +29,5 @@
 //actions
 - (IBAction)closeCreateCVButtonPressed:(UIBarButtonItem *)sender;
 - (IBAction)saveCVButtonPressed:(UIBarButtonItem *)sender;
-
+- (void) checkFieldsComplete;
 @end

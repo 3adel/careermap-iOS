@@ -18,8 +18,8 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QgQ-ye-MMa">
-                    <rect key="frame" x="0.0" y="14" width="320" height="44"/>
+                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QgQ-ye-MMa">
+                    <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                     <items>
                         <navigationItem title="Edit Micro CV" id="UVb-ZI-fS1">
                             <barButtonItem key="leftBarButtonItem" title="Cancel" id="Glu-Sj-p10">
@@ -35,27 +35,56 @@
                         </navigationItem>
                     </items>
                 </navigationBar>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QeQ-gb-fAX">
-                    <rect key="frame" x="111" y="84" width="99" height="101"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QeQ-gb-fAX">
+                    <rect key="frame" x="113" y="86" width="95" height="95"/>
                     <color key="backgroundColor" red="0.40000000596046448" green="1" blue="0.80000001192092896" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="95" id="jAn-Y5-S1M"/>
+                        <constraint firstAttribute="height" constant="95" id="noL-TO-eiz"/>
+                    </constraints>
                 </imageView>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EPF-TK-n6P">
-                    <rect key="frame" x="8" y="218" width="136" height="30"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="* First Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EPF-TK-n6P">
+                    <rect key="frame" x="10" y="201" width="300" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="zZk-0B-SM2"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nxu-Mx-j1n">
-                    <rect key="frame" x="8" y="269" width="136" height="30"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="* Last Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nxu-Mx-j1n">
+                    <rect key="frame" x="10" y="251" width="300" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="yMt-aj-A2P"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Current Title" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BAr-2X-f0G">
-                    <rect key="frame" x="8" y="313" width="136" height="30"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Current Title" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BAr-2X-f0G">
+                    <rect key="frame" x="10" y="301" width="300" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="5Tb-hv-CYe"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="QgQ-ye-MMa" firstAttribute="leading" secondItem="2op-C1-VX5" secondAttribute="leading" id="1vT-0f-3X3"/>
+                <constraint firstItem="BAr-2X-f0G" firstAttribute="leading" secondItem="nxu-Mx-j1n" secondAttribute="leading" id="4As-wH-XmE"/>
+                <constraint firstAttribute="trailing" secondItem="QgQ-ye-MMa" secondAttribute="trailing" id="5IM-de-aXf"/>
+                <constraint firstItem="BAr-2X-f0G" firstAttribute="top" secondItem="nxu-Mx-j1n" secondAttribute="bottom" constant="10" id="GQJ-Pb-3rJ"/>
+                <constraint firstItem="nxu-Mx-j1n" firstAttribute="top" secondItem="EPF-TK-n6P" secondAttribute="bottom" constant="10" id="HQF-i5-C7p"/>
+                <constraint firstItem="EPF-TK-n6P" firstAttribute="top" secondItem="QeQ-gb-fAX" secondAttribute="bottom" constant="20" id="RwY-8b-Vnd"/>
+                <constraint firstItem="nxu-Mx-j1n" firstAttribute="leading" secondItem="EPF-TK-n6P" secondAttribute="leading" id="W4Y-dx-XN2"/>
+                <constraint firstAttribute="centerX" secondItem="QeQ-gb-fAX" secondAttribute="centerX" id="ZQy-C8-tcc"/>
+                <constraint firstItem="EPF-TK-n6P" firstAttribute="leading" secondItem="2op-C1-VX5" secondAttribute="leading" constant="10" id="eem-EY-bSS"/>
+                <constraint firstItem="QeQ-gb-fAX" firstAttribute="top" secondItem="QgQ-ye-MMa" secondAttribute="bottom" constant="22" id="hPq-o7-dEW"/>
+                <constraint firstItem="QgQ-ye-MMa" firstAttribute="top" secondItem="2op-C1-VX5" secondAttribute="top" constant="20" id="hsF-7C-KPF"/>
+                <constraint firstItem="nxu-Mx-j1n" firstAttribute="trailing" secondItem="EPF-TK-n6P" secondAttribute="trailing" id="o6d-R6-pfT"/>
+                <constraint firstAttribute="trailing" secondItem="EPF-TK-n6P" secondAttribute="trailing" constant="10" id="xDq-98-ig0"/>
+                <constraint firstItem="BAr-2X-f0G" firstAttribute="trailing" secondItem="nxu-Mx-j1n" secondAttribute="trailing" id="xhc-tB-UtB"/>
+            </constraints>
             <point key="canvasLocation" x="264" y="92"/>
         </view>
     </objects>
