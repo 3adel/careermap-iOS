@@ -91,6 +91,7 @@
     [retrieveJobs includeKey:@"employer"];
     [retrieveJobs includeKey:@"status"];
     [retrieveJobs includeKey:@"postedByUser"];
+    [retrieveJobs includeKey:@"appliedByUsers"];
     [retrieveJobs whereKey:@"geolocation" nearGeoPoint:self.userLocation withinKilometers:1000000];
     [retrieveJobs orderByDescending:@"createdAt"];
     [retrieveJobs findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -278,6 +279,10 @@
     static NSString *CellIdentifier = @"jobCell";
     JobCustomTableViewCell *cell = [_jobTable dequeueReusableCellWithIdentifier:CellIdentifier];
     PFObject *jobObject = [jobsArrayWithUsersVotesStable objectAtIndex:indexPath.row];
+    
+   // NSLog(@"JobObject Applied by = %@", [jobObject objectForKey:@"appliedByUsers"]);
+    
+    
     cell.jobTitleLabel.text = [jobObject objectForKey:@"title"];
     formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"dd-MM-yyyy HH:mm"];
@@ -661,6 +666,13 @@
         destViewController.jobEmployerUserObjectID= [[jobObject objectForKey:@"postedByUser"] objectId];
         destViewController.jobPosterPFUser =[jobObject objectForKey:@"postedByUser"];
         //NSLog(@"Employer User = %@", [jobObject objectForKey:@"postedByUser"]);
+       // destViewController.
+        //array to hold who applied to the job
+        destViewController.jobAppliedByUsers =[jobObject objectForKey:@"appliedByUsers"];
+       // NSLog(@"Before segue: job applied by = %@",[jobObject objectForKey:@"appliedByUsers"] );
+        
+        //actually it's better to pass the entire pf object to the destination
+        destViewController.jobObject = jobObject;
         
         
         //NSLog(@"Posted by User: username: %@ objectID: %@", [[jobObject objectForKey:@"postedByUser"] objectForKey:@"username"],[[jobObject objectForKey:@"postedByUser"] objectId] );

@@ -145,6 +145,9 @@
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="applyWithCVButtonPressed:" destination="oBD-2n-Moc" eventType="touchUpInside" id="Qxv-Sk-PFa"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="post date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="so5-tk-zYr" userLabel="Job post date label">
                                         <rect key="frame" x="17" y="125" width="73" height="21"/>
@@ -269,6 +272,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Vjd-w7-ijy"/>
                     <connections>
+                        <outlet property="applyWithCVButton" destination="xMH-5h-pDA" id="yqm-zN-KGi"/>
                         <outlet property="jobAreaLabel" destination="SJl-Rf-FBT" id="onM-Zn-lKn"/>
                         <outlet property="jobDateAddedLabel" destination="so5-tk-zYr" id="Rf1-Ee-3gv"/>
                         <outlet property="jobDescriptionLabel" destination="4IS-Nq-Qj6" id="fBj-Wr-hyJ"/>

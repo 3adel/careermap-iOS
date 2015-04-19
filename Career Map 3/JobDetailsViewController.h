@@ -26,6 +26,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *jobStatusLabel;
 @property (weak, nonatomic) IBOutlet UIButton *jobVoteUpButton;
 @property (weak, nonatomic) IBOutlet UIButton *jobVoteDownButton;
+@property (weak, nonatomic) IBOutlet UIButton *applyWithCVButton;
 
 @property (weak, nonatomic) IBOutlet MKMapView *jobMap;
 @property (weak, nonatomic) IBOutlet UIView *jobSkillsView;
@@ -50,6 +51,8 @@
 @property (nonatomic,strong) CLLocationManager* locationManager;
 @property (nonatomic, strong) NSString *jobEmployerUserObjectID;
 @property (nonatomic, strong) PFUser *jobPosterPFUser;
+@property (nonatomic, strong) NSArray *jobAppliedByUsers;
+@property (nonatomic,strong) PFObject *jobObject;
 
 
 //methods
@@ -57,5 +60,6 @@
 - (void) showJobDirection;
 
 - (IBAction)chatWithEmployerButtonPressed:(UIButton *)sender;
+- (IBAction)applyWithCVButtonPressed:(UIButton *)sender;
 
 @end

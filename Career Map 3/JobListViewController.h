@@ -42,7 +42,6 @@
 @property (nonatomic, strong) PFUser *jobPosterPFUser;
 
 
-
 - (IBAction)jobVoteUpPressed:(UIButton *)sender;
 - (IBAction)jobVoteDownPressed:(UIButton *)sender;
 

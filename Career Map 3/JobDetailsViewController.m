@@ -84,6 +84,17 @@
         count++;
     }
     
+    
+    
+    //if the user already applied, disable apply button
+    if ([[_jobObject objectForKey:@"appliedByUsers"] containsObject:[[PFUser currentUser] objectId]]) {
+        NSLog(@"user already applied");
+        [_applyWithCVButton setTitle:@"You Applied" forState:UIControlStateNormal];
+        [_applyWithCVButton setBackgroundColor:[UIColor grayColor]];
+        self.applyWithCVButton.enabled =NO;
+        
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -233,6 +244,127 @@
     
     
     [self presentViewController:jobChatScreen animated:YES completion:nil];
+}
+
+- (IBAction)applyWithCVButtonPressed:(UIButton *)sender {
+    
+    
+    //If the user don't have a CV, take them to the CV creation flow.
+    PFQuery *query = [PFQuery queryWithClassName:@"_User"];
+    [query includeKey:@"aJobSeekerID"];
+    [query getObjectInBackgroundWithId: [[PFUser currentUser] objectId] block:^(PFObject *object, NSError *error) {
+        if (!error) {
+            
+            if ([object objectForKey:@"aJobSeekerID"]) {
+                //user does have CV
+                NSLog(@"job seeker ID found = %@", [[object objectForKey:@"aJobSeekerID"] objectId]);
+                NSLog(@"People who applied to this job = %@", [_jobObject objectForKey:@"appliedByUsers"]);
+                
+                //did the user apply with their CV?
+                if ([[_jobObject objectForKey:@"appliedByUsers"] containsObject:[[PFUser currentUser] objectId]]) {
+                    //user already applied. Do nothing. viewDidLoad took care of updating ui.
+                    NSLog(@"user already applied");
+
+                    
+                }
+                
+                else{
+                    NSLog(@"user did not apply");
+                    //user has cv but did NOT apply apply
+                    //Make them apply now
+                    
+
+                    
+                    
+                    
+                    
+                    //Update job table. Add user objectId to who applied
+                    PFQuery *query = [PFQuery queryWithClassName:@"Job"];
+                    [query getObjectInBackgroundWithId:_jobObject.objectId block:^(PFObject *jobObject, NSError *error) {
+                        
+                        if (!error) {
+                            [jobObject addUniqueObject:[[PFUser currentUser] objectId] forKey:@"appliedByUsers"];
+                            [jobObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                                if (succeeded) {
+                                    NSLog(@"Applied to job successfully");
+                                    //update apply button
+                                    [_applyWithCVButton setTitle:@"You Applied" forState:UIControlStateNormal];
+                                    [_applyWithCVButton setBackgroundColor:[UIColor grayColor]];
+                                    self.applyWithCVButton.enabled =NO;
+                                    
+                                } else {
+                                    NSLog(@"Error applying to job");
+                                }
+                            }];;
+                        }
+                        
+                        else{
+                            
+                            NSLog(@"error retrieving job record");
+                        }
+                        
+                        
+        
+                        
+                    }];
+
+                    
+                    //NSLog(@"job id =%@", _jobObject.objectId);
+                    
+                    
+                   // [[applyObject objectForKey:_jobObject.objectId] addUniqueObject:[[PFUser currentUser] objectId] forKey:@"appliedByUsers"];
+                    
+                    
+                   // [[PFUser currentUser] addUniqueObject:applyObject.objectId forKey:@"appliedByUsers"];
+                    
+                   // [[PFUser currentUser] addun]
+                    
+   
+                    
+                    
+                   // [self.applyWithCVButton setNeedsDisplay];
+                    
+                    
+                    //update UI accordingly
+                }
+                
+                
+                
+
+            }
+            
+            else{
+                
+                NSLog(@"No cv has been found, create one then");
+                
+                //The user doesn't have a CV,take to cv creation flow
+            }
+            
+            
+        }
+        
+        else{
+            
+            NSLog(@"Error retrieving job seekerID: %@", error);
+        }
+    }];
+
+    
+    
+    //If the user created the cv already and did not apply, just apply and reflect on the UI
+                //query the user table, if the user has a aJobSeekerID,
+    
+
+    
+    
+
+    
+    //if the user applied already, show that they applied already and change the button labeling accordingly
+    
+
+    
+    
+    
 }
 
 
