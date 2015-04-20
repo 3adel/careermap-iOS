@@ -15,5 +15,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *loginPasswordField;
 - (IBAction)loginButton:(UIButton *)sender;
 - (IBAction)dismissLoginScreen:(UIButton *)sender;
+- (IBAction)cancelButtonPressed:(UIBarButtonItem *)sender;
 
 @end

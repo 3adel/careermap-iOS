@@ -15,7 +15,7 @@
 - (void) viewDidLoad{
     
     
-    
+    /*
     //set the border color of mandatory fields to red
     _usernameField.layer.cornerRadius=5.0f;
     _usernameField.layer.borderColor=[[UIColor redColor]CGColor];
@@ -28,7 +28,7 @@
     _emailField.layer.cornerRadius=5.0f;
     _emailField.layer.borderColor=[[UIColor redColor]CGColor];
     _emailField.layer.borderWidth= .5f;
-    
+    */
     
 }
 
@@ -184,4 +184,7 @@
 
 
 
+- (IBAction)cancelButtonPressed:(UIBarButtonItem *)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 @end

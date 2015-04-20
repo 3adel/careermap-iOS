@@ -74,4 +74,9 @@
 - (IBAction)dismissLoginScreen:(UIButton *)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+- (IBAction)cancelButtonPressed:(UIBarButtonItem *)sender {
+    //[self performSegueWithIdentifier:@"loginSuccess" sender:self];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 @end
