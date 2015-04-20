@@ -171,6 +171,7 @@
                             
                             [saveCVActivityIndicator stopAnimating];
                             [saveCVActivityIndicator setHidesWhenStopped:YES];
+                            
                             //notify the system that the edit is successful
                             [[NSNotificationCenter defaultCenter]postNotificationName:@"CVEditedSuccessNotification" object:nil];
 
@@ -210,7 +211,7 @@
                 
                 [cvObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                     if (succeeded) {
-                        NSLog(@"success saving cv");
+                        NSLog(@"success saving new cv");
                         
                         
                         //now update the user table accordingly
@@ -219,7 +220,11 @@
                             userObject[@"aJobSeekerID"] = cvObject;
                             [userObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                                 if (succeeded) {
-                                    NSLog(@"user table updated successfully with cv reference");
+                                    NSLog(@"user table updated successfully with a new cv reference");
+                                    //notify the system that the edit is successful
+                                    [[NSNotificationCenter defaultCenter]postNotificationName:@"CVEditedSuccessNotification" object:nil];
+                                    
+
                                 } else{
                                     
                                     NSLog(@"Error: user table update with cv reference: %@", error);
