@@ -118,9 +118,22 @@
 
 - (void) saveCVToParse{
     
+
+    //start animating activity indicator while saving
+    UIActivityIndicatorView *saveCVActivityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [saveCVActivityIndicator setColor:[UIColor colorWithRed:13.0/255.0 green:153.0/255 blue:252.0/255.0 alpha:1]];
+
     
-
-
+    //UIColor colorWithRed:13 green:153 blue:252 alpha:1
+    saveCVActivityIndicator.center = self.view.center;
+    [self.view addSubview:saveCVActivityIndicator];
+    [saveCVActivityIndicator startAnimating];
+    
+    // Code to get data from database
+    
+    
+    
+    
     // if the user have a cv, it should be an update and not create
     
     //If the user don't have a CV, take them to the CV creation flow.
@@ -156,6 +169,8 @@
                         if (succeeded) {
                             NSLog(@"Success: CV edited");
                             
+                            [saveCVActivityIndicator stopAnimating];
+                            [saveCVActivityIndicator setHidesWhenStopped:YES];
                             //notify the system that the edit is successful
                             [[NSNotificationCenter defaultCenter]postNotificationName:@"CVEditedSuccessNotification" object:nil];
 
