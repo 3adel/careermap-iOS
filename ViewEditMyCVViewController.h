@@ -15,7 +15,7 @@
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *CVDataLoadingIndicator;
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *editCVButton;
-
+@property (weak, nonatomic) IBOutlet UILabel *fullNameLabel;
 
 //actions
 -(void) CVViewEdit;

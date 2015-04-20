@@ -445,7 +445,53 @@
                             </activityIndicatorView>
                             <scrollView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1ll-3J-egv">
                                 <rect key="frame" x="0.0" y="84" width="600" height="467"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WmF-te-Ccs" userLabel="Job Seeker Thumb">
+                                        <rect key="frame" x="252" y="22" width="95" height="95"/>
+                                        <color key="backgroundColor" red="1" green="0.50196081399917603" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="95" id="EP1-PE-JxE"/>
+                                            <constraint firstAttribute="width" constant="95" id="NmY-8y-hcn"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9b2-cX-lBC" userLabel="FullName">
+                                        <rect key="frame" x="10" y="142" width="300" height="45"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="300" id="gyT-pL-NjR"/>
+                                            <constraint firstAttribute="height" constant="45" id="jom-cM-HaQ"/>
+                                            <constraint firstAttribute="width" constant="130" id="piZ-89-JFV"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="piZ-89-JFV"/>
+                                            </mask>
+                                        </variation>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" red="1" green="0.40000000596046448" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="9b2-cX-lBC" secondAttribute="trailing" id="Dkn-h6-jyC"/>
+                                    <constraint firstAttribute="bottom" secondItem="WmF-te-Ccs" secondAttribute="bottom" constant="350" id="EKh-qD-huz"/>
+                                    <constraint firstAttribute="bottom" secondItem="WmF-te-Ccs" secondAttribute="bottom" id="TaD-A1-72f"/>
+                                    <constraint firstAttribute="centerX" secondItem="WmF-te-Ccs" secondAttribute="centerX" id="YRt-uP-B06"/>
+                                    <constraint firstAttribute="trailing" secondItem="WmF-te-Ccs" secondAttribute="trailing" constant="253" id="dsP-mW-zlq"/>
+                                    <constraint firstItem="9b2-cX-lBC" firstAttribute="leading" secondItem="1ll-3J-egv" secondAttribute="leading" constant="10" id="hDx-GK-ujf"/>
+                                    <constraint firstItem="9b2-cX-lBC" firstAttribute="top" secondItem="WmF-te-Ccs" secondAttribute="bottom" constant="25" id="qzy-ir-TL2"/>
+                                    <constraint firstAttribute="trailing" secondItem="WmF-te-Ccs" secondAttribute="trailing" id="smc-Z9-5tW"/>
+                                    <constraint firstItem="WmF-te-Ccs" firstAttribute="top" secondItem="1ll-3J-egv" secondAttribute="top" constant="22" id="tv6-9m-PyQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="9b2-cX-lBC" secondAttribute="trailing" id="yFg-KB-sUe"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Dkn-h6-jyC"/>
+                                        <exclude reference="yFg-KB-sUe"/>
+                                        <exclude reference="EKh-qD-huz"/>
+                                        <exclude reference="dsP-mW-zlq"/>
+                                    </mask>
+                                </variation>
                             </scrollView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lrq-3r-0dO" userLabel="No CV Found View">
                                 <rect key="frame" x="16" y="84" width="568" height="516"/>
@@ -528,6 +574,7 @@
                         <outlet property="CVContentScrollView" destination="1ll-3J-egv" id="mNo-TT-YRv"/>
                         <outlet property="CVDataLoadingIndicator" destination="mya-IL-RFa" id="VQw-G0-fS4"/>
                         <outlet property="editCVButton" destination="9NI-Z9-HLh" id="k9c-6W-MH8"/>
+                        <outlet property="fullNameLabel" destination="9b2-cX-lBC" id="mq8-hX-oeI"/>
                         <outlet property="noCVFoundView" destination="lrq-3r-0dO" id="WTN-FT-D0F"/>
                         <outlet property="view" destination="QS5-Rx-YEW" id="6c9-hP-dTu"/>
                     </connections>

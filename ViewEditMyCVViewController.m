@@ -87,6 +87,8 @@
                 //user does have CV
                 NSLog(@"job seeker ID found = %@", [[object objectForKey:@"aJobSeekerID"] objectId]);
                 
+                NSLog(@"job seeker name = %@", [[object objectForKey:@"aJobSeekerID"] objectForKey:@"firstName"]);
+                
                 
                // dispatch_async(ge, <#^(void)block#>)
                 
@@ -95,6 +97,18 @@
                     _CVContentScrollView.hidden =NO;
                     _noCVFoundView.hidden =YES;
                     [_editCVButton setEnabled:YES];
+                    
+                    //update fields values
+                    _fullNameLabel.text =[NSString stringWithFormat:@"%@ %@",[[object objectForKey:@"aJobSeekerID"] objectForKey:@"firstName"],[[object objectForKey:@"aJobSeekerID"] objectForKey:@"lastName"]];
+                    
+                    
+                  //  [[object objectForKey:@"aJobSeekerID"] objectForKey:@"firstName"];
+                    
+                    
+                    
+                    //_lastNameLabel.text =[[object objectForKey:@"aJobSeekerID"] objectForKey:@"lastName"];
+                    
+                    
                     
                 });
                 
