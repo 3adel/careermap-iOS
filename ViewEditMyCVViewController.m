@@ -14,24 +14,30 @@
 
 @implementation ViewEditMyCVViewController
 
--(void) viewWillAppear:(BOOL)animated{
+-(void) updateCVContentAfterEdit{
+    
+    NSLog(@"notification");
     
     //this will guaranteed that the activity indicator is shown while the data is loading
     _CVContentScrollView.hidden =YES;
     _noCVFoundView.hidden =YES;
     [_editCVButton setEnabled:NO];
-}
-
--(void) viewDidAppear:(BOOL)animated{
-    
-    NSLog(@"view did appear called");
-    
-    //_CVDataLoadingIndicator.center = _mainView.center;
-   // [_mainView addSubview:_CVDataLoadingIndicator];
     [_CVDataLoadingIndicator startAnimating];
     [self CVViewEdit];
+}
+
+
+-(void) viewWillAppear:(BOOL)animated{
+    
+
+    //add NSNotificatin selector for CV Edit (should refactor using delegation)
+    [super viewWillAppear:animated];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateCVContentAfterEdit) name:@"CVEditedSuccessNotification" object:nil];
+    
+
 
 }
+
 
 
 - (void)viewDidLoad {
@@ -47,7 +53,8 @@
         //if they do, view the CV
     
     
-    
+    [_CVDataLoadingIndicator startAnimating];
+    [self CVViewEdit];
     
         // if they don't have a cv, disable the edit button inititate cv creation flow
             //when done, dismiss the cv creation screen

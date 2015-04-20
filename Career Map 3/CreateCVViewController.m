@@ -155,6 +155,10 @@
                     [jobSeekerObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                         if (succeeded) {
                             NSLog(@"Success: CV edited");
+                            
+                            //notify the system that the edit is successful
+                            [[NSNotificationCenter defaultCenter]postNotificationName:@"CVEditedSuccessNotification" object:nil];
+
                             [self dismissViewControllerAnimated:YES completion:nil];
                         } else{
                             
