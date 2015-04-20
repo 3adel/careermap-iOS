@@ -14,7 +14,12 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *CVContentScrollView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *CVDataLoadingIndicator;
 
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *editCVButton;
+
+
+//actions
 -(void) CVViewEdit;
 - (IBAction)createCVButtonPressed:(UIButton *)sender;
+- (IBAction)editCVButtonPressed:(UIBarButtonItem *)sender;
 
 @end

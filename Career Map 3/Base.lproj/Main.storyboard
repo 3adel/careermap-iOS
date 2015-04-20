@@ -489,7 +489,11 @@
                                 <rect key="frame" x="0.0" y="40" width="600" height="44"/>
                                 <items>
                                     <navigationItem title="My CV" id="g5r-Ja-6pa">
-                                        <barButtonItem key="rightBarButtonItem" title="Edit" id="9NI-Z9-HLh"/>
+                                        <barButtonItem key="rightBarButtonItem" title="Edit" id="9NI-Z9-HLh">
+                                            <connections>
+                                                <action selector="editCVButtonPressed:" destination="8rJ-Kc-sve" id="dmO-ch-jeN"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -523,6 +527,7 @@
                     <connections>
                         <outlet property="CVContentScrollView" destination="1ll-3J-egv" id="mNo-TT-YRv"/>
                         <outlet property="CVDataLoadingIndicator" destination="mya-IL-RFa" id="VQw-G0-fS4"/>
+                        <outlet property="editCVButton" destination="9NI-Z9-HLh" id="k9c-6W-MH8"/>
                         <outlet property="noCVFoundView" destination="lrq-3r-0dO" id="WTN-FT-D0F"/>
                         <outlet property="view" destination="QS5-Rx-YEW" id="6c9-hP-dTu"/>
                     </connections>

@@ -19,6 +19,7 @@
     //this will guaranteed that the activity indicator is shown while the data is loading
     _CVContentScrollView.hidden =YES;
     _noCVFoundView.hidden =YES;
+    [_editCVButton setEnabled:NO];
 }
 
 -(void) viewDidAppear:(BOOL)animated{
@@ -86,8 +87,19 @@
                 //user does have CV
                 NSLog(@"job seeker ID found = %@", [[object objectForKey:@"aJobSeekerID"] objectId]);
                 
-                _CVContentScrollView.hidden =NO;
-                _noCVFoundView.hidden =YES;
+                
+               // dispatch_async(ge, <#^(void)block#>)
+                
+                //Reenable send button and text field after process is done
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    _CVContentScrollView.hidden =NO;
+                    _noCVFoundView.hidden =YES;
+                    [_editCVButton setEnabled:YES];
+                    
+                });
+                
+
+
 
 
                 
@@ -98,8 +110,14 @@
                 
                // _createCVAlert.delegate = self;
                 NSLog(@"No cv has been found, create one then");
-                _noCVFoundView.hidden =NO;
-                _CVContentScrollView.hidden = YES;
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    _noCVFoundView.hidden =NO;
+                    _CVContentScrollView.hidden = YES;
+                    
+                });
+                
+
                                 
                 //_createCVAlert =[[UIAlertView alloc] initWithTitle:@"Create Micro CV" message:@"It will take you seconds!" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Create Micro CV ", nil];
                 
@@ -118,7 +136,13 @@
         //return YES;
         
         NSLog(@"done retrieveing date");
-        [_CVDataLoadingIndicator stopAnimating];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+           [_CVDataLoadingIndicator stopAnimating];
+            
+        });
+        
+        
         //[_CVDataLoadingIndicator removeFromSuperview];
         
     }];
@@ -152,6 +176,24 @@
      [self presentViewController:createCVInstance animated:YES completion:nil];
     
 
+}
+
+- (IBAction)editCVButtonPressed:(UIBarButtonItem *)sender {
+    
+    
+    //update the cv fields in the CreateCV VC
+    
+    
+    
+    
+    CreateCVViewController *createCVInstance = [[CreateCVViewController alloc] initWithNibName:@"CreateCVView" bundle:nil];
+    
+    [self presentViewController:createCVInstance animated:YES completion:nil];
+    
+    
+    
+
+    
 }
 
 @end

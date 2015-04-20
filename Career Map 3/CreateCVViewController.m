@@ -113,59 +113,139 @@
     
 }
 
+//this should resolve the add
+
 
 - (void) saveCVToParse{
     
     
-    
-    
-    //if cv is already in DB, update, else add
-    
-    //{code to be added}
 
-    
-    
-    
-    
-    //else, just add the cv
-        //create an object for the cv
-        //save the object in the jobSeeker table linking it to the current user
-    
-    PFObject *cvObject = [PFObject objectWithClassName:@"jobSeeker"];
-    cvObject[@"firstName"] = _CVjobSeekerFirstNameTextView.text;
-    cvObject[@"lastName"] = _CVjobSeekerLastNameTextView.text;
-    cvObject[@"currentTitle"] = _CVjobSeekerCurrentTitleTextView.text;
 
+    // if the user have a cv, it should be an update and not create
     
-    [cvObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        if (succeeded) {
-            NSLog(@"success saving cv");
+    //If the user don't have a CV, take them to the CV creation flow.
+    PFQuery *query = [PFQuery queryWithClassName:@"_User"];
+    [query includeKey:@"aJobSeekerID"];
+    [query getObjectInBackgroundWithId: [[PFUser currentUser] objectId] block:^(PFObject *object, NSError *error) {
+        if (!error) {
+            
+            if ([object objectForKey:@"aJobSeekerID"]) {
+                //user does have CV
+                NSLog(@"job seeker ID found = %@", [[object objectForKey:@"aJobSeekerID"] objectId]);
+                
+                
+                //now update the cv in the jobSeeker table
+                 //get the record in jobSeekerID
+                 ///update the record
+                
+                PFQuery *jobSeekerQuery = [PFQuery queryWithClassName:@"jobSeeker"];
+                
+                // Retrieve the object by id
+                [jobSeekerQuery getObjectInBackgroundWithId:[[object objectForKey:@"aJobSeekerID"] objectId] block:^(PFObject *jobSeekerObject, NSError *error) {
+                    
+                    // Now let's update it with some new data. In this case, only cheatMode and score
+                    // will get sent to the cloud. playerName hasn't changed.
+                    jobSeekerObject[@"firstName"] = _CVjobSeekerFirstNameTextView.text;
+                    jobSeekerObject[@"lastName"] = _CVjobSeekerLastNameTextView.text;
+                    jobSeekerObject[@"currentTitle"] =_CVjobSeekerCurrentTitleTextView.text;
+                    
+                    
+                    //**************
+                    //jobSeekerObject[@"score"] = @1338;
+                    [jobSeekerObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                        if (succeeded) {
+                            NSLog(@"Success: CV edited");
+                            [self dismissViewControllerAnimated:YES completion:nil];
+                        } else{
+                            
+                            NSLog(@"Fail: CV edited");
+                        }
+                    }];
+                    
+                }];
+                
+                
+                
+                
+              //  NSLog(@"People who applied to this job = %@", [_jobObject objectForKey:@"appliedByUsers"]);
+                
+            
+                
+                
+                
+            }
+            
+            else{
+                
+                
+                //create a new CV block
+                //else, just add the cv
+                //create an object for the cv
+                //save the object in the jobSeeker table linking it to the current user
+                
+                PFObject *cvObject = [PFObject objectWithClassName:@"jobSeeker"];
+                cvObject[@"firstName"] = _CVjobSeekerFirstNameTextView.text;
+                cvObject[@"lastName"] = _CVjobSeekerLastNameTextView.text;
+                cvObject[@"currentTitle"] = _CVjobSeekerCurrentTitleTextView.text;
+                
+                
+                [cvObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                    if (succeeded) {
+                        NSLog(@"success saving cv");
+                        
+                        
+                        //now update the user table accordingly
+                        PFQuery *query = [PFQuery queryWithClassName:@"_User"];
+                        [query getObjectInBackgroundWithId:[[PFUser currentUser] objectId] block:^(PFObject *userObject, NSError *error) {
+                            userObject[@"aJobSeekerID"] = cvObject;
+                            [userObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                                if (succeeded) {
+                                    NSLog(@"user table updated successfully with cv reference");
+                                } else{
+                                    
+                                    NSLog(@"Error: user table update with cv reference: %@", error);
+                                    
+                                }
+                            }];
+                        }];
+                        
+                        
+                        [self dismissViewControllerAnimated:YES completion:nil];
+                    }
+                    
+                    else{
+                        
+                        NSLog(@"error saving cv");
+                    }
+                }];
+            }
             
             
-            //now update the user table accordingly
-            PFQuery *query = [PFQuery queryWithClassName:@"_User"];
-            [query getObjectInBackgroundWithId:[[PFUser currentUser] objectId] block:^(PFObject *userObject, NSError *error) {
-                userObject[@"aJobSeekerID"] = cvObject;
-                 [userObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                     if (succeeded) {
-                         NSLog(@"user table updated successfully with cv reference");
-                     } else{
-                         
-                         NSLog(@"Error: user table update with cv reference: %@", error);
-                         
-                     }
-                 }];
-            }];
-            
-            
-            [self dismissViewControllerAnimated:YES completion:nil];
         }
         
         else{
             
-            NSLog(@"error saving cv");
+            NSLog(@"Error retrieving job seekerID: %@", error);
         }
     }];
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    
+    
+
+    
+    
+    
+    
+
     
     
 }
