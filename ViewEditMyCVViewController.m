@@ -26,6 +26,8 @@
     
     NSLog(@"view did appear called");
     
+    //_CVDataLoadingIndicator.center = _mainView.center;
+   // [_mainView addSubview:_CVDataLoadingIndicator];
     [_CVDataLoadingIndicator startAnimating];
     [self CVViewEdit];
 
@@ -157,6 +159,7 @@
         
         dispatch_async(dispatch_get_main_queue(), ^{
            [_CVDataLoadingIndicator stopAnimating];
+           [_CVDataLoadingIndicator setHidesWhenStopped:YES];
             
         });
         

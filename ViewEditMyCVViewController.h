@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UIView *noCVFoundView;
 @property (weak, nonatomic) IBOutlet UIScrollView *CVContentScrollView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *CVDataLoadingIndicator;
+@property (strong, nonatomic) IBOutlet UIView *mainView;
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *editCVButton;
 @property (weak, nonatomic) IBOutlet UILabel *fullNameLabel;
