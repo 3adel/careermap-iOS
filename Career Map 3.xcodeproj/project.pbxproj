@@ -11,6 +11,7 @@
 		F50142DA1ACD19CD000DDBE3 /* JobVoteDwn-selected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F50142D61ACD19CD000DDBE3 /* JobVoteDwn-selected@3x.png */; };
 		F50142DB1ACD19CD000DDBE3 /* JobVoteUp-no-selected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F50142D71ACD19CD000DDBE3 /* JobVoteUp-no-selected@3x.png */; };
 		F50142DC1ACD19CD000DDBE3 /* JobVoteUp-selected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F50142D81ACD19CD000DDBE3 /* JobVoteUp-selected@3x.png */; };
+		F52DC4901AE4D80800693911 /* ViewEditMyCVViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F52DC48F1AE4D80800693911 /* ViewEditMyCVViewController.m */; };
 		F533345F1AE3CE4D0029BFF7 /* CreateCVView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F533345E1AE3CE4D0029BFF7 /* CreateCVView.xib */; };
 		F53334621AE3CEB40029BFF7 /* CreateCVViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F53334611AE3CEB40029BFF7 /* CreateCVViewController.m */; };
 		F53334641AE4080C0029BFF7 /* Lenna@3x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F53334631AE4080C0029BFF7 /* Lenna@3x.jpg */; };
@@ -77,6 +78,8 @@
 		F50142D61ACD19CD000DDBE3 /* JobVoteDwn-selected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "JobVoteDwn-selected@3x.png"; sourceTree = "<group>"; };
 		F50142D71ACD19CD000DDBE3 /* JobVoteUp-no-selected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "JobVoteUp-no-selected@3x.png"; sourceTree = "<group>"; };
 		F50142D81ACD19CD000DDBE3 /* JobVoteUp-selected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "JobVoteUp-selected@3x.png"; sourceTree = "<group>"; };
+		F52DC48E1AE4D80800693911 /* ViewEditMyCVViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewEditMyCVViewController.h; sourceTree = "<group>"; };
+		F52DC48F1AE4D80800693911 /* ViewEditMyCVViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewEditMyCVViewController.m; sourceTree = "<group>"; };
 		F533345E1AE3CE4D0029BFF7 /* CreateCVView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateCVView.xib; sourceTree = "<group>"; };
 		F53334601AE3CEB40029BFF7 /* CreateCVViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreateCVViewController.h; path = "Career Map 3/CreateCVViewController.h"; sourceTree = "<group>"; };
 		F53334611AE3CEB40029BFF7 /* CreateCVViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreateCVViewController.m; path = "Career Map 3/CreateCVViewController.m"; sourceTree = "<group>"; };
@@ -203,6 +206,8 @@
 		F533345B1AE3CCB70029BFF7 /* CV */ = {
 			isa = PBXGroup;
 			children = (
+				F52DC48E1AE4D80800693911 /* ViewEditMyCVViewController.h */,
+				F52DC48F1AE4D80800693911 /* ViewEditMyCVViewController.m */,
 				F533345E1AE3CE4D0029BFF7 /* CreateCVView.xib */,
 				F53334601AE3CEB40029BFF7 /* CreateCVViewController.h */,
 				F53334611AE3CEB40029BFF7 /* CreateCVViewController.m */,
@@ -515,6 +520,7 @@
 				F59758AF1AC159B40099A978 /* main.m in Sources */,
 				F535AA671AD3CE7E0091E70B /* WelcomeAppChoiceViewController.m in Sources */,
 				F53334621AE3CEB40029BFF7 /* CreateCVViewController.m in Sources */,
+				F52DC4901AE4D80800693911 /* ViewEditMyCVViewController.m in Sources */,
 				F597592F1AC1D7F00099A978 /* JobListViewController.m in Sources */,
 				F59759321AC1DBDF0099A978 /* Job.m in Sources */,
 			);

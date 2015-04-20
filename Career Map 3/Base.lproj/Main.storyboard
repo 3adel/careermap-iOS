@@ -426,7 +426,7 @@
         <!--My CV-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
-                <viewController id="8rJ-Kc-sve" customClass="SecondViewController" sceneMemberID="viewController">
+                <viewController id="8rJ-Kc-sve" customClass="ViewEditMyCVViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="L7p-HK-0SC"/>
                         <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>
@@ -435,25 +435,101 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="My CV" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="zEq-FU-wV5">
-                                <rect key="frame" x="246" y="279" width="108" height="41.5"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="36"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="mya-IL-RFa">
+                                <rect key="frame" x="275" y="275" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="83t-oP-Rnk"/>
+                                    <constraint firstAttribute="height" constant="50" id="hLu-xA-LYr"/>
+                                </constraints>
+                                <color key="color" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
+                            <scrollView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1ll-3J-egv">
+                                <rect key="frame" x="0.0" y="84" width="600" height="467"/>
+                                <color key="backgroundColor" red="1" green="0.40000000596046448" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
+                            </scrollView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lrq-3r-0dO" userLabel="No CV Found View">
+                                <rect key="frame" x="16" y="84" width="568" height="516"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="It takes 1 minute" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xga-PQ-57q" userLabel="Create your CV, it takes just 1 minute">
+                                        <rect key="frame" x="224" y="100" width="120.5" height="19.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="311-t7-crG">
+                                        <rect key="frame" x="201" y="144" width="165" height="45"/>
+                                        <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="165" id="2l1-db-Jqb"/>
+                                            <constraint firstAttribute="height" constant="45" id="MUg-3T-cD8"/>
+                                        </constraints>
+                                        <state key="normal" title="Create CV">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="createCVButtonPressed:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="drL-Xv-Hvb"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.43529412150382996" blue="0.81176471710205078" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="Xga-PQ-57q" firstAttribute="top" secondItem="lrq-3r-0dO" secondAttribute="top" constant="100" id="0g5-5t-h3F"/>
+                                    <constraint firstItem="311-t7-crG" firstAttribute="top" secondItem="Xga-PQ-57q" secondAttribute="bottom" constant="25" id="Fy4-5R-A0C"/>
+                                    <constraint firstAttribute="centerX" secondItem="Xga-PQ-57q" secondAttribute="centerX" id="Kys-2o-FTW"/>
+                                    <constraint firstAttribute="centerY" secondItem="Xga-PQ-57q" secondAttribute="centerY" id="SDw-Qe-o9w"/>
+                                    <constraint firstAttribute="centerX" secondItem="311-t7-crG" secondAttribute="centerX" id="ShH-4L-rxr"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="SDw-Qe-o9w"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QeX-zq-Wxd">
+                                <rect key="frame" x="0.0" y="40" width="600" height="44"/>
+                                <items>
+                                    <navigationItem title="My CV" id="g5r-Ja-6pa">
+                                        <barButtonItem key="rightBarButtonItem" title="Edit" id="9NI-Z9-HLh"/>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="zEq-FU-wV5" secondAttribute="centerX" id="qqM-NS-xev"/>
-                            <constraint firstAttribute="centerY" secondItem="zEq-FU-wV5" secondAttribute="centerY" id="qzY-Ky-pLD"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="1ll-3J-egv" secondAttribute="trailing" id="A2I-vx-PvX"/>
+                            <constraint firstItem="QeX-zq-Wxd" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" constant="20" id="DT8-DZ-mqd"/>
+                            <constraint firstItem="QeX-zq-Wxd" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" constant="-16" id="HFQ-X2-bMH"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="QeX-zq-Wxd" secondAttribute="trailing" constant="-16" id="Iye-x1-Xzt"/>
+                            <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="1ll-3J-egv" secondAttribute="bottom" id="OM3-uM-OxA"/>
+                            <constraint firstItem="1ll-3J-egv" firstAttribute="top" secondItem="QeX-zq-Wxd" secondAttribute="bottom" id="QZe-7g-O7e"/>
+                            <constraint firstItem="lrq-3r-0dO" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" id="WuI-71-gWo"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="lrq-3r-0dO" secondAttribute="trailing" id="Ydc-Mm-ddI"/>
+                            <constraint firstItem="1ll-3J-egv" firstAttribute="trailing" secondItem="QS5-Rx-YEW" secondAttribute="trailingMargin" constant="16" id="bWx-x1-19d"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="lrq-3r-0dO" secondAttribute="bottom" id="cHc-VG-Hdc"/>
+                            <constraint firstItem="lrq-3r-0dO" firstAttribute="top" secondItem="QeX-zq-Wxd" secondAttribute="bottom" id="eW9-BH-r2c"/>
+                            <constraint firstAttribute="centerX" secondItem="mya-IL-RFa" secondAttribute="centerX" id="gWb-4D-6nC"/>
+                            <constraint firstItem="1ll-3J-egv" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" id="kmM-qh-Y8d"/>
+                            <constraint firstItem="1ll-3J-egv" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" constant="-16" id="ubr-9o-wPO"/>
+                            <constraint firstAttribute="centerY" secondItem="mya-IL-RFa" secondAttribute="centerY" id="w1a-Ll-afc"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="A2I-vx-PvX"/>
+                                <exclude reference="kmM-qh-Y8d"/>
+                            </mask>
+                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="My CV" image="first" id="cPa-gy-q4n"/>
+                    <connections>
+                        <outlet property="CVContentScrollView" destination="1ll-3J-egv" id="mNo-TT-YRv"/>
+                        <outlet property="CVDataLoadingIndicator" destination="mya-IL-RFa" id="VQw-G0-fS4"/>
+                        <outlet property="noCVFoundView" destination="lrq-3r-0dO" id="WTN-FT-D0F"/>
+                        <outlet property="view" destination="QS5-Rx-YEW" id="6c9-hP-dTu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1221" y="476.99999999999994"/>
+            <point key="canvasLocation" x="1251" y="497"/>
         </scene>
         <!--Existing User Login View Controller-->
         <scene sceneID="2Og-dQ-mZO">
