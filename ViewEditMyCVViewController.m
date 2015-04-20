@@ -82,12 +82,16 @@
         //start animating loading indicator
         
         if (!error) {
+            //save jobSeeker object in property
+            _jobSeekerObject = object;
             
             if ([object objectForKey:@"aJobSeekerID"]) {
                 //user does have CV
                 NSLog(@"job seeker ID found = %@", [[object objectForKey:@"aJobSeekerID"] objectId]);
                 
                 NSLog(@"job seeker name = %@", [[object objectForKey:@"aJobSeekerID"] objectForKey:@"firstName"]);
+                
+                
                 
                 
                // dispatch_async(ge, <#^(void)block#>)
@@ -197,6 +201,9 @@
     
     //update the cv fields in the CreateCV VC
     
+
+    
+    
     
     
     
@@ -205,6 +212,15 @@
     [self presentViewController:createCVInstance animated:YES completion:nil];
     
     
+    
+    //populate edit cv screen with existing values
+    if (_jobSeekerObject) {
+        createCVInstance.CVjobSeekerFirstNameTextView.text =[[_jobSeekerObject objectForKey:@"aJobSeekerID"] objectForKey:@"firstName"];
+        createCVInstance.CVjobSeekerLastNameTextView.text =[[_jobSeekerObject objectForKey:@"aJobSeekerID"] objectForKey:@"lastName"];
+        
+    }
+    
+
     
 
     

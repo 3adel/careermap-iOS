@@ -17,6 +17,11 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *editCVButton;
 @property (weak, nonatomic) IBOutlet UILabel *fullNameLabel;
 
+
+//data
+@property (strong, nonatomic) PFObject *jobSeekerObject;
+
+
 //actions
 -(void) CVViewEdit;
 - (IBAction)createCVButtonPressed:(UIButton *)sender;
