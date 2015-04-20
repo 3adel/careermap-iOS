@@ -329,7 +329,7 @@
                 
                 _createCVAlert.delegate = self;
                 NSLog(@"No cv has been found, create one then");
-                 _createCVAlert =[[UIAlertView alloc] initWithTitle:@"Create Micro CV" message:@"It will take you seconds!" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Create Micro CV ", nil];
+                 _createCVAlert =[[UIAlertView alloc] initWithTitle:@"Create CV" message:@"It will take you few minutes" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Create My CV ", nil];
 
                 
                 
