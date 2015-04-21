@@ -444,7 +444,7 @@
                                 <color key="color" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
                             <scrollView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1ll-3J-egv">
-                                <rect key="frame" x="0.0" y="84" width="600" height="467"/>
+                                <rect key="frame" x="0.0" y="74" width="600" height="477"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WmF-te-Ccs" userLabel="Job Seeker Thumb">
                                         <rect key="frame" x="252" y="22" width="95" height="95"/>
@@ -493,7 +493,7 @@
                                 </variation>
                             </scrollView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lrq-3r-0dO" userLabel="No CV Found View">
-                                <rect key="frame" x="16" y="84" width="568" height="516"/>
+                                <rect key="frame" x="16" y="74" width="568" height="526"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="It takes 1 minute" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xga-PQ-57q" userLabel="Create your CV, it takes just 1 minute">
                                         <rect key="frame" x="224" y="100" width="120.5" height="19.5"/>
@@ -530,7 +530,7 @@
                                 </variation>
                             </view>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QeX-zq-Wxd">
-                                <rect key="frame" x="0.0" y="40" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="30" width="600" height="44"/>
                                 <items>
                                     <navigationItem title="My CV" id="g5r-Ja-6pa">
                                         <barButtonItem key="rightBarButtonItem" title="Edit" id="9NI-Z9-HLh">
@@ -545,7 +545,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="1ll-3J-egv" secondAttribute="trailing" id="A2I-vx-PvX"/>
-                            <constraint firstItem="QeX-zq-Wxd" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" constant="20" id="DT8-DZ-mqd"/>
+                            <constraint firstItem="QeX-zq-Wxd" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" constant="10" id="DT8-DZ-mqd"/>
                             <constraint firstItem="QeX-zq-Wxd" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" constant="-16" id="HFQ-X2-bMH"/>
                             <constraint firstAttribute="trailingMargin" secondItem="QeX-zq-Wxd" secondAttribute="trailing" constant="-16" id="Iye-x1-Xzt"/>
                             <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="1ll-3J-egv" secondAttribute="bottom" id="OM3-uM-OxA"/>

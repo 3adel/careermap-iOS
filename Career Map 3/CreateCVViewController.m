@@ -165,7 +165,9 @@
                     jobSeekerObject[@"firstName"] = _CVjobSeekerFirstNameTextView.text;
                     jobSeekerObject[@"lastName"] = _CVjobSeekerLastNameTextView.text;
                     jobSeekerObject[@"currentTitle"] =_CVjobSeekerCurrentTitleTextView.text;
-                    NSData *imageData = UIImagePNGRepresentation(_CVjobSeekerThumb.image);
+                    
+                   // NSData *imageData = UIImagePNGRepresentation(_CVjobSeekerThumb.image);
+                    NSData *imageData = UIImageJPEGRepresentation(_CVjobSeekerThumb.image, 0.3f);
                     PFFile *imageFile = [PFFile fileWithName:@"CVThumbnail.png" data:imageData];
                     jobSeekerObject[@"jobSeekerThumb"] = imageFile;
                     
@@ -217,7 +219,9 @@
                 cvObject[@"firstName"] = _CVjobSeekerFirstNameTextView.text;
                 cvObject[@"lastName"] = _CVjobSeekerLastNameTextView.text;
                 cvObject[@"currentTitle"] = _CVjobSeekerCurrentTitleTextView.text;
-                NSData *imageData = UIImagePNGRepresentation(_CVjobSeekerThumb.image);
+                NSData *imageData = UIImageJPEGRepresentation(_CVjobSeekerThumb.image, 0.3f);//(_CVjobSeekerThumb.image);
+                
+               // UIImageJPEGRepresentation(image, 0.9f)
                 PFFile *imageFile = [PFFile fileWithName:@"CVThumbnail.png" data:imageData];
                 cvObject[@"jobSeekerThumb"] = imageFile;
                 
