@@ -571,6 +571,7 @@
                     <connections>
                         <outlet property="CVContentScrollView" destination="1ll-3J-egv" id="mNo-TT-YRv"/>
                         <outlet property="CVDataLoadingIndicator" destination="mya-IL-RFa" id="VQw-G0-fS4"/>
+                        <outlet property="aJobSeekerThumb" destination="WmF-te-Ccs" id="xYi-MW-8yf"/>
                         <outlet property="editCVButton" destination="9NI-Z9-HLh" id="k9c-6W-MH8"/>
                         <outlet property="fullNameLabel" destination="9b2-cX-lBC" id="mq8-hX-oeI"/>
                         <outlet property="mainView" destination="QS5-Rx-YEW" id="CD9-Yn-Yra"/>

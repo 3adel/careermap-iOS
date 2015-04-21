@@ -101,6 +101,9 @@
                 NSLog(@"job seeker name = %@", [[object objectForKey:@"aJobSeekerID"] objectForKey:@"firstName"]);
                 
                 
+                NSLog(@"job seeker object = *%@",[object objectForKey:@"aJobSeekerID" ] );
+                
+                
                 
                 
                // dispatch_async(ge, <#^(void)block#>)
@@ -111,8 +114,35 @@
                     _noCVFoundView.hidden =YES;
                     [_editCVButton setEnabled:YES];
                     
+                    //move to main thread
                     //update fields values
                     _fullNameLabel.text =[NSString stringWithFormat:@"%@ %@",[[object objectForKey:@"aJobSeekerID"] objectForKey:@"firstName"],[[object objectForKey:@"aJobSeekerID"] objectForKey:@"lastName"]];
+                    
+                    //update cv image thumb
+                    PFFile *CVThumbImageFile = [[object objectForKey:@"aJobSeekerID"] objectForKey:@"jobSeekerThumb"];
+                    [CVThumbImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+                        if (!error) {
+                            NSLog(@"success updating seeker cv image");
+                             _aJobSeekerThumb.image = [UIImage imageWithData:imageData];
+                            
+                           // = ;
+                        }
+                        else{
+                            
+                            NSLog(@"Error updating seeker cv image");
+                        }
+                        
+                        
+                    }];
+                    
+                    
+                    
+                  //  _aJobSeekerThumb.image = [[object objectForKey:@"aJobSeekerID"] objectForKey:@"jobSeekerThumb"];
+                    
+                    
+                    
+                    
+                    
                     
                     
                   //  [[object objectForKey:@"aJobSeekerID"] objectForKey:@"firstName"];
@@ -227,6 +257,26 @@
     if (_jobSeekerObject) {
         createCVInstance.CVjobSeekerFirstNameTextView.text =[[_jobSeekerObject objectForKey:@"aJobSeekerID"] objectForKey:@"firstName"];
         createCVInstance.CVjobSeekerLastNameTextView.text =[[_jobSeekerObject objectForKey:@"aJobSeekerID"] objectForKey:@"lastName"];
+        
+        
+        //update cv image thumb
+        PFFile *CVThumbImageFile = [[_jobSeekerObject objectForKey:@"aJobSeekerID"] objectForKey:@"jobSeekerThumb"];
+        [CVThumbImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+            if (!error) {
+                NSLog(@"success updating seeker cv image");
+                createCVInstance.CVjobSeekerThumb.image = [UIImage imageWithData:imageData];
+                
+                // = ;
+            }
+            else{
+                
+                NSLog(@"Error updating seeker cv image");
+            }
+            
+            
+        }];
+        
+        
         
     }
     

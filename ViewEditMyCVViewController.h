@@ -17,6 +17,7 @@
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *editCVButton;
 @property (weak, nonatomic) IBOutlet UILabel *fullNameLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *aJobSeekerThumb;
 
 
 //data

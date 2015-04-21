@@ -40,6 +40,10 @@
     
     
     
+    //add gesture recognizer for the thumb image edit
+    UITapGestureRecognizer *CVthumbTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(CVthumbTapped)];
+    [_CVjobSeekerThumb addGestureRecognizer:CVthumbTapGesture];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -161,6 +165,12 @@
                     jobSeekerObject[@"firstName"] = _CVjobSeekerFirstNameTextView.text;
                     jobSeekerObject[@"lastName"] = _CVjobSeekerLastNameTextView.text;
                     jobSeekerObject[@"currentTitle"] =_CVjobSeekerCurrentTitleTextView.text;
+                    NSData *imageData = UIImagePNGRepresentation(_CVjobSeekerThumb.image);
+                    PFFile *imageFile = [PFFile fileWithName:@"CVThumbnail.png" data:imageData];
+                    jobSeekerObject[@"jobSeekerThumb"] = imageFile;
+                    
+                    
+                    
                     
                     
                     //**************
@@ -207,7 +217,13 @@
                 cvObject[@"firstName"] = _CVjobSeekerFirstNameTextView.text;
                 cvObject[@"lastName"] = _CVjobSeekerLastNameTextView.text;
                 cvObject[@"currentTitle"] = _CVjobSeekerCurrentTitleTextView.text;
+                NSData *imageData = UIImagePNGRepresentation(_CVjobSeekerThumb.image);
+                PFFile *imageFile = [PFFile fileWithName:@"CVThumbnail.png" data:imageData];
+                cvObject[@"jobSeekerThumb"] = imageFile;
                 
+     
+                
+
                 
                 [cvObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                     if (succeeded) {
@@ -273,6 +289,82 @@
     
     
 }
+
+
+
+- (void)CVthumbTapped{
+    
+    
+    NSLog(@"cv thumb tapped");
+    
+    
+    //present photo source action sheet
+    _photoSourceActionSheet = [[UIActionSheet alloc] initWithTitle:@"Select photo from:" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:
+                            @"Camera",
+                            @"Library",
+                            nil];
+    
+    _photoSourceActionSheet.tag = 1;
+    [_photoSourceActionSheet showInView:[UIApplication sharedApplication].keyWindow];
+    
+ 
+    
+    
+    /*
+    //instantiate the cv thumb editor
+    CVThumbEditViewController *CVThumbEditView = [[CVThumbEditViewController alloc] initWithNibName:@"CVThumbEditView" bundle:nil];
+    [self presentViewController:CVThumbEditView animated:YES completion:nil];*/
+    
+}
+
+
+- (void)actionSheet:(UIActionSheet *)_photSourceoActionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    //handle multiple action sheet if necesssary
+    switch (_photoSourceActionSheet.tag) {
+        case 1: {
+            switch (buttonIndex) {
+                case 0:{
+                    NSLog(@"Take photo from camera");
+                    //get photo from camera
+                    UIImagePickerController *cameraPicker = [[UIImagePickerController alloc] init];
+                    cameraPicker.delegate = self;
+                    cameraPicker.allowsEditing = YES;
+                    cameraPicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+                    [self presentViewController:cameraPicker animated:YES completion:NULL];
+                }
+                    break;
+                case 1:{
+                    NSLog(@"Take photo from photo library");
+                    //get photo from camera
+                    UIImagePickerController *cameraPicker = [[UIImagePickerController alloc] init];
+                    cameraPicker.delegate = self;
+                    cameraPicker.allowsEditing = YES;
+                    cameraPicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+                    [self presentViewController:cameraPicker animated:YES completion:NULL];
+                }
+            
+                    break;
+                default:
+                    break;
+            }
+            break;
+        }
+        default:
+            break;
+    }
+}
+
+//update the thumb image view with picked image
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
+    self.CVjobSeekerThumb.image = chosenImage;
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+    
+}
+
+
+
 
 
 
