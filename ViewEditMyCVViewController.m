@@ -259,6 +259,7 @@
 
         createCVInstance.CVjobSeekerFirstNameTextView.text =[[_jobSeekerObject objectForKey:@"aJobSeekerID"] objectForKey:@"firstName"];
         createCVInstance.CVjobSeekerLastNameTextView.text =[[_jobSeekerObject objectForKey:@"aJobSeekerID"] objectForKey:@"lastName"];
+        createCVInstance.CVjobSeekerCurrentTitleTextView.text =[[_jobSeekerObject objectForKey:@"aJobSeekerID"] objectForKey:@"currentTitle"];
         
         
         //update cv image thumb
@@ -283,7 +284,7 @@
         }];
         
         
-        
+        /*
         //update skills
         
         NSLog(@"job seeker object skills =%@", [[_jobSeekerObject objectForKey:@"aJobSeekerID"] objectForKey:@"skills"]);
@@ -312,7 +313,7 @@
         }
         
         
-        
+        */
         
         
         
