@@ -49,7 +49,7 @@
     
     //add job skills view
    // [self.jobDetailsScrollView addSubview:self.jobSkillsView];
-    [self.jobSkillsView setBackgroundColor:[UIColor grayColor]];
+   // [self.jobSkillsView setBackgroundColor:[UIColor redColor]];
     
     
     int count =0;

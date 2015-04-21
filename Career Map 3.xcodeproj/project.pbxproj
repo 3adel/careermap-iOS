@@ -12,8 +12,6 @@
 		F50142DB1ACD19CD000DDBE3 /* JobVoteUp-no-selected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F50142D71ACD19CD000DDBE3 /* JobVoteUp-no-selected@3x.png */; };
 		F50142DC1ACD19CD000DDBE3 /* JobVoteUp-selected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F50142D81ACD19CD000DDBE3 /* JobVoteUp-selected@3x.png */; };
 		F52DC4901AE4D80800693911 /* ViewEditMyCVViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F52DC48F1AE4D80800693911 /* ViewEditMyCVViewController.m */; };
-		F52DC4921AE6334500693911 /* CVThumbEditView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F52DC4911AE6334500693911 /* CVThumbEditView.xib */; };
-		F52DC4951AE6339200693911 /* CVThumbEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F52DC4941AE6339200693911 /* CVThumbEditViewController.m */; };
 		F52DC4971AE6507D00693911 /* Default_Profile_Picture@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F52DC4961AE6507D00693911 /* Default_Profile_Picture@3x.png */; };
 		F533345F1AE3CE4D0029BFF7 /* CreateCVView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F533345E1AE3CE4D0029BFF7 /* CreateCVView.xib */; };
 		F53334621AE3CEB40029BFF7 /* CreateCVViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F53334611AE3CEB40029BFF7 /* CreateCVViewController.m */; };
@@ -83,9 +81,6 @@
 		F50142D81ACD19CD000DDBE3 /* JobVoteUp-selected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "JobVoteUp-selected@3x.png"; sourceTree = "<group>"; };
 		F52DC48E1AE4D80800693911 /* ViewEditMyCVViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewEditMyCVViewController.h; sourceTree = "<group>"; };
 		F52DC48F1AE4D80800693911 /* ViewEditMyCVViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewEditMyCVViewController.m; sourceTree = "<group>"; };
-		F52DC4911AE6334500693911 /* CVThumbEditView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CVThumbEditView.xib; sourceTree = "<group>"; };
-		F52DC4931AE6339200693911 /* CVThumbEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVThumbEditViewController.h; sourceTree = "<group>"; };
-		F52DC4941AE6339200693911 /* CVThumbEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CVThumbEditViewController.m; sourceTree = "<group>"; };
 		F52DC4961AE6507D00693911 /* Default_Profile_Picture@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default_Profile_Picture@3x.png"; sourceTree = "<group>"; };
 		F533345E1AE3CE4D0029BFF7 /* CreateCVView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateCVView.xib; sourceTree = "<group>"; };
 		F53334601AE3CEB40029BFF7 /* CreateCVViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreateCVViewController.h; path = "Career Map 3/CreateCVViewController.h"; sourceTree = "<group>"; };
@@ -214,9 +209,6 @@
 		F533345B1AE3CCB70029BFF7 /* CV */ = {
 			isa = PBXGroup;
 			children = (
-				F52DC4911AE6334500693911 /* CVThumbEditView.xib */,
-				F52DC4931AE6339200693911 /* CVThumbEditViewController.h */,
-				F52DC4941AE6339200693911 /* CVThumbEditViewController.m */,
 				F52DC48E1AE4D80800693911 /* ViewEditMyCVViewController.h */,
 				F52DC48F1AE4D80800693911 /* ViewEditMyCVViewController.m */,
 				F533345E1AE3CE4D0029BFF7 /* CreateCVView.xib */,
@@ -490,7 +482,6 @@
 				F59758BB1AC159B40099A978 /* Main.storyboard in Resources */,
 				F50142D91ACD19CD000DDBE3 /* JobVoteDwn-no-selected@3x.png in Resources */,
 				F535AA641AD3CE270091E70B /* WelcomeAppChoiceView.xib in Resources */,
-				F52DC4921AE6334500693911 /* CVThumbEditView.xib in Resources */,
 				F59758C01AC159B40099A978 /* LaunchScreen.xib in Resources */,
 				F535AAEA1ADC66920091E70B /* job-annotation-icon3@3x.png in Resources */,
 				F53334641AE4080C0029BFF7 /* Lenna@3x.jpg in Resources */,
@@ -525,7 +516,6 @@
 				F59759351AC1DC7D0099A978 /* JobCustomTableViewCell.m in Sources */,
 				F535AC511ADEC9B50091E70B /* JobChatMessageCell.m in Sources */,
 				F5BAC3D41AC875E5003E899C /* settingsViewController.m in Sources */,
-				F52DC4951AE6339200693911 /* CVThumbEditViewController.m in Sources */,
 				F535A9A71AD06E500091E70B /* ExistingUserLoginViewController.m in Sources */,
 				F59758B21AC159B40099A978 /* AppDelegate.m in Sources */,
 				F5BAC3D11AC85BB7003E899C /* LoginViewController.m in Sources */,

@@ -255,6 +255,8 @@
     
     //populate edit cv screen with existing values
     if (_jobSeekerObject) {
+        
+
         createCVInstance.CVjobSeekerFirstNameTextView.text =[[_jobSeekerObject objectForKey:@"aJobSeekerID"] objectForKey:@"firstName"];
         createCVInstance.CVjobSeekerLastNameTextView.text =[[_jobSeekerObject objectForKey:@"aJobSeekerID"] objectForKey:@"lastName"];
         
@@ -279,6 +281,40 @@
             
             
         }];
+        
+        
+        
+        //update skills
+        
+        NSLog(@"job seeker object skills =%@", [[_jobSeekerObject objectForKey:@"aJobSeekerID"] objectForKey:@"skills"]);
+        
+        
+        createCVInstance.jobSeekerSkills =[[_jobSeekerObject objectForKey:@"aJobSeekerID"] objectForKey:@"skills"];
+        
+        int count =0;
+        for (NSString *skill in createCVInstance.jobSeekerSkills) {
+            // NSLog(@"Job skills array =%@", skill);
+            
+            //add skills to the skills view
+            
+             UITextField *skillTextField = [[UITextField alloc] initWithFrame:CGRectMake(5, 50*count, 200, 40)];
+            //[skillTextField setuse]
+             [skillTextField setBackgroundColor:[UIColor grayColor]];
+             [skillTextField setFont:[UIFont systemFontOfSize:18]];
+             skillTextField.text = skill;
+             [createCVInstance.jobSkillsView addSubview:skillTextField];
+            
+
+            
+            
+            
+            count++;
+        }
+        
+        
+        
+        
+        
         
         
         

@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 #import <Parse/Parse.h>
-#import "CVThumbEditViewController.h"
 @interface CreateCVViewController : UIViewController <UIActionSheetDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 
@@ -20,9 +19,10 @@
 @property (weak, nonatomic) IBOutlet UITextField *CVjobSeekerLastNameTextView;
 @property (weak, nonatomic) IBOutlet UITextField *CVjobSeekerCurrentTitleTextView;
 @property (strong, nonatomic) UIActionSheet *photoSourceActionSheet;
+@property (weak, nonatomic) IBOutlet UIView *jobSkillsView;
 
 //Data
-
+@property (strong, nonatomic) NSArray *jobSeekerSkills;
 
 
 
@@ -32,5 +32,6 @@
 - (IBAction)saveCVButtonPressed:(UIBarButtonItem *)sender;
 - (void) checkFieldsComplete;
 - (void) CVthumbTapped;
+- (IBAction)addSkillTestButton:(UIButton *)sender;
 
 @end
