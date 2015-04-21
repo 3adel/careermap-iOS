@@ -264,9 +264,13 @@
         [CVThumbImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
             if (!error) {
                 NSLog(@"success updating seeker cv image");
-                createCVInstance.CVjobSeekerThumb.image = [UIImage imageWithData:imageData];
                 
-                // = ;
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    
+                    createCVInstance.CVjobSeekerThumb.image = [UIImage imageWithData:imageData];
+                    
+                });
+
             }
             else{
                 
