@@ -399,49 +399,25 @@ int addSkillButtonTapCount = 0;
 //what happens when remove skill button is tapped
 - (void) removeSkillButtonPressed:(UIButton *)sender{
     
-   // NSLog(@"Delete button tag = %ld", sender.tag);
-    //NSLog(@"Delete textField tag = %ld", skillTextField.tag);
-    
-
-    
-    //_jobSkillsViewHeightConstraint.constant -=50;
-
-   addSkillButtonTapCount-=1;
-    
-    
-    
+    addSkillButtonTapCount-=1;
     [self.view layoutIfNeeded];
-    //addSkillButtonTapCount+=1;
+    
     [UIView animateWithDuration:.1 animations:^{
         
-
+        //remove the skill text box and its accompanying "remove" button
         [sender removeFromSuperview];
         [[self.view viewWithTag:sender.tag] removeFromSuperview];
-                _jobSkillsViewHeightConstraint.constant -=50;
-        //remove the skill text box and its accompanying "remove" button
-
-        
-
+        _skillTextField1HeightConstraint.constant =0;
         [self.view layoutIfNeeded];
-        
-
-        
+ 
     } completion:nil];
-    
 
-    
-     NSLog(@"(Remove) Skill View Height =%@", _jobSkillsViewHeightConstraint);
-    
-    
-    
+    NSLog(@"(Remove) Skill View Height =%@", _jobSkillsViewHeightConstraint);
+
 }
 
 - (IBAction)addSkillViewTestingOnly:(UIButton *)sender {
-    
-    
-    
-    
-    
+
     //Add one space to a new skill
     [self.view layoutIfNeeded];
     addSkillButtonTapCount+=1;
@@ -464,14 +440,14 @@ int addSkillButtonTapCount = 0;
         
         
         //Add a companion remove skill button
-        //UIButton *removeSkillButton = [[UIButton alloc] initWithFrame:
-                         //              CGRectMake(210, 50*(addSkillButtonTapCount -1), 90, 40)];
-       // [removeSkillButton setTitle:@"Remove" forState:UIControlStateNormal];
-      //  [removeSkillButton.titleLabel setFont:[UIFont systemFontOfSize:15]];
-        //[removeSkillButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        //[removeSkillButton setBackgroundColor:[UIColor redColor]];
-        //[removeSkillButton setTag:addSkillButtonTapCount];
-        //[removeSkillButton addTarget:self action:@selector(removeSkillButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+        UIButton *removeSkillButton = [[UIButton alloc] initWithFrame:
+              CGRectMake(210, 50*(addSkillButtonTapCount -1), 90, 40)];
+        [removeSkillButton setTitle:@"Remove" forState:UIControlStateNormal];
+        [removeSkillButton.titleLabel setFont:[UIFont systemFontOfSize:15]];
+        [removeSkillButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [removeSkillButton setBackgroundColor:[UIColor redColor]];
+        [removeSkillButton setTag:addSkillButtonTapCount];
+        [removeSkillButton addTarget:self action:@selector(removeSkillButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
         
         // NSLog(@"Button Tag = %ld", removeSkillButton.tag);
         
@@ -480,8 +456,8 @@ int addSkillButtonTapCount = 0;
         //add a tag to the create button
         
         
-        [_jobSkillsView addSubview:_skillTextView1];
-        //[_jobSkillsView addSubview:removeSkillButton];
+        //[_jobSkillsView addSubview:_skillTextView1];
+        [_jobSkillsView addSubview:removeSkillButton];
         
         
         
