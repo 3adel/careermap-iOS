@@ -20,6 +20,10 @@
 @property (weak, nonatomic) IBOutlet UITextField *CVjobSeekerCurrentTitleTextView;
 @property (strong, nonatomic) UIActionSheet *photoSourceActionSheet;
 @property (weak, nonatomic) IBOutlet UIView *jobSkillsView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *jobSkillsViewHeightConstraint;
+//@property (strong,nonatomic) UITextField *skillTextField;
+
+
 
 //Data
 @property (strong, nonatomic) NSArray *jobSeekerSkills;
@@ -33,5 +37,7 @@
 - (void) checkFieldsComplete;
 - (void) CVthumbTapped;
 - (IBAction)addSkillTestButton:(UIButton *)sender;
+- (IBAction)assSkillButtonPressed:(UIButton *)sender;
+- (void) removeSkillButtonPressed:(UIButton *)sender;
 
 @end
