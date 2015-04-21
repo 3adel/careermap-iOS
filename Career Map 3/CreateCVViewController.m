@@ -399,6 +399,10 @@ int addSkillButtonTapCount = 0;
 //what happens when remove skill button is tapped
 - (void) removeSkillButtonPressed:(UIButton *)sender{
     
+    
+    
+    NSLog(@"Text Field Tag = %ld", _skillTextView1.tag);
+    
     addSkillButtonTapCount-=1;
     [self.view layoutIfNeeded];
     
@@ -412,31 +416,23 @@ int addSkillButtonTapCount = 0;
  
     } completion:nil];
 
-    NSLog(@"(Remove) Skill View Height =%@", _jobSkillsViewHeightConstraint);
+    //NSLog(@"(Remove) Skill View Height =%@", _jobSkillsViewHeightConstraint);
 
 }
 
 - (IBAction)addSkillViewTestingOnly:(UIButton *)sender {
 
+    addSkillButtonTapCount+=1;
+    NSLog(@"Add skill button %d", addSkillButtonTapCount);
+    
+    
+    
     //Add one space to a new skill
     [self.view layoutIfNeeded];
-    addSkillButtonTapCount+=1;
+
     [UIView animateWithDuration:.1 animations:^{
         _skillTextField1HeightConstraint.constant =40;
         
-      //  NSLog(@"(Add) Skill View Height =%@", _jobSkillsViewHeightConstraint);
-        
-        
-        //add a skill a tagged addition UI: A text field and a remove button
-        // NSLog(@"%d", addSkillButtonTapCount);
-        //UITextField *skillTextField = [[UITextField alloc] initWithFrame:CGRectMake(0, 50*(addSkillButtonTapCount -1), 200, 40)];
-        //NSLog(@"Count Y Value: =%d",50*(addSkillButtonTapCount -1));
-        
-        
-        //[skillTextField setBackgroundColor:[UIColor whiteColor]];
-        //[skillTextField setFont:[UIFont systemFontOfSize:18]];
-        //[skillTextField setTag:addSkillButtonTapCount];
-        //  NSLog(@"Skill Tag = %ld", skillTextField.tag);
         
         
         //Add a companion remove skill button
@@ -448,15 +444,8 @@ int addSkillButtonTapCount = 0;
         [removeSkillButton setBackgroundColor:[UIColor redColor]];
         [removeSkillButton setTag:addSkillButtonTapCount];
         [removeSkillButton addTarget:self action:@selector(removeSkillButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-        
-        // NSLog(@"Button Tag = %ld", removeSkillButton.tag);
-        
-        
-        
-        //add a tag to the create button
-        
-        
-        //[_jobSkillsView addSubview:_skillTextView1];
+
+        //Add the remove button
         [_jobSkillsView addSubview:removeSkillButton];
         
         
