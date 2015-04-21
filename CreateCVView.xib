@@ -11,7 +11,8 @@
                 <outlet property="CVjobSeekerLastNameTextView" destination="nxu-Mx-j1n" id="yK8-Gl-5zH"/>
                 <outlet property="CVjobSeekerThumb" destination="QeQ-gb-fAX" id="RJF-j6-HCb"/>
                 <outlet property="jobSkillsView" destination="1RO-Hq-ZHE" id="uow-JG-BfB"/>
-                <outlet property="jobSkillsViewHeightConstraint" destination="sV1-8E-fpN" id="MdS-w9-oao"/>
+                <outlet property="skillTextField1HeightConstraint" destination="a6M-ff-oc7" id="OJ1-6c-ac0"/>
+                <outlet property="skillTextView1" destination="Td3-ij-ub2" id="7VM-xg-j2P"/>
                 <outlet property="view" destination="2op-C1-VX5" id="bkN-bK-lkY"/>
             </connections>
         </placeholder>
@@ -103,10 +104,31 @@
                                 <action selector="assSkillButtonPressed:" destination="-1" eventType="touchUpInside" id="9hU-b2-3Ga"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="05j-Sp-fla">
+                            <rect key="frame" x="61" y="54" width="46" height="30"/>
+                            <state key="normal" title="Button">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="addSkillViewTestingOnly:" destination="-1" eventType="touchUpInside" id="JWy-eN-5j9"/>
+                            </connections>
+                        </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1RO-Hq-ZHE" userLabel="Skills View">
+                            <subviews>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Td3-ij-ub2" userLabel="SkillTextField1">
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="200" id="XQ4-Ai-Hrj"/>
+                                        <constraint firstAttribute="height" id="a6M-ff-oc7"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
+                            </subviews>
                             <color key="backgroundColor" red="1" green="0.43529412150000002" blue="0.81176471709999998" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
-                                <constraint firstAttribute="height" id="sV1-8E-fpN"/>
+                                <constraint firstItem="Td3-ij-ub2" firstAttribute="leading" secondItem="1RO-Hq-ZHE" secondAttribute="leading" id="NiW-Gb-29x"/>
+                                <constraint firstItem="Td3-ij-ub2" firstAttribute="top" secondItem="1RO-Hq-ZHE" secondAttribute="top" id="nEN-O8-5Mq"/>
+                                <constraint firstAttribute="bottom" secondItem="Td3-ij-ub2" secondAttribute="bottom" id="v9G-zO-VIW"/>
                             </constraints>
                         </view>
                     </subviews>
@@ -115,6 +137,7 @@
                         <constraint firstAttribute="trailing" secondItem="EPF-TK-n6P" secondAttribute="trailing" constant="10" id="2ZO-Ex-KQ4"/>
                         <constraint firstItem="1RO-Hq-ZHE" firstAttribute="leading" secondItem="8Qt-hc-vXk" secondAttribute="leading" constant="10" id="5hy-5I-7Ax"/>
                         <constraint firstItem="nxu-Mx-j1n" firstAttribute="leading" secondItem="BAr-2X-f0G" secondAttribute="leading" id="5nB-le-q8J"/>
+                        <constraint firstItem="QeQ-gb-fAX" firstAttribute="trailing" secondItem="05j-Sp-fla" secondAttribute="trailing" constant="100" id="BwA-uT-bDe"/>
                         <constraint firstAttribute="bottom" secondItem="135-OS-Nmd" secondAttribute="bottom" id="CZx-ay-zZs"/>
                         <constraint firstItem="EPF-TK-n6P" firstAttribute="leading" secondItem="nxu-Mx-j1n" secondAttribute="leading" id="EnI-Qx-HUq"/>
                         <constraint firstItem="oez-X1-f5h" firstAttribute="height" secondItem="QG8-Gt-UHQ" secondAttribute="height" id="Fh7-XE-kd4"/>
@@ -145,6 +168,7 @@
                         <constraint firstItem="EPF-TK-n6P" firstAttribute="leading" secondItem="8Qt-hc-vXk" secondAttribute="leading" constant="10" id="npu-s4-Lqw"/>
                         <constraint firstItem="nxu-Mx-j1n" firstAttribute="top" secondItem="EPF-TK-n6P" secondAttribute="bottom" constant="10" id="oNN-25-NwJ"/>
                         <constraint firstItem="135-OS-Nmd" firstAttribute="leading" secondItem="8Qt-hc-vXk" secondAttribute="leading" constant="10" id="pcJ-9D-tHR"/>
+                        <constraint firstItem="QeQ-gb-fAX" firstAttribute="centerY" secondItem="05j-Sp-fla" secondAttribute="centerY" id="srr-Jb-49Q"/>
                         <constraint firstAttribute="trailing" secondItem="135-OS-Nmd" secondAttribute="trailing" constant="10" id="t6G-aQ-tNo"/>
                         <constraint firstItem="nxu-Mx-j1n" firstAttribute="trailing" secondItem="BAr-2X-f0G" secondAttribute="trailing" id="tKI-ME-wtd"/>
                         <constraint firstItem="5vB-2V-ogN" firstAttribute="leading" secondItem="oez-X1-f5h" secondAttribute="leading" id="y0R-PT-Wgk"/>
