@@ -358,6 +358,9 @@ int addSkillButtonTapCount = 0;
         //add a skill a tagged addition UI: A text field and a remove button
        // NSLog(@"%d", addSkillButtonTapCount);
         UITextField *skillTextField = [[UITextField alloc] initWithFrame:CGRectMake(0, 50*(addSkillButtonTapCount -1), 200, 40)];
+        NSLog(@"Count Y Value: =%d",50*(addSkillButtonTapCount -1));
+        
+        
         [skillTextField setBackgroundColor:[UIColor whiteColor]];
         [skillTextField setFont:[UIFont systemFontOfSize:18]];
         [skillTextField setTag:addSkillButtonTapCount];
@@ -403,7 +406,7 @@ int addSkillButtonTapCount = 0;
     
     //_jobSkillsViewHeightConstraint.constant -=50;
 
-   
+   addSkillButtonTapCount-=1;
     
     
     
@@ -411,10 +414,10 @@ int addSkillButtonTapCount = 0;
     //addSkillButtonTapCount+=1;
     [UIView animateWithDuration:.1 animations:^{
         
-        
+
         [sender removeFromSuperview];
         [[self.view viewWithTag:sender.tag] removeFromSuperview];
-        _jobSkillsViewHeightConstraint.constant -=50;
+                _jobSkillsViewHeightConstraint.constant -=50;
         //remove the skill text box and its accompanying "remove" button
 
         

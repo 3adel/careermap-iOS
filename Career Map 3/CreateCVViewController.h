@@ -22,7 +22,7 @@
 @property (weak, nonatomic) IBOutlet UIView *jobSkillsView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *jobSkillsViewHeightConstraint;
 //@property (strong,nonatomic) UITextField *skillTextField;
-
+//@property (weak, nonatomic) IBOutlet nslayout
 
 
 //Data
