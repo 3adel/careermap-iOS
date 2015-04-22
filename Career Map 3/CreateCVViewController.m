@@ -404,17 +404,48 @@ int addSkillButtonTapCount = 0;
     NSLog(@"Text Field Tag = %ld", _skillTextView1.tag);
     
     addSkillButtonTapCount-=1;
-    [self.view layoutIfNeeded];
-    
-    [UIView animateWithDuration:.1 animations:^{
+    switch (addSkillButtonTapCount) {
+        case 0:
+        {
+            [self.view layoutIfNeeded];
+            
+            [UIView animateWithDuration:.1 animations:^{
+                
+                //remove the skill text box and its accompanying "remove" button
+                [sender removeFromSuperview];
+                //[[self.view viewWithTag:sender.tag] removeFromSuperview];
+                _skillTextField1HeightConstraint.constant =0;
+                [self.view layoutIfNeeded];
+                
+            } completion:nil];
         
-        //remove the skill text box and its accompanying "remove" button
-        [sender removeFromSuperview];
-        [[self.view viewWithTag:sender.tag] removeFromSuperview];
-        _skillTextField1HeightConstraint.constant =0;
-        [self.view layoutIfNeeded];
- 
-    } completion:nil];
+        }
+            break;
+            
+            
+        case 1:{
+            
+            
+            [self.view layoutIfNeeded];
+            
+            [UIView animateWithDuration:.1 animations:^{
+                
+                //remove the skill text box and its accompanying "remove" button
+                [sender removeFromSuperview];
+                //[[self.view viewWithTag:sender.tag] removeFromSuperview];
+                _skillTextField2HeightConstraint.constant =0;
+                [self.view layoutIfNeeded];
+                
+            } completion:nil];
+        }
+            break;
+        default:
+            break;
+    }
+    
+
+    
+    
 
     //NSLog(@"(Remove) Skill View Height =%@", _jobSkillsViewHeightConstraint);
 
@@ -426,34 +457,85 @@ int addSkillButtonTapCount = 0;
     NSLog(@"Add skill button %d", addSkillButtonTapCount);
     
     
+    switch (addSkillButtonTapCount) {
+        case 1:{
+            NSLog(@"1");
+            //Add one space to a new skill
+            [self.view layoutIfNeeded];
+            
+            [UIView animateWithDuration:.1 animations:^{
+                _skillTextField1HeightConstraint.constant =40;
+                
+                
+                
+                //Add a companion remove skill button
+                UIButton *removeSkillButton = [[UIButton alloc] initWithFrame:
+                                               CGRectMake(210, 50*(addSkillButtonTapCount -1), 90, 40)];
+                [removeSkillButton setTitle:@"Remove" forState:UIControlStateNormal];
+                [removeSkillButton.titleLabel setFont:[UIFont systemFontOfSize:15]];
+                [removeSkillButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+                [removeSkillButton setBackgroundColor:[UIColor redColor]];
+                [removeSkillButton setTag:addSkillButtonTapCount];
+                [removeSkillButton addTarget:self action:@selector(removeSkillButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+                
+                //Add the remove button
+                [_jobSkillsView addSubview:removeSkillButton];
+                
+                
+                
+                [self.view layoutIfNeeded];
+                
+                
+            } completion:nil];
+        }
+
+            break;
+            
+            
+        case 2:
+        { NSLog(@"2");
+            
+            
+            //Add one space to a new skill
+            [self.view layoutIfNeeded];
+            
+            [UIView animateWithDuration:.1 animations:^{
+                _skillTextField2HeightConstraint.constant =40;
+                
+                
+                
+                //Add a companion remove skill button
+                UIButton *removeSkillButton = [[UIButton alloc] initWithFrame:
+                                               CGRectMake(210, 50*(addSkillButtonTapCount -1), 90, 40)];
+                [removeSkillButton setTitle:@"Remove" forState:UIControlStateNormal];
+                [removeSkillButton.titleLabel setFont:[UIFont systemFontOfSize:15]];
+                [removeSkillButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+                [removeSkillButton setBackgroundColor:[UIColor redColor]];
+                [removeSkillButton setTag:addSkillButtonTapCount];
+                [removeSkillButton addTarget:self action:@selector(removeSkillButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+                
+                //Add the remove button
+                [_jobSkillsView addSubview:removeSkillButton];
+                
+                
+                
+                [self.view layoutIfNeeded];
+                
+                
+            } completion:nil];
+            
+
+            
+            
+        }
+            
+            
+            break;
+            
+        default:
+            break;
+    }
     
-    //Add one space to a new skill
-    [self.view layoutIfNeeded];
-
-    [UIView animateWithDuration:.1 animations:^{
-        _skillTextField1HeightConstraint.constant =40;
-        
-        
-        
-        //Add a companion remove skill button
-        UIButton *removeSkillButton = [[UIButton alloc] initWithFrame:
-              CGRectMake(210, 50*(addSkillButtonTapCount -1), 90, 40)];
-        [removeSkillButton setTitle:@"Remove" forState:UIControlStateNormal];
-        [removeSkillButton.titleLabel setFont:[UIFont systemFontOfSize:15]];
-        [removeSkillButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [removeSkillButton setBackgroundColor:[UIColor redColor]];
-        [removeSkillButton setTag:addSkillButtonTapCount];
-        [removeSkillButton addTarget:self action:@selector(removeSkillButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-
-        //Add the remove button
-        [_jobSkillsView addSubview:removeSkillButton];
-        
-        
-        
-        [self.view layoutIfNeeded];
-        
-        
-    } completion:nil];
     
     
     

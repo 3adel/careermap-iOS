@@ -21,8 +21,13 @@
 @property (strong, nonatomic) UIActionSheet *photoSourceActionSheet;
 @property (weak, nonatomic) IBOutlet UIView *jobSkillsView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *jobSkillsViewHeightConstraint;
+
+
 @property (weak, nonatomic) IBOutlet UITextField *skillTextView1;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *skillTextField1HeightConstraint;
+@property (weak, nonatomic) IBOutlet UITextField *skillTextView2;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *skillTextField2HeightConstraint;
+
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *skillTextView2HeightConstraint;
 
 
