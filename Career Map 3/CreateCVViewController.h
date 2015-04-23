@@ -21,9 +21,10 @@
 @property (strong, nonatomic) UIActionSheet *photoSourceActionSheet;
 @property (weak, nonatomic) IBOutlet UIView *jobSkillsView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *jobSkillsViewHeightConstraint;
+@property (weak, nonatomic) IBOutlet UIButton *addSkillButton;
 
 //Skill fields and remove skills buttons
-@property (weak, nonatomic) IBOutlet UITextField *skillTextView1;
+@property (weak, nonatomic) IBOutlet UITextField *skillTextField1;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *skillTextField1HeightConstraint;
 @property (weak, nonatomic) IBOutlet UIButton *removeSkillButton1;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *removeSkillButton1HeightConstraint;
@@ -31,7 +32,7 @@
 
 
 
-@property (weak, nonatomic) IBOutlet UITextField *skillTextView2;
+@property (weak, nonatomic) IBOutlet UITextField *skillTextField2;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *skillTextField2HeightConstraint;
 @property (weak, nonatomic) IBOutlet UIButton *removeSkillButton2;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *removeSkillButton2HeightConstraint;
@@ -44,16 +45,14 @@
 @property (strong, nonatomic) NSArray *jobSeekerSkills;
 
 
-
+ //- (int)addX:(int)x toY:(int)y
 
 //actions
 - (IBAction)closeCreateCVButtonPressed:(UIBarButtonItem *)sender;
 - (IBAction)saveCVButtonPressed:(UIBarButtonItem *)sender;
 - (void) checkFieldsComplete;
 - (void) CVthumbTapped;
-- (IBAction)addSkillTestButton:(UIButton *)sender;
-- (IBAction)assSkillButtonPressed:(UIButton *)sender;
+- (IBAction)addSkillButtonPressed:(UIButton *)sender;
 - (void) removeSkillButtonPressed:(UIButton *)sender;
-- (IBAction)addSkillViewTestingOnly:(UIButton *)sender;
-
+- (void) skillTextFieldHeightExpand:(NSLayoutConstraint *) skillTextFieldHeightConstraint skillRemoveButtonHeightExpand: (NSLayoutConstraint *) removeSkillButtonHeighConstraint andAddSkillRemoveButtonTitle: (UIButton *) removeSkillButton;
 @end

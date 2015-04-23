@@ -17,36 +17,38 @@
             endingLineNumber = "106"
             landmarkName = "-CVViewEdit"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__40-[ViewEditMyCVViewController CVViewEdit]_block_invoke"
-                  moduleName = "Career Map 3"
-                  urlString = "file:///Users/adel/Developer/CareerMap3/CareerMap3/ViewEditMyCVViewController.m"
-                  timestampString = "451343469.486768"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "112"
-                  endingLineNumber = "112"
-                  offsetFromSymbolStart = "536">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__40-[ViewEditMyCVViewController CVViewEdit]_block_invoke_2"
-                  moduleName = "Career Map 3"
-                  urlString = "file:///Users/adel/Developer/CareerMap3/CareerMap3/ViewEditMyCVViewController.m"
-                  timestampString = "451343469.486894"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "112"
-                  endingLineNumber = "112"
-                  offsetFromSymbolStart = "24">
-               </Location>
-            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Career Map 3/CreateCVViewController.m"
+            timestampString = "451475101.101145"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "349"
+            endingLineNumber = "349"
+            landmarkName = "-addSkillButtonPressed:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Career Map 3/CreateCVViewController.m"
+            timestampString = "451476713.516004"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "421"
+            endingLineNumber = "421"
+            landmarkName = "-removeSkillButtonPressed:"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
