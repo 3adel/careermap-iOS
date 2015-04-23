@@ -11,6 +11,10 @@
                 <outlet property="CVjobSeekerLastNameTextView" destination="nxu-Mx-j1n" id="yK8-Gl-5zH"/>
                 <outlet property="CVjobSeekerThumb" destination="QeQ-gb-fAX" id="RJF-j6-HCb"/>
                 <outlet property="jobSkillsView" destination="1RO-Hq-ZHE" id="uow-JG-BfB"/>
+                <outlet property="removeSkillButton1" destination="H1I-9K-hDL" id="XcT-tg-r2L"/>
+                <outlet property="removeSkillButton1HeightConstraint" destination="l0J-HO-kWm" id="kkv-Lb-Z77"/>
+                <outlet property="removeSkillButton2" destination="Eu0-6L-rGn" id="7Wf-am-WBc"/>
+                <outlet property="removeSkillButton2HeightConstraint" destination="OM1-bU-RHh" id="Mrw-xY-m21"/>
                 <outlet property="skillTextField1HeightConstraint" destination="a6M-ff-oc7" id="OJ1-6c-ac0"/>
                 <outlet property="skillTextField2HeightConstraint" destination="yay-Qm-CnD" id="uAY-qV-icM"/>
                 <outlet property="skillTextView1" destination="Td3-ij-ub2" id="7VM-xg-j2P"/>
@@ -88,15 +92,15 @@
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                         </button>
-                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="135-OS-Nmd">
-                            <rect key="frame" x="10" y="425" width="300" height="233.5"/>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="135-OS-Nmd">
+                            <rect key="frame" x="10" y="435" width="300" height="233.5"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
-                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BCZ-8Q-WhP">
-                            <rect key="frame" x="10" y="370" width="300" height="40"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BCZ-8Q-WhP">
+                            <rect key="frame" x="10" y="380" width="300" height="40"/>
                             <color key="backgroundColor" red="0.010248241139999999" green="0.56753077649999994" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <state key="normal" title="Add another skill">
                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -115,7 +119,8 @@
                                 <action selector="addSkillViewTestingOnly:" destination="-1" eventType="touchUpInside" id="JWy-eN-5j9"/>
                             </connections>
                         </button>
-                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1RO-Hq-ZHE" userLabel="Skills View">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1RO-Hq-ZHE" userLabel="Skills View">
+                            <rect key="frame" x="10" y="360" width="300" height="10"/>
                             <subviews>
                                 <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UDV-ek-rMs" userLabel="SkillTextField2">
                                     <constraints>
@@ -125,7 +130,17 @@
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Td3-ij-ub2" userLabel="SkillTextField1">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eu0-6L-rGn" userLabel="RemoveButton2">
+                                    <color key="backgroundColor" red="1" green="0.0" blue="0.018539993599999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" id="OM1-bU-RHh"/>
+                                    </constraints>
+                                    <state key="normal">
+                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                </button>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add Skill2" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Td3-ij-ub2" userLabel="SkillTextField1">
                                     <constraints>
                                         <constraint firstAttribute="width" constant="200" id="XQ4-Ai-Hrj"/>
                                         <constraint firstAttribute="height" id="a6M-ff-oc7"/>
@@ -133,13 +148,29 @@
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H1I-9K-hDL" userLabel="RemoveButton1">
+                                    <color key="backgroundColor" red="1" green="0.0" blue="0.018539993599999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" id="l0J-HO-kWm"/>
+                                    </constraints>
+                                    <state key="normal">
+                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" red="1" green="0.43529412150000002" blue="0.81176471709999998" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
+                                <constraint firstItem="Eu0-6L-rGn" firstAttribute="leading" secondItem="H1I-9K-hDL" secondAttribute="leading" id="G5I-dg-RcT"/>
+                                <constraint firstAttribute="trailing" secondItem="H1I-9K-hDL" secondAttribute="trailing" id="L0b-NY-P8S"/>
                                 <constraint firstItem="Td3-ij-ub2" firstAttribute="leading" secondItem="1RO-Hq-ZHE" secondAttribute="leading" id="NiW-Gb-29x"/>
+                                <constraint firstItem="Eu0-6L-rGn" firstAttribute="trailing" secondItem="H1I-9K-hDL" secondAttribute="trailing" id="OX0-cP-ciX"/>
                                 <constraint firstItem="UDV-ek-rMs" firstAttribute="leading" secondItem="Td3-ij-ub2" secondAttribute="leading" id="VkA-sF-2CZ"/>
                                 <constraint firstAttribute="bottom" secondItem="UDV-ek-rMs" secondAttribute="bottom" id="ddx-dF-OVP"/>
+                                <constraint firstItem="H1I-9K-hDL" firstAttribute="leading" secondItem="Td3-ij-ub2" secondAttribute="trailing" constant="10" id="jGq-BY-J26"/>
+                                <constraint firstItem="H1I-9K-hDL" firstAttribute="centerY" secondItem="Td3-ij-ub2" secondAttribute="centerY" id="kr8-C5-NXC"/>
                                 <constraint firstItem="Td3-ij-ub2" firstAttribute="top" secondItem="1RO-Hq-ZHE" secondAttribute="top" id="nEN-O8-5Mq"/>
+                                <constraint firstItem="Eu0-6L-rGn" firstAttribute="centerY" secondItem="UDV-ek-rMs" secondAttribute="centerY" constant="-5" id="ptD-9J-6JR"/>
                                 <constraint firstItem="UDV-ek-rMs" firstAttribute="top" secondItem="Td3-ij-ub2" secondAttribute="bottom" constant="10" id="xIl-9H-w5M"/>
                             </constraints>
                         </view>

@@ -410,11 +410,10 @@ int addSkillButtonTapCount = 0;
             [self.view layoutIfNeeded];
             
             [UIView animateWithDuration:.1 animations:^{
-                
-                //remove the skill text box and its accompanying "remove" button
-                [sender removeFromSuperview];
-                //[[self.view viewWithTag:sender.tag] removeFromSuperview];
                 _skillTextField1HeightConstraint.constant =0;
+                _removeSkillButton1HeightConstraint.constant=0;
+                [_removeSkillButton1 setTitle:@"" forState:UIControlStateNormal];
+                
                 [self.view layoutIfNeeded];
                 
             } completion:nil];
@@ -428,12 +427,12 @@ int addSkillButtonTapCount = 0;
             
             [self.view layoutIfNeeded];
             
+            
             [UIView animateWithDuration:.1 animations:^{
-                
-                //remove the skill text box and its accompanying "remove" button
-                [sender removeFromSuperview];
-                //[[self.view viewWithTag:sender.tag] removeFromSuperview];
                 _skillTextField2HeightConstraint.constant =0;
+                _removeSkillButton2HeightConstraint.constant=0;
+                [_removeSkillButton2 setTitle:@"" forState:UIControlStateNormal];
+                
                 [self.view layoutIfNeeded];
                 
             } completion:nil];
@@ -465,27 +464,11 @@ int addSkillButtonTapCount = 0;
             
             [UIView animateWithDuration:.1 animations:^{
                 _skillTextField1HeightConstraint.constant =40;
-                
-                
-                
-                //Add a companion remove skill button
-                UIButton *removeSkillButton = [[UIButton alloc] initWithFrame:
-                                               CGRectMake(210, 50*(addSkillButtonTapCount -1), 90, 40)];
-                [removeSkillButton setTitle:@"Remove" forState:UIControlStateNormal];
-                [removeSkillButton.titleLabel setFont:[UIFont systemFontOfSize:15]];
-                [removeSkillButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-                [removeSkillButton setBackgroundColor:[UIColor redColor]];
-                [removeSkillButton setTag:addSkillButtonTapCount];
-                [removeSkillButton addTarget:self action:@selector(removeSkillButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-                
-                //Add the remove button
-                [_jobSkillsView addSubview:removeSkillButton];
-                
-                
-                
+                _removeSkillButton1HeightConstraint.constant=40;
+                [_removeSkillButton1 setTitle:@"Remove Now" forState:UIControlStateNormal];
+                [_removeSkillButton1 addTarget:self action:@selector(removeSkillButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
                 [self.view layoutIfNeeded];
-                
-                
+  
             } completion:nil];
         }
 
@@ -501,22 +484,10 @@ int addSkillButtonTapCount = 0;
             
             [UIView animateWithDuration:.1 animations:^{
                 _skillTextField2HeightConstraint.constant =40;
-                
-                
-                
-                //Add a companion remove skill button
-                UIButton *removeSkillButton = [[UIButton alloc] initWithFrame:
-                                               CGRectMake(210, 50*(addSkillButtonTapCount -1), 90, 40)];
-                [removeSkillButton setTitle:@"Remove" forState:UIControlStateNormal];
-                [removeSkillButton.titleLabel setFont:[UIFont systemFontOfSize:15]];
-                [removeSkillButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-                [removeSkillButton setBackgroundColor:[UIColor redColor]];
-                [removeSkillButton setTag:addSkillButtonTapCount];
-                [removeSkillButton addTarget:self action:@selector(removeSkillButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-                
-                //Add the remove button
-                [_jobSkillsView addSubview:removeSkillButton];
-                
+                _removeSkillButton2HeightConstraint.constant=40;
+                [_removeSkillButton2 setTitle:@"Remove Now" forState:UIControlStateNormal];
+                [_removeSkillButton2 addTarget:self action:@selector(removeSkillButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+                [self.view layoutIfNeeded];
                 
                 
                 [self.view layoutIfNeeded];

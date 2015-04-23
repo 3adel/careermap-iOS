@@ -22,14 +22,19 @@
 @property (weak, nonatomic) IBOutlet UIView *jobSkillsView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *jobSkillsViewHeightConstraint;
 
-
+//Skill fields and remove skills buttons
 @property (weak, nonatomic) IBOutlet UITextField *skillTextView1;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *skillTextField1HeightConstraint;
+@property (weak, nonatomic) IBOutlet UIButton *removeSkillButton1;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *removeSkillButton1HeightConstraint;
+
+
+
+
 @property (weak, nonatomic) IBOutlet UITextField *skillTextView2;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *skillTextField2HeightConstraint;
-
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *skillTextView2HeightConstraint;
-
+@property (weak, nonatomic) IBOutlet UIButton *removeSkillButton2;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *removeSkillButton2HeightConstraint;
 
 //@property (strong,nonatomic) UITextField *skillTextField;
 //@property (weak, nonatomic) IBOutlet nslayout
