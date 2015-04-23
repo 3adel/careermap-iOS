@@ -37,6 +37,13 @@
 @property (weak, nonatomic) IBOutlet UIButton *removeSkillButton2;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *removeSkillButton2HeightConstraint;
 
+
+@property (weak, nonatomic) IBOutlet UITextField *skillTextField3;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *skillTextField3HeightConstraint;
+@property (weak, nonatomic) IBOutlet UIButton *removeSkillButton3;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *removeSkillButton3HeightConstraint;
+
+
 //@property (strong,nonatomic) UITextField *skillTextField;
 //@property (weak, nonatomic) IBOutlet nslayout
 
@@ -54,5 +61,11 @@
 - (void) CVthumbTapped;
 - (IBAction)addSkillButtonPressed:(UIButton *)sender;
 - (void) removeSkillButtonPressed:(UIButton *)sender;
-- (void) skillTextFieldHeightExpand:(NSLayoutConstraint *) skillTextFieldHeightConstraint skillRemoveButtonHeightExpand: (NSLayoutConstraint *) removeSkillButtonHeighConstraint andAddSkillRemoveButtonTitle: (UIButton *) removeSkillButton;
+- (void) skillTextFieldHeightExpand:(NSLayoutConstraint *) skillTextFieldHeightConstraint andClearTextField: (UITextField *)skillTextField skillRemoveButtonHeightExpand: (NSLayoutConstraint *) removeSkillButtonHeighConstraint andAddSkillRemoveButtonTitle: (UIButton *) removeSkillButton;
+- (void) skillTextFieldHeightShrink:(NSLayoutConstraint *) skillTextFieldHeightConstraint andClearTextField: (UITextField *)skillTextField skillRemoveButtonHeightExpand: (NSLayoutConstraint *) removeSkillButtonHeighConstraint andAddSkillRemoveButtonTitle: (UIButton *) removeSkillButton;
+
+
+
+
+
 @end

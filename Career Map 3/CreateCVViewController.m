@@ -347,9 +347,10 @@ int currentRemoveSkillButtonTag =0;
     addSkillButtonTapCount+=1;
     //NSLog(@"Add skill button count %d", addSkillButtonTapCount);
     
+    NSLog(@"Click: %d", currentRemoveSkillButtonTag);
     
     //disable the add skill button if the limit of skill hasbeen reached
-    if (addSkillButtonTapCount>=2) {
+    if (addSkillButtonTapCount>=3) {
         //disable add skill button b
         [_addSkillButton setEnabled:NO];
         [_addSkillButton setBackgroundColor:[UIColor grayColor]];
@@ -359,8 +360,11 @@ int currentRemoveSkillButtonTag =0;
     switch (currentRemoveSkillButtonTag) {
         case 0:{
             
-            NSLog(@"Added: TextField and Remove Button 0");
-            [self skillTextFieldHeightExpand:_skillTextField1HeightConstraint skillRemoveButtonHeightExpand:_removeSkillButton1HeightConstraint andAddSkillRemoveButtonTitle:_removeSkillButton1];
+            NSLog(@"Added: TextField and Remove Button 0: Button tag = %d", currentRemoveSkillButtonTag);
+
+            
+            [self skillTextFieldHeightExpand:_skillTextField1HeightConstraint andClearTextField:_skillTextField1 skillRemoveButtonHeightExpand:_removeSkillButton1HeightConstraint andAddSkillRemoveButtonTitle:_removeSkillButton1];
+            
             currentRemoveSkillButtonTag++;
             
         }
@@ -370,13 +374,24 @@ int currentRemoveSkillButtonTag =0;
             
         case 1:
         { //NSLog(@"2");
-            NSLog(@"Added: TextField and Remove Button 1");
+            NSLog(@"Added: TextField and Remove Button 1: Button tag = %d", currentRemoveSkillButtonTag);
 
             
             
-            [self skillTextFieldHeightExpand:_skillTextField2HeightConstraint skillRemoveButtonHeightExpand:_removeSkillButton2HeightConstraint andAddSkillRemoveButtonTitle:_removeSkillButton2];
+               [self skillTextFieldHeightExpand:_skillTextField2HeightConstraint andClearTextField:_skillTextField2 skillRemoveButtonHeightExpand:_removeSkillButton2HeightConstraint andAddSkillRemoveButtonTitle:_removeSkillButton2];
+            currentRemoveSkillButtonTag++;
+        }break;
+            
+        case 2:
+        { //NSLog(@"2");
+            NSLog(@"Added: TextField and Remove Button 2: Button tag = %d", currentRemoveSkillButtonTag);
+            
+            
+            
+            [self skillTextFieldHeightExpand:_skillTextField3HeightConstraint andClearTextField:_skillTextField3 skillRemoveButtonHeightExpand:_removeSkillButton3HeightConstraint andAddSkillRemoveButtonTitle:_removeSkillButton3];
             currentRemoveSkillButtonTag--;
         }
+
             
 
             
@@ -431,19 +446,9 @@ int currentRemoveSkillButtonTag =0;
     switch (sender.tag) {
         case 0:
         {
-            [self.view layoutIfNeeded];
+            [self skillTextFieldHeightShrink:_skillTextField1HeightConstraint andClearTextField:_skillTextField1 skillRemoveButtonHeightExpand:_removeSkillButton1HeightConstraint andAddSkillRemoveButtonTitle:_removeSkillButton1];
             
-            [UIView animateWithDuration:.1 animations:^{
-                _skillTextField1HeightConstraint.constant =0;
-                _removeSkillButton1HeightConstraint.constant=0;
-               // [_removeSkillButton1 setTitle:@"" forState:UIControlStateNormal];
-                
-                //[_skillTextField1 setText:@""];
-                //[_skillTextField1 setPlaceholder:@"Add skill"];
-                
-                [self.view layoutIfNeeded];
-                
-            } completion:nil];
+         
             
         }
 
@@ -453,18 +458,7 @@ int currentRemoveSkillButtonTag =0;
         case 1:{
             
             
-            [self.view layoutIfNeeded];
-            
-            
-            [UIView animateWithDuration:.1 animations:^{
-                _skillTextField2HeightConstraint.constant =0;
-                _removeSkillButton2HeightConstraint.constant=0;
-                [_removeSkillButton2 setTitle:@"" forState:UIControlStateNormal];
-                
-                [self.view layoutIfNeeded];
-                
-            } completion:nil];
-        }
+             [self skillTextFieldHeightShrink:_skillTextField2HeightConstraint andClearTextField:_skillTextField2 skillRemoveButtonHeightExpand:_removeSkillButton2HeightConstraint andAddSkillRemoveButtonTitle:_removeSkillButton2];        }
 
             
         default:
@@ -528,7 +522,7 @@ int currentRemoveSkillButtonTag =0;
 
 
 //Expand the skill edit textfield and its corresponding remove skill button and link the remove button to a selector
-- (void) skillTextFieldHeightExpand:(NSLayoutConstraint *)skillTextFieldHeightConstraint skillRemoveButtonHeightExpand:(NSLayoutConstraint *)removeSkillButtonHeighConstraint andAddSkillRemoveButtonTitle:(UIButton *)removeSkillButton{
+- (void) skillTextFieldHeightExpand:(NSLayoutConstraint *) skillTextFieldHeightConstraint andClearTextField: (UITextField *)skillTextField skillRemoveButtonHeightExpand: (NSLayoutConstraint *) removeSkillButtonHeighConstraint andAddSkillRemoveButtonTitle: (UIButton *) removeSkillButton{
     
     
    // NSLog(@"1");
@@ -538,8 +532,10 @@ int currentRemoveSkillButtonTag =0;
     [UIView animateWithDuration:.1 animations:^{
         skillTextFieldHeightConstraint.constant =40;
         removeSkillButtonHeighConstraint.constant=40;
-        [removeSkillButton setTitle:@"Remove Now" forState:UIControlStateNormal];
+        [removeSkillButton setTitle:@"Rem Sk" forState:UIControlStateNormal];
         [removeSkillButton addTarget:self action:@selector(removeSkillButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+        skillTextField.text = @"";
+        [skillTextField setPlaceholder:@"Add skill"];
         
         //test to add placeholder text
         //[]
@@ -547,6 +543,25 @@ int currentRemoveSkillButtonTag =0;
         [self.view layoutIfNeeded];
         
     } completion:nil];
+}
+
+//Shrink the skill edit textfield and its corresponding remove skill button and set the titles to @""
+- (void) skillTextFieldHeightShrink:(NSLayoutConstraint *) skillTextFieldHeightConstraint andClearTextField: (UITextField *)skillTextField skillRemoveButtonHeightExpand: (NSLayoutConstraint *) removeSkillButtonHeighConstraint andAddSkillRemoveButtonTitle: (UIButton *) removeSkillButton{
+    
+    [UIView animateWithDuration:.1 animations:^{
+        skillTextFieldHeightConstraint.constant =0;
+        removeSkillButtonHeighConstraint.constant=0;
+        [removeSkillButton setTitle:@"" forState:UIControlStateNormal];
+        skillTextField.text = @"";
+        [self.view layoutIfNeeded];
+        
+    } completion:nil];
+
+    
+    
+    
+    
+    
 }
 
 
