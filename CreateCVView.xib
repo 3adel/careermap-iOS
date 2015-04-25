@@ -12,8 +12,7 @@
                 <outlet property="CVjobSeekerThumb" destination="QeQ-gb-fAX" id="RJF-j6-HCb"/>
                 <outlet property="firstAddSkillTextView" destination="oez-X1-f5h" id="O0e-mz-0Th"/>
                 <outlet property="firstRemoveSkillButton" destination="QG8-Gt-UHQ" id="y0c-og-uBb"/>
-                <outlet property="skillView" destination="1RO-Hq-ZHE" id="lxo-Ri-bI0"/>
-                <outlet property="skillViewHeightConstraint" destination="qEg-sP-ZKc" id="FA3-QT-a3k"/>
+                <outlet property="skillsScrollView" destination="8Qt-hc-vXk" id="Yel-3F-ZER"/>
                 <outlet property="view" destination="2op-C1-VX5" id="bkN-bK-lkY"/>
             </connections>
         </placeholder>
@@ -87,25 +86,16 @@
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                         </button>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1RO-Hq-ZHE" userLabel="Skills View">
-                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            <constraints>
-                                <constraint firstAttribute="height" id="qEg-sP-ZKc"/>
-                            </constraints>
-                        </view>
                     </subviews>
                     <color key="backgroundColor" red="1" green="0.93754170439207551" blue="0.29380572298253727" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="EPF-TK-n6P" secondAttribute="trailing" constant="10" id="2ZO-Ex-KQ4"/>
-                        <constraint firstItem="1RO-Hq-ZHE" firstAttribute="leading" secondItem="8Qt-hc-vXk" secondAttribute="leading" id="5hy-5I-7Ax"/>
                         <constraint firstItem="nxu-Mx-j1n" firstAttribute="leading" secondItem="BAr-2X-f0G" secondAttribute="leading" id="5nB-le-q8J"/>
-                        <constraint firstAttribute="centerX" secondItem="1RO-Hq-ZHE" secondAttribute="centerX" id="9WG-DF-EvR"/>
                         <constraint firstItem="EPF-TK-n6P" firstAttribute="leading" secondItem="nxu-Mx-j1n" secondAttribute="leading" id="EnI-Qx-HUq"/>
                         <constraint firstItem="oez-X1-f5h" firstAttribute="height" secondItem="QG8-Gt-UHQ" secondAttribute="height" id="Fh7-XE-kd4"/>
                         <constraint firstItem="BAr-2X-f0G" firstAttribute="leading" secondItem="5vB-2V-ogN" secondAttribute="leading" id="GY4-QY-7ii"/>
                         <constraint firstItem="QG8-Gt-UHQ" firstAttribute="leading" secondItem="oez-X1-f5h" secondAttribute="trailing" constant="10" id="H2I-8U-Z4X"/>
                         <constraint firstItem="oez-X1-f5h" firstAttribute="centerY" secondItem="QG8-Gt-UHQ" secondAttribute="centerY" constant="1" id="Jzb-la-0Di"/>
-                        <constraint firstItem="1RO-Hq-ZHE" firstAttribute="top" secondItem="oez-X1-f5h" secondAttribute="bottom" id="K3S-EI-Pcm"/>
                         <constraint firstItem="nxu-Mx-j1n" firstAttribute="height" secondItem="BAr-2X-f0G" secondAttribute="height" id="MKR-lU-Xsu"/>
                         <constraint firstItem="BAr-2X-f0G" firstAttribute="trailing" secondItem="5vB-2V-ogN" secondAttribute="trailing" id="MS2-gP-J4w"/>
                         <constraint firstItem="oez-X1-f5h" firstAttribute="top" secondItem="5vB-2V-ogN" secondAttribute="bottom" constant="10" id="RQk-xb-BeI"/>
@@ -116,7 +106,6 @@
                         <constraint firstItem="BAr-2X-f0G" firstAttribute="top" secondItem="nxu-Mx-j1n" secondAttribute="bottom" constant="10" id="Z04-o6-JSs"/>
                         <constraint firstItem="EPF-TK-n6P" firstAttribute="trailing" secondItem="nxu-Mx-j1n" secondAttribute="trailing" id="dap-gV-TZT"/>
                         <constraint firstItem="QeQ-gb-fAX" firstAttribute="top" secondItem="8Qt-hc-vXk" secondAttribute="top" constant="22" id="fRe-A1-Ooj"/>
-                        <constraint firstAttribute="trailing" secondItem="1RO-Hq-ZHE" secondAttribute="trailing" id="gVI-3n-ML8"/>
                         <constraint firstItem="5vB-2V-ogN" firstAttribute="trailing" secondItem="oez-X1-f5h" secondAttribute="trailing" constant="100" id="gjH-Hn-8nz"/>
                         <constraint firstItem="5vB-2V-ogN" firstAttribute="top" secondItem="BAr-2X-f0G" secondAttribute="bottom" constant="15" id="inA-8n-6nk"/>
                         <constraint firstItem="EPF-TK-n6P" firstAttribute="top" secondItem="QeQ-gb-fAX" secondAttribute="bottom" constant="10" id="mEQ-5Y-Jdk"/>

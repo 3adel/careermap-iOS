@@ -75,7 +75,7 @@ int addSkillButtonTapCount = 0;
     _skillView = [[UIView alloc] init];
     _skillView.backgroundColor = [UIColor blueColor];
     _skillView.translatesAutoresizingMaskIntoConstraints =NO;
-    [self.view addSubview:_skillView];
+    [_skillsScrollView addSubview:_skillView];
     
     
     //add center constraints of the blue view
@@ -85,11 +85,11 @@ int addSkillButtonTapCount = 0;
     //let the blue view be aligned left and right with the green view
     NSLayoutConstraint *skillViewLeftContraint = [NSLayoutConstraint constraintWithItem:_skillView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:_firstAddSkillTextView attribute:NSLayoutAttributeLeft multiplier:1.0 constant:0];
     NSLayoutConstraint *skillViewRightContraint = [NSLayoutConstraint constraintWithItem:_skillView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:_firstRemoveSkillButton attribute:NSLayoutAttributeRight multiplier:1.0 constant:0];
-    
+     NSLayoutConstraint *skillViewBottomContraint = [NSLayoutConstraint constraintWithItem:_skillView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:_skillsScrollView attribute:NSLayoutAttributeBottom multiplier:1.0 constant:-100];
     
     _skillViewHeightConstraint = [NSLayoutConstraint constraintWithItem:_skillView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:0];
     //add constraints
-    [self.view addConstraints:@[skillViewCenterXConstraint, skillViewTopConstraint, skillViewLeftContraint, skillViewRightContraint,_skillViewHeightConstraint]];
+    [self.view addConstraints:@[skillViewCenterXConstraint, skillViewTopConstraint, skillViewLeftContraint, skillViewRightContraint,_skillViewHeightConstraint,skillViewBottomContraint]];
     
 }
 
@@ -105,7 +105,7 @@ int addSkillButtonTapCount = 0;
     
     
     
-    [self.view addSubview:_addSkillButton];
+    [_skillsScrollView addSubview:_addSkillButton];
     
     //add center constraints add skill button view
     NSLayoutConstraint *AddSkillButtonTopConstraint = [NSLayoutConstraint constraintWithItem:_addSkillButton attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:_skillView attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0];

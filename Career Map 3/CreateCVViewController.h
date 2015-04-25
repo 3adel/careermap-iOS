@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UIView *greenView;
 @property (nonatomic, strong) UIView *skillView;
 @property (strong, nonatomic) IBOutlet UIButton *addSkillButton;
+@property (weak, nonatomic) IBOutlet UIScrollView *skillsScrollView;
 
 
 @property (weak, nonatomic) IBOutlet UIImageView *CVjobSeekerThumb;
