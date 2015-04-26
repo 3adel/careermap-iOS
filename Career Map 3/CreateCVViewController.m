@@ -32,22 +32,12 @@ int addSkillButtonTapCount = 0;
 
     
     // Do any additional setup after loading the view.
-    
-    
-    //set the border color of mandatory fields to red
- //   _CVjobSeekerFirstNameTextView.layer.borderColor = [[UIColor redColor] CGColor];
     _CVjobSeekerFirstNameTextView.layer.cornerRadius=5.0f;
-    //_CVjobSeekerFirstNameTextView.layer.masksToBounds=YES;
-    _CVjobSeekerFirstNameTextView.layer.borderColor=[[UIColor redColor]CGColor];
+    _CVjobSeekerFirstNameTextView.layer.borderColor=[[UIColor lightGrayColor]CGColor];
     _CVjobSeekerFirstNameTextView.layer.borderWidth= .5f;
-    
     _CVjobSeekerLastNameTextView.layer.cornerRadius=5.0f;
-    //_CVjobSeekerFirstNameTextView.layer.masksToBounds=YES;
-    _CVjobSeekerLastNameTextView.layer.borderColor=[[UIColor redColor]CGColor];
+    _CVjobSeekerLastNameTextView.layer.borderColor=[[UIColor lightGrayColor]CGColor];
     _CVjobSeekerLastNameTextView.layer.borderWidth= .5f;
-    
-    
-    
     
     //detect when theview is tapped while the text is being edited
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapped)];
@@ -86,7 +76,7 @@ int addSkillButtonTapCount = 0;
     NSLayoutConstraint *skillViewCenterXConstraint = [NSLayoutConstraint constraintWithItem:_skillView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0];
     NSLayoutConstraint *skillViewLeftContraint = [NSLayoutConstraint constraintWithItem:_skillView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:_firstAddSkillTextView attribute:NSLayoutAttributeLeft multiplier:1.0 constant:0];
     NSLayoutConstraint *skillViewRightContraint = [NSLayoutConstraint constraintWithItem:_skillView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:_firstRemoveSkillButton attribute:NSLayoutAttributeRight multiplier:1.0 constant:0];
-     NSLayoutConstraint *skillViewBottomContraint = [NSLayoutConstraint constraintWithItem:_skillView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:_skillsScrollView attribute:NSLayoutAttributeBottom multiplier:1.0 constant:-200];
+     NSLayoutConstraint *skillViewBottomContraint = [NSLayoutConstraint constraintWithItem:_skillView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:_skillsScrollView attribute:NSLayoutAttributeBottom multiplier:1.0 constant:-500];
     
     _skillViewHeightConstraint = [NSLayoutConstraint constraintWithItem:_skillView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:0];
     //add constraints
@@ -307,10 +297,8 @@ int addSkillButtonTapCount = 0;
     NSLog(@"Save cv button pressed");
     
     
-    //dismiss keyboard
-    [_CVjobSeekerFirstNameTextView resignFirstResponder];
-    [_CVjobSeekerLastNameTextView resignFirstResponder];
-    [_CVjobSeekerCurrentTitleTextView resignFirstResponder];
+    //dismiss keyboard from all text entry fields
+    [self.view endEditing:YES];
     
 
     [self checkFieldsComplete];
@@ -347,10 +335,9 @@ int addSkillButtonTapCount = 0;
 //dismiss keyboard when view is tapped
 -(void) viewTapped{
     
-    [_CVjobSeekerLastNameTextView resignFirstResponder];
-    [_CVjobSeekerFirstNameTextView resignFirstResponder];
-    [_CVjobSeekerCurrentTitleTextView resignFirstResponder];
-    NSLog(@"view is tapped");
+    //dismiss keyboard from all text entry fields
+    [self.view endEditing:YES];
+    
     
 }
 

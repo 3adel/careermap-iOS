@@ -44,7 +44,7 @@
 - (void )setupSkillsView;
 - (void) setupAddSkillButton;
 
-- (IBAction)addSkillButtonPressed:(UIButton *)sender;
+- (void) addSkillButtonPressed;
 - (void) addSkillTextField: (int) withAddDeleteSkillTally;
 - (void) removeSkillButtonPressed: (UIButton *)sender;
 - (IBAction)closeCreateCVButtonPressed:(UIBarButtonItem *)sender;
