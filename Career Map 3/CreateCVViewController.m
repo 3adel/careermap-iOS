@@ -73,19 +73,17 @@ int addSkillButtonTapCount = 0;
     
     
     _skillView = [[UIView alloc] init];
-    _skillView.backgroundColor = [UIColor blueColor];
+    _skillView.backgroundColor = [UIColor orangeColor];
     _skillView.translatesAutoresizingMaskIntoConstraints =NO;
     [_skillsScrollView addSubview:_skillView];
     
     
-    //add center constraints of the blue view
-    NSLayoutConstraint *skillViewTopConstraint = [NSLayoutConstraint constraintWithItem:_skillView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:_firstAddSkillTextView attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0];
+    //skill view initial constraints
+    NSLayoutConstraint *skillViewTopConstraint = [NSLayoutConstraint constraintWithItem:_skillView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:_firstAddSkillTextView attribute:NSLayoutAttributeBottom multiplier:1.0 constant:10];
     NSLayoutConstraint *skillViewCenterXConstraint = [NSLayoutConstraint constraintWithItem:_skillView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0];
-    
-    //let the blue view be aligned left and right with the green view
     NSLayoutConstraint *skillViewLeftContraint = [NSLayoutConstraint constraintWithItem:_skillView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:_firstAddSkillTextView attribute:NSLayoutAttributeLeft multiplier:1.0 constant:0];
     NSLayoutConstraint *skillViewRightContraint = [NSLayoutConstraint constraintWithItem:_skillView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:_firstRemoveSkillButton attribute:NSLayoutAttributeRight multiplier:1.0 constant:0];
-     NSLayoutConstraint *skillViewBottomContraint = [NSLayoutConstraint constraintWithItem:_skillView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:_skillsScrollView attribute:NSLayoutAttributeBottom multiplier:1.0 constant:-100];
+     NSLayoutConstraint *skillViewBottomContraint = [NSLayoutConstraint constraintWithItem:_skillView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:_skillsScrollView attribute:NSLayoutAttributeBottom multiplier:1.0 constant:-200];
     
     _skillViewHeightConstraint = [NSLayoutConstraint constraintWithItem:_skillView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:0];
     //add constraints
@@ -98,24 +96,19 @@ int addSkillButtonTapCount = 0;
 //setup add skill button
 - (void) setupAddSkillButton{
     _addSkillButton = [[UIButton alloc] init];
-    _addSkillButton.backgroundColor = [UIColor orangeColor];
+    _addSkillButton.backgroundColor = [UIColor colorWithRed:13.0/255.0 green:153.0/255 blue:252.0/255.0 alpha:1];
+    [_addSkillButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     _addSkillButton.translatesAutoresizingMaskIntoConstraints =NO;
-    [_addSkillButton setTitle:@"Add skill" forState:UIControlStateNormal];
-    [_addSkillButton setTitleColor: [UIColor blackColor] forState:UIControlStateNormal];
-    
-    
-    
+    [_addSkillButton setTitle:@"Add another skill" forState:UIControlStateNormal];
     [_skillsScrollView addSubview:_addSkillButton];
     
-    //add center constraints add skill button view
-    NSLayoutConstraint *AddSkillButtonTopConstraint = [NSLayoutConstraint constraintWithItem:_addSkillButton attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:_skillView attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0];
-    
-    //let the add skill button be aligned left and right with the green view
+    //add skill button initial constraints
+    NSLayoutConstraint *AddSkillButtonTopConstraint = [NSLayoutConstraint constraintWithItem:_addSkillButton attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:_skillView attribute:NSLayoutAttributeBottom multiplier:1.0 constant:10];
     NSLayoutConstraint *AddSkillButtonLeftConstraint = [NSLayoutConstraint constraintWithItem:_addSkillButton attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:_skillView attribute:NSLayoutAttributeLeft multiplier:1.0 constant:0];
     NSLayoutConstraint *AddSkillButtonRightConstraint = [NSLayoutConstraint constraintWithItem:_addSkillButton attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:_skillView attribute:NSLayoutAttributeRight multiplier:1.0 constant:0];
     
     //height of add skill button
-    NSLayoutConstraint *AddSkillButtonHeightConstraint = [NSLayoutConstraint constraintWithItem:_addSkillButton attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:45];
+    NSLayoutConstraint *AddSkillButtonHeightConstraint = [NSLayoutConstraint constraintWithItem:_addSkillButton attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:40];
     [self.view addConstraints:@[AddSkillButtonTopConstraint,AddSkillButtonLeftConstraint , AddSkillButtonRightConstraint,AddSkillButtonHeightConstraint]];
     [_addSkillButton addTarget:self action:@selector(addSkillButtonPressed) forControlEvents:UIControlEventTouchUpInside];
 }
@@ -138,88 +131,72 @@ int addSkillButtonTapCount = 0;
     
     
     self.skillTextField = [[SkillTextField alloc] init];
-    
-    NSLog(@"Add skill countTally Pre Button-Addition= %d and Tag= ", withAddDeleteSkillTally);
-    
+
     //setup the constraints for the skills textFields
     self.skillTextField.backgroundColor = [UIColor yellowColor];
     self.skillTextField.translatesAutoresizingMaskIntoConstraints =NO;
     [self.skillTextField setTextColor:[UIColor blackColor]];
     [self.skillTextField setTag:withAddDeleteSkillTally];
-    [self.skillTextField setText:[NSString stringWithFormat:@"Tag: %ld",self.skillTextField.tag]];
-    self.skillTextField.skillTextFieldTop= [NSLayoutConstraint constraintWithItem:self.skillTextField attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:_skillView attribute:NSLayoutAttributeTop multiplier:1.0 constant:40*(withAddDeleteSkillTally)];
+    [self.skillTextField setPlaceholder:[NSString stringWithFormat:@"Add skill #%ld",self.skillTextField.tag+2]];
     
-    //store text view in array
+    //skill text field style
+    self.skillTextField.layer.borderColor=[[UIColor lightGrayColor]CGColor];
+    self.skillTextField.layer.borderWidth= .5f;
+    self.skillTextField.layer.cornerRadius=5.0f;
+    UIView *skillTextViewLeftPaddingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 5, 40)];
+    self.skillTextField.leftView = skillTextViewLeftPaddingView;
+    self.skillTextField.leftViewMode = UITextFieldViewModeAlways;
+    [self.skillTextField setFont:[UIFont systemFontOfSize:18]];
+    
+    
+    
+    self.skillTextField.skillTextFieldTop= [NSLayoutConstraint constraintWithItem:self.skillTextField attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:_skillView attribute:NSLayoutAttributeTop multiplier:1.0 constant:50*(withAddDeleteSkillTally)];
+    
+    //store skill in in the skills array
     [_arrayOfSkillTextViews addObject:self.skillTextField];
     
     //add the text and its button to the view
     [_skillView addSubview:[_arrayOfSkillTextViews objectAtIndex:addSkillButtonTapCount]];
     
     [self.view layoutIfNeeded];
-    
+   
     //skill text field constraints
-    
     NSLayoutConstraint *skillTextFieldLeftConstraint = [NSLayoutConstraint constraintWithItem:self.skillTextField attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:_skillView attribute:NSLayoutAttributeLeft multiplier:1.0 constant:0];
     _skillTextFieldHeightConstraint = [NSLayoutConstraint constraintWithItem:self.skillTextField attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:40];
     
     NSLayoutConstraint *skillTextFieldWidthConstraint = [NSLayoutConstraint constraintWithItem:self.skillTextField attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:200];
     
-    //add constraint for text field bottom
-    NSLayoutConstraint *skillTextFieldBottomConstraint = [NSLayoutConstraint constraintWithItem:self.skillTextField attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:_skillView attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0];
-    
-    
-    [self.view addConstraints:@[self.skillTextField.skillTextFieldTop,skillTextFieldLeftConstraint,skillTextFieldWidthConstraint,_skillTextFieldHeightConstraint, skillTextFieldBottomConstraint]];
-    
-    
-    // [[_arrayOfSkillTextViews objectAtIndex:addSkillButtonTapCount] addConstraint:_skillTextFieldHeightConstraint];
-    
-    
-    
+    [self.view addConstraints:@[self.skillTextField.skillTextFieldTop,skillTextFieldLeftConstraint,skillTextFieldWidthConstraint,_skillTextFieldHeightConstraint]];
     [self.view layoutIfNeeded];
     
     
     
+    //setup the remove skill button
     
     [self.view layoutIfNeeded];
-    
-    //setup the constraints for the remove skill button
-    // self.skillTextField.removeSkillButton.backgroundColor
-    //self.skillTextField.removeSkillButton = [[UIButton alloc] init];
     self.skillTextField.removeSkillButton = [[UIButton alloc] init];
+    
+    //remove skill button style
     self.skillTextField.removeSkillButton.backgroundColor = [UIColor redColor];
+    [self.skillTextField.removeSkillButton.titleLabel setFont:[UIFont systemFontOfSize:15]];
+        [self.skillTextField.removeSkillButton setTitle:@"Delete" forState:UIControlStateNormal];
+    
+    //remove skill button constraints
     self.skillTextField.removeSkillButton.translatesAutoresizingMaskIntoConstraints =NO;
-    [self.skillTextField.removeSkillButton setTitle:@"Remove" forState:UIControlStateNormal];
     [self.skillTextField.removeSkillButton setTag:withAddDeleteSkillTally];
     [_skillView addSubview:self.skillTextField.removeSkillButton];
     [self.skillTextField.removeSkillButton addTarget:self action:@selector(removeSkillButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-    
-    //skill text field constraints
     NSLayoutConstraint *removeSkillButtonTopConstraint = [NSLayoutConstraint constraintWithItem:self.skillTextField.removeSkillButton attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.skillTextField attribute:NSLayoutAttributeTop multiplier:1.0 constant:0];
     NSLayoutConstraint *removeSkillButtonBottomConstraint = [NSLayoutConstraint constraintWithItem:self.skillTextField.removeSkillButton attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.skillTextField attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0];
-    NSLayoutConstraint *removeSkillButtonLeftConstraint = [NSLayoutConstraint constraintWithItem:self.skillTextField.removeSkillButton attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self.skillTextField attribute:NSLayoutAttributeRight multiplier:1.0 constant:5];
+    NSLayoutConstraint *removeSkillButtonLeftConstraint = [NSLayoutConstraint constraintWithItem:self.skillTextField.removeSkillButton attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self.skillTextField attribute:NSLayoutAttributeRight multiplier:1.0 constant:10];
     NSLayoutConstraint *removeSkillButtonRightConstraint = [NSLayoutConstraint constraintWithItem:self.skillTextField.removeSkillButton attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:_skillView attribute:NSLayoutAttributeRight multiplier:1.0 constant:0];
     
     [self.view addConstraints:@[removeSkillButtonBottomConstraint,removeSkillButtonTopConstraint,removeSkillButtonLeftConstraint,removeSkillButtonRightConstraint]];
     [self.view layoutIfNeeded];
     
-    _skillViewHeightConstraint.constant = 40*(addSkillButtonTapCount+1);
+    _skillViewHeightConstraint.constant = 50*(addSkillButtonTapCount+1);
 
-    
-    //Expand skillview
-    
 
-    
-        /*
-        [self.view layoutIfNeeded];
-        [UIView animateWithDuration:.75 animations:^{
-            _skillViewHeightConstraint.constant = 40*(addSkillButtonTapCount+1);
-            [self.view layoutIfNeeded];
-            NSLog(@"skill view hight = %@", _skillViewHeightConstraint);
-            
-            
-        } completion:nil];*/
-    
-   // _skillViewHeightConstraint.con
     
     addSkillButtonTapCount++;
     
@@ -230,7 +207,7 @@ int addSkillButtonTapCount = 0;
 {
     
     //shrink skills_view
-    _skillViewHeightConstraint.constant = 40*(addSkillButtonTapCount-1);
+    _skillViewHeightConstraint.constant = 50*(addSkillButtonTapCount-1);
     
     addSkillButtonTapCount--;
     // NSLog(@"Remove skill countTally= %d and Tag= %ld", addSkillButtonTapCount, sender.tag);
@@ -252,7 +229,7 @@ int addSkillButtonTapCount = 0;
     //adjust the remaining texfield and buttons and shift them up
     for (NSInteger i = 1; i<=removalCounter; i++) {
         [ (SkillTextField *)[_arrayOfSkillTextViews objectAtIndex:sender.tag+i]  setBackgroundColor:[UIColor greenColor]];
-        [[(SkillTextField *)[_arrayOfSkillTextViews objectAtIndex:(sender.tag+i)] skillTextFieldTop] setConstant:(40*(sender.tag+i-1))];
+        [[(SkillTextField *)[_arrayOfSkillTextViews objectAtIndex:(sender.tag+i)] skillTextFieldTop] setConstant:(50*(sender.tag+i-1))];
         
         
     }
@@ -272,7 +249,17 @@ int addSkillButtonTapCount = 0;
         [textField setTag:indexCounter];
         [textField.removeSkillButton setTag:indexCounter];
         NSLog(@"Index Counter = %ld", indexCounter);
-        [textField setText:[NSString stringWithFormat:@"Tag: %ld",indexCounter]];
+        
+          //  [self.skillTextField setPlaceholder:[NSString stringWithFormat:@"Add skill #%ld",self.skillTextField.tag+2]];
+        
+        if ([textField.text isEqual:@""]) {
+           // [textField setText:[NSString stringWithFormat:@"Tag: %ld",indexCounter-2]];
+            [textField setPlaceholder:[NSString stringWithFormat:@"Add skill #%ld",indexCounter+2]];
+            
+        }
+        
+        
+        //[textField setText:[NSString stringWithFormat:@"Tag: %ld",indexCounter]];
         indexCounter ++;
         //update the tag of text fields
         
