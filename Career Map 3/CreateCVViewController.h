@@ -11,7 +11,7 @@
 #import <Parse/Parse.h>
 #import "SkillTextField.h"
 #import "GCPlaceholderTextView.h"
-@interface CreateCVViewController : UIViewController <UIActionSheetDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface CreateCVViewController : UIViewController <UIActionSheetDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPickerViewDataSource, UIPickerViewDelegate>
 
 
 //Outlets
@@ -29,8 +29,6 @@
 @property (strong, nonatomic) UIActionSheet *photoSourceActionSheet;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *skillViewHeightConstraint;
-
-//@property (strong, nonatomic) NSLayoutConstraint *skillViewHeightConstraint;
 @property (strong, nonatomic) NSLayoutConstraint *skillTextFieldHeightConstraint;
 @property (strong, nonatomic) NSLayoutConstraint *skillTextFieldTopConstraint;
 @property (strong, nonatomic) SkillTextField *skillTextField;
@@ -38,7 +36,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *firstRemoveSkillButton;
 @property (weak, nonatomic) IBOutlet GCPlaceholderTextView *CVAboutMeTextView;
 
-
+@property (weak, nonatomic) IBOutlet UITextField *CVEducationTextField;
+@property (weak, nonatomic) IBOutlet UITextField *CVDegreeTextField;
+@property (strong, nonatomic) UIPickerView *CVDegreePicker;
 
 //methods
 - (void )setupSkillsView;
@@ -51,7 +51,7 @@
 - (IBAction)saveCVButtonPressed:(UIBarButtonItem *)sender;
 - (void) checkFieldsComplete;
 - (void) CVthumbTapped;
-
+- (void) selectCVDegree;
 
 //data
 @property (nonatomic, strong) NSMutableArray *arrayOfSkillTextViews;

@@ -31,13 +31,19 @@ int addSkillButtonTapCount = 0;
 
 
     
-    // Do any additional setup after loading the view.
+    // Some outlets style setup.
     _CVjobSeekerFirstNameTextView.layer.cornerRadius=5.0f;
     _CVjobSeekerFirstNameTextView.layer.borderColor=[[UIColor lightGrayColor]CGColor];
     _CVjobSeekerFirstNameTextView.layer.borderWidth= .5f;
+    
     _CVjobSeekerLastNameTextView.layer.cornerRadius=5.0f;
     _CVjobSeekerLastNameTextView.layer.borderColor=[[UIColor lightGrayColor]CGColor];
     _CVjobSeekerLastNameTextView.layer.borderWidth= .5f;
+    
+    _CVAboutMeTextView.layer.cornerRadius =5.0f;
+    _CVAboutMeTextView.layer.borderWidth = .5f;
+    _CVAboutMeTextView.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+    
     
     //detect when theview is tapped while the text is being edited
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapped)];
@@ -59,6 +65,17 @@ int addSkillButtonTapCount = 0;
     _CVAboutMeTextView.placeholderColor = [UIColor lightGrayColor];
     _CVAboutMeTextView.placeholder = NSLocalizedString(@"Tell us about yourself and what you like to accomplish",);
     
+    
+    //setup cv education degree picker
+    _CVDegreePicker = [[UIPickerView alloc] init];
+    [_CVDegreeTextField setInputView:_CVDegreePicker];
+    UIToolbar *CVPickerToolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 200, 44)];
+    [CVPickerToolbar setTintColor:[UIColor greenColor]];
+    UIBarButtonItem *doneBtn = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(selectCVDegree)];
+    UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    [CVPickerToolbar setItems:[NSArray arrayWithObjects:space, doneBtn, nil]];
+    [_CVDegreeTextField setInputAccessoryView:CVPickerToolbar];
+    _CVDegreePicker.delegate =self;
 }
 
 
@@ -389,6 +406,11 @@ int addSkillButtonTapCount = 0;
                     jobSeekerObject[@"firstName"] = _CVjobSeekerFirstNameTextView.text;
                     jobSeekerObject[@"lastName"] = _CVjobSeekerLastNameTextView.text;
                     jobSeekerObject[@"currentTitle"] =_CVjobSeekerCurrentTitleTextView.text;
+                    jobSeekerObject[@"jobSeekerAbout"] =_CVAboutMeTextView.text;
+                    jobSeekerObject[@"jobSeekerEducation"] =_CVEducationTextField.text;
+                    
+
+                    
                     
                    // NSData *imageData = UIImagePNGRepresentation(_CVjobSeekerThumb.image);
                     NSData *imageData = UIImageJPEGRepresentation(_CVjobSeekerThumb.image, 0.3f);
@@ -443,6 +465,11 @@ int addSkillButtonTapCount = 0;
                 cvObject[@"firstName"] = _CVjobSeekerFirstNameTextView.text;
                 cvObject[@"lastName"] = _CVjobSeekerLastNameTextView.text;
                 cvObject[@"currentTitle"] = _CVjobSeekerCurrentTitleTextView.text;
+                cvObject[@"jobSeekerAbout"] = _CVAboutMeTextView.text;
+                cvObject[@"jobSeekerEducation"] = _CVEducationTextField.text;
+                
+                
+                
                 NSData *imageData = UIImageJPEGRepresentation(_CVjobSeekerThumb.image, 0.3f);//(_CVjobSeekerThumb.image);
                 
                // UIImageJPEGRepresentation(image, 0.9f)
@@ -597,8 +624,32 @@ int addSkillButtonTapCount = 0;
     
 }
 
+-(void) selectCVDegree{
+    
+    NSLog(@"Select cv degrees");
+    
+    _CVDegreeTextField.text = @"Sample degree";
+    [_CVDegreeTextField resignFirstResponder];
+}
 
 
+//CV degree picker delegate methods
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 1;
+}
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    //return [self.inputArray objectAtIndex:row];
+    return @"test";
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    return 5;
+}
 
 
 @end
