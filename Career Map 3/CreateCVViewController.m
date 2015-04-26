@@ -66,6 +66,9 @@ int addSkillButtonTapCount = 0;
     
     _arrayOfSkillTextViews = [[NSMutableArray alloc] init];
     
+    _CVAboutMeTextView.placeholderColor = [UIColor lightGrayColor];
+    _CVAboutMeTextView.placeholder = NSLocalizedString(@"Tell us about yourself and what you like to accomplish",);
+    
 }
 
 

@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CreateCVViewController">
             <connections>
+                <outlet property="CVAboutMeTextView" destination="Fxf-5I-3Zt" id="FR9-YQ-jJ7"/>
                 <outlet property="CVjobSeekerCurrentTitleTextView" destination="BAr-2X-f0G" id="Xxd-11-yOB"/>
                 <outlet property="CVjobSeekerFirstNameTextView" destination="EPF-TK-n6P" id="RnW-lV-FBj"/>
                 <outlet property="CVjobSeekerLastNameTextView" destination="nxu-Mx-j1n" id="yK8-Gl-5zH"/>
@@ -81,13 +82,14 @@
                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
-                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" text="Tell us about yourself" translatesAutoresizingMaskIntoConstraints="NO" id="Fxf-5I-3Zt">
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fxf-5I-3Zt" customClass="GCPlaceholderTextView">
                             <rect key="frame" x="10" y="277" width="300" height="100"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" red="1" green="0.93126028456987653" blue="0.41830576926905638" alpha="1" colorSpace="calibratedRGB"/>
                             <accessibility key="accessibilityConfiguration" hint="" label=""/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="100" id="b7z-CM-ZHv"/>
                             </constraints>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>

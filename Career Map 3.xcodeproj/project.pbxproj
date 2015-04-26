@@ -63,6 +63,7 @@
 		F5BAC3D11AC85BB7003E899C /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5BAC3D01AC85BB7003E899C /* LoginViewController.m */; };
 		F5BAC3D41AC875E5003E899C /* settingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5BAC3D31AC875E5003E899C /* settingsViewController.m */; };
 		F5EB65BC1AEBDFB60026B988 /* SkillTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = F5EB65BB1AEBDFB60026B988 /* SkillTextField.m */; };
+		F5EB65C01AECF6BD0026B988 /* GCPlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = F5EB65BF1AECF6BD0026B988 /* GCPlaceholderTextView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -151,6 +152,8 @@
 		F5BAC3D31AC875E5003E899C /* settingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = settingsViewController.m; sourceTree = "<group>"; };
 		F5EB65BA1AEBDFB60026B988 /* SkillTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkillTextField.h; sourceTree = "<group>"; };
 		F5EB65BB1AEBDFB60026B988 /* SkillTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkillTextField.m; sourceTree = "<group>"; };
+		F5EB65BE1AECF6BD0026B988 /* GCPlaceholderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCPlaceholderTextView.h; sourceTree = "<group>"; };
+		F5EB65BF1AECF6BD0026B988 /* GCPlaceholderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCPlaceholderTextView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -347,6 +350,7 @@
 		F59758AC1AC159B40099A978 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F5EB65BD1AECF69F0026B988 /* Lib */,
 				F535AA6E1AD439080091E70B /* Location */,
 				F50142D01ACD1643000DDBE3 /* Icons */,
 				F59759271AC1D4200099A978 /* Frameworks */,
@@ -401,6 +405,15 @@
 				F59759131AC1D38F0099A978 /* AudioToolbox.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F5EB65BD1AECF69F0026B988 /* Lib */ = {
+			isa = PBXGroup;
+			children = (
+				F5EB65BE1AECF6BD0026B988 /* GCPlaceholderTextView.h */,
+				F5EB65BF1AECF6BD0026B988 /* GCPlaceholderTextView.m */,
+			);
+			name = Lib;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -532,6 +545,7 @@
 				F53334621AE3CEB40029BFF7 /* CreateCVViewController.m in Sources */,
 				F52DC4901AE4D80800693911 /* ViewEditMyCVViewController.m in Sources */,
 				F597592F1AC1D7F00099A978 /* JobListViewController.m in Sources */,
+				F5EB65C01AECF6BD0026B988 /* GCPlaceholderTextView.m in Sources */,
 				F59759321AC1DBDF0099A978 /* Job.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

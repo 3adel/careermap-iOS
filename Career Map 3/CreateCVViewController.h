@@ -10,6 +10,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import <Parse/Parse.h>
 #import "SkillTextField.h"
+#import "GCPlaceholderTextView.h"
 @interface CreateCVViewController : UIViewController <UIActionSheetDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 
@@ -35,6 +36,7 @@
 @property (strong, nonatomic) SkillTextField *skillTextField;
 @property (weak, nonatomic) IBOutlet UITextField *firstAddSkillTextView;
 @property (weak, nonatomic) IBOutlet UIButton *firstRemoveSkillButton;
+@property (weak, nonatomic) IBOutlet GCPlaceholderTextView *CVAboutMeTextView;
 
 
 
