@@ -69,13 +69,16 @@ int addSkillButtonTapCount = 0;
     //setup cv education degree picker
     _CVDegreePicker = [[UIPickerView alloc] init];
     [_CVDegreeTextField setInputView:_CVDegreePicker];
-    UIToolbar *CVPickerToolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 200, 44)];
-    [CVPickerToolbar setTintColor:[UIColor greenColor]];
+    UIToolbar *CVPickerToolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+    [CVPickerToolbar setTintColor:[UIColor colorWithRed:13.0/255.0 green:153.0/255 blue:252.0/255.0 alpha:1]];
+    
     UIBarButtonItem *doneBtn = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(selectCVDegree)];
     UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     [CVPickerToolbar setItems:[NSArray arrayWithObjects:space, doneBtn, nil]];
     [_CVDegreeTextField setInputAccessoryView:CVPickerToolbar];
     _CVDegreePicker.delegate =self;
+    self.educationDegreesList = @[@"Primary School",@"High/Secondary School", @"Diploma",@"Bachelor's Degree",@"Master's Degree",@"PhD", @"None"];
+
 }
 
 
@@ -628,7 +631,9 @@ int addSkillButtonTapCount = 0;
     
     NSLog(@"Select cv degrees");
     
-    _CVDegreeTextField.text = @"Sample degree";
+   // _CVDegreeTextField.text = @"Sample degree";
+   _CVDegreeTextField.text = [self.educationDegreesList objectAtIndex:[self.CVDegreePicker selectedRowInComponent:0]];
+    
     [_CVDegreeTextField resignFirstResponder];
 }
 
@@ -642,13 +647,12 @@ int addSkillButtonTapCount = 0;
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-    //return [self.inputArray objectAtIndex:row];
-    return @"test";
+    return [_educationDegreesList objectAtIndex:row];
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
-    return 5;
+    return [_educationDegreesList count];
 }
 
 
