@@ -11,6 +11,9 @@
 #import <Parse/Parse.h>
 #import "SkillTextField.h"
 #import "GCPlaceholderTextView.h"
+#import "JLTStepper.h"
+
+
 @interface CreateCVViewController : UIViewController <UIActionSheetDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPickerViewDataSource, UIPickerViewDelegate>
 
 
@@ -39,6 +42,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *CVEducationTextField;
 @property (weak, nonatomic) IBOutlet UITextField *CVDegreeTextField;
 @property (strong, nonatomic) UIPickerView *CVDegreePicker;
+@property (weak, nonatomic) IBOutlet UILabel *yearsOfExperienceLabel;
 
 //methods
 - (void )setupSkillsView;
@@ -52,6 +56,7 @@
 - (void) checkFieldsComplete;
 - (void) CVthumbTapped;
 - (void) selectCVDegree;
+- (IBAction)yearsOfExperienceStepperChange:(JLTStepper *)sender;
 
 //data
 @property (nonatomic, strong) NSMutableArray *arrayOfSkillTextViews;

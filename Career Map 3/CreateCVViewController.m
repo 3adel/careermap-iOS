@@ -411,6 +411,7 @@ int addSkillButtonTapCount = 0;
                     jobSeekerObject[@"currentTitle"] =_CVjobSeekerCurrentTitleTextView.text;
                     jobSeekerObject[@"jobSeekerAbout"] =_CVAboutMeTextView.text;
                     jobSeekerObject[@"jobSeekerEducation"] =_CVEducationTextField.text;
+                    jobSeekerObject[@"jobSeekerEducationDegree"] =_CVDegreeTextField.text;
                     
 
                     
@@ -470,6 +471,7 @@ int addSkillButtonTapCount = 0;
                 cvObject[@"currentTitle"] = _CVjobSeekerCurrentTitleTextView.text;
                 cvObject[@"jobSeekerAbout"] = _CVAboutMeTextView.text;
                 cvObject[@"jobSeekerEducation"] = _CVEducationTextField.text;
+                cvObject[@"jobSeekerEducationDegree"] = _CVDegreeTextField.text;
                 
                 
                 
@@ -635,6 +637,62 @@ int addSkillButtonTapCount = 0;
    _CVDegreeTextField.text = [self.educationDegreesList objectAtIndex:[self.CVDegreePicker selectedRowInComponent:0]];
     
     [_CVDegreeTextField resignFirstResponder];
+}
+
+- (IBAction)yearsOfExperienceStepperChange:(JLTStepper *)sender {
+    
+    
+   // sender.maximumValue = 50;
+
+    if (([_yearsOfExperienceLabel.text intValue] >0) && ([_yearsOfExperienceLabel.text intValue] <=100)) {
+        
+        if (sender.plusMinusState == JLTStepperPlus) {
+            // Plus button pressed
+            NSLog(@"+");
+            _yearsOfExperienceLabel.text = [NSString stringWithFormat:@"%d",[_yearsOfExperienceLabel.text intValue]+1];
+        }
+        else if (sender.plusMinusState == JLTStepperMinus) {
+            // Minus button pressed
+            NSLog(@"-");
+            
+            _yearsOfExperienceLabel.text = [NSString stringWithFormat:@"%d",[_yearsOfExperienceLabel.text intValue]-1];
+        } else {
+            // Shouldn't happen unless value is set programmatically.
+            
+
+        }
+        
+        
+    }
+    
+    else{
+        
+        if (sender.plusMinusState == JLTStepperPlus) {
+            // Plus button pressed
+            NSLog(@"+");
+            _yearsOfExperienceLabel.text = [NSString stringWithFormat:@"%d",[_yearsOfExperienceLabel.text intValue]+1];
+        }
+     
+        
+    }
+    
+    
+
+  //  NSLog(@"%f",[_yearsOfExperienceLabel.text doubleValue]  );
+    //NSLog(@"%f",2*[_yearsOfExperienceLabel.text doubleValue]  );
+
+    
+   // double value = [sender value];
+   // [sender setValue:value+[_yearsOfExperienceLabel.text intValue]];
+
+   // [sender setValue:[_yearsOfExperienceLabel.text doubleValue]];
+    NSLog(@"Stepper Value = %f", [sender value]);
+    
+
+
+    
+    
+    
 }
 
 

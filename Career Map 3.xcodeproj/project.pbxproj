@@ -64,6 +64,7 @@
 		F5BAC3D41AC875E5003E899C /* settingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5BAC3D31AC875E5003E899C /* settingsViewController.m */; };
 		F5EB65BC1AEBDFB60026B988 /* SkillTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = F5EB65BB1AEBDFB60026B988 /* SkillTextField.m */; };
 		F5EB65C01AECF6BD0026B988 /* GCPlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = F5EB65BF1AECF6BD0026B988 /* GCPlaceholderTextView.m */; };
+		F5EB65C31AED82A30026B988 /* JLTStepper.m in Sources */ = {isa = PBXBuildFile; fileRef = F5EB65C21AED82A30026B988 /* JLTStepper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -154,6 +155,8 @@
 		F5EB65BB1AEBDFB60026B988 /* SkillTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkillTextField.m; sourceTree = "<group>"; };
 		F5EB65BE1AECF6BD0026B988 /* GCPlaceholderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCPlaceholderTextView.h; sourceTree = "<group>"; };
 		F5EB65BF1AECF6BD0026B988 /* GCPlaceholderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCPlaceholderTextView.m; sourceTree = "<group>"; };
+		F5EB65C11AED82A30026B988 /* JLTStepper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JLTStepper.h; path = ../JLTStepper.h; sourceTree = "<group>"; };
+		F5EB65C21AED82A30026B988 /* JLTStepper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JLTStepper.m; path = ../JLTStepper.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -410,6 +413,8 @@
 		F5EB65BD1AECF69F0026B988 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				F5EB65C11AED82A30026B988 /* JLTStepper.h */,
+				F5EB65C21AED82A30026B988 /* JLTStepper.m */,
 				F5EB65BE1AECF6BD0026B988 /* GCPlaceholderTextView.h */,
 				F5EB65BF1AECF6BD0026B988 /* GCPlaceholderTextView.m */,
 			);
@@ -536,6 +541,7 @@
 				F5EB65BC1AEBDFB60026B988 /* SkillTextField.m in Sources */,
 				F5BAC3D41AC875E5003E899C /* settingsViewController.m in Sources */,
 				F535A9A71AD06E500091E70B /* ExistingUserLoginViewController.m in Sources */,
+				F5EB65C31AED82A30026B988 /* JLTStepper.m in Sources */,
 				F59758B21AC159B40099A978 /* AppDelegate.m in Sources */,
 				F5BAC3D11AC85BB7003E899C /* LoginViewController.m in Sources */,
 				F535AA721AD449BA0091E70B /* JobDetailsViewController.m in Sources */,
