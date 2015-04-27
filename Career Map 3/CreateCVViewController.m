@@ -67,6 +67,7 @@ int addSkillButtonTapCount = 0;
     
     
     //setup cv education degree picker
+    _CVDegreeTextField.delegate =self;
     _CVDegreePicker = [[UIPickerView alloc] init];
     [_CVDegreeTextField setInputView:_CVDegreePicker];
     UIToolbar *CVPickerToolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
@@ -690,7 +691,7 @@ int addSkillButtonTapCount = 0;
 }
 
 
-//CV degree picker delegate methods
+//CV degree picker and textfield delegate methods
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
 {
@@ -705,6 +706,34 @@ int addSkillButtonTapCount = 0;
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
     return [_educationDegreesList count];
+}
+
+
+- (void)textFieldDidEndEditing:(UITextField *)textField{
+    
+   
+    NSString *selectedCVDegree = _CVDegreeTextField.text;
+    
+    for (NSString *testString in _educationDegreesList) {
+        if ([testString  isEqualToString:selectedCVDegree]) {
+            _CVDegreeTextField.text =testString;
+            [_CVDegreeTextField setTextColor:[UIColor blackColor]];
+            break;
+            ;
+        }
+        
+        else{
+            _CVDegreeTextField.text =@"Please select a valid degree";
+            [_CVDegreeTextField setTextColor:[UIColor redColor]];
+           
+            
+        }
+    }
+    
+
+    
+
+    
 }
 
 
