@@ -641,20 +641,16 @@ int addSkillButtonTapCount = 0;
 
 - (IBAction)yearsOfExperienceStepperChange:(JLTStepper *)sender {
     
-    
-   // sender.maximumValue = 50;
 
+    //
     if (([_yearsOfExperienceLabel.text intValue] >0) && ([_yearsOfExperienceLabel.text intValue] <=100)) {
         
         if (sender.plusMinusState == JLTStepperPlus) {
             // Plus button pressed
-            NSLog(@"+");
             _yearsOfExperienceLabel.text = [NSString stringWithFormat:@"%d",[_yearsOfExperienceLabel.text intValue]+1];
         }
         else if (sender.plusMinusState == JLTStepperMinus) {
             // Minus button pressed
-            NSLog(@"-");
-            
             _yearsOfExperienceLabel.text = [NSString stringWithFormat:@"%d",[_yearsOfExperienceLabel.text intValue]-1];
         } else {
             // Shouldn't happen unless value is set programmatically.
@@ -665,32 +661,24 @@ int addSkillButtonTapCount = 0;
         
     }
     
+    //This will guarantee the counter doesn't go beyond maximum or minimum.
     else{
         
         if (sender.plusMinusState == JLTStepperPlus) {
             // Plus button pressed
-            NSLog(@"+");
             _yearsOfExperienceLabel.text = [NSString stringWithFormat:@"%d",[_yearsOfExperienceLabel.text intValue]+1];
         }
-     
+        
+        else{
+            
+            if ([_yearsOfExperienceLabel.text intValue] >=100){
+            _yearsOfExperienceLabel.text = [NSString stringWithFormat:@"%d",[_yearsOfExperienceLabel.text intValue]-1];
+            }
+        }
+        
+        
         
     }
-    
-    
-
-  //  NSLog(@"%f",[_yearsOfExperienceLabel.text doubleValue]  );
-    //NSLog(@"%f",2*[_yearsOfExperienceLabel.text doubleValue]  );
-
-    
-   // double value = [sender value];
-   // [sender setValue:value+[_yearsOfExperienceLabel.text intValue]];
-
-   // [sender setValue:[_yearsOfExperienceLabel.text doubleValue]];
-    NSLog(@"Stepper Value = %f", [sender value]);
-    
-
-
-    
     
     
 }
