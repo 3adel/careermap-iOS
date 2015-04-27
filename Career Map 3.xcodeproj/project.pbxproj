@@ -65,6 +65,8 @@
 		F5EB65BC1AEBDFB60026B988 /* SkillTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = F5EB65BB1AEBDFB60026B988 /* SkillTextField.m */; };
 		F5EB65C01AECF6BD0026B988 /* GCPlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = F5EB65BF1AECF6BD0026B988 /* GCPlaceholderTextView.m */; };
 		F5EB65C31AED82A30026B988 /* JLTStepper.m in Sources */ = {isa = PBXBuildFile; fileRef = F5EB65C21AED82A30026B988 /* JLTStepper.m */; };
+		F5EB65FF1AEEB0770026B988 /* AppHorizontalMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = F5EB65FE1AEEB0770026B988 /* AppHorizontalMessage.m */; };
+		F5EB66031AEEB1A60026B988 /* AppHorizontalMessageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5EB66021AEEB1A60026B988 /* AppHorizontalMessageView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -157,6 +159,9 @@
 		F5EB65BF1AECF6BD0026B988 /* GCPlaceholderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCPlaceholderTextView.m; sourceTree = "<group>"; };
 		F5EB65C11AED82A30026B988 /* JLTStepper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JLTStepper.h; path = ../JLTStepper.h; sourceTree = "<group>"; };
 		F5EB65C21AED82A30026B988 /* JLTStepper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JLTStepper.m; path = ../JLTStepper.m; sourceTree = "<group>"; };
+		F5EB65FD1AEEB0770026B988 /* AppHorizontalMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppHorizontalMessage.h; sourceTree = "<group>"; };
+		F5EB65FE1AEEB0770026B988 /* AppHorizontalMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppHorizontalMessage.m; sourceTree = "<group>"; };
+		F5EB66021AEEB1A60026B988 /* AppHorizontalMessageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppHorizontalMessageView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -315,6 +320,9 @@
 		F59758A01AC159B40099A978 = {
 			isa = PBXGroup;
 			children = (
+				F5EB66021AEEB1A60026B988 /* AppHorizontalMessageView.xib */,
+				F5EB65FD1AEEB0770026B988 /* AppHorizontalMessage.h */,
+				F5EB65FE1AEEB0770026B988 /* AppHorizontalMessage.m */,
 				F535AAD91AD947BF0091E70B /* MapKit.framework */,
 				F59758AB1AC159B40099A978 /* Career Map 3 */,
 				F59758C81AC159B40099A978 /* Career Map 3Tests */,
@@ -507,6 +515,7 @@
 				F535AA641AD3CE270091E70B /* WelcomeAppChoiceView.xib in Resources */,
 				F59758C01AC159B40099A978 /* LaunchScreen.xib in Resources */,
 				F535AAEA1ADC66920091E70B /* job-annotation-icon3@3x.png in Resources */,
+				F5EB66031AEEB1A60026B988 /* AppHorizontalMessageView.xib in Resources */,
 				F53334641AE4080C0029BFF7 /* Lenna@3x.jpg in Resources */,
 				F533345F1AE3CE4D0029BFF7 /* CreateCVView.xib in Resources */,
 				F535AA691AD401BA0091E70B /* myLocation.gpx in Resources */,
@@ -553,6 +562,7 @@
 				F597592F1AC1D7F00099A978 /* JobListViewController.m in Sources */,
 				F5EB65C01AECF6BD0026B988 /* GCPlaceholderTextView.m in Sources */,
 				F59759321AC1DBDF0099A978 /* Job.m in Sources */,
+				F5EB65FF1AEEB0770026B988 /* AppHorizontalMessage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

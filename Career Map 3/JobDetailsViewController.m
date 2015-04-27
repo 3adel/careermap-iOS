@@ -8,6 +8,7 @@
 
 #import "JobDetailsViewController.h"
 #import "JobChatViewController.h"
+#import "AppHorizontalMessage.h"
 
 @interface JobDetailsViewController ()
 
@@ -247,7 +248,6 @@
 }
 
 - (IBAction)applyWithCVButtonPressed:(UIButton *)sender {
-    
     
     //If the user don't have a CV, take them to the CV creation flow.
     PFQuery *query = [PFQuery queryWithClassName:@"_User"];

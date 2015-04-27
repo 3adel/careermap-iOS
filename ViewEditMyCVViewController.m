@@ -7,6 +7,7 @@
 //
 
 #import "ViewEditMyCVViewController.h"
+#import "AppHorizontalMessage.h"
 
 @interface ViewEditMyCVViewController ()
 
@@ -17,6 +18,14 @@
 -(void) updateCVContentAfterEdit{
     
     NSLog(@"notification");
+    
+    //Show successfull cv saved message
+    AppHorizontalMessage *appMessage = [[AppHorizontalMessage alloc] init];
+    appMessage.center = CGPointMake(self.view.center.x,[UIScreen mainScreen].bounds.size.height - 100);
+    [self.view addSubview:appMessage];
+    [appMessage setBackgroundColor:[UIColor greenColor]];
+    [appMessage showWithMessageAutoHide:@"CV saved" withColor:[UIColor colorWithRed:0/255.0 green:128.0/255.0 blue:0.0/0.0 alpha:0.75]];
+    
     
     //this will guaranteed that the activity indicator is shown while the data is loading
     _CVContentScrollView.hidden =YES;

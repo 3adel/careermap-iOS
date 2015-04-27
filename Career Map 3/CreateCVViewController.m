@@ -7,6 +7,7 @@
 //
 
 #import "CreateCVViewController.h"
+#import "AppHorizontalMessage.h"
 
 @interface CreateCVViewController ()
 
@@ -368,12 +369,20 @@ int addSkillButtonTapCount = 0;
 - (void) saveCVToParse{
     
 
+    //Show start saving message
+    AppHorizontalMessage *appMessage = [[AppHorizontalMessage alloc] init];
+    appMessage.center = CGPointMake(self.view.center.x,[UIScreen mainScreen].bounds.size.height - 100);
+    appMessage.backgroundColor = [UIColor orangeColor];
+    [self.view addSubview:appMessage];
+    [appMessage showMessage:@"Saving..." withColor:[UIColor orangeColor]];
+    
+    
+    
     //start animating activity indicator while saving
     UIActivityIndicatorView *saveCVActivityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     [saveCVActivityIndicator setColor:[UIColor colorWithRed:13.0/255.0 green:153.0/255 blue:252.0/255.0 alpha:1]];
 
     
-    //UIColor colorWithRed:13 green:153 blue:252 alpha:1
     saveCVActivityIndicator.center = self.view.center;
     [self.view addSubview:saveCVActivityIndicator];
     [saveCVActivityIndicator startAnimating];
@@ -431,6 +440,7 @@ int addSkillButtonTapCount = 0;
                     //jobSeekerObject[@"score"] = @1338;
                     [jobSeekerObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                         if (succeeded) {
+                            [appMessage hideMessage];
                             NSLog(@"Success: CV edited");
                             
                             [saveCVActivityIndicator stopAnimating];
@@ -440,6 +450,10 @@ int addSkillButtonTapCount = 0;
                             [[NSNotificationCenter defaultCenter]postNotificationName:@"CVEditedSuccessNotification" object:nil];
 
                             [self dismissViewControllerAnimated:YES completion:nil];
+                            
+                            
+                            
+                            
                         } else{
                             
                             NSLog(@"Fail: CV edited: %@", error);
@@ -495,6 +509,10 @@ int addSkillButtonTapCount = 0;
                 [cvObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                     if (succeeded) {
                         NSLog(@"success saving new cv");
+                        [appMessage hideMessage];
+                        
+                        
+
                         
                         
                         //now update the user table accordingly

@@ -10,43 +10,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ViewEditMyCVViewController.m"
-            timestampString = "451298528.0771"
+            timestampString = "451858051.35603"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "106"
-            endingLineNumber = "106"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
             landmarkName = "-CVViewEdit"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__40-[ViewEditMyCVViewController CVViewEdit]_block_invoke"
-                  moduleName = "Career Map 3"
-                  urlString = "file:///Users/adel/Developer/CareerMap3/CareerMap3/ViewEditMyCVViewController.m"
-                  timestampString = "451748078.656994"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "112"
-                  endingLineNumber = "112"
-                  offsetFromSymbolStart = "536">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__40-[ViewEditMyCVViewController CVViewEdit]_block_invoke_2"
-                  moduleName = "Career Map 3"
-                  urlString = "file:///Users/adel/Developer/CareerMap3/CareerMap3/ViewEditMyCVViewController.m"
-                  timestampString = "451748078.657163"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "112"
-                  endingLineNumber = "112"
-                  offsetFromSymbolStart = "24">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
