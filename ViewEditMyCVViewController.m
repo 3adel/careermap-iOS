@@ -263,6 +263,7 @@
         createCVInstance.CVAboutMeTextView.text=[[_jobSeekerObject objectForKey:@"aJobSeekerID"] objectForKey:@"jobSeekerAbout"];
         createCVInstance.CVEducationTextField.text=[[_jobSeekerObject objectForKey:@"aJobSeekerID"] objectForKey:@"jobSeekerEducation"];
         createCVInstance.CVDegreeTextField.text=[[_jobSeekerObject objectForKey:@"aJobSeekerID"] objectForKey:@"jobSeekerEducationDegree"];
+        createCVInstance.yearsOfExperienceLabel.text=[[[_jobSeekerObject objectForKey:@"aJobSeekerID"] objectForKey:@"jobSeekerYearsOfExperience"] stringValue];
         
         
         

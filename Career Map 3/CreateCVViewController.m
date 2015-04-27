@@ -412,7 +412,8 @@ int addSkillButtonTapCount = 0;
                     jobSeekerObject[@"jobSeekerAbout"] =_CVAboutMeTextView.text;
                     jobSeekerObject[@"jobSeekerEducation"] =_CVEducationTextField.text;
                     jobSeekerObject[@"jobSeekerEducationDegree"] =_CVDegreeTextField.text;
-                    
+                    jobSeekerObject[@"jobSeekerYearsOfExperience"] =[NSNumber numberWithInteger:[_yearsOfExperienceLabel.text intValue]] ;
+
 
                     
                     
@@ -440,7 +441,7 @@ int addSkillButtonTapCount = 0;
                             [self dismissViewControllerAnimated:YES completion:nil];
                         } else{
                             
-                            NSLog(@"Fail: CV edited");
+                            NSLog(@"Fail: CV edited: %@", error);
                         }
                     }];
                     
@@ -472,6 +473,11 @@ int addSkillButtonTapCount = 0;
                 cvObject[@"jobSeekerAbout"] = _CVAboutMeTextView.text;
                 cvObject[@"jobSeekerEducation"] = _CVEducationTextField.text;
                 cvObject[@"jobSeekerEducationDegree"] = _CVDegreeTextField.text;
+                cvObject[@"jobSeekerYearsOfExperience"] = [NSNumber numberWithInteger:[_yearsOfExperienceLabel.text intValue]] ;
+                
+                
+                
+
                 
                 
                 
