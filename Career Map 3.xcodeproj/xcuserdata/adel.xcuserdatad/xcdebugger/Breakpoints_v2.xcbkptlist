@@ -10,13 +10,45 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ViewEditMyCVViewController.m"
-            timestampString = "451858051.35603"
+            timestampString = "451933778.101111"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "115"
-            endingLineNumber = "115"
+            startingLineNumber = "198"
+            endingLineNumber = "198"
             landmarkName = "-CVViewEdit"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__40-[ViewEditMyCVViewController CVViewEdit]_block_invoke_2"
+                  moduleName = "Career Map 3"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adel/Developer/CareerMap3/CareerMap3/ViewEditMyCVViewController.m"
+                  timestampString = "451926572.347924"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "165"
+                  endingLineNumber = "165"
+                  offsetFromSymbolStart = "817">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__40-[ViewEditMyCVViewController CVViewEdit]_block_invoke_2"
+                  moduleName = "Career Map 3"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adel/Developer/CareerMap3/CareerMap3/ViewEditMyCVViewController.m"
+                  timestampString = "451926572.348111"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "165"
+                  endingLineNumber = "165"
+                  offsetFromSymbolStart = "850">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

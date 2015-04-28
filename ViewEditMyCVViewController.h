@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "CreateCVViewController.h"
 #import <Parse/Parse.h>
+#import "AppHorizontalMessage.h"
+
+
 @interface ViewEditMyCVViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIView *noCVFoundView;
 @property (weak, nonatomic) IBOutlet UIScrollView *CVContentScrollView;
@@ -18,7 +21,7 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *editCVButton;
 @property (weak, nonatomic) IBOutlet UILabel *fullNameLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *aJobSeekerThumb;
-
+@property (strong, nonatomic) AppHorizontalMessage *saveCVButtonPressedMessage;
 
 //data
 @property (strong, nonatomic) PFObject *jobSeekerObject;

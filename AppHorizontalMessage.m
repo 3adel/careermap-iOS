@@ -30,7 +30,7 @@ self = [super initWithFrame:frame];
     self.backgroundColor = color;
     self.textLabel.text = message;
     [UIView animateWithDuration:0.2f delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^(void){
-        self.alpha = 1.f;
+        self.alpha = 0.8f;
     } completion:^(BOOL finished){
         [UIView animateWithDuration:0.8f delay:1 options:UIViewAnimationOptionCurveEaseInOut animations:^(void){
             self.alpha = 0;
@@ -46,7 +46,7 @@ self = [super initWithFrame:frame];
     self.backgroundColor = color;
     self.textLabel.text = message;
     [UIView animateWithDuration:0.2f delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^(void){
-        self.alpha = .3f;
+        self.alpha = .8f;
     } completion:nil];
 }
 
@@ -54,7 +54,7 @@ self = [super initWithFrame:frame];
 //hide message
 - (void)hideMessage{
     
-    [UIView animateWithDuration:0.8f delay:1 options:UIViewAnimationOptionCurveEaseInOut animations:^(void){
+    [UIView animateWithDuration:0.1f delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^(void){
         self.alpha = 0;
     } completion:^(BOOL finished){
         [self removeFromSuperview];

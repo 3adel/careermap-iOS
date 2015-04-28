@@ -15,16 +15,16 @@
 
 @implementation ViewEditMyCVViewController
 
--(void) updateCVContentAfterEdit{
+-(void) CVEditSuccess{
     
-    NSLog(@"notification");
+    NSLog(@"CV EDIT PASS");
+    [_saveCVButtonPressedMessage hideMessage];
     
     //Show successfull cv saved message
     AppHorizontalMessage *appMessage = [[AppHorizontalMessage alloc] init];
-    appMessage.center = CGPointMake(self.view.center.x,[UIScreen mainScreen].bounds.size.height - 100);
+    appMessage.center = CGPointMake(self.view.center.x,[UIScreen mainScreen].bounds.size.height - 69);
     [self.view addSubview:appMessage];
-    [appMessage setBackgroundColor:[UIColor greenColor]];
-    [appMessage showWithMessageAutoHide:@"CV saved" withColor:[UIColor colorWithRed:0/255.0 green:128.0/255.0 blue:0.0/0.0 alpha:0.75]];
+    [appMessage showWithMessageAutoHide:@"CV saved" withColor:[UIColor colorWithRed:0/255.0 green:128.0/255.0 blue:0.0/0.0 alpha:0.8]];
     
     
     //this will guaranteed that the activity indicator is shown while the data is loading
@@ -33,15 +33,50 @@
     [_editCVButton setEnabled:NO];
     [_CVDataLoadingIndicator startAnimating];
     [self CVViewEdit];
+    
 }
+
+
+-  (void) saveCVButtonPressedNotifSelector{
+    
+    NSLog(@"save button tapped notification");
+    
+    //Show successfull cv saved message
+    _saveCVButtonPressedMessage = [[AppHorizontalMessage alloc] init];
+    _saveCVButtonPressedMessage.center = CGPointMake(self.view.center.x,[UIScreen mainScreen].bounds.size.height - 69);
+    [self.view addSubview:_saveCVButtonPressedMessage];
+
+    [_saveCVButtonPressedMessage showMessage:@"Saving ..." withColor:[UIColor colorWithRed:255/255.0 green:149.0/255.0 blue:0.0/0.0 alpha:0.8]];
+
+    //this will guaranteed that the activity indicator is shown while the data is loading
+    _CVContentScrollView.hidden =YES;
+    _noCVFoundView.hidden =YES;
+    [_editCVButton setEnabled:NO];
+    [_CVDataLoadingIndicator startAnimating];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+
+
+}
+
+
 
 
 -(void) viewWillAppear:(BOOL)animated{
     
+    
+    NSLog(@"view will appear");
 
     //add NSNotificatin selector for CV Edit (should refactor using delegation)
     [super viewWillAppear:animated];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateCVContentAfterEdit) name:@"CVEditedSuccessNotification" object:nil];
+    
+
+    
+     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(CVEditSuccess) name:@"CVEditedSuccessNotification" object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(saveCVButtonPressedNotifSelector) name:@"saveCVButtonPressed" object:nil];
+    
+    
+   // [[NSNotificationCenter defaultCenter] removeObserver:<#(id)#>]
     
 
 
