@@ -26,11 +26,11 @@
                   moduleName = "Career Map 3"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/adel/Developer/CareerMap3/CareerMap3/ViewEditMyCVViewController.m"
-                  timestampString = "451926572.347924"
+                  timestampString = "452005009.697146"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "165"
-                  endingLineNumber = "165"
+                  startingLineNumber = "200"
+                  endingLineNumber = "200"
                   offsetFromSymbolStart = "817">
                </Location>
                <Location
@@ -41,11 +41,11 @@
                   moduleName = "Career Map 3"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/adel/Developer/CareerMap3/CareerMap3/ViewEditMyCVViewController.m"
-                  timestampString = "451926572.348111"
+                  timestampString = "452005009.697272"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "165"
-                  endingLineNumber = "165"
+                  startingLineNumber = "200"
+                  endingLineNumber = "200"
                   offsetFromSymbolStart = "850">
                </Location>
             </Locations>

@@ -62,6 +62,7 @@
 		F5BAC3CE1AC7EDFE003E899C /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5BAC3C91AC7EDFE003E899C /* ParseUI.framework */; };
 		F5BAC3D11AC85BB7003E899C /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5BAC3D01AC85BB7003E899C /* LoginViewController.m */; };
 		F5BAC3D41AC875E5003E899C /* settingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5BAC3D31AC875E5003E899C /* settingsViewController.m */; };
+		F5CF09431AF1114B00850BB0 /* Icon-60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5CF09421AF1114B00850BB0 /* Icon-60@3x.png */; };
 		F5EB65BC1AEBDFB60026B988 /* SkillTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = F5EB65BB1AEBDFB60026B988 /* SkillTextField.m */; };
 		F5EB65C01AECF6BD0026B988 /* GCPlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = F5EB65BF1AECF6BD0026B988 /* GCPlaceholderTextView.m */; };
 		F5EB65C31AED82A30026B988 /* JLTStepper.m in Sources */ = {isa = PBXBuildFile; fileRef = F5EB65C21AED82A30026B988 /* JLTStepper.m */; };
@@ -153,6 +154,7 @@
 		F5BAC3D01AC85BB7003E899C /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		F5BAC3D21AC875E5003E899C /* settingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = settingsViewController.h; sourceTree = "<group>"; };
 		F5BAC3D31AC875E5003E899C /* settingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = settingsViewController.m; sourceTree = "<group>"; };
+		F5CF09421AF1114B00850BB0 /* Icon-60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-60@3x.png"; sourceTree = "<group>"; };
 		F5EB65BA1AEBDFB60026B988 /* SkillTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkillTextField.h; sourceTree = "<group>"; };
 		F5EB65BB1AEBDFB60026B988 /* SkillTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkillTextField.m; sourceTree = "<group>"; };
 		F5EB65BE1AECF6BD0026B988 /* GCPlaceholderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCPlaceholderTextView.h; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 		F50142D01ACD1643000DDBE3 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				F5CF09421AF1114B00850BB0 /* Icon-60@3x.png */,
 				F52DC4961AE6507D00693911 /* Default_Profile_Picture@3x.png */,
 				F53334631AE4080C0029BFF7 /* Lenna@3x.jpg */,
 				F535AAE91ADC66920091E70B /* job-annotation-icon3@3x.png */,
@@ -509,6 +512,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5CF09431AF1114B00850BB0 /* Icon-60@3x.png in Resources */,
 				F50142DA1ACD19CD000DDBE3 /* JobVoteDwn-selected@3x.png in Resources */,
 				F59758BB1AC159B40099A978 /* Main.storyboard in Resources */,
 				F50142D91ACD19CD000DDBE3 /* JobVoteDwn-no-selected@3x.png in Resources */,
@@ -684,6 +688,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Career",
@@ -704,6 +709,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Career",
