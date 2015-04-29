@@ -11,6 +11,7 @@
 #import "Job.h"
 #import "settingsViewController.h"
 
+
 @implementation JobListViewController{
     
     
@@ -43,10 +44,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+
+    //progress spinner initialization
+    _HUDProgressIndicator = [MBProgressHUD showHUDAddedTo:_jobTable animated:YES];
+    _HUDProgressIndicator.labelText = @"Loading careers around you...";
+    _HUDProgressIndicator.mode = MBProgressHUDModeIndeterminate;
+   //orange color
+    [_HUDProgressIndicator setColor:[UIColor colorWithRed:255/255.0 green:149.0/255.0 blue:0.0/0.0 alpha:0.8]];
     
+    
+
+
     // Initialize the refresh control.
     self.refreshControl = [[UIRefreshControl alloc] init];
-    self.refreshControl.backgroundColor = [UIColor lightGrayColor];
+    self.refreshControl.backgroundColor = [UIColor colorWithRed:255/255.0 green:149.0/255.0 blue:0.0/0.0 alpha:0.8];
+
     self.refreshControl.tintColor = [UIColor whiteColor];
     [self.refreshControl addTarget:self
                             action:@selector(reloadData)
@@ -65,7 +77,23 @@
     [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *geoPoint, NSError *error) {
         if (!error) {
             self.userLocation = geoPoint;
-            [self performSelector:@selector(retrieveFromParse)];
+            
+            
+
+  
+            [self reloadData];
+            
+            
+
+            
+            
+
+            
+            
+            
+            
+            
+            
             
         }
         else{
@@ -245,6 +273,8 @@
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.jobTable reloadData];
+            [_HUDProgressIndicator hide:YES];
+            
         });
         
     }];

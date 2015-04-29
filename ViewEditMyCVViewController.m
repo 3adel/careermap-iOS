@@ -45,7 +45,7 @@
     _saveCVButtonPressedMessage = [[AppHorizontalMessage alloc] init];
     _saveCVButtonPressedMessage.center = CGPointMake(self.view.center.x,[UIScreen mainScreen].bounds.size.height - 69);
     [self.view addSubview:_saveCVButtonPressedMessage];
-
+    //orange color
     [_saveCVButtonPressedMessage showMessage:@"Saving ..." withColor:[UIColor colorWithRed:255/255.0 green:149.0/255.0 blue:0.0/0.0 alpha:0.8]];
 
     //this will guaranteed that the activity indicator is shown while the data is loading

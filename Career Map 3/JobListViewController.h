@@ -14,7 +14,11 @@
 //#import "WelcomeAppChoiceViewController.h"
 #import "WelcomeAppChoiceViewController.h"
 #import "JobDetailsViewController.h"
-@interface JobListViewController : UITableViewController <CLLocationManagerDelegate>{
+#import "MBProgressHUD.h"
+
+@interface JobListViewController : UITableViewController <CLLocationManagerDelegate,MBProgressHUDDelegate>
+
+{
     
   //  dispatch_queue_t myQueue;
 
@@ -40,6 +44,7 @@
 @property (nonatomic, strong) NSArray *jobRequireSkills;
 @property (nonatomic, strong) NSString *jobEmployerUserObjectID;
 @property (nonatomic, strong) PFUser *jobPosterPFUser;
+@property (nonatomic, strong) MBProgressHUD *HUDProgressIndicator;
 
 
 - (IBAction)jobVoteUpPressed:(UIButton *)sender;
