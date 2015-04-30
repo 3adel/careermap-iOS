@@ -120,6 +120,9 @@
                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="clearFirstSkillButtonPressed:" destination="-1" eventType="touchUpInside" id="dZ1-7d-M7C"/>
+                            </connections>
                         </button>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="What's your degree?" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="i0L-c2-gL6" userLabel="Degree text field">
                             <rect key="frame" x="10" y="442" width="300" height="40"/>

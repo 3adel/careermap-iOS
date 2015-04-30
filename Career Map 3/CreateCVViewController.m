@@ -696,6 +696,10 @@ int addSkillButtonTapCount = 0;
     
 }
 
+- (IBAction)clearFirstSkillButtonPressed:(UIButton *)sender {
+    _firstAddSkillTextView.text = @"";
+}
+
 
 //CV degree picker and textfield delegate methods
 

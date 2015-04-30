@@ -57,6 +57,7 @@
 - (void) CVthumbTapped;
 - (void) selectCVDegree;
 - (IBAction)yearsOfExperienceStepperChange:(JLTStepper *)sender;
+- (IBAction)clearFirstSkillButtonPressed:(UIButton *)sender;
 
 //data
 @property (nonatomic, strong) NSMutableArray *arrayOfSkillTextViews;

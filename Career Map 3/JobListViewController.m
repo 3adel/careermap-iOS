@@ -120,8 +120,8 @@
     [retrieveJobs includeKey:@"status"];
     [retrieveJobs includeKey:@"postedByUser"];
     [retrieveJobs includeKey:@"appliedByUsers"];
-    [retrieveJobs whereKey:@"geolocation" nearGeoPoint:self.userLocation withinKilometers:1000000];
-    [retrieveJobs orderByDescending:@"createdAt"];
+    [retrieveJobs whereKey:@"geolocation" nearGeoPoint:self.userLocation withinKilometers:20];
+    //[retrieveJobs orderByDescending:@"createdAt"];
     [retrieveJobs findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             jobsArray = [[NSMutableArray alloc] initWithArray:objects];
