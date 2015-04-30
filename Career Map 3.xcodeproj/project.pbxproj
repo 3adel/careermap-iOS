@@ -164,9 +164,9 @@
 		F5EB65BF1AECF6BD0026B988 /* GCPlaceholderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCPlaceholderTextView.m; sourceTree = "<group>"; };
 		F5EB65C11AED82A30026B988 /* JLTStepper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JLTStepper.h; path = ../JLTStepper.h; sourceTree = "<group>"; };
 		F5EB65C21AED82A30026B988 /* JLTStepper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JLTStepper.m; path = ../JLTStepper.m; sourceTree = "<group>"; };
-		F5EB65FD1AEEB0770026B988 /* AppHorizontalMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppHorizontalMessage.h; sourceTree = "<group>"; };
-		F5EB65FE1AEEB0770026B988 /* AppHorizontalMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppHorizontalMessage.m; sourceTree = "<group>"; };
-		F5EB66021AEEB1A60026B988 /* AppHorizontalMessageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppHorizontalMessageView.xib; sourceTree = "<group>"; };
+		F5EB65FD1AEEB0770026B988 /* AppHorizontalMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppHorizontalMessage.h; path = ../AppHorizontalMessage.h; sourceTree = "<group>"; };
+		F5EB65FE1AEEB0770026B988 /* AppHorizontalMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppHorizontalMessage.m; path = ../AppHorizontalMessage.m; sourceTree = "<group>"; };
+		F5EB66021AEEB1A60026B988 /* AppHorizontalMessageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AppHorizontalMessageView.xib; path = ../AppHorizontalMessageView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -326,9 +326,6 @@
 		F59758A01AC159B40099A978 = {
 			isa = PBXGroup;
 			children = (
-				F5EB66021AEEB1A60026B988 /* AppHorizontalMessageView.xib */,
-				F5EB65FD1AEEB0770026B988 /* AppHorizontalMessage.h */,
-				F5EB65FE1AEEB0770026B988 /* AppHorizontalMessage.m */,
 				F535AAD91AD947BF0091E70B /* MapKit.framework */,
 				F59758AB1AC159B40099A978 /* Career Map 3 */,
 				F59758C81AC159B40099A978 /* Career Map 3Tests */,
@@ -358,6 +355,7 @@
 				F535AA6C1AD438710091E70B /* Login-Registration */,
 				F535AA6B1AD438440091E70B /* Welcome Section */,
 				F535AA6A1AD4380A0091E70B /* Settings */,
+				F5CF09471AF2728400850BB0 /* App Horizontal Message */,
 				F535AA6F1AD439600091E70B /* Model */,
 				F59758AC1AC159B40099A978 /* Supporting Files */,
 			);
@@ -422,6 +420,16 @@
 				F59759131AC1D38F0099A978 /* AudioToolbox.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F5CF09471AF2728400850BB0 /* App Horizontal Message */ = {
+			isa = PBXGroup;
+			children = (
+				F5EB66021AEEB1A60026B988 /* AppHorizontalMessageView.xib */,
+				F5EB65FD1AEEB0770026B988 /* AppHorizontalMessage.h */,
+				F5EB65FE1AEEB0770026B988 /* AppHorizontalMessage.m */,
+			);
+			name = "App Horizontal Message";
 			sourceTree = "<group>";
 		};
 		F5EB65BD1AECF69F0026B988 /* Lib */ = {
