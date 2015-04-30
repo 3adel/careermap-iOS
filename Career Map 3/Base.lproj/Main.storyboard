@@ -411,7 +411,7 @@
                             <constraint firstItem="2zg-aD-6qS" firstAttribute="leading" secondItem="LGa-cj-DDk" secondAttribute="leadingMargin" id="opQ-0l-Mvp"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Settings" image="first" id="cBR-XE-qPT"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="TabBar-Settings.png" id="cBR-XE-qPT"/>
                     <connections>
                         <outlet property="loginButton" destination="9f3-ii-TC2" id="XdV-mK-hVh"/>
                         <outlet property="logoutButton" destination="2zg-aD-6qS" id="klp-oZ-keY"/>
@@ -495,11 +495,6 @@
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lrq-3r-0dO" userLabel="No CV Found View">
                                 <rect key="frame" x="16" y="74" width="568" height="526"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="It takes 1 minute" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xga-PQ-57q" userLabel="Create your CV, it takes just 1 minute">
-                                        <rect key="frame" x="224" y="100" width="120.5" height="19.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="311-t7-crG">
                                         <rect key="frame" x="201" y="144" width="165" height="45"/>
                                         <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -515,6 +510,11 @@
                                             <action selector="createCVButtonPressed:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="drL-Xv-Hvb"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="It takes 1 minute" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xga-PQ-57q" userLabel="Create your CV, it takes just 1 minute">
+                                        <rect key="frame" x="144" y="99" width="120.5" height="19.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="Xga-PQ-57q" firstAttribute="top" secondItem="lrq-3r-0dO" secondAttribute="top" constant="100" id="0g5-5t-h3F"/>
@@ -567,7 +567,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" title="My CV" image="first" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="My CV" image="TabBar-MyCV.png" id="cPa-gy-q4n"/>
                     <connections>
                         <outlet property="CVContentScrollView" destination="1ll-3J-egv" id="mNo-TT-YRv"/>
                         <outlet property="CVDataLoadingIndicator" destination="mya-IL-RFa" id="VQw-G0-fS4"/>
@@ -821,7 +821,9 @@
         <scene sceneID="jL7-fw-Zcg">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="u4i-H2-sYV" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Job List" image="second" id="zIi-ao-1PW"/>
+                    <tabBarItem key="tabBarItem" title="Job List" image="TabBar-JobList.png" id="zIi-ao-1PW">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="xPH-AD-5Wk">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -838,10 +840,12 @@
         </scene>
     </scenes>
     <resources>
-        <image name="first" width="30" height="30"/>
-        <image name="second" width="30" height="30"/>
+        <image name="TabBar-JobList.png" width="45" height="28"/>
+        <image name="TabBar-MyCV.png" width="45" height="28"/>
+        <image name="TabBar-Settings.png" width="45" height="28"/>
+        <image name="first" width="45" height="28"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="UCD-x7-uVZ"/>
+        <segue reference="phv-aF-IUg"/>
     </inferredMetricsTieBreakers>
 </document>

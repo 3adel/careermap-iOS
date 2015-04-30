@@ -64,6 +64,15 @@
 		F5BAC3D41AC875E5003E899C /* settingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5BAC3D31AC875E5003E899C /* settingsViewController.m */; };
 		F5CF09431AF1114B00850BB0 /* Icon-60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5CF09421AF1114B00850BB0 /* Icon-60@3x.png */; };
 		F5CF09461AF141A000850BB0 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = F5CF09451AF141A000850BB0 /* MBProgressHUD.m */; };
+		F5CF09491AF2805F00850BB0 /* TabBar-JobList@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5CF09481AF2805F00850BB0 /* TabBar-JobList@3x.png */; };
+		F5CF094B1AF2820500850BB0 /* TabBar-JobList@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5CF094A1AF2820500850BB0 /* TabBar-JobList@2x.png */; };
+		F5CF094D1AF283C600850BB0 /* TabBar-JobList.png in Resources */ = {isa = PBXBuildFile; fileRef = F5CF094C1AF283C600850BB0 /* TabBar-JobList.png */; };
+		F5CF09591AF284E500850BB0 /* TabBar-Settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5CF09561AF284E500850BB0 /* TabBar-Settings@2x.png */; };
+		F5CF095A1AF284E500850BB0 /* TabBar-Settings@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5CF09571AF284E500850BB0 /* TabBar-Settings@3x.png */; };
+		F5CF095C1AF2854600850BB0 /* TabBar-Settings.png in Resources */ = {isa = PBXBuildFile; fileRef = F5CF095B1AF2854600850BB0 /* TabBar-Settings.png */; };
+		F5CF09601AF285F000850BB0 /* TabBar-MyCV.png in Resources */ = {isa = PBXBuildFile; fileRef = F5CF095D1AF285F000850BB0 /* TabBar-MyCV.png */; };
+		F5CF09611AF285F000850BB0 /* TabBar-MyCV@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5CF095E1AF285F000850BB0 /* TabBar-MyCV@2x.png */; };
+		F5CF09621AF285F000850BB0 /* TabBar-MyCV@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5CF095F1AF285F000850BB0 /* TabBar-MyCV@3x.png */; };
 		F5EB65BC1AEBDFB60026B988 /* SkillTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = F5EB65BB1AEBDFB60026B988 /* SkillTextField.m */; };
 		F5EB65C01AECF6BD0026B988 /* GCPlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = F5EB65BF1AECF6BD0026B988 /* GCPlaceholderTextView.m */; };
 		F5EB65C31AED82A30026B988 /* JLTStepper.m in Sources */ = {isa = PBXBuildFile; fileRef = F5EB65C21AED82A30026B988 /* JLTStepper.m */; };
@@ -158,6 +167,15 @@
 		F5CF09421AF1114B00850BB0 /* Icon-60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-60@3x.png"; sourceTree = "<group>"; };
 		F5CF09441AF141A000850BB0 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		F5CF09451AF141A000850BB0 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		F5CF09481AF2805F00850BB0 /* TabBar-JobList@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBar-JobList@3x.png"; sourceTree = "<group>"; };
+		F5CF094A1AF2820500850BB0 /* TabBar-JobList@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBar-JobList@2x.png"; sourceTree = "<group>"; };
+		F5CF094C1AF283C600850BB0 /* TabBar-JobList.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBar-JobList.png"; sourceTree = "<group>"; };
+		F5CF09561AF284E500850BB0 /* TabBar-Settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBar-Settings@2x.png"; sourceTree = "<group>"; };
+		F5CF09571AF284E500850BB0 /* TabBar-Settings@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBar-Settings@3x.png"; sourceTree = "<group>"; };
+		F5CF095B1AF2854600850BB0 /* TabBar-Settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBar-Settings.png"; sourceTree = "<group>"; };
+		F5CF095D1AF285F000850BB0 /* TabBar-MyCV.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBar-MyCV.png"; sourceTree = "<group>"; };
+		F5CF095E1AF285F000850BB0 /* TabBar-MyCV@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBar-MyCV@2x.png"; sourceTree = "<group>"; };
+		F5CF095F1AF285F000850BB0 /* TabBar-MyCV@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBar-MyCV@3x.png"; sourceTree = "<group>"; };
 		F5EB65BA1AEBDFB60026B988 /* SkillTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkillTextField.h; sourceTree = "<group>"; };
 		F5EB65BB1AEBDFB60026B988 /* SkillTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkillTextField.m; sourceTree = "<group>"; };
 		F5EB65BE1AECF6BD0026B988 /* GCPlaceholderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCPlaceholderTextView.h; sourceTree = "<group>"; };
@@ -212,6 +230,7 @@
 		F50142D01ACD1643000DDBE3 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				F5CF094E1AF283E300850BB0 /* Tab Bar */,
 				F5CF09421AF1114B00850BB0 /* Icon-60@3x.png */,
 				F52DC4961AE6507D00693911 /* Default_Profile_Picture@3x.png */,
 				F53334631AE4080C0029BFF7 /* Lenna@3x.jpg */,
@@ -432,6 +451,22 @@
 			name = "App Horizontal Message";
 			sourceTree = "<group>";
 		};
+		F5CF094E1AF283E300850BB0 /* Tab Bar */ = {
+			isa = PBXGroup;
+			children = (
+				F5CF095D1AF285F000850BB0 /* TabBar-MyCV.png */,
+				F5CF095E1AF285F000850BB0 /* TabBar-MyCV@2x.png */,
+				F5CF095F1AF285F000850BB0 /* TabBar-MyCV@3x.png */,
+				F5CF095B1AF2854600850BB0 /* TabBar-Settings.png */,
+				F5CF09561AF284E500850BB0 /* TabBar-Settings@2x.png */,
+				F5CF09571AF284E500850BB0 /* TabBar-Settings@3x.png */,
+				F5CF094C1AF283C600850BB0 /* TabBar-JobList.png */,
+				F5CF094A1AF2820500850BB0 /* TabBar-JobList@2x.png */,
+				F5CF09481AF2805F00850BB0 /* TabBar-JobList@3x.png */,
+			);
+			name = "Tab Bar";
+			sourceTree = "<group>";
+		};
 		F5EB65BD1AECF69F0026B988 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
@@ -526,24 +561,33 @@
 			buildActionMask = 2147483647;
 			files = (
 				F5CF09431AF1114B00850BB0 /* Icon-60@3x.png in Resources */,
+				F5CF09611AF285F000850BB0 /* TabBar-MyCV@2x.png in Resources */,
 				F50142DA1ACD19CD000DDBE3 /* JobVoteDwn-selected@3x.png in Resources */,
 				F59758BB1AC159B40099A978 /* Main.storyboard in Resources */,
 				F50142D91ACD19CD000DDBE3 /* JobVoteDwn-no-selected@3x.png in Resources */,
 				F535AA641AD3CE270091E70B /* WelcomeAppChoiceView.xib in Resources */,
 				F59758C01AC159B40099A978 /* LaunchScreen.xib in Resources */,
+				F5CF094B1AF2820500850BB0 /* TabBar-JobList@2x.png in Resources */,
 				F535AAEA1ADC66920091E70B /* job-annotation-icon3@3x.png in Resources */,
 				F5EB66031AEEB1A60026B988 /* AppHorizontalMessageView.xib in Resources */,
 				F53334641AE4080C0029BFF7 /* Lenna@3x.jpg in Resources */,
 				F533345F1AE3CE4D0029BFF7 /* CreateCVView.xib in Resources */,
 				F535AA691AD401BA0091E70B /* myLocation.gpx in Resources */,
+				F5CF09591AF284E500850BB0 /* TabBar-Settings@2x.png in Resources */,
 				F50142DB1ACD19CD000DDBE3 /* JobVoteUp-no-selected@3x.png in Resources */,
+				F5CF094D1AF283C600850BB0 /* TabBar-JobList.png in Resources */,
 				F535ABC51ADE52CF0091E70B /* JobChatView.xib in Resources */,
 				F535AAE81ADC66240091E70B /* job-annotation-icon2@3x.png in Resources */,
 				F535AAE21ADA63EC0091E70B /* job-annotation-icon@3x.png in Resources */,
 				F535AC4E1ADEC9860091E70B /* JobChatMessageCell.xib in Resources */,
+				F5CF09621AF285F000850BB0 /* TabBar-MyCV@3x.png in Resources */,
 				F50142DC1ACD19CD000DDBE3 /* JobVoteUp-selected@3x.png in Resources */,
 				F52DC4971AE6507D00693911 /* Default_Profile_Picture@3x.png in Resources */,
 				F59758BD1AC159B40099A978 /* Images.xcassets in Resources */,
+				F5CF09601AF285F000850BB0 /* TabBar-MyCV.png in Resources */,
+				F5CF09491AF2805F00850BB0 /* TabBar-JobList@3x.png in Resources */,
+				F5CF095C1AF2854600850BB0 /* TabBar-Settings.png in Resources */,
+				F5CF095A1AF284E500850BB0 /* TabBar-Settings@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
