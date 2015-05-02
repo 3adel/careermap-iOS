@@ -10,45 +10,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ViewEditMyCVViewController.m"
-            timestampString = "452096610.853295"
+            timestampString = "452281057.03236"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "200"
-            endingLineNumber = "200"
-            landmarkName = "-CVViewEdit"
+            startingLineNumber = "296"
+            endingLineNumber = "296"
+            landmarkName = "-editCVButtonPressed:"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__40-[ViewEditMyCVViewController CVViewEdit]_block_invoke_2"
-                  moduleName = "Career Map 3"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/adel/Developer/CareerMap3/CareerMap3/ViewEditMyCVViewController.m"
-                  timestampString = "452096610.861356"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "208"
-                  endingLineNumber = "208"
-                  offsetFromSymbolStart = "817">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__40-[ViewEditMyCVViewController CVViewEdit]_block_invoke_2"
-                  moduleName = "Career Map 3"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/adel/Developer/CareerMap3/CareerMap3/ViewEditMyCVViewController.m"
-                  timestampString = "452096610.861554"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "208"
-                  endingLineNumber = "208"
-                  offsetFromSymbolStart = "850">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

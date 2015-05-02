@@ -62,7 +62,7 @@
 //data
 @property (nonatomic, strong) NSMutableArray *arrayOfSkillTextViews;
 @property (nonatomic, strong) NSArray *educationDegreesList;
-
+@property (nonatomic, strong) NSMutableArray *existingSkills;
 
 
 

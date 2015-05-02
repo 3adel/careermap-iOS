@@ -286,14 +286,24 @@
     
     
     //update the cv fields in the CreateCV VC
+    CreateCVViewController *createCVInstance = [[CreateCVViewController alloc] initWithNibName:@"CreateCVView" bundle:nil];
+    
+    //Get the existing skills of job seeker
+    if ([[[NSMutableArray alloc] initWithArray:[[_jobSeekerObject objectForKey:@"aJobSeekerID"] objectForKey:@"skills"]] count]>0){
+        
+        createCVInstance.existingSkills =[[NSMutableArray alloc] initWithArray:[[_jobSeekerObject objectForKey:@"aJobSeekerID"] objectForKey:@"skills"]];
+
+    }
+    
+    else{
+        createCVInstance.existingSkills =[[NSMutableArray alloc] init];
+        
+        
+    }
+    
+    
     
 
-    
-    
-    
-    
-    
-    CreateCVViewController *createCVInstance = [[CreateCVViewController alloc] initWithNibName:@"CreateCVView" bundle:nil];
     
     [self presentViewController:createCVInstance animated:YES completion:nil];
     
