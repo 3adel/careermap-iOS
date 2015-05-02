@@ -263,13 +263,13 @@ int addSkillButtonTapCount = 0;
         
         [textField setTag:indexCounter];
         [textField.removeSkillButton setTag:indexCounter];
-        NSLog(@"Index Counter = %ld", indexCounter);
+        NSLog(@"Index Counter = %ld", (unsigned long)indexCounter);
         
           //  [self.skillTextField setPlaceholder:[NSString stringWithFormat:@"Add skill #%ld",self.skillTextField.tag+2]];
         
         if ([textField.text isEqual:@""]) {
            // [textField setText:[NSString stringWithFormat:@"Tag: %ld",indexCounter-2]];
-            [textField setPlaceholder:[NSString stringWithFormat:@"Add skill #%ld",indexCounter+2]];
+            [textField setPlaceholder:[NSString stringWithFormat:@"Add skill #%lu",indexCounter+2]];
             
         }
         

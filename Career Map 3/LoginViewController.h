@@ -23,7 +23,6 @@
 - (IBAction)registerUser:(UIButton *)sender;
 - (void) checkFieldsComplete;
 - (IBAction)registeredButton:(UIButton *)sender;
-- (IBAction)loginButton:(UIButton *)sender;
 - (IBAction)cancelButtonPressed:(UIBarButtonItem *)sender;
 
 @end
