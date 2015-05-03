@@ -96,7 +96,7 @@ int addSkillButtonTapCount = 0;
     
     
     _skillView = [[UIView alloc] init];
-    _skillView.backgroundColor = [UIColor orangeColor];
+    //_skillView.backgroundColor = [UIColor orangeColor];
     _skillView.translatesAutoresizingMaskIntoConstraints =NO;
     [_skillsScrollView addSubview:_skillView];
     
@@ -106,7 +106,7 @@ int addSkillButtonTapCount = 0;
     NSLayoutConstraint *skillViewCenterXConstraint = [NSLayoutConstraint constraintWithItem:_skillView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0];
     NSLayoutConstraint *skillViewLeftContraint = [NSLayoutConstraint constraintWithItem:_skillView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:_skillsSectionLabel attribute:NSLayoutAttributeLeft multiplier:1.0 constant:0];
     NSLayoutConstraint *skillViewRightContraint = [NSLayoutConstraint constraintWithItem:_skillView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:_firstRemoveSkillButton attribute:NSLayoutAttributeRight multiplier:1.0 constant:0];
-     NSLayoutConstraint *skillViewBottomContraint = [NSLayoutConstraint constraintWithItem:_skillView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:_skillsScrollView attribute:NSLayoutAttributeBottom multiplier:1.0 constant:-500];
+     NSLayoutConstraint *skillViewBottomContraint = [NSLayoutConstraint constraintWithItem:_skillView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:_skillsScrollView attribute:NSLayoutAttributeBottom multiplier:1.0 constant:-300];
     
     _skillViewHeightConstraint = [NSLayoutConstraint constraintWithItem:_skillView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:0];
     //add constraints
@@ -131,7 +131,7 @@ int addSkillButtonTapCount = 0;
             self.skillTextField = [[SkillTextField alloc] init];
             
             //setup the constraints for the skills textFields
-            self.skillTextField.backgroundColor = [UIColor yellowColor];
+            //self.skillTextField.backgroundColor = [UIColor yellowColor];
             self.skillTextField.translatesAutoresizingMaskIntoConstraints =NO;
             [self.skillTextField setTextColor:[UIColor blackColor]];
             [self.skillTextField setTag:addSkillButtonTapCount];
@@ -239,7 +239,7 @@ int addSkillButtonTapCount = 0;
         self.skillTextField = [[SkillTextField alloc] init];
         
         //setup the constraints for the skills textFields
-        self.skillTextField.backgroundColor = [UIColor yellowColor];
+        //self.skillTextField.backgroundColor = [UIColor yellowColor];
         self.skillTextField.translatesAutoresizingMaskIntoConstraints =NO;
         [self.skillTextField setTextColor:[UIColor blackColor]];
         [self.skillTextField setTag:addSkillButtonTapCount];
@@ -348,7 +348,7 @@ int addSkillButtonTapCount = 0;
     _addSkillButton.backgroundColor = [UIColor colorWithRed:13.0/255.0 green:153.0/255 blue:252.0/255.0 alpha:1];
     [_addSkillButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     _addSkillButton.translatesAutoresizingMaskIntoConstraints =NO;
-    [_addSkillButton setTitle:@"Add another skill" forState:UIControlStateNormal];
+    [_addSkillButton setTitle:@"+ Add another skill" forState:UIControlStateNormal];
     [_skillsScrollView addSubview:_addSkillButton];
     
     //add skill button initial constraints
@@ -382,7 +382,7 @@ int addSkillButtonTapCount = 0;
     self.skillTextField = [[SkillTextField alloc] init];
 
     //setup the constraints for the skills textFields
-    self.skillTextField.backgroundColor = [UIColor yellowColor];
+    self.skillTextField.backgroundColor = [UIColor whiteColor];
     self.skillTextField.translatesAutoresizingMaskIntoConstraints =NO;
     [self.skillTextField setTextColor:[UIColor blackColor]];
     [self.skillTextField setTag:withAddDeleteSkillTally];
@@ -485,7 +485,7 @@ int addSkillButtonTapCount = 0;
     
     //adjust the remaining texfield and buttons and shift them up
     for (NSInteger i = 1; i<=removalCounter; i++) {
-        [ (SkillTextField *)[_arrayOfSkillTextViews objectAtIndex:sender.tag+i]  setBackgroundColor:[UIColor greenColor]];
+       // [ (SkillTextField *)[_arrayOfSkillTextViews objectAtIndex:sender.tag+i]  setBackgroundColor:[UIColor greenColor]];
         [[(SkillTextField *)[_arrayOfSkillTextViews objectAtIndex:(sender.tag+i)] skillTextFieldTop] setConstant:(50*(sender.tag+i-1))];
         
         
