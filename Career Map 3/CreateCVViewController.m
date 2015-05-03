@@ -117,6 +117,7 @@ int addSkillButtonTapCount = 0;
 
 //Reload existing skills
 - (void) addExistingSkillTextField{
+   //reset counter
     addSkillButtonTapCount = 0;
     
     //setup skills fields and their buttons
@@ -648,6 +649,21 @@ int addSkillButtonTapCount = 0;
 
 
                     
+                    //save skills to parse
+                    NSMutableArray *existingSkillsArray = [[NSMutableArray alloc] init];
+                    
+                    for (UITextField *skillTextField in _arrayOfSkillTextViews) {
+                        
+                        [existingSkillsArray addObject:skillTextField.text];
+ 
+                    }
+                    
+                    jobSeekerObject [@"skills"] = existingSkillsArray;
+                    
+                    
+                   // jobSeekerObject[@"skills"] =
+                    
+                    
                     
                    // NSData *imageData = UIImagePNGRepresentation(_CVjobSeekerThumb.image);
                     NSData *imageData = UIImageJPEGRepresentation(_CVjobSeekerThumb.image, 0.3f);
@@ -931,7 +947,8 @@ int addSkillButtonTapCount = 0;
 }
 
 - (IBAction)clearFirstSkillButtonPressed:(UIButton *)sender {
-    _firstAddSkillTextView.text = @"";
+    _firstAddSkillTextView.text = @""
+    ;
 }
 
 
