@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 Adel  Shehadeh. All rights reserved.
 //
 
+
+
 #import "CreateCVViewController.h"
 #import "AppHorizontalMessage.h"
 
@@ -22,7 +24,6 @@ int addSkillButtonTapCount = 0;
 
 -(void) viewDidAppear:(BOOL)animated{
     
-
 }
 
 - (void)viewDidLoad {
@@ -116,8 +117,7 @@ int addSkillButtonTapCount = 0;
 
 //Reload existing skills
 - (void) addExistingSkillTextField{
-    
-    
+    addSkillButtonTapCount = 0;
     
     //setup skills fields and their buttons
     
