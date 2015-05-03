@@ -741,7 +741,20 @@ int addSkillButtonTapCount = 0;
                 
                 
                 
-
+                //save skills to parse
+                NSMutableArray *existingSkillsArray = [[NSMutableArray alloc] init];
+                
+                for (UITextField *skillTextField in _arrayOfSkillTextViews) {
+                    //prevent empty skills
+                    if (![skillTextField.text isEqualToString:@""]) {
+                        [existingSkillsArray addObject:skillTextField.text];
+                        
+                    }
+                    
+                    
+                }
+                
+                cvObject [@"skills"] = existingSkillsArray;
                 
                 
                 
