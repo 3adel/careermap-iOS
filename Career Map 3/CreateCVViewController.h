@@ -50,7 +50,8 @@
 
 - (void) addSkillButtonPressed;
 - (void) addSkillTextField: (int) withAddDeleteSkillTally;
-- (void) removeSkillButtonPressed: (UIButton *)sender;
+- (void) removeSkillButtonPressed: (UIButton *) sender;
+- (void) clearSkillButtonPressed: (UIButton *) sender;
 - (IBAction)closeCreateCVButtonPressed:(UIBarButtonItem *)sender;
 - (IBAction)saveCVButtonPressed:(UIBarButtonItem *)sender;
 - (void) checkFieldsComplete;
