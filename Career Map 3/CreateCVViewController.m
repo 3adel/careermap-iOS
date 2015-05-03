@@ -102,9 +102,9 @@ int addSkillButtonTapCount = 0;
     
     
     //skill view initial constraints
-    NSLayoutConstraint *skillViewTopConstraint = [NSLayoutConstraint constraintWithItem:_skillView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:_firstAddSkillTextView attribute:NSLayoutAttributeBottom multiplier:1.0 constant:10];
+    NSLayoutConstraint *skillViewTopConstraint = [NSLayoutConstraint constraintWithItem:_skillView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:_skillsSectionLabel attribute:NSLayoutAttributeBottom multiplier:1.0 constant:10];
     NSLayoutConstraint *skillViewCenterXConstraint = [NSLayoutConstraint constraintWithItem:_skillView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0];
-    NSLayoutConstraint *skillViewLeftContraint = [NSLayoutConstraint constraintWithItem:_skillView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:_firstAddSkillTextView attribute:NSLayoutAttributeLeft multiplier:1.0 constant:0];
+    NSLayoutConstraint *skillViewLeftContraint = [NSLayoutConstraint constraintWithItem:_skillView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:_skillsSectionLabel attribute:NSLayoutAttributeLeft multiplier:1.0 constant:0];
     NSLayoutConstraint *skillViewRightContraint = [NSLayoutConstraint constraintWithItem:_skillView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:_firstRemoveSkillButton attribute:NSLayoutAttributeRight multiplier:1.0 constant:0];
      NSLayoutConstraint *skillViewBottomContraint = [NSLayoutConstraint constraintWithItem:_skillView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:_skillsScrollView attribute:NSLayoutAttributeBottom multiplier:1.0 constant:-500];
     
@@ -173,6 +173,13 @@ int addSkillButtonTapCount = 0;
             
             [self.view addConstraints:@[self.skillTextField.skillTextFieldTop,skillTextFieldLeftConstraint,skillTextFieldWidthConstraint,_skillTextFieldHeightConstraint]];
             [self.view layoutIfNeeded];
+            
+            
+            if ([self.skillTextField.text isEqualToString:@""]) {
+                [self. skillTextField setPlaceholder:[NSString stringWithFormat:@"Add skilluuu #%d",addSkillButtonTapCount+1]];
+            }
+            
+
             
             
             
@@ -653,8 +660,12 @@ int addSkillButtonTapCount = 0;
                     NSMutableArray *existingSkillsArray = [[NSMutableArray alloc] init];
                     
                     for (UITextField *skillTextField in _arrayOfSkillTextViews) {
+                        //prevent empty skills
+                        if (![skillTextField.text isEqualToString:@""]) {
+                            [existingSkillsArray addObject:skillTextField.text];
+
+                        }
                         
-                        [existingSkillsArray addObject:skillTextField.text];
  
                     }
                     

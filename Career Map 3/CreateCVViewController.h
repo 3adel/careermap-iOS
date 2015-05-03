@@ -43,6 +43,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *CVDegreeTextField;
 @property (strong, nonatomic) UIPickerView *CVDegreePicker;
 @property (weak, nonatomic) IBOutlet UILabel *yearsOfExperienceLabel;
+@property (weak, nonatomic) IBOutlet UILabel *skillsSectionLabel;
 
 //methods
 - (void )setupSkillsView;

@@ -13,9 +13,8 @@
                 <outlet property="CVjobSeekerFirstNameTextView" destination="EPF-TK-n6P" id="RnW-lV-FBj"/>
                 <outlet property="CVjobSeekerLastNameTextView" destination="nxu-Mx-j1n" id="yK8-Gl-5zH"/>
                 <outlet property="CVjobSeekerThumb" destination="QeQ-gb-fAX" id="RJF-j6-HCb"/>
-                <outlet property="firstAddSkillTextView" destination="oez-X1-f5h" id="O0e-mz-0Th"/>
-                <outlet property="firstRemoveSkillButton" destination="QG8-Gt-UHQ" id="y0c-og-uBb"/>
                 <outlet property="skillsScrollView" destination="8Qt-hc-vXk" id="Yel-3F-ZER"/>
+                <outlet property="skillsSectionLabel" destination="5vB-2V-ogN" id="ylt-zC-XAN"/>
                 <outlet property="view" destination="2op-C1-VX5" id="bkN-bK-lkY"/>
                 <outlet property="yearsOfExperienceLabel" destination="LAA-CX-O1j" id="EOT-nM-eA8"/>
             </connections>
@@ -113,41 +112,19 @@
                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QG8-Gt-UHQ">
-                            <rect key="frame" x="220" y="597" width="90" height="40"/>
-                            <color key="backgroundColor" red="1" green="0.0" blue="0.018539993599999999" alpha="1" colorSpace="calibratedRGB"/>
-                            <state key="normal" title="Clear">
-                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="clearFirstSkillButtonPressed:" destination="-1" eventType="touchUpInside" id="dZ1-7d-M7C"/>
-                            </connections>
-                        </button>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="What's your degree?" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="i0L-c2-gL6" userLabel="Degree text field">
                             <rect key="frame" x="10" y="442" width="300" height="40"/>
                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add skill #1" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oez-X1-f5h">
-                            <rect key="frame" x="10" y="597" width="200" height="40"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="200" id="wL5-wv-DiL"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                            <textInputTraits key="textInputTraits"/>
-                        </textField>
                     </subviews>
                     <constraints>
-                        <constraint firstItem="oez-X1-f5h" firstAttribute="leading" secondItem="5vB-2V-ogN" secondAttribute="leading" id="1EA-C9-Kvz"/>
                         <constraint firstItem="LAA-CX-O1j" firstAttribute="top" secondItem="bAc-W1-yWP" secondAttribute="bottom" constant="15" id="1fD-cL-Ojb"/>
                         <constraint firstItem="wcX-tp-3W3" firstAttribute="top" secondItem="Fxf-5I-3Zt" secondAttribute="bottom" constant="10" id="28I-zP-GPh"/>
                         <constraint firstAttribute="trailing" secondItem="EPF-TK-n6P" secondAttribute="trailing" constant="10" id="2ZO-Ex-KQ4"/>
                         <constraint firstItem="wcX-tp-3W3" firstAttribute="trailing" secondItem="Fxf-5I-3Zt" secondAttribute="trailing" id="2ug-Bn-rAb"/>
                         <constraint firstItem="nxu-Mx-j1n" firstAttribute="leading" secondItem="BAr-2X-f0G" secondAttribute="leading" id="5nB-le-q8J"/>
-                        <constraint firstItem="oez-X1-f5h" firstAttribute="height" secondItem="i0L-c2-gL6" secondAttribute="height" id="604-sD-Rvd"/>
                         <constraint firstItem="i0L-c2-gL6" firstAttribute="leading" secondItem="wcX-tp-3W3" secondAttribute="leading" id="6bd-Gv-1cz"/>
-                        <constraint firstItem="QG8-Gt-UHQ" firstAttribute="height" secondItem="oez-X1-f5h" secondAttribute="height" id="8BO-YJ-PWL"/>
                         <constraint firstItem="BAr-2X-f0G" firstAttribute="leading" secondItem="Fxf-5I-3Zt" secondAttribute="leading" id="E6d-zh-53t"/>
                         <constraint firstItem="EPF-TK-n6P" firstAttribute="leading" secondItem="nxu-Mx-j1n" secondAttribute="leading" id="EnI-Qx-HUq"/>
                         <constraint firstItem="bAc-W1-yWP" firstAttribute="top" secondItem="i0L-c2-gL6" secondAttribute="bottom" constant="15" id="FOD-vt-G6R"/>
@@ -155,15 +132,12 @@
                         <constraint firstItem="5vB-2V-ogN" firstAttribute="top" secondItem="zZZ-iT-oz9" secondAttribute="bottom" constant="15" id="I1u-g0-WTc"/>
                         <constraint firstItem="zZZ-iT-oz9" firstAttribute="top" secondItem="bAc-W1-yWP" secondAttribute="bottom" constant="10" id="K09-CM-nwx"/>
                         <constraint firstItem="LAA-CX-O1j" firstAttribute="leading" secondItem="8Qt-hc-vXk" secondAttribute="leading" constant="20" id="NY6-rb-J3S"/>
-                        <constraint firstItem="oez-X1-f5h" firstAttribute="top" secondItem="5vB-2V-ogN" secondAttribute="bottom" constant="10" id="RQk-xb-BeI"/>
                         <constraint firstAttribute="centerX" secondItem="QeQ-gb-fAX" secondAttribute="centerX" id="SvV-hK-A1U"/>
                         <constraint firstItem="i0L-c2-gL6" firstAttribute="top" secondItem="wcX-tp-3W3" secondAttribute="bottom" constant="15" id="TAy-gw-H3w"/>
                         <constraint firstItem="EPF-TK-n6P" firstAttribute="height" secondItem="nxu-Mx-j1n" secondAttribute="height" id="TdT-mM-HHe"/>
-                        <constraint firstItem="BAr-2X-f0G" firstAttribute="trailing" secondItem="QG8-Gt-UHQ" secondAttribute="trailing" id="W0v-KU-iH0"/>
                         <constraint firstAttribute="centerX" secondItem="EPF-TK-n6P" secondAttribute="centerX" id="X0I-eb-wHY"/>
                         <constraint firstItem="BAr-2X-f0G" firstAttribute="top" secondItem="nxu-Mx-j1n" secondAttribute="bottom" constant="10" id="Z04-o6-JSs"/>
                         <constraint firstItem="BAr-2X-f0G" firstAttribute="trailing" secondItem="Fxf-5I-3Zt" secondAttribute="trailing" id="ZwA-aS-rwx"/>
-                        <constraint firstItem="QG8-Gt-UHQ" firstAttribute="centerY" secondItem="oez-X1-f5h" secondAttribute="centerY" id="bvk-Ld-RWB"/>
                         <constraint firstItem="5vB-2V-ogN" firstAttribute="leading" secondItem="bAc-W1-yWP" secondAttribute="leading" id="dQX-Dq-Pco"/>
                         <constraint firstItem="EPF-TK-n6P" firstAttribute="trailing" secondItem="nxu-Mx-j1n" secondAttribute="trailing" id="dap-gV-TZT"/>
                         <constraint firstItem="zZZ-iT-oz9" firstAttribute="leading" secondItem="LAA-CX-O1j" secondAttribute="trailing" constant="30" id="f6N-zR-Xgn"/>
@@ -175,7 +149,6 @@
                         <constraint firstItem="i0L-c2-gL6" firstAttribute="height" secondItem="wcX-tp-3W3" secondAttribute="height" id="mor-Zb-rJA"/>
                         <constraint firstItem="EPF-TK-n6P" firstAttribute="leading" secondItem="8Qt-hc-vXk" secondAttribute="leading" constant="10" id="npu-s4-Lqw"/>
                         <constraint firstItem="nxu-Mx-j1n" firstAttribute="top" secondItem="EPF-TK-n6P" secondAttribute="bottom" constant="10" id="oNN-25-NwJ"/>
-                        <constraint firstItem="QG8-Gt-UHQ" firstAttribute="leading" secondItem="oez-X1-f5h" secondAttribute="trailing" constant="10" id="qmb-jO-wCC"/>
                         <constraint firstItem="nxu-Mx-j1n" firstAttribute="trailing" secondItem="BAr-2X-f0G" secondAttribute="trailing" id="tKI-ME-wtd"/>
                         <constraint firstItem="wcX-tp-3W3" firstAttribute="height" secondItem="BAr-2X-f0G" secondAttribute="height" id="wcZ-3o-NaX"/>
                         <constraint firstItem="wcX-tp-3W3" firstAttribute="leading" secondItem="Fxf-5I-3Zt" secondAttribute="leading" id="xcL-YY-75l"/>
