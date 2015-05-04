@@ -9,6 +9,7 @@
                 <outlet property="CVAboutMeTextView" destination="Fxf-5I-3Zt" id="FR9-YQ-jJ7"/>
                 <outlet property="CVDegreeTextField" destination="i0L-c2-gL6" id="BN5-BN-Z6W"/>
                 <outlet property="CVEducationTextField" destination="wcX-tp-3W3" id="s0m-vw-ley"/>
+                <outlet property="CVSchoolTextField" destination="i8g-aW-noh" id="fPZ-hE-f1Z"/>
                 <outlet property="CVjobSeekerCurrentTitleTextView" destination="BAr-2X-f0G" id="Xxd-11-yOB"/>
                 <outlet property="CVjobSeekerFirstNameTextView" destination="EPF-TK-n6P" id="RnW-lV-FBj"/>
                 <outlet property="CVjobSeekerLastNameTextView" destination="nxu-Mx-j1n" id="yK8-Gl-5zH"/>
@@ -65,17 +66,53 @@
                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Current Title" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BAr-2X-f0G">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Job Title" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BAr-2X-f0G">
                             <rect key="frame" x="10" y="227" width="300" height="40"/>
                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Skills" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5vB-2V-ogN">
-                            <rect key="frame" x="10" y="569" width="36" height="18"/>
+                            <rect key="frame" x="10" y="619" width="36" height="18"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Field of Study" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wcX-tp-3W3" userLabel="Education">
+                            <rect key="frame" x="10" y="437" width="300" height="40"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" minimumValue="-100" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="zZZ-iT-oz9" userLabel="Years of experience stepper" customClass="JLTStepper">
+                            <rect key="frame" x="71" y="575" width="94" height="29"/>
+                            <connections>
+                                <action selector="yearsOfExperienceStepperChange:" destination="-1" eventType="valueChanged" id="DAu-wU-rhm"/>
+                            </connections>
+                        </stepper>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LAA-CX-O1j" userLabel="Years of experience counter">
+                            <rect key="frame" x="20" y="580" width="21" height="22"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="21" id="2Iw-Ps-ATv"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Years of work experience" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bAc-W1-yWP">
+                            <rect key="frame" x="10" y="547" width="173" height="18"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="What's your degree?" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="i0L-c2-gL6" userLabel="Degree text field">
+                            <rect key="frame" x="10" y="492" width="300" height="40"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="School/College" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="i8g-aW-noh" userLabel="School textfield">
+                            <rect key="frame" x="10" y="387" width="300" height="40"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fxf-5I-3Zt" customClass="GCPlaceholderTextView">
                             <rect key="frame" x="10" y="277" width="300" height="100"/>
                             <accessibility key="accessibilityConfiguration" hint="" label=""/>
@@ -86,37 +123,6 @@
                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Education" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wcX-tp-3W3" userLabel="Education">
-                            <rect key="frame" x="10" y="387" width="300" height="40"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                            <textInputTraits key="textInputTraits"/>
-                        </textField>
-                        <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" minimumValue="-100" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="zZZ-iT-oz9" userLabel="Years of experience stepper" customClass="JLTStepper">
-                            <rect key="frame" x="71" y="525" width="94" height="29"/>
-                            <connections>
-                                <action selector="yearsOfExperienceStepperChange:" destination="-1" eventType="valueChanged" id="DAu-wU-rhm"/>
-                            </connections>
-                        </stepper>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LAA-CX-O1j" userLabel="Years of experience counter">
-                            <rect key="frame" x="20" y="530" width="21" height="22"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="21" id="2Iw-Ps-ATv"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Years of experience" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bAc-W1-yWP">
-                            <rect key="frame" x="10" y="497" width="135" height="18"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="What's your degree?" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="i0L-c2-gL6" userLabel="Degree text field">
-                            <rect key="frame" x="10" y="442" width="300" height="40"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                            <textInputTraits key="textInputTraits"/>
-                        </textField>
                     </subviews>
                     <constraints>
                         <constraint firstItem="LAA-CX-O1j" firstAttribute="top" secondItem="bAc-W1-yWP" secondAttribute="bottom" constant="15" id="1fD-cL-Ojb"/>
@@ -125,34 +131,54 @@
                         <constraint firstItem="wcX-tp-3W3" firstAttribute="trailing" secondItem="Fxf-5I-3Zt" secondAttribute="trailing" id="2ug-Bn-rAb"/>
                         <constraint firstItem="nxu-Mx-j1n" firstAttribute="leading" secondItem="BAr-2X-f0G" secondAttribute="leading" id="5nB-le-q8J"/>
                         <constraint firstItem="i0L-c2-gL6" firstAttribute="leading" secondItem="wcX-tp-3W3" secondAttribute="leading" id="6bd-Gv-1cz"/>
+                        <constraint firstItem="BAr-2X-f0G" firstAttribute="trailing" secondItem="i8g-aW-noh" secondAttribute="trailing" id="8aV-Pq-9Os"/>
+                        <constraint firstItem="BAr-2X-f0G" firstAttribute="height" secondItem="i8g-aW-noh" secondAttribute="height" id="CC2-fG-p5K"/>
                         <constraint firstItem="BAr-2X-f0G" firstAttribute="leading" secondItem="Fxf-5I-3Zt" secondAttribute="leading" id="E6d-zh-53t"/>
                         <constraint firstItem="EPF-TK-n6P" firstAttribute="leading" secondItem="nxu-Mx-j1n" secondAttribute="leading" id="EnI-Qx-HUq"/>
                         <constraint firstItem="bAc-W1-yWP" firstAttribute="top" secondItem="i0L-c2-gL6" secondAttribute="bottom" constant="15" id="FOD-vt-G6R"/>
                         <constraint firstItem="Fxf-5I-3Zt" firstAttribute="top" secondItem="BAr-2X-f0G" secondAttribute="bottom" constant="10" id="FUj-2q-dEs"/>
                         <constraint firstItem="5vB-2V-ogN" firstAttribute="top" secondItem="zZZ-iT-oz9" secondAttribute="bottom" constant="15" id="I1u-g0-WTc"/>
                         <constraint firstItem="zZZ-iT-oz9" firstAttribute="top" secondItem="bAc-W1-yWP" secondAttribute="bottom" constant="10" id="K09-CM-nwx"/>
+                        <constraint firstItem="Fxf-5I-3Zt" firstAttribute="top" secondItem="BAr-2X-f0G" secondAttribute="bottom" constant="10" id="Lmg-Fc-ajt"/>
                         <constraint firstItem="LAA-CX-O1j" firstAttribute="leading" secondItem="8Qt-hc-vXk" secondAttribute="leading" constant="20" id="NY6-rb-J3S"/>
                         <constraint firstAttribute="centerX" secondItem="QeQ-gb-fAX" secondAttribute="centerX" id="SvV-hK-A1U"/>
                         <constraint firstItem="i0L-c2-gL6" firstAttribute="top" secondItem="wcX-tp-3W3" secondAttribute="bottom" constant="15" id="TAy-gw-H3w"/>
                         <constraint firstItem="EPF-TK-n6P" firstAttribute="height" secondItem="nxu-Mx-j1n" secondAttribute="height" id="TdT-mM-HHe"/>
                         <constraint firstAttribute="centerX" secondItem="EPF-TK-n6P" secondAttribute="centerX" id="X0I-eb-wHY"/>
+                        <constraint firstItem="Fxf-5I-3Zt" firstAttribute="top" secondItem="i8g-aW-noh" secondAttribute="bottom" constant="62" id="XQh-dd-zuM"/>
                         <constraint firstItem="BAr-2X-f0G" firstAttribute="top" secondItem="nxu-Mx-j1n" secondAttribute="bottom" constant="10" id="Z04-o6-JSs"/>
+                        <constraint firstItem="i8g-aW-noh" firstAttribute="top" secondItem="BAr-2X-f0G" secondAttribute="bottom" constant="10" id="ZDL-5f-lgx"/>
                         <constraint firstItem="BAr-2X-f0G" firstAttribute="trailing" secondItem="Fxf-5I-3Zt" secondAttribute="trailing" id="ZwA-aS-rwx"/>
                         <constraint firstItem="5vB-2V-ogN" firstAttribute="leading" secondItem="bAc-W1-yWP" secondAttribute="leading" id="dQX-Dq-Pco"/>
                         <constraint firstItem="EPF-TK-n6P" firstAttribute="trailing" secondItem="nxu-Mx-j1n" secondAttribute="trailing" id="dap-gV-TZT"/>
+                        <constraint firstItem="BAr-2X-f0G" firstAttribute="leading" secondItem="i8g-aW-noh" secondAttribute="leading" id="ebj-3B-UWq"/>
                         <constraint firstItem="zZZ-iT-oz9" firstAttribute="leading" secondItem="LAA-CX-O1j" secondAttribute="trailing" constant="30" id="f6N-zR-Xgn"/>
                         <constraint firstItem="nxu-Mx-j1n" firstAttribute="height" secondItem="BAr-2X-f0G" secondAttribute="height" id="fMP-zZ-Qea"/>
                         <constraint firstItem="QeQ-gb-fAX" firstAttribute="top" secondItem="8Qt-hc-vXk" secondAttribute="top" constant="22" id="fRe-A1-Ooj"/>
                         <constraint firstItem="i0L-c2-gL6" firstAttribute="trailing" secondItem="wcX-tp-3W3" secondAttribute="trailing" id="ft3-Ll-zkH"/>
+                        <constraint firstItem="i8g-aW-noh" firstAttribute="top" secondItem="Fxf-5I-3Zt" secondAttribute="bottom" constant="10" id="jJQ-se-Hf1"/>
+                        <constraint firstItem="i8g-aW-noh" firstAttribute="top" secondItem="Fxf-5I-3Zt" secondAttribute="bottom" constant="10" id="kQL-dA-FtM"/>
                         <constraint firstItem="bAc-W1-yWP" firstAttribute="leading" secondItem="i0L-c2-gL6" secondAttribute="leading" id="kqe-js-5ti"/>
                         <constraint firstItem="EPF-TK-n6P" firstAttribute="top" secondItem="QeQ-gb-fAX" secondAttribute="bottom" constant="10" id="mEQ-5Y-Jdk"/>
                         <constraint firstItem="i0L-c2-gL6" firstAttribute="height" secondItem="wcX-tp-3W3" secondAttribute="height" id="mor-Zb-rJA"/>
                         <constraint firstItem="EPF-TK-n6P" firstAttribute="leading" secondItem="8Qt-hc-vXk" secondAttribute="leading" constant="10" id="npu-s4-Lqw"/>
                         <constraint firstItem="nxu-Mx-j1n" firstAttribute="top" secondItem="EPF-TK-n6P" secondAttribute="bottom" constant="10" id="oNN-25-NwJ"/>
+                        <constraint firstItem="Fxf-5I-3Zt" firstAttribute="top" secondItem="BAr-2X-f0G" secondAttribute="bottom" constant="10" id="rF2-s2-LxH"/>
+                        <constraint firstItem="wcX-tp-3W3" firstAttribute="top" secondItem="i8g-aW-noh" secondAttribute="bottom" constant="10" id="rnD-0j-gdB"/>
                         <constraint firstItem="nxu-Mx-j1n" firstAttribute="trailing" secondItem="BAr-2X-f0G" secondAttribute="trailing" id="tKI-ME-wtd"/>
                         <constraint firstItem="wcX-tp-3W3" firstAttribute="height" secondItem="BAr-2X-f0G" secondAttribute="height" id="wcZ-3o-NaX"/>
                         <constraint firstItem="wcX-tp-3W3" firstAttribute="leading" secondItem="Fxf-5I-3Zt" secondAttribute="leading" id="xcL-YY-75l"/>
                     </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="FUj-2q-dEs"/>
+                            <exclude reference="Lmg-Fc-ajt"/>
+                            <exclude reference="XQh-dd-zuM"/>
+                            <exclude reference="ZDL-5f-lgx"/>
+                            <exclude reference="kQL-dA-FtM"/>
+                            <exclude reference="28I-zP-GPh"/>
+                        </mask>
+                    </variation>
                 </scrollView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

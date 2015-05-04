@@ -80,7 +80,7 @@ int addSkillButtonTapCount = 0;
     [CVPickerToolbar setItems:[NSArray arrayWithObjects:space, doneBtn, nil]];
     [_CVDegreeTextField setInputAccessoryView:CVPickerToolbar];
     _CVDegreePicker.delegate =self;
-    self.educationDegreesList = @[@"Primary School",@"High/Secondary School", @"Diploma",@"Bachelor's Degree",@"Master's Degree",@"PhD", @"None"];
+    self.educationDegreesList = @[@"Primary School",@"High/Secondary School", @"Associate's Degree (Diploma)",@"Bachelor's Degree",@"Master's Degree",@"PhD", @"None"];
     
     
     
@@ -653,6 +653,8 @@ int addSkillButtonTapCount = 0;
                     jobSeekerObject[@"jobSeekerEducation"] =_CVEducationTextField.text;
                     jobSeekerObject[@"jobSeekerEducationDegree"] =_CVDegreeTextField.text;
                     jobSeekerObject[@"jobSeekerYearsOfExperience"] =[NSNumber numberWithInteger:[_yearsOfExperienceLabel.text intValue]] ;
+                    jobSeekerObject[@"school"] =_CVSchoolTextField.text;
+
 
 
                     
@@ -737,6 +739,7 @@ int addSkillButtonTapCount = 0;
                 cvObject[@"jobSeekerAbout"] = _CVAboutMeTextView.text;
                 cvObject[@"jobSeekerEducation"] = _CVEducationTextField.text;
                 cvObject[@"jobSeekerEducationDegree"] = _CVDegreeTextField.text;
+                cvObject[@"school"] = _CVSchoolTextField.text;
                 cvObject[@"jobSeekerYearsOfExperience"] = [NSNumber numberWithInteger:[_yearsOfExperienceLabel.text intValue]] ;
                 
                 

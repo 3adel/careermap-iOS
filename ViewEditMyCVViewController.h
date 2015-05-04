@@ -31,6 +31,7 @@
 
 @property (weak, nonatomic) IBOutlet UITextView *jobSkillsTextView;
 
+@property (weak, nonatomic) IBOutlet UILabel *CVJobSeekerSchool;
 
 
 

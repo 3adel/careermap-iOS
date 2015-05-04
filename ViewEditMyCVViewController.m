@@ -231,6 +231,20 @@
                         
                     }
                     
+                    if (![[[object objectForKey:@"aJobSeekerID"] objectForKey:@"school"] isEqualToString:@""]) {
+                        _CVJobSeekerSchool.text = @"";
+                        _CVJobSeekerSchool.text =[[object objectForKey:@"aJobSeekerID"] objectForKey:@"school"];
+                        _CVJobSeekerSchool.textColor = [UIColor blackColor];
+                        
+                    }
+                    else{
+                        _CVJobSeekerSchool.text = @"None";
+                        _CVJobSeekerSchool.textColor = [UIColor orangeColor];
+                        
+                        
+                        
+                    }
+                    
                     
                     
                     
@@ -432,6 +446,8 @@
         createCVInstance.CVEducationTextField.text=[[_jobSeekerObject objectForKey:@"aJobSeekerID"] objectForKey:@"jobSeekerEducation"];
         createCVInstance.CVDegreeTextField.text=[[_jobSeekerObject objectForKey:@"aJobSeekerID"] objectForKey:@"jobSeekerEducationDegree"];
         createCVInstance.yearsOfExperienceLabel.text=[[[_jobSeekerObject objectForKey:@"aJobSeekerID"] objectForKey:@"jobSeekerYearsOfExperience"] stringValue];
+        createCVInstance.CVSchoolTextField.text =  createCVInstance.CVSchoolTextField.text=[[_jobSeekerObject objectForKey:@"aJobSeekerID"] objectForKey:@"school"];
+
         
         
         

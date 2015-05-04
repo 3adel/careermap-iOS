@@ -15,7 +15,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ebW-kv-FFe">
-                    <rect key="frame" x="0.0" y="90" width="600" height="40"/>
+                    <rect key="frame" x="16" y="155" width="568" height="45"/>
                     <color key="backgroundColor" red="0.0" green="0.50196081399917603" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <state key="normal" title="I am an employer">
                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -26,11 +26,11 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mO0-ja-7c2">
-                    <rect key="frame" x="0.0" y="40" width="600" height="40"/>
+                    <rect key="frame" x="16" y="100" width="568" height="45"/>
                     <color key="backgroundColor" red="0.0" green="0.50196081399917603" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="40" id="7sQ-fb-25j"/>
-                        <constraint firstAttribute="height" constant="40" id="Utb-si-Rm4"/>
+                        <constraint firstAttribute="height" constant="45" id="Utb-si-Rm4"/>
                     </constraints>
                     <state key="normal" title="I am Looking for a Job">
                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -50,11 +50,11 @@
             <constraints>
                 <constraint firstItem="ebW-kv-FFe" firstAttribute="height" secondItem="mO0-ja-7c2" secondAttribute="height" id="4lj-CG-Dgm"/>
                 <constraint firstItem="ebW-kv-FFe" firstAttribute="leading" secondItem="mO0-ja-7c2" secondAttribute="leading" id="CJO-Zf-7Lr"/>
-                <constraint firstItem="mO0-ja-7c2" firstAttribute="top" secondItem="yTl-9f-h8Z" secondAttribute="top" constant="40" id="Cp2-nh-OPx"/>
+                <constraint firstItem="mO0-ja-7c2" firstAttribute="top" secondItem="yTl-9f-h8Z" secondAttribute="top" constant="100" id="Cp2-nh-OPx"/>
                 <constraint firstItem="ebW-kv-FFe" firstAttribute="trailing" secondItem="mO0-ja-7c2" secondAttribute="trailing" id="bax-Vl-UAy"/>
-                <constraint firstAttribute="trailing" secondItem="mO0-ja-7c2" secondAttribute="trailing" id="eZO-Td-G2z"/>
+                <constraint firstAttribute="trailing" secondItem="mO0-ja-7c2" secondAttribute="trailing" constant="16" id="eZO-Td-G2z"/>
                 <constraint firstItem="ebW-kv-FFe" firstAttribute="top" secondItem="mO0-ja-7c2" secondAttribute="bottom" constant="10" id="hVr-h9-7ea"/>
-                <constraint firstItem="mO0-ja-7c2" firstAttribute="leading" secondItem="yTl-9f-h8Z" secondAttribute="leading" id="r7v-Vd-mQW"/>
+                <constraint firstItem="mO0-ja-7c2" firstAttribute="leading" secondItem="yTl-9f-h8Z" secondAttribute="leading" constant="16" id="r7v-Vd-mQW"/>
             </constraints>
             <point key="canvasLocation" x="297" y="-6"/>
         </view>
