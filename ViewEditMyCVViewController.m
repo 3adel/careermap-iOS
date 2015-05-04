@@ -17,7 +17,9 @@
 
 -(void) CVEditSuccess{
     
-    [_saveCVButtonPressedMessage hideMessage];
+
+    /*
+    //[_saveCVButtonPressedMessage hideMessage];
     
     //Show successfull cv saved message
     AppHorizontalMessage *appMessage = [[AppHorizontalMessage alloc] init];
@@ -25,13 +27,18 @@
     [[[UIApplication sharedApplication] keyWindow] addSubview:appMessage
      ];
     [appMessage showWithMessageAutoHide:@"CV saved" withColor:[UIColor colorWithRed:0/255.0 green:128.0/255.0 blue:0.0/0.0 alpha:0.8]];
+    */
+    
+    
     
     //this will guaranteed that the activity indicator is shown while the data is loading
     _CVContentScrollView.hidden =YES;
     _noCVFoundView.hidden =YES;
     [_editCVButton setEnabled:NO];
-    [_CVDataLoadingIndicator startAnimating];
+   // [_CVDataLoadingIndicator startAnimating];
     [self CVViewEdit];
+    
+    
     
 }
 
@@ -40,6 +47,13 @@
     
     NSLog(@"save button tapped notification");
     
+    //progress spinner initialization
+    _MBProgressHUDSaveButtonPressedIndicator = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    _MBProgressHUDSaveButtonPressedIndicator.labelText = @"Saving CV ...";
+    _MBProgressHUDSaveButtonPressedIndicator.mode = MBProgressHUDModeIndeterminate;
+    
+
+    /*
     //Show successfull cv saved message
     _saveCVButtonPressedMessage = [[AppHorizontalMessage alloc] init];
     _saveCVButtonPressedMessage.center = CGPointMake(self.view.center.x,[UIScreen mainScreen].bounds.size.height - 69);
@@ -49,12 +63,12 @@
     
     //orange color
     [_saveCVButtonPressedMessage showMessage:@"Saving ..." withColor:[UIColor colorWithRed:255/255.0 green:149.0/255.0 blue:0.0/0.0 alpha:0.8]];
-
+*/
     //this will guaranteed that the activity indicator is shown while the data is loading
     _CVContentScrollView.hidden =YES;
     _noCVFoundView.hidden =YES;
     [_editCVButton setEnabled:NO];
-    [_CVDataLoadingIndicator startAnimating];
+    //[_CVDataLoadingIndicator startAnimating];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 
 
@@ -99,7 +113,9 @@
         //if they do, view the CV
     
     
-    [_CVDataLoadingIndicator startAnimating];
+    //[_CVDataLoadingIndicator startAnimating];
+    [_editCVButton setEnabled:NO];
+
     [self CVViewEdit];
     
         // if they don't have a cv, disable the edit button inititate cv creation flow
@@ -367,8 +383,16 @@
         NSLog(@"done retrieveing date");
         
         dispatch_async(dispatch_get_main_queue(), ^{
-           [_CVDataLoadingIndicator stopAnimating];
-           [_CVDataLoadingIndicator setHidesWhenStopped:YES];
+         //  [_CVDataLoadingIndicator stopAnimating];
+            
+           //[_CVDataLoadingIndicator setHidesWhenStopped:YES];
+            
+            
+            
+            
+                [_MBProgressHUDSaveButtonPressedIndicator setHidden:YES];
+                
+          
             
         });
         

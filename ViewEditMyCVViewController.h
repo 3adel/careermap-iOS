@@ -10,6 +10,7 @@
 #import "CreateCVViewController.h"
 #import <Parse/Parse.h>
 #import "AppHorizontalMessage.h"
+#import "MBProgressHUD.h"
 
 
 @interface ViewEditMyCVViewController : UIViewController
@@ -32,12 +33,8 @@
 @property (weak, nonatomic) IBOutlet UITextView *jobSkillsTextView;
 
 @property (weak, nonatomic) IBOutlet UILabel *CVJobSeekerSchool;
-
-
-
-
-
 @property (strong, nonatomic) AppHorizontalMessage *saveCVButtonPressedMessage;
+@property (strong, nonatomic) MBProgressHUD *MBProgressHUDSaveButtonPressedIndicator;
 
 //data
 @property (strong, nonatomic) PFObject *jobSeekerObject;

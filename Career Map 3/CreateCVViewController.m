@@ -558,7 +558,7 @@ int addSkillButtonTapCount = 0;
 
 - (IBAction)saveCVButtonPressed:(UIBarButtonItem *)sender {
     
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"saveCVButtonPressed" object:nil];
+    
     [self.view endEditing:YES];
     [self checkFieldsComplete];
     
@@ -579,6 +579,7 @@ int addSkillButtonTapCount = 0;
         
         
         NSLog(@"Save cv to backend");
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"saveCVButtonPressed" object:nil];
         [self saveCVToParse];
         
     }

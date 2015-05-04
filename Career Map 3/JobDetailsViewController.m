@@ -98,13 +98,16 @@
     
     
     
-    //update the report button.
+    //set the style of the button update the report button.
+    
+    [_reportJobBarButton setTintColor:[UIColor redColor]];
     if ([[_jobObject objectForKey:@"currentUserVotedDownThisJob"] isEqualToString:@"1"]) {
         _reportJobBarButton.enabled =NO;
     } else{
         
         _reportJobBarButton.enabled =YES;
     }
+    
     
     
 }
@@ -260,6 +263,14 @@
 
 - (IBAction)applyWithCVButtonPressed:(UIButton *)sender {
     
+    
+    //progress spinner initialization
+    MBProgressHUD *HUDProgressIndicator = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    HUDProgressIndicator.labelText = @"Applying ...";
+    HUDProgressIndicator.mode = MBProgressHUDModeIndeterminate;
+    
+    
+    
     //If the user don't have a CV, take them to the CV creation flow.
     PFQuery *query = [PFQuery queryWithClassName:@"_User"];
     [query includeKey:@"aJobSeekerID"];
@@ -302,6 +313,13 @@
                                         [_applyWithCVButton setTitle:@"You Applied" forState:UIControlStateNormal];
                                         [_applyWithCVButton setBackgroundColor:[UIColor grayColor]];
                                         self.applyWithCVButton.enabled =NO;
+                                        [HUDProgressIndicator setHidden:YES];
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
                                     });
                                     
                                     [_jobObject addUniqueObject:[[PFUser currentUser] objectId] forKey:@"appliedByUsers"];
@@ -337,10 +355,11 @@
             }
             
             else{
+                [HUDProgressIndicator setHidden:YES];
                 
                 _createCVAlert.delegate = self;
                 NSLog(@"No cv has been found, create one then");
-                 _createCVAlert =[[UIAlertView alloc] initWithTitle:@"Create CV" message:@"It will take you few minutes" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Create My CV ", nil];
+                 _createCVAlert =[[UIAlertView alloc] initWithTitle:@"No CV found" message:@"Please create a CV so you can apply" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Create My CV ", nil];
 
                 
                 
@@ -390,6 +409,7 @@
     //progress spinner initialization
      MBProgressHUD *HUDProgressIndicator = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     HUDProgressIndicator.labelText = @"Thanks for reporting";
+    HUDProgressIndicator.detailsLabelText = @"We'll take care of this";
     HUDProgressIndicator.mode = MBProgressHUDModeIndeterminate;
     //orange color
    // [_HUDProgressIndicator setColor:[UIColor colorWithRed:255/255.0 green:149.0/255.0 blue:0.0/0.0 alpha:0.8]];
