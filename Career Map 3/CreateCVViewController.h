@@ -45,6 +45,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *yearsOfExperienceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *skillsSectionLabel;
 
+
 //methods
 - (void )setupSkillsView;
 - (void) setupAddSkillButton;

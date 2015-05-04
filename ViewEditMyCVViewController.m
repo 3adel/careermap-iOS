@@ -162,7 +162,119 @@
                     
                     //move to main thread
                     //update fields values
-                    _fullNameLabel.text =[NSString stringWithFormat:@"%@ %@",[[object objectForKey:@"aJobSeekerID"] objectForKey:@"firstName"],[[object objectForKey:@"aJobSeekerID"] objectForKey:@"lastName"]];
+                    if (![[[object objectForKey:@"aJobSeekerID"] objectForKey:@"firstName"] isEqualToString:@""]) {
+                        _fullNameLabel.text = @"";
+                        _fullNameLabel.text =[NSString stringWithFormat:@"%@ %@",[[object objectForKey:@"aJobSeekerID"] objectForKey:@"firstName"],[[object objectForKey:@"aJobSeekerID"] objectForKey:@"lastName"]];
+                        _fullNameLabel.textColor = [UIColor blackColor];
+                    }
+                    else{
+                        _fullNameLabel.text = @"None";
+                        _fullNameLabel.textColor = [UIColor orangeColor];
+                        
+                        
+                    }
+                    
+                    if (![[[object objectForKey:@"aJobSeekerID"] objectForKey:@"currentTitle"] isEqualToString:@""]) {
+                        _CVJobSeekerCurrentTitleLabel.text = @"";
+                        _CVJobSeekerCurrentTitleLabel.text =[[object objectForKey:@"aJobSeekerID"] objectForKey:@"currentTitle"];
+                        _CVJobSeekerCurrentTitleLabel.textColor = [UIColor blackColor];
+
+                    }
+                    else{
+                        _CVJobSeekerCurrentTitleLabel.text = @"None";
+                        _CVJobSeekerCurrentTitleLabel.textColor = [UIColor orangeColor];
+
+                        
+    
+                    }
+                    
+                    if (![[[object objectForKey:@"aJobSeekerID"] objectForKey:@"jobSeekerAbout"] isEqualToString:@""]) {
+                        _CVJobSeekerAboutMeTextView.text = @"";
+                        _CVJobSeekerAboutMeTextView.text =[[object objectForKey:@"aJobSeekerID"] objectForKey:@"jobSeekerAbout"];
+                        _CVJobSeekerAboutMeTextView.textColor = [UIColor blackColor];
+
+                    }
+                    else{
+                        _CVJobSeekerAboutMeTextView.text = @"None";
+                        _CVJobSeekerAboutMeTextView.textColor = [UIColor orangeColor];
+
+                        
+                        
+                    }
+                    
+                    
+                    if (![[[object objectForKey:@"aJobSeekerID"] objectForKey:@"jobSeekerEducation"] isEqualToString:@""]) {
+                        _CVJobSeekerEducationLabel.text = @"";
+                        _CVJobSeekerEducationLabel.text =[[object objectForKey:@"aJobSeekerID"] objectForKey:@"jobSeekerEducation"];
+                        _CVJobSeekerEducationLabel.textColor = [UIColor blackColor];
+
+                    }
+                    else{
+                        _CVJobSeekerEducationLabel.text = @"None";
+                        _CVJobSeekerEducationLabel.textColor = [UIColor orangeColor];
+
+                        
+                        
+                    }
+                    
+                    if (![[[object objectForKey:@"aJobSeekerID"] objectForKey:@"jobSeekerEducationDegree"] isEqualToString:@""]) {
+                        _CVJobSeekerDegreeLabel.text = @"";
+                        _CVJobSeekerDegreeLabel.text =[[object objectForKey:@"aJobSeekerID"] objectForKey:@"jobSeekerEducationDegree"];
+                        _CVJobSeekerDegreeLabel.textColor = [UIColor blackColor];
+
+                    }
+                    else{
+                        _CVJobSeekerDegreeLabel.text = @"None";
+                        _CVJobSeekerDegreeLabel.textColor = [UIColor orangeColor];
+
+                        
+                        
+                    }
+                    
+                    
+                    
+                    
+                    
+
+                   // _CVJobSeekerEducationLabel.text =[[object objectForKey:@"aJobSeekerID"] objectForKey:@"jobSeekerEducation"];
+                   // _CVJobSeekerDegreeLabel.text =[[object objectForKey:@"aJobSeekerID"] objectForKey:@"jobSeekerEducationDegree"];
+                    _CVJobSeekerYearsOfExperienceLabel.text =[[[object objectForKey:@"aJobSeekerID"] objectForKey:@"jobSeekerYearsOfExperience"] stringValue];
+                    
+                    //update skills
+                    
+
+                    
+                    if ([(NSArray *)[[object objectForKey:@"aJobSeekerID"] objectForKey:@"skills"] count]>0) {
+                        
+                        _jobSkillsTextView.text = @"";
+                        _jobSkillsTextView.textColor = [UIColor blackColor];
+                        int count =0;
+                        for (NSString *skill in (NSArray *)[[object objectForKey:@"aJobSeekerID"] objectForKey:@"skills"]) {
+                            
+                            
+                            
+                            
+                            _jobSkillsTextView.text = [_jobSkillsTextView.text stringByAppendingString:[NSString stringWithFormat:@"- %@",skill]];
+                            
+                            if (!(count == ([(NSArray *)[[object objectForKey:@"aJobSeekerID"] objectForKey:@"skills"] count])-1)) {
+                                _jobSkillsTextView.text = [_jobSkillsTextView.text stringByAppendingString:@"\n"];
+                            }
+                            
+                            count++;
+                        }
+
+                    }
+                    
+                    else{
+                        _jobSkillsTextView.text = @"No skills yet";
+                        _jobSkillsTextView.textColor = [UIColor orangeColor];
+
+                        
+                        
+                        
+                    }
+                    
+
                     
                     //update cv image thumb
                     PFFile *CVThumbImageFile = [[object objectForKey:@"aJobSeekerID"] objectForKey:@"jobSeekerThumb"];

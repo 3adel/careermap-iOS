@@ -21,6 +21,21 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *editCVButton;
 @property (weak, nonatomic) IBOutlet UILabel *fullNameLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *aJobSeekerThumb;
+
+@property (weak, nonatomic) IBOutlet UILabel *CVJobSeekerCurrentTitleLabel;
+@property (weak, nonatomic) IBOutlet UITextView *CVJobSeekerAboutMeTextView;
+@property (weak, nonatomic) IBOutlet UILabel *CVJobSeekerEducationLabel;
+@property (weak, nonatomic) IBOutlet UILabel *CVJobSeekerDegreeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *CVJobSeekerYearsOfExperienceLabel;
+
+
+@property (weak, nonatomic) IBOutlet UITextView *jobSkillsTextView;
+
+
+
+
+
+
 @property (strong, nonatomic) AppHorizontalMessage *saveCVButtonPressedMessage;
 
 //data
