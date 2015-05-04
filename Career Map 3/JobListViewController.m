@@ -44,6 +44,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
+    //table cell autolayout
+    _jobTable.estimatedRowHeight = 90.0;
+    self.jobTable.rowHeight = UITableViewAutomaticDimension;
+
+    
 
     //progress spinner initialization
     _HUDProgressIndicator = [MBProgressHUD showHUDAddedTo:_jobTable animated:YES];
@@ -317,7 +323,7 @@
     formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"dd-MM-yyyy HH:mm"];
     
-    
+    /*
     // programattic upvote button
     UIButton *voteUpButtonTest = [[UIButton alloc] initWithFrame:
                                   CGRectMake(260, 0, 40, 40)];
@@ -354,7 +360,7 @@
         [voteDownButtonTest setImage:[UIImage imageNamed:@"JobVoteDwn-no-selected"] forState:UIControlStateNormal];
     }
     
-    
+    */
     
     
     

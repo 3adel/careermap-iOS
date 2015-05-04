@@ -9,59 +9,80 @@
         <scene sceneID="MEq-eT-Xdc">
             <objects>
                 <tableViewController storyboardIdentifier="JobListViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="iC0-Pg-6cA" customClass="JobListViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="22" sectionFooterHeight="22" id="oVI-xq-eSF">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="91" sectionHeaderHeight="22" sectionFooterHeight="22" id="oVI-xq-eSF">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="jobCell" rowHeight="90" id="vdI-DA-Dn3" customClass="JobCustomTableViewCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="jobCell" rowHeight="91" id="vdI-DA-Dn3" customClass="JobCustomTableViewCell">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vdI-DA-Dn3" id="Bsq-Cm-a6P">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Job Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N0w-wi-4Fa">
-                                            <rect key="frame" x="8" y="8" width="242" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Job Title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N0w-wi-4Fa">
+                                            <rect key="frame" x="8" y="8" width="551" height="21"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Status" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Qa-a6-TFF">
-                                            <rect key="frame" x="216" y="68" width="57" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Qa-a6-TFF">
+                                            <rect key="frame" x="125" y="66" width="31" height="12"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Employer" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3sW-hB-upE">
-                                            <rect key="frame" x="112" y="37" width="119" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Employer" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3sW-hB-upE">
+                                            <rect key="frame" x="85" y="39" width="474" height="17"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Distance" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aU7-0p-S2X">
-                                            <rect key="frame" x="8" y="37" width="101" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Distance" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aU7-0p-S2X">
+                                            <rect key="frame" x="8" y="39" width="57" height="17"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date Added" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="awk-od-Uke">
-                                            <rect key="frame" x="8" y="68" width="91" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date Added" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="awk-od-Uke">
+                                            <rect key="frame" x="8" y="66" width="56" height="11"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oiv-2C-cYR">
-                                            <rect key="frame" x="250" y="35" width="59" height="25"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <color key="textColor" name="controlShadowColor" catalog="System" colorSpace="catalog"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="area" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nCM-4a-sOv">
-                                            <rect key="frame" x="112" y="68" width="82" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="area" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nCM-4a-sOv">
+                                            <rect key="frame" x="84" y="66" width="21" height="12"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="awk-od-Uke" firstAttribute="top" secondItem="aU7-0p-S2X" secondAttribute="bottom" constant="10" id="0cd-Is-7vI"/>
+                                        <constraint firstItem="aU7-0p-S2X" firstAttribute="centerY" secondItem="3sW-hB-upE" secondAttribute="centerY" id="5CC-rq-UJH"/>
+                                        <constraint firstItem="1Qa-a6-TFF" firstAttribute="leading" secondItem="nCM-4a-sOv" secondAttribute="trailing" constant="20" id="9Qn-Ox-sUd"/>
+                                        <constraint firstItem="3sW-hB-upE" firstAttribute="leading" secondItem="aU7-0p-S2X" secondAttribute="trailing" constant="20" id="9jn-ar-rbU"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="awk-od-Uke" secondAttribute="bottom" constant="5" id="Ce9-uc-CYP"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="awk-od-Uke" secondAttribute="bottom" constant="13" id="CmC-QO-dzh"/>
+                                        <constraint firstItem="1Qa-a6-TFF" firstAttribute="centerY" secondItem="nCM-4a-sOv" secondAttribute="centerY" id="D24-0Q-QnR"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="awk-od-Uke" secondAttribute="trailing" constant="503" id="Hfe-Jr-AaK"/>
+                                        <constraint firstItem="aU7-0p-S2X" firstAttribute="top" secondItem="N0w-wi-4Fa" secondAttribute="bottom" constant="10" id="LAK-aE-2k9"/>
+                                        <constraint firstItem="awk-od-Uke" firstAttribute="centerY" secondItem="nCM-4a-sOv" secondAttribute="centerY" id="NzZ-NR-sin"/>
+                                        <constraint firstItem="aU7-0p-S2X" firstAttribute="leading" secondItem="Bsq-Cm-a6P" secondAttribute="leadingMargin" id="OP6-Qa-bbR"/>
+                                        <constraint firstItem="awk-od-Uke" firstAttribute="leading" secondItem="Bsq-Cm-a6P" secondAttribute="leadingMargin" id="Yf5-jT-gG0"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="N0w-wi-4Fa" secondAttribute="trailing" id="Z9e-yO-AVO"/>
+                                        <constraint firstItem="N0w-wi-4Fa" firstAttribute="top" secondItem="Bsq-Cm-a6P" secondAttribute="topMargin" id="djT-HL-hRI"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="3sW-hB-upE" secondAttribute="trailing" id="eT4-FI-EFm"/>
+                                        <constraint firstItem="nCM-4a-sOv" firstAttribute="leading" secondItem="awk-od-Uke" secondAttribute="trailing" constant="20" id="fEF-zn-8tb"/>
+                                        <constraint firstItem="N0w-wi-4Fa" firstAttribute="leading" secondItem="Bsq-Cm-a6P" secondAttribute="leadingMargin" id="ls4-b4-ADa"/>
+                                        <constraint firstItem="aU7-0p-S2X" firstAttribute="top" secondItem="N0w-wi-4Fa" secondAttribute="bottom" constant="5" id="zck-z3-MpV"/>
+                                    </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="zck-z3-MpV"/>
+                                            <exclude reference="CmC-QO-dzh"/>
+                                            <exclude reference="Hfe-Jr-AaK"/>
+                                        </mask>
+                                    </variation>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="jobArea" destination="nCM-4a-sOv" id="yU9-YR-yXl"/>
@@ -70,7 +91,6 @@
                                     <outlet property="jobEmployer" destination="3sW-hB-upE" id="YU3-vv-PD3"/>
                                     <outlet property="jobStatus" destination="1Qa-a6-TFF" id="oCs-Bd-7FT"/>
                                     <outlet property="jobTitleLabel" destination="N0w-wi-4Fa" id="Waq-fs-b9q"/>
-                                    <outlet property="jobVoteLabel" destination="oiv-2C-cYR" id="JQR-jm-OtD"/>
                                     <segue destination="oBD-2n-Moc" kind="show" identifier="showJob" id="LBn-AI-AAP"/>
                                 </connections>
                             </tableViewCell>
@@ -87,7 +107,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fTZ-GB-uuF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2098.125" y="-235.56338028169003"/>
+            <point key="canvasLocation" x="2098" y="-236"/>
         </scene>
         <!--Job Details View Controller-->
         <scene sceneID="04e-1I-DIt">
@@ -665,14 +685,14 @@
                                         <exclude reference="k3y-YY-hAb"/>
                                         <exclude reference="3vK-3X-8er"/>
                                         <exclude reference="JyZ-rF-R75"/>
-                                        <exclude reference="1WG-pA-YB0"/>
-                                        <exclude reference="KzT-rG-s44"/>
-                                        <exclude reference="Rz8-6b-lUz"/>
-                                        <exclude reference="zOD-S3-UOd"/>
                                         <exclude reference="Oom-s2-uZv"/>
                                         <exclude reference="Wg0-lO-Htb"/>
                                         <exclude reference="1DT-fe-bge"/>
                                         <exclude reference="Mg3-WL-efg"/>
+                                        <exclude reference="1WG-pA-YB0"/>
+                                        <exclude reference="KzT-rG-s44"/>
+                                        <exclude reference="Rz8-6b-lUz"/>
+                                        <exclude reference="zOD-S3-UOd"/>
                                         <exclude reference="oCv-rj-jhQ"/>
                                         <exclude reference="rse-ab-DAh"/>
                                     </mask>
