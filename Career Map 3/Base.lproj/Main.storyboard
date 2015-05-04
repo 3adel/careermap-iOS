@@ -274,7 +274,13 @@
                             <constraint firstItem="zZB-0S-X7L" firstAttribute="top" secondItem="PjM-Ma-zcP" secondAttribute="bottom" id="w97-8I-hXG"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Vjd-w7-ijy"/>
+                    <navigationItem key="navigationItem" id="Vjd-w7-ijy">
+                        <barButtonItem key="rightBarButtonItem" image="MenuBar-Report.png" id="leh-Ub-ROv">
+                            <connections>
+                                <action selector="reportJobButtonPressed:" destination="oBD-2n-Moc" id="w8W-gp-Mcw"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="1200"/>
                     <connections>
@@ -290,6 +296,7 @@
                         <outlet property="jobSkillsView" destination="cVp-jb-txK" id="dKf-Qc-qLb"/>
                         <outlet property="jobTitleTextView" destination="ol1-9c-Ylq" id="EPd-kX-Ifu"/>
                         <outlet property="jobsSkillsTextView" destination="PAy-ON-HxY" id="8AI-8a-jnz"/>
+                        <outlet property="reportJobBarButton" destination="leh-Ub-ROv" id="6dY-pG-24d"/>
                         <segue destination="f8E-eG-jBp" kind="presentation" identifier="jobMap" modalTransitionStyle="coverVertical" id="jiS-YI-dCJ"/>
                     </connections>
                 </viewController>
@@ -441,7 +448,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="1200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="mya-IL-RFa">
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="mya-IL-RFa">
                                 <rect key="frame" x="275" y="575" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="83t-oP-Rnk"/>
@@ -449,49 +456,6 @@
                                 </constraints>
                                 <color key="color" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lrq-3r-0dO" userLabel="No CV Found View">
-                                <rect key="frame" x="16" y="74" width="568" height="1126"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="311-t7-crG">
-                                        <rect key="frame" x="201" y="145" width="165" height="45"/>
-                                        <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="165" id="2l1-db-Jqb"/>
-                                            <constraint firstAttribute="height" constant="45" id="MUg-3T-cD8"/>
-                                        </constraints>
-                                        <state key="normal" title="Create CV">
-                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="createCVButtonPressed:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="drL-Xv-Hvb"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="It takes 1 minute" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xga-PQ-57q" userLabel="Create your CV, it takes just 1 minute">
-                                        <rect key="frame" x="224" y="100" width="121" height="20"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="Xga-PQ-57q" firstAttribute="top" secondItem="lrq-3r-0dO" secondAttribute="top" constant="100" id="0g5-5t-h3F"/>
-                                    <constraint firstItem="311-t7-crG" firstAttribute="top" secondItem="Xga-PQ-57q" secondAttribute="bottom" constant="25" id="Fy4-5R-A0C"/>
-                                    <constraint firstAttribute="centerX" secondItem="Xga-PQ-57q" secondAttribute="centerX" id="Kys-2o-FTW"/>
-                                    <constraint firstAttribute="centerX" secondItem="311-t7-crG" secondAttribute="centerX" id="ShH-4L-rxr"/>
-                                </constraints>
-                            </view>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QeX-zq-Wxd">
-                                <rect key="frame" x="1" y="30" width="598" height="44"/>
-                                <items>
-                                    <navigationItem title="My CV" id="g5r-Ja-6pa">
-                                        <barButtonItem key="rightBarButtonItem" title="Edit" id="9NI-Z9-HLh">
-                                            <connections>
-                                                <action selector="editCVButtonPressed:" destination="8rJ-Kc-sve" id="dmO-ch-jeN"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <scrollView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ll-3J-egv">
                                 <rect key="frame" x="16" y="74" width="568" height="1077"/>
                                 <subviews>
@@ -714,6 +678,70 @@
                                     </mask>
                                 </variation>
                             </scrollView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lrq-3r-0dO" userLabel="No CV Found View">
+                                <rect key="frame" x="16" y="74" width="568" height="1126"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="311-t7-crG">
+                                        <rect key="frame" x="209" y="190" width="150" height="45"/>
+                                        <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="165" id="2l1-db-Jqb"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="45" id="2t5-Fs-zWZ"/>
+                                            <constraint firstAttribute="height" constant="45" id="MUg-3T-cD8"/>
+                                            <constraint firstAttribute="width" constant="150" id="hYz-wt-Qb0"/>
+                                            <constraint firstAttribute="height" constant="45" id="lbZ-d3-S8Z"/>
+                                        </constraints>
+                                        <state key="normal" title="Create CV">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="2l1-db-Jqb"/>
+                                                <exclude reference="MUg-3T-cD8"/>
+                                            </mask>
+                                        </variation>
+                                        <connections>
+                                            <action selector="createCVButtonPressed:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="drL-Xv-Hvb"/>
+                                        </connections>
+                                    </button>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Tell us a bit about yourself. What you write here will be seen by potential employers. So impress! :)" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I5s-gV-Zpp" userLabel="No cv found text">
+                                        <rect key="frame" x="159" y="100" width="250" height="70"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="250" id="h0Z-YF-bNY"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="centerX" secondItem="I5s-gV-Zpp" secondAttribute="centerX" id="6X1-Ep-0Gy"/>
+                                    <constraint firstItem="I5s-gV-Zpp" firstAttribute="top" secondItem="lrq-3r-0dO" secondAttribute="top" constant="100" id="BpF-bG-DP1"/>
+                                    <constraint firstAttribute="centerX" secondItem="311-t7-crG" secondAttribute="centerX" id="ShH-4L-rxr"/>
+                                    <constraint firstItem="311-t7-crG" firstAttribute="top" secondItem="I5s-gV-Zpp" secondAttribute="bottom" constant="23" id="T7X-Eu-b8g"/>
+                                    <constraint firstItem="311-t7-crG" firstAttribute="top" secondItem="I5s-gV-Zpp" secondAttribute="bottom" constant="20" id="ZFE-LF-twn"/>
+                                    <constraint firstAttribute="centerX" secondItem="311-t7-crG" secondAttribute="centerX" id="oNG-F2-dhg"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="ShH-4L-rxr"/>
+                                        <exclude reference="ZFE-LF-twn"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QeX-zq-Wxd">
+                                <rect key="frame" x="1" y="30" width="598" height="44"/>
+                                <items>
+                                    <navigationItem title="My CV" id="g5r-Ja-6pa">
+                                        <barButtonItem key="rightBarButtonItem" title="Edit" id="9NI-Z9-HLh">
+                                            <connections>
+                                                <action selector="editCVButtonPressed:" destination="8rJ-Kc-sve" id="dmO-ch-jeN"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -1009,6 +1037,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="MenuBar-Report.png" width="45" height="28"/>
         <image name="TabBar-JobList.png" width="45" height="28"/>
         <image name="TabBar-MyCV.png" width="45" height="28"/>
         <image name="TabBar-Settings.png" width="45" height="28"/>

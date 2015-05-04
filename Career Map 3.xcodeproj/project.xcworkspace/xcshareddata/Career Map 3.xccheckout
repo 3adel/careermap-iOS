@@ -7,21 +7,21 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>612B9361-0B65-4FA2-B3F4-E7FFD2F1A32A</string>
 	<key>IDESourceControlProjectName</key>
-	<string>Career Map 3</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>F6D8B937BC062AA919311243D59CEBE9EA73BF09</key>
-		<string>https://github.com/3adel/CareerMap3.git</string>
+		<string>github.com:3adel/CareerMap3.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Career Map 3.xcodeproj</string>
+	<string>Career Map 3.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>F6D8B937BC062AA919311243D59CEBE9EA73BF09</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/3adel/CareerMap3.git</string>
+	<string>github.com:3adel/CareerMap3.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
@@ -34,7 +34,7 @@
 			<key>IDESourceControlWCCIdentifierKey</key>
 			<string>F6D8B937BC062AA919311243D59CEBE9EA73BF09</string>
 			<key>IDESourceControlWCCName</key>
-			<string>Career%20Map%203</string>
+			<string>CareerMap3</string>
 		</dict>
 	</array>
 </dict>

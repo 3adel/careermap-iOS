@@ -705,6 +705,20 @@
         destViewController.jobObject = jobObject;
         
         
+        //set the flag bar menu button according to reporting status
+        
+        if ([[jobObject objectForKey:@"currentUserVotedDownThisJob"] isEqualToString:@"1"]) {
+            destViewController.reportJobBarButton.enabled =NO;
+        } else{
+            
+            destViewController.reportJobBarButton.enabled =YES;
+        }
+        
+        
+        
+        NSLog(@"%@", jobObject);
+        
+
         //NSLog(@"Posted by User: username: %@ objectID: %@", [[jobObject objectForKey:@"postedByUser"] objectForKey:@"username"],[[jobObject objectForKey:@"postedByUser"] objectId] );
         //NSLog(@"Employer Name: %@", [jobObject[@"employer"] objectForKey:@"employerName"]);
         //NSLog(@"UserType: %@", [jobObject[@"employer"] objectForKey:@"userType"]);

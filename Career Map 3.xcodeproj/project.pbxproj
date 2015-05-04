@@ -11,6 +11,9 @@
 		F50142DA1ACD19CD000DDBE3 /* JobVoteDwn-selected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F50142D61ACD19CD000DDBE3 /* JobVoteDwn-selected@3x.png */; };
 		F50142DB1ACD19CD000DDBE3 /* JobVoteUp-no-selected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F50142D71ACD19CD000DDBE3 /* JobVoteUp-no-selected@3x.png */; };
 		F50142DC1ACD19CD000DDBE3 /* JobVoteUp-selected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F50142D81ACD19CD000DDBE3 /* JobVoteUp-selected@3x.png */; };
+		F506DC301AF7C1BF000ABF49 /* MenuBar-Report.png in Resources */ = {isa = PBXBuildFile; fileRef = F506DC2D1AF7C1BF000ABF49 /* MenuBar-Report.png */; };
+		F506DC311AF7C1BF000ABF49 /* MenuBar-Report@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F506DC2E1AF7C1BF000ABF49 /* MenuBar-Report@2x.png */; };
+		F506DC321AF7C1BF000ABF49 /* MenuBar-Report@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F506DC2F1AF7C1BF000ABF49 /* MenuBar-Report@3x.png */; };
 		F52DC4901AE4D80800693911 /* ViewEditMyCVViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F52DC48F1AE4D80800693911 /* ViewEditMyCVViewController.m */; };
 		F52DC4971AE6507D00693911 /* Default_Profile_Picture@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F52DC4961AE6507D00693911 /* Default_Profile_Picture@3x.png */; };
 		F533345F1AE3CE4D0029BFF7 /* CreateCVView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F533345E1AE3CE4D0029BFF7 /* CreateCVView.xib */; };
@@ -95,6 +98,9 @@
 		F50142D61ACD19CD000DDBE3 /* JobVoteDwn-selected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "JobVoteDwn-selected@3x.png"; sourceTree = "<group>"; };
 		F50142D71ACD19CD000DDBE3 /* JobVoteUp-no-selected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "JobVoteUp-no-selected@3x.png"; sourceTree = "<group>"; };
 		F50142D81ACD19CD000DDBE3 /* JobVoteUp-selected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "JobVoteUp-selected@3x.png"; sourceTree = "<group>"; };
+		F506DC2D1AF7C1BF000ABF49 /* MenuBar-Report.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MenuBar-Report.png"; sourceTree = "<group>"; };
+		F506DC2E1AF7C1BF000ABF49 /* MenuBar-Report@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MenuBar-Report@2x.png"; sourceTree = "<group>"; };
+		F506DC2F1AF7C1BF000ABF49 /* MenuBar-Report@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MenuBar-Report@3x.png"; sourceTree = "<group>"; };
 		F52DC48E1AE4D80800693911 /* ViewEditMyCVViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewEditMyCVViewController.h; sourceTree = "<group>"; };
 		F52DC48F1AE4D80800693911 /* ViewEditMyCVViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewEditMyCVViewController.m; sourceTree = "<group>"; };
 		F52DC4961AE6507D00693911 /* Default_Profile_Picture@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default_Profile_Picture@3x.png"; sourceTree = "<group>"; };
@@ -230,6 +236,7 @@
 		F50142D01ACD1643000DDBE3 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				F506DC2C1AF7C11B000ABF49 /* Bar buttons */,
 				F5CF094E1AF283E300850BB0 /* Tab Bar */,
 				F5CF09421AF1114B00850BB0 /* Icon-60@3x.png */,
 				F52DC4961AE6507D00693911 /* Default_Profile_Picture@3x.png */,
@@ -243,6 +250,16 @@
 				F50142D81ACD19CD000DDBE3 /* JobVoteUp-selected@3x.png */,
 			);
 			name = Icons;
+			sourceTree = "<group>";
+		};
+		F506DC2C1AF7C11B000ABF49 /* Bar buttons */ = {
+			isa = PBXGroup;
+			children = (
+				F506DC2D1AF7C1BF000ABF49 /* MenuBar-Report.png */,
+				F506DC2E1AF7C1BF000ABF49 /* MenuBar-Report@2x.png */,
+				F506DC2F1AF7C1BF000ABF49 /* MenuBar-Report@3x.png */,
+			);
+			name = "Bar buttons";
 			sourceTree = "<group>";
 		};
 		F533345B1AE3CCB70029BFF7 /* CV */ = {
@@ -561,6 +578,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F5CF09431AF1114B00850BB0 /* Icon-60@3x.png in Resources */,
+				F506DC321AF7C1BF000ABF49 /* MenuBar-Report@3x.png in Resources */,
 				F5CF09611AF285F000850BB0 /* TabBar-MyCV@2x.png in Resources */,
 				F50142DA1ACD19CD000DDBE3 /* JobVoteDwn-selected@3x.png in Resources */,
 				F59758BB1AC159B40099A978 /* Main.storyboard in Resources */,
@@ -576,8 +594,10 @@
 				F5CF09591AF284E500850BB0 /* TabBar-Settings@2x.png in Resources */,
 				F50142DB1ACD19CD000DDBE3 /* JobVoteUp-no-selected@3x.png in Resources */,
 				F5CF094D1AF283C600850BB0 /* TabBar-JobList.png in Resources */,
+				F506DC301AF7C1BF000ABF49 /* MenuBar-Report.png in Resources */,
 				F535ABC51ADE52CF0091E70B /* JobChatView.xib in Resources */,
 				F535AAE81ADC66240091E70B /* job-annotation-icon2@3x.png in Resources */,
+				F506DC311AF7C1BF000ABF49 /* MenuBar-Report@2x.png in Resources */,
 				F535AAE21ADA63EC0091E70B /* job-annotation-icon@3x.png in Resources */,
 				F535AC4E1ADEC9860091E70B /* JobChatMessageCell.xib in Resources */,
 				F5CF09621AF285F000850BB0 /* TabBar-MyCV@3x.png in Resources */,

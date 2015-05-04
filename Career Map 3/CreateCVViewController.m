@@ -357,7 +357,7 @@ int addSkillButtonTapCount = 0;
     NSLayoutConstraint *AddSkillButtonRightConstraint = [NSLayoutConstraint constraintWithItem:_addSkillButton attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:_skillView attribute:NSLayoutAttributeRight multiplier:1.0 constant:0];
     
     //height of add skill button
-    NSLayoutConstraint *AddSkillButtonHeightConstraint = [NSLayoutConstraint constraintWithItem:_addSkillButton attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:40];
+    NSLayoutConstraint *AddSkillButtonHeightConstraint = [NSLayoutConstraint constraintWithItem:_addSkillButton attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:45];
     [self.view addConstraints:@[AddSkillButtonTopConstraint,AddSkillButtonLeftConstraint , AddSkillButtonRightConstraint,AddSkillButtonHeightConstraint]];
     [_addSkillButton addTarget:self action:@selector(addSkillButtonPressed) forControlEvents:UIControlEventTouchUpInside];
 }

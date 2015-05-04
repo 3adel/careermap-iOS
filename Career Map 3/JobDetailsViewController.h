@@ -12,6 +12,7 @@
 #import "JobMapViewController.h"
 #import "JobChatViewController.h"
 #import "CreateCVViewController.h"
+#import "MBProgressHUD.h"
 
 @interface JobDetailsViewController : UIViewController <MKMapViewDelegate,CLLocationManagerDelegate,UIAlertViewDelegate>
 
@@ -36,6 +37,8 @@
 @property (weak, nonatomic) IBOutlet UITextView *jobEducationTextView;
 @property (strong, nonatomic) UIAlertView *createCVAlert;
 
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *reportJobBarButton;
+
 
 //data
 @property (nonatomic, strong) NSString *jobTitle;
@@ -56,6 +59,7 @@
 @property (nonatomic, strong) PFUser *jobPosterPFUser;
 @property (nonatomic, strong) NSArray *jobAppliedByUsers;
 @property (nonatomic,strong) PFObject *jobObject;
+@property BOOL jobIsReportedByThisUser;
 
 
 //methods
@@ -64,5 +68,6 @@
 
 - (IBAction)chatWithEmployerButtonPressed:(UIButton *)sender;
 - (IBAction)applyWithCVButtonPressed:(UIButton *)sender;
+- (IBAction)reportJobButtonPressed:(UIBarButtonItem *)sender;
 
 @end
