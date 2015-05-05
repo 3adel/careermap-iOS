@@ -39,6 +39,9 @@
         
     }
     
+    
+    
+    
 }
 
 - (void)viewDidLoad {
@@ -46,7 +49,7 @@
     
     
     //table cell autolayout
-    _jobTable.estimatedRowHeight = 90.0;
+    _jobTable.estimatedRowHeight = 100.0;
     self.jobTable.rowHeight = UITableViewAutomaticDimension;
 
     
@@ -362,7 +365,7 @@
     cell.jobEmployer.text=[jobObject[@"employer"] objectForKey:@"employerName"];
     cell.jobStatus.text=[jobObject[@"status"] objectForKey:@"description"];
     cell.jobDateAdded.text=[formatter stringFromDate:[jobObject createdAt]];
-    cell.jobDistanceFromUser.text = [NSString stringWithFormat:@"%@ km",[NSString stringWithFormat:@"%.2f",[self.userLocation distanceInKilometersTo:[jobObject objectForKey:@"geolocation"]]] ];
+    cell.jobDistanceFromUser.text = [NSString stringWithFormat:@"%@ km, %@",[NSString stringWithFormat:@"%.2f",[self.userLocation distanceInKilometersTo:[jobObject objectForKey:@"geolocation"]]], [jobObject objectForKey:@"area"]];
     cell.jobVoteLabel.text =[NSString stringWithFormat:@"%@",[jobObject objectForKey:@"voteCount"]];;
     
     //set job area
