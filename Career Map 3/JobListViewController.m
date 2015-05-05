@@ -63,6 +63,7 @@
     
 
     //progress spinner initialization
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _HUDProgressIndicator = [MBProgressHUD showHUDAddedTo:_jobTable animated:YES];
     _HUDProgressIndicator.labelText = @"Loading jobs around you...";
     _HUDProgressIndicator.detailsLabelText = @"Locating you ...";
@@ -283,7 +284,9 @@
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.jobTable reloadData];
+            
             [_HUDProgressIndicator hide:YES];
+            self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
             
         });
         
