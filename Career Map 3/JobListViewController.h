@@ -15,6 +15,7 @@
 #import "WelcomeAppChoiceViewController.h"
 #import "JobDetailsViewController.h"
 #import "MBProgressHUD.h"
+#import "LoadingJobListEmptyView.h"
 
 @interface JobListViewController : UITableViewController <CLLocationManagerDelegate,MBProgressHUDDelegate>
 

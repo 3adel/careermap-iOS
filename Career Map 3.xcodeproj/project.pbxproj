@@ -14,6 +14,8 @@
 		F506DC301AF7C1BF000ABF49 /* MenuBar-Report.png in Resources */ = {isa = PBXBuildFile; fileRef = F506DC2D1AF7C1BF000ABF49 /* MenuBar-Report.png */; };
 		F506DC311AF7C1BF000ABF49 /* MenuBar-Report@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F506DC2E1AF7C1BF000ABF49 /* MenuBar-Report@2x.png */; };
 		F506DC321AF7C1BF000ABF49 /* MenuBar-Report@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F506DC2F1AF7C1BF000ABF49 /* MenuBar-Report@3x.png */; };
+		F506DC341AF9504F000ABF49 /* LoadingJobListEmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F506DC331AF9504F000ABF49 /* LoadingJobListEmptyView.xib */; };
+		F506DC3D1AF952DE000ABF49 /* LoadingJobListEmptyView.m in Sources */ = {isa = PBXBuildFile; fileRef = F506DC3C1AF952DE000ABF49 /* LoadingJobListEmptyView.m */; };
 		F52DC4901AE4D80800693911 /* ViewEditMyCVViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F52DC48F1AE4D80800693911 /* ViewEditMyCVViewController.m */; };
 		F52DC4971AE6507D00693911 /* Default_Profile_Picture@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F52DC4961AE6507D00693911 /* Default_Profile_Picture@3x.png */; };
 		F533345F1AE3CE4D0029BFF7 /* CreateCVView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F533345E1AE3CE4D0029BFF7 /* CreateCVView.xib */; };
@@ -101,6 +103,9 @@
 		F506DC2D1AF7C1BF000ABF49 /* MenuBar-Report.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MenuBar-Report.png"; sourceTree = "<group>"; };
 		F506DC2E1AF7C1BF000ABF49 /* MenuBar-Report@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MenuBar-Report@2x.png"; sourceTree = "<group>"; };
 		F506DC2F1AF7C1BF000ABF49 /* MenuBar-Report@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MenuBar-Report@3x.png"; sourceTree = "<group>"; };
+		F506DC331AF9504F000ABF49 /* LoadingJobListEmptyView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingJobListEmptyView.xib; sourceTree = "<group>"; };
+		F506DC3B1AF952DE000ABF49 /* LoadingJobListEmptyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingJobListEmptyView.h; sourceTree = "<group>"; };
+		F506DC3C1AF952DE000ABF49 /* LoadingJobListEmptyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingJobListEmptyView.m; sourceTree = "<group>"; };
 		F52DC48E1AE4D80800693911 /* ViewEditMyCVViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewEditMyCVViewController.h; sourceTree = "<group>"; };
 		F52DC48F1AE4D80800693911 /* ViewEditMyCVViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewEditMyCVViewController.m; sourceTree = "<group>"; };
 		F52DC4961AE6507D00693911 /* Default_Profile_Picture@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default_Profile_Picture@3x.png"; sourceTree = "<group>"; };
@@ -314,6 +319,9 @@
 				F597592E1AC1D7F00099A978 /* JobListViewController.m */,
 				F59759331AC1DC7D0099A978 /* JobCustomTableViewCell.h */,
 				F59759341AC1DC7D0099A978 /* JobCustomTableViewCell.m */,
+				F506DC331AF9504F000ABF49 /* LoadingJobListEmptyView.xib */,
+				F506DC3B1AF952DE000ABF49 /* LoadingJobListEmptyView.h */,
+				F506DC3C1AF952DE000ABF49 /* LoadingJobListEmptyView.m */,
 			);
 			name = "Job List";
 			sourceTree = "<group>";
@@ -588,6 +596,7 @@
 				F5CF094B1AF2820500850BB0 /* TabBar-JobList@2x.png in Resources */,
 				F535AAEA1ADC66920091E70B /* job-annotation-icon3@3x.png in Resources */,
 				F5EB66031AEEB1A60026B988 /* AppHorizontalMessageView.xib in Resources */,
+				F506DC341AF9504F000ABF49 /* LoadingJobListEmptyView.xib in Resources */,
 				F53334641AE4080C0029BFF7 /* Lenna@3x.jpg in Resources */,
 				F533345F1AE3CE4D0029BFF7 /* CreateCVView.xib in Resources */,
 				F535AA691AD401BA0091E70B /* myLocation.gpx in Resources */,
@@ -625,6 +634,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F506DC3D1AF952DE000ABF49 /* LoadingJobListEmptyView.m in Sources */,
 				F535ABC41ADE52CF0091E70B /* JobChatViewController.m in Sources */,
 				F59759351AC1DC7D0099A978 /* JobCustomTableViewCell.m in Sources */,
 				F535AC511ADEC9B50091E70B /* JobChatMessageCell.m in Sources */,

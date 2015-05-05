@@ -48,6 +48,14 @@
     [super viewDidLoad];
     
     
+
+    
+    //add empty view
+    // LoadingJobListEmptyView *emptyLoadingView = [[LoadingJobListEmptyView alloc] init];
+    // [self.view addSubview:emptyLoadingView];
+    
+    
+    
     //table cell autolayout
     _jobTable.estimatedRowHeight = 100.0;
     self.jobTable.rowHeight = UITableViewAutomaticDimension;
@@ -63,9 +71,11 @@
    //orange color
     //[_HUDProgressIndicator setColor:[UIColor colorWithRed:255/255.0 green:149.0/255.0 blue:0.0/0.0 alpha:0.8]];
     
+
     
-
-
+    
+    
+    
     // Initialize the refresh control.
     self.refreshControl = [[UIRefreshControl alloc] init];
     self.refreshControl.backgroundColor = [UIColor colorWithRed:255/255.0 green:149.0/255.0 blue:0.0/0.0 alpha:0.8];
