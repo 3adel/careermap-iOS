@@ -16,7 +16,7 @@
 @interface ViewEditMyCVViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIView *noCVFoundView;
 @property (weak, nonatomic) IBOutlet UIScrollView *CVContentScrollView;
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *CVDataLoadingIndicator;
+
 @property (strong, nonatomic) IBOutlet UIView *mainView;
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *editCVButton;
@@ -35,6 +35,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *CVJobSeekerSchool;
 @property (strong, nonatomic) AppHorizontalMessage *saveCVButtonPressedMessage;
 @property (strong, nonatomic) MBProgressHUD *MBProgressHUDSaveButtonPressedIndicator;
+@property (strong, nonatomic) MBProgressHUD *MBProgressHUDLoadingCV;
 
 //data
 @property (strong, nonatomic) PFObject *jobSeekerObject;

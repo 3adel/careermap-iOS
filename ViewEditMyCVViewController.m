@@ -113,6 +113,12 @@
         //if they do, view the CV
     
     
+    //progress spinner initialization
+    _MBProgressHUDLoadingCV = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    _MBProgressHUDLoadingCV.labelText = @"Loading CV ...";
+    _MBProgressHUDLoadingCV.mode = MBProgressHUDModeIndeterminate;
+    
+    
     //[_CVDataLoadingIndicator startAnimating];
     [_editCVButton setEnabled:NO];
 
@@ -357,6 +363,9 @@
                 NSLog(@"No cv has been found, create one then");
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
+                    
+                    
+                    [_MBProgressHUDLoadingCV setHidden:YES];
                     _noCVFoundView.hidden =NO;
                     _CVContentScrollView.hidden = YES;
                     
@@ -389,7 +398,8 @@
             
             
             
-            
+            [_MBProgressHUDLoadingCV setHidden:YES];
+
                 [_MBProgressHUDSaveButtonPressedIndicator setHidden:YES];
                 
           

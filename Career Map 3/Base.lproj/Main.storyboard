@@ -476,14 +476,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="1200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="mya-IL-RFa">
-                                <rect key="frame" x="275" y="575" width="50" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="83t-oP-Rnk"/>
-                                    <constraint firstAttribute="height" constant="50" id="hLu-xA-LYr"/>
-                                </constraints>
-                                <color key="color" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            </activityIndicatorView>
                             <scrollView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ll-3J-egv">
                                 <rect key="frame" x="16" y="74" width="568" height="1077"/>
                                 <subviews>
@@ -785,9 +777,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="1ll-3J-egv" secondAttribute="trailing" id="csj-m9-mtH"/>
                             <constraint firstItem="lrq-3r-0dO" firstAttribute="top" secondItem="QeX-zq-Wxd" secondAttribute="bottom" id="eW9-BH-r2c"/>
                             <constraint firstItem="1ll-3J-egv" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" id="eoe-dy-k0j"/>
-                            <constraint firstAttribute="centerX" secondItem="mya-IL-RFa" secondAttribute="centerX" id="gWb-4D-6nC"/>
                             <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="1ll-3J-egv" secondAttribute="bottom" id="rOX-K2-JpA"/>
-                            <constraint firstAttribute="centerY" secondItem="mya-IL-RFa" secondAttribute="centerY" id="w1a-Ll-afc"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -800,7 +790,6 @@
                     <size key="freeformSize" width="600" height="1200"/>
                     <connections>
                         <outlet property="CVContentScrollView" destination="1ll-3J-egv" id="mNo-TT-YRv"/>
-                        <outlet property="CVDataLoadingIndicator" destination="mya-IL-RFa" id="VQw-G0-fS4"/>
                         <outlet property="CVJobSeekerAboutMeTextView" destination="HD4-uc-mbS" id="4ig-1P-Srn"/>
                         <outlet property="CVJobSeekerCurrentTitleLabel" destination="YX6-qL-omW" id="yKr-Ab-vSo"/>
                         <outlet property="CVJobSeekerDegreeLabel" destination="mdZ-kD-QSr" id="NyX-tL-9a6"/>
