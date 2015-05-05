@@ -49,7 +49,7 @@
 
 - (IBAction)jobVoteUpPressed:(UIButton *)sender;
 - (IBAction)jobVoteDownPressed:(UIButton *)sender;
-
+- (void) getUserCity: (PFGeoPoint *) userGeoPoint;
 
 
 @end

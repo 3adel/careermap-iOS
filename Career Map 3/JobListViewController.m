@@ -53,10 +53,12 @@
 
     //progress spinner initialization
     _HUDProgressIndicator = [MBProgressHUD showHUDAddedTo:_jobTable animated:YES];
-    _HUDProgressIndicator.labelText = @"Loading careers around you...";
+    _HUDProgressIndicator.labelText = @"Loading jobs around you...";
+    _HUDProgressIndicator.detailsLabelText = @"Locating you ...";
+
     _HUDProgressIndicator.mode = MBProgressHUDModeIndeterminate;
    //orange color
-    [_HUDProgressIndicator setColor:[UIColor colorWithRed:255/255.0 green:149.0/255.0 blue:0.0/0.0 alpha:0.8]];
+    //[_HUDProgressIndicator setColor:[UIColor colorWithRed:255/255.0 green:149.0/255.0 blue:0.0/0.0 alpha:0.8]];
     
     
 
@@ -84,23 +86,12 @@
         if (!error) {
             self.userLocation = geoPoint;
             
-            
+            //get user city
+            [self getUserCity:self.userLocation];
 
-  
             [self reloadData];
             
-            
-
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
+ 
         }
         else{
             UIAlertView *needUserLocationAlert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"You need to enable user location for this app to function properly" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
@@ -739,6 +730,42 @@
     // Reload table data
     [self retrieveFromParse];
     
+}
+
+
+
+- (void) getUserCity:(PFGeoPoint *)userGeoPoint{
+    
+    
+    CLLocation  *myLocation = [[CLLocation alloc] initWithLatitude:userGeoPoint.latitude longitude:userGeoPoint.longitude];
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+    [geocoder reverseGeocodeLocation:myLocation completionHandler:^(NSArray *placemarks, NSError *error) {
+        if (error == nil && [placemarks count] > 0)
+        {
+            
+            CLPlacemark *placemark = [placemarks lastObject];
+            if ([[placemarks lastObject] locality] != nil ) {
+                NSLog(@"My city is %@", placemark.locality);
+                
+                _HUDProgressIndicator.detailsLabelText = placemark.locality;
+                
+            }
+            else{
+                NSLog(@"error getting the city");
+                
+            }
+            
+        }
+        
+        else{
+            
+            NSLog(@"Error = %@", error);
+        }
+        
+    }];
+    
+
+
 }
 
 
