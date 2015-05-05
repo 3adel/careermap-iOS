@@ -493,11 +493,13 @@
             
             NSLog(@"Create CV flow");
             
-            CreateCVViewController *createCVScreen = [[CreateCVViewController alloc] initWithNibName:@"CreateCVView" bundle:nil];
+           // CreateCVViewController *createCVScreen = [[CreateCVViewController alloc] initWithNibName:@"CreateCVView" bundle:nil];
             
             
+            [self.tabBarController setSelectedIndex:1];
             
-            [self presentViewController:createCVScreen animated:YES completion:nil];
+            
+           // [self presentViewController:createCVScreen animated:YES completion:nil];
             
         }
     }
