@@ -809,6 +809,33 @@
             </objects>
             <point key="canvasLocation" x="1216" y="753"/>
         </scene>
+        <!--Messages-->
+        <scene sceneID="P1J-J0-Pau">
+            <objects>
+                <tableViewController id="pyh-vH-Ykv" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="84" sectionHeaderHeight="22" sectionFooterHeight="22" id="Xz1-CT-x79">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="84" id="hTQ-ad-SrO">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hTQ-ad-SrO" id="NzJ-E2-Vdv">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="pyh-vH-Ykv" id="s42-Nf-hVn"/>
+                            <outlet property="delegate" destination="pyh-vH-Ykv" id="m6W-Ua-Nsa"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Messages" image="TabBar-Messages.png" id="41e-jA-3wh"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YK8-1Y-qSt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1216" y="1839"/>
+        </scene>
         <!--Existing User Login View Controller-->
         <scene sceneID="2Og-dQ-mZO">
             <objects>
@@ -1024,6 +1051,7 @@
                     <connections>
                         <segue destination="u4i-H2-sYV" kind="relationship" relationship="viewControllers" id="UxA-w6-8cU"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
+                        <segue destination="pyh-vH-Ykv" kind="relationship" relationship="viewControllers" id="l4g-je-Qxe"/>
                         <segue destination="T0L-SA-EyQ" kind="relationship" relationship="viewControllers" id="fSu-U5-AC5"/>
                     </connections>
                 </tabBarController>
@@ -1056,6 +1084,7 @@
     <resources>
         <image name="MenuBar-Report.png" width="45" height="28"/>
         <image name="TabBar-JobList.png" width="45" height="28"/>
+        <image name="TabBar-Messages.png" width="45" height="28"/>
         <image name="TabBar-MyCV.png" width="45" height="28"/>
         <image name="TabBar-Settings.png" width="45" height="28"/>
         <image name="first" width="45" height="28"/>

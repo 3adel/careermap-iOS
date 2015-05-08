@@ -78,6 +78,9 @@
 		F5CF09601AF285F000850BB0 /* TabBar-MyCV.png in Resources */ = {isa = PBXBuildFile; fileRef = F5CF095D1AF285F000850BB0 /* TabBar-MyCV.png */; };
 		F5CF09611AF285F000850BB0 /* TabBar-MyCV@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5CF095E1AF285F000850BB0 /* TabBar-MyCV@2x.png */; };
 		F5CF09621AF285F000850BB0 /* TabBar-MyCV@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5CF095F1AF285F000850BB0 /* TabBar-MyCV@3x.png */; };
+		F5CF11F81AFD50AC00FD0FCA /* TabBar-Messages.png in Resources */ = {isa = PBXBuildFile; fileRef = F5CF11F51AFD50AC00FD0FCA /* TabBar-Messages.png */; };
+		F5CF11F91AFD50AC00FD0FCA /* TabBar-Messages@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5CF11F61AFD50AC00FD0FCA /* TabBar-Messages@2x.png */; };
+		F5CF11FA1AFD50AC00FD0FCA /* TabBar-Messages@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5CF11F71AFD50AC00FD0FCA /* TabBar-Messages@3x.png */; };
 		F5EB65BC1AEBDFB60026B988 /* SkillTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = F5EB65BB1AEBDFB60026B988 /* SkillTextField.m */; };
 		F5EB65C01AECF6BD0026B988 /* GCPlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = F5EB65BF1AECF6BD0026B988 /* GCPlaceholderTextView.m */; };
 		F5EB65C31AED82A30026B988 /* JLTStepper.m in Sources */ = {isa = PBXBuildFile; fileRef = F5EB65C21AED82A30026B988 /* JLTStepper.m */; };
@@ -187,6 +190,9 @@
 		F5CF095D1AF285F000850BB0 /* TabBar-MyCV.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBar-MyCV.png"; sourceTree = "<group>"; };
 		F5CF095E1AF285F000850BB0 /* TabBar-MyCV@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBar-MyCV@2x.png"; sourceTree = "<group>"; };
 		F5CF095F1AF285F000850BB0 /* TabBar-MyCV@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBar-MyCV@3x.png"; sourceTree = "<group>"; };
+		F5CF11F51AFD50AC00FD0FCA /* TabBar-Messages.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBar-Messages.png"; sourceTree = "<group>"; };
+		F5CF11F61AFD50AC00FD0FCA /* TabBar-Messages@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBar-Messages@2x.png"; sourceTree = "<group>"; };
+		F5CF11F71AFD50AC00FD0FCA /* TabBar-Messages@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBar-Messages@3x.png"; sourceTree = "<group>"; };
 		F5EB65BA1AEBDFB60026B988 /* SkillTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkillTextField.h; sourceTree = "<group>"; };
 		F5EB65BB1AEBDFB60026B988 /* SkillTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkillTextField.m; sourceTree = "<group>"; };
 		F5EB65BE1AECF6BD0026B988 /* GCPlaceholderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCPlaceholderTextView.h; sourceTree = "<group>"; };
@@ -479,6 +485,9 @@
 		F5CF094E1AF283E300850BB0 /* Tab Bar */ = {
 			isa = PBXGroup;
 			children = (
+				F5CF11F51AFD50AC00FD0FCA /* TabBar-Messages.png */,
+				F5CF11F61AFD50AC00FD0FCA /* TabBar-Messages@2x.png */,
+				F5CF11F71AFD50AC00FD0FCA /* TabBar-Messages@3x.png */,
 				F5CF095D1AF285F000850BB0 /* TabBar-MyCV.png */,
 				F5CF095E1AF285F000850BB0 /* TabBar-MyCV@2x.png */,
 				F5CF095F1AF285F000850BB0 /* TabBar-MyCV@3x.png */,
@@ -605,13 +614,16 @@
 				F5CF094D1AF283C600850BB0 /* TabBar-JobList.png in Resources */,
 				F506DC301AF7C1BF000ABF49 /* MenuBar-Report.png in Resources */,
 				F535ABC51ADE52CF0091E70B /* JobChatView.xib in Resources */,
+				F5CF11FA1AFD50AC00FD0FCA /* TabBar-Messages@3x.png in Resources */,
 				F535AAE81ADC66240091E70B /* job-annotation-icon2@3x.png in Resources */,
 				F506DC311AF7C1BF000ABF49 /* MenuBar-Report@2x.png in Resources */,
 				F535AAE21ADA63EC0091E70B /* job-annotation-icon@3x.png in Resources */,
 				F535AC4E1ADEC9860091E70B /* JobChatMessageCell.xib in Resources */,
+				F5CF11F81AFD50AC00FD0FCA /* TabBar-Messages.png in Resources */,
 				F5CF09621AF285F000850BB0 /* TabBar-MyCV@3x.png in Resources */,
 				F50142DC1ACD19CD000DDBE3 /* JobVoteUp-selected@3x.png in Resources */,
 				F52DC4971AE6507D00693911 /* Default_Profile_Picture@3x.png in Resources */,
+				F5CF11F91AFD50AC00FD0FCA /* TabBar-Messages@2x.png in Resources */,
 				F59758BD1AC159B40099A978 /* Images.xcassets in Resources */,
 				F5CF09601AF285F000850BB0 /* TabBar-MyCV.png in Resources */,
 				F5CF09491AF2805F00850BB0 /* TabBar-JobList@3x.png in Resources */,
