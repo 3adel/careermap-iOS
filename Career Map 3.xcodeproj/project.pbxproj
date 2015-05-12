@@ -35,6 +35,8 @@
 		F535ABC51ADE52CF0091E70B /* JobChatView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F535ABC31ADE52CF0091E70B /* JobChatView.xib */; };
 		F535AC4E1ADEC9860091E70B /* JobChatMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F535AC4D1ADEC9860091E70B /* JobChatMessageCell.xib */; };
 		F535AC511ADEC9B50091E70B /* JobChatMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F535AC501ADEC9B50091E70B /* JobChatMessageCell.m */; };
+		F53EABF11B020F5900CCB97C /* MessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F53EABF01B020F5900CCB97C /* MessagesViewController.m */; };
+		F53EABF41B020F8700CCB97C /* MessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F53EABF31B020F8700CCB97C /* MessageCell.m */; };
 		F59758AF1AC159B40099A978 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F59758AE1AC159B40099A978 /* main.m */; };
 		F59758B21AC159B40099A978 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F59758B11AC159B40099A978 /* AppDelegate.m */; };
 		F59758BB1AC159B40099A978 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F59758B91AC159B40099A978 /* Main.storyboard */; };
@@ -136,6 +138,10 @@
 		F535AC4D1ADEC9860091E70B /* JobChatMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = JobChatMessageCell.xib; path = ../JobChatMessageCell.xib; sourceTree = "<group>"; };
 		F535AC4F1ADEC9B50091E70B /* JobChatMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JobChatMessageCell.h; path = ../JobChatMessageCell.h; sourceTree = "<group>"; };
 		F535AC501ADEC9B50091E70B /* JobChatMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JobChatMessageCell.m; path = ../JobChatMessageCell.m; sourceTree = "<group>"; };
+		F53EABEF1B020F5900CCB97C /* MessagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessagesViewController.h; sourceTree = "<group>"; };
+		F53EABF01B020F5900CCB97C /* MessagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessagesViewController.m; sourceTree = "<group>"; };
+		F53EABF21B020F8700CCB97C /* MessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageCell.h; sourceTree = "<group>"; };
+		F53EABF31B020F8700CCB97C /* MessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageCell.m; sourceTree = "<group>"; };
 		F59758A91AC159B40099A978 /* Career Map 3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Career Map 3.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F59758AD1AC159B40099A978 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F59758AE1AC159B40099A978 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -373,6 +379,17 @@
 			name = "Job Chat";
 			sourceTree = "<group>";
 		};
+		F53EABEE1B020F2800CCB97C /* Messages */ = {
+			isa = PBXGroup;
+			children = (
+				F53EABEF1B020F5900CCB97C /* MessagesViewController.h */,
+				F53EABF01B020F5900CCB97C /* MessagesViewController.m */,
+				F53EABF21B020F8700CCB97C /* MessageCell.h */,
+				F53EABF31B020F8700CCB97C /* MessageCell.m */,
+			);
+			name = Messages;
+			sourceTree = "<group>";
+		};
 		F59758A01AC159B40099A978 = {
 			isa = PBXGroup;
 			children = (
@@ -395,6 +412,7 @@
 		F59758AB1AC159B40099A978 /* Career Map 3 */ = {
 			isa = PBXGroup;
 			children = (
+				F53EABEE1B020F2800CCB97C /* Messages */,
 				F59758B11AC159B40099A978 /* AppDelegate.m */,
 				F59758B01AC159B40099A978 /* AppDelegate.h */,
 				F59758B91AC159B40099A978 /* Main.storyboard */,
@@ -652,9 +670,11 @@
 				F535AC511ADEC9B50091E70B /* JobChatMessageCell.m in Sources */,
 				F5EB65BC1AEBDFB60026B988 /* SkillTextField.m in Sources */,
 				F5BAC3D41AC875E5003E899C /* settingsViewController.m in Sources */,
+				F53EABF11B020F5900CCB97C /* MessagesViewController.m in Sources */,
 				F535A9A71AD06E500091E70B /* ExistingUserLoginViewController.m in Sources */,
 				F5EB65C31AED82A30026B988 /* JLTStepper.m in Sources */,
 				F5CF09461AF141A000850BB0 /* MBProgressHUD.m in Sources */,
+				F53EABF41B020F8700CCB97C /* MessageCell.m in Sources */,
 				F59758B21AC159B40099A978 /* AppDelegate.m in Sources */,
 				F5BAC3D11AC85BB7003E899C /* LoginViewController.m in Sources */,
 				F535AA721AD449BA0091E70B /* JobDetailsViewController.m in Sources */,

@@ -813,16 +813,98 @@
         <scene sceneID="dfI-PK-hV2">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="48N-ee-CYs" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="EwG-gK-NKE" sceneMemberID="viewController">
+                <viewController id="EwG-gK-NKE" customClass="MessagesViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="UJS-NK-R4H"/>
                         <viewControllerLayoutGuide type="bottom" id="ccp-hU-0F8"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="jLK-tq-bIg">
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="72" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Xxg-28-6ki">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="72" id="YVn-eO-slW" customClass="MessageCell">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YVn-eO-slW" id="OkF-K9-HqS">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6iU-Wb-9mE">
+                                                    <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                                        <rect key="frame" x="8" y="8" width="76" height="21"/>
+                                                    </variation>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="lastmessage" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p9e-ph-PGd">
+                                                    <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                                        <rect key="frame" x="8" y="42" width="97" height="21"/>
+                                                    </variation>
+                                                </label>
+                                            </subviews>
+                                            <variation key="default">
+                                                <mask key="subviews">
+                                                    <exclude reference="6iU-Wb-9mE"/>
+                                                    <exclude reference="p9e-ph-PGd"/>
+                                                </mask>
+                                            </variation>
+                                            <variation key="heightClass=regular-widthClass=regular">
+                                                <mask key="subviews">
+                                                    <include reference="6iU-Wb-9mE"/>
+                                                    <include reference="p9e-ph-PGd"/>
+                                                </mask>
+                                            </variation>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="EwG-gK-NKE" id="z04-HM-8Gl"/>
+                                    <outlet property="delegate" destination="EwG-gK-NKE" id="xe3-OQ-KCU"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ccp-hU-0F8" firstAttribute="top" secondItem="Xxg-28-6ki" secondAttribute="bottom" id="1df-nI-A0x"/>
+                            <constraint firstItem="Xxg-28-6ki" firstAttribute="leading" secondItem="jLK-tq-bIg" secondAttribute="leadingMargin" id="Xo6-zP-DuE"/>
+                            <constraint firstItem="Xxg-28-6ki" firstAttribute="top" secondItem="jLK-tq-bIg" secondAttribute="topMargin" id="YZ9-LQ-M0V"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Xxg-28-6ki" secondAttribute="trailing" id="i35-9E-ia1"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="Xxg-28-6ki"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="Xo6-zP-DuE"/>
+                                <exclude reference="YZ9-LQ-M0V"/>
+                                <exclude reference="i35-9E-ia1"/>
+                                <exclude reference="1df-nI-A0x"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=regular">
+                            <mask key="subviews">
+                                <include reference="Xxg-28-6ki"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="Xo6-zP-DuE"/>
+                                <include reference="YZ9-LQ-M0V"/>
+                                <include reference="i35-9E-ia1"/>
+                                <include reference="1df-nI-A0x"/>
+                            </mask>
+                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Messages" image="TabBar-Messages.png" id="QbW-2e-sI3"/>
+                    <connections>
+                        <outlet property="messagesTable" destination="Xxg-28-6ki" id="Q51-Q4-1Zy"/>
+                    </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="739.5" y="1393.5"/>
