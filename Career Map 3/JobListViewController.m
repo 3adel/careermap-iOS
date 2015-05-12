@@ -708,6 +708,7 @@
         //this is basically an employer userID from the users table
         destViewController.jobEmployerUserObjectID= [[jobObject objectForKey:@"postedByUser"] objectId];
         destViewController.jobPosterPFUser =[jobObject objectForKey:@"postedByUser"];
+        
         //NSLog(@"Employer User = %@", [jobObject objectForKey:@"postedByUser"]);
        // destViewController.
         //array to hold who applied to the job

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 #import "MessageCell.h"
+#import "JobChatViewController.h"
 
 @interface MessagesViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
@@ -18,6 +19,7 @@
 //store users ids
 @property (strong, nonatomic) NSMutableArray *chatUsersList;
 @property (strong, nonatomic) NSMutableArray *chatUsersNamesList;
+@property (strong, nonatomic) NSMutableArray *chatUsersPFUsersList;
 
 
 

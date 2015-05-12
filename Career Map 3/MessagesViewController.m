@@ -51,6 +51,7 @@
             _messageToArray = [NSMutableArray new];
             _chatUsersList = [NSMutableArray new];
             _chatUsersNamesList = [NSMutableArray new];
+            _chatUsersPFUsersList = [NSMutableArray new];
             
             
             for (PFObject *object in objects) {
@@ -72,6 +73,7 @@
                         //add user to the list of chatters
                         [_chatUsersList addObject:[[object objectForKey:@"messageTo"] objectId]];
                         [_chatUsersNamesList addObject:[[object objectForKey:@"messageTo"] objectForKey:@"username"]];
+                        [_chatUsersPFUsersList addObject:(PFUser *)[object objectForKey:@"messageTo"]];
                     }
                     
                     
@@ -84,16 +86,19 @@
                         //add user to the list of chatters
                         [_chatUsersList addObject:[[object objectForKey:@"messageFrom"] objectId]];
                         [_chatUsersNamesList addObject:[[object objectForKey:@"messageFrom"] objectForKey:@"username"]];
+                        [_chatUsersPFUsersList addObject:(PFUser *)[object objectForKey:@"messageFrom"]];
+
                         
                         
                     }
                     
                    // NSLog(@"chat users IDs list = %@", _chatUsersList);
                   //  NSLog(@"chat usernames list = %@", _chatUsersNamesList);
+
                     
                     
                 }
-                
+
                 
 
                 
@@ -144,8 +149,8 @@
     MessageCell  *cell = (MessageCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     
- //   cell.usernameLabel.text = [_chatUsersNamesList objectAtIndex:indexPath.row];
-    cell.usernameLabel.text = [_chatUsersList objectAtIndex:indexPath.row];
+    cell.usernameLabel.text = [_chatUsersNamesList objectAtIndex:indexPath.row];
+    cell.userObjectIdLabel.text=[_chatUsersList objectAtIndex:indexPath.row];
 
     NSLog(@"table row");
     
@@ -155,6 +160,25 @@
     
     
 }
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    
+    //invoke the job chat view, but with the userIDs
+    JobChatViewController  *jobChatScreen = [[JobChatViewController alloc] initWithNibName:@"JobChatView" bundle:nil];
+
+    //pass the PFUser object of the other person to the chat view
+    jobChatScreen.jobEmployerUserObjectID = [_chatUsersList objectAtIndex:indexPath.row];
+    jobChatScreen.jobPosterPFUser = [_chatUsersPFUsersList objectAtIndex:indexPath.row];
+    
+    [self presentViewController:jobChatScreen animated:YES completion:nil];
+}
+
+
+
+
+
 
 
 /*

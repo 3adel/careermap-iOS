@@ -11,5 +11,7 @@
 @interface MessageCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *lastMessageLabel;
+@property (weak, nonatomic) IBOutlet UILabel *userObjectIdLabel;
+
 
 @end
