@@ -24,13 +24,16 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     
-    NSLog(@"Messages list 'view did load'");
+   // _messagesTable.delegate =self;
+   // _messagesTable.dataSource = self;
+    
+  //  NSLog(@"Messages list 'view did load'");
 }
 
 - (void) viewDidAppear:(BOOL)animated{
     
     
-    NSLog(@"Messages list 'view did appear'");
+    //NSLog(@"Messages list 'view did appear'");
     
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"messageFrom = %@ OR messageTo = %@",[PFUser currentUser], [PFUser currentUser]];
     
@@ -41,25 +44,25 @@
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
-           // NSLog(@"objects: %@", objects);
+            // NSLog(@"objects: %@", objects);
             
             //initialize arrays
             _messageFromArray = [NSMutableArray new];
             _messageToArray = [NSMutableArray new];
             _chatUsersList = [NSMutableArray new];
             _chatUsersNamesList = [NSMutableArray new];
-
+            
             
             for (PFObject *object in objects) {
-               // NSLog(@"messageFrom = %@", [[object objectForKey:@"messageFrom"] objectForKey:@"username"]);
+                // NSLog(@"messageFrom = %@", [[object objectForKey:@"messageFrom"] objectForKey:@"username"]);
                 //NSLog(@"messageTo = %@", [[object objectForKey:@"messageTo"] objectId]);
-               // NSLog(@"message = %@ \n\n", [object objectForKey:@"messageContent"]);
+                // NSLog(@"message = %@ \n\n", [object objectForKey:@"messageContent"]);
                 
                 
                 
-               // [_messageFromArray addObject:[[object objectForKey:@"messageFrom"] objectId]];
-               // [_messageFromArray addObject:[[object objectForKey:@"messageTo"] objectId]];
-
+                // [_messageFromArray addObject:[[object objectForKey:@"messageFrom"] objectId]];
+                // [_messageFromArray addObject:[[object objectForKey:@"messageTo"] objectId]];
+                
                 
                 
                 if ([[[object objectForKey:@"messageFrom"] objectId] isEqualToString:[[PFUser currentUser] objectId]]) {
@@ -81,18 +84,18 @@
                         //add user to the list of chatters
                         [_chatUsersList addObject:[[object objectForKey:@"messageFrom"] objectId]];
                         [_chatUsersNamesList addObject:[[object objectForKey:@"messageFrom"] objectForKey:@"username"]];
-
-
+                        
+                        
                     }
                     
-                    NSLog(@"chat users IDs list = %@", _chatUsersList);
-                    NSLog(@"chat usernames list = %@", _chatUsersNamesList);
-
-                
+                   // NSLog(@"chat users IDs list = %@", _chatUsersList);
+                  //  NSLog(@"chat usernames list = %@", _chatUsersNamesList);
+                    
+                    
                 }
                 
                 
-                
+
                 
                 
             }
@@ -105,13 +108,16 @@
             
             NSLog(@"error retrieving messages");
         }
+        
+        //reload table data after data fetchibng is done
+        [_messagesTable reloadData];
     }];
     
     
     
     
     
-    
+
     
 
 }
@@ -121,29 +127,35 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
-}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
+    //#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    
+    //NSLog(@"Number of items = %d", _chatUsersList.count);
+    return _chatUsersList.count;
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
     
-    // Configure the cell...
+    static NSString *CellIdentifier = @"MessageCell";
+    MessageCell  *cell = (MessageCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    
+ //   cell.usernameLabel.text = [_chatUsersNamesList objectAtIndex:indexPath.row];
+    cell.usernameLabel.text = [_chatUsersList objectAtIndex:indexPath.row];
+
+    NSLog(@"table row");
+    
     
     return cell;
+    
+    
+    
 }
-*/
+
 
 /*
 // Override to support conditional editing of the table view.
