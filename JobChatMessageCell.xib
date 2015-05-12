@@ -18,7 +18,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ty-ix-qEP">
-                        <rect key="frame" x="8" y="13" width="100" height="14.5"/>
+                        <rect key="frame" x="8" y="13" width="100" height="15"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="100" id="EZs-T4-Lnl"/>
                         </constraints>
@@ -27,13 +27,13 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date Posted" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vfL-Gx-X8m">
-                        <rect key="frame" x="248" y="14" width="64" height="13.5"/>
+                        <rect key="frame" x="248" y="14" width="64" height="14"/>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" scrollEnabled="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7o3-LA-nYR">
-                        <rect key="frame" x="8" y="33" width="304" height="159"/>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7o3-LA-nYR">
+                        <rect key="frame" x="8" y="34" width="304" height="157"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -42,6 +42,7 @@
                 <constraints>
                     <constraint firstItem="6ty-ix-qEP" firstAttribute="top" secondItem="UAu-fb-2Wi" secondAttribute="topMargin" constant="5" id="88h-1W-ITA"/>
                     <constraint firstItem="6ty-ix-qEP" firstAttribute="leading" secondItem="vfL-Gx-X8m" secondAttribute="leading" id="Fxi-FH-ZAr"/>
+                    <constraint firstItem="7o3-LA-nYR" firstAttribute="top" secondItem="6ty-ix-qEP" secondAttribute="bottom" constant="6" id="GaF-JH-vrG"/>
                     <constraint firstItem="7o3-LA-nYR" firstAttribute="leading" secondItem="6ty-ix-qEP" secondAttribute="leading" id="OjE-ep-4gc"/>
                     <constraint firstItem="6ty-ix-qEP" firstAttribute="centerY" secondItem="vfL-Gx-X8m" secondAttribute="centerY" id="Owp-Uv-86o"/>
                     <constraint firstAttribute="trailingMargin" secondItem="7o3-LA-nYR" secondAttribute="trailing" id="jrp-QJ-fEh"/>
@@ -59,6 +60,7 @@
                         <exclude reference="88h-1W-ITA"/>
                         <exclude reference="Fxi-FH-ZAr"/>
                         <exclude reference="nFJ-6Z-brs"/>
+                        <exclude reference="zWs-9r-jcx"/>
                         <exclude reference="vWD-Jr-X0P"/>
                         <exclude reference="zcx-wR-vYh"/>
                     </mask>
