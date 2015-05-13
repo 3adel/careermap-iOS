@@ -132,6 +132,7 @@
     [retrieveJobs includeKey:@"postedByUser"];
     [retrieveJobs includeKey:@"appliedByUsers"];
     [retrieveJobs whereKey:@"geolocation" nearGeoPoint:self.userLocation withinKilometers:20];
+    retrieveJobs.limit =1000;
     //[retrieveJobs orderByDescending:@"createdAt"];
     [retrieveJobs findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {

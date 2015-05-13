@@ -20,6 +20,8 @@
     
     _jobChatTable.estimatedRowHeight = 80.0;
     self.jobChatTable.rowHeight = UITableViewAutomaticDimension;
+    [_jobChatTable setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+
     
     
     NSLog(@"Job Employer who posted the job User ID = %@", _jobEmployerUserObjectID);
@@ -94,6 +96,7 @@
         
         if ([[[PFUser currentUser] objectId] isEqualToString:[[chatMessageObject objectForKey:@"messageFrom"] objectId]] ) {
             cell.messageAuthorLable.text = @"You (Anonymous)";
+            [cell.messageContentTextView setBackgroundColor:[UIColor redColor]];
 
         }
         
@@ -125,13 +128,25 @@
         
     } else {
         
+        //change the color of chat cell background
+    
+        if ([[[chatMessageObject objectForKey:@"messageFrom"] objectId] isEqualToString:[[PFUser currentUser] objectId]]) {
+           // [cell.messageContentTextView setBackgroundColor:[UIColor redColor]];
+            
+            //[cell.messageAuthorLable ]
+            
+            //cell.messageAuthorLable.font = [UIFont fontWithName:@"TrebuchetMS-Bold" size:18];
+            
+            NSLog(@"user = %@", [[chatMessageObject objectForKey:@"messageFrom"] objectId]);
+
+        }
+        
+        
         if ([[[chatMessageObject objectForKey:@"messageFrom"] objectForKey:@"signedUp"]   isEqual:@YES] ) {
-            NSLog(@"other user is registered");
             cell.messageAuthorLable.text = [[chatMessageObject objectForKey:@"messageFrom"] objectForKey:@"username"];
         }
         
         else{
-            NSLog(@"other user is not registered");
             cell.messageAuthorLable.text = @"Anonymous";
             
         }
@@ -267,6 +282,7 @@
     [messageQuery includeKey:@"messageFrom"];
     [messageQuery includeKey:@"messageTo"];
     [messageQuery orderByAscending:@"createdAt"];
+    messageQuery.limit =1000;
     
     [messageQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         
