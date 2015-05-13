@@ -18,6 +18,10 @@
 
 - (void)viewDidLoad {
     
+    _jobChatTable.estimatedRowHeight = 80.0;
+    self.jobChatTable.rowHeight = UITableViewAutomaticDimension;
+    
+    
     NSLog(@"Job Employer who posted the job User ID = %@", _jobEmployerUserObjectID);
     NSLog(@"Curernt User  objectID = %@", [[PFUser currentUser] objectId]);
     
@@ -40,6 +44,15 @@
     
     
 }
+
+
+-(void) viewDidAppear:(BOOL)animated{
+    
+    //scroll to the last message in the array
+    
+
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -205,7 +218,7 @@
     
     [self.view layoutIfNeeded];
     [UIView animateWithDuration:.25 animations:^{
-        _dockViewHightConstraint.constant =350;
+        _dockViewHightConstraint.constant =300;
         [self.view layoutIfNeeded];
         
         
@@ -275,15 +288,56 @@
         //always update ui on main thread
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.jobChatTable reloadData];
+
+            
+            
+            
+            
+            
+            
+
+
         });
         
+        
+        if ([self.messagesArray count] >0) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                [self scrollToLastMessage];
+                
+            });
+        }
+        
+        
+
+        
+       /// dispatch_async(dispatch_get_main_queue(), ^{
+          //  [self scrollToLastMessage];
+      //
+            
+            
+     //   });
+        
+
         
         
         
     }];
     
+
+    
+}
+
+- (void) scrollToLastMessage{
     
     
+    
+    
+    
+    NSLog(@"Size of arrray = %ld", [_messagesArray count]);
+    NSIndexPath *scrollIndexPath = [NSIndexPath indexPathForRow:([_messagesArray count] - 1) inSection:0];
+    [[self jobChatTable] scrollToRowAtIndexPath:scrollIndexPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+    //[[self jobChatTable]
 }
 
 
