@@ -20,6 +20,8 @@
 @property (strong, nonatomic) NSMutableArray *chatUsersList;
 @property (strong, nonatomic) NSMutableArray *chatUsersNamesList;
 @property (strong, nonatomic) NSMutableArray *chatUsersPFUsersList;
+@property (strong, nonatomic) NSMutableArray *chatLastMessageArray;
+
 
 
 

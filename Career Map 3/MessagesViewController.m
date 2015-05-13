@@ -52,7 +52,7 @@
             _chatUsersList = [NSMutableArray new];
             _chatUsersNamesList = [NSMutableArray new];
             _chatUsersPFUsersList = [NSMutableArray new];
-            
+            _chatLastMessageArray = [NSMutableArray new];
             
             for (PFObject *object in objects) {
                 // NSLog(@"messageFrom = %@", [[object objectForKey:@"messageFrom"] objectForKey:@"username"]);
@@ -74,6 +74,7 @@
                         [_chatUsersList addObject:[[object objectForKey:@"messageTo"] objectId]];
                         [_chatUsersNamesList addObject:[[object objectForKey:@"messageTo"] objectForKey:@"username"]];
                         [_chatUsersPFUsersList addObject:(PFUser *)[object objectForKey:@"messageTo"]];
+                        [_chatLastMessageArray addObject:[object objectForKey:@"messageContent"]];
                     }
                     
                     
@@ -87,6 +88,7 @@
                         [_chatUsersList addObject:[[object objectForKey:@"messageFrom"] objectId]];
                         [_chatUsersNamesList addObject:[[object objectForKey:@"messageFrom"] objectForKey:@"username"]];
                         [_chatUsersPFUsersList addObject:(PFUser *)[object objectForKey:@"messageFrom"]];
+                        [_chatLastMessageArray addObject:[object objectForKey:@"messageContent"]];
 
                         
                         
@@ -151,6 +153,7 @@
     
     cell.usernameLabel.text = [_chatUsersNamesList objectAtIndex:indexPath.row];
     cell.userObjectIdLabel.text=[_chatUsersList objectAtIndex:indexPath.row];
+    cell.lastMessageLabel.text = [_chatLastMessageArray objectAtIndex:indexPath.row];
 
     NSLog(@"table row");
     

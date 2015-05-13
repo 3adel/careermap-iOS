@@ -812,7 +812,6 @@
         <!--Messages-->
         <scene sceneID="dfI-PK-hV2">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="48N-ee-CYs" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="EwG-gK-NKE" customClass="MessagesViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="UJS-NK-R4H"/>
@@ -828,35 +827,70 @@
                                     <navigationItem title="Messages" id="CDz-Ti-faA"/>
                                 </items>
                             </navigationBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="120" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="6iW-So-kGy">
-                                <rect key="frame" x="16" y="68" width="568" height="483"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="87" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="6iW-So-kGy">
+                                <rect key="frame" x="0.0" y="68" width="600" height="483"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MessageCell" rowHeight="120" id="W46-J5-Ycu" customClass="MessageCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MessageCell" rowHeight="87" id="W46-J5-Ycu" customClass="MessageCell">
                                         <rect key="frame" x="0.0" y="0.0" width="568" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="W46-J5-Ycu" id="cEm-38-vzM">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T2Q-Il-YH0">
-                                                    <rect key="frame" x="8" y="8" width="428" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="last message" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sri-ZI-iFx">
+                                                    <rect key="frame" x="68" y="49" width="524" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="last message" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sri-ZI-iFx">
-                                                    <rect key="frame" x="8" y="83" width="101" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="userID" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QTn-iv-dCa">
+                                                    <rect key="frame" x="512" y="66" width="80" height="12"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="80" id="Qqa-YZ-ywD"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                    <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="userID" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QTn-iv-dCa">
-                                                    <rect key="frame" x="8" y="37" width="458" height="21"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Default_Profile_Picture@3x.png" translatesAutoresizingMaskIntoConstraints="NO" id="Fkp-JG-9of">
+                                                    <rect key="frame" x="8" y="18" width="50" height="50"/>
+                                                    <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="50" id="gBd-i9-n8s"/>
+                                                        <constraint firstAttribute="height" constant="50" id="h4C-pc-BfX"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T2Q-Il-YH0">
+                                                    <rect key="frame" x="68" y="18" width="524" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="T2Q-Il-YH0" firstAttribute="leading" secondItem="cEm-38-vzM" secondAttribute="leadingMargin" id="1yt-DQ-Doi"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="QTn-iv-dCa" secondAttribute="trailing" id="7gb-Eg-gV7"/>
+                                                <constraint firstItem="T2Q-Il-YH0" firstAttribute="leading" secondItem="Fkp-JG-9of" secondAttribute="trailing" constant="10" id="EAM-hM-auB"/>
+                                                <constraint firstItem="T2Q-Il-YH0" firstAttribute="top" secondItem="cEm-38-vzM" secondAttribute="topMargin" id="Es6-8F-gnA"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="QTn-iv-dCa" secondAttribute="bottom" id="S7u-aQ-R9W"/>
+                                                <constraint firstItem="QTn-iv-dCa" firstAttribute="top" secondItem="sri-ZI-iFx" secondAttribute="bottom" constant="10" id="XtU-Dw-Sgl"/>
+                                                <constraint firstItem="Fkp-JG-9of" firstAttribute="leading" secondItem="cEm-38-vzM" secondAttribute="leadingMargin" id="Zn4-hz-gZA"/>
+                                                <constraint firstAttribute="centerY" secondItem="Fkp-JG-9of" secondAttribute="centerY" id="aKN-nU-7gL"/>
+                                                <constraint firstItem="sri-ZI-iFx" firstAttribute="trailing" secondItem="T2Q-Il-YH0" secondAttribute="trailing" id="aTB-5r-VS4"/>
+                                                <constraint firstItem="sri-ZI-iFx" firstAttribute="leading" secondItem="T2Q-Il-YH0" secondAttribute="leading" id="lMD-up-Pfm"/>
+                                                <constraint firstItem="Fkp-JG-9of" firstAttribute="top" secondItem="T2Q-Il-YH0" secondAttribute="top" id="mMN-UX-1tD"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="T2Q-Il-YH0" secondAttribute="trailing" id="q6h-ZE-Bg4"/>
+                                                <constraint firstItem="sri-ZI-iFx" firstAttribute="top" secondItem="T2Q-Il-YH0" secondAttribute="bottom" constant="10" id="tDg-wo-8HL"/>
+                                                <constraint firstItem="sri-ZI-iFx" firstAttribute="leading" secondItem="T2Q-Il-YH0" secondAttribute="leading" id="upF-9o-TfM"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="1yt-DQ-Doi"/>
+                                                    <exclude reference="Es6-8F-gnA"/>
+                                                    <exclude reference="lMD-up-Pfm"/>
+                                                    <exclude reference="XtU-Dw-Sgl"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="lastMessageLabel" destination="sri-ZI-iFx" id="aeX-V1-v6z"/>
@@ -876,10 +910,10 @@
                             <constraint firstAttribute="trailingMargin" secondItem="6zR-fY-Isc" secondAttribute="trailing" constant="22" id="4si-Rl-izz"/>
                             <constraint firstItem="6zR-fY-Isc" firstAttribute="leading" secondItem="jLK-tq-bIg" secondAttribute="leadingMargin" id="CtD-oq-qqO"/>
                             <constraint firstItem="6iW-So-kGy" firstAttribute="top" secondItem="6zR-fY-Isc" secondAttribute="bottom" id="V3Q-EH-2x2"/>
-                            <constraint firstItem="6iW-So-kGy" firstAttribute="leading" secondItem="jLK-tq-bIg" secondAttribute="leadingMargin" id="ZfC-r9-Ic2"/>
+                            <constraint firstItem="6iW-So-kGy" firstAttribute="leading" secondItem="jLK-tq-bIg" secondAttribute="leadingMargin" constant="-16" id="ZfC-r9-Ic2"/>
                             <constraint firstItem="ccp-hU-0F8" firstAttribute="top" secondItem="6iW-So-kGy" secondAttribute="bottom" id="fWy-IH-4a3"/>
                             <constraint firstItem="6zR-fY-Isc" firstAttribute="leading" secondItem="jLK-tq-bIg" secondAttribute="leadingMargin" constant="-16" id="hMu-7J-FYW"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="6iW-So-kGy" secondAttribute="trailing" id="i8X-eo-BDV"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="6iW-So-kGy" secondAttribute="trailing" constant="-16" id="i8X-eo-BDV"/>
                             <constraint firstItem="6iW-So-kGy" firstAttribute="top" secondItem="6zR-fY-Isc" secondAttribute="bottom" id="jXD-uB-Jdn"/>
                             <constraint firstAttribute="centerX" secondItem="6zR-fY-Isc" secondAttribute="centerX" id="kmv-Gc-9Ub"/>
                             <constraint firstAttribute="trailingMargin" secondItem="6zR-fY-Isc" secondAttribute="trailing" constant="-16" id="q4x-xC-MNU"/>
@@ -902,6 +936,7 @@
                         <outlet property="messagesTable" destination="6iW-So-kGy" id="Lgs-yk-MPF"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="48N-ee-CYs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="541" y="1093"/>
         </scene>
@@ -1151,6 +1186,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Default_Profile_Picture@3x.png" width="285" height="285"/>
         <image name="MenuBar-Report.png" width="45" height="28"/>
         <image name="TabBar-JobList.png" width="45" height="28"/>
         <image name="TabBar-Messages.png" width="45" height="28"/>
