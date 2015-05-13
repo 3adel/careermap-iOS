@@ -35,6 +35,7 @@
 
 - (void)viewDidAppear:(BOOL)animated{
     
+    NSLog(@"View did appear called: registration screen");
     
     //check if the user is loggedin with an anoymous user, if so, show the login/registration screen
     if (![PFAnonymousUtils isLinkedWithUser:[PFUser currentUser]]) {
@@ -47,17 +48,23 @@
         if (user.username !=nil) {
             NSLog(@"User is already logged");
             
+           
+            
+            
+            
             //take me to app
             [self performSegueWithIdentifier:@"login" sender:self];
             
             // [self performSegueWithIdentifier:<#(NSString *)#> sender:<#(id)#>]
         }
         
+
+        
         
         
         
     }
-
+    
     
     
     
@@ -138,6 +145,26 @@
             _usernameField.text = nil;
             _emailField.text = nil;
             _passwordField.text = nil;
+            
+            
+            //set the signedUp flag to true
+            PFQuery *query = [PFQuery queryWithClassName:@"_User"];
+            [query getObjectInBackgroundWithId:[[PFUser currentUser] objectId]
+                                         block:^(PFObject *user, NSError *error) {
+                                             user[@"signedUp"] = @YES;
+                                             
+                                             [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                                                 if (succeeded) {
+                                                     NSLog(@"save succeeded");
+                                                 }
+                                                 
+                                                 else{
+                                                     NSLog(@"Saving user status failed %@", error);
+                                                 }
+                                             }];
+                                             
+                                         }];
+            
             
             
             //take me to the app

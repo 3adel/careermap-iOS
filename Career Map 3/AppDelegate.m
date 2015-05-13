@@ -26,6 +26,10 @@
     //[[PFUser currentUser] incrementKey:@"RunCount"];
     [[PFUser currentUser] saveInBackground];
     
+    
+    
+    
+    
     //[self.window.vi]
     
     

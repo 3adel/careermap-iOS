@@ -86,14 +86,47 @@
         
         else{
             
-            cell.messageAuthorLable.text = [[chatMessageObject objectForKey:@"messageFrom"] objectForKey:@"username"];
+            //if that user is registered, show their username. Otherwise show anonymous
+            
+            
+                
+                //if that user is registered, show their username. Otherwise show anonymous
+                
+                if ([[[chatMessageObject objectForKey:@"messageFrom"] objectForKey:@"signedUp"]   isEqual:@YES] ) {
+                    NSLog(@"other user is registered");
+                                cell.messageAuthorLable.text = [[chatMessageObject objectForKey:@"messageFrom"] objectForKey:@"username"];
+                }
+            
+                else{
+                    NSLog(@"other user is not registered");
+                    cell.messageAuthorLable.text = @"Anonymous";
+                    
+                }
+                
+                
+            
+
         }
         
         
         
     } else {
-        cell.messageAuthorLable.text = [[chatMessageObject objectForKey:@"messageFrom"] objectForKey:@"username"];
-        NSLog(@"you are NOT anonymous");
+        
+        if ([[[chatMessageObject objectForKey:@"messageFrom"] objectForKey:@"signedUp"]   isEqual:@YES] ) {
+            NSLog(@"other user is registered");
+            cell.messageAuthorLable.text = [[chatMessageObject objectForKey:@"messageFrom"] objectForKey:@"username"];
+        }
+        
+        else{
+            NSLog(@"other user is not registered");
+            cell.messageAuthorLable.text = @"Anonymous";
+            
+        }
+        
+        
+        
+       // cell.messageAuthorLable.text = [[chatMessageObject objectForKey:@"messageFrom"] objectForKey:@"username"];
+       // NSLog(@"you are NOT anonymous");
         
     }
     cell.messagePostDateLabel.text = chatMessageObject.createdAt.description;
