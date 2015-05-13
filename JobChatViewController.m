@@ -75,9 +75,20 @@
    // cell.messageAuthorLable.text = [[chatMessageObject objectForKey:@"messageFrom"] objectForKey:@"username"];
     
     if ([PFAnonymousUtils isLinkedWithUser:[PFUser currentUser]]) {
-        cell.messageAuthorLable.text = @"You (Anonymous)";
         
-        NSLog(@"you are anonymous");
+        NSLog(@"userID: %@", [[chatMessageObject objectForKey:@"messageFrom"] objectId]);
+        
+        
+        if ([[[PFUser currentUser] objectId] isEqualToString:[[chatMessageObject objectForKey:@"messageFrom"] objectId]] ) {
+            cell.messageAuthorLable.text = @"You (Anonymous)";
+
+        }
+        
+        else{
+            
+            cell.messageAuthorLable.text = [[chatMessageObject objectForKey:@"messageFrom"] objectForKey:@"username"];
+        }
+        
         
         
     } else {
