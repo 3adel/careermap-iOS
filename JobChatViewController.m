@@ -220,7 +220,7 @@
             
             PFPush *push = [PFPush new];
             [push setQuery:pushQuery];
-            [push setMessage:@"New Message"];
+            [push setMessage:[NSString stringWithFormat:@"%@ sent you a message", [_jobPosterPFUser objectForKey:@"username"]]];
             [push sendPushInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 if (succeeded) {
                     NSLog(@"sending push notification succeedd");
