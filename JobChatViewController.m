@@ -220,7 +220,19 @@
             
             PFPush *push = [PFPush new];
             [push setQuery:pushQuery];
-            [push setMessage:[NSString stringWithFormat:@"%@ sent you a message", [_jobPosterPFUser objectForKey:@"username"]]];
+            
+            
+            if ([PFAnonymousUtils isLinkedWithUser:[PFUser currentUser]]) {
+                
+                [push setMessage: @"Anonymous user sent you a message"];
+
+            }else{
+                
+                [push setMessage:[NSString stringWithFormat:@"%@ sent you a message", [[PFUser currentUser] objectForKey:@"username"]]];
+            }
+            
+            
+            
             [push sendPushInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 if (succeeded) {
                     NSLog(@"sending push notification succeedd");
