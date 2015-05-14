@@ -46,10 +46,24 @@
             _loginUsernameField.text = nil;
             _loginPasswordField.text = nil;
             
+
+            //save the user to parse installation table
+            PFInstallation *installation = [PFInstallation currentInstallation];
+            installation[@"user"] = [PFUser currentUser];
+            [installation saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                if (succeeded) {
+                    NSLog(@"saving user to parse installation table succeeded");
+                }
+                
+                else{
+                    NSLog(@"saving user to parse installation table FAILED");
+                    
+                    
+                }
+            }];
             
-            //_usernameField.text = nil;
-            //_emailField.text = nil;
-            //_passwordField.text = nil;
+            
+            
             
             [self performSegueWithIdentifier:@"loginSuccess" sender:self];
            // [self dismissViewControllerAnimated:NO completion:nil];

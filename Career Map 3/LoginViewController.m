@@ -147,6 +147,23 @@
             _passwordField.text = nil;
             
             
+            //save the user to parse installation table
+            PFInstallation *installation = [PFInstallation currentInstallation];
+            installation[@"user"] = [PFUser currentUser];
+            [installation saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                if (succeeded) {
+                    NSLog(@"saving user to parse installation table succeeded");
+                }
+                
+                else{
+                    NSLog(@"saving user to parse installation table FAILED");
+                    
+                    
+                }
+            }];
+            
+            
+            
             //set the signedUp flag to true
             PFQuery *query = [PFQuery queryWithClassName:@"_User"];
             [query getObjectInBackgroundWithId:[[PFUser currentUser] objectId]

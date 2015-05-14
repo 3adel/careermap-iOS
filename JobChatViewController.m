@@ -200,6 +200,31 @@
             NSLog(@"Success saving message object");
             [self retrieveMessages];
             
+            NSLog(@"The other user is %@", [_jobPosterPFUser objectId]);
+
+            
+            
+            //send push notification to the other user
+            PFQuery *uQuery = [PFUser query];
+            [uQuery whereKey:@"objectId" equalTo:[_jobPosterPFUser objectId]];
+            
+            PFQuery *pushQuery = [PFInstallation query];
+            [pushQuery whereKey:@"user" matchesQuery:uQuery];
+            
+            PFPush *push = [PFPush new];
+            [push setQuery:pushQuery];
+            [push setMessage:@"New Message"];
+            [push sendPushInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                if (succeeded) {
+                    NSLog(@"sending push notification succeedd");
+                }
+                else{
+                    
+                    NSLog(@"sending push notification failed: %@", error.localizedDescription);
+                }
+            }];
+            
+            
             
         } else {
             NSLog(@"Error saving message object");
