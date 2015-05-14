@@ -83,6 +83,7 @@
 		F5CF11F81AFD50AC00FD0FCA /* TabBar-Messages.png in Resources */ = {isa = PBXBuildFile; fileRef = F5CF11F51AFD50AC00FD0FCA /* TabBar-Messages.png */; };
 		F5CF11F91AFD50AC00FD0FCA /* TabBar-Messages@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5CF11F61AFD50AC00FD0FCA /* TabBar-Messages@2x.png */; };
 		F5CF11FA1AFD50AC00FD0FCA /* TabBar-Messages@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5CF11F71AFD50AC00FD0FCA /* TabBar-Messages@3x.png */; };
+		F5E655641B04EF9B0025F219 /* complete.m4r in Resources */ = {isa = PBXBuildFile; fileRef = F5E655631B04EF9B0025F219 /* complete.m4r */; };
 		F5EB65BC1AEBDFB60026B988 /* SkillTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = F5EB65BB1AEBDFB60026B988 /* SkillTextField.m */; };
 		F5EB65C01AECF6BD0026B988 /* GCPlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = F5EB65BF1AECF6BD0026B988 /* GCPlaceholderTextView.m */; };
 		F5EB65C31AED82A30026B988 /* JLTStepper.m in Sources */ = {isa = PBXBuildFile; fileRef = F5EB65C21AED82A30026B988 /* JLTStepper.m */; };
@@ -199,6 +200,7 @@
 		F5CF11F51AFD50AC00FD0FCA /* TabBar-Messages.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBar-Messages.png"; sourceTree = "<group>"; };
 		F5CF11F61AFD50AC00FD0FCA /* TabBar-Messages@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBar-Messages@2x.png"; sourceTree = "<group>"; };
 		F5CF11F71AFD50AC00FD0FCA /* TabBar-Messages@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBar-Messages@3x.png"; sourceTree = "<group>"; };
+		F5E655631B04EF9B0025F219 /* complete.m4r */ = {isa = PBXFileReference; lastKnownFileType = file; path = complete.m4r; sourceTree = "<group>"; };
 		F5EB65BA1AEBDFB60026B988 /* SkillTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkillTextField.h; sourceTree = "<group>"; };
 		F5EB65BB1AEBDFB60026B988 /* SkillTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkillTextField.m; sourceTree = "<group>"; };
 		F5EB65BE1AECF6BD0026B988 /* GCPlaceholderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCPlaceholderTextView.h; sourceTree = "<group>"; };
@@ -433,6 +435,7 @@
 		F59758AC1AC159B40099A978 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F5E655621B04EF590025F219 /* Sounds */,
 				F5EB65BD1AECF69F0026B988 /* Lib */,
 				F535AA6E1AD439080091E70B /* Location */,
 				F50142D01ACD1643000DDBE3 /* Icons */,
@@ -517,6 +520,14 @@
 				F5CF09481AF2805F00850BB0 /* TabBar-JobList@3x.png */,
 			);
 			name = "Tab Bar";
+			sourceTree = "<group>";
+		};
+		F5E655621B04EF590025F219 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				F5E655631B04EF9B0025F219 /* complete.m4r */,
+			);
+			name = Sounds;
 			sourceTree = "<group>";
 		};
 		F5EB65BD1AECF69F0026B988 /* Lib */ = {
@@ -648,6 +659,7 @@
 				F5CF09601AF285F000850BB0 /* TabBar-MyCV.png in Resources */,
 				F5CF09491AF2805F00850BB0 /* TabBar-JobList@3x.png in Resources */,
 				F5CF095C1AF2854600850BB0 /* TabBar-Settings.png in Resources */,
+				F5E655641B04EF9B0025F219 /* complete.m4r in Resources */,
 				F5CF095A1AF284E500850BB0 /* TabBar-Settings@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

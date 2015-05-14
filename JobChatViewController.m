@@ -103,7 +103,7 @@
         
         if ([[[PFUser currentUser] objectId] isEqualToString:[[chatMessageObject objectForKey:@"messageFrom"] objectId]] ) {
             cell.messageAuthorLable.text = @"You (Anonymous)";
-            [cell.messageContentTextView setBackgroundColor:[UIColor redColor]];
+           // [cell.messageContentTextView setBackgroundColor:[UIColor redColor]];
 
         }
         
@@ -218,18 +218,42 @@
             PFQuery *pushQuery = [PFInstallation query];
             [pushQuery whereKey:@"user" matchesQuery:uQuery];
             
+
+           
+           // PFPush *push = [[PFPush alloc] init];
+            
+            NSString *pushMessage = [[NSString alloc] init];
+            
+            
+            
+            
             PFPush *push = [PFPush new];
             [push setQuery:pushQuery];
+           // [push setData:<#(NSDictionary *)#>]
             
             
             if ([PFAnonymousUtils isLinkedWithUser:[PFUser currentUser]]) {
                 
-                [push setMessage: @"Anonymous user sent you a message"];
+                pushMessage =  @"Anonymous user sent you a message";
 
             }else{
-                
-                [push setMessage:[NSString stringWithFormat:@"%@ sent you a message", [[PFUser currentUser] objectForKey:@"username"]]];
+               // [push setData:pushData];
+
+                pushMessage =  [NSString stringWithFormat:@"%@ sent you a message", [[PFUser currentUser] objectForKey:@"username"]];
             }
+            
+            
+            NSDictionary *pushData = @{
+                                       @"alert" : pushMessage,
+                                       @"badge" : @"Increment",
+                                       @"sound": @"complete.m4r"
+                                       };
+            [push setData:pushData];
+            
+            
+            
+            
+            
             
             
             
@@ -242,6 +266,12 @@
                     NSLog(@"sending push notification failed: %@", error.localizedDescription);
                 }
             }];
+            
+            
+            
+            
+            
+            
             
             
             
