@@ -42,6 +42,13 @@
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tableViewTapped)];
     [self.jobChatTable addGestureRecognizer:tapGesture];
     
+    
+    //add an ovserver to monitor upcoming message through push notifications while the message conversation window is visible to the user
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshTable) name:@"getLatestMessage" object:nil];
+    
+    
+    
+    
     [self retrieveMessages];
     
     
@@ -379,6 +386,13 @@
     NSIndexPath *scrollIndexPath = [NSIndexPath indexPathForRow:([_messagesArray count] - 1) inSection:0];
     [[self jobChatTable] scrollToRowAtIndexPath:scrollIndexPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
     //[[self jobChatTable]
+}
+
+
+- (void) refreshTable{
+    
+    
+    [self retrieveMessages];
 }
 
 

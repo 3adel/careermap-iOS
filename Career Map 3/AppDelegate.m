@@ -74,6 +74,9 @@
 
 - (void) application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{
     
+    //update chat with latest message
+    [[ NSNotificationCenter defaultCenter] postNotificationName:@"getLatestMessage" object:nil];
+    
     
 }
 

@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JobChatViewController.m"
-            timestampString = "453285158.324148"
+            timestampString = "453288393.946931"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "205"
-            endingLineNumber = "205"
+            startingLineNumber = "212"
+            endingLineNumber = "212"
             landmarkName = "-sendButtonPressed:"
             landmarkType = "5">
          </BreakpointContent>
