@@ -243,9 +243,10 @@
             }
             
             
-            NSDictionary *pushData = @{
+            NSDictionary *pushData = @{@"message": newMessageObject[@"messageContent"],
                                        @"alert" : pushMessage,
-                                       @"sound": @"complete.m4r"
+                                       @"sound": @"complete.m4r",
+                                       @"otherPFUser": [PFUser currentUser]
                                        };
             [push setData:pushData];
             
