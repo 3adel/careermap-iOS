@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "JobChatViewController.h"
 
 @interface AppDelegate ()
 
@@ -86,6 +87,27 @@
     }*/
 
     //update chat with latest message
+    
+    
+    /*
+    //Check if the chat view controller visible
+    
+    
+    JobChatViewController  *jobChatScreen = [[JobChatViewController alloc] initWithNibName:@"JobChatView" bundle:nil];
+    
+    if (([jobChatScreen isViewLoaded] && jobChatScreen.view.window)) {
+        
+        NSLog(@"chat view is loaded");
+    }
+    else{
+        
+        NSLog(@"chat view is not loaded");
+    }
+    */
+    
+    //show an alert with content of push notif
+     [PFPush handlePush:userInfo];
+    
     [[ NSNotificationCenter defaultCenter] postNotificationName:@"getLatestMessage" object:nil];
     
 }
