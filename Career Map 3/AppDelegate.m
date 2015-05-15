@@ -74,9 +74,19 @@
 
 - (void) application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{
     
+    /*
+    //if the application is running in the forground
+    UIApplicationState state = [application applicationState];
+    if (state == UIApplicationStateActive) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Message received"
+                                                        message:[[userInfo valueForKey:@"aps"] valueForKey:@"alert"]
+                                                       delegate:self cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }*/
+
     //update chat with latest message
     [[ NSNotificationCenter defaultCenter] postNotificationName:@"getLatestMessage" object:nil];
-    
     
 }
 

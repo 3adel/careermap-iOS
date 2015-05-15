@@ -245,7 +245,6 @@
             
             NSDictionary *pushData = @{
                                        @"alert" : pushMessage,
-                                       @"badge" : @"Increment",
                                        @"sound": @"complete.m4r"
                                        };
             [push setData:pushData];
