@@ -37,6 +37,20 @@
     //check if opening the app is a result of remote notification
     NSDictionary *notificationPayload = launchOptions[UIApplicationLaunchOptionsRemoteNotificationKey];
 
+    
+    
+    
+    
+    UIStoryboard*  sb = [UIStoryboard storyboardWithName:@"Main"
+                                                  bundle:nil];
+    // UIViewController* vc =
+    
+    
+    
+    // NSString *json = [localNotif valueForKey:@"data"];
+    // Parse your string to dictionary
+    
+
 
     if (notificationPayload) {
     
@@ -46,6 +60,8 @@
         
       //  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"title" message:[notificationPayload objectForKey:@"message"] delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil, nil];
         //[alert show];
+        
+        
         
         
         //invoke the job chat view, but with the userIDs
@@ -69,8 +85,16 @@
 
         
         
-       // NSString *json = [localNotif valueForKey:@"data"];
-        // Parse your string to dictionary
+        JobListViewController *jobListVC = (JobListViewController *)[sb instantiateViewControllerWithIdentifier:@"JobListViewController"];
+        
+        //change notification payload to view controller
+        
+        
+        [jobListVC changeMessageIsReceivedValue];
+        
+ 
+        
+        
     }
     
     

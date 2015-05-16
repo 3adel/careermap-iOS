@@ -16,6 +16,12 @@
     
     
 }
+
+//track if the user received a push notification while the app is closed
+bool messageIsReceived = NO;
+
+
+
 @synthesize refreshControl;
 @synthesize userLocation;
 @synthesize jobsArray;
@@ -25,7 +31,7 @@
 
 
 - (void) viewDidAppear:(BOOL)animated{
-    
+
     //make sure the app choice screen shows one time only
     if (![@"1" isEqualToString:[[NSUserDefaults standardUserDefaults]
                                 objectForKey:@"screenShown"]]) {
@@ -48,6 +54,30 @@
     [super viewDidLoad];
     
     
+    
+    //if the user is coming from message push notif, show the message dialog first
+    
+    if (messageIsReceived) {
+        //check if opening the app is a result of remote notification
+        //NSDictionary *notificationPayload = launchOptions[UIApplicationLaunchOptionsRemoteNotificationKey];
+        
+    
+        
+        
+        
+        //UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"title" message:@"messsage" delegate:self cancelButtonTitle:@"cancel" otherButtonTitles:nil, nil];
+        
+       // [alert show];
+        
+        
+        //invoke the job chat view, but with the userIDs
+        JobChatViewController  *jobChatScreen = [[JobChatViewController alloc] initWithNibName:@"JobChatView" bundle:nil];
+      //  jobChatScreen.jobEmployerUserObjectID = [[notificationPayload valueForKey:@"otherPFUser"] objectForKey:@"objectId"];
+       // jobChatScreen.jobPosterPFUser = [notificationPayload valueForKey:@"otherPFUser"];
+        
+         [self presentViewController:jobChatScreen animated:YES completion:nil];
+        
+    }
 
     
     //add empty view
@@ -786,7 +816,13 @@
 
 }
 
+-(void) changeMessageIsReceivedValue{
 
+    messageIsReceived = true;
+
+    
+    
+}
 
 
 
