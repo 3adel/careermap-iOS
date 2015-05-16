@@ -33,10 +33,50 @@
     [application registerUserNotificationSettings:settings];
     [application registerForRemoteNotifications];
     
+
+    //check if opening the app is a result of remote notification
+    NSDictionary *notificationPayload = launchOptions[UIApplicationLaunchOptionsRemoteNotificationKey];
+
+
+    if (notificationPayload) {
+    
+      //  NSDictionary *userInfo = [launchOptions valueForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+       // NSDictionary *apsInfo = [userInfo objectForKey:@"aps"];
+        
+        
+      //  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"title" message:[notificationPayload objectForKey:@"message"] delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil, nil];
+        //[alert show];
+        
+        
+        //invoke the job chat view, but with the userIDs
+        JobChatViewController  *jobChatScreen = [[JobChatViewController alloc] initWithNibName:@"JobChatView" bundle:nil];
+        jobChatScreen.jobEmployerUserObjectID = [[notificationPayload valueForKey:@"otherPFUser"] objectForKey:@"objectId"];
+        jobChatScreen.jobPosterPFUser = [notificationPayload valueForKey:@"otherPFUser"];
+      
+       // [self.window makeKeyAndVisible];
+       // [self.window.rootViewController presentViewController:jobChatScreen animated:YES completion:nil];
+
+       // UIViewController *newRoot = jobChatScreen;
+        //self.window.rootViewController = jobChatScreen;
+        
+        
+      // [[[[UIApplication sharedApplication] keyWindow] rootViewController] presentViewController:newRoot animated:YES completion:nil];
+        
+
+       // UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:jobChatScreen];
+        //[self.window addSubview:navigationController.view];
+        
+
+        
+        
+       // NSString *json = [localNotif valueForKey:@"data"];
+        // Parse your string to dictionary
+    }
     
     
+
     
-    //[self.window.vi]
+  
     
     
     return YES;
@@ -75,7 +115,7 @@
 
 - (void) application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{
     
-
+    NSLog(@" application status %li",(long)[application applicationState]);
     //if the application is running in the forground
     UIApplicationState state = [application applicationState];
     if (state == UIApplicationStateActive) {
@@ -84,7 +124,9 @@
                                                        delegate:self cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
         [alert show];
-    } else{
+    }
+    
+    else{
         
         //invoke the job chat view, but with the userIDs
         JobChatViewController  *jobChatScreen = [[JobChatViewController alloc] initWithNibName:@"JobChatView" bundle:nil];
