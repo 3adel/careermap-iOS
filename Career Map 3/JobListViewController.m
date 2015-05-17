@@ -53,65 +53,31 @@ bool messageIsReceived = NO;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
-    
     //if the user is coming from message push notif, show the message dialog first
-    
     if (messageIsReceived) {
-        //check if opening the app is a result of remote notification
-        //NSDictionary *notificationPayload = launchOptions[UIApplicationLaunchOptionsRemoteNotificationKey];
         
-        
-        
-        //get userInfo that was set in app delegate
+        //get notif payload that was set in app delegate
         AppDelegate *appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
         NSDictionary *notificationPayload = appDelegate.notificationPayload;
-        
-        
-        
-        
-        //UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"title" message:@"messsage" delegate:self cancelButtonTitle:@"cancel" otherButtonTitles:nil, nil];
-        
-       // [alert show];
-        
-        
-        //invoke the job chat view, but with the userIDs
         JobChatViewController  *jobChatScreen = [[JobChatViewController alloc] initWithNibName:@"JobChatView" bundle:nil];
         jobChatScreen.jobEmployerUserObjectID = [[notificationPayload valueForKey:@"otherPFUser"] objectForKey:@"objectId"];
         jobChatScreen.jobPosterPFUser = [notificationPayload valueForKey:@"otherPFUser"];
-        
-         [self presentViewController:jobChatScreen animated:YES completion:nil];
+        [self presentViewController:jobChatScreen animated:YES completion:nil];
         
     }
-
-    
-    //add empty view
-    // LoadingJobListEmptyView *emptyLoadingView = [[LoadingJobListEmptyView alloc] init];
-    // [self.view addSubview:emptyLoadingView];
-    
     
     
     //table cell autolayout
     _jobTable.estimatedRowHeight = 100.0;
     self.jobTable.rowHeight = UITableViewAutomaticDimension;
 
-    
-
     //progress spinner initialization
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _HUDProgressIndicator = [MBProgressHUD showHUDAddedTo:_jobTable animated:YES];
     _HUDProgressIndicator.labelText = @"Loading jobs around you...";
     _HUDProgressIndicator.detailsLabelText = @"Locating you ...";
-
     _HUDProgressIndicator.mode = MBProgressHUDModeIndeterminate;
-   //orange color
-    //[_HUDProgressIndicator setColor:[UIColor colorWithRed:255/255.0 green:149.0/255.0 blue:0.0/0.0 alpha:0.8]];
-    
 
-    
-    
-    
-    
     // Initialize the refresh control.
     self.refreshControl = [[UIRefreshControl alloc] init];
     self.refreshControl.backgroundColor = [UIColor colorWithRed:255/255.0 green:149.0/255.0 blue:0.0/0.0 alpha:0.8];
