@@ -81,22 +81,36 @@
     cell.userObjectIdLabel.text=[_chatUsersList objectAtIndex:indexPath.row];
     cell.lastMessageLabel.text = [_chatLastMessageArray objectAtIndex:indexPath.row];
     
+    
     // NSLog(@"table row");
     
     //set unread/read highlighting of converesations
     if (_conversationReadUnreadBooleansArray.count == _chatUsersPFUsersList.count) {
+       
+        
         if ([[_conversationReadUnreadBooleansArray objectAtIndex:indexPath.row] isEqualToNumber:[NSNumber numberWithBool:NO]]) {
             
             
             cell.usernameLabel.font = [UIFont boldSystemFontOfSize:17.0];
         }
         
+
         else{
             cell.usernameLabel.font = [UIFont systemFontOfSize:17.0];
             
         }
         
+        
+        
     }
+    
+    else{
+
+        
+        cell.usernameLabel.font = [UIFont systemFontOfSize:17.0];
+
+        
+            }
     
     
 
@@ -118,24 +132,31 @@
 forRowAtIndexPath: (NSIndexPath*)indexPath
 {
     
-    // cell..textLabel.backgroundColor = [UIColor clearColor];
+    
+
+        /*
+        
+        if ([[_conversationReadUnreadBooleansArray objectAtIndex:indexPath.row] isEqualToNumber:[NSNumber numberWithBool:NO]]) {
+            
+            
+            cell.textLabel.backgroundColor = [UIColor redColor];
+        }
+        
+        else{
+            cell.textLabel.backgroundColor = [UIColor clearColor];
+            
+        }
+        
+        
+        
+        */
+
+    
     
     
 }
-/*
- 
- - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
- {
- 
- 
- if (indexPath.row == 1) {
- // cell.messageAuthorLable.text
- NSLog(@"row =1");
- // cell.usernameLabel.font = [UIFont boldSystemFontOfSize:17.0];
- cell.backgroundColor = [UIColor redColor];
- }
- }
- */
+
+
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -422,13 +443,13 @@ forRowAtIndexPath: (NSIndexPath*)indexPath
                     NSLog(@"error retrieving conversation objects");
                 }
                 
-                
                 [_messagesTable reloadData];
+  
+                
             }];
             
             
             //************
-            
             
             
             
