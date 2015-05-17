@@ -35,7 +35,7 @@
     
 
     //check if opening the app is a result of remote notification
-    NSDictionary *notificationPayload = launchOptions[UIApplicationLaunchOptionsRemoteNotificationKey];
+    _notificationPayload = launchOptions[UIApplicationLaunchOptionsRemoteNotificationKey];
 
     
     
@@ -52,7 +52,7 @@
     
 
 
-    if (notificationPayload) {
+    if (_notificationPayload) {
     
       //  NSDictionary *userInfo = [launchOptions valueForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
        // NSDictionary *apsInfo = [userInfo objectForKey:@"aps"];
@@ -65,9 +65,9 @@
         
         
         //invoke the job chat view, but with the userIDs
-        JobChatViewController  *jobChatScreen = [[JobChatViewController alloc] initWithNibName:@"JobChatView" bundle:nil];
-        jobChatScreen.jobEmployerUserObjectID = [[notificationPayload valueForKey:@"otherPFUser"] objectForKey:@"objectId"];
-        jobChatScreen.jobPosterPFUser = [notificationPayload valueForKey:@"otherPFUser"];
+        //JobChatViewController  *jobChatScreen = [[JobChatViewController alloc] initWithNibName:@"JobChatView" bundle:nil];
+        //jobChatScreen.jobEmployerUserObjectID = [[notificationPayload valueForKey:@"otherPFUser"] objectForKey:@"objectId"];
+       // jobChatScreen.jobPosterPFUser = [notificationPayload valueForKey:@"otherPFUser"];
       
        // [self.window makeKeyAndVisible];
        // [self.window.rootViewController presentViewController:jobChatScreen animated:YES completion:nil];
