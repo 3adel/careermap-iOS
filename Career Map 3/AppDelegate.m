@@ -154,6 +154,8 @@
         [alert show];*/
         
         
+        
+        
         //invoke the job chat view, but with the userIDs
         JobChatViewController  *jobChatScreen = [[JobChatViewController alloc] initWithNibName:@"JobChatView" bundle:nil];
         jobChatScreen.jobEmployerUserObjectID = [[userInfo valueForKey:@"otherPFUser"] valueForKey:@"objectId"];
