@@ -24,6 +24,8 @@
 
 
 
+//methods
+- (void) retrieveMessages;
 
 
 @end

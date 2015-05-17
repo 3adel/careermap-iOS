@@ -28,6 +28,11 @@
    // _messagesTable.dataSource = self;
     
   //  NSLog(@"Messages list 'view did load'");
+    
+    
+    //add an ovserver to monitor upcoming message through push notifications while the message conversation window is visible to the user
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshMessages) name:@"getLatestMessage" object:nil];
+    
 }
 
 - (void) viewDidAppear:(BOOL)animated{
@@ -35,90 +40,8 @@
     
     //NSLog(@"Messages list 'view did appear'");
     
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"messageFrom = %@ OR messageTo = %@",[PFUser currentUser], [PFUser currentUser]];
     
-    PFQuery *query = [PFQuery queryWithClassName:@"Messages" predicate:predicate];
-    [query orderByDescending:@"createdAt"];
-    [query includeKey:@"messageFrom"];
-    [query includeKey:@"messageTo"];
-    
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (!error) {
-            // NSLog(@"objects: %@", objects);
-            
-            //initialize arrays
-            _messageFromArray = [NSMutableArray new];
-            _messageToArray = [NSMutableArray new];
-            _chatUsersList = [NSMutableArray new];
-            _chatUsersNamesList = [NSMutableArray new];
-            _chatUsersPFUsersList = [NSMutableArray new];
-            _chatLastMessageArray = [NSMutableArray new];
-            
-            for (PFObject *object in objects) {
-                // NSLog(@"messageFrom = %@", [[object objectForKey:@"messageFrom"] objectForKey:@"username"]);
-                //NSLog(@"messageTo = %@", [[object objectForKey:@"messageTo"] objectId]);
-                // NSLog(@"message = %@ \n\n", [object objectForKey:@"messageContent"]);
-                
-                
-                
-                // [_messageFromArray addObject:[[object objectForKey:@"messageFrom"] objectId]];
-                // [_messageFromArray addObject:[[object objectForKey:@"messageTo"] objectId]];
-                
-                
-                
-                if ([[[object objectForKey:@"messageFrom"] objectId] isEqualToString:[[PFUser currentUser] objectId]]) {
-                    
-                    
-                    if (![_chatUsersList containsObject:[[object objectForKey:@"messageTo"] objectId]]) {
-                        //add user to the list of chatters
-                        [_chatUsersList addObject:[[object objectForKey:@"messageTo"] objectId]];
-                        [_chatUsersNamesList addObject:[[object objectForKey:@"messageTo"] objectForKey:@"username"]];
-                        [_chatUsersPFUsersList addObject:(PFUser *)[object objectForKey:@"messageTo"]];
-                        [_chatLastMessageArray addObject:[object objectForKey:@"messageContent"]];
-                    }
-                    
-                    
-                    
-                }
-                
-                else{
-                    
-                    if (![_chatUsersList containsObject:[[object objectForKey:@"messageFrom"] objectId]]) {
-                        //add user to the list of chatters
-                        [_chatUsersList addObject:[[object objectForKey:@"messageFrom"] objectId]];
-                        [_chatUsersNamesList addObject:[[object objectForKey:@"messageFrom"] objectForKey:@"username"]];
-                        [_chatUsersPFUsersList addObject:(PFUser *)[object objectForKey:@"messageFrom"]];
-                        [_chatLastMessageArray addObject:[object objectForKey:@"messageContent"]];
-
-                        
-                        
-                    }
-                    
-                   // NSLog(@"chat users IDs list = %@", _chatUsersList);
-                  //  NSLog(@"chat usernames list = %@", _chatUsersNamesList);
-
-                    
-                    
-                }
-
-                
-
-                
-                
-            }
-            
-            
-            
-        }
-        
-        else{
-            
-            NSLog(@"error retrieving messages");
-        }
-        
-        //reload table data after data fetchibng is done
-        [_messagesTable reloadData];
-    }];
+    [self retrieveMessages];
     
     
     
@@ -227,5 +150,108 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+
+
+- (void) refreshMessages{
+    
+    
+    [self retrieveMessages];
+}
+
+
+- (void) retrieveMessages{
+    
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"messageFrom = %@ OR messageTo = %@",[PFUser currentUser], [PFUser currentUser]];
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"Messages" predicate:predicate];
+    [query orderByDescending:@"createdAt"];
+    [query includeKey:@"messageFrom"];
+    [query includeKey:@"messageTo"];
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            // NSLog(@"objects: %@", objects);
+            
+            //initialize arrays
+            _messageFromArray = [NSMutableArray new];
+            _messageToArray = [NSMutableArray new];
+            _chatUsersList = [NSMutableArray new];
+            _chatUsersNamesList = [NSMutableArray new];
+            _chatUsersPFUsersList = [NSMutableArray new];
+            _chatLastMessageArray = [NSMutableArray new];
+            
+            for (PFObject *object in objects) {
+                // NSLog(@"messageFrom = %@", [[object objectForKey:@"messageFrom"] objectForKey:@"username"]);
+                //NSLog(@"messageTo = %@", [[object objectForKey:@"messageTo"] objectId]);
+                // NSLog(@"message = %@ \n\n", [object objectForKey:@"messageContent"]);
+                
+                
+                
+                // [_messageFromArray addObject:[[object objectForKey:@"messageFrom"] objectId]];
+                // [_messageFromArray addObject:[[object objectForKey:@"messageTo"] objectId]];
+                
+                
+                
+                if ([[[object objectForKey:@"messageFrom"] objectId] isEqualToString:[[PFUser currentUser] objectId]]) {
+                    
+                    
+                    if (![_chatUsersList containsObject:[[object objectForKey:@"messageTo"] objectId]]) {
+                        //add user to the list of chatters
+                        [_chatUsersList addObject:[[object objectForKey:@"messageTo"] objectId]];
+                        [_chatUsersNamesList addObject:[[object objectForKey:@"messageTo"] objectForKey:@"username"]];
+                        [_chatUsersPFUsersList addObject:(PFUser *)[object objectForKey:@"messageTo"]];
+                        [_chatLastMessageArray addObject:[object objectForKey:@"messageContent"]];
+                    }
+                    
+                    
+                    
+                }
+                
+                else{
+                    
+                    if (![_chatUsersList containsObject:[[object objectForKey:@"messageFrom"] objectId]]) {
+                        //add user to the list of chatters
+                        [_chatUsersList addObject:[[object objectForKey:@"messageFrom"] objectId]];
+                        [_chatUsersNamesList addObject:[[object objectForKey:@"messageFrom"] objectForKey:@"username"]];
+                        [_chatUsersPFUsersList addObject:(PFUser *)[object objectForKey:@"messageFrom"]];
+                        [_chatLastMessageArray addObject:[object objectForKey:@"messageContent"]];
+                        
+                        
+                        
+                    }
+                    
+                    // NSLog(@"chat users IDs list = %@", _chatUsersList);
+                    //  NSLog(@"chat usernames list = %@", _chatUsersNamesList);
+                    
+                    
+                    
+                }
+                
+                
+                
+                
+                
+            }
+            
+            
+            
+        }
+        
+        else{
+            
+            NSLog(@"error retrieving messages");
+        }
+        
+        //reload table data after data fetchibng is done
+        [_messagesTable reloadData];
+    }];
+    
+
+    
+    
+}
+
 
 @end

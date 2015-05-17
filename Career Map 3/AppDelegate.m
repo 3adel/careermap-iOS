@@ -140,26 +140,28 @@
 - (void) application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{
     
     NSLog(@" application status %li",(long)[application applicationState]);
+    
+    
     //if the application is running in the forground
     UIApplicationState state = [application applicationState];
-    if (state == UIApplicationStateActive) {
+    if (!(state == UIApplicationStateActive)) {
+      
+        /*
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Message received"
                                                         message:[[userInfo valueForKey:@"aps"] valueForKey:@"alert"]
                                                        delegate:self cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
-        [alert show];
-    }
-    
-    else{
+        [alert show];*/
+        
         
         //invoke the job chat view, but with the userIDs
         JobChatViewController  *jobChatScreen = [[JobChatViewController alloc] initWithNibName:@"JobChatView" bundle:nil];
         jobChatScreen.jobEmployerUserObjectID = [[userInfo valueForKey:@"otherPFUser"] valueForKey:@"objectId"];
         jobChatScreen.jobPosterPFUser = [userInfo valueForKey:@"otherPFUser"];
         [[[[UIApplication sharedApplication] keyWindow] rootViewController] presentViewController:jobChatScreen animated:YES completion:nil];
-        
- 
     }
+    
+
 
     //update chat with latest message
     
