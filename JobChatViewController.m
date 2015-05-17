@@ -92,6 +92,8 @@
     }
     
     
+
+    
     cell.messageContentTextView.text = [chatMessageObject objectForKey:@"messageContent"];
     
    // cell.messageAuthorLable.text = [[chatMessageObject objectForKey:@"messageFrom"] objectForKey:@"username"];
@@ -273,9 +275,8 @@
             
             
             //************
-            
+            //now set the respective readbyUser flag to false
             //check if there's already an existing 1 conversation
-            
             PFQuery *query1 =[PFQuery queryWithClassName:@"Conversation"];
             [query1 whereKey:@"userA"
                      equalTo:[PFObject objectWithoutDataWithClassName:@"_User" objectId:[[PFUser currentUser] objectId]]];
@@ -369,7 +370,28 @@
                    
                    else{
                        //no conversation found
-                       //create a conversation object and update the  readByValues
+                       //create a conversation object and update the readByValues
+                       PFObject *conversationObject =[PFObject objectWithClassName:@"Conversation"];
+                       conversationObject[@"readByUserB"] = @NO;
+                       conversationObject[@"readByUserA"] = @NO;
+                       conversationObject[@"userA"] = [PFUser currentUser];
+                       conversationObject[@"userB"] = _jobPosterPFUser;
+                       
+                       
+                       
+                       [conversationObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                           if (succeeded) {
+                               NSLog(@"saving conversation unread status for two users success");
+                           }
+                           
+                           else{
+                               
+                               NSLog(@"saving conversation unread status for two users FAILED");
+                               
+                               
+                               
+                           }
+                       }];
                    }
                    
                    
@@ -382,15 +404,7 @@
                
            }];
 
-            
-            
-            //If there's an existing conversation
-            //set the readBy flags for each user
-            //if there's no existing conversation
-            //add a record to conversation table
-            //Then set the readBy flags
-            
-            
+
             //************
             
             
