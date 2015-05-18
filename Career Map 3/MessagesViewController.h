@@ -11,6 +11,7 @@
 #import "MessageCell.h"
 #import "JobChatViewController.h"
 
+
 @interface MessagesViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *messagesTable;
@@ -21,7 +22,7 @@
 @property (strong, nonatomic) NSMutableArray *chatUsersNamesList;
 @property (strong, nonatomic) NSMutableArray *chatUsersPFUsersList;
 @property (strong, nonatomic) NSMutableArray *chatLastMessageArray;
-//@property (strong, nonatomic) NSMutableArray *conversationReadUnreadBooleansArray;
+@property (strong, nonatomic) NSMutableArray *UnreadMessagesCountBooleansArray;
 @property (nonatomic, strong) NSMutableDictionary *conversationReadUnreadBooleansDictonary;
 
 

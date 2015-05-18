@@ -118,6 +118,12 @@ bool messageIsReceived = NO;
     }];
     
     
+    
+    //update message tabbar item with how many unread messages
+    MessagesViewController *messaagesVC = [[MessagesViewController alloc] init];
+    [messaagesVC retrieveMessages];
+    
+    
 }
 
 - (void) retrieveFromParse {

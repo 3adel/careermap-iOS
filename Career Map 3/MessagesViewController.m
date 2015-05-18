@@ -343,6 +343,7 @@ forRowAtIndexPath: (NSIndexPath*)indexPath
         
         
         NSInteger count =0;
+        _UnreadMessagesCountBooleansArray =[[NSMutableArray alloc] init];
         //_conversationReadUnreadBooleansArray = [[NSMutableArray alloc] initWithCapacity:_chatUsersPFUsersList.count];
         _conversationReadUnreadBooleansDictonary = [[NSMutableDictionary alloc] init];
 
@@ -412,8 +413,12 @@ forRowAtIndexPath: (NSIndexPath*)indexPath
                                 
                                 NSLog(@"read by user A = False");
                                 //cell.usernameLabel.font = [UIFont boldSystemFontOfSize:17.0];
-                                 //[_conversationReadUnreadBooleansArray addObject:[NSNumber numberWithBool:NO]];
+                                 [_UnreadMessagesCountBooleansArray addObject:[NSNumber numberWithBool:NO]];
                                 [_conversationReadUnreadBooleansDictonary setValue:[NSNumber numberWithBool:NO] forKey:[user objectId]];
+                                
+                                
+                               
+                                
                                // [_conversationReadUnreadBooleansArray addObject:[NSNumber numberWithBool:NO]];
                                // [_conversationReadUnreadBooleansArray insertObject:[NSNumber numberWithBool:NO] atIndex:count ];
                                 //[_conversationReadUnreadBooleansArray setObject:[NSNumber numberWithBool:NO] atIndexedSubscript:count];
@@ -443,8 +448,10 @@ forRowAtIndexPath: (NSIndexPath*)indexPath
                             
                             NSLog(@"current user is userB");
                             if ([[[objects objectAtIndex:0] objectForKey:@"readByUserB"]  isEqual: @NO]) {
-                                //[_conversationReadUnreadBooleansArray addObject:[NSNumber numberWithBool:NO]];
+                                [_UnreadMessagesCountBooleansArray addObject:[NSNumber numberWithBool:NO]];
                                 [_conversationReadUnreadBooleansDictonary setValue:[NSNumber numberWithBool:NO] forKey:[user objectId]];
+                                
+                                
                                 
                                // [_conversationReadUnreadBooleansArray insertObject:[NSNumber numberWithBool:NO] atIndex:count ];
                                 
@@ -485,17 +492,25 @@ forRowAtIndexPath: (NSIndexPath*)indexPath
                 
                 [_messagesTable reloadData];
                 
-                
-                
+                //update the badge of messages tab bar item
+                if (count == _chatUsersPFUsersList.count-1 ) {
+                    NSLog(@"update unread tab bar badge now");
+                    //[[[[[self tabBarController] tabBar] items] objectAtIndex:2] setBadgeValue:[NSString stringWithFormat:@"%ld", [_UnreadMessagesCountBooleansArray count]]];
+                    UITabBarController *tbc = (UITabBarController *)[[[[UIApplication sharedApplication] delegate] window] rootViewController];
+                    [[[[tbc tabBar] items] objectAtIndex:2] setBadgeValue:[NSString stringWithFormat:@"%ld", [_UnreadMessagesCountBooleansArray count]]];
+
+                    
+                }
                 
                 
             }];
             
             
+            
             //************
             
             
-            
+
             
             count ++;
         }

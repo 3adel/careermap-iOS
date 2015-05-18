@@ -10,6 +10,7 @@
 #import <Parse/Parse.h>
 #import <ParseUI/ParseUI.h>
 #import "JobListViewController.h"
+#import "MessagesViewController.h"
 
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>

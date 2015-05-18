@@ -95,6 +95,10 @@
  
         
         
+        
+     
+        
+        
     }
     
     
@@ -187,10 +191,11 @@
     //show an alert with content of push notif
     
     
-    
+    //update message tabbar item with how many unread messages
+    MessagesViewController *messaagesVC = [[MessagesViewController alloc] init];
+    [messaagesVC retrieveMessages];
 
-    
-    
+
      //[PFPush handlePush:userInfo];
     
     [[ NSNotificationCenter defaultCenter] postNotificationName:@"getLatestMessage" object:nil];
