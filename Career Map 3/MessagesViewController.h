@@ -22,6 +22,7 @@
 @property (strong, nonatomic) NSMutableArray *chatUsersPFUsersList;
 @property (strong, nonatomic) NSMutableArray *chatLastMessageArray;
 @property (strong, nonatomic) NSMutableArray *conversationReadUnreadBooleansArray;
+@property (nonatomic, strong) NSMutableDictionary *conversationReadUnreadBooleansDictonary;
 
 
 //methods

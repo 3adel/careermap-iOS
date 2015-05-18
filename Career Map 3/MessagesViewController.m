@@ -78,25 +78,38 @@
     // MessageCell  *cell = [[MessageCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     
     cell.usernameLabel.text = [_chatUsersNamesList objectAtIndex:indexPath.row];
-    cell.userObjectIdLabel.text=[_chatUsersList objectAtIndex:indexPath.row];
+    // cell.userObjectIdLabel.text=[_chatUsersList objectAtIndex:indexPath.row];
+    
     cell.lastMessageLabel.text = [_chatLastMessageArray objectAtIndex:indexPath.row];
     
     
     // NSLog(@"table row");
     
     //set unread/read highlighting of converesations
-    if (_conversationReadUnreadBooleansArray.count == _chatUsersPFUsersList.count) {
-       
+    if (_conversationReadUnreadBooleansDictonary.count == _chatUsersPFUsersList.count) {
         
-        if ([[_conversationReadUnreadBooleansArray objectAtIndex:indexPath.row] isEqualToNumber:[NSNumber numberWithBool:NO]]) {
+        
+      
+        
+       // [_conversationReadUnreadBooleansDictonary valueForKey:][[[_chatUsersPFUsersList objectAtIndex:indexPath.row] objectId]]
+        if ([[_conversationReadUnreadBooleansDictonary valueForKey:  [[_chatUsersPFUsersList objectAtIndex:indexPath.row] objectId]] isEqualToNumber:[NSNumber numberWithBool:NO]]) {
+        //if ([[_conversationReadUnreadBooleansArray objectAtIndex:indexPath.row] isEqualToNumber:[NSNumber numberWithBool:NO]]) {
             
             
             cell.usernameLabel.font = [UIFont boldSystemFontOfSize:17.0];
+            cell.userObjectIdLabel.text=@"UNREAD";
+            
+            
+            
+            
         }
         
-
+        
         else{
             cell.usernameLabel.font = [UIFont systemFontOfSize:17.0];
+            cell.userObjectIdLabel.text=@"READ";
+            
+            
             
         }
         
@@ -105,15 +118,17 @@
     }
     
     else{
-
+        
         
         cell.usernameLabel.font = [UIFont systemFontOfSize:17.0];
-
+        cell.userObjectIdLabel.text=@"READ";
         
-            }
+        
+        
+    }
     
     
-
+    
     
     
     
@@ -133,24 +148,24 @@ forRowAtIndexPath: (NSIndexPath*)indexPath
 {
     
     
-
-        /*
-        
-        if ([[_conversationReadUnreadBooleansArray objectAtIndex:indexPath.row] isEqualToNumber:[NSNumber numberWithBool:NO]]) {
-            
-            
-            cell.textLabel.backgroundColor = [UIColor redColor];
-        }
-        
-        else{
-            cell.textLabel.backgroundColor = [UIColor clearColor];
-            
-        }
-        
-        
-        
-        */
-
+    
+    /*
+     
+     if ([[_conversationReadUnreadBooleansArray objectAtIndex:indexPath.row] isEqualToNumber:[NSNumber numberWithBool:NO]]) {
+     
+     
+     cell.textLabel.backgroundColor = [UIColor redColor];
+     }
+     
+     else{
+     cell.textLabel.backgroundColor = [UIColor clearColor];
+     
+     }
+     
+     
+     
+     */
+    
     
     
     
@@ -239,6 +254,7 @@ forRowAtIndexPath: (NSIndexPath*)indexPath
 - (void) retrieveMessages{
     
     
+    
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"messageFrom = %@ OR messageTo = %@",[PFUser currentUser], [PFUser currentUser]];
     
     PFQuery *query = [PFQuery queryWithClassName:@"Messages" predicate:predicate];
@@ -257,6 +273,7 @@ forRowAtIndexPath: (NSIndexPath*)indexPath
             _chatUsersNamesList = [NSMutableArray new];
             _chatUsersPFUsersList = [NSMutableArray new];
             _chatLastMessageArray = [NSMutableArray new];
+            
             
             for (PFObject *object in objects) {
                 // NSLog(@"messageFrom = %@", [[object objectForKey:@"messageFrom"] objectForKey:@"username"]);
@@ -323,13 +340,14 @@ forRowAtIndexPath: (NSIndexPath*)indexPath
             
             NSLog(@"error retrieving messages");
         }
-    
-        
- 
         
         
-        _conversationReadUnreadBooleansArray = [[NSMutableArray alloc] init];
         
+        
+        NSInteger count =0;
+        _conversationReadUnreadBooleansArray = [[NSMutableArray alloc] initWithCapacity:_chatUsersPFUsersList.count];
+        _conversationReadUnreadBooleansDictonary = [[NSMutableDictionary alloc] init];
+
         
         for (PFUser *user in _chatUsersPFUsersList) {
             
@@ -363,11 +381,14 @@ forRowAtIndexPath: (NSIndexPath*)indexPath
             PFQuery *query4 =[query3 whereKey:@"userB"
                                       equalTo:[PFObject objectWithoutDataWithClassName:@"_User" objectId:[[PFUser currentUser] objectId]]];
             
+            
             //combin the two queries in an OR operation
             PFQuery *conversationQuery = [PFQuery orQueryWithSubqueries:@[query2,query4]];
             [conversationQuery includeKey:@"userA"];
             [conversationQuery includeKey:@"userB"];
             conversationQuery.limit =10;
+            
+            
             
             [conversationQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
                 
@@ -393,12 +414,25 @@ forRowAtIndexPath: (NSIndexPath*)indexPath
                                 
                                 NSLog(@"read by user A = False");
                                 //cell.usernameLabel.font = [UIFont boldSystemFontOfSize:17.0];
-                                [_conversationReadUnreadBooleansArray addObject:[NSNumber numberWithBool:NO]];
+                                 [_conversationReadUnreadBooleansArray addObject:[NSNumber numberWithBool:NO]];
+                                [_conversationReadUnreadBooleansDictonary setValue:[NSNumber numberWithBool:NO] forKey:[user objectId]];
+                               // [_conversationReadUnreadBooleansArray addObject:[NSNumber numberWithBool:NO]];
+                               // [_conversationReadUnreadBooleansArray insertObject:[NSNumber numberWithBool:NO] atIndex:count ];
+                                //[_conversationReadUnreadBooleansArray setObject:[NSNumber numberWithBool:NO] atIndexedSubscript:count];
+                                
+                            
                             }
+                            
+                            
                             else{
                                 NSLog(@"read by user A = True");
                                 //cell.usernameLabel.font = [UIFont systemFontOfSize:17.0];
-                                [_conversationReadUnreadBooleansArray addObject:[NSNumber numberWithBool:YES]];
+                               [_conversationReadUnreadBooleansArray addObject:[NSNumber numberWithBool:YES]];
+                                
+                                [_conversationReadUnreadBooleansDictonary setValue:[NSNumber numberWithBool:YES] forKey:[user objectId]];
+                               // [_conversationReadUnreadBooleansArray insertObject:[NSNumber numberWithBool:YES] atIndex:count ];
+                                // [_conversationReadUnreadBooleansArray setObject:[NSNumber numberWithBool:YES] atIndexedSubscript:count];
+                                
                                 
                             }
                             
@@ -412,10 +446,18 @@ forRowAtIndexPath: (NSIndexPath*)indexPath
                             NSLog(@"current user is userB");
                             if ([[[objects objectAtIndex:0] objectForKey:@"readByUserB"]  isEqual: @NO]) {
                                 [_conversationReadUnreadBooleansArray addObject:[NSNumber numberWithBool:NO]];
+                                [_conversationReadUnreadBooleansDictonary setValue:[NSNumber numberWithBool:NO] forKey:[user objectId]];
+                                
+                               // [_conversationReadUnreadBooleansArray insertObject:[NSNumber numberWithBool:NO] atIndex:count ];
+                                
+                                 //[_conversationReadUnreadBooleansArray setObject:[NSNumber numberWithBool:NO] atIndexedSubscript:count];
                             }
                             else{
                                 
                                 [_conversationReadUnreadBooleansArray addObject:[NSNumber numberWithBool:YES]];
+                                [_conversationReadUnreadBooleansDictonary setValue:[NSNumber numberWithBool:YES] forKey:[user objectId]];
+                               // [_conversationReadUnreadBooleansArray insertObject:[NSNumber numberWithBool:YES] atIndex:count ];
+                                 //[_conversationReadUnreadBooleansArray setObject:[NSNumber numberWithBool:YES] atIndexedSubscript:count];
                                 
                             }
                             
@@ -444,7 +486,10 @@ forRowAtIndexPath: (NSIndexPath*)indexPath
                 }
                 
                 [_messagesTable reloadData];
-  
+                
+                
+                
+                
                 
             }];
             
@@ -454,13 +499,13 @@ forRowAtIndexPath: (NSIndexPath*)indexPath
             
             
             
-            
+            count ++;
         }
         
         
         
-        //[_messagesTable reloadData];
- 
+       //  [_messagesTable reloadData];
+        
     }];
     
     
