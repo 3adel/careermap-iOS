@@ -97,6 +97,10 @@
             
             
             cell.usernameLabel.font = [UIFont boldSystemFontOfSize:17.0];
+            cell.lastMessageLabel.font = [UIFont boldSystemFontOfSize:17.0];
+           //light blue color
+            cell.backgroundColor = [UIColor colorWithRed:220.0/255.0 green:234.0/255 blue:255.0/255.0 alpha:1];
+
             cell.userObjectIdLabel.text=@"UNREAD";
             
             
@@ -107,7 +111,10 @@
         
         else{
             cell.usernameLabel.font = [UIFont systemFontOfSize:17.0];
-            cell.userObjectIdLabel.text=@"READ";
+            cell.lastMessageLabel.font = [UIFont systemFontOfSize:17.0];
+            cell.backgroundColor = [UIColor clearColor];
+
+            cell.userObjectIdLabel.text=@"";
             
             
             
@@ -117,16 +124,7 @@
         
     }
     
-    else{
-        
-        
-        cell.usernameLabel.font = [UIFont systemFontOfSize:17.0];
-        cell.userObjectIdLabel.text=@"READ";
-        
-        
-        
-    }
-    
+ 
     
     
     
@@ -345,7 +343,7 @@ forRowAtIndexPath: (NSIndexPath*)indexPath
         
         
         NSInteger count =0;
-        _conversationReadUnreadBooleansArray = [[NSMutableArray alloc] initWithCapacity:_chatUsersPFUsersList.count];
+        //_conversationReadUnreadBooleansArray = [[NSMutableArray alloc] initWithCapacity:_chatUsersPFUsersList.count];
         _conversationReadUnreadBooleansDictonary = [[NSMutableDictionary alloc] init];
 
         
@@ -414,7 +412,7 @@ forRowAtIndexPath: (NSIndexPath*)indexPath
                                 
                                 NSLog(@"read by user A = False");
                                 //cell.usernameLabel.font = [UIFont boldSystemFontOfSize:17.0];
-                                 [_conversationReadUnreadBooleansArray addObject:[NSNumber numberWithBool:NO]];
+                                 //[_conversationReadUnreadBooleansArray addObject:[NSNumber numberWithBool:NO]];
                                 [_conversationReadUnreadBooleansDictonary setValue:[NSNumber numberWithBool:NO] forKey:[user objectId]];
                                // [_conversationReadUnreadBooleansArray addObject:[NSNumber numberWithBool:NO]];
                                // [_conversationReadUnreadBooleansArray insertObject:[NSNumber numberWithBool:NO] atIndex:count ];
@@ -427,7 +425,7 @@ forRowAtIndexPath: (NSIndexPath*)indexPath
                             else{
                                 NSLog(@"read by user A = True");
                                 //cell.usernameLabel.font = [UIFont systemFontOfSize:17.0];
-                               [_conversationReadUnreadBooleansArray addObject:[NSNumber numberWithBool:YES]];
+                              // [_conversationReadUnreadBooleansArray addObject:[NSNumber numberWithBool:YES]];
                                 
                                 [_conversationReadUnreadBooleansDictonary setValue:[NSNumber numberWithBool:YES] forKey:[user objectId]];
                                // [_conversationReadUnreadBooleansArray insertObject:[NSNumber numberWithBool:YES] atIndex:count ];
@@ -445,7 +443,7 @@ forRowAtIndexPath: (NSIndexPath*)indexPath
                             
                             NSLog(@"current user is userB");
                             if ([[[objects objectAtIndex:0] objectForKey:@"readByUserB"]  isEqual: @NO]) {
-                                [_conversationReadUnreadBooleansArray addObject:[NSNumber numberWithBool:NO]];
+                                //[_conversationReadUnreadBooleansArray addObject:[NSNumber numberWithBool:NO]];
                                 [_conversationReadUnreadBooleansDictonary setValue:[NSNumber numberWithBool:NO] forKey:[user objectId]];
                                 
                                // [_conversationReadUnreadBooleansArray insertObject:[NSNumber numberWithBool:NO] atIndex:count ];
@@ -454,7 +452,7 @@ forRowAtIndexPath: (NSIndexPath*)indexPath
                             }
                             else{
                                 
-                                [_conversationReadUnreadBooleansArray addObject:[NSNumber numberWithBool:YES]];
+                                //[_conversationReadUnreadBooleansArray addObject:[NSNumber numberWithBool:YES]];
                                 [_conversationReadUnreadBooleansDictonary setValue:[NSNumber numberWithBool:YES] forKey:[user objectId]];
                                // [_conversationReadUnreadBooleansArray insertObject:[NSNumber numberWithBool:YES] atIndex:count ];
                                  //[_conversationReadUnreadBooleansArray setObject:[NSNumber numberWithBool:YES] atIndexedSubscript:count];
