@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 #import "JobChatMessageCell.h"
+#import "MessagesViewController.h"
 
 @interface JobChatViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *dockViewHightConstraint;

@@ -435,6 +435,12 @@
 - (IBAction)closeJobChatButtonPressed:(UIBarButtonItem *)sender {
     
     [self dismissViewControllerAnimated:YES completion:nil];
+    
+    //refresh messages list
+    MessagesViewController *messagesVC = [[MessagesViewController alloc] init];
+    [messagesVC retrieveMessages];
+    
+    
 }
 
 
