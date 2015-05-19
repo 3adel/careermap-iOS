@@ -28,6 +28,6 @@
 
 //methods
 - (void) retrieveMessages;
-
+- (void) refreshMessages;
 
 @end

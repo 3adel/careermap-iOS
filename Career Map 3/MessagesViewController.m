@@ -31,6 +31,7 @@
     
     
     //add an ovserver to monitor upcoming message through push notifications while the message conversation window is visible to the user
+
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshMessages) name:@"getLatestMessage" object:nil];
     
     [self retrieveMessages];
@@ -44,14 +45,20 @@
     //NSLog(@"Messages list 'view did appear'");
     
     
+    //[_messagesTable reloadData];
+
+    //[[NSNotificationCenter defaultCenter] removeObserver:self];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshReadUnreadStatus) name:@"updateReadUnreadStatus" object:nil];
     
     
     
+}
+
+
+- (void) viewDidDisappear:(BOOL)animated{
     
-    
-    
-    
-    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"updateReadUnreadStatus" object:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -248,6 +255,25 @@ forRowAtIndexPath: (NSIndexPath*)indexPath
     
     
     [self retrieveMessages];
+    
+    
+    
+    
+
+}
+
+
+- (void) refreshReadUnreadStatus{
+    
+    
+   // [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
+    [self retrieveMessages];
+    
+    
+    
+    
+    
 }
 
 

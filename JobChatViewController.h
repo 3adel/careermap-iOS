@@ -27,6 +27,6 @@
 @property (strong, nonatomic) NSMutableArray *messagesArray;
 - (IBAction)sendButtonPressed:(UIButton *)sender;
 - (IBAction)closeJobChatButtonPressed:(UIBarButtonItem *)sender;
-
+- (void) markConversationAsRead;
 
 @end

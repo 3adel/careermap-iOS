@@ -167,6 +167,8 @@
         [[[[UIApplication sharedApplication] keyWindow] rootViewController] presentViewController:jobChatScreen animated:YES completion:nil];
     }
     
+    
+    
 
 
     //update chat with latest message

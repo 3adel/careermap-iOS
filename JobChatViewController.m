@@ -21,7 +21,7 @@
     _jobChatTable.estimatedRowHeight = 80.0;
     self.jobChatTable.rowHeight = UITableViewAutomaticDimension;
     [_jobChatTable setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-
+    
     
     
     NSLog(@"Job Employer who posted the job User ID = %@", _jobEmployerUserObjectID);
@@ -59,7 +59,7 @@
     
     //scroll to the last message in the array
     
-
+    
 }
 
 
@@ -92,11 +92,11 @@
     }
     
     
-
+    
     
     cell.messageContentTextView.text = [chatMessageObject objectForKey:@"messageContent"];
     
-   // cell.messageAuthorLable.text = [[chatMessageObject objectForKey:@"messageFrom"] objectForKey:@"username"];
+    // cell.messageAuthorLable.text = [[chatMessageObject objectForKey:@"messageFrom"] objectForKey:@"username"];
     
     if ([PFAnonymousUtils isLinkedWithUser:[PFUser currentUser]]) {
         
@@ -105,8 +105,8 @@
         
         if ([[[PFUser currentUser] objectId] isEqualToString:[[chatMessageObject objectForKey:@"messageFrom"] objectId]] ) {
             cell.messageAuthorLable.text = @"You (Anonymous)";
-           // [cell.messageContentTextView setBackgroundColor:[UIColor redColor]];
-
+            // [cell.messageContentTextView setBackgroundColor:[UIColor redColor]];
+            
         }
         
         else{
@@ -114,23 +114,23 @@
             //if that user is registered, show their username. Otherwise show anonymous
             
             
-                
-                //if that user is registered, show their username. Otherwise show anonymous
-                
-                if ([[[chatMessageObject objectForKey:@"messageFrom"] objectForKey:@"signedUp"]   isEqual:@YES] ) {
-                    NSLog(@"other user is registered");
-                                cell.messageAuthorLable.text = [[chatMessageObject objectForKey:@"messageFrom"] objectForKey:@"username"];
-                }
             
-                else{
-                    NSLog(@"other user is not registered");
-                    cell.messageAuthorLable.text = @"Anonymous";
-                    
-                }
-                
-                
+            //if that user is registered, show their username. Otherwise show anonymous
             
-
+            if ([[[chatMessageObject objectForKey:@"messageFrom"] objectForKey:@"signedUp"]   isEqual:@YES] ) {
+                NSLog(@"other user is registered");
+                cell.messageAuthorLable.text = [[chatMessageObject objectForKey:@"messageFrom"] objectForKey:@"username"];
+            }
+            
+            else{
+                NSLog(@"other user is not registered");
+                cell.messageAuthorLable.text = @"Anonymous";
+                
+            }
+            
+            
+            
+            
         }
         
         
@@ -138,16 +138,16 @@
     } else {
         
         //change the color of chat cell background
-    
+        
         if ([[[chatMessageObject objectForKey:@"messageFrom"] objectId] isEqualToString:[[PFUser currentUser] objectId]]) {
-           // [cell.messageContentTextView setBackgroundColor:[UIColor redColor]];
+            // [cell.messageContentTextView setBackgroundColor:[UIColor redColor]];
             
             //[cell.messageAuthorLable ]
             
             //cell.messageAuthorLable.font = [UIFont fontWithName:@"TrebuchetMS-Bold" size:18];
             
             NSLog(@"user = %@", [[chatMessageObject objectForKey:@"messageFrom"] objectId]);
-
+            
         }
         
         
@@ -162,8 +162,8 @@
         
         
         
-       // cell.messageAuthorLable.text = [[chatMessageObject objectForKey:@"messageFrom"] objectForKey:@"username"];
-       // NSLog(@"you are NOT anonymous");
+        // cell.messageAuthorLable.text = [[chatMessageObject objectForKey:@"messageFrom"] objectForKey:@"username"];
+        // NSLog(@"you are NOT anonymous");
         
     }
     cell.messagePostDateLabel.text = chatMessageObject.createdAt.description;
@@ -210,9 +210,9 @@
             [self retrieveMessages];
             
             NSLog(@"The other user is %@", [_jobPosterPFUser objectId]);
-
             
-
+            
+            
             
             
             //send push notification to the other user
@@ -222,9 +222,9 @@
             PFQuery *pushQuery = [PFInstallation query];
             [pushQuery whereKey:@"user" matchesQuery:uQuery];
             
-
-           
-           // PFPush *push = [[PFPush alloc] init];
+            
+            
+            // PFPush *push = [[PFPush alloc] init];
             
             NSString *pushMessage = [[NSString alloc] init];
             
@@ -233,16 +233,16 @@
             
             PFPush *push = [PFPush new];
             [push setQuery:pushQuery];
-           // [push setData:<#(NSDictionary *)#>]
+            // [push setData:<#(NSDictionary *)#>]
             
             
             if ([PFAnonymousUtils isLinkedWithUser:[PFUser currentUser]]) {
                 
                 pushMessage =  @"Anonymous user sent you a message";
-
+                
             }else{
-               // [push setData:pushData];
-
+                // [push setData:pushData];
+                
                 pushMessage =  [NSString stringWithFormat:@"%@ sent you a message", [[PFUser currentUser] objectForKey:@"username"]];
             }
             
@@ -295,116 +295,116 @@
             [conversationQuery includeKey:@"userB"];
             conversationQuery.limit =10;
             
-           [conversationQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-               
-               if (!error) {
-                   NSLog(@"Conversation objects %@", objects);
-                   
-                   //if one conversation found, change the readBy to NO to the respective user in the TO column
-                   if (objects.count ==1) {
-                       NSLog(@"found 1 conversation object");
-                       
-                       
-                       NSLog(@"userA: %@", [[objects objectAtIndex:0] objectForKey:@"userA"]);
-                       
-                       
-                       if ([[[[objects objectAtIndex:0] objectForKey:@"userA"] objectId] isEqualToString:[[PFUser currentUser] objectId]]) {
-                          
-                           //set readByUserB to False
-
-                           PFObject *conversationObject =[objects objectAtIndex:0];
-                           conversationObject[@"readByUserB"] = @NO;
-
-                           
-                           NSLog(@"current user is userA");
-                          
-                           [conversationObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                               if (succeeded) {
-                                   NSLog(@"saving conversation unnread status to userB success");
-                               }
-                               
-                               else{
-                                   
-                                   NSLog(@"saving conversation unread status to userB FAILED");
-
-                                   
-                                   
-                               }
-                           }];
-                           
-                           
-                           
-                       }
-                       
-                       else{
-                           
-                           NSLog(@"current user NOT  userA");
-                           //set readByUserA to False
-                           
-                           
-                           PFObject *conversationObject =[objects objectAtIndex:0];
-                           conversationObject[@"readByUserA"] = @NO;
-                           
-                           
-                           NSLog(@"current user is userB");
-                           
-                           [conversationObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                               if (succeeded) {
-                                   NSLog(@"saving conversation unnread status to userA success");
-                               }
-                               
-                               else{
-                                   
-                                   NSLog(@"saving conversation unread status to userA FAILED");
-                                   
-                                   
-                                   
-                               }
-                           }];
-                           
-
-                       }
-                       
-                       
-                   }
-                   
-                   else{
-                       //no conversation found
-                       //create a conversation object and update the readByValues
-                       PFObject *conversationObject =[PFObject objectWithClassName:@"Conversation"];
-                       conversationObject[@"readByUserB"] = @NO;
-                       conversationObject[@"readByUserA"] = @NO;
-                       conversationObject[@"userA"] = [PFUser currentUser];
-                       conversationObject[@"userB"] = _jobPosterPFUser;
-                       
-                       
-                       
-                       [conversationObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                           if (succeeded) {
-                               NSLog(@"saving conversation unread status for two users success");
-                           }
-                           
-                           else{
-                               
-                               NSLog(@"saving conversation unread status for two users FAILED");
-                               
-                               
-                               
-                           }
-                       }];
-                   }
-                   
-                   
-               }
-               
-               else{
-                   
-                   NSLog(@"error retrieving conversation objects");
-               }
-               
-           }];
-
-
+            [conversationQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+                
+                if (!error) {
+                    NSLog(@"Conversation objects %@", objects);
+                    
+                    //if one conversation found, change the readBy to NO to the respective user in the TO column
+                    if (objects.count ==1) {
+                        NSLog(@"found 1 conversation object");
+                        
+                        
+                        NSLog(@"userA: %@", [[objects objectAtIndex:0] objectForKey:@"userA"]);
+                        
+                        
+                        if ([[[[objects objectAtIndex:0] objectForKey:@"userA"] objectId] isEqualToString:[[PFUser currentUser] objectId]]) {
+                            
+                            //set readByUserB to False
+                            
+                            PFObject *conversationObject =[objects objectAtIndex:0];
+                            conversationObject[@"readByUserB"] = @NO;
+                            
+                            
+                            NSLog(@"current user is userA");
+                            
+                            [conversationObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                                if (succeeded) {
+                                    NSLog(@"saving conversation unnread status to userB success");
+                                }
+                                
+                                else{
+                                    
+                                    NSLog(@"saving conversation unread status to userB FAILED");
+                                    
+                                    
+                                    
+                                }
+                            }];
+                            
+                            
+                            
+                        }
+                        
+                        else{
+                            
+                            NSLog(@"current user NOT  userA");
+                            //set readByUserA to False
+                            
+                            
+                            PFObject *conversationObject =[objects objectAtIndex:0];
+                            conversationObject[@"readByUserA"] = @NO;
+                            
+                            
+                            NSLog(@"current user is userB");
+                            
+                            [conversationObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                                if (succeeded) {
+                                    NSLog(@"saving conversation unnread status to userA success");
+                                }
+                                
+                                else{
+                                    
+                                    NSLog(@"saving conversation unread status to userA FAILED");
+                                    
+                                    
+                                    
+                                }
+                            }];
+                            
+                            
+                        }
+                        
+                        
+                    }
+                    
+                    else{
+                        //no conversation found
+                        //create a conversation object and update the readByValues
+                        PFObject *conversationObject =[PFObject objectWithClassName:@"Conversation"];
+                        conversationObject[@"readByUserB"] = @NO;
+                        conversationObject[@"readByUserA"] = @NO;
+                        conversationObject[@"userA"] = [PFUser currentUser];
+                        conversationObject[@"userB"] = _jobPosterPFUser;
+                        
+                        
+                        
+                        [conversationObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                            if (succeeded) {
+                                NSLog(@"saving conversation unread status for two users success");
+                            }
+                            
+                            else{
+                                
+                                NSLog(@"saving conversation unread status for two users FAILED");
+                                
+                                
+                                
+                            }
+                        }];
+                    }
+                    
+                    
+                }
+                
+                else{
+                    
+                    NSLog(@"error retrieving conversation objects");
+                }
+                
+            }];
+            
+            
             //************
             
             
@@ -434,13 +434,22 @@
 
 - (IBAction)closeJobChatButtonPressed:(UIBarButtonItem *)sender {
     
+    
+    
     [self dismissViewControllerAnimated:YES completion:nil];
     
-    //refresh messages list
-    MessagesViewController *messagesVC = [[MessagesViewController alloc] init];
-    [messagesVC retrieveMessages];
+    
+    [self markConversationAsRead];
+
+    
+
     
     
+}
+
+- (void) viewDidDisappear:(BOOL)animated{
+    
+
 }
 
 
@@ -521,15 +530,15 @@
         //always update ui on main thread
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.jobChatTable reloadData];
-
             
             
             
             
             
             
-
-
+            
+            
+            
         });
         
         
@@ -542,20 +551,19 @@
         }
         
         
+        
+        
+        /// dispatch_async(dispatch_get_main_queue(), ^{
+        //  [self scrollToLastMessage];
+        //
+        
+        
+        //   });
+        
+        
 
-        
-       /// dispatch_async(dispatch_get_main_queue(), ^{
-          //  [self scrollToLastMessage];
-      //
-            
-            
-     //   });
-        
-
-        
-        
-        
     }];
+    
     
 
     
@@ -582,6 +590,153 @@
     
 }
 
+
+- (void) markConversationAsRead{
+    
+    //select conversation from parse conversation table
+    
+    //************
+    //now set the respective readby flag of the current user to TRUE
+    //check if there's already an existing 1 conversation
+    PFQuery *query1 =[PFQuery queryWithClassName:@"Conversation"];
+    [query1 whereKey:@"userA"
+             equalTo:[PFObject objectWithoutDataWithClassName:@"_User" objectId:[[PFUser currentUser] objectId]]];
+    PFQuery *query2 =[query1 whereKey:@"userB"
+                              equalTo:[PFObject objectWithoutDataWithClassName:@"_User" objectId:_jobEmployerUserObjectID]];
+    
+    PFQuery *query3 =[PFQuery queryWithClassName:@"Conversation"];
+    [query3 whereKey:@"userA"
+             equalTo:[PFObject objectWithoutDataWithClassName:@"_User" objectId:_jobEmployerUserObjectID]];
+    PFQuery *query4 =[query3 whereKey:@"userB"
+                              equalTo:[PFObject objectWithoutDataWithClassName:@"_User" objectId:[[PFUser currentUser] objectId]]];
+    
+    //combin the two queries in an OR operation
+    PFQuery *conversationQuery = [PFQuery orQueryWithSubqueries:@[query2,query4]];
+    [conversationQuery includeKey:@"userA"];
+    [conversationQuery includeKey:@"userB"];
+    conversationQuery.limit =10;
+    
+    [conversationQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        
+        if (!error) {
+            NSLog(@"Conversation objects %@", objects);
+            
+            //if one conversation found, change the readBy to YES of current user
+            if (objects.count ==1) {
+                NSLog(@"found 1 conversation object");
+                
+                
+                NSLog(@"userA: %@", [[objects objectAtIndex:0] objectForKey:@"userA"]);
+                
+                
+                if ([[[[objects objectAtIndex:0] objectForKey:@"userA"] objectId] isEqualToString:[[PFUser currentUser] objectId]]) {
+                    
+                    //set readByUserA to true
+                    
+                    PFObject *conversationObject =[objects objectAtIndex:0];
+                    conversationObject[@"readByUserA"] = @YES;
+                    
+                    
+                    NSLog(@"current user is userA");
+                    
+                    [conversationObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                        if (succeeded) {
+                            NSLog(@"saving conversation unnread status to userA success");
+                            
+                            //refresh messages list
+                          //  MessagesViewController *messagesVC = [[MessagesViewController alloc] init];
+                            
+                            
+                            
+                            
+                           // UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                           // MessagesViewController *messagesVC = (MessagesViewController *)[sb instantiateViewControllerWithIdentifier:@"MessagesVC"];
+
+                            //[ messagesVC.messagesTable  reloadData];
+                            
+                            [[ NSNotificationCenter defaultCenter] postNotificationName:@"getLatestMessage" object:nil];
+
+                            
+                        }
+                        
+                        else{
+                            
+                            NSLog(@"saving conversation unread status to userA FAILED");
+                            
+                            
+                            
+                        }
+                    }];
+                    
+                    
+                    
+                }
+                
+                else{
+                    
+                    NSLog(@"current user NOT  userA");
+                    //set readByUserA to False
+                    
+                    
+                    PFObject *conversationObject =[objects objectAtIndex:0];
+                    conversationObject[@"readByUserB"] = @YES;
+                    
+                    
+                    NSLog(@"current user is userB");
+                    
+                    [conversationObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                        if (succeeded) {
+                            NSLog(@"saving conversation unnnnnead status to userB success");
+                            
+                            //refresh messages list
+                            //UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                            //MessagesViewController *messagesVC = (MessagesViewController *)[sb instantiateViewControllerWithIdentifier:@"MessagesVC"];
+                           // [ messagesVC.messagesTable  reloadData];
+                            [[ NSNotificationCenter defaultCenter] postNotificationName:@"updateReadUnreadStatus" object:nil];
+
+                        }
+                        
+                        else{
+                            
+                            NSLog(@"saving conversation unread status to userB FAILED");
+                            
+                            
+                            
+                        }
+                    }];
+                    
+                    
+                }
+                
+                
+            }
+            
+            else{
+                //no conversation found
+                //create a conversation object and update the readByValues
+                NSLog(@"no conversation found")      ;
+            }
+            
+            
+        }
+        
+        else{
+            
+            NSLog(@"error retrieving conversation objects");
+        }
+        
+    }];
+    
+    
+    //************
+    
+
+    
+    
+    
+    //set the read flag for the current user to true
+    
+}
 
 
 

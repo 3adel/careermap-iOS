@@ -812,7 +812,7 @@
         <!--Messages-->
         <scene sceneID="dfI-PK-hV2">
             <objects>
-                <viewController id="EwG-gK-NKE" customClass="MessagesViewController" sceneMemberID="viewController">
+                <viewController restorationIdentifier="MessagesVC" storyboardIdentifier="MessagesVC" id="EwG-gK-NKE" customClass="MessagesViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="UJS-NK-R4H"/>
                         <viewControllerLayoutGuide type="bottom" id="ccp-hU-0F8"/>
