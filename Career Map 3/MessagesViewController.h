@@ -24,6 +24,7 @@
 @property (strong, nonatomic) NSMutableArray *chatLastMessageArray;
 @property (strong, nonatomic) NSMutableArray *UnreadMessagesCountBooleansArray;
 @property (nonatomic, strong) NSMutableDictionary *conversationReadUnreadBooleansDictonary;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 
 
 //methods
