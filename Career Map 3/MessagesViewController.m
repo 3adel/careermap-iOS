@@ -33,6 +33,9 @@
     //add an ovserver to monitor upcoming message through push notifications while the message conversation window is visible to the user
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshMessages) name:@"getLatestMessage" object:nil];
     
+    [self retrieveMessages];
+
+    
 }
 
 - (void) viewDidAppear:(BOOL)animated{
@@ -41,7 +44,6 @@
     //NSLog(@"Messages list 'view did appear'");
     
     
-    [self retrieveMessages];
     
     
     
@@ -251,7 +253,17 @@ forRowAtIndexPath: (NSIndexPath*)indexPath
 
 - (void) retrieveMessages{
     
+
     
+    _UnreadMessagesCountBooleansArray =[[NSMutableArray alloc] init];
+    //initialize arrays
+    _messageFromArray = [NSMutableArray new];
+    _messageToArray = [NSMutableArray new];
+    _chatUsersList = [NSMutableArray new];
+    _chatUsersNamesList = [NSMutableArray new];
+    _chatUsersPFUsersList = [NSMutableArray new];
+    _chatLastMessageArray = [NSMutableArray new];
+
     
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"messageFrom = %@ OR messageTo = %@",[PFUser currentUser], [PFUser currentUser]];
     
@@ -264,13 +276,7 @@ forRowAtIndexPath: (NSIndexPath*)indexPath
         if (!error) {
             // NSLog(@"objects: %@", objects);
             
-            //initialize arrays
-            _messageFromArray = [NSMutableArray new];
-            _messageToArray = [NSMutableArray new];
-            _chatUsersList = [NSMutableArray new];
-            _chatUsersNamesList = [NSMutableArray new];
-            _chatUsersPFUsersList = [NSMutableArray new];
-            _chatLastMessageArray = [NSMutableArray new];
+
             
             
             for (PFObject *object in objects) {
@@ -343,7 +349,6 @@ forRowAtIndexPath: (NSIndexPath*)indexPath
         
         
         NSInteger count =0;
-        _UnreadMessagesCountBooleansArray =[[NSMutableArray alloc] init];
         //_conversationReadUnreadBooleansArray = [[NSMutableArray alloc] initWithCapacity:_chatUsersPFUsersList.count];
         _conversationReadUnreadBooleansDictonary = [[NSMutableDictionary alloc] init];
 
@@ -498,6 +503,8 @@ forRowAtIndexPath: (NSIndexPath*)indexPath
                     //[[[[[self tabBarController] tabBar] items] objectAtIndex:2] setBadgeValue:[NSString stringWithFormat:@"%ld", [_UnreadMessagesCountBooleansArray count]]];
                     UITabBarController *tbc = (UITabBarController *)[[[[UIApplication sharedApplication] delegate] window] rootViewController];
                     [[[[tbc tabBar] items] objectAtIndex:2] setBadgeValue:[NSString stringWithFormat:@"%ld", [_UnreadMessagesCountBooleansArray count]]];
+                    
+                    NSLog(@"count = %ld", count);
 
                     
                 }
