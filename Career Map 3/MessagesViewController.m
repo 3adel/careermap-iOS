@@ -426,6 +426,18 @@ forRowAtIndexPath: (NSIndexPath*)indexPath
         _conversationReadUnreadBooleansDictonary = [[NSMutableDictionary alloc] init];
 
         
+        
+        //hide refresh control if no users exist
+        if (!_chatUsersPFUsersList.count) {
+            if (self.refreshControl) {
+                
+                [self.refreshControl endRefreshing];
+            }
+
+        }
+        
+        
+        
         for (PFUser *user in _chatUsersPFUsersList) {
             
             

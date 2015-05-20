@@ -232,7 +232,7 @@
             
             
             PFPush *push = [PFPush new];
-            NSTimeInterval pushExpiryInterval = 60.*60.*24*2; //2 day
+            NSTimeInterval pushExpiryInterval = 60.*60.*24*2; //2 days expiry
             [push expireAfterTimeInterval:pushExpiryInterval];
             
             
