@@ -212,14 +212,26 @@ forRowAtIndexPath: (NSIndexPath*)indexPath
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     
-    //invoke the job chat view, but with the userIDs
-    JobChatViewController  *jobChatScreen = [[JobChatViewController alloc] initWithNibName:@"JobChatView" bundle:nil];
     
-    //pass the PFUser object of the other person to the chat view
-    jobChatScreen.jobEmployerUserObjectID = [_chatUsersList objectAtIndex:indexPath.row];
-    jobChatScreen.jobPosterPFUser = [_chatUsersPFUsersList objectAtIndex:indexPath.row];
+    //only go to chat when there's actually data
+    if (!(!_chatUsersPFUsersList || !_chatUsersPFUsersList.count)) {
     
-    [self presentViewController:jobChatScreen animated:YES completion:nil];
+    
+        
+        //invoke the job chat view, but with the userIDs
+        JobChatViewController  *jobChatScreen = [[JobChatViewController alloc] initWithNibName:@"JobChatView" bundle:nil];
+        
+        //pass the PFUser object of the other person to the chat view
+        jobChatScreen.jobEmployerUserObjectID = [_chatUsersList objectAtIndex:indexPath.row];
+        jobChatScreen.jobPosterPFUser = [_chatUsersPFUsersList objectAtIndex:indexPath.row];
+        
+        [self presentViewController:jobChatScreen animated:YES completion:nil];
+
+    
+    
+    }
+
+    
     
     
     
