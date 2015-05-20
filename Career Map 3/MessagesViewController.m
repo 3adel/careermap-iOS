@@ -106,16 +106,25 @@
     
     // MessageCell  *cell = [[MessageCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     
-    cell.usernameLabel.text = [_chatUsersNamesList objectAtIndex:indexPath.row];
+    
+    if (!(!_chatUsersNamesList || !_chatUsersNamesList.count)) {
+        cell.usernameLabel.text = [_chatUsersNamesList objectAtIndex:indexPath.row];
+
+    }
+    
     // cell.userObjectIdLabel.text=[_chatUsersList objectAtIndex:indexPath.row];
     
-    cell.lastMessageLabel.text = [_chatLastMessageArray objectAtIndex:indexPath.row];
+    
+    if (!(!_chatLastMessageArray || !_chatLastMessageArray.count)) {
+        cell.lastMessageLabel.text = [_chatLastMessageArray objectAtIndex:indexPath.row];
+        
+    }
     
     
     // NSLog(@"table row");
     
     //set unread/read highlighting of converesations
-    if (_conversationReadUnreadBooleansDictonary.count == _chatUsersPFUsersList.count) {
+    if ((_conversationReadUnreadBooleansDictonary.count == _chatUsersPFUsersList.count) && (_chatUsersPFUsersList.count)) {
         
         
       
@@ -126,11 +135,11 @@
             
             
             cell.usernameLabel.font = [UIFont boldSystemFontOfSize:17.0];
-            cell.lastMessageLabel.font = [UIFont boldSystemFontOfSize:17.0];
+            cell.lastMessageLabel.font = [UIFont boldSystemFontOfSize:15.0];
            //light blue color
             cell.backgroundColor = [UIColor colorWithRed:220.0/255.0 green:234.0/255 blue:255.0/255.0 alpha:1];
 
-            cell.userObjectIdLabel.text=@"UNREAD";
+            cell.userObjectIdLabel.text=@"Unread";
             
             
             
@@ -140,7 +149,7 @@
         
         else{
             cell.usernameLabel.font = [UIFont systemFontOfSize:17.0];
-            cell.lastMessageLabel.font = [UIFont systemFontOfSize:17.0];
+            cell.lastMessageLabel.font = [UIFont systemFontOfSize:15.0];
             cell.backgroundColor = [UIColor clearColor];
 
             cell.userObjectIdLabel.text=@"";
@@ -541,7 +550,6 @@ forRowAtIndexPath: (NSIndexPath*)indexPath
                     NSLog(@"error retrieving conversation objects");
                 }
                 
-                [_messagesTable reloadData];
                 
                 //update the badge of messages tab bar item
                 if (count == _chatUsersPFUsersList.count-1 ) {
@@ -565,6 +573,33 @@ forRowAtIndexPath: (NSIndexPath*)indexPath
                     
                 }
                 
+                else{
+                    
+                    //end refreshing
+                    if (self.refreshControl) {
+                        
+                        [self.refreshControl endRefreshing];
+                    }
+                    
+                    
+                }
+                
+                
+                //prevent crash
+                
+                
+                
+   
+                    
+                    NSLog(@"message list reload data called");
+                    [_messagesTable reloadData];
+
+                
+                
+         
+                
+                
+
                 
             }];
             
