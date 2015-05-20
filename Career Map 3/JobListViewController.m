@@ -296,6 +296,13 @@ bool messageIsReceived = NO;
             [_HUDProgressIndicator hide:YES];
             self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
             
+            
+            
+            //refresh unread messages badge
+            MessagesViewController *messaagesVC = [[MessagesViewController alloc] init];
+            [messaagesVC retrieveMessages];
+            
+            
         });
         
     }];

@@ -60,19 +60,11 @@
 }
 
 - (void) viewDidAppear:(BOOL)animated{
-    
-    
-    //NSLog(@"Messages list 'view did appear'");
-    
-    
-    //[_messagesTable reloadData];
 
-    //[[NSNotificationCenter defaultCenter] removeObserver:self];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshReadUnreadStatus) name:@"updateReadUnreadStatus" object:nil];
     
-    
-    
+
 }
 
 
@@ -89,10 +81,7 @@
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    //#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    
-    //NSLog(@"Number of items = %d", _chatUsersList.count);
+
     return _chatUsersList.count;
 }
 
@@ -101,47 +90,75 @@
     
     static NSString *CellIdentifier = @"MessageCell";
     MessageCell  *cell = (MessageCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    
-    
-    // MessageCell  *cell = [[MessageCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    
+
     
     if (!(!_chatUsersNamesList || !_chatUsersNamesList.count)) {
         cell.usernameLabel.text = [_chatUsersNamesList objectAtIndex:indexPath.row];
+        
+        
+        
+        //username setting logic
+        if ([PFAnonymousUtils isLinkedWithUser:[PFUser currentUser]]) {
+
+            if ([[[PFUser currentUser] objectId] isEqualToString:[[_chatUsersPFUsersList objectAtIndex:indexPath.row] objectId]])
+            {
+                //  cell.messageAuthorLable.text = @"You (Anonymous)";
+                cell.usernameLabel.text = @"You (Anonymous)";
+                
+            }
+            
+            else{
+
+                //if that user is registered, show their username. Otherwise show anonymous
+                if ([[[_chatUsersPFUsersList objectAtIndex:indexPath.row] objectForKey:@"signedUp"] isEqual:@YES] ) {
+                    cell.usernameLabel.text = [[_chatUsersPFUsersList objectAtIndex:indexPath.row] objectForKey:@"username"];
+                }
+                
+                else{
+                    cell.usernameLabel.text = @"Anonymous";
+                    
+                }
+
+            }
+            
+            
+            
+        } else {
+
+            //other user is registered
+            if ([[[_chatUsersPFUsersList objectAtIndex:indexPath.row] objectForKey:@"signedUp"] isEqual:@YES] ) {
+                cell.usernameLabel.text = [[_chatUsersPFUsersList objectAtIndex:indexPath.row] objectForKey:@"username"];
+            }
+           
+            //other user is not registered
+            else{
+                cell.usernameLabel.text = @"Anonymous";
+                
+            }
+
+            
+        }
+        
 
     }
     
-    // cell.userObjectIdLabel.text=[_chatUsersList objectAtIndex:indexPath.row];
-    
-    
+
     if (!(!_chatLastMessageArray || !_chatLastMessageArray.count)) {
         cell.lastMessageLabel.text = [_chatLastMessageArray objectAtIndex:indexPath.row];
         
     }
     
     
-    // NSLog(@"table row");
-    
     //set unread/read highlighting of converesations
     if ((_conversationReadUnreadBooleansDictonary.count == _chatUsersPFUsersList.count) && (_chatUsersPFUsersList.count)) {
         
-        
-      
-        
-       // [_conversationReadUnreadBooleansDictonary valueForKey:][[[_chatUsersPFUsersList objectAtIndex:indexPath.row] objectId]]
+
         if ([[_conversationReadUnreadBooleansDictonary valueForKey:  [[_chatUsersPFUsersList objectAtIndex:indexPath.row] objectId]] isEqualToNumber:[NSNumber numberWithBool:NO]]) {
-        //if ([[_conversationReadUnreadBooleansArray objectAtIndex:indexPath.row] isEqualToNumber:[NSNumber numberWithBool:NO]]) {
-            
-            
             cell.usernameLabel.font = [UIFont boldSystemFontOfSize:17.0];
             cell.lastMessageLabel.font = [UIFont boldSystemFontOfSize:15.0];
            //light blue color
             cell.backgroundColor = [UIColor colorWithRed:220.0/255.0 green:234.0/255 blue:255.0/255.0 alpha:1];
-
             cell.userObjectIdLabel.text=@"Unread";
-            
-            
             
             
         }
@@ -151,25 +168,14 @@
             cell.usernameLabel.font = [UIFont systemFontOfSize:17.0];
             cell.lastMessageLabel.font = [UIFont systemFontOfSize:15.0];
             cell.backgroundColor = [UIColor clearColor];
-
             cell.userObjectIdLabel.text=@"";
-            
-            
-            
+
         }
         
         
         
     }
-    
- 
-    
-    
-    
-    
-    
-    
-    
+
     return cell;
     
     

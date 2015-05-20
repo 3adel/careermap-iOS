@@ -232,6 +232,10 @@
             
             
             PFPush *push = [PFPush new];
+            NSTimeInterval pushExpiryInterval = 60.*60.*24*2; //2 day
+            [push expireAfterTimeInterval:pushExpiryInterval];
+            
+            
             [push setQuery:pushQuery];
             // [push setData:<#(NSDictionary *)#>]
             
@@ -253,6 +257,7 @@
                                        @"otherPFUser": [PFUser currentUser]
                                        };
             [push setData:pushData];
+            
             
             
             
