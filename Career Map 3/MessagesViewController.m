@@ -587,6 +587,7 @@ forRowAtIndexPath: (NSIndexPath*)indexPath
                     //[[[[[self tabBarController] tabBar] items] objectAtIndex:2] setBadgeValue:[NSString stringWithFormat:@"%ld", [_UnreadMessagesCountBooleansArray count]]];
                     UITabBarController *tbc = (UITabBarController *)[[[[UIApplication sharedApplication] delegate] window] rootViewController];
                     [[[[tbc tabBar] items] objectAtIndex:2] setBadgeValue:[NSString stringWithFormat:@"%ld", [_UnreadMessagesCountBooleansArray count]]];
+                     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:[_UnreadMessagesCountBooleansArray count]];
                     
                     NSLog(@"count = %ld", count);
                     
