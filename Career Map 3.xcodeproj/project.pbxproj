@@ -371,7 +371,7 @@
 			name = "Job Details";
 			sourceTree = "<group>";
 		};
-		F535ABB61ADE49460091E70B /* Job Chat */ = {
+		F535ABB61ADE49460091E70B /* Conversation */ = {
 			isa = PBXGroup;
 			children = (
 				F535ABC11ADE52CF0091E70B /* JobChatViewController.h */,
@@ -381,7 +381,7 @@
 				F535AC4F1ADEC9B50091E70B /* JobChatMessageCell.h */,
 				F535AC501ADEC9B50091E70B /* JobChatMessageCell.m */,
 			);
-			name = "Job Chat";
+			name = Conversation;
 			sourceTree = "<group>";
 		};
 		F53EABEE1B020F2800CCB97C /* Messages */ = {
@@ -417,14 +417,14 @@
 		F59758AB1AC159B40099A978 /* Career Map 3 */ = {
 			isa = PBXGroup;
 			children = (
-				F5CB2BF81B0DDAE100275850 /* Ubiquitous Classes */,
-				F53EABEE1B020F2800CCB97C /* Messages */,
 				F59758B11AC159B40099A978 /* AppDelegate.m */,
 				F59758B01AC159B40099A978 /* AppDelegate.h */,
 				F59758B91AC159B40099A978 /* Main.storyboard */,
+				F5CB2BF81B0DDAE100275850 /* Ubiquitous Classes */,
+				F535ABB61ADE49460091E70B /* Conversation */,
+				F53EABEE1B020F2800CCB97C /* Messages */,
 				F533345B1AE3CCB70029BFF7 /* CV */,
 				F535AA6D1AD438C80091E70B /* Job List */,
-				F535ABB61ADE49460091E70B /* Job Chat */,
 				F535AAE31ADC381B0091E70B /* Job Details */,
 				F535AA6C1AD438710091E70B /* Login-Registration */,
 				F535AA6B1AD438440091E70B /* Welcome Section */,
