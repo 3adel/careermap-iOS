@@ -392,7 +392,13 @@ bool messageIsReceived = NO;
     cell.jobTitleLabel.text = [jobObject objectForKey:@"title"];
     cell.jobEmployer.text=[jobObject[@"employer"] objectForKey:@"employerName"];
     cell.jobStatus.text=[jobObject[@"status"] objectForKey:@"description"];
-    cell.jobDateAdded.text=[formatter stringFromDate:[jobObject createdAt]];
+    //cell.jobDateAdded.text=[formatter stringFromDate:[jobObject createdAt]];
+    
+    
+    DateConverter *dateConverter = [[DateConverter alloc] init];
+    cell.jobDateAdded.text = [dateConverter convertDateToLocalTime:[jobObject createdAt]];
+    
+    
     cell.jobDistanceFromUser.text = [NSString stringWithFormat:@"%@ km, %@",[NSString stringWithFormat:@"%.2f",[self.userLocation distanceInKilometersTo:[jobObject objectForKey:@"geolocation"]]], [jobObject objectForKey:@"area"]];
     cell.jobVoteLabel.text =[NSString stringWithFormat:@"%@",[jobObject objectForKey:@"voteCount"]];;
     
@@ -707,7 +713,15 @@ bool messageIsReceived = NO;
         destViewController.jobDistanceFromUser = [NSString stringWithFormat:@"%@ km",[NSString stringWithFormat:@"%.2f",[self.userLocation distanceInKilometersTo:[jobObject objectForKey:@"geolocation"]]] ];
         destViewController.jobEmployer =[jobObject[@"employer"] objectForKey:@"employerName"];
         destViewController.jobVote = [NSString stringWithFormat:@"%@",[jobObject objectForKey:@"voteCount"]];
-        destViewController.jobDateAdded =[formatter stringFromDate:[jobObject createdAt]];
+        //destViewController.jobDateAdded =[formatter stringFromDate:[jobObject createdAt]];
+        
+        DateConverter *dateConverter = [[DateConverter alloc]init];
+        destViewController.jobDateAdded = [dateConverter convertDateToLocalTime:[jobObject createdAt]];
+        
+        
+        
+        
+        
         destViewController.jobArea =[jobObject objectForKey:@"area"];
         destViewController.jobRequiredSkills = [jobObject objectForKey:@"skillsRequired"];
         destViewController.jobEducation =[jobObject objectForKey:@"education"];

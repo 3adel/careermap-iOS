@@ -179,8 +179,10 @@
         // NSLog(@"you are NOT anonymous");
         
     }
-    cell.messagePostDateLabel.text = chatMessageObject.createdAt.description;
     
+    //convert createdAt to local time
+    DateConverter *dateConverter = [[DateConverter alloc] init];
+    cell.messagePostDateLabel.text = [dateConverter convertDateToLocalTime:chatMessageObject.createdAt];
     
     return cell;
     

@@ -69,6 +69,7 @@
 		F5BAC3CE1AC7EDFE003E899C /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5BAC3C91AC7EDFE003E899C /* ParseUI.framework */; };
 		F5BAC3D11AC85BB7003E899C /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5BAC3D01AC85BB7003E899C /* LoginViewController.m */; };
 		F5BAC3D41AC875E5003E899C /* settingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5BAC3D31AC875E5003E899C /* settingsViewController.m */; };
+		F5CB2BFB1B0DDB2500275850 /* DateConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = F5CB2BFA1B0DDB2500275850 /* DateConverter.m */; };
 		F5CF09431AF1114B00850BB0 /* Icon-60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5CF09421AF1114B00850BB0 /* Icon-60@3x.png */; };
 		F5CF09461AF141A000850BB0 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = F5CF09451AF141A000850BB0 /* MBProgressHUD.m */; };
 		F5CF09491AF2805F00850BB0 /* TabBar-JobList@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5CF09481AF2805F00850BB0 /* TabBar-JobList@3x.png */; };
@@ -185,6 +186,8 @@
 		F5BAC3D01AC85BB7003E899C /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		F5BAC3D21AC875E5003E899C /* settingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = settingsViewController.h; sourceTree = "<group>"; };
 		F5BAC3D31AC875E5003E899C /* settingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = settingsViewController.m; sourceTree = "<group>"; };
+		F5CB2BF91B0DDB2500275850 /* DateConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateConverter.h; sourceTree = "<group>"; };
+		F5CB2BFA1B0DDB2500275850 /* DateConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateConverter.m; sourceTree = "<group>"; };
 		F5CF09421AF1114B00850BB0 /* Icon-60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-60@3x.png"; sourceTree = "<group>"; };
 		F5CF09441AF141A000850BB0 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		F5CF09451AF141A000850BB0 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
@@ -414,6 +417,7 @@
 		F59758AB1AC159B40099A978 /* Career Map 3 */ = {
 			isa = PBXGroup;
 			children = (
+				F5CB2BF81B0DDAE100275850 /* Ubiquitous Classes */,
 				F53EABEE1B020F2800CCB97C /* Messages */,
 				F59758B11AC159B40099A978 /* AppDelegate.m */,
 				F59758B01AC159B40099A978 /* AppDelegate.h */,
@@ -491,6 +495,15 @@
 				F59759131AC1D38F0099A978 /* AudioToolbox.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F5CB2BF81B0DDAE100275850 /* Ubiquitous Classes */ = {
+			isa = PBXGroup;
+			children = (
+				F5CB2BF91B0DDB2500275850 /* DateConverter.h */,
+				F5CB2BFA1B0DDB2500275850 /* DateConverter.m */,
+			);
+			name = "Ubiquitous Classes";
 			sourceTree = "<group>";
 		};
 		F5CF09471AF2728400850BB0 /* App Horizontal Message */ = {
@@ -694,6 +707,7 @@
 				F535AA721AD449BA0091E70B /* JobDetailsViewController.m in Sources */,
 				F535AAE61ADC38580091E70B /* JobMapViewController.m in Sources */,
 				F59758AF1AC159B40099A978 /* main.m in Sources */,
+				F5CB2BFB1B0DDB2500275850 /* DateConverter.m in Sources */,
 				F535AA671AD3CE7E0091E70B /* WelcomeAppChoiceViewController.m in Sources */,
 				F53334621AE3CEB40029BFF7 /* CreateCVViewController.m in Sources */,
 				F52DC4901AE4D80800693911 /* ViewEditMyCVViewController.m in Sources */,
