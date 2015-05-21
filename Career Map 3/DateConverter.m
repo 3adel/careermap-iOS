@@ -15,7 +15,7 @@
 - (NSString *) convertDateToLocalTime: (NSDate *) date{
     
     NSDateFormatter *dateFormatter = [NSDateFormatter new];
-    [dateFormatter setDateFormat:@"dd-MM-yyyy HH:mm"];
+    [dateFormatter setDateFormat:@"MMM dd, yyyy HH:mm"];
     dateFormatter.timeZone = [NSTimeZone timeZoneForSecondsFromGMT:[NSTimeZone localTimeZone].secondsFromGMT];
     return [dateFormatter stringFromDate:date ];
     
