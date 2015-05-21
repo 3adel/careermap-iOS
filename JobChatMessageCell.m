@@ -12,6 +12,11 @@
 
 - (void)awakeFromNib {
     // Initialization code
+
+    // Some style setup.
+    self.messageContentTextView.layer.cornerRadius=5.0f;
+    
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

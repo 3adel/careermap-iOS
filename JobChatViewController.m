@@ -106,10 +106,15 @@
         if ([[[PFUser currentUser] objectId] isEqualToString:[[chatMessageObject objectForKey:@"messageFrom"] objectId]] ) {
             cell.messageAuthorLable.text = @"You (Anonymous)";
             // [cell.messageContentTextView setBackgroundColor:[UIColor redColor]];
+            //light blue
+            [cell.messageContentTextView setBackgroundColor:[UIColor colorWithRed:220.0/255.0 green:234.0/255.0 blue:254.0/255.0 alpha:1]];
             
         }
         
         else{
+            
+            //light gray
+            [cell.messageContentTextView setBackgroundColor:[UIColor colorWithRed:241.0/255.0 green:239.0/255.0 blue:239.0/255.0 alpha:1]];
             
             //if that user is registered, show their username. Otherwise show anonymous
             
@@ -140,13 +145,21 @@
         //change the color of chat cell background
         
         if ([[[chatMessageObject objectForKey:@"messageFrom"] objectId] isEqualToString:[[PFUser currentUser] objectId]]) {
-            // [cell.messageContentTextView setBackgroundColor:[UIColor redColor]];
             
+            //light blue
+            [cell.messageContentTextView setBackgroundColor:[UIColor colorWithRed:220.0/255.0 green:234.0/255.0 blue:254.0/255.0 alpha:1]];
+
             //[cell.messageAuthorLable ]
             
             //cell.messageAuthorLable.font = [UIFont fontWithName:@"TrebuchetMS-Bold" size:18];
             
             NSLog(@"user = %@", [[chatMessageObject objectForKey:@"messageFrom"] objectId]);
+            
+        }
+        
+        else{
+            //light gray
+            [cell.messageContentTextView setBackgroundColor:[UIColor colorWithRed:241.0/255.0 green:239.0/255.0 blue:239.0/255.0 alpha:1]];
             
         }
         
