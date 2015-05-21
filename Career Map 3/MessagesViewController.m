@@ -585,11 +585,27 @@ forRowAtIndexPath: (NSIndexPath*)indexPath
                 if (count == _chatUsersPFUsersList.count-1 ) {
                     NSLog(@"update unread tab bar badge now");
                     //[[[[[self tabBarController] tabBar] items] objectAtIndex:2] setBadgeValue:[NSString stringWithFormat:@"%ld", [_UnreadMessagesCountBooleansArray count]]];
-                    UITabBarController *tbc = (UITabBarController *)[[[[UIApplication sharedApplication] delegate] window] rootViewController];
-                    [[[[tbc tabBar] items] objectAtIndex:2] setBadgeValue:[NSString stringWithFormat:@"%ld", [_UnreadMessagesCountBooleansArray count]]];
-                     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:[_UnreadMessagesCountBooleansArray count]];
                     
-                    NSLog(@"count = %ld", count);
+                    
+                    UITabBarController *tbc = (UITabBarController *)[[[[UIApplication sharedApplication] delegate] window] rootViewController];
+                    
+                    if ([_UnreadMessagesCountBooleansArray count] >0) {
+                        
+                        [[[[tbc tabBar] items] objectAtIndex:2] setBadgeValue:[NSString stringWithFormat:@"%ld", [_UnreadMessagesCountBooleansArray count]]];
+                        [[UIApplication sharedApplication] setApplicationIconBadgeNumber:[_UnreadMessagesCountBooleansArray count]];
+                        
+                        NSLog(@"counttttttt = %ld", count);
+                    }
+                    else{
+                        
+                        [[[[tbc tabBar] items] objectAtIndex:2] setBadgeValue:0];
+                        [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+                        
+                        
+                    }
+                    
+                    
+
                     
                     
                         //end refreshing

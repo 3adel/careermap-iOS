@@ -143,8 +143,8 @@
 
 - (void) application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{
     
-    NSLog(@" application status %li",(long)[application applicationState]);
     
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:99];
     
     //if the application is running in the forground
     UIApplicationState state = [application applicationState];
