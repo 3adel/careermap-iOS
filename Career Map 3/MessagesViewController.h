@@ -25,10 +25,12 @@
 @property (strong, nonatomic) NSMutableArray *UnreadMessagesCountBooleansArray;
 @property (nonatomic, strong) NSMutableDictionary *conversationReadUnreadBooleansDictonary;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
+@property (weak, nonatomic) IBOutlet UIView *noMessagesYetView;
 
 
 //methods
 - (void) retrieveMessages;
 - (void) refreshMessages;
+- (IBAction)refreshMessagesListButton:(UIButton *)sender;
 
 @end

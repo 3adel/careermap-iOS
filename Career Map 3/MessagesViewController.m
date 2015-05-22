@@ -34,6 +34,13 @@
     //  NSLog(@"Messages list 'view did load'");
     
     
+    
+    
+    //hide seperator while loading data for the first time
+    self.messagesTable.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+    
+    
     //add an ovserver to monitor upcoming message through push notifications while the message conversation window is visible to the user
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshMessages) name:@"getLatestMessage" object:nil];
@@ -309,6 +316,11 @@ forRowAtIndexPath: (NSIndexPath*)indexPath
 
 }
 
+- (IBAction)refreshMessagesListButton:(UIButton *)sender {
+    [self retrieveMessages];
+
+}
+
 
 - (void) refreshReadUnreadStatus{
     
@@ -432,8 +444,20 @@ forRowAtIndexPath: (NSIndexPath*)indexPath
             if (self.refreshControl) {
                 
                 [self.refreshControl endRefreshing];
+                
+                //also show the no messages view
+                [_noMessagesYetView setHidden:NO];
+                
+                
             }
 
+        }
+        
+        else{
+            
+            [_noMessagesYetView setHidden:YES];
+            //show seperator
+            self.messagesTable.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
         }
         
         

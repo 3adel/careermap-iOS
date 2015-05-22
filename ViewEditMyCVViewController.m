@@ -357,6 +357,14 @@
               //  NSLog(@"People who applied to this job = %@", [_jobObject objectForKey:@"appliedByUsers"]);
             }
             
+            //if the use is an employer
+            else if ([object objectForKey:@"anEmployerID"]){
+                
+                NSLog(@"user is an employer");
+                //logic to update cv with employer data
+            }
+            
+            
             else{
                 
                // _createCVAlert.delegate = self;
