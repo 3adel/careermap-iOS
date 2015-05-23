@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="JobChatViewController">
             <connections>
+                <outlet property="blockUserButton" destination="bD9-mZ-C3p" id="YMj-Pd-3lz"/>
                 <outlet property="dockViewHightConstraint" destination="X4T-c9-1Z1" id="Id3-NX-eTP"/>
                 <outlet property="jobChatTable" destination="trT-Vz-UHI" id="0Bq-zr-Ueo"/>
                 <outlet property="messageTextField" destination="n0g-nL-4fU" id="psJ-bS-hk3"/>
@@ -55,9 +56,15 @@
                     <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                     <items>
                         <navigationItem title="Job Chat" id="6cW-aV-ReA">
-                            <barButtonItem key="rightBarButtonItem" title="Close" id="pe5-Kd-Qij">
+                            <barButtonItem key="leftBarButtonItem" title="Close" id="pe5-Kd-Qij">
                                 <connections>
                                     <action selector="closeJobChatButtonPressed:" destination="-1" id="1S4-cH-hb2"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem key="rightBarButtonItem" title="Block" id="bD9-mZ-C3p">
+                                <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="blockUserButtonPressed:" destination="-1" id="t03-KQ-bXn"/>
                                 </connections>
                             </barButtonItem>
                         </navigationItem>

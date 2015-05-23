@@ -10,6 +10,7 @@
 #import <Parse/Parse.h>
 #import "MessageCell.h"
 #import "JobChatViewController.h"
+#import "MBProgressHUD.h"
 
 
 @interface MessagesViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
@@ -26,6 +27,8 @@
 @property (nonatomic, strong) NSMutableDictionary *conversationReadUnreadBooleansDictonary;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (weak, nonatomic) IBOutlet UIView *noMessagesYetView;
+@property (nonatomic, strong) MBProgressHUD *HUDProgressIndicator;
+
 
 
 //methods

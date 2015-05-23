@@ -34,10 +34,12 @@
     //  NSLog(@"Messages list 'view did load'");
     
     
-    
-    
-    //hide seperator while loading data for the first time
+    //progress spinner initialization
     self.messagesTable.separatorStyle = UITableViewCellSeparatorStyleNone;
+    _HUDProgressIndicator = [MBProgressHUD showHUDAddedTo:_messagesTable animated:YES];
+    _HUDProgressIndicator.labelText = @"Loading messages ...";
+    _HUDProgressIndicator.mode = MBProgressHUDModeIndeterminate;
+    
     
     
     
@@ -401,7 +403,6 @@ forRowAtIndexPath: (NSIndexPath*)indexPath
                         [_chatLastMessageArray addObject:[object objectForKey:@"messageContent"]];
                         
                         
-                        
                     }
                     
                     // NSLog(@"chat users IDs list = %@", _chatUsersList);
@@ -635,7 +636,16 @@ forRowAtIndexPath: (NSIndexPath*)indexPath
                         //end refreshing
                         if (self.refreshControl) {
                             
-                            [self.refreshControl endRefreshing];
+                            
+                            
+                            
+                            
+                            dispatch_async(dispatch_get_main_queue(), ^{
+                                [_HUDProgressIndicator hide:YES];
+                                [self.refreshControl endRefreshing];
+ 
+                            });
+                            
                         }
                         
                         
@@ -649,7 +659,11 @@ forRowAtIndexPath: (NSIndexPath*)indexPath
                     //end refreshing
                     if (self.refreshControl) {
                         
-                        [self.refreshControl endRefreshing];
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            [_HUDProgressIndicator hide:YES];
+                            [self.refreshControl endRefreshing];
+                            
+                        });
                     }
                     
                     

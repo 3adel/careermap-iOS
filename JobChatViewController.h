@@ -26,6 +26,18 @@
 //@property (weak, nonatomic) IBOutlet UIView *jobChatView;
 @property (weak, nonatomic) IBOutlet UITableView *jobChatTable;
 @property (strong, nonatomic) NSMutableArray *messagesArray;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *blockUserButton;
+
+
+
+
+
+
+- (IBAction)blockUserButtonPressed:(UIBarButtonItem *)sender;
+
+
+
+
 - (IBAction)sendButtonPressed:(UIButton *)sender;
 - (IBAction)closeJobChatButtonPressed:(UIBarButtonItem *)sender;
 - (void) markConversationAsRead;
