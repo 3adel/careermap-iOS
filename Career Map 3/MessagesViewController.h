@@ -25,6 +25,7 @@
 @property (strong, nonatomic) NSMutableArray *chatLastMessageArray;
 @property (strong, nonatomic) NSMutableArray *UnreadMessagesCountBooleansArray;
 @property (nonatomic, strong) NSMutableDictionary *conversationReadUnreadBooleansDictonary;
+@property (nonatomic, strong) NSMutableArray *usersWhoBlockedMeList;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (weak, nonatomic) IBOutlet UIView *noMessagesYetView;
 @property (nonatomic, strong) MBProgressHUD *HUDProgressIndicator;
@@ -35,5 +36,5 @@
 - (void) retrieveMessages;
 - (void) refreshMessages;
 - (IBAction)refreshMessagesListButton:(UIButton *)sender;
-
+- (void) getPFUsersWhoBlockedMe;
 @end

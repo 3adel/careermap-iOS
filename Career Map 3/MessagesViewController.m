@@ -47,7 +47,12 @@
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshMessages) name:@"getLatestMessage" object:nil];
     
-    [self retrieveMessages];
+    //
+    
+    
+    [self getPFUsersWhoBlockedMe];
+    
+    //[self retrieveMessages];
     
     
     
@@ -60,7 +65,7 @@
     
     //self.refreshControl.tintColor = [UIColor whiteColor];
     [self.refreshControl addTarget:self
-                            action:@selector(retrieveMessages)
+                            action:@selector(getPFUsersWhoBlockedMe)
                   forControlEvents:UIControlEventValueChanged];
     [self.messagesTable addSubview:self.refreshControl];
 
@@ -310,7 +315,7 @@ forRowAtIndexPath: (NSIndexPath*)indexPath
 - (void) refreshMessages{
     
     
-    [self retrieveMessages];
+    [self getPFUsersWhoBlockedMe];
     
     
     
@@ -319,7 +324,7 @@ forRowAtIndexPath: (NSIndexPath*)indexPath
 }
 
 - (IBAction)refreshMessagesListButton:(UIButton *)sender {
-    [self retrieveMessages];
+    [self getPFUsersWhoBlockedMe];
 
 }
 
@@ -329,7 +334,7 @@ forRowAtIndexPath: (NSIndexPath*)indexPath
     
    // [[NSNotificationCenter defaultCenter] removeObserver:self];
     
-    [self retrieveMessages];
+    [self getPFUsersWhoBlockedMe];
     
     
     
@@ -339,6 +344,18 @@ forRowAtIndexPath: (NSIndexPath*)indexPath
 
 
 - (void) retrieveMessages{
+    
+    //get users who unblocked me
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
 
     
@@ -365,8 +382,12 @@ forRowAtIndexPath: (NSIndexPath*)indexPath
             
 
             
+            NSInteger counter2 = 0;
             
             for (PFObject *object in objects) {
+                
+                
+                NSLog(@"object= %@", object);
                 // NSLog(@"messageFrom = %@", [[object objectForKey:@"messageFrom"] objectForKey:@"username"]);
                 //NSLog(@"messageTo = %@", [[object objectForKey:@"messageTo"] objectId]);
                 // NSLog(@"message = %@ \n\n", [object objectForKey:@"messageContent"]);
@@ -382,11 +403,31 @@ forRowAtIndexPath: (NSIndexPath*)indexPath
                     
                     
                     if (![_chatUsersList containsObject:[[object objectForKey:@"messageTo"] objectId]]) {
-                        //add user to the list of chatters
-                        [_chatUsersList addObject:[[object objectForKey:@"messageTo"] objectId]];
-                        [_chatUsersNamesList addObject:[[object objectForKey:@"messageTo"] objectForKey:@"username"]];
-                        [_chatUsersPFUsersList addObject:(PFUser *)[object objectForKey:@"messageTo"]];
-                        [_chatLastMessageArray addObject:[object objectForKey:@"messageContent"]];
+                        
+                        
+                        
+                       // [[[_usersWhoBlockedmePFUsersList objectAtIndex:counter2] objectId] isEqualToString:[[object objectForKey:@"messageTo"] objectId]]
+                        
+                        NSLog(@"object = %@", [[object objectForKey:@"messageTo"] objectId]);
+                        
+                        if (![_usersWhoBlockedMeList containsObject:[[object objectForKey:@"messageTo"] objectId]]) {
+                            
+                            
+                            
+                            //add user to the list of chatters if the user is not blocked
+                            [_chatUsersList addObject:[[object objectForKey:@"messageTo"] objectId]];
+                            [_chatUsersNamesList addObject:[[object objectForKey:@"messageTo"] objectForKey:@"username"]];
+                            [_chatUsersPFUsersList addObject:(PFUser *)[object objectForKey:@"messageTo"]];
+                            [_chatLastMessageArray addObject:[object objectForKey:@"messageContent"]];
+                        }
+                        
+                        else{
+                            
+                            NSLog(@"founddddd a blocked user");
+                        }
+                        
+                        
+                        
                     }
                     
                     
@@ -396,11 +437,26 @@ forRowAtIndexPath: (NSIndexPath*)indexPath
                 else{
                     
                     if (![_chatUsersList containsObject:[[object objectForKey:@"messageFrom"] objectId]]) {
-                        //add user to the list of chatters
-                        [_chatUsersList addObject:[[object objectForKey:@"messageFrom"] objectId]];
-                        [_chatUsersNamesList addObject:[[object objectForKey:@"messageFrom"] objectForKey:@"username"]];
-                        [_chatUsersPFUsersList addObject:(PFUser *)[object objectForKey:@"messageFrom"]];
-                        [_chatLastMessageArray addObject:[object objectForKey:@"messageContent"]];
+                        
+                        
+                      
+                        
+                        if (![_usersWhoBlockedMeList containsObject:[[object objectForKey:@"messageFrom"] objectId]]) {
+                            //add user to the list of chatters
+                            [_chatUsersList addObject:[[object objectForKey:@"messageFrom"] objectId]];
+                            [_chatUsersNamesList addObject:[[object objectForKey:@"messageFrom"] objectForKey:@"username"]];
+                            [_chatUsersPFUsersList addObject:(PFUser *)[object objectForKey:@"messageFrom"]];
+                            [_chatLastMessageArray addObject:[object objectForKey:@"messageContent"]];
+                      
+                        }
+                        
+                        else{
+                            
+                            NSLog(@"found a blocked user");
+                        }
+                        
+                        
+         
                         
                         
                     }
@@ -420,7 +476,17 @@ forRowAtIndexPath: (NSIndexPath*)indexPath
                 
                 
                 
-            }
+            
+            
+                counter2++;
+                if (counter2 == objects.count -1)
+                    
+                  
+                    break;}
+                
+                
+                
+            
             
             
             
@@ -742,13 +808,55 @@ forRowAtIndexPath: (NSIndexPath*)indexPath
     
     
     
+}
+
+
+
+- (void) getPFUsersWhoBlockedMe{
+
+    PFQuery *blockedUsersQuery = [PFQuery queryWithClassName:@"_User"];
+    [blockedUsersQuery includeKey:@"blockedUsers"];
+    [blockedUsersQuery whereKey:@"blockedUsers" equalTo:[[PFUser currentUser] objectId]];
+    
+    _usersWhoBlockedMeList = [[NSMutableArray alloc] init];
     
     
+    [blockedUsersQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        
+        //no blocked users found
+        if (!objects.count) {
+            NSLog(@"nobody is blocking me");
+            
+            [self retrieveMessages];
+
+        }
+        
+        
+        if (!error) {
+            NSLog(@"users who blocked me: %@", objects);
+            
+            for (PFUser *user in objects) {
+                [_usersWhoBlockedMeList addObject:[user objectId]];
+            }
+            
+            
+            [self retrieveMessages];
+            
+            
+        }
+        
+        else{
+            
+            NSLog(@"error retrieving blocked users %@", error);
+            [self retrieveMessages];
+
+        }
+        
+        
+    }];
+
     
-    
-    
-    
-    
+
     
 }
 
