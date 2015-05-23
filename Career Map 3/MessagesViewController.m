@@ -50,7 +50,7 @@
     //
     
     
-    [self getPFUsersWhoBlockedMe];
+    [self getUsersWhoBlockedMe];
     
     //[self retrieveMessages];
     
@@ -65,7 +65,7 @@
     
     //self.refreshControl.tintColor = [UIColor whiteColor];
     [self.refreshControl addTarget:self
-                            action:@selector(getPFUsersWhoBlockedMe)
+                            action:@selector(getUsersWhoBlockedMe)
                   forControlEvents:UIControlEventValueChanged];
     [self.messagesTable addSubview:self.refreshControl];
 
@@ -315,7 +315,7 @@ forRowAtIndexPath: (NSIndexPath*)indexPath
 - (void) refreshMessages{
     
     
-    [self getPFUsersWhoBlockedMe];
+    [self getUsersWhoBlockedMe];
     
     
     
@@ -324,7 +324,7 @@ forRowAtIndexPath: (NSIndexPath*)indexPath
 }
 
 - (IBAction)refreshMessagesListButton:(UIButton *)sender {
-    [self getPFUsersWhoBlockedMe];
+    [self getUsersWhoBlockedMe];
 
 }
 
@@ -334,7 +334,7 @@ forRowAtIndexPath: (NSIndexPath*)indexPath
     
    // [[NSNotificationCenter defaultCenter] removeObserver:self];
     
-    [self getPFUsersWhoBlockedMe];
+    [self getUsersWhoBlockedMe];
     
     
     
@@ -345,7 +345,6 @@ forRowAtIndexPath: (NSIndexPath*)indexPath
 
 - (void) retrieveMessages{
     
-    //get users who unblocked me
     
     
     
@@ -812,7 +811,7 @@ forRowAtIndexPath: (NSIndexPath*)indexPath
 
 
 
-- (void) getPFUsersWhoBlockedMe{
+- (void) getUsersWhoBlockedMe{
 
     PFQuery *blockedUsersQuery = [PFQuery queryWithClassName:@"_User"];
     [blockedUsersQuery includeKey:@"blockedUsers"];

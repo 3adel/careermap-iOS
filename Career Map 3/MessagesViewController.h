@@ -36,5 +36,5 @@
 - (void) retrieveMessages;
 - (void) refreshMessages;
 - (IBAction)refreshMessagesListButton:(UIButton *)sender;
-- (void) getPFUsersWhoBlockedMe;
+- (void) getUsersWhoBlockedMe;
 @end
