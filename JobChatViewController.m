@@ -57,7 +57,14 @@
     PFQuery *blockedUsersQuery = [PFQuery queryWithClassName:@"_User"];
     [blockedUsersQuery includeKey:@"blockedUsers"];
     [blockedUsersQuery whereKey:@"objectId" equalTo:[[PFUser currentUser] objectId]];
-    [blockedUsersQuery whereKey:@"blockedUsers" equalTo:[_jobPosterPFUser objectId]];
+    [blockedUsersQuery whereKey:@"blockedUsers" equalTo:_jobEmployerUserObjectID];
+
+    
+    
+    
+    
+    
+    
     [blockedUsersQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         
         //no blocked users found
