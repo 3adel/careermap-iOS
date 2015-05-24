@@ -262,6 +262,140 @@
 
 
 - (IBAction)blockUserButtonPressed:(UIBarButtonItem *)sender {
+
+    
+    
+    if ([_blockUserButton.title  isEqual: @"Block"]) {
+        
+        NSLog(@"title is blck");
+        //block user
+        
+        //progress spinner initialization
+        MBProgressHUD *HUDProgressIndicator = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        HUDProgressIndicator.labelText = @"Blocking user ...";
+        HUDProgressIndicator.mode = MBProgressHUDModeIndeterminate;
+        
+        
+        PFQuery *blockQuery = [PFQuery queryWithClassName:@"_User"];
+
+        
+        
+        
+        
+        [blockQuery getObjectInBackgroundWithId:[[PFUser currentUser] objectId] block:^(PFObject *object, NSError *error) {
+            
+            if (!error) {
+                
+                
+                
+                [object addObject:_jobEmployerUserObjectID forKey:@"blockedUsers"];
+                
+                [object saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                    if (succeeded) {
+                        NSLog(@"user blocked now");
+                        _blockUserButton.title = @"Unblock";
+                        _messageTextField.enabled = NO;
+                        _messageTextField.text = @"User is blocked";
+                        _messageTextField.backgroundColor = [UIColor redColor];
+                        _messageTextField.textColor = [UIColor whiteColor];
+                        _sendButton.enabled = NO;
+                        _sendButton.backgroundColor = [UIColor lightGrayColor];
+                        
+                        
+                        [HUDProgressIndicator setHidden:YES];
+                        
+                        
+                        
+                        
+                        
+                        
+                    }
+                    
+                    else{
+                        
+                        NSLog(@"failed blocked saving ");
+                    }
+                }];
+                
+            }
+            
+            
+        }];
+        
+        
+        
+        
+        
+        
+    }
+    
+    
+    
+    
+    else if ([_blockUserButton.title  isEqual: @"Unblock"]) {
+        
+        NSLog(@"title is unblck");
+        //block user
+        
+        //progress spinner initialization
+        MBProgressHUD *HUDProgressIndicator = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        HUDProgressIndicator.labelText = @"Unblocking user ...";
+        HUDProgressIndicator.mode = MBProgressHUDModeIndeterminate;
+        
+        PFQuery *blockQuery = [PFQuery queryWithClassName:@"_User"];
+        
+        
+        [blockQuery getObjectInBackgroundWithId:[[PFUser currentUser] objectId] block:^(PFObject *object, NSError *error) {
+            
+            if (!error) {
+                
+                
+                
+                [object removeObject:_jobEmployerUserObjectID forKey:@"blockedUsers"];
+                
+                
+                
+                
+                
+                [object saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                    if (succeeded) {
+                        NSLog(@"user unblocked now");
+                        _blockUserButton.title = @"Block";
+                        _messageTextField.enabled = YES;
+                        _messageTextField.text = @"";
+                        _messageTextField.placeholder = @"Type a message ...";
+                        _messageTextField.backgroundColor = [UIColor whiteColor];
+                        _messageTextField.textColor = [UIColor blackColor];
+                        _sendButton.enabled = YES;
+                        _sendButton.backgroundColor = [UIColor colorWithRed:22.0/255.0 green:126.0/255.0 blue:251.0/255 alpha:1.0];
+                        
+                        [HUDProgressIndicator setHidden:YES];
+                    }
+                    
+                    else{
+                        
+                        NSLog(@"failed unblocked saving ");
+                    }
+                }];
+                
+            }
+            
+            
+        }];
+        
+        
+        
+        
+        
+        
+    }
+    
+    else {
+        ;
+    }
+    
+    
+    
 }
 
 - (IBAction)sendButtonPressed:(UIButton *)sender {
