@@ -815,6 +815,9 @@ forRowAtIndexPath: (NSIndexPath*)indexPath
 
     PFQuery *blockedUsersQuery = [PFQuery queryWithClassName:@"_User"];
     [blockedUsersQuery includeKey:@"blockedUsers"];
+    PFUser *currentuser =[PFUser currentUser];
+    
+    
     [blockedUsersQuery whereKey:@"blockedUsers" equalTo:[[PFUser currentUser] objectId]];
     
     _usersWhoBlockedMeList = [[NSMutableArray alloc] init];

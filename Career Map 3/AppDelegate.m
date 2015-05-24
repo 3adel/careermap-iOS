@@ -22,10 +22,44 @@
     //configure parse project
     [Parse setApplicationId:@"tlHTprDlMSewDUTLFD0IiXchTlAmG43nHKbPiOxD" clientKey:@"pEFQ3jdtGu7L9q3P13kfdX6pwZMp2i3e3M0bH9OV"];
     
-    //creae an automatic user all the time
-    [PFUser enableAutomaticUser];
-    [[PFUser currentUser] saveInBackground];
+    //creae an automatic user
+    if (![PFUser currentUser]) {
+        [PFUser enableAutomaticUser];
+        [[PFUser currentUser] saveInBackground];
+    }
     
+    //refactor
+    while (![[PFUser currentUser] objectId]) {
+        ;
+        //NSLog(@"creating user ...");
+    }
+    
+    
+
+    
+    
+    
+    [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (succeeded) {
+           // PFUser *currentUse = [PFUser currentUser];
+            NSLog(@"%@", [[PFUser currentUser] objectId]);
+            
+            
+        }
+        
+        else{
+
+            NSLog(@"fail");
+        }
+    }];
+    
+
+    
+
+    
+    
+   // PFUser *currentUse = [PFUser currentUser];
+
     
     //setup push notifications
     UIUserNotificationType userNotificationTypes = (UIUserNotificationTypeAlert | UIUserNotificationTypeBadge| UIUserNotificationTypeSound);
