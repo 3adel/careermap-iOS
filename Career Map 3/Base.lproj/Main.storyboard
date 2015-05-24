@@ -150,33 +150,6 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dS8-uI-oid">
-                                        <rect key="frame" x="284" y="51" width="274" height="44"/>
-                                        <color key="backgroundColor" red="0.0" green="0.50196081399917603" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <state key="normal" title="Message Employer">
-                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="chatWithEmployerButtonPressed:" destination="oBD-2n-Moc" eventType="touchUpInside" id="7TQ-lz-fE4"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xMH-5h-pDA">
-                                        <rect key="frame" x="0.0" y="51" width="274" height="44"/>
-                                        <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="44" id="Hag-Bq-dbZ"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <state key="normal" title="Apply with CV">
-                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="applyWithCVButtonPressed:" destination="oBD-2n-Moc" eventType="touchUpInside" id="Qxv-Sk-PFa"/>
-                                        </connections>
-                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="post date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="so5-tk-zYr" userLabel="Job post date label">
                                         <rect key="frame" x="0.0" y="29" width="45" height="12"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
@@ -246,6 +219,21 @@
                                         <color key="textColor" red="0.0" green="0.50196081399917603" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xMH-5h-pDA">
+                                        <rect key="frame" x="0.0" y="51" width="568" height="44"/>
+                                        <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="Hag-Bq-dbZ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <state key="normal" title="Apply with CV">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="applyWithCVButtonPressed:" destination="oBD-2n-Moc" eventType="touchUpInside" id="Qxv-Sk-PFa"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -256,7 +244,6 @@
                                     <constraint firstItem="x8B-ot-tqI" firstAttribute="leading" secondItem="cGp-XX-uyV" secondAttribute="leading" id="FUU-r0-ZRu"/>
                                     <constraint firstItem="xMH-5h-pDA" firstAttribute="top" secondItem="so5-tk-zYr" secondAttribute="bottom" constant="10" id="Ffp-6o-odu"/>
                                     <constraint firstItem="ol1-9c-Ylq" firstAttribute="leading" secondItem="8KK-5d-Dtd" secondAttribute="leading" id="GYu-37-C4j"/>
-                                    <constraint firstItem="dS8-uI-oid" firstAttribute="leading" secondItem="xMH-5h-pDA" secondAttribute="trailing" constant="10" id="IDf-cF-jMr"/>
                                     <constraint firstAttribute="trailing" secondItem="Sny-d6-UOB" secondAttribute="trailing" constant="10" id="IMx-Tq-I59"/>
                                     <constraint firstItem="cVp-jb-txK" firstAttribute="leading" secondItem="PjM-Ma-zcP" secondAttribute="leading" id="JNY-q2-1In"/>
                                     <constraint firstItem="Sny-d6-UOB" firstAttribute="leading" secondItem="PjM-Ma-zcP" secondAttribute="leading" id="JoX-xv-1ml"/>
@@ -268,14 +255,11 @@
                                     <constraint firstItem="cVp-jb-txK" firstAttribute="top" secondItem="cGp-XX-uyV" secondAttribute="bottom" constant="5" id="UNV-yq-ba7"/>
                                     <constraint firstAttribute="bottom" secondItem="Dr1-So-jUU" secondAttribute="bottom" constant="26.5" id="V4R-oa-DSk"/>
                                     <constraint firstItem="8KK-5d-Dtd" firstAttribute="leading" secondItem="so5-tk-zYr" secondAttribute="leading" id="WRE-0R-xBR"/>
-                                    <constraint firstItem="dS8-uI-oid" firstAttribute="width" secondItem="xMH-5h-pDA" secondAttribute="width" id="X1K-Ux-Raj"/>
                                     <constraint firstAttribute="trailing" secondItem="x8B-ot-tqI" secondAttribute="trailing" id="c2P-3j-7Bu"/>
                                     <constraint firstItem="x8B-ot-tqI" firstAttribute="leading" secondItem="PjM-Ma-zcP" secondAttribute="leading" id="ddQ-nO-slc"/>
                                     <constraint firstAttribute="trailing" secondItem="ol1-9c-Ylq" secondAttribute="trailing" id="eDy-vT-6bM"/>
-                                    <constraint firstAttribute="trailing" secondItem="dS8-uI-oid" secondAttribute="trailing" constant="10" id="fLU-EK-D5H"/>
                                     <constraint firstAttribute="trailing" secondItem="cVp-jb-txK" secondAttribute="trailing" constant="5" id="gql-tt-3a0"/>
                                     <constraint firstItem="8KK-5d-Dtd" firstAttribute="centerY" secondItem="bnJ-MN-T1c" secondAttribute="centerY" id="h7d-X3-wMB"/>
-                                    <constraint firstItem="xMH-5h-pDA" firstAttribute="height" secondItem="dS8-uI-oid" secondAttribute="height" id="hlx-fA-Wnp"/>
                                     <constraint firstAttribute="trailing" secondItem="4IS-Nq-Qj6" secondAttribute="trailing" constant="5" id="i7K-3H-7fB"/>
                                     <constraint firstItem="4IS-Nq-Qj6" firstAttribute="leading" secondItem="PjM-Ma-zcP" secondAttribute="leading" id="meF-iM-UI6"/>
                                     <constraint firstItem="x8B-ot-tqI" firstAttribute="top" secondItem="Sny-d6-UOB" secondAttribute="bottom" constant="15" id="moi-OE-daQ"/>
@@ -286,7 +270,7 @@
                                     <constraint firstItem="SJl-Rf-FBT" firstAttribute="top" secondItem="xMH-5h-pDA" secondAttribute="bottom" constant="15" id="qXh-uu-ks5"/>
                                     <constraint firstAttribute="centerX" secondItem="ol1-9c-Ylq" secondAttribute="centerX" id="rGS-ne-5qC"/>
                                     <constraint firstItem="bnJ-MN-T1c" firstAttribute="leading" secondItem="8KK-5d-Dtd" secondAttribute="trailing" constant="30" id="udY-DJ-CBa"/>
-                                    <constraint firstItem="xMH-5h-pDA" firstAttribute="centerY" secondItem="dS8-uI-oid" secondAttribute="centerY" id="vS9-DD-D7D"/>
+                                    <constraint firstAttribute="trailing" secondItem="xMH-5h-pDA" secondAttribute="trailing" id="usm-Ej-keU"/>
                                     <constraint firstAttribute="trailing" secondItem="Dr1-So-jUU" secondAttribute="trailing" constant="5" id="y72-8K-D7G"/>
                                     <constraint firstItem="cGp-XX-uyV" firstAttribute="top" secondItem="4IS-Nq-Qj6" secondAttribute="bottom" constant="15" id="ytB-lx-5ik"/>
                                     <constraint firstItem="02Z-qn-g5b" firstAttribute="leading" secondItem="cGp-XX-uyV" secondAttribute="leading" id="zSF-LP-JyE"/>
