@@ -681,6 +681,7 @@ forRowAtIndexPath: (NSIndexPath*)indexPath
                     
                     if ([_UnreadMessagesCountBooleansArray count] >0) {
                         
+                        
                         [[[[tbc tabBar] items] objectAtIndex:3] setBadgeValue:[NSString stringWithFormat:@"%ld", [_UnreadMessagesCountBooleansArray count]]];
                         [[UIApplication sharedApplication] setApplicationIconBadgeNumber:[_UnreadMessagesCountBooleansArray count]];
                         
@@ -815,9 +816,6 @@ forRowAtIndexPath: (NSIndexPath*)indexPath
 
     PFQuery *blockedUsersQuery = [PFQuery queryWithClassName:@"_User"];
     [blockedUsersQuery includeKey:@"blockedUsers"];
-    PFUser *currentuser =[PFUser currentUser];
-    
-    
     [blockedUsersQuery whereKey:@"blockedUsers" equalTo:[[PFUser currentUser] objectId]];
     
     _usersWhoBlockedMeList = [[NSMutableArray alloc] init];
@@ -825,20 +823,18 @@ forRowAtIndexPath: (NSIndexPath*)indexPath
     
     [blockedUsersQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         
-        //no blocked users found
-        if (!objects.count) {
-            NSLog(@"nobody is blocking me");
-            
-            [self retrieveMessages];
 
-        }
-        
-        
         if (!error) {
-            NSLog(@"users who blocked me: %@", objects);
+            NSLog(@"users who blocked me: %lu", (unsigned long)objects.count);
             
+
             for (PFUser *user in objects) {
+                NSLog(@"users who blocked me: %lu", (unsigned long)objects.count);
+
+                
                 [_usersWhoBlockedMeList addObject:[user objectId]];
+                
+                
             }
             
             
@@ -850,7 +846,6 @@ forRowAtIndexPath: (NSIndexPath*)indexPath
         else{
             
             NSLog(@"error retrieving blocked users %@", error);
-            [self retrieveMessages];
 
         }
         
