@@ -27,10 +27,7 @@
 		F535AA691AD401BA0091E70B /* myLocation.gpx in Resources */ = {isa = PBXBuildFile; fileRef = F535AA681AD401BA0091E70B /* myLocation.gpx */; };
 		F535AA721AD449BA0091E70B /* JobDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F535AA711AD449BA0091E70B /* JobDetailsViewController.m */; };
 		F535AADA1AD947BF0091E70B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F535AAD91AD947BF0091E70B /* MapKit.framework */; };
-		F535AAE21ADA63EC0091E70B /* job-annotation-icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F535AAE11ADA63EC0091E70B /* job-annotation-icon@3x.png */; };
 		F535AAE61ADC38580091E70B /* JobMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F535AAE51ADC38580091E70B /* JobMapViewController.m */; };
-		F535AAE81ADC66240091E70B /* job-annotation-icon2@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F535AAE71ADC66240091E70B /* job-annotation-icon2@3x.png */; };
-		F535AAEA1ADC66920091E70B /* job-annotation-icon3@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F535AAE91ADC66920091E70B /* job-annotation-icon3@3x.png */; };
 		F535ABC41ADE52CF0091E70B /* JobChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F535ABC21ADE52CF0091E70B /* JobChatViewController.m */; };
 		F535ABC51ADE52CF0091E70B /* JobChatView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F535ABC31ADE52CF0091E70B /* JobChatView.xib */; };
 		F535AC4E1ADEC9860091E70B /* JobChatMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F535AC4D1ADEC9860091E70B /* JobChatMessageCell.xib */; };
@@ -41,6 +38,10 @@
 		F59584861B1347A900B06778 /* TabBar-AddJob@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F59584831B1347A900B06778 /* TabBar-AddJob@2x.png */; };
 		F59584871B1347A900B06778 /* TabBar-AddJob@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F59584841B1347A900B06778 /* TabBar-AddJob@3x.png */; };
 		F595848B1B134BFB00B06778 /* JobLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F595848A1B134BFB00B06778 /* JobLocationViewController.m */; };
+		F59584921B13A10100B06778 /* job-annotation-icon3@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F59584911B13A10100B06778 /* job-annotation-icon3@3x.png */; };
+		F59584961B13A43D00B06778 /* job-annotation-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F59584931B13A43D00B06778 /* job-annotation-icon.png */; };
+		F59584971B13A43D00B06778 /* job-annotation-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F59584941B13A43D00B06778 /* job-annotation-icon@2x.png */; };
+		F59584981B13A43D00B06778 /* job-annotation-icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F59584951B13A43D00B06778 /* job-annotation-icon@3x.png */; };
 		F59758AF1AC159B40099A978 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F59758AE1AC159B40099A978 /* main.m */; };
 		F59758B21AC159B40099A978 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F59758B11AC159B40099A978 /* AppDelegate.m */; };
 		F59758BB1AC159B40099A978 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F59758B91AC159B40099A978 /* Main.storyboard */; };
@@ -133,11 +134,8 @@
 		F535AA701AD449BA0091E70B /* JobDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobDetailsViewController.h; sourceTree = "<group>"; };
 		F535AA711AD449BA0091E70B /* JobDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobDetailsViewController.m; sourceTree = "<group>"; };
 		F535AAD91AD947BF0091E70B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		F535AAE11ADA63EC0091E70B /* job-annotation-icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "job-annotation-icon@3x.png"; sourceTree = "<group>"; };
 		F535AAE41ADC38580091E70B /* JobMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JobMapViewController.h; path = ../JobMapViewController.h; sourceTree = "<group>"; };
 		F535AAE51ADC38580091E70B /* JobMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JobMapViewController.m; path = ../JobMapViewController.m; sourceTree = "<group>"; };
-		F535AAE71ADC66240091E70B /* job-annotation-icon2@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "job-annotation-icon2@3x.png"; sourceTree = "<group>"; };
-		F535AAE91ADC66920091E70B /* job-annotation-icon3@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "job-annotation-icon3@3x.png"; sourceTree = "<group>"; };
 		F535ABC11ADE52CF0091E70B /* JobChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JobChatViewController.h; path = ../JobChatViewController.h; sourceTree = "<group>"; };
 		F535ABC21ADE52CF0091E70B /* JobChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JobChatViewController.m; path = ../JobChatViewController.m; sourceTree = "<group>"; };
 		F535ABC31ADE52CF0091E70B /* JobChatView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = JobChatView.xib; path = ../JobChatView.xib; sourceTree = "<group>"; };
@@ -153,6 +151,10 @@
 		F59584841B1347A900B06778 /* TabBar-AddJob@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBar-AddJob@3x.png"; sourceTree = "<group>"; };
 		F59584891B134BFB00B06778 /* JobLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobLocationViewController.h; sourceTree = "<group>"; };
 		F595848A1B134BFB00B06778 /* JobLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobLocationViewController.m; sourceTree = "<group>"; };
+		F59584911B13A10100B06778 /* job-annotation-icon3@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "job-annotation-icon3@3x.png"; sourceTree = "<group>"; };
+		F59584931B13A43D00B06778 /* job-annotation-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "job-annotation-icon.png"; sourceTree = "<group>"; };
+		F59584941B13A43D00B06778 /* job-annotation-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "job-annotation-icon@2x.png"; sourceTree = "<group>"; };
+		F59584951B13A43D00B06778 /* job-annotation-icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "job-annotation-icon@3x.png"; sourceTree = "<group>"; };
 		F59758A91AC159B40099A978 /* Career Map 3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Career Map 3.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F59758AD1AC159B40099A978 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F59758AE1AC159B40099A978 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -267,14 +269,12 @@
 		F50142D01ACD1643000DDBE3 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				F595848C1B138BDF00B06778 /* Maps */,
 				F506DC2C1AF7C11B000ABF49 /* Bar buttons */,
 				F5CF094E1AF283E300850BB0 /* Tab Bar */,
 				F5CF09421AF1114B00850BB0 /* Icon-60@3x.png */,
 				F52DC4961AE6507D00693911 /* Default_Profile_Picture@3x.png */,
 				F53334631AE4080C0029BFF7 /* Lenna@3x.jpg */,
-				F535AAE91ADC66920091E70B /* job-annotation-icon3@3x.png */,
-				F535AAE71ADC66240091E70B /* job-annotation-icon2@3x.png */,
-				F535AAE11ADA63EC0091E70B /* job-annotation-icon@3x.png */,
 				F50142D51ACD19CD000DDBE3 /* JobVoteDwn-no-selected@3x.png */,
 				F50142D61ACD19CD000DDBE3 /* JobVoteDwn-selected@3x.png */,
 				F50142D71ACD19CD000DDBE3 /* JobVoteUp-no-selected@3x.png */,
@@ -411,6 +411,17 @@
 				F595848A1B134BFB00B06778 /* JobLocationViewController.m */,
 			);
 			name = "Add Job";
+			sourceTree = "<group>";
+		};
+		F595848C1B138BDF00B06778 /* Maps */ = {
+			isa = PBXGroup;
+			children = (
+				F59584931B13A43D00B06778 /* job-annotation-icon.png */,
+				F59584941B13A43D00B06778 /* job-annotation-icon@2x.png */,
+				F59584951B13A43D00B06778 /* job-annotation-icon@3x.png */,
+				F59584911B13A10100B06778 /* job-annotation-icon3@3x.png */,
+			);
+			name = Maps;
 			sourceTree = "<group>";
 		};
 		F59758A01AC159B40099A978 = {
@@ -663,6 +674,7 @@
 				F5CF09431AF1114B00850BB0 /* Icon-60@3x.png in Resources */,
 				F506DC321AF7C1BF000ABF49 /* MenuBar-Report@3x.png in Resources */,
 				F59584851B1347A900B06778 /* TabBar-AddJob.png in Resources */,
+				F59584971B13A43D00B06778 /* job-annotation-icon@2x.png in Resources */,
 				F5CF09611AF285F000850BB0 /* TabBar-MyCV@2x.png in Resources */,
 				F50142DA1ACD19CD000DDBE3 /* JobVoteDwn-selected@3x.png in Resources */,
 				F59758BB1AC159B40099A978 /* Main.storyboard in Resources */,
@@ -670,13 +682,13 @@
 				F535AA641AD3CE270091E70B /* WelcomeAppChoiceView.xib in Resources */,
 				F59758C01AC159B40099A978 /* LaunchScreen.xib in Resources */,
 				F5CF094B1AF2820500850BB0 /* TabBar-JobList@2x.png in Resources */,
-				F535AAEA1ADC66920091E70B /* job-annotation-icon3@3x.png in Resources */,
 				F5EB66031AEEB1A60026B988 /* AppHorizontalMessageView.xib in Resources */,
 				F506DC341AF9504F000ABF49 /* LoadingJobListEmptyView.xib in Resources */,
 				F53334641AE4080C0029BFF7 /* Lenna@3x.jpg in Resources */,
 				F533345F1AE3CE4D0029BFF7 /* CreateCVView.xib in Resources */,
 				F535AA691AD401BA0091E70B /* myLocation.gpx in Resources */,
 				F59584861B1347A900B06778 /* TabBar-AddJob@2x.png in Resources */,
+				F59584981B13A43D00B06778 /* job-annotation-icon@3x.png in Resources */,
 				F5CF09591AF284E500850BB0 /* TabBar-Settings@2x.png in Resources */,
 				F50142DB1ACD19CD000DDBE3 /* JobVoteUp-no-selected@3x.png in Resources */,
 				F59584871B1347A900B06778 /* TabBar-AddJob@3x.png in Resources */,
@@ -684,15 +696,15 @@
 				F506DC301AF7C1BF000ABF49 /* MenuBar-Report.png in Resources */,
 				F535ABC51ADE52CF0091E70B /* JobChatView.xib in Resources */,
 				F5CF11FA1AFD50AC00FD0FCA /* TabBar-Messages@3x.png in Resources */,
-				F535AAE81ADC66240091E70B /* job-annotation-icon2@3x.png in Resources */,
 				F506DC311AF7C1BF000ABF49 /* MenuBar-Report@2x.png in Resources */,
-				F535AAE21ADA63EC0091E70B /* job-annotation-icon@3x.png in Resources */,
 				F535AC4E1ADEC9860091E70B /* JobChatMessageCell.xib in Resources */,
 				F5CF11F81AFD50AC00FD0FCA /* TabBar-Messages.png in Resources */,
+				F59584921B13A10100B06778 /* job-annotation-icon3@3x.png in Resources */,
 				F5CF09621AF285F000850BB0 /* TabBar-MyCV@3x.png in Resources */,
 				F50142DC1ACD19CD000DDBE3 /* JobVoteUp-selected@3x.png in Resources */,
 				F52DC4971AE6507D00693911 /* Default_Profile_Picture@3x.png in Resources */,
 				F5CF11F91AFD50AC00FD0FCA /* TabBar-Messages@2x.png in Resources */,
+				F59584961B13A43D00B06778 /* job-annotation-icon.png in Resources */,
 				F59758BD1AC159B40099A978 /* Images.xcassets in Resources */,
 				F5CF09601AF285F000850BB0 /* TabBar-MyCV.png in Resources */,
 				F5CF09491AF2805F00850BB0 /* TabBar-JobList@3x.png in Resources */,

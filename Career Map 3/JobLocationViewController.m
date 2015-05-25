@@ -23,6 +23,10 @@
 
     
     
+    // Some style setup.
+    _resetToMyLocationButton.layer.cornerRadius=5.0f;
+    
+    
     //initialize location manager
     _locationManager = [[CLLocationManager alloc] init];
     [_locationManager requestWhenInUseAuthorization];
@@ -102,7 +106,7 @@
     
 }
 
-- (IBAction)resteToMyLocationButtonPressed:(UIButton *)sender {
+- (IBAction)restetToMyLocationButtonPressed:(UIButton *)sender {
     
     [self zoomToUserLocation];
 }

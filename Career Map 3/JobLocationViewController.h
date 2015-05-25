@@ -16,11 +16,12 @@
 @property (nonatomic,strong) CLLocationManager* locationManager;
 @property (nonatomic, strong) PFGeoPoint *userLocation;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *selectMapTypeSegmentedControl;
+@property (weak, nonatomic) IBOutlet UIButton *resetToMyLocationButton;
 
 
 - (void) zoomToUserLocation;
 - (IBAction)selectMapTypePressed:(UISegmentedControl *)sender;
-- (IBAction)resteToMyLocationButtonPressed:(UIButton *)sender;
+- (IBAction)restetToMyLocationButtonPressed:(UIButton *)sender;
 
 
 @end

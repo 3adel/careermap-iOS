@@ -1015,7 +1015,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="he8-2f-FcZ">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="B7a-hN-ple" userLabel="Job location map">
+                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                            </mapView>
+                            <segmentedControl opaque="NO" alpha="0.79999999999999982" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="he8-2f-FcZ">
                                 <rect key="frame" x="196" y="72" width="209" height="29"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <segments>
@@ -1027,8 +1030,21 @@
                                     <action selector="selectMapTypePressed:" destination="gU1-YK-m0e" eventType="valueChanged" id="vud-3g-GAB"/>
                                 </connections>
                             </segmentedControl>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="job-annotation-icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="WjZ-SL-ZYK" userLabel="job annotation">
+                                <rect key="frame" x="275" y="275" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="PYq-uO-cmX"/>
+                                    <constraint firstAttribute="height" constant="50" id="Xvg-hQ-7cV"/>
+                                    <constraint firstAttribute="height" id="byC-Gc-Lsw"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="byC-Gc-Lsw"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gOj-E6-hl7">
-                                <rect key="frame" x="530" y="497" width="44" height="44"/>
+                                <rect key="frame" x="540" y="497" width="44" height="44"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="S4x-aq-AL5"/>
@@ -1045,28 +1061,41 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <action selector="resteToMyLocationButtonPressed:" destination="gU1-YK-m0e" eventType="touchUpInside" id="8gH-s7-5dq"/>
+                                    <action selector="restetToMyLocationButtonPressed:" destination="gU1-YK-m0e" eventType="touchUpInside" id="jRQ-Aw-sTQ"/>
                                 </connections>
                             </button>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="B7a-hN-ple" userLabel="Job location map">
-                                <rect key="frame" x="16" y="64" width="568" height="536"/>
-                            </mapView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="B7a-hN-ple" firstAttribute="bottom" secondItem="jF4-cN-WGm" secondAttribute="bottomMargin" id="0bw-0b-MHd"/>
+                            <constraint firstItem="B7a-hN-ple" firstAttribute="top" secondItem="0cn-L3-0Ks" secondAttribute="bottom" id="5W6-Kr-O2i"/>
                             <constraint firstAttribute="bottomMargin" secondItem="B7a-hN-ple" secondAttribute="bottom" id="LOj-yb-XEf"/>
-                            <constraint firstItem="B7a-hN-ple" firstAttribute="leading" secondItem="jF4-cN-WGm" secondAttribute="leadingMargin" id="ODP-O1-Xdv"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="gOj-E6-hl7" secondAttribute="trailing" constant="10" id="ROb-NX-XEf"/>
+                            <constraint firstItem="B7a-hN-ple" firstAttribute="leading" secondItem="jF4-cN-WGm" secondAttribute="leadingMargin" constant="-16" id="ODP-O1-Xdv"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="gOj-E6-hl7" secondAttribute="trailing" id="ROb-NX-XEf"/>
+                            <constraint firstAttribute="centerX" secondItem="WjZ-SL-ZYK" secondAttribute="centerX" id="byb-cA-Q70"/>
+                            <constraint firstItem="B7a-hN-ple" firstAttribute="bottom" secondItem="jF4-cN-WGm" secondAttribute="bottomMargin" id="iJf-Nn-soc"/>
                             <constraint firstItem="Wnx-Sg-mkG" firstAttribute="top" secondItem="gOj-E6-hl7" secondAttribute="bottom" constant="10" id="lo5-PG-WHC"/>
                             <constraint firstAttribute="centerX" secondItem="he8-2f-FcZ" secondAttribute="centerX" id="lyH-1v-ha5"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="B7a-hN-ple" secondAttribute="trailing" id="u3P-TK-hos"/>
+                            <constraint firstAttribute="centerY" secondItem="WjZ-SL-ZYK" secondAttribute="centerY" id="qv5-5H-4Nw"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="B7a-hN-ple" secondAttribute="trailing" constant="-16" id="u3P-TK-hos"/>
                             <constraint firstItem="he8-2f-FcZ" firstAttribute="top" secondItem="0cn-L3-0Ks" secondAttribute="bottom" constant="8" id="u4v-Jl-9qk"/>
                             <constraint firstItem="B7a-hN-ple" firstAttribute="top" secondItem="0cn-L3-0Ks" secondAttribute="bottom" id="wNs-I2-6ao"/>
+                            <constraint firstItem="Wnx-Sg-mkG" firstAttribute="top" secondItem="B7a-hN-ple" secondAttribute="bottom" id="wQT-aV-Aga"/>
+                            <constraint firstItem="B7a-hN-ple" firstAttribute="top" secondItem="0cn-L3-0Ks" secondAttribute="bottom" id="xWe-W5-E76"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="0bw-0b-MHd"/>
+                                <exclude reference="LOj-yb-XEf"/>
+                                <exclude reference="iJf-Nn-soc"/>
+                                <exclude reference="wNs-I2-6ao"/>
+                                <exclude reference="xWe-W5-E76"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Step 1: Job Location" id="scK-la-Wkf">
                         <barButtonItem key="backBarButtonItem" title="Back" id="ycQ-g7-lGL"/>
-                        <barButtonItem key="rightBarButtonItem" title="Next" id="qbU-U9-HaF">
+                        <barButtonItem key="rightBarButtonItem" title="Next &gt;&gt;" id="qbU-U9-HaF">
                             <connections>
                                 <segue destination="NNd-9K-gIg" kind="show" identifier="jobCategorySegue" id="Yuu-UK-hXb"/>
                             </connections>
@@ -1074,6 +1103,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="jobMap" destination="B7a-hN-ple" id="Dpe-nX-b5i"/>
+                        <outlet property="resetToMyLocationButton" destination="gOj-E6-hl7" id="SqP-Xx-pVi"/>
                         <outlet property="selectMapTypeSegmentedControl" destination="he8-2f-FcZ" id="29V-Ib-9Rb"/>
                     </connections>
                 </viewController>
@@ -1097,7 +1127,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Step 2: Job Category" id="DmH-wO-zzj">
                         <barButtonItem key="backBarButtonItem" title="Back" id="eqg-Oh-ODT"/>
-                        <barButtonItem key="rightBarButtonItem" title="Next" id="z4i-uC-Wac">
+                        <barButtonItem key="rightBarButtonItem" title="Next &gt;&gt;" id="z4i-uC-Wac">
                             <connections>
                                 <segue destination="F7J-24-Ch6" kind="show" identifier="jobDetailsSegue" id="Ls1-dM-5Re"/>
                             </connections>
@@ -1403,6 +1433,7 @@
         <image name="TabBar-MyCV.png" width="45" height="28"/>
         <image name="TabBar-Settings.png" width="45" height="28"/>
         <image name="first" width="45" height="28"/>
+        <image name="job-annotation-icon.png" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="0do-qJ-Jzh"/>
