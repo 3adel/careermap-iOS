@@ -843,12 +843,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6zR-fY-Isc">
-                                <rect key="frame" x="0.0" y="20" width="600" height="48"/>
-                                <items>
-                                    <navigationItem title="Messages" id="CDz-Ti-faA"/>
-                                </items>
-                            </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="69" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="6iW-So-kGy">
                                 <rect key="frame" x="0.0" y="68" width="600" height="483"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -962,6 +956,12 @@
                                     <constraint firstItem="VDl-zc-Kev" firstAttribute="top" secondItem="wFw-yK-Icd" secondAttribute="top" constant="100" id="scX-Zc-KrW"/>
                                 </constraints>
                             </view>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6zR-fY-Isc">
+                                <rect key="frame" x="0.0" y="20" width="600" height="48"/>
+                                <items>
+                                    <navigationItem title="Messages" id="CDz-Ti-faA"/>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -1002,6 +1002,81 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="48N-ee-CYs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="541" y="1093"/>
+        </scene>
+        <!--Job Location-->
+        <scene sceneID="tBK-f3-ro2">
+            <objects>
+                <viewController id="gU1-YK-m0e" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0cn-L3-0Ks"/>
+                        <viewControllerLayoutGuide type="bottom" id="Wnx-Sg-mkG"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jF4-cN-WGm">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Job Location" id="scK-la-Wkf">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="ycQ-g7-lGL"/>
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="qbU-U9-HaF">
+                            <connections>
+                                <segue destination="NNd-9K-gIg" kind="show" identifier="jobCategorySegue" id="Yuu-UK-hXb"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="usb-tX-FP1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1698" y="2135"/>
+        </scene>
+        <!--Job Category-->
+        <scene sceneID="BuC-Np-gfE">
+            <objects>
+                <viewController id="NNd-9K-gIg" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="VJm-Hx-Vov"/>
+                        <viewControllerLayoutGuide type="bottom" id="vyM-bn-4wp"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="uEV-3R-59o">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Job Category" id="DmH-wO-zzj">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="eqg-Oh-ODT"/>
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="z4i-uC-Wac">
+                            <connections>
+                                <segue destination="F7J-24-Ch6" kind="show" identifier="jobDetailsSegue" id="Ls1-dM-5Re"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z6j-JO-Dnb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2422" y="2135"/>
+        </scene>
+        <!--Job Details Submission VC-->
+        <scene sceneID="8x9-aR-5av">
+            <objects>
+                <viewController id="F7J-24-Ch6" userLabel="Job Details Submission VC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0vC-nl-qeC"/>
+                        <viewControllerLayoutGuide type="bottom" id="aw1-f1-0UU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7Jy-kN-ipJ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Job Details" id="eoP-hk-uTa">
+                        <barButtonItem key="rightBarButtonItem" title="Submit" id="Kby-y8-Pi5"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gEy-bO-hJH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3119" y="2135"/>
         </scene>
         <!--Existing User Login View Controller-->
         <scene sceneID="2Og-dQ-mZO">
@@ -1218,6 +1293,7 @@
                     <connections>
                         <segue destination="u4i-H2-sYV" kind="relationship" relationship="viewControllers" id="UxA-w6-8cU"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
+                        <segue destination="cTh-Vs-miG" kind="relationship" relationship="viewControllers" id="KRS-69-hya"/>
                         <segue destination="EwG-gK-NKE" kind="relationship" relationship="viewControllers" id="BN5-a7-A1C"/>
                         <segue destination="T0L-SA-EyQ" kind="relationship" relationship="viewControllers" id="fSu-U5-AC5"/>
                     </connections>
@@ -1247,9 +1323,29 @@
             </objects>
             <point key="canvasLocation" x="1221" y="-218.24999999999994"/>
         </scene>
+        <!--Add Job-->
+        <scene sceneID="XFp-PJ-bUk">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cTh-Vs-miG" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Add Job" image="TabBar-AddJob.png" id="mn5-Br-ZnA"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="C99-wG-9Sg">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="gU1-YK-m0e" kind="relationship" relationship="rootViewController" id="DXO-jQ-4yt"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R6u-3V-8QC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="934" y="2135"/>
+        </scene>
     </scenes>
     <resources>
         <image name="MenuBar-Report.png" width="45" height="28"/>
+        <image name="TabBar-AddJob.png" width="45" height="28"/>
         <image name="TabBar-JobList.png" width="45" height="28"/>
         <image name="TabBar-Messages.png" width="45" height="28"/>
         <image name="TabBar-MyCV.png" width="45" height="28"/>
