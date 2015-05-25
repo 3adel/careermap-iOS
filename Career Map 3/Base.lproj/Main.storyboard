@@ -43,11 +43,26 @@
                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="255" verticalCompressionResistancePriority="752" text="Distance" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aU7-0p-S2X">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="255" verticalCompressionResistancePriority="752" text="Distance" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aU7-0p-S2X">
                                             <rect key="frame" x="8" y="39" width="57" height="17"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" verticalHuggingPriority="253" verticalCompressionResistancePriority="753" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LyN-oZ-hMV">
+                                            <rect key="frame" x="459" y="96" width="100" height="12"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="100" id="ZFa-jG-taU"/>
+                                                <constraint firstAttribute="width" constant="100" id="dVG-wj-Rgs"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="ZFa-jG-taU"/>
+                                                </mask>
+                                            </variation>
                                         </label>
                                     </subviews>
                                     <constraints>
@@ -64,9 +79,11 @@
                                         <constraint firstItem="aU7-0p-S2X" firstAttribute="top" secondItem="N0w-wi-4Fa" secondAttribute="bottom" constant="10" id="LAK-aE-2k9"/>
                                         <constraint firstItem="3sW-hB-upE" firstAttribute="leading" secondItem="aU7-0p-S2X" secondAttribute="leading" id="LQ8-5f-8VW"/>
                                         <constraint firstItem="aU7-0p-S2X" firstAttribute="leading" secondItem="Bsq-Cm-a6P" secondAttribute="leadingMargin" id="OP6-Qa-bbR"/>
+                                        <constraint firstItem="LyN-oZ-hMV" firstAttribute="leading" secondItem="1Qa-a6-TFF" secondAttribute="trailing" constant="344" id="V9K-Tm-etU"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="3sW-hB-upE" secondAttribute="trailing" id="WC4-Vy-rgz"/>
                                         <constraint firstItem="awk-od-Uke" firstAttribute="leading" secondItem="Bsq-Cm-a6P" secondAttribute="leadingMargin" id="Yf5-jT-gG0"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="N0w-wi-4Fa" secondAttribute="trailing" id="Z9e-yO-AVO"/>
+                                        <constraint firstItem="1Qa-a6-TFF" firstAttribute="centerY" secondItem="LyN-oZ-hMV" secondAttribute="centerY" id="ZMO-yz-qoH"/>
                                         <constraint firstItem="N0w-wi-4Fa" firstAttribute="top" secondItem="Bsq-Cm-a6P" secondAttribute="topMargin" id="djT-HL-hRI"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="3sW-hB-upE" secondAttribute="trailing" id="eT4-FI-EFm"/>
                                         <constraint firstItem="awk-od-Uke" firstAttribute="centerY" secondItem="1Qa-a6-TFF" secondAttribute="centerY" id="flc-P2-zcT"/>
@@ -74,7 +91,9 @@
                                         <constraint firstItem="N0w-wi-4Fa" firstAttribute="leading" secondItem="Bsq-Cm-a6P" secondAttribute="leadingMargin" id="ls4-b4-ADa"/>
                                         <constraint firstItem="1Qa-a6-TFF" firstAttribute="leading" secondItem="awk-od-Uke" secondAttribute="trailing" constant="20" id="mSC-8p-ASU"/>
                                         <constraint firstItem="awk-od-Uke" firstAttribute="top" secondItem="aU7-0p-S2X" secondAttribute="bottom" constant="10" id="uIY-zE-gGz"/>
+                                        <constraint firstItem="LyN-oZ-hMV" firstAttribute="leading" secondItem="1Qa-a6-TFF" secondAttribute="trailing" constant="20" id="vxf-DB-SfA"/>
                                         <constraint firstItem="N0w-wi-4Fa" firstAttribute="leading" secondItem="3sW-hB-upE" secondAttribute="leading" id="wiM-dn-Wdw"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="LyN-oZ-hMV" secondAttribute="trailing" id="zCs-hu-a7w"/>
                                         <constraint firstItem="aU7-0p-S2X" firstAttribute="top" secondItem="N0w-wi-4Fa" secondAttribute="bottom" constant="5" id="zck-z3-MpV"/>
                                     </constraints>
                                     <variation key="default">
@@ -90,6 +109,8 @@
                                             <exclude reference="CmC-QO-dzh"/>
                                             <exclude reference="Hfe-Jr-AaK"/>
                                             <exclude reference="uIY-zE-gGz"/>
+                                            <exclude reference="V9K-Tm-etU"/>
+                                            <exclude reference="vxf-DB-SfA"/>
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
@@ -97,6 +118,7 @@
                                     <outlet property="jobDateAdded" destination="awk-od-Uke" id="1aj-QQ-WIr"/>
                                     <outlet property="jobDistanceFromUser" destination="aU7-0p-S2X" id="gNe-Iw-BOJ"/>
                                     <outlet property="jobEmployer" destination="3sW-hB-upE" id="YU3-vv-PD3"/>
+                                    <outlet property="jobPostedByUsernameLabel" destination="LyN-oZ-hMV" id="LUa-Yb-GS3"/>
                                     <outlet property="jobStatus" destination="1Qa-a6-TFF" id="oCs-Bd-7FT"/>
                                     <outlet property="jobTitleLabel" destination="N0w-wi-4Fa" id="Waq-fs-b9q"/>
                                     <segue destination="oBD-2n-Moc" kind="show" identifier="showJob" id="LBn-AI-AAP"/>

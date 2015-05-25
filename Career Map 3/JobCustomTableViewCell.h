@@ -14,6 +14,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *jobStatus;
 @property (weak, nonatomic) IBOutlet UILabel *jobDateAdded;
 @property (weak, nonatomic) IBOutlet UILabel *jobDistanceFromUser;
+@property (weak, nonatomic) IBOutlet UILabel *jobPostedByUsernameLabel;
+
+
 @property (weak, nonatomic) IBOutlet UIButton *jobVoteUpButton;
 @property (weak, nonatomic) IBOutlet UIButton *jobVoteDownButton;
 @property (weak, nonatomic) IBOutlet UILabel *jobVoteLabel;

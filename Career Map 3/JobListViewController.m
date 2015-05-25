@@ -396,9 +396,49 @@ bool messageIsReceived = NO;
     cell.jobTitleLabel.text = [jobObject objectForKey:@"title"];
     cell.jobEmployer.text=[jobObject[@"employer"] objectForKey:@"employerName"];
     cell.jobStatus.text=[jobObject[@"status"] objectForKey:@"description"];
-    //cell.jobDateAdded.text=[formatter stringFromDate:[jobObject createdAt]];
+    //cell.jobPostedByUsernameLabel.text = [jobObject[@"postedByUser"] objectForKey:@"username"];
     
     
+    
+    if ([[[PFUser currentUser] objectId] isEqualToString: [jobObject[@"postedByUser"] objectId]])
+         {
+             //you're the job poster
+             cell.jobPostedByUsernameLabel.font = [UIFont boldSystemFontOfSize:10.0];
+             if ([PFAnonymousUtils isLinkedWithUser:[PFUser currentUser]]) {
+             
+                 cell.jobPostedByUsernameLabel.text = @"You (Anonymous)";
+
+             }
+             
+             else{
+                 cell.jobPostedByUsernameLabel.text = [jobObject[@"postedByUser"] objectForKey:@"username"];
+                 
+                 
+
+             }
+   
+             
+         }
+         
+         else{
+
+             //you're not the job poster
+             cell.jobPostedByUsernameLabel.font = [UIFont systemFontOfSize:10.0];
+             if ([[jobObject[@"postedByUser"] objectForKey:@"signedUp"] isEqual:@YES] ) {
+                 cell.jobPostedByUsernameLabel.text = [jobObject[@"postedByUser"] objectForKey:@"username"];
+
+             }
+             else{
+                 cell.jobPostedByUsernameLabel.text = @"Anonymous";
+
+                 
+                 
+             }
+
+             
+         }
+    
+
     DateConverter *dateConverter = [[DateConverter alloc] init];
     cell.jobDateAdded.text = [dateConverter convertDateToLocalTime:[jobObject createdAt]];
     
