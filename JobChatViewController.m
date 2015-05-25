@@ -58,13 +58,6 @@
     [blockedUsersQuery includeKey:@"blockedUsers"];
     [blockedUsersQuery whereKey:@"objectId" equalTo:[[PFUser currentUser] objectId]];
     [blockedUsersQuery whereKey:@"blockedUsers" equalTo:_jobEmployerUserObjectID];
-
-    
-    
-    
-    
-    
-    
     [blockedUsersQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         
         //no blocked users found
@@ -80,7 +73,7 @@
             if (objects.count>0) {
                 _blockUserButton.title = @"Unblock";
                 _messageTextField.enabled = NO;
-                _messageTextField.text = @"User is blocked";
+                _messageTextField.text = @"You blocked this user";
                // _messageTextField.placeholder = @"User is blocked";
                 _messageTextField.backgroundColor = [UIColor redColor];
                 _messageTextField.textColor = [UIColor whiteColor];
@@ -295,7 +288,7 @@
                         NSLog(@"user blocked now");
                         _blockUserButton.title = @"Unblock";
                         _messageTextField.enabled = NO;
-                        _messageTextField.text = @"User is blocked";
+                        _messageTextField.text = @"You blocked this user";
                         _messageTextField.backgroundColor = [UIColor redColor];
                         _messageTextField.textColor = [UIColor whiteColor];
                         _sendButton.enabled = NO;
@@ -303,11 +296,7 @@
                         
                         
                         [HUDProgressIndicator setHidden:YES];
-                        
-                        
-                        
-                        
-                        
+
                         
                     }
                     
@@ -746,13 +735,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.jobChatTable reloadData];
             
-            
-            
-            
-            
-            
-            
-            
+
             
         });
         
@@ -765,23 +748,62 @@
             });
         }
         
-        
-        
-        
-        /// dispatch_async(dispatch_get_main_queue(), ^{
-        //  [self scrollToLastMessage];
-        //
-        
-        
-        //   });
-        
-        
+
 
     }];
     
     
+    
+    //if the current user is included in the other user's blocked list, disable controls
+    //get blocked users array
+    PFQuery *blockedUsersQuery = [PFQuery queryWithClassName:@"_User"];
+    [blockedUsersQuery includeKey:@"blockedUsers"];
+    [blockedUsersQuery whereKey:@"objectId" equalTo:_jobEmployerUserObjectID];
+    [blockedUsersQuery whereKey:@"blockedUsers" equalTo:[[PFUser currentUser] objectId]];
+    [blockedUsersQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        
+        //no blocked users found
+        if (!objects.count) {
+            NSLog(@"Congrats. The user did not block you");
+            
+            _messageTextField.enabled = YES;
+            _messageTextField.text = @"";
+            _messageTextField.placeholder = @"Type a message ...";
+            _messageTextField.backgroundColor = [UIColor whiteColor];
+            _messageTextField.textColor = [UIColor blackColor];
+            _sendButton.enabled = YES;
+            _sendButton.backgroundColor = [UIColor colorWithRed:22.0/255.0 green:126.0/255.0 blue:251.0/255 alpha:1.0];
+            
+        }
+        
+        
+        if (!error) {
+            NSLog(@"users: %@",[objects objectAtIndex:0]);
+            
+            //turn block button to unblock and disable chat
+            if (objects.count>0) {
+                _messageTextField.enabled = NO;
+                _messageTextField.text = @"You can't message this user";
+                _messageTextField.backgroundColor = [UIColor redColor];
+                _messageTextField.textColor = [UIColor whiteColor];
+                _sendButton.enabled = NO;
+                _sendButton.backgroundColor = [UIColor lightGrayColor];
+            }
+            
+
+            
+        }
+        
+        else{
+            
+            NSLog(@"error retrieving blocked users %@", error);
+        }
+        
+        
+    }];
 
     
+  
 }
 
 - (void) scrollToLastMessage{
