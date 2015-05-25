@@ -36,8 +36,6 @@
 @property (nonatomic, strong) PFGeoPoint *userLocation;
 
 
-
-
 @property (nonatomic, strong) NSMutableArray *jobsArray;
 @property (nonatomic, strong) NSMutableArray *jobsArrayWithUsersVotesVolatile;
 @property (nonatomic, strong) NSMutableArray *jobsArrayWithUsersVotesStable;

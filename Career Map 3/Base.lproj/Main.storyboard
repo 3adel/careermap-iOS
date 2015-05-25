@@ -554,8 +554,8 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" scrollEnabled="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="15X-mB-TGn" userLabel="Skills text view">
-                                        <rect key="frame" x="0.0" y="627" width="568" height="38"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="15X-mB-TGn" userLabel="Skills text view">
+                                        <rect key="frame" x="0.0" y="687" width="568" height="38"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -859,8 +859,8 @@
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QTn-iv-dCa" userLabel="Unread status">
-                                                    <rect key="frame" x="592" y="78" width="0.0" height="0.0"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QTn-iv-dCa" userLabel="Unread status">
+                                                    <rect key="frame" x="592" y="60" width="0.0" height="0.0"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="80" id="Qqa-YZ-ywD"/>
                                                     </constraints>
@@ -1003,10 +1003,10 @@
             </objects>
             <point key="canvasLocation" x="541" y="1093"/>
         </scene>
-        <!--Job Location-->
+        <!--Step 1: Job Location-->
         <scene sceneID="tBK-f3-ro2">
             <objects>
-                <viewController id="gU1-YK-m0e" sceneMemberID="viewController">
+                <viewController id="gU1-YK-m0e" customClass="JobLocationViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0cn-L3-0Ks"/>
                         <viewControllerLayoutGuide type="bottom" id="Wnx-Sg-mkG"/>
@@ -1014,9 +1014,50 @@
                     <view key="view" contentMode="scaleToFill" id="jF4-cN-WGm">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="B7a-hN-ple" userLabel="Job location map">
+                                <rect key="frame" x="16" y="64" width="568" height="536"/>
+                            </mapView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="he8-2f-FcZ">
+                                <rect key="frame" x="196" y="72" width="209" height="29"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <segments>
+                                    <segment title="Standard"/>
+                                    <segment title="Hybrid"/>
+                                    <segment title="Satellite"/>
+                                </segments>
+                                <connections>
+                                    <action selector="selectMapTypePressed:" destination="gU1-YK-m0e" eventType="valueChanged" id="vud-3g-GAB"/>
+                                </connections>
+                            </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gOj-E6-hl7">
+                                <rect key="frame" x="474" y="511" width="100" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="zaf-tL-qqO"/>
+                                </constraints>
+                                <state key="normal" title="My Location">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="resteToMyLocationButtonPressed:" destination="gU1-YK-m0e" eventType="touchUpInside" id="8gH-s7-5dq"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="bottomMargin" secondItem="B7a-hN-ple" secondAttribute="bottom" id="LOj-yb-XEf"/>
+                            <constraint firstItem="B7a-hN-ple" firstAttribute="leading" secondItem="jF4-cN-WGm" secondAttribute="leadingMargin" id="ODP-O1-Xdv"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="gOj-E6-hl7" secondAttribute="trailing" constant="10" id="ROb-NX-XEf"/>
+                            <constraint firstItem="Wnx-Sg-mkG" firstAttribute="top" secondItem="gOj-E6-hl7" secondAttribute="bottom" constant="10" id="lo5-PG-WHC"/>
+                            <constraint firstAttribute="centerX" secondItem="he8-2f-FcZ" secondAttribute="centerX" id="lyH-1v-ha5"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="B7a-hN-ple" secondAttribute="trailing" id="u3P-TK-hos"/>
+                            <constraint firstItem="he8-2f-FcZ" firstAttribute="top" secondItem="0cn-L3-0Ks" secondAttribute="bottom" constant="8" id="u4v-Jl-9qk"/>
+                            <constraint firstItem="B7a-hN-ple" firstAttribute="top" secondItem="0cn-L3-0Ks" secondAttribute="bottom" id="wNs-I2-6ao"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Job Location" id="scK-la-Wkf">
+                    <navigationItem key="navigationItem" title="Step 1: Job Location" id="scK-la-Wkf">
                         <barButtonItem key="backBarButtonItem" title="Back" id="ycQ-g7-lGL"/>
                         <barButtonItem key="rightBarButtonItem" title="Next" id="qbU-U9-HaF">
                             <connections>
@@ -1024,12 +1065,16 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="jobMap" destination="B7a-hN-ple" id="Dpe-nX-b5i"/>
+                        <outlet property="selectMapTypeSegmentedControl" destination="he8-2f-FcZ" id="29V-Ib-9Rb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="usb-tX-FP1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1698" y="2135"/>
         </scene>
-        <!--Job Category-->
+        <!--Step 2: Job Category-->
         <scene sceneID="BuC-Np-gfE">
             <objects>
                 <viewController id="NNd-9K-gIg" sceneMemberID="viewController">
@@ -1043,7 +1088,7 @@
                         <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Job Category" id="DmH-wO-zzj">
+                    <navigationItem key="navigationItem" title="Step 2: Job Category" id="DmH-wO-zzj">
                         <barButtonItem key="backBarButtonItem" title="Back" id="eqg-Oh-ODT"/>
                         <barButtonItem key="rightBarButtonItem" title="Next" id="z4i-uC-Wac">
                             <connections>
@@ -1070,7 +1115,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Job Details" id="eoP-hk-uTa">
+                    <navigationItem key="navigationItem" title="Step 3: Job Details" id="eoP-hk-uTa">
                         <barButtonItem key="rightBarButtonItem" title="Submit" id="Kby-y8-Pi5"/>
                     </navigationItem>
                 </viewController>

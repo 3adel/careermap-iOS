@@ -40,6 +40,7 @@
 		F59584851B1347A900B06778 /* TabBar-AddJob.png in Resources */ = {isa = PBXBuildFile; fileRef = F59584821B1347A800B06778 /* TabBar-AddJob.png */; };
 		F59584861B1347A900B06778 /* TabBar-AddJob@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F59584831B1347A900B06778 /* TabBar-AddJob@2x.png */; };
 		F59584871B1347A900B06778 /* TabBar-AddJob@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F59584841B1347A900B06778 /* TabBar-AddJob@3x.png */; };
+		F595848B1B134BFB00B06778 /* JobLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F595848A1B134BFB00B06778 /* JobLocationViewController.m */; };
 		F59758AF1AC159B40099A978 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F59758AE1AC159B40099A978 /* main.m */; };
 		F59758B21AC159B40099A978 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F59758B11AC159B40099A978 /* AppDelegate.m */; };
 		F59758BB1AC159B40099A978 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F59758B91AC159B40099A978 /* Main.storyboard */; };
@@ -150,6 +151,8 @@
 		F59584821B1347A800B06778 /* TabBar-AddJob.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBar-AddJob.png"; sourceTree = "<group>"; };
 		F59584831B1347A900B06778 /* TabBar-AddJob@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBar-AddJob@2x.png"; sourceTree = "<group>"; };
 		F59584841B1347A900B06778 /* TabBar-AddJob@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBar-AddJob@3x.png"; sourceTree = "<group>"; };
+		F59584891B134BFB00B06778 /* JobLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobLocationViewController.h; sourceTree = "<group>"; };
+		F595848A1B134BFB00B06778 /* JobLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobLocationViewController.m; sourceTree = "<group>"; };
 		F59758A91AC159B40099A978 /* Career Map 3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Career Map 3.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F59758AD1AC159B40099A978 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F59758AE1AC159B40099A978 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -401,6 +404,15 @@
 			name = Messages;
 			sourceTree = "<group>";
 		};
+		F59584881B134B9E00B06778 /* Add Job */ = {
+			isa = PBXGroup;
+			children = (
+				F59584891B134BFB00B06778 /* JobLocationViewController.h */,
+				F595848A1B134BFB00B06778 /* JobLocationViewController.m */,
+			);
+			name = "Add Job";
+			sourceTree = "<group>";
+		};
 		F59758A01AC159B40099A978 = {
 			isa = PBXGroup;
 			children = (
@@ -426,6 +438,7 @@
 				F59758B11AC159B40099A978 /* AppDelegate.m */,
 				F59758B01AC159B40099A978 /* AppDelegate.h */,
 				F59758B91AC159B40099A978 /* Main.storyboard */,
+				F59584881B134B9E00B06778 /* Add Job */,
 				F53EABEE1B020F2800CCB97C /* Messages */,
 				F535ABB61ADE49460091E70B /* Conversation */,
 				F5CB2BF81B0DDAE100275850 /* Ubiquitous Classes */,
@@ -705,6 +718,7 @@
 			files = (
 				F506DC3D1AF952DE000ABF49 /* LoadingJobListEmptyView.m in Sources */,
 				F535ABC41ADE52CF0091E70B /* JobChatViewController.m in Sources */,
+				F595848B1B134BFB00B06778 /* JobLocationViewController.m in Sources */,
 				F59759351AC1DC7D0099A978 /* JobCustomTableViewCell.m in Sources */,
 				F535AC511ADEC9B50091E70B /* JobChatMessageCell.m in Sources */,
 				F5EB65BC1AEBDFB60026B988 /* SkillTextField.m in Sources */,
