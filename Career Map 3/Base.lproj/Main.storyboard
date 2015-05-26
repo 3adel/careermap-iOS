@@ -1114,7 +1114,7 @@
         <!--Step 2: Job Category-->
         <scene sceneID="BuC-Np-gfE">
             <objects>
-                <viewController id="NNd-9K-gIg" sceneMemberID="viewController">
+                <viewController id="NNd-9K-gIg" customClass="JobCategoryViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="VJm-Hx-Vov"/>
                         <viewControllerLayoutGuide type="bottom" id="vyM-bn-4wp"/>

@@ -37,7 +37,7 @@
 
 - (void) viewDidAppear:(BOOL)animated{
     
-    [self getUserLocation];
+    [self getUserLocationPoint];
     
 
 }
@@ -52,8 +52,8 @@
     //zoom to job location
     
     CLLocationCoordinate2D userZoomLocation;
-    userZoomLocation.latitude = _userLocation.latitude;
-    userZoomLocation.longitude =_userLocation.longitude;
+    userZoomLocation.latitude = _userLocationPoint.latitude;
+    userZoomLocation.longitude =_userLocationPoint.longitude;
     MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(userZoomLocation, 400, 400);
     [_jobMap setRegion:viewRegion animated:YES];
     [_jobMap setScrollEnabled:YES];
@@ -63,14 +63,23 @@
 
 
 
-- (PFGeoPoint *) getUserLocation{
+- (PFGeoPoint *) getUserLocationPoint{
     
     //retrieve user location
     [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *geoPoint, NSError *error) {
         if (!error) {
             
-            _userLocation= geoPoint;
+            _userLocationPoint=geoPoint;
+            _jobLocationPoint =geoPoint;
+            
             [self zoomToUserLocation];
+            
+            
+            _jobObject = [[PFObject alloc] initWithClassName:@"Job"];
+            [_jobObject setValue:_userLocationPoint forKey:@"userLocation"];
+            [_jobObject setValue:_jobLocationPoint forKey:@"jobLocation"];
+            NSLog(@"Job Object = %@", _jobObject );
+            
 
         }
         
@@ -79,10 +88,24 @@
         }
     }];
     
-    return _userLocation;
+    return _userLocationPoint;
     
 }
 
+
+- (void) getJobLocationPoint{
+    
+    _jobLocationPoint = [[PFGeoPoint alloc] init];
+    _jobLocationPoint.latitude =_jobMap.centerCoordinate.latitude;
+    _jobLocationPoint.longitude =_jobMap.centerCoordinate.longitude;
+
+    
+    //update job object with new job location
+    [_jobObject setValue:_jobLocationPoint forKey:@"jobLocation"];
+    NSLog(@"Job object after pan = %@", _jobObject );
+
+    
+}
 
 - (IBAction)selectMapTypePressed:(UISegmentedControl *)sender {
     
@@ -112,7 +135,24 @@
 }
 
 
-/*
+- (void)mapView:(MKMapView *)mapView regionWillChangeAnimated:(BOOL)animated{
+    
+    NSLog(@"started dragging the map ...");
+}
+
+-(void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated{
+    
+    NSLog(@"finished dragging the map ...");
+    [self getJobLocationPoint];
+
+    //get the center location of the map
+    
+    
+}
+
+
+
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -120,6 +160,6 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
-*/
+
 
 @end
