@@ -136,7 +136,7 @@ bool messageIsReceived = NO;
     
     //query #1 for jobs
     NSPredicate *predicate = [NSPredicate predicateWithFormat:
-                              @"voteCount >=-4"];
+                              @"reportCount <=100"];
     PFQuery *retrieveJobs = [PFQuery queryWithClassName:@"Job" predicate:predicate];
     [retrieveJobs includeKey:@"employer"];
     [retrieveJobs includeKey:@"status"];
@@ -444,7 +444,6 @@ bool messageIsReceived = NO;
     
     
     cell.jobDistanceFromUser.text = [NSString stringWithFormat:@"%@ km, %@",[NSString stringWithFormat:@"%.2f",[self.userLocation distanceInKilometersTo:[jobObject objectForKey:@"geolocation"]]], [jobObject objectForKey:@"area"]];
-    cell.jobVoteLabel.text =[NSString stringWithFormat:@"%@",[jobObject objectForKey:@"voteCount"]];;
     
     //set job area
     cell.jobArea.text =[jobObject objectForKey:@"area"];
@@ -489,259 +488,8 @@ bool messageIsReceived = NO;
 
 
 
-- (IBAction)jobVoteDownPressed:(UIButton *)sender {
-    
-    PFObject *jobObject = [jobsArrayWithUsersVotesVolatile objectAtIndex:sender.tag];
-    
-    //if the user already voted up, mark upvote button as selected
-    PFQuery *votedQuery = [PFQuery queryWithClassName:@"_User"];
-    [votedQuery whereKey:@"jobVotedDown" equalTo:jobObject.objectId];
-    [votedQuery whereKey:@"objectId" equalTo:[[PFUser currentUser] objectId] ];
-    [votedQuery getObjectInBackgroundWithId:[[PFUser currentUser] objectId] block:^(PFObject *object, NSError *error) {
-        
-        if (!error) {
-            //NSLog(@"Users Query Objects: %@", object);
-            
-            // if a record is found in the user table in the voted up
-            //if the user did not vote down yet
-            if (![[object objectForKey:@"jobVotedDown"] containsObject:jobObject.objectId]) {
-                
-                //if the user has already pressed vote up before pressing the down
-                if ([[object objectForKey:@"jobVotedUp"] containsObject:jobObject.objectId]) {
-                    [jobObject incrementKey:@"voteCount" byAmount:[NSNumber numberWithInteger:-1]];
-                    [[PFUser currentUser] removeObject:jobObject.objectId forKey:@"jobVotedUp"];
-                    [(PFObject *)[jobsArrayWithUsersVotesVolatile objectAtIndex:sender.tag] setObject:@"0" forKey:@"currentUserVotedUpThisJob"];
-                    
-                }
-                
-                
-                [jobObject incrementKey:@"voteCount" byAmount:[NSNumber numberWithInteger:-1]];
-                
-                [jobObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                    if (succeeded) {
-                        //NSLog(@"Career object removed");
-                        [[PFUser currentUser] removeObject:jobObject.objectId forKey:@"jobVotedUp"];
-                        [[PFUser currentUser] addUniqueObject:jobObject.objectId forKey:@"jobVotedDown"];
-                        
-                        [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                            if (!error) {
-                                
-                                //don't forget to update the main array.
-                                [(PFObject *)[jobsArrayWithUsersVotesVolatile objectAtIndex:sender.tag] setObject:@"1" forKey:@"currentUserVotedDownThisJob"];
-                                
-                                
-                                
-                                
-                                NSIndexPath* cellIndexPath1= [NSIndexPath indexPathForRow:sender.tag inSection:0];
-                                
-                                
-                                //NSLog(@"NO ERRORS: Index Array = %@", cellIndexPath1);
-                                
-                                dispatch_async(dispatch_get_main_queue(), ^{
-                                    
-                                    [self.jobTable beginUpdates];
-                                    [self.jobTable reloadRowsAtIndexPaths:@[cellIndexPath1] withRowAnimation:UITableViewRowAnimationNone];
-                                    [self.jobTable endUpdates];
-                                });
-                                
-                                
-                            }
-                        }];
-                        
-                    } else {
-                        NSLog(@"Error saving career object");
-                    }
-                    
-                }];
-                
-            }
-            
-            
-            //if the user already voted, decrease count and refresh
-            else{
-                
-                [jobObject incrementKey:@"voteCount" byAmount:[NSNumber numberWithInteger:1]];
-                
-                [jobObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                    if (succeeded) {
-                        [[PFUser currentUser] removeObject:jobObject.objectId forKey:@"jobVotedDown"];
-                        [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                            if (!error) {
-                                
-                                //don't forget to update the main array.
-                                [(PFObject *)[jobsArrayWithUsersVotesVolatile objectAtIndex:sender.tag] setObject:@"0" forKey:@"currentUserVotedDownThisJob"];
-                                
-                                NSIndexPath* cellIndexPath1= [NSIndexPath indexPathForRow:sender.tag inSection:0];
-                                
-                                dispatch_async(dispatch_get_main_queue(), ^{
-                                    
-                                    [self.jobTable beginUpdates];
-                                    [self.jobTable reloadRowsAtIndexPaths:@[cellIndexPath1] withRowAnimation:UITableViewRowAnimationNone];
-                                    [self.jobTable endUpdates];
-                                });
-                                
-                                
-                            }
-                        }];
-                        
-                        
-                    } else {
-                        NSLog(@"Error saving career object");
-                    }
-                    
-                }];
-                
-                
-            }
-            
-            
-            
-            
-        }
-        
-        
-    }];
-    
-    
-    
-    
-    
-}
 
 
-
-
-- (IBAction)jobVoteUpPressed:(UIButton *)sender {
-    
-    
-    PFObject *jobObject = [jobsArrayWithUsersVotesVolatile objectAtIndex:sender.tag];
-    
-    //if the user already voted up, mark upvote button as selected
-    PFQuery *votedQuery = [PFQuery queryWithClassName:@"_User"];
-    [votedQuery whereKey:@"jobVotedUp" equalTo:jobObject.objectId];
-    [votedQuery whereKey:@"objectId" equalTo:[[PFUser currentUser] objectId] ];
-    
-    
-    //  NSLog(@"V2 Current user ID=%@",[[PFUser currentUser] objectId]);
-    
-    
-    [votedQuery getObjectInBackgroundWithId:[[PFUser currentUser] objectId] block:^(PFObject *object, NSError *error) {
-        
-        
-        if (!error) {
-            //NSLog(@"Users Query Objects: %@", object);
-            
-            // if a record is found in the user table in the voted up
-            //if the user did not vote up yet
-            if (![[object objectForKey:@"jobVotedUp"] containsObject:jobObject.objectId]) {
-                
-                [jobObject incrementKey:@"voteCount" byAmount:[NSNumber numberWithInteger:1]];
-                
-                //if the user has already pressed vote down before pressing the up
-                if ([[object objectForKey:@"jobVotedDown"] containsObject:jobObject.objectId]) {
-                    [jobObject incrementKey:@"voteCount" byAmount:[NSNumber numberWithInteger:1]];
-                    [[PFUser currentUser] removeObject:jobObject.objectId forKey:@"jobVotedDown"];
-                    [(PFObject *)[jobsArrayWithUsersVotesVolatile objectAtIndex:sender.tag] setObject:@"0" forKey:@"currentUserVotedDownThisJob"];
-                    
-                }
-                
-                
-                
-                [jobObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                    if (succeeded) {
-                        //NSLog(@"Career object removed");
-                        
-                        [[PFUser currentUser] addUniqueObject:jobObject.objectId forKey:@"jobVotedUp"];
-                        
-                        [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                            if (!error) {
-                                
-                                //don't forget to update the main array.
-                                [(PFObject *)[jobsArrayWithUsersVotesVolatile objectAtIndex:sender.tag] setObject:@"1" forKey:@"currentUserVotedUpThisJob"];
-                                
-                                
-                                
-                                
-                                
-                                NSIndexPath* cellIndexPath1= [NSIndexPath indexPathForRow:sender.tag inSection:0];
-                                
-                                
-                                dispatch_async(dispatch_get_main_queue(), ^{
-                                    
-                                    [self.jobTable beginUpdates];
-                                    [self.jobTable reloadRowsAtIndexPaths:@[cellIndexPath1] withRowAnimation:UITableViewRowAnimationNone];
-                                    [self.jobTable endUpdates];
-                                });
-                            }
-                        }];
-                        
-                        
-                    } else {
-                        NSLog(@"Error saving career object");
-                    }
-                    
-                }];
-                
-            }
-            
-            
-            //if the user already voted, decrease count and refresh
-            else{
-                
-                
-                //NSLog(@"The user already voted up for this");
-                
-                [jobObject incrementKey:@"voteCount" byAmount:[NSNumber numberWithInteger:-1]];
-                
-                [jobObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                    if (succeeded) {
-                        
-                        [[PFUser currentUser] removeObject:jobObject.objectId forKey:@"jobVotedUp"];
-                        [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                            if (!error) {
-                                
-                                //don't forget to update the main array.
-                                [(PFObject *)[jobsArrayWithUsersVotesVolatile objectAtIndex:sender.tag] setObject:@"0" forKey:@"currentUserVotedUpThisJob"];
-                                
-                                
-                                
-                                
-                                NSIndexPath* cellIndexPath1= [NSIndexPath indexPathForRow:sender.tag inSection:0];
-                                
-                                dispatch_async(dispatch_get_main_queue(), ^{
-                                    
-                                    [self.jobTable beginUpdates];
-                                    [self.jobTable reloadRowsAtIndexPaths:@[cellIndexPath1] withRowAnimation:UITableViewRowAnimationNone];
-                                    [self.jobTable endUpdates];
-                                });
-                            }
-                        }];
-                        
-                        
-                    } else {
-                        NSLog(@"Error saving career object");
-                    }
-                    
-                }];
-                
-                
-                
-                
-            }
-            
-            
-            
-            
-        }
-        
-        
-    }];
-    
-    
-    
-    
-    
-}
 
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -756,7 +504,7 @@ bool messageIsReceived = NO;
         destViewController.jobDescription = [jobObject objectForKey:@"description"];
         destViewController.jobDistanceFromUser = [NSString stringWithFormat:@"%@ km",[NSString stringWithFormat:@"%.2f",[self.userLocation distanceInKilometersTo:[jobObject objectForKey:@"geolocation"]]] ];
         destViewController.jobEmployer =[jobObject[@"employer"] objectForKey:@"employerName"];
-        destViewController.jobVote = [NSString stringWithFormat:@"%@",[jobObject objectForKey:@"voteCount"]];
+
         //destViewController.jobDateAdded =[formatter stringFromDate:[jobObject createdAt]];
         
         DateConverter *dateConverter = [[DateConverter alloc]init];

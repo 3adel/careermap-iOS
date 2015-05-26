@@ -77,7 +77,7 @@
             
             _jobObject = [[PFObject alloc] initWithClassName:@"Job"];
             [_jobObject setValue:_userLocationPoint forKey:@"userLocation"];
-            [_jobObject setValue:_jobLocationPoint forKey:@"jobLocation"];
+            [_jobObject setValue:_jobLocationPoint forKey:@"geolocation"];
             NSLog(@"Job Object = %@", _jobObject );
             
 
@@ -101,7 +101,7 @@
 
     
     //update job object with new job location
-    [_jobObject setValue:_jobLocationPoint forKey:@"jobLocation"];
+    [_jobObject setValue:_jobLocationPoint forKey:@"geolocation"];
     NSLog(@"Job object after pan = %@", _jobObject );
 
     
