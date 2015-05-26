@@ -19,6 +19,10 @@
     // Do any additional setup after loading the view.
     
     NSLog(@" job category view did load called");
+    NSLog(@"job object passed from job location view = %@", _jobObject);
+    
+
+    
 }
 
 - (void)didReceiveMemoryWarning {
