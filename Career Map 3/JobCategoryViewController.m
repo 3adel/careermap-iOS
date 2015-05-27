@@ -48,15 +48,18 @@
     for (int i=0; i<=_jobCategoriesArray.count-1; i++) {
         
         //button styles
-        
-        //set ui constraints for the button
         _jobCategoryScrollView.contentSize =CGSizeMake([UIScreen mainScreen].bounds.size.width-32, (i+1)*55);
         _jobCategoryButton = [[UIButton alloc] initWithFrame:CGRectMake(0, i*55, _jobCategoryScrollView.contentSize.width, 45)];
+        [_jobCategoryButton.titleLabel setLineBreakMode:NSLineBreakByTruncatingTail];
+        [_jobCategoryButton.titleLabel setFont:[UIFont systemFontOfSize:15]];
         _jobCategoryButton.layer.cornerRadius=5.0f;
         _jobCategoryButton.backgroundColor = [UIColor colorWithRed:0/255.0 green:128.0/255.0 blue:255.0/0.0 alpha:1.0];
-        [_jobCategoryButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [_jobCategoryButton setTitle:[[_jobCategoriesArray objectAtIndex:i] objectForKey:@"name"]
- forState:UIControlStateNormal];
+        [_jobCategoryButton setTitleColor:[UIColor whiteColor]
+                                 forState:UIControlStateNormal];
+        [_jobCategoryButton setTitle:
+         [[_jobCategoriesArray objectAtIndex:i] objectForKey:@"name"]
+                            forState:
+         UIControlStateNormal];
 
 
         [_jobCategoryButton addTarget:self action:@selector(jobCategoryButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
