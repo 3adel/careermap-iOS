@@ -21,7 +21,8 @@
     NSLog(@" job category view did load called");
     NSLog(@"job object passed from job location view = %@", _jobObject);
     
-    
+    //get parse job categories
+    [self retrieveJobCategoriesFromParse];
 
 
   
@@ -30,11 +31,9 @@
 
 - (void) viewDidAppear:(BOOL)animated{
     
-    //get parse job categories
+
     
-    
-    //add job category buttons
-    [self addjobCategoryButton];
+
 
 }
 
@@ -46,11 +45,7 @@
 - (void) addjobCategoryButton{
 
 
-    
-
-    
-    
-    for (int i=0; i<1000; i++) {
+    for (int i=0; i<=_jobCategoriesArray.count-1; i++) {
         
         //button styles
         
@@ -60,13 +55,16 @@
         _jobCategoryButton.layer.cornerRadius=5.0f;
         _jobCategoryButton.backgroundColor = [UIColor blueColor];
         [_jobCategoryButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        //[button setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
         _jobCategoryButton.backgroundColor = [UIColor blueColor];
         [_jobCategoryButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [_jobCategoryButton setTitle:[NSString stringWithFormat:@"button %d",i] forState:UIControlStateNormal];
+       // [_jobCategoryButton setTitle:[NSString stringWithFormat:@"button %d",i] forState:UIControlStateNormal];
+        [_jobCategoryButton setTitle:[[_jobCategoriesArray objectAtIndex:i] objectForKey:@"name"]
+ forState:UIControlStateNormal];
+
+        
+        
         [_jobCategoryButton addTarget:self action:@selector(jobCategoryButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
         [_jobCategoryButton setTag:i];
-
         [_jobCategoryScrollView addSubview:_jobCategoryButton];
     }
     
@@ -108,6 +106,34 @@
     
 
 
+}
+
+
+- (void) retrieveJobCategoriesFromParse{
+    
+    
+    PFQuery *jobsCategoriesQuery = [PFQuery queryWithClassName:@"JobIndustry"];
+    [jobsCategoriesQuery setLimit:1000];
+    [jobsCategoriesQuery orderByAscending:@"name"];
+    [jobsCategoriesQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            //NSLog(@"object = %@", objects);
+            
+            _jobCategoriesArray = [[NSMutableArray alloc] initWithArray:
+                                   objects];
+            
+            //add job category buttons
+            [self addjobCategoryButton];
+        }
+        
+        else{
+            NSLog(@"error finding jobs category objects");
+            
+            
+        }
+    }];
+    
+    
 }
 
 
