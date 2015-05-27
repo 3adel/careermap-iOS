@@ -53,7 +53,10 @@
         [_jobCategoryButton.titleLabel setLineBreakMode:NSLineBreakByTruncatingTail];
         [_jobCategoryButton.titleLabel setFont:[UIFont systemFontOfSize:15]];
         _jobCategoryButton.layer.cornerRadius=5.0f;
-        _jobCategoryButton.backgroundColor = [UIColor colorWithRed:0/255.0 green:128.0/255.0 blue:255.0/0.0 alpha:1.0];
+        //blue
+       // _jobCategoryButton.backgroundColor = [UIColor colorWithRed:0.0/255.0 green:128.0/255.0 blue:0.0/255.0 alpha:1.0];
+        _jobCategoryButton.backgroundColor =[UIColor colorWithRed:0/255.0 green:128.0/255.0 blue:255.0/255.0 alpha:1.0];
+        
         [_jobCategoryButton setTitleColor:[UIColor whiteColor]
                                  forState:UIControlStateNormal];
         [_jobCategoryButton setTitle:
@@ -79,19 +82,19 @@
     //will run only the first time use taps on category
     if (!_PreviouslySelectedJobCategoryButton) {
         _PreviouslySelectedJobCategoryButton = sender;
-        NSLog(@"Job category index selected = %ld", sender.tag);
-        sender.backgroundColor = [UIColor colorWithRed:0/255.0 green:128.0/255.0 blue:0.0/0.0 alpha:1.0];
-        
-        
+        NSLog(@"First time chose a category = %ld", sender.tag);
+        //green
+        sender.backgroundColor =[UIColor colorWithRed:0/255.0 green:128.0/255.0 blue:0.0/255.0 alpha:1.0];
+
     }
     
     //will run 2nd time and afterwards
     else{
-        _PreviouslySelectedJobCategoryButton.backgroundColor =[UIColor colorWithRed:0/255.0 green:128.0/255.0 blue:255.0/0.0 alpha:1.0];
-
-        sender.backgroundColor = [UIColor colorWithRed:0/255.0 green:128.0/255.0 blue:0.0/0.0 alpha:1.0];
+        //blue
+        _PreviouslySelectedJobCategoryButton.backgroundColor =[UIColor colorWithRed:0/255.0 green:128.0/255.0 blue:255.0/255.0 alpha:1.0];
         
-        
+        //green
+        sender.backgroundColor =[UIColor colorWithRed:0.0/255.0 green:128.0/255.0 blue:0.0/255.0 alpha:1.0];
         NSLog(@"Job category index selected = %ld", sender.tag);
         _PreviouslySelectedJobCategoryButton = sender;
 
@@ -100,9 +103,7 @@
     
     //save the selected category to jobObject
     [_jobObject setValue:[_jobCategoriesArray objectAtIndex:sender.tag] forKey:@"jobIndustry"];
-
     NSLog(@"%@", [_jobObject objectForKey:@"jobIndustry"]);
-
 
 }
 
