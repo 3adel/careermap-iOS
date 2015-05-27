@@ -452,8 +452,8 @@
 			isa = PBXGroup;
 			children = (
 				F59758B11AC159B40099A978 /* AppDelegate.m */,
-				F59758B01AC159B40099A978 /* AppDelegate.h */,
 				F59758B91AC159B40099A978 /* Main.storyboard */,
+				F59758B01AC159B40099A978 /* AppDelegate.h */,
 				F59584881B134B9E00B06778 /* Add Job */,
 				F53EABEE1B020F2800CCB97C /* Messages */,
 				F535ABB61ADE49460091E70B /* Conversation */,

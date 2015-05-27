@@ -122,8 +122,6 @@ bool messageIsReceived = NO;
     //update message tabbar item with how many unread messages
     MessagesViewController *messaagesVC = [[MessagesViewController alloc] init];
     
-    PFUser *currentUse = [PFUser currentUser];
-    
     
     [messaagesVC getUsersWhoBlockedMe];
     
@@ -454,9 +452,9 @@ bool messageIsReceived = NO;
     
     //add a tag to the voting button to indicate the current row index
     [cell.jobVoteUpButton setTag:indexPath.row];
-    [cell.jobVoteUpButton addTarget:self action:@selector(jobVoteUpPressed:) forControlEvents:UIControlEventTouchUpInside];
+    //[cell.jobVoteUpButton addTarget:self action:@selector(jobVoteUpPressed:) forControlEvents:UIControlEventTouchUpInside];
     [cell.jobVoteDownButton setTag:indexPath.row];
-    [cell.jobVoteDownButton addTarget:self action:@selector(jobVoteDownPressed:) forControlEvents:UIControlEventTouchUpInside];
+    //[cell.jobVoteDownButton addTarget:self action:@selector(jobVoteDownPressed:) forControlEvents:UIControlEventTouchUpInside];
     
     return cell;
     

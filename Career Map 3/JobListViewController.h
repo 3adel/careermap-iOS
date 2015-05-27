@@ -47,8 +47,6 @@
 
 //track if the user received a message push notif
 
-- (IBAction)jobVoteUpPressed:(UIButton *)sender;
-- (IBAction)jobVoteDownPressed:(UIButton *)sender;
 - (void) getUserCity: (PFGeoPoint *) userGeoPoint;
 - (void) changeMessageIsReceivedValue;
 

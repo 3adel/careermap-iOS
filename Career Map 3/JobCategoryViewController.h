@@ -11,7 +11,23 @@
 
 @interface JobCategoryViewController : UIViewController
 
+
+
+
+//MARK: Outlets
+@property (strong, nonatomic) IBOutlet UIButton *jobCategoryButton;
+@property (strong, nonatomic) IBOutlet UIButton *PreviouslySelectedJobCategoryButton;
+@property (weak, nonatomic) IBOutlet UIScrollView *jobCategoryScrollView;
+
+
+//MARK: Data
 @property (nonatomic, strong) PFObject *jobObject;
+@property (nonatomic, strong) NSMutableArray *jobCategoriesArray;
+
+//MARK: Methods
+- (void) jobCategoryButtonPressed: (UIButton *) sender;
+- (void) retrieveJobCategoriesFromParse;
+
 
 
 @end

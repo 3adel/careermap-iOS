@@ -48,7 +48,7 @@
 }
 
 
-- (void) zoomToUserLocation{
+- (void) zoomToUserLocationPoint{
     //zoom to job location
     
     CLLocationCoordinate2D userZoomLocation;
@@ -72,7 +72,7 @@
             _userLocationPoint=geoPoint;
             _jobLocationPoint =geoPoint;
             
-            [self zoomToUserLocation];
+            [self zoomToUserLocationPoint];
             
             
             _jobObject = [[PFObject alloc] initWithClassName:@"Job"];
@@ -131,7 +131,7 @@
 
 - (IBAction)restetToMyLocationButtonPressed:(UIButton *)sender {
     
-    [self zoomToUserLocation];
+    [self zoomToUserLocationPoint];
 }
 
 
