@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
+#import "AddJobDetailsViewController.h"
+
 
 @interface JobCategoryViewController : UIViewController
 
@@ -28,6 +30,7 @@
 - (void) jobCategoryButtonPressed: (UIButton *) sender;
 - (void) retrieveJobCategoriesFromParse;
 
+- (IBAction)nextButtonPressed:(UIBarButtonItem *)sender;
 
 
 @end

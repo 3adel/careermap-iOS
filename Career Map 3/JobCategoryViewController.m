@@ -69,16 +69,6 @@
     }
     
 }
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 
 
 - (void)jobCategoryButtonPressed: (UIButton *) sender{
@@ -103,7 +93,9 @@
     
     
     //save the selected category to jobObject
-    
+    [_jobObject setValue:[_jobCategoriesArray objectAtIndex:sender.tag] forKey:@"jobIndustry"];
+
+    NSLog(@"%@", [_jobObject objectForKey:@"jobIndustry"]);
 
 
 }
@@ -136,6 +128,41 @@
     
 }
 
+- (IBAction)nextButtonPressed:(UIBarButtonItem *)sender {
+    
+    //must select a category or navigation won't proceed
+    if (!_PreviouslySelectedJobCategoryButton){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error!" message:@"Please select a job Industry" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        
+        [alert show];
+    }
+    
+    else{
+        
+        [self performSegueWithIdentifier:@"addJobDetailsSegue" sender:self];
+    }
+    
+
+    
+    //validate that there's a category selected
+}
+
+
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+
+        if ([segue.identifier isEqualToString:@"addJobDetailsSegue"]) {
+            
+            AddJobDetailsViewController *destViewController = segue.destinationViewController;
+            destViewController.jobObject = _jobObject;
+            
+        }
+
+}
 
 
 

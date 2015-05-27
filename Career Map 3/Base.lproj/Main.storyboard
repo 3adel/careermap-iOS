@@ -1095,7 +1095,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Step 1: Job Location" id="scK-la-Wkf">
                         <barButtonItem key="backBarButtonItem" title="Back" id="ycQ-g7-lGL"/>
-                        <barButtonItem key="rightBarButtonItem" title="Next &gt;&gt;" id="qbU-U9-HaF">
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="qbU-U9-HaF">
                             <connections>
                                 <segue destination="NNd-9K-gIg" kind="show" identifier="jobCategorySegue" id="Yuu-UK-hXb"/>
                             </connections>
@@ -1111,7 +1111,7 @@
             </objects>
             <point key="canvasLocation" x="1698" y="2135"/>
         </scene>
-        <!--Step 2: Job Category-->
+        <!--Step 2: Job Industry-->
         <scene sceneID="BuC-Np-gfE">
             <objects>
                 <viewController id="NNd-9K-gIg" customClass="JobCategoryViewController" sceneMemberID="viewController">
@@ -1137,27 +1137,28 @@
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Step 2: Job Category" id="DmH-wO-zzj">
+                    <navigationItem key="navigationItem" title="Step 2: Job Industry" id="DmH-wO-zzj">
                         <barButtonItem key="backBarButtonItem" title="Back" id="eqg-Oh-ODT"/>
-                        <barButtonItem key="rightBarButtonItem" title="Next &gt;&gt;" id="z4i-uC-Wac">
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="z4i-uC-Wac">
                             <connections>
-                                <segue destination="F7J-24-Ch6" kind="show" identifier="jobDetailsSegue" id="Ls1-dM-5Re"/>
+                                <action selector="nextButtonPressed:" destination="NNd-9K-gIg" id="DhH-Qp-mxa"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="jobCategoryScrollView" destination="4Xm-an-SeU" id="FoL-IP-wlP"/>
+                        <segue destination="F7J-24-Ch6" kind="show" identifier="addJobDetailsSegue" id="euJ-XS-G45"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z6j-JO-Dnb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2422" y="2135"/>
+            <point key="canvasLocation" x="2477" y="2135"/>
         </scene>
         <!--Job Details Submission VC-->
         <scene sceneID="8x9-aR-5av">
             <objects>
-                <viewController id="F7J-24-Ch6" userLabel="Job Details Submission VC" sceneMemberID="viewController">
+                <viewController id="F7J-24-Ch6" userLabel="Job Details Submission VC" customClass="AddJobDetailsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0vC-nl-qeC"/>
                         <viewControllerLayoutGuide type="bottom" id="aw1-f1-0UU"/>
@@ -1173,7 +1174,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gEy-bO-hJH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3119" y="2135"/>
+            <point key="canvasLocation" x="3207" y="2135"/>
         </scene>
         <!--Existing User Login View Controller-->
         <scene sceneID="2Og-dQ-mZO">
