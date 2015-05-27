@@ -50,23 +50,22 @@
         //button styles
         
         //set ui constraints for the button
-        _jobCategoryScrollView.contentSize =CGSizeMake([UIScreen mainScreen].bounds.size.width, (i+1)*55);
-        _jobCategoryButton = [[UIButton alloc] initWithFrame:CGRectMake(10, i*55, [UIScreen mainScreen].bounds.size.width-20, 45)];
+        _jobCategoryScrollView.contentSize =CGSizeMake([UIScreen mainScreen].bounds.size.width-32, (i+1)*55);
+        _jobCategoryButton = [[UIButton alloc] initWithFrame:CGRectMake(0, i*55, _jobCategoryScrollView.contentSize.width, 45)];
         _jobCategoryButton.layer.cornerRadius=5.0f;
-        _jobCategoryButton.backgroundColor = [UIColor blueColor];
+        _jobCategoryButton.backgroundColor = [UIColor colorWithRed:0/255.0 green:128.0/255.0 blue:255.0/0.0 alpha:1.0];
         [_jobCategoryButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        _jobCategoryButton.backgroundColor = [UIColor blueColor];
-        [_jobCategoryButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-       // [_jobCategoryButton setTitle:[NSString stringWithFormat:@"button %d",i] forState:UIControlStateNormal];
         [_jobCategoryButton setTitle:[[_jobCategoriesArray objectAtIndex:i] objectForKey:@"name"]
  forState:UIControlStateNormal];
 
-        
-        
+
         [_jobCategoryButton addTarget:self action:@selector(jobCategoryButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
         [_jobCategoryButton setTag:i];
         [_jobCategoryScrollView addSubview:_jobCategoryButton];
     }
+    
+    //hide progress indicator
+    _HUDProgressIndicator.hidden =YES;
     
 }
 
@@ -78,14 +77,18 @@
     if (!_PreviouslySelectedJobCategoryButton) {
         _PreviouslySelectedJobCategoryButton = sender;
         NSLog(@"Job category index selected = %ld", sender.tag);
-        sender.backgroundColor = [UIColor grayColor];
+        sender.backgroundColor = [UIColor colorWithRed:0/255.0 green:128.0/255.0 blue:0.0/0.0 alpha:1.0];
+        
         
     }
     
     //will run 2nd time and afterwards
     else{
-        _PreviouslySelectedJobCategoryButton.backgroundColor =[UIColor blueColor];
-        sender.backgroundColor = [UIColor grayColor];
+        _PreviouslySelectedJobCategoryButton.backgroundColor =[UIColor colorWithRed:0/255.0 green:128.0/255.0 blue:255.0/0.0 alpha:1.0];
+
+        sender.backgroundColor = [UIColor colorWithRed:0/255.0 green:128.0/255.0 blue:0.0/0.0 alpha:1.0];
+        
+        
         NSLog(@"Job category index selected = %ld", sender.tag);
         _PreviouslySelectedJobCategoryButton = sender;
 
@@ -103,6 +106,11 @@
 
 - (void) retrieveJobCategoriesFromParse{
     
+    
+    //start animating progress indicator
+    _HUDProgressIndicator = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    _HUDProgressIndicator.labelText = @"Loading industries ...";
+    _HUDProgressIndicator.mode = MBProgressHUDModeIndeterminate;
     
     PFQuery *jobsCategoriesQuery = [PFQuery queryWithClassName:@"JobIndustry"];
     [jobsCategoriesQuery setLimit:1000];

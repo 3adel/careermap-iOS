@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 #import "AddJobDetailsViewController.h"
-
+#import "MBProgressHUD.h"
 
 @interface JobCategoryViewController : UIViewController
 
@@ -20,6 +20,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *jobCategoryButton;
 @property (strong, nonatomic) IBOutlet UIButton *PreviouslySelectedJobCategoryButton;
 @property (weak, nonatomic) IBOutlet UIScrollView *jobCategoryScrollView;
+@property (nonatomic, strong) MBProgressHUD *HUDProgressIndicator;
 
 
 //MARK: Data

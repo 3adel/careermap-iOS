@@ -1123,17 +1123,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Xm-an-SeU">
-                                <rect key="frame" x="0.0" y="10" width="600" height="546"/>
-                                <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Xm-an-SeU">
+                                <rect key="frame" x="16" y="10" width="568" height="546"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="vyM-bn-4wp" firstAttribute="top" secondItem="4Xm-an-SeU" secondAttribute="bottom" id="Aj2-sA-XqV"/>
                             <constraint firstItem="4Xm-an-SeU" firstAttribute="top" secondItem="uEV-3R-59o" secondAttribute="topMargin" constant="10" id="mGf-I2-XHe"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="4Xm-an-SeU" secondAttribute="trailing" constant="-16" id="tzq-8u-IOf"/>
-                            <constraint firstItem="4Xm-an-SeU" firstAttribute="leading" secondItem="uEV-3R-59o" secondAttribute="leadingMargin" constant="-16" id="wvu-fp-eAA"/>
+                            <constraint firstAttribute="centerX" secondItem="4Xm-an-SeU" secondAttribute="centerX" id="npP-cA-UcM"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="4Xm-an-SeU" secondAttribute="trailing" id="tzq-8u-IOf"/>
+                            <constraint firstItem="4Xm-an-SeU" firstAttribute="leading" secondItem="uEV-3R-59o" secondAttribute="leadingMargin" id="wvu-fp-eAA"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
