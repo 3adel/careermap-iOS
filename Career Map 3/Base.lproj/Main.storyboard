@@ -711,12 +711,12 @@
                                         <exclude reference="Wg0-lO-Htb"/>
                                         <exclude reference="1DT-fe-bge"/>
                                         <exclude reference="Mg3-WL-efg"/>
+                                        <exclude reference="oCv-rj-jhQ"/>
+                                        <exclude reference="rse-ab-DAh"/>
                                         <exclude reference="1WG-pA-YB0"/>
                                         <exclude reference="KzT-rG-s44"/>
                                         <exclude reference="Rz8-6b-lUz"/>
                                         <exclude reference="zOD-S3-UOd"/>
-                                        <exclude reference="oCv-rj-jhQ"/>
-                                        <exclude reference="rse-ab-DAh"/>
                                     </mask>
                                 </variation>
                             </scrollView>
@@ -1168,67 +1168,49 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KMn-CB-qrR">
-                                <rect key="frame" x="16" y="74" width="568" height="526"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wGG-65-tUK">
+                                <rect key="frame" x="16" y="0.0" width="568" height="600"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="text 1" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iOM-71-AaR">
-                                        <rect key="frame" x="0.0" y="0.0" width="568" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CXn-V1-28h" userLabel="Job skills view">
-                                        <rect key="frame" x="0.0" y="40" width="568" height="45"/>
-                                        <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Skills section label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qtg-qH-2PQ">
+                                        <rect key="frame" x="0.0" y="70" width="568" height="21"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="45" id="scU-s6-vIv"/>
+                                            <constraint firstAttribute="height" constant="21" id="doS-WJ-05k"/>
                                         </constraints>
-                                    </view>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="text 2" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1RP-Vb-HK3">
-                                        <rect key="frame" x="0.0" y="95" width="568" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
+                                <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="centerX" secondItem="1RP-Vb-HK3" secondAttribute="centerX" id="2lD-OC-UEO"/>
-                                    <constraint firstAttribute="centerX" secondItem="CXn-V1-28h" secondAttribute="centerX" id="4Mv-9B-G8P"/>
-                                    <constraint firstAttribute="bottom" secondItem="iOM-71-AaR" secondAttribute="bottom" constant="401" id="7p9-6a-Lkt"/>
-                                    <constraint firstItem="1RP-Vb-HK3" firstAttribute="leading" secondItem="KMn-CB-qrR" secondAttribute="leading" id="Aqw-1b-0ua"/>
-                                    <constraint firstItem="iOM-71-AaR" firstAttribute="top" secondItem="KMn-CB-qrR" secondAttribute="top" id="Gqe-xd-YTQ"/>
-                                    <constraint firstItem="iOM-71-AaR" firstAttribute="leading" secondItem="KMn-CB-qrR" secondAttribute="leading" id="HHT-Ak-D6e"/>
-                                    <constraint firstItem="CXn-V1-28h" firstAttribute="top" secondItem="iOM-71-AaR" secondAttribute="bottom" constant="10" id="KRR-Wg-Ztf"/>
-                                    <constraint firstAttribute="bottom" secondItem="CXn-V1-28h" secondAttribute="bottom" id="M12-w3-86t"/>
-                                    <constraint firstAttribute="trailing" secondItem="1RP-Vb-HK3" secondAttribute="trailing" id="U5j-r3-9dE"/>
-                                    <constraint firstItem="CXn-V1-28h" firstAttribute="leading" secondItem="KMn-CB-qrR" secondAttribute="leading" id="dID-3E-ENi"/>
-                                    <constraint firstAttribute="bottom" secondItem="1RP-Vb-HK3" secondAttribute="bottom" id="eV0-wa-UnO"/>
-                                    <constraint firstAttribute="trailing" secondItem="CXn-V1-28h" secondAttribute="trailing" id="hHa-6r-8s1"/>
-                                    <constraint firstItem="1RP-Vb-HK3" firstAttribute="top" secondItem="CXn-V1-28h" secondAttribute="bottom" constant="10" id="li2-hN-uDd"/>
-                                    <constraint firstAttribute="centerX" secondItem="iOM-71-AaR" secondAttribute="centerX" id="pb5-4H-cxz"/>
-                                    <constraint firstAttribute="trailing" secondItem="iOM-71-AaR" secondAttribute="trailing" id="xww-PI-IJ0"/>
+                                    <constraint firstAttribute="trailing" secondItem="Qtg-qH-2PQ" secondAttribute="trailing" id="Qsf-SD-2UC"/>
+                                    <constraint firstItem="Qtg-qH-2PQ" firstAttribute="top" secondItem="wGG-65-tUK" secondAttribute="top" constant="70" id="Va8-tf-qOO"/>
+                                    <constraint firstItem="Qtg-qH-2PQ" firstAttribute="leading" secondItem="wGG-65-tUK" secondAttribute="leading" id="Z3Y-Wc-YX1"/>
+                                    <constraint firstAttribute="centerX" secondItem="Qtg-qH-2PQ" secondAttribute="centerX" id="fRp-vw-6Le"/>
+                                    <constraint firstItem="Qtg-qH-2PQ" firstAttribute="top" secondItem="wGG-65-tUK" secondAttribute="top" id="qzg-io-lGD"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="7p9-6a-Lkt"/>
-                                        <exclude reference="M12-w3-86t"/>
+                                        <exclude reference="qzg-io-lGD"/>
                                     </mask>
                                 </variation>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="bottomMargin" secondItem="KMn-CB-qrR" secondAttribute="bottom" id="H8B-f2-Bkz"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="KMn-CB-qrR" secondAttribute="trailing" id="dBj-ly-1dz"/>
-                            <constraint firstItem="KMn-CB-qrR" firstAttribute="top" secondItem="0vC-nl-qeC" secondAttribute="bottom" constant="10" id="kHl-1s-zN6"/>
-                            <constraint firstItem="KMn-CB-qrR" firstAttribute="leading" secondItem="7Jy-kN-ipJ" secondAttribute="leadingMargin" id="xvA-IJ-vSb"/>
+                            <constraint firstItem="wGG-65-tUK" firstAttribute="leading" secondItem="7Jy-kN-ipJ" secondAttribute="leadingMargin" id="3Y8-Au-be3"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="wGG-65-tUK" secondAttribute="bottom" id="FRH-Wl-Nrw"/>
+                            <constraint firstItem="wGG-65-tUK" firstAttribute="top" secondItem="7Jy-kN-ipJ" secondAttribute="topMargin" id="RDa-Jk-0gI"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="wGG-65-tUK" secondAttribute="trailing" id="v82-G0-SUJ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Step 3: Job Details" id="eoP-hk-uTa">
                         <barButtonItem key="rightBarButtonItem" title="Submit" id="Kby-y8-Pi5"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="jobDetailsScrollView" destination="KMn-CB-qrR" id="BRz-Np-0af"/>
-                        <outlet property="jobSkillsView" destination="CXn-V1-28h" id="BTS-SW-zpb"/>
-                        <outlet property="jobSkillsViewHeightConstraint" destination="scU-s6-vIv" id="Lpe-oG-v0d"/>
+                        <outlet property="skillsScrollView" destination="wGG-65-tUK" id="2we-HP-OJN"/>
+                        <outlet property="skillsSectionLabel" destination="Qtg-qH-2PQ" id="bXA-LY-MMn"/>
+                        <outlet property="view" destination="7Jy-kN-ipJ" id="9XP-HW-gd2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gEy-bO-hJH" userLabel="First Responder" sceneMemberID="firstResponder"/>

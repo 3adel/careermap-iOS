@@ -69,11 +69,6 @@
 		F5BAC3C21AC7EDEF003E899C /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5BAC3BD1AC7EDEF003E899C /* ParseCrashReporting.framework */; };
 		F5BAC3C31AC7EDEF003E899C /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5BAC3BE1AC7EDEF003E899C /* ParseFacebookUtils.framework */; };
 		F5BAC3C41AC7EDEF003E899C /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5BAC3BF1AC7EDEF003E899C /* ParseUI.framework */; };
-		F5BAC3CA1AC7EDFE003E899C /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5BAC3C51AC7EDFE003E899C /* Bolts.framework */; };
-		F5BAC3CB1AC7EDFE003E899C /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5BAC3C61AC7EDFE003E899C /* Parse.framework */; };
-		F5BAC3CC1AC7EDFE003E899C /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5BAC3C71AC7EDFE003E899C /* ParseCrashReporting.framework */; };
-		F5BAC3CD1AC7EDFE003E899C /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5BAC3C81AC7EDFE003E899C /* ParseFacebookUtils.framework */; };
-		F5BAC3CE1AC7EDFE003E899C /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5BAC3C91AC7EDFE003E899C /* ParseUI.framework */; };
 		F5BAC3D11AC85BB7003E899C /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5BAC3D01AC85BB7003E899C /* LoginViewController.m */; };
 		F5BAC3D41AC875E5003E899C /* settingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5BAC3D31AC875E5003E899C /* settingsViewController.m */; };
 		F5CB2BFB1B0DDB2500275850 /* DateConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = F5CB2BFA1B0DDB2500275850 /* DateConverter.m */; };
@@ -247,17 +242,12 @@
 				F5BAC3C41AC7EDEF003E899C /* ParseUI.framework in Frameworks */,
 				F59759241AC1D3DD0099A978 /* StoreKit.framework in Frameworks */,
 				F59759221AC1D3D40099A978 /* Security.framework in Frameworks */,
-				F5BAC3CE1AC7EDFE003E899C /* ParseUI.framework in Frameworks */,
 				F59759201AC1D3CB0099A978 /* QuartzCore.framework in Frameworks */,
-				F5BAC3CC1AC7EDFE003E899C /* ParseCrashReporting.framework in Frameworks */,
-				F5BAC3CB1AC7EDFE003E899C /* Parse.framework in Frameworks */,
 				F597591E1AC1D3C10099A978 /* MobileCoreServices.framework in Frameworks */,
 				F597591C1AC1D3B80099A978 /* libz.dylib in Frameworks */,
-				F5BAC3CA1AC7EDFE003E899C /* Bolts.framework in Frameworks */,
 				F597591A1AC1D3AD0099A978 /* CoreLocation.framework in Frameworks */,
 				F59759181AC1D3A10099A978 /* CoreGraphics.framework in Frameworks */,
 				F59759161AC1D3980099A978 /* CFNetwork.framework in Frameworks */,
-				F5BAC3CD1AC7EDFE003E899C /* ParseFacebookUtils.framework in Frameworks */,
 				F59759141AC1D38F0099A978 /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -643,7 +633,7 @@
 		F59758A11AC159B40099A978 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0620;
+				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = "Adel  Shehadeh";
 				TargetAttributes = {
 					F59758A81AC159B40099A978 = {
@@ -939,7 +929,6 @@
 		F59758D31AC159B40099A978 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -961,7 +950,6 @@
 		F59758D41AC159B40099A978 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
