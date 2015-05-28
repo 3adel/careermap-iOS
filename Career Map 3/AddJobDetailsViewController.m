@@ -646,6 +646,8 @@ int addSkillButtonTapCountJobCreation = 0;
         [_jobObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (succeeded) {
                 NSLog(@"saved skills to parse successfully");
+                
+                
             }
             
             else{
