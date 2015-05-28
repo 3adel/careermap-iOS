@@ -55,7 +55,7 @@
 - (void) removeSkillButtonPressed: (UIButton *) sender;
 - (void) clearSkillButtonPressed: (UIButton *) sender;
 - (IBAction)closeCreateCVButtonPressed:(UIBarButtonItem *)sender;
-- (IBAction)saveCVButtonPressed:(UIBarButtonItem *)sender;
+- (IBAction)saveJobButtonPressed:(UIBarButtonItem *)sender;
 - (void) checkFieldsComplete;
 - (void) CVthumbTapped;
 - (void) selectCVDegree;

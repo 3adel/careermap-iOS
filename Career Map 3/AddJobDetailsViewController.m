@@ -230,7 +230,9 @@ int addSkillButtonTapCountJobCreation = 0;
             
         }
         
-    } else
+    }
+    
+    else
         
     {
         //add one empty skill field instead if there are no previous skills
@@ -555,13 +557,21 @@ int addSkillButtonTapCountJobCreation = 0;
 //    [self dismissViewControllerAnimated:YES completion:nil];
 //}
 
-//- (IBAction)saveCVButtonPressed:(UIBarButtonItem *)sender {
-//    
-//    
+- (IBAction)saveJobButtonPressed:(UIBarButtonItem *)sender {
+    
+    
+    
+    
 //    [self.view endEditing:YES];
+//   
 //    [self checkFieldsComplete];
-//    
-//}
+    
+    
+    
+    
+    [self saveCVToParse];
+    
+}
 
 
 //- (void) checkFieldsComplete{
@@ -600,246 +610,69 @@ int addSkillButtonTapCountJobCreation = 0;
 //this should resolve the add
 
 
-//- (void) saveCVToParse{
-//    
-//    //dismiss the save view controller
-//    [self dismissViewControllerAnimated:YES completion:nil];
-//    
-//    
-//    
-//    //start animating activity indicator while saving
-//    UIActivityIndicatorView *saveCVActivityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-//    //[saveCVActivityIndicator setColor:[UIColor colorWithRed:13.0/255.0 green:153.0/255 blue:252.0/255.0 alpha:1]];
-//    
-//    
-//    
-//    saveCVActivityIndicator.center = self.view.center;
-//    [self.view addSubview:saveCVActivityIndicator];
-//    [saveCVActivityIndicator startAnimating];
-//    
-//    // Code to get data from database
-//    
-//    
-//    
-//    
-//    // if the user have a cv, it should be an update and not create
-//    
-//    //If the user don't have a CV, take them to the CV creation flow.
-//    PFQuery *query = [PFQuery queryWithClassName:@"_User"];
-//    [query includeKey:@"aJobSeekerID"];
-//    [query getObjectInBackgroundWithId: [[PFUser currentUser] objectId] block:^(PFObject *object, NSError *error) {
-//        if (!error) {
-//            
-//            if ([object objectForKey:@"aJobSeekerID"]) {
-//                //user does have CV
-//                NSLog(@"job seeker ID found = %@", [[object objectForKey:@"aJobSeekerID"] objectId]);
-//                
-//                
-//                //now update the cv in the jobSeeker table
-//                //get the record in jobSeekerID
-//                ///update the record
-//                
-//                PFQuery *jobSeekerQuery = [PFQuery queryWithClassName:@"jobSeeker"];
-//                
-//                // Retrieve the object by id
-//                [jobSeekerQuery getObjectInBackgroundWithId:[[object objectForKey:@"aJobSeekerID"] objectId] block:^(PFObject *jobSeekerObject, NSError *error) {
-//                    
-//                    // Now let's update it with some new data. In this case, only cheatMode and score
-//                    // will get sent to the cloud. playerName hasn't changed.
-//                    jobSeekerObject[@"firstName"] = _CVjobSeekerFirstNameTextView.text;
-//                    jobSeekerObject[@"lastName"] = _CVjobSeekerLastNameTextView.text;
-//                    jobSeekerObject[@"currentTitle"] =_CVjobSeekerCurrentTitleTextView.text;
-//                    jobSeekerObject[@"jobSeekerAbout"] =_CVAboutMeTextView.text;
-//                    jobSeekerObject[@"jobSeekerEducation"] =_CVEducationTextField.text;
-//                    jobSeekerObject[@"jobSeekerEducationDegree"] =_CVDegreeTextField.text;
-//                    jobSeekerObject[@"jobSeekerYearsOfExperience"] =[NSNumber numberWithInteger:[_yearsOfExperienceLabel.text intValue]] ;
-//                    jobSeekerObject[@"school"] =_CVSchoolTextField.text;
-//                    
-//                    
-//                    
-//                    
-//                    //save skills to parse
-//                    NSMutableArray *existingSkillsArray = [[NSMutableArray alloc] init];
-//                    
-//                    for (UITextField *skillTextField in _arrayOfSkillTextViews) {
-//                        //prevent empty skills
-//                        if (![skillTextField.text isEqualToString:@""]) {
-//                            [existingSkillsArray addObject:skillTextField.text];
-//                            
-//                        }
-//                        
-//                        
-//                    }
-//                    
-//                    jobSeekerObject [@"skills"] = existingSkillsArray;
-//                    
-//                    
-//                    // jobSeekerObject[@"skills"] =
-//                    
-//                    
-//                    
-//                    // NSData *imageData = UIImagePNGRepresentation(_CVjobSeekerThumb.image);
-//                    NSData *imageData = UIImageJPEGRepresentation(_CVjobSeekerThumb.image, 0.3f);
-//                    PFFile *imageFile = [PFFile fileWithName:@"CVThumbnail.png" data:imageData];
-//                    jobSeekerObject[@"jobSeekerThumb"] = imageFile;
-//                    
-//                    
-//                    
-//                    
-//                    
-//                    //**************
-//                    //jobSeekerObject[@"score"] = @1338;
-//                    [jobSeekerObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-//                        if (succeeded) {
-//                            //[appMessage hideMessage];
-//                            NSLog(@"Success: CV edited");
-//                            
-//                            [saveCVActivityIndicator stopAnimating];
-//                            [saveCVActivityIndicator setHidesWhenStopped:YES];
-//                            
-//                            //notify the system that the edit is successful
-//                            [[NSNotificationCenter defaultCenter]postNotificationName:@"CVEditedSuccessNotification" object:nil];
-//                            
-//                            
-//                            
-//                            
-//                            
-//                            
-//                        } else{
-//                            
-//                            NSLog(@"Fail: CV edited: %@", error);
-//                        }
-//                    }];
-//                    
-//                }];
-//                
-//                
-//                
-//                
-//                //  NSLog(@"People who applied to this job = %@", [_jobObject objectForKey:@"appliedByUsers"]);
-//                
-//                
-//                
-//                
-//                
-//            }
-//            
-//            else{
-//                
-//                
-//                //create a new CV block
-//                //else, just add the cv
-//                //create an object for the cv
-//                //save the object in the jobSeeker table linking it to the current user
-//                
-//                PFObject *cvObject = [PFObject objectWithClassName:@"jobSeeker"];
-//                cvObject[@"firstName"] = _CVjobSeekerFirstNameTextView.text;
-//                cvObject[@"lastName"] = _CVjobSeekerLastNameTextView.text;
-//                cvObject[@"currentTitle"] = _CVjobSeekerCurrentTitleTextView.text;
-//                cvObject[@"jobSeekerAbout"] = _CVAboutMeTextView.text;
-//                cvObject[@"jobSeekerEducation"] = _CVEducationTextField.text;
-//                cvObject[@"jobSeekerEducationDegree"] = _CVDegreeTextField.text;
-//                cvObject[@"school"] = _CVSchoolTextField.text;
-//                cvObject[@"jobSeekerYearsOfExperience"] = [NSNumber numberWithInteger:[_yearsOfExperienceLabel.text intValue]] ;
-//                
-//                
-//                
-//                //save skills to parse
-//                NSMutableArray *existingSkillsArray = [[NSMutableArray alloc] init];
-//                
-//                for (UITextField *skillTextField in _arrayOfSkillTextViews) {
-//                    //prevent empty skills
-//                    if (![skillTextField.text isEqualToString:@""]) {
-//                        [existingSkillsArray addObject:skillTextField.text];
-//                        
-//                    }
-//                    
-//                    
-//                }
-//                
-//                cvObject [@"skills"] = existingSkillsArray;
-//                
-//                
-//                
-//                NSData *imageData = UIImageJPEGRepresentation(_CVjobSeekerThumb.image, 0.3f);//(_CVjobSeekerThumb.image);
-//                
-//                // UIImageJPEGRepresentation(image, 0.9f)
-//                PFFile *imageFile = [PFFile fileWithName:@"CVThumbnail.png" data:imageData];
-//                cvObject[@"jobSeekerThumb"] = imageFile;
-//                
-//                
-//                
-//                
-//                
-//                [cvObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-//                    if (succeeded) {
-//                        NSLog(@"success saving new cv");
-//                        // [appMessage hideMessage];
-//                        
-//                        
-//                        
-//                        
-//                        
-//                        //now update the user table accordingly
-//                        PFQuery *query = [PFQuery queryWithClassName:@"_User"];
-//                        [query getObjectInBackgroundWithId:[[PFUser currentUser] objectId] block:^(PFObject *userObject, NSError *error) {
-//                            userObject[@"aJobSeekerID"] = cvObject;
-//                            [userObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-//                                if (succeeded) {
-//                                    NSLog(@"user table updated successfully with a new cv reference");
-//                                    //notify the system that the edit is successful
-//                                    [[NSNotificationCenter defaultCenter]postNotificationName:@"CVEditedSuccessNotification" object:nil];
-//                                    
-//                                    
-//                                } else{
-//                                    
-//                                    NSLog(@"Error: user table update with cv reference: %@", error);
-//                                    
-//                                }
-//                            }];
-//                        }];
-//                        
-//                        
-//                        [self dismissViewControllerAnimated:YES completion:nil];
-//                    }
-//                    
-//                    else{
-//                        
-//                        NSLog(@"error saving cv");
-//                    }
-//                }];
-//            }
-//            
-//            
-//        }
-//        
-//        else{
-//            
-//            NSLog(@"Error retrieving job seekerID: %@", error);
-//        }
-//    }];
-//    
-//    
-//    
-//    
-//    
-//    
-//    
-//    
-//    
-//    
-//    
-//    
-//    
-//    
-//    
-//    
-//    
-//    
-//    
-//    
-//}
-//
+- (void) saveCVToParse{
+    
+    //save job object to parse
+    
+    
+    if ([_jobObject objectId]) {
+        NSLog(@"object has object id");
+        //update the job object
+        
+        
+        
+        
+    }else{
+        
+        NSLog(@"object has no object id");
+        //create and save job object to parse
+        
+        NSLog(@"Array of text views %@",[_arrayOfSkillTextViews objectAtIndex:0]);
+        //
+        
+        
+        //save skills to parse
+        NSMutableArray *existingSkillsArray = [[NSMutableArray alloc] init];
+        for (UITextField *skillTextField in _arrayOfSkillTextViews) {
+            //prevent empty skills
+            if (![skillTextField.text isEqualToString:@""]) {
+                [existingSkillsArray addObject:skillTextField.text];
+                
+            }
+            
+            
+        }
+        _jobObject[@"skillsRequired"] = existingSkillsArray;
+        [_jobObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (succeeded) {
+                NSLog(@"saved skills to parse successfully");
+            }
+            
+            else{
+                
+                NSLog(@"error saving skills successfully to parse");
+            }
+        }];
+        
+        
+        
+       // NSLog(@"%@", [_jobObject objectForKey:@"jobIndustry"]);
+        
+        
+    }
+
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+}
+
 
 
 //- (void)CVthumbTapped{

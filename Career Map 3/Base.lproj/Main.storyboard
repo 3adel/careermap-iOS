@@ -1205,7 +1205,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Step 3: Job Details" id="eoP-hk-uTa">
-                        <barButtonItem key="rightBarButtonItem" title="Submit" id="Kby-y8-Pi5"/>
+                        <barButtonItem key="rightBarButtonItem" title="Submit" id="Kby-y8-Pi5">
+                            <connections>
+                                <action selector="saveJobButtonPressed:" destination="F7J-24-Ch6" id="U0b-T5-GrB"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="skillsScrollView" destination="wGG-65-tUK" id="2we-HP-OJN"/>
