@@ -16,10 +16,27 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    
-    
+
     NSLog(@"job object = %@", _jobObject);
+
+    
+
+    //change the constraint of skills view height
+    _jobSkillsViewHeightConstraint.constant = 700;
+    
+    //add first skill text field and
+    
+    
+    
+    
+}
+
+
+- (void) viewDidAppear:(BOOL)animated{
+    
+    
+    
+
 }
 
 - (void)didReceiveMemoryWarning {
