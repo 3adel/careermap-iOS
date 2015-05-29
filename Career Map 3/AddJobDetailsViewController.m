@@ -643,6 +643,8 @@ int addSkillButtonTapCountJobCreation = 0;
             
         }
         _jobObject[@"skillsRequired"] = existingSkillsArray;
+        
+        
         [_jobObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (succeeded) {
                 NSLog(@"saved skills to parse successfully");
