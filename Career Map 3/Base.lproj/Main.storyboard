@@ -1179,24 +1179,15 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="* Business Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aGK-ZT-yc2">
-                                        <rect key="frame" x="0.0" y="120" width="568" height="40"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="* Business Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aGK-ZT-yc2">
+                                        <rect key="frame" x="0.0" y="122" width="568" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="Jcg-WR-3cO"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" text="* Job description" translatesAutoresizingMaskIntoConstraints="NO" id="kBx-Vm-bs3" userLabel="Job description">
-                                        <rect key="frame" x="0.0" y="170" width="568" height="100"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="100" id="L8x-tF-3Rh"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" text="Roles and responsibilities" translatesAutoresizingMaskIntoConstraints="NO" id="oMD-M8-Qzb" userLabel="Roles &amp; Responsibilities">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oMD-M8-Qzb" userLabel="Roles &amp; Responsibilities" customClass="GCPlaceholderTextView">
                                         <rect key="frame" x="0.0" y="284" width="568" height="100"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -1221,6 +1212,14 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="* Employment Type" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nlv-la-JiT">
+                                        <rect key="frame" x="0.0" y="444" width="568" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="VLc-EP-gB9"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Job Level" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="niN-55-Iwu">
                                         <rect key="frame" x="0.0" y="544" width="568" height="40"/>
                                         <constraints>
@@ -1238,14 +1237,15 @@
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="* Employment Type" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nlv-la-JiT">
-                                        <rect key="frame" x="0.0" y="444" width="568" height="40"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kBx-Vm-bs3" userLabel="Job description" customClass="GCPlaceholderTextView">
+                                        <rect key="frame" x="0.0" y="170" width="568" height="100"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="VLc-EP-gB9"/>
+                                            <constraint firstAttribute="height" constant="100" id="L8x-tF-3Rh"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -1310,6 +1310,10 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="711"/>
                     <connections>
+                        <outlet property="jobBusinessName" destination="aGK-ZT-yc2" id="Lc7-pe-BxG"/>
+                        <outlet property="jobJobDescription" destination="kBx-Vm-bs3" id="g5Y-2g-7jw"/>
+                        <outlet property="jobJobTitle" destination="J1e-WR-A3l" id="iEf-mv-kyE"/>
+                        <outlet property="jobRolesAndResponsibilities" destination="oMD-M8-Qzb" id="gVX-XI-9CP"/>
                         <outlet property="skillsScrollView" destination="wGG-65-tUK" id="2we-HP-OJN"/>
                         <outlet property="skillsSectionLabel" destination="Qtg-qH-2PQ" id="bXA-LY-MMn"/>
                         <outlet property="view" destination="7Jy-kN-ipJ" id="9XP-HW-gd2"/>

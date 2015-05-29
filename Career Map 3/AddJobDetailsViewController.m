@@ -38,10 +38,19 @@ int addSkillButtonTapCountJobCreation = 0;
     //    _CVjobSeekerLastNameTextView.layer.borderColor=[[UIColor lightGrayColor]CGColor];
     //    _CVjobSeekerLastNameTextView.layer.borderWidth= .5f;
     
-    //    _CVAboutMeTextView.layer.cornerRadius =5.0f;
-    //    _CVAboutMeTextView.layer.borderWidth = .5f;
-    //    _CVAboutMeTextView.layer.borderColor = [[UIColor lightGrayColor] CGColor];
-    //
+        _jobJobDescription.layer.cornerRadius =5.0f;
+        _jobJobDescription.layer.borderWidth = .5f;
+        _jobJobDescription.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+    
+    
+    _jobRolesAndResponsibilities.layer.cornerRadius =5.0f;
+    _jobRolesAndResponsibilities.layer.borderWidth = .5f;
+    _jobRolesAndResponsibilities.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+    
+    
+    
+    
+    
     
     //    //detect when theview is tapped while the text is being edited
     //    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapped)];
@@ -59,10 +68,12 @@ int addSkillButtonTapCountJobCreation = 0;
     [self setupAddSkillButton];
     
     _arrayOfSkillTextViews = [[NSMutableArray alloc] init];
-    
-    //    _CVAboutMeTextView.placeholderColor = [UIColor lightGrayColor];
-    //    _CVAboutMeTextView.placeholder = NSLocalizedString(@"Tell us about yourself and what you like to accomplish",);
-    
+    //Ultra light gray
+    _jobJobDescription.placeholderColor = [UIColor colorWithRed:199.0/255.0 green:199.0/255.0 blue:205.0/255.0 alpha:1.0];
+    _jobJobDescription.placeholder = NSLocalizedString(@"* Job Description",nil);
+    //Ultra light gray
+    _jobRolesAndResponsibilities.placeholderColor = [UIColor colorWithRed:199.0/255.0 green:199.0/255.0 blue:205.0/255.0 alpha:1.0];
+    _jobRolesAndResponsibilities.placeholder = NSLocalizedString(@"Roles and Responsibilities",nil);
     
     //setup cv education degree picker
     //    _CVDegreeTextField.delegate =self;
@@ -642,8 +653,14 @@ int addSkillButtonTapCountJobCreation = 0;
             
             
         }
-        _jobObject[@"skillsRequired"] = existingSkillsArray;
         
+        _jobObject[@"reportCount"] = [NSNumber numberWithInteger:0];
+        _jobObject[@"skillsRequired"] = existingSkillsArray;
+        _jobObject[@"title"] = _jobJobTitle.text;
+        _jobObject[@"businessName"] = _jobBusinessName.text;
+        _jobObject[@"jobDescription"] = _jobJobDescription.text;
+        _jobObject[@"rolesAndResponsibilities"] = _jobRolesAndResponsibilities.text;
+
         
         [_jobObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (succeeded) {
