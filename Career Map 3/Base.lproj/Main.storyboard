@@ -1310,6 +1310,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="711"/>
                     <connections>
+                        <outlet property="degreeRequiredTextField" destination="mTn-KL-83K" id="5fO-ij-cyd"/>
                         <outlet property="employmentTypeTextField" destination="nlv-la-JiT" id="oag-9x-RjH"/>
                         <outlet property="jobBusinessName" destination="aGK-ZT-yc2" id="Lc7-pe-BxG"/>
                         <outlet property="jobCompensation" destination="SHt-gh-QEE" id="RFn-g4-KUF"/>

@@ -24,11 +24,7 @@ int addSkillButtonTapCountJobCreation = 0;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    
-    
-    
-    
+
     //    // Some outlets style setup.
     //    _CVjobSeekerFirstNameTextView.layer.cornerRadius=5.0f;
     //    _CVjobSeekerFirstNameTextView.layer.borderColor=[[UIColor lightGrayColor]CGColor];
@@ -41,15 +37,9 @@ int addSkillButtonTapCountJobCreation = 0;
     _jobJobDescription.layer.cornerRadius =5.0f;
     _jobJobDescription.layer.borderWidth = .5f;
     _jobJobDescription.layer.borderColor = [[UIColor lightGrayColor] CGColor];
-    
-    
     _jobRolesAndResponsibilities.layer.cornerRadius =5.0f;
     _jobRolesAndResponsibilities.layer.borderWidth = .5f;
     _jobRolesAndResponsibilities.layer.borderColor = [[UIColor lightGrayColor] CGColor];
-    
-    
-    
-    
     
     
     //    //detect when theview is tapped while the text is being edited
@@ -75,24 +65,36 @@ int addSkillButtonTapCountJobCreation = 0;
     _jobRolesAndResponsibilities.placeholderColor = [UIColor colorWithRed:199.0/255.0 green:199.0/255.0 blue:205.0/255.0 alpha:1.0];
     _jobRolesAndResponsibilities.placeholder = NSLocalizedString(@"Roles and Responsibilities",nil);
     
-    //setup cv education degree picker
+    //setup employment type picker
         _employmentTypeTextField.delegate =self;
         _employmentTypePicker = [[UIPickerView alloc] init];
         [_employmentTypeTextField setInputView:_employmentTypePicker];
-        UIToolbar *CVPickerToolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
-        [CVPickerToolbar setTintColor:[UIColor colorWithRed:13.0/255.0 green:153.0/255 blue:252.0/255.0 alpha:1]];
+        UIToolbar *employmentPickerToolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+        [employmentPickerToolbar setTintColor:[UIColor colorWithRed:13.0/255.0 green:153.0/255 blue:252.0/255.0 alpha:1]];
     
-        UIBarButtonItem *doneBtn = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(selectEmploymentType)];
-        UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-        [CVPickerToolbar setItems:[NSArray arrayWithObjects:space, doneBtn, nil]];
-        [_employmentTypeTextField setInputAccessoryView:CVPickerToolbar];
+        UIBarButtonItem *empTypeDoneBtn = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(selectEmploymentType)];
+        UIBarButtonItem *empTypespace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+        [employmentPickerToolbar setItems:[NSArray arrayWithObjects:empTypespace, empTypeDoneBtn, nil]];
+        [_employmentTypeTextField setInputAccessoryView:employmentPickerToolbar];
         _employmentTypePicker.delegate =self;
         self.employmentTypeList = @[@"Full Time",@"Part Time", @"Contract",@"Internship",@"Temporary", @"Other"];
     
     
+    //setup degree required picker
+    _degreeRequiredTextField.delegate =self;
+    _degreeRequiredPicker = [[UIPickerView alloc] init];
+    [_degreeRequiredTextField setInputView:_degreeRequiredPicker];
+    UIToolbar *degreeRequiredPickerToolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+    [degreeRequiredPickerToolbar setTintColor:[UIColor colorWithRed:13.0/255.0 green:153.0/255 blue:252.0/255.0 alpha:1]];
     
-    
-    
+    UIBarButtonItem *degreeRequiredDoneBtn = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(selectDegreeRequiredType)];
+    UIBarButtonItem *degreeRequiredspace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    [degreeRequiredPickerToolbar setItems:[NSArray arrayWithObjects:degreeRequiredspace, degreeRequiredDoneBtn, nil]];
+    [_degreeRequiredTextField setInputAccessoryView:degreeRequiredPickerToolbar];
+    _degreeRequiredPicker.delegate =self;
+    self.degreeRequiredList = @[@"Primary School",@"High/Secondary School", @"Associate's Degree (Diploma)",@"Bachelor's Degree",@"Master's Degree",@"PhD", @"None"];
+
+
     //populate existing fields
     [self addExistingSkillTextField];
     
@@ -100,8 +102,6 @@ int addSkillButtonTapCountJobCreation = 0;
 
 
 - (void )setupSkillsView{
-    
-    
     _skillView = [[UIView alloc] init];
     _skillView.translatesAutoresizingMaskIntoConstraints =NO;
     [_skillsScrollView addSubview:_skillView];
@@ -130,9 +130,6 @@ int addSkillButtonTapCountJobCreation = 0;
     
     //this should be set by the previous VC. This init is temporary
     _existingSkills =[[NSMutableArray alloc] init];
-    
-    
-    
     if ([_existingSkills count]>0) {
         
         
@@ -145,13 +142,6 @@ int addSkillButtonTapCountJobCreation = 0;
             self.skillTextField.translatesAutoresizingMaskIntoConstraints =NO;
             [self.skillTextField setTextColor:[UIColor blackColor]];
             [self.skillTextField setTag:addSkillButtonTapCountJobCreation];
-            
-            
-            
-            
-            
-            
-            
             [self.skillTextField setText:skill];
             
             //skill text field style
@@ -162,8 +152,6 @@ int addSkillButtonTapCountJobCreation = 0;
             self.skillTextField.leftView = skillTextViewLeftPaddingView;
             self.skillTextField.leftViewMode = UITextFieldViewModeAlways;
             [self.skillTextField setFont:[UIFont systemFontOfSize:18]];
-            
-            
             
             self.skillTextField.skillTextFieldTop= [NSLayoutConstraint constraintWithItem:self.skillTextField attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:_skillView attribute:NSLayoutAttributeTop multiplier:1.0 constant:50*(addSkillButtonTapCountJobCreation)];
             
@@ -188,11 +176,7 @@ int addSkillButtonTapCountJobCreation = 0;
             if ([self.skillTextField.text isEqualToString:@""]) {
                 [self. skillTextField setPlaceholder:[NSString stringWithFormat:@"Add skilluuu #%d",addSkillButtonTapCountJobCreation+1]];
             }
-            
-            
-            
-            
-            
+
             //setup the remove skill button
             [self.view layoutIfNeeded];
             self.skillTextField.removeSkillButton = [[UIButton alloc] init];
@@ -200,11 +184,7 @@ int addSkillButtonTapCountJobCreation = 0;
             //remove skill button style
             self.skillTextField.removeSkillButton.backgroundColor = [UIColor redColor];
             [self.skillTextField.removeSkillButton.titleLabel setFont:[UIFont systemFontOfSize:15]];
-            
-            
-            
-            
-            
+
             //remove skill button constraints and targets
             self.skillTextField.removeSkillButton.translatesAutoresizingMaskIntoConstraints =NO;
             [self.skillTextField.removeSkillButton setTag:addSkillButtonTapCountJobCreation];
@@ -220,10 +200,7 @@ int addSkillButtonTapCountJobCreation = 0;
                 [self.skillTextField.removeSkillButton setTitle:@"Delete" forState:UIControlStateNormal];
                 [self.skillTextField.removeSkillButton addTarget:self action:@selector(removeSkillButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
             }
-            
-            
-            
-            
+
             NSLayoutConstraint *removeSkillButtonTopConstraint = [NSLayoutConstraint constraintWithItem:self.skillTextField.removeSkillButton attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.skillTextField attribute:NSLayoutAttributeTop multiplier:1.0 constant:0];
             NSLayoutConstraint *removeSkillButtonBottomConstraint = [NSLayoutConstraint constraintWithItem:self.skillTextField.removeSkillButton attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.skillTextField attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0];
             NSLayoutConstraint *removeSkillButtonLeftConstraint = [NSLayoutConstraint constraintWithItem:self.skillTextField.removeSkillButton attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self.skillTextField attribute:NSLayoutAttributeRight multiplier:1.0 constant:10];
@@ -328,30 +305,11 @@ int addSkillButtonTapCountJobCreation = 0;
         
         _skillViewHeightConstraint.constant = 50*(0+1);
         addSkillButtonTapCountJobCreation++;
-        
-        
+
         
     }
-    
-    
-    
-    
-    
-    
-    
-    
+  
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 //setup add skill button
@@ -388,11 +346,8 @@ int addSkillButtonTapCountJobCreation = 0;
 
 //add a textField to the skill view based on the value of the add/delete skill tally
 - (void) addSkillTextField: (int) withAddDeleteSkillTally{
-    
-    
-    
+
     self.skillTextField = [[SkillTextField alloc] init];
-    
     //setup the constraints for the skills textFields
     self.skillTextField.backgroundColor = [UIColor whiteColor];
     self.skillTextField.translatesAutoresizingMaskIntoConstraints =NO;
@@ -408,9 +363,6 @@ int addSkillButtonTapCountJobCreation = 0;
     self.skillTextField.leftView = skillTextViewLeftPaddingView;
     self.skillTextField.leftViewMode = UITextFieldViewModeAlways;
     [self.skillTextField setFont:[UIFont systemFontOfSize:18]];
-    
-    
-    
     self.skillTextField.skillTextFieldTop= [NSLayoutConstraint constraintWithItem:self.skillTextField attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:_skillView attribute:NSLayoutAttributeTop multiplier:1.0 constant:50*(withAddDeleteSkillTally)];
     
     //store skill in in the skills array
@@ -623,16 +575,10 @@ int addSkillButtonTapCountJobCreation = 0;
 
 - (void) saveCVToParse{
     
-    //save job object to parse
-    
-    
     if ([_jobObject objectId]) {
         NSLog(@"object has object id");
         //update the job object
-        
-        
-        
-        
+
     }else{
         
         NSLog(@"object has no object id");
@@ -661,7 +607,8 @@ int addSkillButtonTapCountJobCreation = 0;
         _jobObject[@"description"] = _jobJobDescription.text;
         _jobObject[@"rolesAndResponsibilities"] = _jobRolesAndResponsibilities.text;
         _jobObject[@"compensation"] = _jobCompensation.text;
-        _jobObject[@"degreeRequired"] = _employmentTypeTextField.text;
+        _jobObject[@"employmentType"] = _employmentTypeTextField.text;
+        _jobObject[@"degreeRequired"] = _degreeRequiredTextField.text;
 
         
         
@@ -786,6 +733,15 @@ int addSkillButtonTapCountJobCreation = 0;
     [_employmentTypeTextField resignFirstResponder];
 }
 
+-(void) selectDegreeRequiredType{
+    
+    NSLog(@"Select degree required");
+    
+    _degreeRequiredTextField.text = [self.degreeRequiredList objectAtIndex:[self.degreeRequiredPicker selectedRowInComponent:0]];
+    
+    [_degreeRequiredTextField resignFirstResponder];
+}
+
 //- (IBAction)yearsOfExperienceStepperChange:(JLTStepper *)sender {
 //
 //
@@ -851,6 +807,10 @@ int addSkillButtonTapCountJobCreation = 0;
 
     }
     
+    else if ([pickerView isEqual:_degreeRequiredPicker]){
+        return [_degreeRequiredList objectAtIndex:row];
+    }
+    
     
     
     return @"";
@@ -866,30 +826,66 @@ int addSkillButtonTapCountJobCreation = 0;
         
     }
     
+    else if ([pickerView isEqual:_degreeRequiredPicker]){
+        
+        return [_degreeRequiredList count];
+
+    }
+    
     return 0;
 }
 
 
 - (void)textFieldDidEndEditing:(UITextField *)textField{
 
+    //refactor: needs to include all picker views
 
-    NSString *selectedCVDegree = _employmentTypeTextField.text;
-
-    for (NSString *testString in _employmentTypeList) {
-        if ([testString  isEqualToString:selectedCVDegree]) {
-            _employmentTypeTextField.text =testString;
-            [_employmentTypeTextField setTextColor:[UIColor blackColor]];
-            break;
-            ;
-        }
-
-        else{
-            _employmentTypeTextField.text =@"Please select a valid employment type";
-            [_employmentTypeTextField setTextColor:[UIColor redColor]];
-
-
+    
+    
+    if ([textField isEqual:_employmentTypeTextField]) {
+        NSString *selectedEmploymentType = _employmentTypeTextField.text;
+        
+        for (NSString *empTypeString in _employmentTypeList) {
+            if ([empTypeString  isEqualToString:selectedEmploymentType]) {
+                _employmentTypeTextField.text =empTypeString;
+                [_employmentTypeTextField setTextColor:[UIColor blackColor]];
+                break;
+                ;
+            }
+            
+            else{
+                _employmentTypeTextField.text =@"Please select a valid employment type";
+                [_employmentTypeTextField setTextColor:[UIColor redColor]];
+                
+                
+            }
         }
     }
+    
+    else if ([textField isEqual:_degreeRequiredTextField]){
+        NSString *selectedDegree = _degreeRequiredTextField.text;
+        
+        for (NSString *degreeString in _degreeRequiredList) {
+            if ([degreeString  isEqualToString:selectedDegree]) {
+                _degreeRequiredTextField.text =degreeString;
+                [_degreeRequiredTextField setTextColor:[UIColor blackColor]];
+                break;
+                ;
+            }
+            
+            else{
+                _degreeRequiredTextField.text =@"Please select a valid degree";
+                [_degreeRequiredTextField setTextColor:[UIColor redColor]];
+                
+                
+            }
+        }
+        
+        
+    }
+    
+    
+
 
 
 }
