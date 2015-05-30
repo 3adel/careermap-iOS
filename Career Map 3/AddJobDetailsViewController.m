@@ -660,6 +660,8 @@ int addSkillButtonTapCountJobCreation = 0;
         _jobObject[@"businessName"] = _jobBusinessName.text;
         _jobObject[@"jobDescription"] = _jobJobDescription.text;
         _jobObject[@"rolesAndResponsibilities"] = _jobRolesAndResponsibilities.text;
+        _jobObject[@"compensation"] = _jobCompensation.text;
+
 
         
         [_jobObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {

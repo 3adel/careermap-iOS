@@ -1187,11 +1187,11 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oMD-M8-Qzb" userLabel="Roles &amp; Responsibilities" customClass="GCPlaceholderTextView">
-                                        <rect key="frame" x="0.0" y="284" width="568" height="100"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kBx-Vm-bs3" userLabel="Job description" customClass="GCPlaceholderTextView">
+                                        <rect key="frame" x="0.0" y="170" width="568" height="100"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="100" id="8R2-VX-lPK"/>
+                                            <constraint firstAttribute="height" constant="100" id="L8x-tF-3Rh"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -1237,11 +1237,11 @@
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kBx-Vm-bs3" userLabel="Job description" customClass="GCPlaceholderTextView">
-                                        <rect key="frame" x="0.0" y="170" width="568" height="100"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oMD-M8-Qzb" userLabel="Roles &amp; Responsibilities" customClass="GCPlaceholderTextView">
+                                        <rect key="frame" x="0.0" y="284" width="568" height="100"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="100" id="L8x-tF-3Rh"/>
+                                            <constraint firstAttribute="height" constant="100" id="8R2-VX-lPK"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -1311,6 +1311,7 @@
                     <size key="freeformSize" width="600" height="711"/>
                     <connections>
                         <outlet property="jobBusinessName" destination="aGK-ZT-yc2" id="Lc7-pe-BxG"/>
+                        <outlet property="jobCompensation" destination="SHt-gh-QEE" id="RFn-g4-KUF"/>
                         <outlet property="jobJobDescription" destination="kBx-Vm-bs3" id="g5Y-2g-7jw"/>
                         <outlet property="jobJobTitle" destination="J1e-WR-A3l" id="iEf-mv-kyE"/>
                         <outlet property="jobRolesAndResponsibilities" destination="oMD-M8-Qzb" id="gVX-XI-9CP"/>
