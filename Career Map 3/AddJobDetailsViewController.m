@@ -38,9 +38,9 @@ int addSkillButtonTapCountJobCreation = 0;
     //    _CVjobSeekerLastNameTextView.layer.borderColor=[[UIColor lightGrayColor]CGColor];
     //    _CVjobSeekerLastNameTextView.layer.borderWidth= .5f;
     
-        _jobJobDescription.layer.cornerRadius =5.0f;
-        _jobJobDescription.layer.borderWidth = .5f;
-        _jobJobDescription.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+    _jobJobDescription.layer.cornerRadius =5.0f;
+    _jobJobDescription.layer.borderWidth = .5f;
+    _jobJobDescription.layer.borderColor = [[UIColor lightGrayColor] CGColor];
     
     
     _jobRolesAndResponsibilities.layer.cornerRadius =5.0f;
@@ -76,18 +76,18 @@ int addSkillButtonTapCountJobCreation = 0;
     _jobRolesAndResponsibilities.placeholder = NSLocalizedString(@"Roles and Responsibilities",nil);
     
     //setup cv education degree picker
-    //    _CVDegreeTextField.delegate =self;
-    //    _CVDegreePicker = [[UIPickerView alloc] init];
-    //    [_CVDegreeTextField setInputView:_CVDegreePicker];
-    //    UIToolbar *CVPickerToolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
-    //    [CVPickerToolbar setTintColor:[UIColor colorWithRed:13.0/255.0 green:153.0/255 blue:252.0/255.0 alpha:1]];
-    //
-    //    UIBarButtonItem *doneBtn = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(selectCVDegree)];
-    //    UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-    //    [CVPickerToolbar setItems:[NSArray arrayWithObjects:space, doneBtn, nil]];
-    //    [_CVDegreeTextField setInputAccessoryView:CVPickerToolbar];
-    //    _CVDegreePicker.delegate =self;
-    //    self.educationDegreesList = @[@"Primary School",@"High/Secondary School", @"Associate's Degree (Diploma)",@"Bachelor's Degree",@"Master's Degree",@"PhD", @"None"];
+        _employmentTypeTextField.delegate =self;
+        _employmentTypePicker = [[UIPickerView alloc] init];
+        [_employmentTypeTextField setInputView:_employmentTypePicker];
+        UIToolbar *CVPickerToolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+        [CVPickerToolbar setTintColor:[UIColor colorWithRed:13.0/255.0 green:153.0/255 blue:252.0/255.0 alpha:1]];
+    
+        UIBarButtonItem *doneBtn = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(selectEmploymentType)];
+        UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+        [CVPickerToolbar setItems:[NSArray arrayWithObjects:space, doneBtn, nil]];
+        [_employmentTypeTextField setInputAccessoryView:CVPickerToolbar];
+        _employmentTypePicker.delegate =self;
+        self.employmentTypeList = @[@"Full Time",@"Part Time", @"Contract",@"Internship",@"Temporary", @"Other"];
     
     
     
@@ -560,11 +560,11 @@ int addSkillButtonTapCountJobCreation = 0;
  */
 
 //- (IBAction)closeCreateCVButtonPressed:(UIBarButtonItem *)sender {
-//    
+//
 //    //reinitialize add skill count
 //    addSkillButtonTapCountJobCreation = 0;
-//    
-//    
+//
+//
 //    [self dismissViewControllerAnimated:YES completion:nil];
 //}
 
@@ -573,9 +573,9 @@ int addSkillButtonTapCountJobCreation = 0;
     
     
     
-//    [self.view endEditing:YES];
-//   
-//    [self checkFieldsComplete];
+    //    [self.view endEditing:YES];
+    //
+    //    [self checkFieldsComplete];
     
     
     
@@ -586,36 +586,36 @@ int addSkillButtonTapCountJobCreation = 0;
 
 
 //- (void) checkFieldsComplete{
-//    
+//
 //    //validate mandatory fields only
 //    if ([_CVjobSeekerFirstNameTextView.text isEqualToString:@""] || [_CVjobSeekerLastNameTextView.text isEqualToString:@""]) {
 //        UIAlertView *alert= [[UIAlertView alloc]initWithTitle:@"Error!" message:@"You need to complete all madnatory fields" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
-//        
+//
 //        [alert show];
 //    }
-//    
-//    
+//
+//
 //    else{
-//        
-//        
+//
+//
 //        NSLog(@"Save cv to backend");
 //        [[NSNotificationCenter defaultCenter]postNotificationName:@"saveCVButtonPressed" object:nil];
 //        [self saveCVToParse];
-//        
+//
 //    }
-//    
-//    
-//    
+//
+//
+//
 //}
 
 
 //dismiss keyboard when view is tapped
 //-(void) viewTapped{
-//    
+//
 //    //dismiss keyboard from all text entry fields
 //    [self.view endEditing:YES];
-//    
-//    
+//
+//
 //}
 
 //this should resolve the add
@@ -658,11 +658,12 @@ int addSkillButtonTapCountJobCreation = 0;
         _jobObject[@"skillsRequired"] = existingSkillsArray;
         _jobObject[@"title"] = _jobJobTitle.text;
         _jobObject[@"businessName"] = _jobBusinessName.text;
-        _jobObject[@"jobDescription"] = _jobJobDescription.text;
+        _jobObject[@"description"] = _jobJobDescription.text;
         _jobObject[@"rolesAndResponsibilities"] = _jobRolesAndResponsibilities.text;
         _jobObject[@"compensation"] = _jobCompensation.text;
+        _jobObject[@"degreeRequired"] = _employmentTypeTextField.text;
 
-
+        
         
         [_jobObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (succeeded) {
@@ -679,15 +680,15 @@ int addSkillButtonTapCountJobCreation = 0;
         
         
         
-       // NSLog(@"%@", [_jobObject objectForKey:@"jobIndustry"]);
+        // NSLog(@"%@", [_jobObject objectForKey:@"jobIndustry"]);
         
         
     }
-
-
     
     
-
+    
+    
+    
     
     
     
@@ -699,28 +700,28 @@ int addSkillButtonTapCountJobCreation = 0;
 
 
 //- (void)CVthumbTapped{
-//    
-//    
+//
+//
 //    NSLog(@"cv thumb tapped");
-//    
-//    
+//
+//
 //    //present photo source action sheet
 //    _photoSourceActionSheet = [[UIActionSheet alloc] initWithTitle:@"Select photo from:" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:
 //                               @"Camera",
 //                               @"Library",
 //                               nil];
-//    
+//
 //    _photoSourceActionSheet.tag = 1;
 //    [_photoSourceActionSheet showInView:[UIApplication sharedApplication].keyWindow];
-//    
-//    
-//    
-//    
+//
+//
+//
+//
 //    /*
 //     //instantiate the cv thumb editor
 //     CVThumbEditViewController *CVThumbEditView = [[CVThumbEditViewController alloc] initWithNibName:@"CVThumbEditView" bundle:nil];
 //     [self presentViewController:CVThumbEditView animated:YES completion:nil];*/
-//    
+//
 //}
 
 
@@ -731,7 +732,7 @@ int addSkillButtonTapCountJobCreation = 0;
 
 
 //- (void)actionSheet:(UIActionSheet *)_photSourceoActionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-//    
+//
 //    //handle multiple action sheet if necesssary
 //    switch (_photoSourceActionSheet.tag) {
 //        case 1: {
@@ -755,7 +756,7 @@ int addSkillButtonTapCountJobCreation = 0;
 //                    cameraPicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
 //                    [self presentViewController:cameraPicker animated:YES completion:NULL];
 //                }
-//                    
+//
 //                    break;
 //                default:
 //                    break;
@@ -772,25 +773,25 @@ int addSkillButtonTapCountJobCreation = 0;
 //    UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
 //    self.CVjobSeekerThumb.image = chosenImage;
 //    [picker dismissViewControllerAnimated:YES completion:NULL];
-//    
+//
 //}
 
-//-(void) selectCVDegree{
-//    
-//    NSLog(@"Select cv degrees");
-//    
-//    // _CVDegreeTextField.text = @"Sample degree";
-//    _CVDegreeTextField.text = [self.educationDegreesList objectAtIndex:[self.CVDegreePicker selectedRowInComponent:0]];
-//    
-//    [_CVDegreeTextField resignFirstResponder];
-//}
+-(void) selectEmploymentType{
+
+    NSLog(@"Select cv degrees");
+
+    // _employmentTypeTextField.text = @"Sample degree";
+    _employmentTypeTextField.text = [self.employmentTypeList objectAtIndex:[self.employmentTypePicker selectedRowInComponent:0]];
+
+    [_employmentTypeTextField resignFirstResponder];
+}
 
 //- (IBAction)yearsOfExperienceStepperChange:(JLTStepper *)sender {
-//    
-//    
+//
+//
 //    //
 //    if (([_yearsOfExperienceLabel.text intValue] >0) && ([_yearsOfExperienceLabel.text intValue] <=100)) {
-//        
+//
 //        if (sender.plusMinusState == JLTStepperPlus) {
 //            // Plus button pressed
 //            _yearsOfExperienceLabel.text = [NSString stringWithFormat:@"%d",[_yearsOfExperienceLabel.text intValue]+1];
@@ -800,33 +801,33 @@ int addSkillButtonTapCountJobCreation = 0;
 //            _yearsOfExperienceLabel.text = [NSString stringWithFormat:@"%d",[_yearsOfExperienceLabel.text intValue]-1];
 //        } else {
 //            // Shouldn't happen unless value is set programmatically.
-//            
-//            
+//
+//
 //        }
-//        
-//        
+//
+//
 //    }
-//    
+//
 //    //This will guarantee the counter doesn't go beyond maximum or minimum.
 //    else{
-//        
+//
 //        if (sender.plusMinusState == JLTStepperPlus) {
 //            // Plus button pressed
 //            _yearsOfExperienceLabel.text = [NSString stringWithFormat:@"%d",[_yearsOfExperienceLabel.text intValue]+1];
 //        }
-//        
+//
 //        else{
-//            
+//
 //            if ([_yearsOfExperienceLabel.text intValue] >=100){
 //                _yearsOfExperienceLabel.text = [NSString stringWithFormat:@"%d",[_yearsOfExperienceLabel.text intValue]-1];
 //            }
 //        }
-//        
-//        
-//        
+//
+//
+//
 //    }
-//    
-//    
+//
+//
 //}
 
 - (IBAction)clearFirstSkillButtonPressed:(UIButton *)sender {
@@ -837,45 +838,61 @@ int addSkillButtonTapCountJobCreation = 0;
 
 //CV degree picker and textfield delegate methods
 
-//- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
-//{
-//    return 1;
-//}
-//
-//- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
-//{
-//    return [_educationDegreesList objectAtIndex:row];
-//}
-//
-//- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
-//{
-//    return [_educationDegreesList count];
-//}
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 1;
+}
 
-//
-//- (void)textFieldDidEndEditing:(UITextField *)textField{
-//    
-//    
-//    NSString *selectedCVDegree = _CVDegreeTextField.text;
-//    
-//    for (NSString *testString in _educationDegreesList) {
-//        if ([testString  isEqualToString:selectedCVDegree]) {
-//            _CVDegreeTextField.text =testString;
-//            [_CVDegreeTextField setTextColor:[UIColor blackColor]];
-//            break;
-//            ;
-//        }
-//        
-//        else{
-//            _CVDegreeTextField.text =@"Please select a valid degree";
-//            [_CVDegreeTextField setTextColor:[UIColor redColor]];
-//            
-//            
-//        }
-//    }
-//    
-//    
-//}
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    
+    if ([pickerView isEqual:_employmentTypePicker]) {
+        return [_employmentTypeList objectAtIndex:row];
+
+    }
+    
+    
+    
+    return @"";
+    
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    
+    
+    if ([pickerView isEqual:_employmentTypePicker]) {
+        return [_employmentTypeList count];
+        
+    }
+    
+    return 0;
+}
+
+
+- (void)textFieldDidEndEditing:(UITextField *)textField{
+
+
+    NSString *selectedCVDegree = _employmentTypeTextField.text;
+
+    for (NSString *testString in _employmentTypeList) {
+        if ([testString  isEqualToString:selectedCVDegree]) {
+            _employmentTypeTextField.text =testString;
+            [_employmentTypeTextField setTextColor:[UIColor blackColor]];
+            break;
+            ;
+        }
+
+        else{
+            _employmentTypeTextField.text =@"Please select a valid employment type";
+            [_employmentTypeTextField setTextColor:[UIColor redColor]];
+
+
+        }
+    }
+
+
+}
 
 /*
  #pragma mark - Navigation

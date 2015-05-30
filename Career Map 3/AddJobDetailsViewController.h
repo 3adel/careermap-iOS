@@ -36,6 +36,9 @@
 @property (weak, nonatomic) IBOutlet GCPlaceholderTextView *jobRolesAndResponsibilities;
 @property (weak, nonatomic) IBOutlet UITextField *jobCompensation;
 
+@property (weak, nonatomic) IBOutlet UITextField *employmentTypeTextField;
+@property (strong, nonatomic) UIPickerView *employmentTypePicker;
+
 
 
 
@@ -51,13 +54,13 @@
 - (IBAction)saveJobButtonPressed:(UIBarButtonItem *)sender;
 - (void) checkFieldsComplete;
 - (void) CVthumbTapped;
-- (void) selectCVDegree;
+- (void) selectEmploymentType;
 //- (IBAction)yearsOfExperienceStepperChange:(JLTStepper *)sender;
 - (IBAction)clearFirstSkillButtonPressed:(UIButton *)sender;
 
 //data
 @property (nonatomic, strong) NSMutableArray *arrayOfSkillTextViews;
-@property (nonatomic, strong) NSArray *educationDegreesList;
+@property (nonatomic, strong) NSArray *employmentTypeList;
 @property (nonatomic, strong) NSMutableArray *existingSkills;
 @property (nonatomic, strong) PFObject *jobObject;
 
