@@ -65,6 +65,15 @@
 
 - (PFGeoPoint *) getUserLocationPoint{
     
+    //start animating getting user location address
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        [_jobLocationAddressFetchActivityIndicator startAnimating];
+        _jobLocationAddressLabel.text = @"Getting location ...";
+        
+    });
+    
+    
     //retrieve user location
     [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *geoPoint, NSError *error) {
         if (!error) {
@@ -79,6 +88,17 @@
             [_jobObject setValue:_userLocationPoint forKey:@"userLocation"];
             [_jobObject setValue:_jobLocationPoint forKey:@"geolocation"];
             NSLog(@"Job Object = %@", _jobObject );
+            
+            
+            
+            //update ui with found user location
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                [_jobLocationAddressFetchActivityIndicator stopAnimating];
+                [_jobLocationAddressFetchActivityIndicator setHidden:YES];
+                _jobLocationAddressLabel.text = @"Location found";
+                
+            });
             
 
         }

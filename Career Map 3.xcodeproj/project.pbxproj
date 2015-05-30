@@ -24,7 +24,6 @@
 		F535A9A71AD06E500091E70B /* ExistingUserLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F535A9A61AD06E500091E70B /* ExistingUserLoginViewController.m */; };
 		F535AA641AD3CE270091E70B /* WelcomeAppChoiceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F535AA631AD3CE270091E70B /* WelcomeAppChoiceView.xib */; };
 		F535AA671AD3CE7E0091E70B /* WelcomeAppChoiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F535AA661AD3CE7E0091E70B /* WelcomeAppChoiceViewController.m */; };
-		F535AA691AD401BA0091E70B /* myLocation.gpx in Resources */ = {isa = PBXBuildFile; fileRef = F535AA681AD401BA0091E70B /* myLocation.gpx */; };
 		F535AA721AD449BA0091E70B /* JobDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F535AA711AD449BA0091E70B /* JobDetailsViewController.m */; };
 		F535AADA1AD947BF0091E70B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F535AAD91AD947BF0091E70B /* MapKit.framework */; };
 		F535AAE61ADC38580091E70B /* JobMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F535AAE51ADC38580091E70B /* JobMapViewController.m */; };
@@ -127,7 +126,6 @@
 		F535AA631AD3CE270091E70B /* WelcomeAppChoiceView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WelcomeAppChoiceView.xib; sourceTree = "<group>"; };
 		F535AA651AD3CE7E0091E70B /* WelcomeAppChoiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeAppChoiceViewController.h; sourceTree = "<group>"; };
 		F535AA661AD3CE7E0091E70B /* WelcomeAppChoiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeAppChoiceViewController.m; sourceTree = "<group>"; };
-		F535AA681AD401BA0091E70B /* myLocation.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = myLocation.gpx; path = ../myLocation.gpx; sourceTree = "<group>"; };
 		F535AA701AD449BA0091E70B /* JobDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobDetailsViewController.h; sourceTree = "<group>"; };
 		F535AA711AD449BA0091E70B /* JobDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobDetailsViewController.m; sourceTree = "<group>"; };
 		F535AAD91AD947BF0091E70B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -351,7 +349,6 @@
 		F535AA6E1AD439080091E70B /* Location */ = {
 			isa = PBXGroup;
 			children = (
-				F535AA681AD401BA0091E70B /* myLocation.gpx */,
 			);
 			name = Location;
 			sourceTree = "<group>";
@@ -686,7 +683,6 @@
 				F506DC341AF9504F000ABF49 /* LoadingJobListEmptyView.xib in Resources */,
 				F53334641AE4080C0029BFF7 /* Lenna@3x.jpg in Resources */,
 				F533345F1AE3CE4D0029BFF7 /* CreateCVView.xib in Resources */,
-				F535AA691AD401BA0091E70B /* myLocation.gpx in Resources */,
 				F59584861B1347A900B06778 /* TabBar-AddJob@2x.png in Resources */,
 				F59584981B13A43D00B06778 /* job-annotation-icon@3x.png in Resources */,
 				F5CF09591AF284E500850BB0 /* TabBar-Settings@2x.png in Resources */,

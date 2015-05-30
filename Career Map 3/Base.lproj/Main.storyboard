@@ -1051,6 +1051,44 @@
                                     <action selector="restetToMyLocationButtonPressed:" destination="gU1-YK-m0e" eventType="touchUpInside" id="jRQ-Aw-sTQ"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B8V-HU-sw3" userLabel="job location address view">
+                                <rect key="frame" x="200" y="230" width="200" height="40"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="qKQ-9F-18s" userLabel="job location fetch activity indicator">
+                                        <rect key="frame" x="5" y="10" width="20" height="20"/>
+                                        <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="color" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
+                                    </activityIndicatorView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Qu-h3-vp6" userLabel="job location label">
+                                        <rect key="frame" x="81" y="11" width="38" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="127" id="0sp-rc-egy"/>
+                                    <constraint firstAttribute="width" constant="200" id="57u-QY-4a7"/>
+                                    <constraint firstItem="qKQ-9F-18s" firstAttribute="leading" secondItem="B8V-HU-sw3" secondAttribute="leading" constant="5" id="662-X8-rt2"/>
+                                    <constraint firstAttribute="bottom" secondItem="qKQ-9F-18s" secondAttribute="bottom" constant="8" id="A9X-Jb-aLM"/>
+                                    <constraint firstAttribute="centerY" secondItem="0Qu-h3-vp6" secondAttribute="centerY" id="CWj-Af-oct"/>
+                                    <constraint firstAttribute="centerX" secondItem="0Qu-h3-vp6" secondAttribute="centerX" id="PmD-JR-PJA"/>
+                                    <constraint firstItem="qKQ-9F-18s" firstAttribute="top" secondItem="B8V-HU-sw3" secondAttribute="top" constant="15" id="S4U-Uc-nDW"/>
+                                    <constraint firstItem="qKQ-9F-18s" firstAttribute="centerY" secondItem="0Qu-h3-vp6" secondAttribute="centerY" id="iXT-cw-1ea"/>
+                                    <constraint firstAttribute="height" constant="40" id="mFZ-St-pRo"/>
+                                    <constraint firstAttribute="centerY" secondItem="qKQ-9F-18s" secondAttribute="centerY" id="wwg-QS-1rN"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="0sp-rc-egy"/>
+                                        <exclude reference="A9X-Jb-aLM"/>
+                                        <exclude reference="S4U-Uc-nDW"/>
+                                        <exclude reference="iXT-cw-1ea"/>
+                                    </mask>
+                                </variation>
+                            </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="job-annotation-icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="WjZ-SL-ZYK" userLabel="job annotation">
                                 <rect key="frame" x="275" y="275" width="50" height="50"/>
                                 <constraints>
@@ -1068,11 +1106,13 @@
                         <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="B7a-hN-ple" firstAttribute="bottom" secondItem="jF4-cN-WGm" secondAttribute="bottomMargin" id="0bw-0b-MHd"/>
+                            <constraint firstAttribute="centerX" secondItem="B8V-HU-sw3" secondAttribute="centerX" id="2eH-fw-qM6"/>
                             <constraint firstItem="B7a-hN-ple" firstAttribute="top" secondItem="0cn-L3-0Ks" secondAttribute="bottom" id="5W6-Kr-O2i"/>
                             <constraint firstAttribute="bottomMargin" secondItem="B7a-hN-ple" secondAttribute="bottom" id="LOj-yb-XEf"/>
                             <constraint firstItem="B7a-hN-ple" firstAttribute="leading" secondItem="jF4-cN-WGm" secondAttribute="leadingMargin" constant="-16" id="ODP-O1-Xdv"/>
                             <constraint firstAttribute="trailingMargin" secondItem="gOj-E6-hl7" secondAttribute="trailing" id="ROb-NX-XEf"/>
                             <constraint firstAttribute="centerX" secondItem="WjZ-SL-ZYK" secondAttribute="centerX" id="byb-cA-Q70"/>
+                            <constraint firstItem="WjZ-SL-ZYK" firstAttribute="top" secondItem="B8V-HU-sw3" secondAttribute="bottom" constant="5" id="cge-MO-DFU"/>
                             <constraint firstItem="B7a-hN-ple" firstAttribute="bottom" secondItem="jF4-cN-WGm" secondAttribute="bottomMargin" id="iJf-Nn-soc"/>
                             <constraint firstItem="Wnx-Sg-mkG" firstAttribute="top" secondItem="gOj-E6-hl7" secondAttribute="bottom" constant="10" id="lo5-PG-WHC"/>
                             <constraint firstAttribute="centerX" secondItem="he8-2f-FcZ" secondAttribute="centerX" id="lyH-1v-ha5"/>
@@ -1102,6 +1142,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="jobLocationAddressFetchActivityIndicator" destination="qKQ-9F-18s" id="YB6-m5-aFm"/>
+                        <outlet property="jobLocationAddressLabel" destination="0Qu-h3-vp6" id="81K-Rp-lAJ"/>
+                        <outlet property="jobLocationAddressView" destination="B8V-HU-sw3" id="1mH-2E-VUP"/>
                         <outlet property="jobMap" destination="B7a-hN-ple" id="Dpe-nX-b5i"/>
                         <outlet property="resetToMyLocationButton" destination="gOj-E6-hl7" id="SqP-Xx-pVi"/>
                         <outlet property="selectMapTypeSegmentedControl" destination="he8-2f-FcZ" id="29V-Ib-9Rb"/>

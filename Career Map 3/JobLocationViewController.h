@@ -22,6 +22,9 @@
 @property (nonatomic, strong) PFGeoPoint *jobLocationPoint;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *selectMapTypeSegmentedControl;
 @property (weak, nonatomic) IBOutlet UIButton *resetToMyLocationButton;
+@property (weak, nonatomic) IBOutlet UIView *jobLocationAddressView;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *jobLocationAddressFetchActivityIndicator;
+@property (weak, nonatomic) IBOutlet UILabel *jobLocationAddressLabel;
 
 
 
