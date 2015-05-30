@@ -21,6 +21,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *PreviouslySelectedJobCategoryButton;
 @property (weak, nonatomic) IBOutlet UIScrollView *jobCategoryScrollView;
 @property (nonatomic, strong) MBProgressHUD *HUDProgressIndicator;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *nextButton;
 
 
 //MARK: Data

@@ -1169,6 +1169,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="jobCategoryScrollView" destination="4Xm-an-SeU" id="FoL-IP-wlP"/>
+                        <outlet property="nextButton" destination="z4i-uC-Wac" id="uM9-G3-3Tb"/>
                         <segue destination="F7J-24-Ch6" kind="show" identifier="addJobDetailsSegue" id="euJ-XS-G45"/>
                     </connections>
                 </viewController>

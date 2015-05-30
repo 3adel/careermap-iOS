@@ -72,6 +72,7 @@
     
     //hide progress indicator
     _HUDProgressIndicator.hidden =YES;
+    _nextButton.enabled = YES;
     
 }
 
@@ -109,6 +110,9 @@
 
 
 - (void) retrieveJobCategoriesFromParse{
+    
+    //disable next button until categories are fetched
+    _nextButton.enabled = NO;
     
     
     //start animating progress indicator
