@@ -599,7 +599,7 @@ int addSkillButtonTapCountJobCreation = 0;
             
             
         }
-        
+        _jobObject[@"postedByUser"] = [PFUser currentUser];
         _jobObject[@"reportCount"] = [NSNumber numberWithInteger:0];
         _jobObject[@"skillsRequired"] = existingSkillsArray;
         _jobObject[@"title"] = _jobJobTitle.text;

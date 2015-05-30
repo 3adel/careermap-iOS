@@ -516,7 +516,7 @@ bool messageIsReceived = NO;
         
         destViewController.jobArea =[jobObject objectForKey:@"area"];
         destViewController.jobRequiredSkills = [jobObject objectForKey:@"skillsRequired"];
-        destViewController.jobEducation =[jobObject objectForKey:@"education"];
+        destViewController.jobEducation =[jobObject objectForKey:@"degreeRequired"];
         destViewController.userLocation = self.userLocation;
         
         
