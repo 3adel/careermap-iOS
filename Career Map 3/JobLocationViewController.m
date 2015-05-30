@@ -96,16 +96,11 @@
             //update ui with found user location
             dispatch_async(dispatch_get_main_queue(), ^{
                 
-                [_jobLocationAddressFetchActivityIndicator stopAnimating];
-                [_jobLocationAddressFetchActivityIndicator setHidden:YES];
                 _jobLocationAddressTextView.text = @"Location found";
                 
-                
                 //get the address of the location
-                //AddressLineConverter *addressConverter = [[AddressLineConverter alloc] init];
                 CLLocation *userLocation = [[CLLocation alloc] initWithLatitude:_userLocationPoint.latitude longitude:_userLocationPoint.longitude];
                 [self convertLocationToAddress:userLocation];
-                
                 
             });
             
