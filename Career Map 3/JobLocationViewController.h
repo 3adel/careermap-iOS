@@ -10,6 +10,7 @@
 #import <MapKit/MapKit.h>
 #import <Parse/Parse.h>
 #import "JobCategoryViewController.h"
+#import "AddressLineConverter.h"
 
 @interface JobLocationViewController : UIViewController <MKMapViewDelegate,CLLocationManagerDelegate>
 
@@ -22,9 +23,8 @@
 @property (nonatomic, strong) PFGeoPoint *jobLocationPoint;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *selectMapTypeSegmentedControl;
 @property (weak, nonatomic) IBOutlet UIButton *resetToMyLocationButton;
-@property (weak, nonatomic) IBOutlet UIView *jobLocationAddressView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *jobLocationAddressFetchActivityIndicator;
-@property (weak, nonatomic) IBOutlet UILabel *jobLocationAddressLabel;
+@property (weak, nonatomic) IBOutlet UITextView *jobLocationAddressTextView;
 
 
 

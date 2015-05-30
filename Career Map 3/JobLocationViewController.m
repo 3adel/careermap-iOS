@@ -25,6 +25,8 @@
     
     // Some style setup.
     _resetToMyLocationButton.layer.cornerRadius=5.0f;
+    _jobLocationAddressTextView.layer.cornerRadius=5.0f;
+
     
     
     //initialize location manager
@@ -69,7 +71,7 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         
         [_jobLocationAddressFetchActivityIndicator startAnimating];
-        _jobLocationAddressLabel.text = @"Getting location ...";
+        _jobLocationAddressTextView.text = @"Getting location ...";
         
     });
     
@@ -96,7 +98,14 @@
                 
                 [_jobLocationAddressFetchActivityIndicator stopAnimating];
                 [_jobLocationAddressFetchActivityIndicator setHidden:YES];
-                _jobLocationAddressLabel.text = @"Location found";
+                _jobLocationAddressTextView.text = @"Location found";
+                
+                
+                //get the address of the location
+                //AddressLineConverter *addressConverter = [[AddressLineConverter alloc] init];
+                CLLocation *userLocation = [[CLLocation alloc] initWithLatitude:_userLocationPoint.latitude longitude:_userLocationPoint.longitude];
+                [self convertLocationToAddress:userLocation];
+                
                 
             });
             
@@ -115,6 +124,9 @@
 
 - (void) getJobLocationPoint{
     
+    _jobLocationAddressTextView.text =@"Loading location ...";
+
+    
     _jobLocationPoint = [[PFGeoPoint alloc] init];
     _jobLocationPoint.latitude =_jobMap.centerCoordinate.latitude;
     _jobLocationPoint.longitude =_jobMap.centerCoordinate.longitude;
@@ -123,6 +135,13 @@
     //update job object with new job location
     [_jobObject setValue:_jobLocationPoint forKey:@"geolocation"];
     NSLog(@"Job object after pan = %@", _jobObject );
+    
+    
+    //get the address of the job location
+   // AddressLineConverter *addressConverter = [[AddressLineConverter alloc] init];
+    CLLocation *jobLocation = [[CLLocation alloc] initWithLatitude:_jobLocationPoint.latitude longitude:_jobLocationPoint.longitude];
+    [self convertLocationToAddress:jobLocation];
+    
 
     
 }
@@ -185,6 +204,49 @@
         destViewController.jobObject = _jobObject;
         
     }
+}
+
+
+- (NSString *) convertLocationToAddress: (CLLocation *) location{
+    
+    
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+    [geocoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
+        if (error == nil && [placemarks count] > 0)
+        {
+            
+            CLPlacemark *placemark = [placemarks lastObject];
+            if ([[placemarks lastObject] locality] != nil ) {
+                
+                //add the address line as a component
+                NSArray *lines = placemark.addressDictionary[ @"FormattedAddressLines"];
+                NSString *addressString = [lines componentsJoinedByString:@", "];
+                NSLog(@"Address: %@", addressString);
+                NSLog(@"Addressline: %@", placemark.addressDictionary);
+
+                _jobLocationAddressTextView.text =addressString;
+                
+            }
+            else{
+                NSLog(@"no address found");
+                _jobLocationAddressTextView.text = @"No address found";
+                
+                
+                
+            }
+            
+            
+        }
+        
+        else{
+            
+            NSLog(@"Error = %@", error);
+            // cell.jobArea.text =@"-";
+        }
+        
+    }];
+    
+    return @"";
 }
 
 

@@ -31,6 +31,7 @@
 		F535ABC51ADE52CF0091E70B /* JobChatView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F535ABC31ADE52CF0091E70B /* JobChatView.xib */; };
 		F535AC4E1ADEC9860091E70B /* JobChatMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F535AC4D1ADEC9860091E70B /* JobChatMessageCell.xib */; };
 		F535AC511ADEC9B50091E70B /* JobChatMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F535AC501ADEC9B50091E70B /* JobChatMessageCell.m */; };
+		F537FF731B1A3373001862D9 /* AddressLineConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = F537FF721B1A3373001862D9 /* AddressLineConverter.m */; };
 		F53EABF11B020F5900CCB97C /* MessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F53EABF01B020F5900CCB97C /* MessagesViewController.m */; };
 		F53EABF41B020F8700CCB97C /* MessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F53EABF31B020F8700CCB97C /* MessageCell.m */; };
 		F59584851B1347A900B06778 /* TabBar-AddJob.png in Resources */ = {isa = PBXBuildFile; fileRef = F59584821B1347A800B06778 /* TabBar-AddJob.png */; };
@@ -137,6 +138,8 @@
 		F535AC4D1ADEC9860091E70B /* JobChatMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = JobChatMessageCell.xib; path = ../JobChatMessageCell.xib; sourceTree = "<group>"; };
 		F535AC4F1ADEC9B50091E70B /* JobChatMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JobChatMessageCell.h; path = ../JobChatMessageCell.h; sourceTree = "<group>"; };
 		F535AC501ADEC9B50091E70B /* JobChatMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JobChatMessageCell.m; path = ../JobChatMessageCell.m; sourceTree = "<group>"; };
+		F537FF711B1A3373001862D9 /* AddressLineConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressLineConverter.h; sourceTree = "<group>"; };
+		F537FF721B1A3373001862D9 /* AddressLineConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressLineConverter.m; sourceTree = "<group>"; };
 		F53EABEF1B020F5900CCB97C /* MessagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessagesViewController.h; sourceTree = "<group>"; };
 		F53EABF01B020F5900CCB97C /* MessagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessagesViewController.m; sourceTree = "<group>"; };
 		F53EABF21B020F8700CCB97C /* MessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageCell.h; sourceTree = "<group>"; };
@@ -526,6 +529,8 @@
 		F5CB2BF81B0DDAE100275850 /* Ubiquitous Classes */ = {
 			isa = PBXGroup;
 			children = (
+				F537FF711B1A3373001862D9 /* AddressLineConverter.h */,
+				F537FF721B1A3373001862D9 /* AddressLineConverter.m */,
 				F5CF09471AF2728400850BB0 /* App Horizontal Message */,
 				F5CB2BF91B0DDB2500275850 /* DateConverter.h */,
 				F5CB2BFA1B0DDB2500275850 /* DateConverter.m */,
@@ -735,6 +740,7 @@
 				F535A9A71AD06E500091E70B /* ExistingUserLoginViewController.m in Sources */,
 				F5EB65C31AED82A30026B988 /* JLTStepper.m in Sources */,
 				F5CF09461AF141A000850BB0 /* MBProgressHUD.m in Sources */,
+				F537FF731B1A3373001862D9 /* AddressLineConverter.m in Sources */,
 				F53EABF41B020F8700CCB97C /* MessageCell.m in Sources */,
 				F59758B21AC159B40099A978 /* AppDelegate.m in Sources */,
 				F5BAC3D11AC85BB7003E899C /* LoginViewController.m in Sources */,
