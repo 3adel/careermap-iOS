@@ -42,7 +42,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *degreeRequiredTextField;
 @property (strong, nonatomic) UIPickerView *degreeRequiredPicker;
 
-
+@property (weak, nonatomic) IBOutlet UITextField *jobLevelTextField;
+@property (strong, nonatomic) UIPickerView *jobLevelPicker;
 
 //methods
 - (void )setupSkillsView;
@@ -57,6 +58,8 @@
 - (void) CVthumbTapped;
 - (void) selectEmploymentType;
 -(void) selectDegreeRequiredType;
+- (void) selectJobLevel;
+
 
 //- (IBAction)yearsOfExperienceStepperChange:(JLTStepper *)sender;
 - (IBAction)clearFirstSkillButtonPressed:(UIButton *)sender;
@@ -65,6 +68,8 @@
 @property (nonatomic, strong) NSMutableArray *arrayOfSkillTextViews;
 @property (nonatomic, strong) NSArray *employmentTypeList;
 @property (nonatomic, strong) NSArray *degreeRequiredList;
+@property (nonatomic, strong) NSArray *jobLevelList;
+
 
 @property (nonatomic, strong) NSMutableArray *existingSkills;
 @property (nonatomic, strong) PFObject *jobObject;

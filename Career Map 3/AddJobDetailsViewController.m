@@ -94,6 +94,22 @@ int addSkillButtonTapCountJobCreation = 0;
     _degreeRequiredPicker.delegate =self;
     self.degreeRequiredList = @[@"Primary School",@"High/Secondary School", @"Associate's Degree (Diploma)",@"Bachelor's Degree",@"Master's Degree",@"PhD", @"None"];
 
+    //setup job level picker
+    _jobLevelTextField.delegate =self;
+    _jobLevelPicker = [[UIPickerView alloc] init];
+    [_jobLevelTextField setInputView:_jobLevelPicker];
+    UIToolbar *jobLevelPickerToolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+    [jobLevelPickerToolbar setTintColor:[UIColor colorWithRed:13.0/255.0 green:153.0/255 blue:252.0/255.0 alpha:1]];
+    
+    UIBarButtonItem *jobLevelDoneBtn = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(selectJobLevel)];
+    UIBarButtonItem *jobLevelSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    [jobLevelPickerToolbar setItems:[NSArray arrayWithObjects:jobLevelSpace, jobLevelDoneBtn, nil]];
+    [_jobLevelTextField setInputAccessoryView:jobLevelPickerToolbar];
+    _jobLevelPicker.delegate =self;
+    self.jobLevelList = @[@"Student/Intern",@"Entry level", @"Mid-level",@"Senior-level",@"Director", @"Executive", @"Other", @"None"];
+    
+    
+    
 
     //populate existing fields
     [self addExistingSkillTextField];
@@ -609,6 +625,7 @@ int addSkillButtonTapCountJobCreation = 0;
         _jobObject[@"compensation"] = _jobCompensation.text;
         _jobObject[@"employmentType"] = _employmentTypeTextField.text;
         _jobObject[@"degreeRequired"] = _degreeRequiredTextField.text;
+        _jobObject[@"jobLevel"] = _jobLevelTextField.text;
 
         
         
@@ -742,6 +759,15 @@ int addSkillButtonTapCountJobCreation = 0;
     [_degreeRequiredTextField resignFirstResponder];
 }
 
+-(void) selectJobLevel{
+    
+    NSLog(@"Select job level required");
+    
+    _jobLevelTextField.text = [self.jobLevelList objectAtIndex:[self.jobLevelPicker selectedRowInComponent:0]];
+    
+    [_jobLevelTextField resignFirstResponder];
+}
+
 //- (IBAction)yearsOfExperienceStepperChange:(JLTStepper *)sender {
 //
 //
@@ -811,6 +837,10 @@ int addSkillButtonTapCountJobCreation = 0;
         return [_degreeRequiredList objectAtIndex:row];
     }
     
+    else if ([pickerView isEqual:_jobLevelPicker]){
+        return [_jobLevelList objectAtIndex:row];
+    }
+    
     
     
     return @"";
@@ -830,6 +860,11 @@ int addSkillButtonTapCountJobCreation = 0;
         
         return [_degreeRequiredList count];
 
+    }
+    else if ([pickerView isEqual:_jobLevelPicker]){
+        
+        return [_jobLevelList count];
+        
     }
     
     return 0;
@@ -883,6 +918,29 @@ int addSkillButtonTapCountJobCreation = 0;
         
         
     }
+    
+    else if ([textField isEqual:_jobLevelTextField]){
+        NSString *selectedJobLevel = _jobLevelTextField.text;
+        
+        for (NSString *jobLevelString in _jobLevelList) {
+            if ([jobLevelString  isEqualToString:selectedJobLevel]) {
+                _jobLevelTextField.text =jobLevelString;
+                [_jobLevelTextField setTextColor:[UIColor blackColor]];
+                break;
+                ;
+            }
+            
+            else{
+                _jobLevelTextField.text =@"Please select a valid job level";
+                [_jobLevelTextField setTextColor:[UIColor redColor]];
+                
+                
+            }
+        }
+        
+        
+    }
+
     
     
 

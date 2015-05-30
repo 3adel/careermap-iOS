@@ -1316,6 +1316,7 @@
                         <outlet property="jobCompensation" destination="SHt-gh-QEE" id="RFn-g4-KUF"/>
                         <outlet property="jobJobDescription" destination="kBx-Vm-bs3" id="g5Y-2g-7jw"/>
                         <outlet property="jobJobTitle" destination="J1e-WR-A3l" id="iEf-mv-kyE"/>
+                        <outlet property="jobLevelTextField" destination="niN-55-Iwu" id="d0x-0Y-sPb"/>
                         <outlet property="jobRolesAndResponsibilities" destination="oMD-M8-Qzb" id="gVX-XI-9CP"/>
                         <outlet property="skillsScrollView" destination="wGG-65-tUK" id="2we-HP-OJN"/>
                         <outlet property="skillsSectionLabel" destination="Qtg-qH-2PQ" id="bXA-LY-MMn"/>
