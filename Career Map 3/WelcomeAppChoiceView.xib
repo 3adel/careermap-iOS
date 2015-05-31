@@ -14,25 +14,14 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ebW-kv-FFe">
-                    <rect key="frame" x="16" y="155" width="568" height="45"/>
-                    <color key="backgroundColor" red="0.0" green="0.50196081399917603" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    <state key="normal" title="I am an employer">
-                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="employerButtonPressed:" destination="-1" eventType="touchUpInside" id="K0S-fq-kGB"/>
-                    </connections>
-                </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mO0-ja-7c2">
-                    <rect key="frame" x="16" y="100" width="568" height="45"/>
+                    <rect key="frame" x="16" y="320" width="568" height="45"/>
                     <color key="backgroundColor" red="0.0" green="0.50196081399917603" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="40" id="7sQ-fb-25j"/>
                         <constraint firstAttribute="height" constant="45" id="Utb-si-Rm4"/>
                     </constraints>
-                    <state key="normal" title="I am Looking for a Job">
+                    <state key="normal" title="Start Now!">
                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -45,18 +34,128 @@
                         <action selector="jobSeekerButtonPressed:" destination="-1" eventType="touchUpInside" id="hER-so-K8t"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Find jobs in your area" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gn4-Nn-INd">
+                    <rect key="frame" x="200" y="50" width="200" height="26"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="200" id="blT-jM-Baa"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Post vacancies" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="duw-AV-lCO">
+                    <rect key="frame" x="200" y="86" width="200" height="26"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="200" id="xbb-DZ-pu7"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message job seekers and employers" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ke-Ok-xng">
+                    <rect key="frame" x="200" y="122" width="200" height="51"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Strict spam control" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sjW-Ti-rRo">
+                    <rect key="frame" x="200" y="183" width="200" height="26"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create your CV in seconds" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UeZ-Oa-1yI">
+                    <rect key="frame" x="200" y="219" width="200" height="51"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TabBar-JobList.png" translatesAutoresizingMaskIntoConstraints="NO" id="WVd-n2-09q">
+                    <rect key="frame" x="150" y="49" width="45" height="28"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="28" id="9Dh-eY-mkJ"/>
+                        <constraint firstAttribute="width" constant="45" id="dTx-5Y-bEq"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TabBar-AddJob.png" translatesAutoresizingMaskIntoConstraints="NO" id="HlV-u4-ZLo">
+                    <rect key="frame" x="150" y="85" width="45" height="28"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="45" id="NfX-CA-dE5"/>
+                        <constraint firstAttribute="height" constant="28" id="aIY-X5-TIX"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TabBar-Messages.png" translatesAutoresizingMaskIntoConstraints="NO" id="zd2-1c-xv7">
+                    <rect key="frame" x="150" y="121" width="45" height="28"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="45" id="3tp-6j-y9u"/>
+                        <constraint firstAttribute="height" constant="28" id="Ef8-25-UUK"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TabBar-Privacy.png" translatesAutoresizingMaskIntoConstraints="NO" id="i6V-QK-rcn">
+                    <rect key="frame" x="152" y="181" width="45" height="28"/>
+                    <color key="tintColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="28" id="Z5q-6K-Uz7"/>
+                        <constraint firstAttribute="width" constant="45" id="ftJ-kD-whc"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TabBar-MyCV.png" translatesAutoresizingMaskIntoConstraints="NO" id="oyR-oW-d8o">
+                    <rect key="frame" x="152" y="217" width="45" height="28"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="28" id="8TQ-pM-Ke5"/>
+                        <constraint firstAttribute="width" constant="45" id="miH-3k-n6R"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="ebW-kv-FFe" firstAttribute="height" secondItem="mO0-ja-7c2" secondAttribute="height" id="4lj-CG-Dgm"/>
-                <constraint firstItem="ebW-kv-FFe" firstAttribute="leading" secondItem="mO0-ja-7c2" secondAttribute="leading" id="CJO-Zf-7Lr"/>
+                <constraint firstItem="2ke-Ok-xng" firstAttribute="top" secondItem="duw-AV-lCO" secondAttribute="bottom" constant="10" id="3mg-bb-PnA"/>
+                <constraint firstItem="HlV-u4-ZLo" firstAttribute="centerY" secondItem="duw-AV-lCO" secondAttribute="centerY" id="98L-jV-eIx"/>
+                <constraint firstItem="UeZ-Oa-1yI" firstAttribute="top" secondItem="sjW-Ti-rRo" secondAttribute="bottom" constant="10" id="Cny-2h-SQw"/>
                 <constraint firstItem="mO0-ja-7c2" firstAttribute="top" secondItem="yTl-9f-h8Z" secondAttribute="top" constant="100" id="Cp2-nh-OPx"/>
-                <constraint firstItem="ebW-kv-FFe" firstAttribute="trailing" secondItem="mO0-ja-7c2" secondAttribute="trailing" id="bax-Vl-UAy"/>
+                <constraint firstItem="mO0-ja-7c2" firstAttribute="top" secondItem="UeZ-Oa-1yI" secondAttribute="bottom" constant="50" id="Goh-fb-ZJZ"/>
+                <constraint firstItem="UeZ-Oa-1yI" firstAttribute="leading" secondItem="sjW-Ti-rRo" secondAttribute="leading" id="HbT-yU-YTY"/>
+                <constraint firstItem="sjW-Ti-rRo" firstAttribute="top" secondItem="2ke-Ok-xng" secondAttribute="bottom" constant="10" id="JEU-yU-YzC"/>
+                <constraint firstItem="Gn4-Nn-INd" firstAttribute="top" secondItem="yTl-9f-h8Z" secondAttribute="top" constant="50" id="JFT-u0-JaR"/>
+                <constraint firstItem="2ke-Ok-xng" firstAttribute="leading" secondItem="sjW-Ti-rRo" secondAttribute="leading" id="Kz0-94-Irs"/>
+                <constraint firstItem="2ke-Ok-xng" firstAttribute="leading" secondItem="duw-AV-lCO" secondAttribute="leading" id="PDt-01-q8e"/>
+                <constraint firstItem="oyR-oW-d8o" firstAttribute="top" secondItem="i6V-QK-rcn" secondAttribute="bottom" constant="8" id="Qkx-sh-kFA"/>
+                <constraint firstItem="i6V-QK-rcn" firstAttribute="leading" secondItem="zd2-1c-xv7" secondAttribute="leading" constant="2" id="S2z-ez-LPt"/>
+                <constraint firstItem="2ke-Ok-xng" firstAttribute="width" secondItem="duw-AV-lCO" secondAttribute="width" id="Uv8-8L-lCl"/>
+                <constraint firstItem="HlV-u4-ZLo" firstAttribute="leading" secondItem="zd2-1c-xv7" secondAttribute="leading" id="adu-B2-gSs"/>
+                <constraint firstItem="Gn4-Nn-INd" firstAttribute="leading" secondItem="duw-AV-lCO" secondAttribute="leading" id="ayY-jJ-diE"/>
+                <constraint firstAttribute="centerX" secondItem="Gn4-Nn-INd" secondAttribute="centerX" id="dMO-Fk-MmF"/>
+                <constraint firstItem="WVd-n2-09q" firstAttribute="top" secondItem="Gn4-Nn-INd" secondAttribute="top" id="drZ-oc-J6A"/>
                 <constraint firstAttribute="trailing" secondItem="mO0-ja-7c2" secondAttribute="trailing" constant="16" id="eZO-Td-G2z"/>
-                <constraint firstItem="ebW-kv-FFe" firstAttribute="top" secondItem="mO0-ja-7c2" secondAttribute="bottom" constant="10" id="hVr-h9-7ea"/>
+                <constraint firstItem="2ke-Ok-xng" firstAttribute="width" secondItem="sjW-Ti-rRo" secondAttribute="width" id="hFN-tO-nhN"/>
+                <constraint firstItem="i6V-QK-rcn" firstAttribute="centerY" secondItem="sjW-Ti-rRo" secondAttribute="centerY" constant="-1" id="hFY-fY-Knq"/>
+                <constraint firstItem="UeZ-Oa-1yI" firstAttribute="width" secondItem="sjW-Ti-rRo" secondAttribute="width" id="kbr-4E-1wD"/>
+                <constraint firstItem="zd2-1c-xv7" firstAttribute="top" secondItem="HlV-u4-ZLo" secondAttribute="bottom" constant="8" id="oJy-Ag-jKc"/>
                 <constraint firstItem="mO0-ja-7c2" firstAttribute="leading" secondItem="yTl-9f-h8Z" secondAttribute="leading" constant="16" id="r7v-Vd-mQW"/>
+                <constraint firstItem="oyR-oW-d8o" firstAttribute="top" secondItem="i6V-QK-rcn" secondAttribute="bottom" constant="35" id="tdj-GA-pY2"/>
+                <constraint firstItem="WVd-n2-09q" firstAttribute="leading" secondItem="HlV-u4-ZLo" secondAttribute="leading" id="tqp-fu-tSC"/>
+                <constraint firstItem="Gn4-Nn-INd" firstAttribute="leading" secondItem="WVd-n2-09q" secondAttribute="trailing" constant="5" id="vTl-gd-H23"/>
+                <constraint firstItem="duw-AV-lCO" firstAttribute="top" secondItem="Gn4-Nn-INd" secondAttribute="bottom" constant="10" id="vnc-BM-0Bd"/>
+                <constraint firstItem="WVd-n2-09q" firstAttribute="centerY" secondItem="Gn4-Nn-INd" secondAttribute="centerY" id="wl8-wv-faX"/>
+                <constraint firstItem="oyR-oW-d8o" firstAttribute="leading" secondItem="i6V-QK-rcn" secondAttribute="leading" id="x8d-zu-ckj"/>
+                <constraint firstItem="i6V-QK-rcn" firstAttribute="top" secondItem="zd2-1c-xv7" secondAttribute="bottom" constant="32" id="xXh-Rp-3tX"/>
             </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="drZ-oc-J6A"/>
+                    <exclude reference="xXh-Rp-3tX"/>
+                    <exclude reference="tdj-GA-pY2"/>
+                    <exclude reference="Cp2-nh-OPx"/>
+                </mask>
+            </variation>
             <point key="canvasLocation" x="297" y="-6"/>
         </view>
     </objects>
+    <resources>
+        <image name="TabBar-AddJob.png" width="45" height="28"/>
+        <image name="TabBar-JobList.png" width="45" height="28"/>
+        <image name="TabBar-Messages.png" width="45" height="28"/>
+        <image name="TabBar-MyCV.png" width="45" height="28"/>
+        <image name="TabBar-Privacy.png" width="45" height="28"/>
+    </resources>
 </document>

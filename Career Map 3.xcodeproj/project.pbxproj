@@ -93,6 +93,12 @@
 		F5EA830B1B1B2A0000B5DA41 /* myLocation@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5EA830A1B1B2A0000B5DA41 /* myLocation@3x.png */; };
 		F5EA830E1B1B2A7000B5DA41 /* myLocation.png in Resources */ = {isa = PBXBuildFile; fileRef = F5EA830C1B1B2A7000B5DA41 /* myLocation.png */; };
 		F5EA830F1B1B2A7000B5DA41 /* myLocation@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5EA830D1B1B2A7000B5DA41 /* myLocation@2x.png */; };
+		F5EA83131B1B915700B5DA41 /* TabBar-Block.png in Resources */ = {isa = PBXBuildFile; fileRef = F5EA83101B1B915700B5DA41 /* TabBar-Block.png */; };
+		F5EA83141B1B915700B5DA41 /* TabBar-Block@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5EA83111B1B915700B5DA41 /* TabBar-Block@2x.png */; };
+		F5EA83151B1B915700B5DA41 /* TabBar-Block@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5EA83121B1B915700B5DA41 /* TabBar-Block@3x.png */; };
+		F5EA83191B1B956300B5DA41 /* TabBar-Privacy.png in Resources */ = {isa = PBXBuildFile; fileRef = F5EA83161B1B956300B5DA41 /* TabBar-Privacy.png */; };
+		F5EA831A1B1B956300B5DA41 /* TabBar-Privacy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5EA83171B1B956300B5DA41 /* TabBar-Privacy@2x.png */; };
+		F5EA831B1B1B956300B5DA41 /* TabBar-Privacy@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5EA83181B1B956300B5DA41 /* TabBar-Privacy@3x.png */; };
 		F5EB65BC1AEBDFB60026B988 /* SkillTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = F5EB65BB1AEBDFB60026B988 /* SkillTextField.m */; };
 		F5EB65C01AECF6BD0026B988 /* GCPlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = F5EB65BF1AECF6BD0026B988 /* GCPlaceholderTextView.m */; };
 		F5EB65C31AED82A30026B988 /* JLTStepper.m in Sources */ = {isa = PBXBuildFile; fileRef = F5EB65C21AED82A30026B988 /* JLTStepper.m */; };
@@ -229,6 +235,12 @@
 		F5EA830A1B1B2A0000B5DA41 /* myLocation@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myLocation@3x.png"; sourceTree = "<group>"; };
 		F5EA830C1B1B2A7000B5DA41 /* myLocation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myLocation.png; sourceTree = "<group>"; };
 		F5EA830D1B1B2A7000B5DA41 /* myLocation@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myLocation@2x.png"; sourceTree = "<group>"; };
+		F5EA83101B1B915700B5DA41 /* TabBar-Block.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBar-Block.png"; sourceTree = "<group>"; };
+		F5EA83111B1B915700B5DA41 /* TabBar-Block@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBar-Block@2x.png"; sourceTree = "<group>"; };
+		F5EA83121B1B915700B5DA41 /* TabBar-Block@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBar-Block@3x.png"; sourceTree = "<group>"; };
+		F5EA83161B1B956300B5DA41 /* TabBar-Privacy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBar-Privacy.png"; sourceTree = "<group>"; };
+		F5EA83171B1B956300B5DA41 /* TabBar-Privacy@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBar-Privacy@2x.png"; sourceTree = "<group>"; };
+		F5EA83181B1B956300B5DA41 /* TabBar-Privacy@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBar-Privacy@3x.png"; sourceTree = "<group>"; };
 		F5EB65BA1AEBDFB60026B988 /* SkillTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkillTextField.h; sourceTree = "<group>"; };
 		F5EB65BB1AEBDFB60026B988 /* SkillTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkillTextField.m; sourceTree = "<group>"; };
 		F5EB65BE1AECF6BD0026B988 /* GCPlaceholderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCPlaceholderTextView.h; sourceTree = "<group>"; };
@@ -567,6 +579,12 @@
 		F5CF094E1AF283E300850BB0 /* Tab Bar */ = {
 			isa = PBXGroup;
 			children = (
+				F5EA83161B1B956300B5DA41 /* TabBar-Privacy.png */,
+				F5EA83171B1B956300B5DA41 /* TabBar-Privacy@2x.png */,
+				F5EA83181B1B956300B5DA41 /* TabBar-Privacy@3x.png */,
+				F5EA83101B1B915700B5DA41 /* TabBar-Block.png */,
+				F5EA83111B1B915700B5DA41 /* TabBar-Block@2x.png */,
+				F5EA83121B1B915700B5DA41 /* TabBar-Block@3x.png */,
 				F59584821B1347A800B06778 /* TabBar-AddJob.png */,
 				F59584831B1347A900B06778 /* TabBar-AddJob@2x.png */,
 				F59584841B1347A900B06778 /* TabBar-AddJob@3x.png */,
@@ -704,12 +722,14 @@
 				F59584851B1347A900B06778 /* TabBar-AddJob.png in Resources */,
 				F59584971B13A43D00B06778 /* job-annotation-icon@2x.png in Resources */,
 				F5EA83071B1AF59500B5DA41 /* 37x-Checkmark.png in Resources */,
+				F5EA83151B1B915700B5DA41 /* TabBar-Block@3x.png in Resources */,
 				F5CF09611AF285F000850BB0 /* TabBar-MyCV@2x.png in Resources */,
 				F50142DA1ACD19CD000DDBE3 /* JobVoteDwn-selected@3x.png in Resources */,
 				F59758BB1AC159B40099A978 /* Main.storyboard in Resources */,
 				F50142D91ACD19CD000DDBE3 /* JobVoteDwn-no-selected@3x.png in Resources */,
 				F535AA641AD3CE270091E70B /* WelcomeAppChoiceView.xib in Resources */,
 				F59758C01AC159B40099A978 /* LaunchScreen.xib in Resources */,
+				F5EA83141B1B915700B5DA41 /* TabBar-Block@2x.png in Resources */,
 				F5CF094B1AF2820500850BB0 /* TabBar-JobList@2x.png in Resources */,
 				F5EB66031AEEB1A60026B988 /* AppHorizontalMessageView.xib in Resources */,
 				F506DC341AF9504F000ABF49 /* LoadingJobListEmptyView.xib in Resources */,
@@ -734,13 +754,17 @@
 				F59584921B13A10100B06778 /* job-annotation-icon3@3x.png in Resources */,
 				F5CF09621AF285F000850BB0 /* TabBar-MyCV@3x.png in Resources */,
 				F50142DC1ACD19CD000DDBE3 /* JobVoteUp-selected@3x.png in Resources */,
+				F5EA831B1B1B956300B5DA41 /* TabBar-Privacy@3x.png in Resources */,
 				F52DC4971AE6507D00693911 /* Default_Profile_Picture@3x.png in Resources */,
 				F5CF11F91AFD50AC00FD0FCA /* TabBar-Messages@2x.png in Resources */,
+				F5EA83131B1B915700B5DA41 /* TabBar-Block.png in Resources */,
 				F59584961B13A43D00B06778 /* job-annotation-icon.png in Resources */,
 				F59758BD1AC159B40099A978 /* Images.xcassets in Resources */,
 				F5CF09601AF285F000850BB0 /* TabBar-MyCV.png in Resources */,
+				F5EA831A1B1B956300B5DA41 /* TabBar-Privacy@2x.png in Resources */,
 				F5CF09491AF2805F00850BB0 /* TabBar-JobList@3x.png in Resources */,
 				F5EA830E1B1B2A7000B5DA41 /* myLocation.png in Resources */,
+				F5EA83191B1B956300B5DA41 /* TabBar-Privacy.png in Resources */,
 				F5CF095C1AF2854600850BB0 /* TabBar-Settings.png in Resources */,
 				F5E655641B04EF9B0025F219 /* complete.m4r in Resources */,
 				F5CF095A1AF284E500850BB0 /* TabBar-Settings@3x.png in Resources */,
