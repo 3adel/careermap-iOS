@@ -40,6 +40,7 @@ int addSkillButtonTapCountJobCreation = 0;
     _jobRolesAndResponsibilities.layer.cornerRadius =5.0f;
     _jobRolesAndResponsibilities.layer.borderWidth = .5f;
     _jobRolesAndResponsibilities.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+
     
     
     //    //detect when theview is tapped while the text is being edited
@@ -201,6 +202,7 @@ int addSkillButtonTapCountJobCreation = 0;
             self.skillTextField.removeSkillButton.backgroundColor = [UIColor redColor];
             [self.skillTextField.removeSkillButton.titleLabel setFont:[UIFont systemFontOfSize:15]];
 
+
             //remove skill button constraints and targets
             self.skillTextField.removeSkillButton.translatesAutoresizingMaskIntoConstraints =NO;
             [self.skillTextField.removeSkillButton setTag:addSkillButtonTapCountJobCreation];
@@ -332,6 +334,7 @@ int addSkillButtonTapCountJobCreation = 0;
 - (void) setupAddSkillButton{
     _addSkillButton = [[UIButton alloc] init];
     _addSkillButton.backgroundColor = [UIColor colorWithRed:13.0/255.0 green:153.0/255 blue:252.0/255.0 alpha:1];
+    _addSkillButton.layer.cornerRadius =5.0f;
     [_addSkillButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     _addSkillButton.translatesAutoresizingMaskIntoConstraints =NO;
     [_addSkillButton setTitle:@"+ Add another skill" forState:UIControlStateNormal];
@@ -556,7 +559,7 @@ int addSkillButtonTapCountJobCreation = 0;
 
     //validate mandatory fields only
     if ([_jobJobTitle.text isEqualToString:@""] || [_jobBusinessName.text isEqualToString:@""]|| [_jobJobDescription.text isEqualToString:@""]) {
-        UIAlertView *alert= [[UIAlertView alloc]initWithTitle:@"Error!" message:@"You need to complete all madnatory fields" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
+        UIAlertView *alert= [[UIAlertView alloc]initWithTitle:@"Error!" message:@"Please complete all the required fields" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
 
         [alert show];
     }
@@ -589,6 +592,14 @@ int addSkillButtonTapCountJobCreation = 0;
 
 
 - (void) saveCVToParse{
+    
+    //progress spinner initialization
+    _HUDProgressIndicator = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    _HUDProgressIndicator.labelText = @"Saving job ...";
+    _HUDProgressIndicator.mode = MBProgressHUDModeIndeterminate;
+    
+    
+    
     
     if ([_jobObject objectId]) {
         NSLog(@"object has object id");
@@ -631,6 +642,31 @@ int addSkillButtonTapCountJobCreation = 0;
         [_jobObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (succeeded) {
                 NSLog(@"saved skills to parse successfully");
+                
+                //job added, update the UI
+                UIImage *progressIndicatorDoneImage = [UIImage imageNamed:@"37x-Checkmark.png"];
+                UIImageView *progressIndicatorDoneImageView = [[UIImageView alloc] initWithImage:progressIndicatorDoneImage];
+                _HUDProgressIndicator.customView = progressIndicatorDoneImageView;
+                _HUDProgressIndicator.mode = MBProgressHUDModeCustomView;
+                _HUDProgressIndicator.labelText = @"Job saved to job list";
+                
+                dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 3.0 * NSEC_PER_SEC);
+                dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                    // Do something...
+                    _HUDProgressIndicator.hidden = YES;
+                    
+                    
+                    //reset the navigation to job location view to add a new job
+                    UIViewController *viewController = [[self storyboard] instantiateViewControllerWithIdentifier:@"jobLocationViewController"];
+                    UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:viewController];
+                    [self.navigationController pushViewController:navi animated:YES];
+    
+                    
+                });
+                
+
+
+                
                 
                 
             }

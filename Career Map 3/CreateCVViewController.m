@@ -346,6 +346,7 @@ int addSkillButtonTapCount = 0;
 - (void) setupAddSkillButton{
     _addSkillButton = [[UIButton alloc] init];
     _addSkillButton.backgroundColor = [UIColor colorWithRed:13.0/255.0 green:153.0/255 blue:252.0/255.0 alpha:1];
+    _addSkillButton.layer.cornerRadius =5.0f;
     [_addSkillButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     _addSkillButton.translatesAutoresizingMaskIntoConstraints =NO;
     [_addSkillButton setTitle:@"+ Add another skill" forState:UIControlStateNormal];
@@ -569,7 +570,7 @@ int addSkillButtonTapCount = 0;
     
     //validate mandatory fields only
     if ([_CVjobSeekerFirstNameTextView.text isEqualToString:@""] || [_CVjobSeekerLastNameTextView.text isEqualToString:@""]) {
-        UIAlertView *alert= [[UIAlertView alloc]initWithTitle:@"Error!" message:@"You need to complete all madnatory fields" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
+        UIAlertView *alert= [[UIAlertView alloc]initWithTitle:@"Error!" message:@"Please complete all the required fields" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
         
         [alert show];
     }

@@ -24,6 +24,12 @@
     [super viewDidLoad];
     
 
+    //styles
+    _applyWithCVButton.layer.cornerRadius =5.0f;
+    _messageEmployerButton.layer.cornerRadius =5.0f;
+
+    
+    
     
     
     // Do any additional setup after loading the view.

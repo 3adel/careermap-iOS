@@ -29,6 +29,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *jobVoteUpButton;
 @property (weak, nonatomic) IBOutlet UIButton *jobVoteDownButton;
 @property (weak, nonatomic) IBOutlet UIButton *applyWithCVButton;
+@property (weak, nonatomic) IBOutlet UIButton *messageEmployerButton;
+;
 
 @property (weak, nonatomic) IBOutlet MKMapView *jobMap;
 @property (weak, nonatomic) IBOutlet UIView *jobSkillsView;

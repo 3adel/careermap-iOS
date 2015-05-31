@@ -11,7 +11,7 @@
 #import "SkillTextField.h"
 #import "GCPlaceholderTextView.h"
 #import "JLTStepper.h"
-
+#import "MBProgressHUD.h"
 
 @interface AddJobDetailsViewController : UIViewController <UIActionSheetDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate>
 
@@ -44,6 +44,7 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *jobLevelTextField;
 @property (strong, nonatomic) UIPickerView *jobLevelPicker;
+@property (nonatomic, strong) MBProgressHUD *HUDProgressIndicator;
 
 //methods
 - (void )setupSkillsView;
