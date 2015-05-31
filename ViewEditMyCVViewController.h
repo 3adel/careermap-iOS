@@ -28,6 +28,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *CVJobSeekerEducationLabel;
 @property (weak, nonatomic) IBOutlet UILabel *CVJobSeekerDegreeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *CVJobSeekerYearsOfExperienceLabel;
+@property (weak, nonatomic) IBOutlet UIButton *createCVButton;
 
 
 @property (weak, nonatomic) IBOutlet UITextView *jobSkillsTextView;

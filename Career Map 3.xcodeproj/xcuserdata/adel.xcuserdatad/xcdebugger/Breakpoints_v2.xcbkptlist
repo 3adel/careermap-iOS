@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Career Map 3/JobListViewController.m"
-            timestampString = "454756507.036148"
+            timestampString = "454783498.742937"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "169"
-            endingLineNumber = "169"
+            startingLineNumber = "172"
+            endingLineNumber = "172"
             landmarkName = "-retrieveFromParse"
             landmarkType = "5">
          </BreakpointContent>

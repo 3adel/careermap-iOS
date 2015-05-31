@@ -625,18 +625,45 @@ int addSkillButtonTapCountJobCreation = 0;
             
             
         }
-        _jobObject[@"postedByUser"] = [PFUser currentUser];
+        
         _jobObject[@"reportCount"] = [NSNumber numberWithInteger:0];
         _jobObject[@"skillsRequired"] = existingSkillsArray;
-        _jobObject[@"title"] = _jobJobTitle.text;
-        _jobObject[@"businessName"] = _jobBusinessName.text;
-        _jobObject[@"description"] = _jobJobDescription.text;
-        _jobObject[@"rolesAndResponsibilities"] = _jobRolesAndResponsibilities.text;
-        _jobObject[@"compensation"] = _jobCompensation.text;
-        _jobObject[@"employmentType"] = _employmentTypeTextField.text;
-        _jobObject[@"degreeRequired"] = _degreeRequiredTextField.text;
-        _jobObject[@"jobLevel"] = _jobLevelTextField.text;
-
+        if ([PFUser currentUser]) {
+            _jobObject[@"postedByUser"] = [PFUser currentUser];
+        }
+        if (![_jobJobTitle.text isEqualToString:@""]) {
+            _jobObject[@"title"] = _jobJobTitle.text;
+        }
+        
+        if (![_jobBusinessName.text isEqualToString:@""]) {
+            _jobObject[@"businessName"] = _jobBusinessName.text;
+        }
+        
+        if (![_jobJobDescription.text isEqualToString:@""]) {
+            _jobObject[@"description"] = _jobJobDescription.text;
+        }
+        
+        if (![_jobRolesAndResponsibilities.text isEqualToString:@""]) {
+            _jobObject[@"rolesAndResponsibilities"] = _jobRolesAndResponsibilities.text;
+        }
+        
+        if (![_jobCompensation.text isEqualToString:@""]) {
+            _jobObject[@"compensation"] = _jobCompensation.text;
+        }
+        
+        if (![_employmentTypeTextField.text isEqualToString:@""]) {
+            _jobObject[@"employmentType"] = _employmentTypeTextField.text;
+        }
+        
+        if (![_degreeRequiredTextField.text isEqualToString:@""]) {
+            _jobObject[@"degreeRequired"] = _degreeRequiredTextField.text;
+        }
+        
+        if (![_jobLevelTextField.text isEqualToString:@""]) {
+            _jobObject[@"jobLevel"] = _jobLevelTextField.text;
+        }
+        
+        
         
         
         [_jobObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {

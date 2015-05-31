@@ -37,6 +37,13 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *jobDetailsScrollView;
 @property (weak, nonatomic) IBOutlet UITextView *jobsSkillsTextView;
 @property (weak, nonatomic) IBOutlet UITextView *jobEducationTextView;
+@property (weak, nonatomic) IBOutlet UITextView *jobRolesAndResponsibilitiesTextView;
+@property (weak, nonatomic) IBOutlet UITextView *jobCompensationTextView;
+@property (weak, nonatomic) IBOutlet UITextView *jobEmploymentTypeTextView;
+@property (weak, nonatomic) IBOutlet UITextView *jobIndustryTypeTextView;
+
+
+
 @property (strong, nonatomic) UIAlertView *createCVAlert;
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *reportJobBarButton;
@@ -52,6 +59,13 @@
 @property (nonatomic, strong) NSString *jobArea;
 @property (nonatomic, strong) NSString *jobStatus;
 @property (nonatomic, strong) NSArray *jobRequiredSkills;
+
+@property (nonatomic, strong) NSString *jobRolesAndResponsibilities;
+@property (nonatomic, strong) NSString *jobCompensation;
+@property (nonatomic, strong) NSString *jobEmploymentType;
+@property (nonatomic, strong) NSString *jobIndustryType;
+
+
 @property (nonatomic, strong) CLLocation *jobLocation;
 @property (nonatomic, strong) PFGeoPoint *userLocation;
 @property (nonatomic,strong) NSString *jobAddressLine;

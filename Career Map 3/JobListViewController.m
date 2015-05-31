@@ -140,6 +140,9 @@ bool messageIsReceived = NO;
     [retrieveJobs includeKey:@"status"];
     [retrieveJobs includeKey:@"postedByUser"];
     [retrieveJobs includeKey:@"appliedByUsers"];
+    [retrieveJobs includeKey:@"jobIndustry"];
+
+
     [retrieveJobs whereKey:@"geolocation" nearGeoPoint:self.userLocation withinKilometers:100];
     retrieveJobs.limit =1000;
     //[retrieveJobs orderByDescending:@"createdAt"];
@@ -518,6 +521,17 @@ bool messageIsReceived = NO;
         destViewController.jobRequiredSkills = [jobObject objectForKey:@"skillsRequired"];
         destViewController.jobEducation =[jobObject objectForKey:@"degreeRequired"];
         destViewController.userLocation = self.userLocation;
+        
+        destViewController.jobRolesAndResponsibilities =[jobObject objectForKey:@"rolesAndResponsibilities"];
+        destViewController.jobCompensation =[jobObject objectForKey:@"compensation"];
+        destViewController.jobEmploymentType =[jobObject objectForKey:@"employmentType"];
+        destViewController.jobIndustryType =[[jobObject objectForKey:@"jobIndustry"] objectForKey:@"name"];
+        
+        
+
+        
+        
+        
         
         
         CLLocation  *jobLocation = [[CLLocation alloc] initWithLatitude:[[jobObject objectForKey:@"geolocation"] latitude] longitude:[[jobObject objectForKey:@"geolocation"] longitude]];

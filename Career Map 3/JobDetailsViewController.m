@@ -39,15 +39,57 @@
     
     //set the values of view controller
    // self.jobTitleLabel.text = self.jobTitle;
-    self.jobDescriptionLabel.text=self.jobDescription;
-    self.jobTitleTextView.text= self.jobTitle;
-    self.jobAreaLabel.text = self.jobArea;
-    self.jobDateAddedLabel.text = self.jobDateAdded;
-    self.jobEmployerLabel.text = self.jobEmployer;
-    self.jobVoteLabel.text =self.jobVote;
-    self.jobDistanceFromUserLabel.text = self.jobDistanceFromUser;
-    self.jobEducationTextView.text = self.jobEducation;
     
+    
+    if (self.jobDescription) {
+        self.jobDescriptionLabel.text=self.jobDescription;
+    }
+    
+    if (self.jobTitle) {
+        self.jobTitleTextView.text= self.jobTitle;
+    }
+    
+    if (self.jobArea) {
+    self.jobAreaLabel.text = self.jobArea;
+    }
+    
+    if (self.jobDateAdded) {
+    self.jobDateAddedLabel.text = self.jobDateAdded;
+    }
+    
+    if (self.jobEmployer) {
+        self.jobEmployerLabel.text = self.jobEmployer;
+    }
+    
+    if (self.jobEmployer) {
+        self.jobEmployerLabel.text = self.jobEmployer;
+    }
+    
+    if (self.jobDistanceFromUser) {
+        self.jobDistanceFromUserLabel.text = self.jobDistanceFromUser;
+    }
+    
+    if (self.jobEducation) {
+        self.jobEducationTextView.text = self.jobEducation;
+    }
+    
+    if (self.jobRolesAndResponsibilities) {
+        self.jobRolesAndResponsibilitiesTextView.text = self.jobRolesAndResponsibilities;
+    }
+    
+    if (self.jobCompensation) {
+        self.jobCompensationTextView.text = self.jobCompensation;
+    }
+    
+    if (self.jobEmploymentType) {
+        self.jobEmploymentTypeTextView.text = self.jobEmploymentType;
+    }
+    
+    if (self.jobIndustryType) {
+        self.jobIndustryTypeTextView.text = self.jobIndustryType;
+    }
+
+
     self.jobMap.delegate = self;
     self.jobMap.mapType = MKMapTypeStandard;
     //detect when the map is tapped
@@ -59,38 +101,33 @@
    // [self.jobDetailsScrollView addSubview:self.jobSkillsView];
    // [self.jobSkillsView setBackgroundColor:[UIColor redColor]];
     
-    
-    int count =0;
-    for (NSString *skill in self.jobRequiredSkills) {
-       // NSLog(@"Job skills array =%@", skill);
-        
-        //add skills to the skills view
-        /*
-        UILabel *skillLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 40*count, 100, 30)];
-        [skillLabel setBackgroundColor:[UIColor grayColor]];
-        [skillLabel setFont:[UIFont systemFontOfSize:14]];
-        skillLabel.text = skill;
-        [self.jobSkillsView addSubview:skillLabel];
-        */
-        //_jobsSkillsTextView.text = @"test jkjkl jkl  jklj klj klj klj kl jkl jkl jkl jkl jkl jkl jkl jkl jkl kl k l jkl jkl jkl jkl jkl jkl jkl jk l";
-        //UITextView *skillTextview =
-       // NSString *string1, *string2, *result;
-        
-       // string1 = @"This is ";
-       // string2 = @"my string.";
-        
-        
-        
-        _jobsSkillsTextView.text = [_jobsSkillsTextView.text stringByAppendingString:[NSString stringWithFormat:@"- %@",skill]];
-        
-        if (!(count == ([self.jobRequiredSkills count])-1)) {
-            _jobsSkillsTextView.text = [_jobsSkillsTextView.text stringByAppendingString:@"\n"];
+    if (self.jobRequiredSkills.count <1) {
+        _jobsSkillsTextView.text =@"-";
+    }
+    else{
+        _jobsSkillsTextView.text =@"";
+        int count =0;
+        for (NSString *skill in self.jobRequiredSkills) {
+            
+            
+            
+            _jobsSkillsTextView.text = [_jobsSkillsTextView.text stringByAppendingString:[NSString stringWithFormat:@"%d. %@",count+1,skill]];
+            
+            if (!(count == ([self.jobRequiredSkills count])-1)) {
+                _jobsSkillsTextView.text = [_jobsSkillsTextView.text stringByAppendingString:@"\n"];
+            }
+            
+            
+            
+            count++;
         }
         
         
         
-        count++;
+        
     }
+    
+
     
     
     

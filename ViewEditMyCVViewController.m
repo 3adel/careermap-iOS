@@ -112,6 +112,9 @@
     
         //if they do, view the CV
     
+    //styles
+    _createCVButton.layer.cornerRadius = 5.0f;
+    
     
     //progress spinner initialization
     _MBProgressHUDLoadingCV = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
