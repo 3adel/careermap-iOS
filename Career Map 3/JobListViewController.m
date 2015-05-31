@@ -394,7 +394,7 @@ bool messageIsReceived = NO;
     cell.jobVoteDownFlag.text =[jobObject objectForKey:@"currentUserVotedDownThisJob"];
     cell.jobVoteUpButton.titleLabel.text =[jobObject objectForKey:@"currentUserVotedUpThisJob"];
     cell.jobTitleLabel.text = [jobObject objectForKey:@"title"];
-    cell.jobEmployer.text=[jobObject[@"employer"] objectForKey:@"employerName"];
+    cell.jobEmployer.text=[jobObject objectForKey:@"businessName"];
     cell.jobStatus.text=[jobObject[@"status"] objectForKey:@"description"];
     //cell.jobPostedByUsernameLabel.text = [jobObject[@"postedByUser"] objectForKey:@"username"];
     
@@ -503,7 +503,7 @@ bool messageIsReceived = NO;
         destViewController.jobTitle = [jobObject objectForKey:@"title"];
         destViewController.jobDescription = [jobObject objectForKey:@"description"];
         destViewController.jobDistanceFromUser = [NSString stringWithFormat:@"%@ km",[NSString stringWithFormat:@"%.2f",[self.userLocation distanceInKilometersTo:[jobObject objectForKey:@"geolocation"]]] ];
-        destViewController.jobEmployer =[jobObject[@"employer"] objectForKey:@"employerName"];
+        destViewController.jobEmployer =[jobObject objectForKey:@"businessName"];
 
         //destViewController.jobDateAdded =[formatter stringFromDate:[jobObject createdAt]];
         
