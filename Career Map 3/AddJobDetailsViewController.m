@@ -541,40 +541,39 @@ int addSkillButtonTapCountJobCreation = 0;
     
     
     
-    //    [self.view endEditing:YES];
-    //
-    //    [self checkFieldsComplete];
+        [self.view endEditing:YES];
+    
+        [self checkFieldsComplete];
     
     
     
     
-    [self saveCVToParse];
     
 }
 
 
-//- (void) checkFieldsComplete{
-//
-//    //validate mandatory fields only
-//    if ([_CVjobSeekerFirstNameTextView.text isEqualToString:@""] || [_CVjobSeekerLastNameTextView.text isEqualToString:@""]) {
-//        UIAlertView *alert= [[UIAlertView alloc]initWithTitle:@"Error!" message:@"You need to complete all madnatory fields" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
-//
-//        [alert show];
-//    }
-//
-//
-//    else{
-//
-//
-//        NSLog(@"Save cv to backend");
-//        [[NSNotificationCenter defaultCenter]postNotificationName:@"saveCVButtonPressed" object:nil];
-//        [self saveCVToParse];
-//
-//    }
-//
-//
-//
-//}
+- (void) checkFieldsComplete{
+
+    //validate mandatory fields only
+    if ([_jobJobTitle.text isEqualToString:@""] || [_jobBusinessName.text isEqualToString:@""]|| [_jobJobDescription.text isEqualToString:@""]) {
+        UIAlertView *alert= [[UIAlertView alloc]initWithTitle:@"Error!" message:@"You need to complete all madnatory fields" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
+
+        [alert show];
+    }
+
+
+    else{
+
+
+        NSLog(@"Save job to backend");
+        //[[NSNotificationCenter defaultCenter]postNotificationName:@"saveCVButtonPressed" object:nil];
+        [self saveCVToParse];
+
+    }
+
+
+
+}
 
 
 //dismiss keyboard when view is tapped

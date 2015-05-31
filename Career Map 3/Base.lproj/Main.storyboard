@@ -1225,10 +1225,10 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="* Employment Type" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nlv-la-JiT">
-                                        <rect key="frame" x="0.0" y="374" width="568" height="40"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Degree Required" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mTn-KL-83K">
+                                        <rect key="frame" x="0.0" y="424" width="568" height="40"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="VLc-EP-gB9"/>
+                                            <constraint firstAttribute="height" constant="40" id="VJv-MC-n3p"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -1259,10 +1259,10 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Degree Required" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mTn-KL-83K">
-                                        <rect key="frame" x="0.0" y="424" width="568" height="40"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Employment Type" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nlv-la-JiT">
+                                        <rect key="frame" x="0.0" y="374" width="568" height="40"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="VJv-MC-n3p"/>
+                                            <constraint firstAttribute="height" constant="40" id="VLc-EP-gB9"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <textInputTraits key="textInputTraits"/>
