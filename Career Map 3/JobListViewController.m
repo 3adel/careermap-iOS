@@ -143,7 +143,7 @@ bool messageIsReceived = NO;
     [retrieveJobs includeKey:@"jobIndustry"];
 
 
-    [retrieveJobs whereKey:@"geolocation" nearGeoPoint:self.userLocation withinKilometers:100];
+    [retrieveJobs whereKey:@"geolocation" nearGeoPoint:self.userLocation withinKilometers:10000];
     retrieveJobs.limit =1000;
     //[retrieveJobs orderByDescending:@"createdAt"];
     
