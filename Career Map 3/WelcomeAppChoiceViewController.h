@@ -11,5 +11,6 @@
 @interface WelcomeAppChoiceViewController : UIViewController
 - (IBAction)jobSeekerButtonPressed:(UIButton *)sender;
 - (IBAction)employerButtonPressed:(UIButton *)sender;
+@property (weak, nonatomic) IBOutlet UIButton *startNowButton;
 
 @end

@@ -11,6 +11,7 @@
 #import "LoginViewController.h"
 
 @interface ExistingUserLoginViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UIButton *loginButton;
 @property (weak, nonatomic) IBOutlet UITextField *loginUsernameField;
 @property (weak, nonatomic) IBOutlet UITextField *loginPasswordField;
 - (IBAction)loginButton:(UIButton *)sender;

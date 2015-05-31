@@ -30,6 +30,14 @@
     _emailField.layer.borderWidth= .5f;
     */
     
+    
+    //style
+    _registerNewUserButton.layer.cornerRadius = 5.0f;
+        _loginButton.layer.cornerRadius = 5.0f;
+    
+    
+    
+    
 }
 
 

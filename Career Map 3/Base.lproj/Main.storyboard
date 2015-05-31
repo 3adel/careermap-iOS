@@ -547,7 +547,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="eWZ-3l-bHs"/>
                                 </constraints>
-                                <state key="normal" title="New user / Login">
+                                <state key="normal" title="Register / Login">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -1520,6 +1520,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="loginButton" destination="bb8-zb-0bC" id="SEm-bb-dQh"/>
                         <outlet property="loginPasswordField" destination="1bh-Bv-W3e" id="B4C-Uc-3YW"/>
                         <outlet property="loginUsernameField" destination="7a2-AK-jrw" id="nUV-gz-rKP"/>
                         <segue destination="49e-Tb-3d3" kind="presentation" identifier="loginSuccess" modalTransitionStyle="flipHorizontal" id="UCD-x7-uVZ"/>
@@ -1554,12 +1555,12 @@
                                 </items>
                             </navigationBar>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="*Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UnN-V3-6sf">
-                                <rect key="frame" x="16" y="154" width="568" height="40"/>
+                                <rect key="frame" x="16" y="124" width="568" height="40"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="*Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DVh-jk-MEt">
-                                <rect key="frame" x="16" y="204" width="568" height="40"/>
+                                <rect key="frame" x="16" y="174" width="568" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="y0A-Xq-Ibw"/>
                                 </constraints>
@@ -1567,7 +1568,7 @@
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="*Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TdS-gP-fkv">
-                                <rect key="frame" x="16" y="104" width="568" height="40"/>
+                                <rect key="frame" x="16" y="74" width="568" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Q7K-d6-28F"/>
                                 </constraints>
@@ -1575,7 +1576,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IpW-mT-Hpt">
-                                <rect key="frame" x="16" y="324" width="568" height="45"/>
+                                <rect key="frame" x="16" y="294" width="568" height="45"/>
                                 <color key="backgroundColor" red="0.25098040699958801" green="0.50196081399917603" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="GJ1-hT-5qu"/>
@@ -1589,7 +1590,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cJD-m2-mOJ">
-                                <rect key="frame" x="16" y="269" width="568" height="45"/>
+                                <rect key="frame" x="16" y="239" width="568" height="45"/>
                                 <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="t0M-wj-6hO"/>
@@ -1618,7 +1619,7 @@
                             <constraint firstItem="cJD-m2-mOJ" firstAttribute="trailing" secondItem="IpW-mT-Hpt" secondAttribute="trailing" id="U9K-zJ-74r"/>
                             <constraint firstItem="UnN-V3-6sf" firstAttribute="height" secondItem="TdS-gP-fkv" secondAttribute="height" id="Up2-yo-Dp3"/>
                             <constraint firstItem="wid-3P-Ck6" firstAttribute="top" secondItem="jtc-H4-eiW" secondAttribute="topMargin" constant="20" id="ZEm-9c-Egl"/>
-                            <constraint firstItem="TdS-gP-fkv" firstAttribute="top" secondItem="wid-3P-Ck6" secondAttribute="bottom" constant="40" id="beH-nR-ciq"/>
+                            <constraint firstItem="TdS-gP-fkv" firstAttribute="top" secondItem="wid-3P-Ck6" secondAttribute="bottom" constant="10" id="beH-nR-ciq"/>
                             <constraint firstItem="UnN-V3-6sf" firstAttribute="leading" secondItem="DVh-jk-MEt" secondAttribute="leading" id="eQb-IO-Z5O"/>
                             <constraint firstItem="UnN-V3-6sf" firstAttribute="trailing" secondItem="TdS-gP-fkv" secondAttribute="trailing" id="hZ7-0h-EP3"/>
                             <constraint firstItem="IpW-mT-Hpt" firstAttribute="top" secondItem="cJD-m2-mOJ" secondAttribute="bottom" constant="10" id="kLF-nF-ifY"/>
@@ -1628,7 +1629,9 @@
                     </view>
                     <connections>
                         <outlet property="emailField" destination="UnN-V3-6sf" id="JyR-rt-u4n"/>
+                        <outlet property="loginButton" destination="IpW-mT-Hpt" id="TWJ-jS-XDH"/>
                         <outlet property="passwordField" destination="DVh-jk-MEt" id="bIr-q2-2YC"/>
+                        <outlet property="registerNewUserButton" destination="cJD-m2-mOJ" id="gDH-EF-Upj"/>
                         <outlet property="usernameField" destination="TdS-gP-fkv" id="zZJ-de-enS"/>
                         <segue destination="49e-Tb-3d3" kind="presentation" identifier="login" modalTransitionStyle="flipHorizontal" id="0do-qJ-Jzh"/>
                         <segue destination="1Ke-aG-mbt" kind="presentation" identifier="iHaveAnAccountAlready" modalTransitionStyle="flipHorizontal" id="Mug-Hz-kgD"/>
@@ -1713,6 +1716,6 @@
         <image name="myLocation.png" width="44" height="44"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="0do-qJ-Jzh"/>
+        <segue reference="phv-aF-IUg"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -17,6 +17,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    
+    
+    //style
+    _loginButton.layer.cornerRadius = 5.0f;
 }
 
 - (void)didReceiveMemoryWarning {

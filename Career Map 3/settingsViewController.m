@@ -12,6 +12,21 @@
 @synthesize checkIfUserIsAnonymous;
 
 
+
+- (void) viewDidLoad{
+    
+    //style
+    _loginButton.layer.cornerRadius = 5.0f;
+    _logoutButton.layer.cornerRadius = 5.0f;
+    
+    
+    
+    
+}
+
+
+
+
 - (void) viewWillAppear:(BOOL)animated{
     
    // checkIfUserIsAnonymous =YES;

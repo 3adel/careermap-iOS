@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WelcomeAppChoiceViewController">
             <connections>
+                <outlet property="startNowButton" destination="mO0-ja-7c2" id="1bM-wE-YV7"/>
                 <outlet property="view" destination="yTl-9f-h8Z" id="mLd-vf-nKb"/>
             </connections>
         </placeholder>
