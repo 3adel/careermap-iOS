@@ -169,7 +169,7 @@ bool messageIsReceived = NO;
                             
                             //add the address line as a component
                             NSArray *lines = placemark.addressDictionary[ @"FormattedAddressLines"];
-                            NSString *addressString = [lines componentsJoinedByString:@"\n"];
+                            NSString *addressString = [lines componentsJoinedByString:@", "];
                             
                             [(PFObject *)[jobsArrayWithUsersVotesVolatile objectAtIndex:count] setObject:addressString forKey:@"addressLine"];
                             
@@ -514,7 +514,7 @@ bool messageIsReceived = NO;
         
         
         
-        destViewController.jobArea =[jobObject objectForKey:@"area"];
+        destViewController.jobArea =[jobObject objectForKey:@"addressLine"];
         destViewController.jobRequiredSkills = [jobObject objectForKey:@"skillsRequired"];
         destViewController.jobEducation =[jobObject objectForKey:@"degreeRequired"];
         destViewController.userLocation = self.userLocation;

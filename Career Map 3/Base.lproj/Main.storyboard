@@ -229,9 +229,9 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="area" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SJl-Rf-FBT">
-                                        <rect key="frame" x="0.0" y="110" width="29" height="17"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="area" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SJl-Rf-FBT">
+                                        <rect key="frame" x="0.0" y="110" width="568" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -299,6 +299,7 @@
                                     <constraint firstItem="8KK-5d-Dtd" firstAttribute="centerY" secondItem="bnJ-MN-T1c" secondAttribute="centerY" id="h7d-X3-wMB"/>
                                     <constraint firstItem="xMH-5h-pDA" firstAttribute="height" secondItem="dS8-uI-oid" secondAttribute="height" id="hlx-fA-Wnp"/>
                                     <constraint firstAttribute="trailing" secondItem="4IS-Nq-Qj6" secondAttribute="trailing" constant="5" id="i7K-3H-7fB"/>
+                                    <constraint firstAttribute="trailing" secondItem="SJl-Rf-FBT" secondAttribute="trailing" id="liz-E6-dIl"/>
                                     <constraint firstItem="4IS-Nq-Qj6" firstAttribute="leading" secondItem="PjM-Ma-zcP" secondAttribute="leading" id="meF-iM-UI6"/>
                                     <constraint firstItem="x8B-ot-tqI" firstAttribute="top" secondItem="Sny-d6-UOB" secondAttribute="bottom" constant="15" id="moi-OE-daQ"/>
                                     <constraint firstItem="Sny-d6-UOB" firstAttribute="top" secondItem="SJl-Rf-FBT" secondAttribute="bottom" constant="5" id="oFF-rL-SlJ"/>
@@ -1031,27 +1032,6 @@
                                     <action selector="selectMapTypePressed:" destination="gU1-YK-m0e" eventType="valueChanged" id="vud-3g-GAB"/>
                                 </connections>
                             </segmentedControl>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gOj-E6-hl7">
-                                <rect key="frame" x="540" y="497" width="44" height="44"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="S4x-aq-AL5"/>
-                                    <constraint firstAttribute="width" constant="44" id="hdl-d8-bjU"/>
-                                    <constraint firstAttribute="width" constant="100" id="zaf-tL-qqO"/>
-                                </constraints>
-                                <state key="normal" title="Me">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="zaf-tL-qqO"/>
-                                    </mask>
-                                </variation>
-                                <connections>
-                                    <action selector="restetToMyLocationButtonPressed:" destination="gU1-YK-m0e" eventType="touchUpInside" id="jRQ-Aw-sTQ"/>
-                                </connections>
-                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="job-annotation-icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="WjZ-SL-ZYK" userLabel="job annotation">
                                 <rect key="frame" x="275" y="275" width="50" height="50"/>
                                 <constraints>
@@ -1074,6 +1054,27 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" alpha="0.79999999999999982" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gOj-E6-hl7">
+                                <rect key="frame" x="550" y="501" width="40" height="40"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="S4x-aq-AL5"/>
+                                    <constraint firstAttribute="width" constant="40" id="hdl-d8-bjU"/>
+                                    <constraint firstAttribute="width" constant="100" id="zaf-tL-qqO"/>
+                                </constraints>
+                                <state key="normal" image="myLocation.png">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="zaf-tL-qqO"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="restetToMyLocationButtonPressed:" destination="gU1-YK-m0e" eventType="touchUpInside" id="jRQ-Aw-sTQ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -1084,7 +1085,7 @@
                             <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="hbp-EW-Rob" secondAttribute="trailing" constant="20" id="LIA-CX-wiK"/>
                             <constraint firstAttribute="bottomMargin" secondItem="B7a-hN-ple" secondAttribute="bottom" id="LOj-yb-XEf"/>
                             <constraint firstItem="B7a-hN-ple" firstAttribute="leading" secondItem="jF4-cN-WGm" secondAttribute="leadingMargin" constant="-16" id="ODP-O1-Xdv"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="gOj-E6-hl7" secondAttribute="trailing" id="ROb-NX-XEf"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="gOj-E6-hl7" secondAttribute="trailing" constant="-6" id="ROb-NX-XEf"/>
                             <constraint firstAttribute="centerX" secondItem="WjZ-SL-ZYK" secondAttribute="centerX" id="byb-cA-Q70"/>
                             <constraint firstItem="hbp-EW-Rob" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="jF4-cN-WGm" secondAttribute="leadingMargin" constant="20" id="ded-tF-non"/>
                             <constraint firstItem="WjZ-SL-ZYK" firstAttribute="top" secondItem="hbp-EW-Rob" secondAttribute="bottom" constant="5" id="hDj-Xh-FEB"/>
@@ -1633,6 +1634,7 @@
         <image name="TabBar-Settings.png" width="45" height="28"/>
         <image name="first" width="45" height="28"/>
         <image name="job-annotation-icon.png" width="50" height="50"/>
+        <image name="myLocation.png" width="44" height="44"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="0do-qJ-Jzh"/>
