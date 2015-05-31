@@ -217,8 +217,8 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Degree Required" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="02Z-qn-g5b" userLabel="Job Education label">
-                                        <rect key="frame" x="0.0" y="487" width="111" height="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Eduction Degree Required" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="02Z-qn-g5b" userLabel="Job Education label">
+                                        <rect key="frame" x="0.0" y="487" width="174" height="17"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -925,35 +925,19 @@
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wFw-yK-Icd" userLabel="No Messages View">
                                 <rect key="frame" x="0.0" y="68" width="600" height="483"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZJA-63-b58">
-                                        <rect key="frame" x="225" y="179" width="150" height="45"/>
-                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="45" id="BKM-dZ-2dX"/>
-                                            <constraint firstAttribute="width" constant="150" id="aNq-5n-lFr"/>
-                                        </constraints>
-                                        <state key="normal" title="Refresh">
-                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="refreshMessagesListButton:" destination="EwG-gK-NKE" eventType="touchUpInside" id="uc1-QH-vhh"/>
-                                        </connections>
-                                    </button>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="No messages received from employers yet. " textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VDl-zc-Kev">
-                                        <rect key="frame" x="175" y="100" width="250" height="52"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="No messages received yet. Start a conversation with employers or job seekers." textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VDl-zc-Kev">
+                                        <rect key="frame" x="175" y="100" width="250" height="70"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="250" id="Xim-sh-wU4"/>
                                         </constraints>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="ZJA-63-b58" firstAttribute="top" secondItem="VDl-zc-Kev" secondAttribute="bottom" constant="27" id="0sc-QX-73E"/>
-                                    <constraint firstAttribute="centerX" secondItem="ZJA-63-b58" secondAttribute="centerX" id="FAb-Ts-gp8"/>
                                     <constraint firstAttribute="centerX" secondItem="VDl-zc-Kev" secondAttribute="centerX" id="Rd8-c3-7Sp"/>
                                     <constraint firstItem="VDl-zc-Kev" firstAttribute="top" secondItem="wFw-yK-Icd" secondAttribute="top" constant="100" id="scX-Zc-KrW"/>
                                 </constraints>
@@ -1076,7 +1060,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="B7a-hN-ple" firstAttribute="bottom" secondItem="jF4-cN-WGm" secondAttribute="bottomMargin" id="0bw-0b-MHd"/>
                             <constraint firstAttribute="centerX" secondItem="hbp-EW-Rob" secondAttribute="centerX" id="5SX-jD-uGH"/>

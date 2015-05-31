@@ -35,6 +35,5 @@
 //methods
 - (void) retrieveMessages;
 - (void) refreshMessages;
-- (IBAction)refreshMessagesListButton:(UIButton *)sender;
 - (void) getUsersWhoBlockedMe;
 @end

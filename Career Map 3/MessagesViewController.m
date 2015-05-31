@@ -323,10 +323,7 @@ forRowAtIndexPath: (NSIndexPath*)indexPath
 
 }
 
-- (IBAction)refreshMessagesListButton:(UIButton *)sender {
-    [self getUsersWhoBlockedMe];
 
-}
 
 
 - (void) refreshReadUnreadStatus{
