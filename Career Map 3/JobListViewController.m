@@ -134,7 +134,7 @@ bool messageIsReceived = NO;
     
     //query #1 for jobs
     NSPredicate *predicate = [NSPredicate predicateWithFormat:
-                              @"reportCount <=100"];
+                              @"reportCount <=7"];
     PFQuery *retrieveJobs = [PFQuery queryWithClassName:@"Job" predicate:predicate];
     [retrieveJobs includeKey:@"employer"];
     [retrieveJobs includeKey:@"status"];
