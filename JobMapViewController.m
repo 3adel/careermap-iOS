@@ -93,7 +93,7 @@
     jobZoomLocation= self.jobLocation.coordinate;
     //  MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(jobZoomLocation, ([self.userLocation distanceInKilometersTo: jobLocationPoint])*250, ([self.userLocation distanceInKilometersTo: jobLocationPoint])*250);
     
-    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(jobZoomLocation, 400, 400);
+    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(jobZoomLocation, 800, 800);
     [_jobMap setRegion:viewRegion animated:YES];
     [_jobMap setScrollEnabled:YES];
     

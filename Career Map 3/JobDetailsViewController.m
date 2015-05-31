@@ -50,8 +50,9 @@
     
     self.jobMap.delegate = self;
     self.jobMap.mapType = MKMapTypeStandard;
-  //  jobTitleLabel.lineBreakMode= NSLineBreakByWordWrapping;
-   // jobTitleLabel.numberOfLines = 0;
+    //detect when the map is tapped
+    UITapGestureRecognizer *mapTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showJobDirection)];
+    [self.jobMap addGestureRecognizer:mapTapGesture];
     
     
     //add job skills view
