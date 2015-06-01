@@ -22,6 +22,7 @@
 @property (nonatomic, strong) NSString *employerID;
 @property (nonatomic, strong) NSString *jobEmployerUserObjectID;
 @property (nonatomic, strong) PFUser *jobPosterPFUser;
+@property (weak, nonatomic) IBOutlet UINavigationItem *jobChatNavigationItem;
 
 //@property (weak, nonatomic) IBOutlet UIView *jobChatView;
 @property (weak, nonatomic) IBOutlet UITableView *jobChatTable;

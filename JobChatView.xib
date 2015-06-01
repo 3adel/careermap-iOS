@@ -9,6 +9,7 @@
             <connections>
                 <outlet property="blockUserButton" destination="bD9-mZ-C3p" id="YMj-Pd-3lz"/>
                 <outlet property="dockViewHightConstraint" destination="X4T-c9-1Z1" id="Id3-NX-eTP"/>
+                <outlet property="jobChatNavigationItem" destination="6cW-aV-ReA" id="xcV-p0-sur"/>
                 <outlet property="jobChatTable" destination="trT-Vz-UHI" id="0Bq-zr-Ueo"/>
                 <outlet property="messageTextField" destination="n0g-nL-4fU" id="psJ-bS-hk3"/>
                 <outlet property="sendButton" destination="R48-Ym-p9e" id="1l2-hO-Hiz"/>

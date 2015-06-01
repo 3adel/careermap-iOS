@@ -42,6 +42,13 @@
     self.jobChatTable.rowHeight = UITableViewAutomaticDimension;
     [_jobChatTable setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
+    //other user's name in the title
+    if ([_jobPosterPFUser objectForKey:@"username"]) {
+        _jobChatNavigationItem.title = [_jobPosterPFUser objectForKey:@"username"];
+    }
+
+    
+    
     
     
     NSLog(@"Job Employer who posted the job User ID = %@", _jobEmployerUserObjectID);
