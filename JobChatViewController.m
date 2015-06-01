@@ -35,9 +35,7 @@
     
     //style
     _sendButton.layer.cornerRadius = 5.0f;
-    
-    
-    
+
     _jobChatTable.estimatedRowHeight = 80.0;
     self.jobChatTable.rowHeight = UITableViewAutomaticDimension;
     [_jobChatTable setSeparatorStyle:UITableViewCellSeparatorStyleNone];
@@ -47,10 +45,7 @@
         _jobChatNavigationItem.title = [_jobPosterPFUser objectForKey:@"username"];
     }
 
-    
-    
-    
-    
+
     NSLog(@"Job Employer who posted the job User ID = %@", _jobEmployerUserObjectID);
     NSLog(@"Curernt User  objectID = %@", [[PFUser currentUser] objectId]);
     
