@@ -445,8 +445,15 @@ bool messageIsReceived = NO;
     DateConverter *dateConverter = [[DateConverter alloc] init];
     cell.jobDateAdded.text = [dateConverter convertDateToLocalTime:[jobObject createdAt]];
     
-    
-    cell.jobDistanceFromUser.text = [NSString stringWithFormat:@"%@ km, %@",[NSString stringWithFormat:@"%.2f",[self.userLocation distanceInKilometersTo:[jobObject objectForKey:@"geolocation"]]], [jobObject objectForKey:@"area"]];
+    //prevent nulling of area name
+    if (![jobObject objectForKey:@"area"]) {
+        
+        cell.jobDistanceFromUser.text =[NSString stringWithFormat:@"%.2f km",[self.userLocation distanceInKilometersTo:[jobObject objectForKey:@"geolocation"]]];
+    }
+    else{
+        cell.jobDistanceFromUser.text = [NSString stringWithFormat:@"%@ km, %@",[NSString stringWithFormat:@"%.2f",[self.userLocation distanceInKilometersTo:[jobObject objectForKey:@"geolocation"]]], [jobObject objectForKey:@"area"]];
+    }
+
     
     //set job area
     cell.jobArea.text =[jobObject objectForKey:@"area"];

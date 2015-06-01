@@ -43,16 +43,10 @@ int addSkillButtonTapCountJobCreation = 0;
 
     
     
-    //    //detect when theview is tapped while the text is being edited
-    //    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapped)];
-    //    [self.view addGestureRecognizer:tapGesture];
+        //detect when theview is tapped while the text is being edited
+        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapped)];
+        [self.view addGestureRecognizer:tapGesture];
     
-    
-    //
-    //    //add gesture recognizer for the thumb image edit
-    //    UITapGestureRecognizer *CVthumbTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(CVthumbTapped)];
-    //    [_CVjobSeekerThumb addGestureRecognizer:CVthumbTapGesture];
-    //
     
     //setup skill view and addskillbutton
     [self setupSkillsView];
@@ -78,7 +72,7 @@ int addSkillButtonTapCountJobCreation = 0;
         [employmentPickerToolbar setItems:[NSArray arrayWithObjects:empTypespace, empTypeDoneBtn, nil]];
         [_employmentTypeTextField setInputAccessoryView:employmentPickerToolbar];
         _employmentTypePicker.delegate =self;
-        self.employmentTypeList = @[@"Full Time",@"Part Time", @"Contract",@"Internship",@"Temporary", @"Other"];
+        self.employmentTypeList = @[@"Full Time",@"Part Time", @"Contract",@"Internship",@"Temporary",@"Freelance", @"Other"];
     
     
     //setup degree required picker
@@ -530,14 +524,7 @@ int addSkillButtonTapCountJobCreation = 0;
  }
  */
 
-//- (IBAction)closeCreateCVButtonPressed:(UIBarButtonItem *)sender {
-//
-//    //reinitialize add skill count
-//    addSkillButtonTapCountJobCreation = 0;
-//
-//
-//    [self dismissViewControllerAnimated:YES completion:nil];
-//}
+
 
 - (IBAction)saveJobButtonPressed:(UIBarButtonItem *)sender {
     
@@ -580,13 +567,13 @@ int addSkillButtonTapCountJobCreation = 0;
 
 
 //dismiss keyboard when view is tapped
-//-(void) viewTapped{
-//
-//    //dismiss keyboard from all text entry fields
-//    [self.view endEditing:YES];
-//
-//
-//}
+-(void) viewTapped{
+
+    //dismiss keyboard from all text entry fields
+    [self.view endEditing:YES];
+
+
+}
 
 //this should resolve the add
 
@@ -724,83 +711,6 @@ int addSkillButtonTapCountJobCreation = 0;
 }
 
 
-
-//- (void)CVthumbTapped{
-//
-//
-//    NSLog(@"cv thumb tapped");
-//
-//
-//    //present photo source action sheet
-//    _photoSourceActionSheet = [[UIActionSheet alloc] initWithTitle:@"Select photo from:" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:
-//                               @"Camera",
-//                               @"Library",
-//                               nil];
-//
-//    _photoSourceActionSheet.tag = 1;
-//    [_photoSourceActionSheet showInView:[UIApplication sharedApplication].keyWindow];
-//
-//
-//
-//
-//    /*
-//     //instantiate the cv thumb editor
-//     CVThumbEditViewController *CVThumbEditView = [[CVThumbEditViewController alloc] initWithNibName:@"CVThumbEditView" bundle:nil];
-//     [self presentViewController:CVThumbEditView animated:YES completion:nil];*/
-//
-//}
-
-
-
-
-
-
-
-
-//- (void)actionSheet:(UIActionSheet *)_photSourceoActionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-//
-//    //handle multiple action sheet if necesssary
-//    switch (_photoSourceActionSheet.tag) {
-//        case 1: {
-//            switch (buttonIndex) {
-//                case 0:{
-//                    NSLog(@"Take photo from camera");
-//                    //get photo from camera
-//                    UIImagePickerController *cameraPicker = [[UIImagePickerController alloc] init];
-//                    cameraPicker.delegate = self;
-//                    cameraPicker.allowsEditing = YES;
-//                    cameraPicker.sourceType = UIImagePickerControllerSourceTypeCamera;
-//                    [self presentViewController:cameraPicker animated:YES completion:NULL];
-//                }
-//                    break;
-//                case 1:{
-//                    NSLog(@"Take photo from photo library");
-//                    //get photo from camera
-//                    UIImagePickerController *cameraPicker = [[UIImagePickerController alloc] init];
-//                    cameraPicker.delegate = self;
-//                    cameraPicker.allowsEditing = YES;
-//                    cameraPicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-//                    [self presentViewController:cameraPicker animated:YES completion:NULL];
-//                }
-//
-//                    break;
-//                default:
-//                    break;
-//            }
-//            break;
-//        }
-//        default:
-//            break;
-//    }
-//}
-
-////update the thumb image view with picked image
-//- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-//    UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
-//    self.CVjobSeekerThumb.image = chosenImage;
-//    [picker dismissViewControllerAnimated:YES completion:NULL];
-//
-//}
 
 -(void) selectEmploymentType{
 
