@@ -9,6 +9,21 @@
 #import "JobChatViewController.h"
 #import "JobChatMessageCell.h"
 
+//adapt user behaviur
+#define IS_IPAD (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+#define IS_IPHONE (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+#define IS_RETINA ([[UIScreen mainScreen] scale] >= 2.0)
+
+#define SCREEN_WIDTH ([[UIScreen mainScreen] bounds].size.width)
+#define SCREEN_HEIGHT ([[UIScreen mainScreen] bounds].size.height)
+#define SCREEN_MAX_LENGTH (MAX(SCREEN_WIDTH, SCREEN_HEIGHT))
+#define SCREEN_MIN_LENGTH (MIN(SCREEN_WIDTH, SCREEN_HEIGHT))
+
+#define IS_IPHONE_4_OR_LESS (IS_IPHONE && SCREEN_MAX_LENGTH < 568.0)
+#define IS_IPHONE_5 (IS_IPHONE && SCREEN_MAX_LENGTH == 568.0)
+#define IS_IPHONE_6 (IS_IPHONE && SCREEN_MAX_LENGTH == 667.0)
+#define IS_IPHONE_6P (IS_IPHONE && SCREEN_MAX_LENGTH == 736.0)
+
 @interface JobChatViewController ()
 
 @end
@@ -663,7 +678,40 @@
     
     [self.view layoutIfNeeded];
     [UIView animateWithDuration:.25 animations:^{
-        _dockViewHightConstraint.constant =300;
+        
+        
+        //adapt to screen size
+        if(IS_IPAD)
+        {
+            _dockViewHightConstraint.constant =[UIScreen mainScreen].bounds.size.height*.35;
+        }
+
+        if(IS_IPHONE_4_OR_LESS)
+        {
+            //NSLog(@"IS_IPHONE_4_OR_LESS");
+            _dockViewHightConstraint.constant =[UIScreen mainScreen].bounds.size.height*.65;
+        }
+        if(IS_IPHONE_5)
+        {
+           // NSLog(@"IS_IPHONE_5");
+            _dockViewHightConstraint.constant =[UIScreen mainScreen].bounds.size.height*.55;
+        }
+        if(IS_IPHONE_6)
+        {
+            //NSLog(@"IS_IPHONE_6");
+            _dockViewHightConstraint.constant =[UIScreen mainScreen].bounds.size.height*.45;
+        }
+        if(IS_IPHONE_6P)
+        {
+            //NSLog(@"IS_IPHONE_6P");
+            _dockViewHightConstraint.constant =[UIScreen mainScreen].bounds.size.height*.45;
+        }
+        
+//        NSLog(@"SCREEN_WIDTH: %f", SCREEN_WIDTH);
+//        NSLog(@"SCREEN_HEIGHT: %f", SCREEN_HEIGHT);
+//        NSLog(@"SCREEN_MAX_LENGTH: %f", SCREEN_MAX_LENGTH);
+//        NSLog(@"SCREEN_MIN_LENGTH: %f", SCREEN_MIN_LENGTH);
+
         [self.view layoutIfNeeded];
         
         
