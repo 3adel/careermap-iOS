@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Career Map 3/JobListViewController.m"
-            timestampString = "454783498.742937"
+            filePath = "Career Map 3/JobDetailsViewController.m"
+            timestampString = "454836941.14823"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "172"
-            endingLineNumber = "172"
-            landmarkName = "-retrieveFromParse"
+            startingLineNumber = "324"
+            endingLineNumber = "324"
+            landmarkName = "-applyWithCVButtonPressed:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

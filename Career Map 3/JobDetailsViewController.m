@@ -284,147 +284,168 @@
 - (IBAction)chatWithEmployerButtonPressed:(UIButton *)sender {
     
     
+
+    if ([PFAnonymousUtils isLinkedWithUser:[PFUser currentUser]]) {
+        _registerAlert.delegate = self;
+        _registerAlert =[[UIAlertView alloc] initWithTitle:@"Register" message:@"Please create a user account" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Register", nil];
+        [_registerAlert show];
+    }
+    else{
+        
+        NSLog(@"Chat with employer button pressed");
+        
+        JobChatViewController  *jobChatScreen = [[JobChatViewController alloc] initWithNibName:@"JobChatView" bundle:nil];
+        /*
+         [self.tabBarController presentViewController:appChoice
+         animated:YES
+         completion:nil];*/
+        
+        //pass the user id of the job poster to the destination chat screen.
+        jobChatScreen.jobEmployerUserObjectID =_jobEmployerUserObjectID;
+        jobChatScreen.jobPosterPFUser = _jobPosterPFUser;
+        
+        
+        [self presentViewController:jobChatScreen animated:YES completion:nil];
+        
+    }
     
-  //  JobChatViewController *jobChatViewController = [[JobChatViewController alloc] initWithNib:@"JobChatView" bundle:nil];
-   // [self pushViewController:viewControllerB animated:YES];
     
-    
-    NSLog(@"Chat with employer button pressed");
-    
-    JobChatViewController  *jobChatScreen = [[JobChatViewController alloc] initWithNibName:@"JobChatView" bundle:nil];
-    /*
-    [self.tabBarController presentViewController:appChoice
-                                        animated:YES
-                                      completion:nil];*/
-    
-    //pass the user id of the job poster to the destination chat screen.
-    jobChatScreen.jobEmployerUserObjectID =_jobEmployerUserObjectID;
-    jobChatScreen.jobPosterPFUser = _jobPosterPFUser;
-    
-    
-    [self presentViewController:jobChatScreen animated:YES completion:nil];
+
 }
 
 - (IBAction)applyWithCVButtonPressed:(UIButton *)sender {
     
     
-    //progress spinner initialization
-    MBProgressHUD *HUDProgressIndicator = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    HUDProgressIndicator.labelText = @"Applying ...";
-    HUDProgressIndicator.mode = MBProgressHUDModeIndeterminate;
-    
-    
-    
-    //If the user don't have a CV, take them to the CV creation flow.
-    PFQuery *query = [PFQuery queryWithClassName:@"_User"];
-    [query includeKey:@"aJobSeekerID"];
-    [query getObjectInBackgroundWithId: [[PFUser currentUser] objectId] block:^(PFObject *object, NSError *error) {
-        if (!error) {
-            
-            if ([object objectForKey:@"aJobSeekerID"]) {
-                //user does have CV
-                NSLog(@"job seeker ID found = %@", [[object objectForKey:@"aJobSeekerID"] objectId]);
-                NSLog(@"People who applied to this job = %@", [_jobObject objectForKey:@"appliedByUsers"]);
-                
-                //did the user apply with their CV?
-                if ([[_jobObject objectForKey:@"appliedByUsers"] containsObject:[[PFUser currentUser] objectId]]) {
-                    //user already applied. Do nothing. viewDidLoad took care of updating ui.
-                    NSLog(@"user already applied");
 
+    
+    //if user is anonymous, prompt for login
+    if ([PFAnonymousUtils isLinkedWithUser:[PFUser currentUser]]) {
+        _registerAlert.delegate = self;
+        _registerAlert =[[UIAlertView alloc] initWithTitle:@"Register" message:@"Please create a user account" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Register", nil];
+        [_registerAlert show];
+    }
+    
+    else{
+        
+        //progress spinner initialization
+        MBProgressHUD *HUDProgressIndicator = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        HUDProgressIndicator.labelText = @"Applying ...";
+        HUDProgressIndicator.mode = MBProgressHUDModeIndeterminate;
+        
+        
+        //If the user don't have a CV, take them to the CV creation flow.
+        PFQuery *query = [PFQuery queryWithClassName:@"_User"];
+        [query includeKey:@"aJobSeekerID"];
+        [query getObjectInBackgroundWithId: [[PFUser currentUser] objectId] block:^(PFObject *object, NSError *error) {
+            if (!error) {
+                
+                if ([object objectForKey:@"aJobSeekerID"]) {
+                    //user does have CV
+                    NSLog(@"job seeker ID found = %@", [[object objectForKey:@"aJobSeekerID"] objectId]);
+                    NSLog(@"People who applied to this job = %@", [_jobObject objectForKey:@"appliedByUsers"]);
+                    
+                    //did the user apply with their CV?
+                    if ([[_jobObject objectForKey:@"appliedByUsers"] containsObject:[[PFUser currentUser] objectId]]) {
+                        //user already applied. Do nothing. viewDidLoad took care of updating ui.
+                        NSLog(@"user already applied");
+                        
+                        
+                    }
+                    
+                    else{
+                        NSLog(@"user did not apply");
+                        //user has cv but did NOT apply apply
+                        //Make them apply now
+                        
+                        //Update job table. Add user objectId to who applied
+                        PFQuery *query = [PFQuery queryWithClassName:@"Job"];
+                        [query includeKey:@"appliedByUsers"];
+                        [query getObjectInBackgroundWithId:_jobObject.objectId block:^(PFObject *jobObject, NSError *error) {
+                            
+                            if (!error) {
+                                [jobObject addUniqueObject:[[PFUser currentUser] objectId] forKey:@"appliedByUsers"];
+                                [jobObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                                    if (succeeded) {
+                                        NSLog(@"Applied to job successfully");
+                                        
+                                        
+                                        
+                                        //update apply button (you already applied)
+                                        dispatch_async(dispatch_get_main_queue(), ^{
+                                            [_applyWithCVButton setTitle:@"You Applied" forState:UIControlStateNormal];
+                                            [_applyWithCVButton setBackgroundColor:[UIColor grayColor]];
+                                            self.applyWithCVButton.enabled =NO;
+                                            [HUDProgressIndicator setHidden:YES];
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                        });
+                                        
+                                        [_jobObject addUniqueObject:[[PFUser currentUser] objectId] forKey:@"appliedByUsers"];
+                                        
+                                        //now sync the local _job object to reflect the job application
+                                        
+                                        
+                                        NSLog(@"applied by user: %@",[_jobObject objectForKey:@"appliedByUsers"]  );
+                                        
+                                        
+                                    } else {
+                                        NSLog(@"Error applying to job");
+                                    }
+                                }];;
+                            }
+                            
+                            else{
+                                
+                                NSLog(@"error retrieving job record");
+                            }
+                            
+                            
+                            
+                            
+                        }];
+                        
+                        
+                    }
+                    
+                    
+                    
                     
                 }
                 
                 else{
-                    NSLog(@"user did not apply");
-                    //user has cv but did NOT apply apply
-                    //Make them apply now
-
-                    //Update job table. Add user objectId to who applied
-                    PFQuery *query = [PFQuery queryWithClassName:@"Job"];
-                    [query includeKey:@"appliedByUsers"];
-                    [query getObjectInBackgroundWithId:_jobObject.objectId block:^(PFObject *jobObject, NSError *error) {
-                        
-                        if (!error) {
-                            [jobObject addUniqueObject:[[PFUser currentUser] objectId] forKey:@"appliedByUsers"];
-                            [jobObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                                if (succeeded) {
-                                    NSLog(@"Applied to job successfully");
-                                    
-                                    
-                                    
-                                    //update apply button (you already applied)
-                                    dispatch_async(dispatch_get_main_queue(), ^{
-                                        [_applyWithCVButton setTitle:@"You Applied" forState:UIControlStateNormal];
-                                        [_applyWithCVButton setBackgroundColor:[UIColor grayColor]];
-                                        self.applyWithCVButton.enabled =NO;
-                                        [HUDProgressIndicator setHidden:YES];
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                    });
-                                    
-                                    [_jobObject addUniqueObject:[[PFUser currentUser] objectId] forKey:@"appliedByUsers"];
-                                    
-                                    //now sync the local _job object to reflect the job application
-
-                                    
-                                    NSLog(@"applied by user: %@",[_jobObject objectForKey:@"appliedByUsers"]  );
-
-                                    
-                                } else {
-                                    NSLog(@"Error applying to job");
-                                }
-                            }];;
-                        }
-                        
-                        else{
-                            
-                            NSLog(@"error retrieving job record");
-                        }
-                        
-                        
-        
-                        
-                    }];
-
-
+                    [HUDProgressIndicator setHidden:YES];
+                    
+                    _createCVAlert.delegate = self;
+                    NSLog(@"No cv has been found, create one then");
+                    _createCVAlert =[[UIAlertView alloc] initWithTitle:@"No CV found" message:@"Please create a CV so you can apply" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Create My CV ", nil];
+                    
+                    
+                    
+                    
+                    
+                    //[createCVAlert addButtonWithTitle:@"Foo" block:^{ NSLog(@"Foo"); }];
+                    //[createCVAlert addButtonWithTitle:<#(NSString *)#>]
+                    
+                    
+                    [_createCVAlert show];
+                    //The user doesn't have a CV,take to cv creation flow
                 }
                 
                 
-                
-
             }
             
             else{
-                [HUDProgressIndicator setHidden:YES];
                 
-                _createCVAlert.delegate = self;
-                NSLog(@"No cv has been found, create one then");
-                 _createCVAlert =[[UIAlertView alloc] initWithTitle:@"No CV found" message:@"Please create a CV so you can apply" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Create My CV ", nil];
-
-                
-                
-                
-                
-                //[createCVAlert addButtonWithTitle:@"Foo" block:^{ NSLog(@"Foo"); }];
-                //[createCVAlert addButtonWithTitle:<#(NSString *)#>]
-                
-                
-               [_createCVAlert show];
-                //The user doesn't have a CV,take to cv creation flow
+                NSLog(@"Error retrieving job seekerID: %@", error);
             }
-            
-            
-        }
-        
-        else{
-            
-            NSLog(@"Error retrieving job seekerID: %@", error);
-        }
-    }];
+        }];
+
+    }
+
 
     
     
@@ -545,6 +566,23 @@
             
            // [self presentViewController:createCVScreen animated:YES completion:nil];
             
+        }
+    }
+    
+    else if(actionSheet== _registerAlert) {//alertLogout
+        if (buttonIndex == 0){
+            NSLog(@"0: Cancel");
+            
+        }
+        
+        else if(buttonIndex==1){
+            
+            NSLog(@"Register");
+            LoginViewController *registerViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"registrationViewController"];
+          //  UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:registerViewController];
+            //[self.navigationController pushViewController:navi animated:YES];
+            [self presentViewController:registerViewController animated:YES completion:nil];
+
         }
     }
 

@@ -1533,7 +1533,7 @@
         <!--Login View Controller-->
         <scene sceneID="Csg-S3-ojD">
             <objects>
-                <viewController id="LvE-VE-i2d" customClass="LoginViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="registrationViewController" id="LvE-VE-i2d" customClass="LoginViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Vlg-ww-jjs"/>
                         <viewControllerLayoutGuide type="bottom" id="Kyo-aE-CsG"/>
@@ -1716,6 +1716,6 @@
         <image name="myLocation.png" width="44" height="44"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="phv-aF-IUg"/>
+        <segue reference="0do-qJ-Jzh"/>
     </inferredMetricsTieBreakers>
 </document>

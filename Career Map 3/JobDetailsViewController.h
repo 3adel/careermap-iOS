@@ -13,6 +13,7 @@
 #import "JobChatViewController.h"
 #import "CreateCVViewController.h"
 #import "MBProgressHUD.h"
+#import "LoginViewController.h"
 
 @interface JobDetailsViewController : UIViewController <MKMapViewDelegate,CLLocationManagerDelegate,UIAlertViewDelegate>
 
@@ -45,6 +46,8 @@
 
 
 @property (strong, nonatomic) UIAlertView *createCVAlert;
+@property (strong, nonatomic) UIAlertView *registerAlert;
+
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *reportJobBarButton;
 
