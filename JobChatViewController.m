@@ -33,6 +33,11 @@
 
 - (void)viewDidLoad {
     
+    //style
+    _sendButton.layer.cornerRadius = 5.0f;
+    
+    
+    
     _jobChatTable.estimatedRowHeight = 80.0;
     self.jobChatTable.rowHeight = UITableViewAutomaticDimension;
     [_jobChatTable setSeparatorStyle:UITableViewCellSeparatorStyleNone];

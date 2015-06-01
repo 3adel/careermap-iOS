@@ -36,6 +36,18 @@
         _loginButton.layer.cornerRadius = 5.0f;
     
     
+    //detect when theview is tapped while the text is being edited
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapped)];
+    [self.view addGestureRecognizer:tapGesture];
+    
+    
+}
+
+//dismiss keyboard when view is tapped
+-(void) viewTapped{
+    
+    //dismiss keyboard from all text entry fields
+    [self.view endEditing:YES];
     
     
 }
