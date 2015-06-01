@@ -11,6 +11,7 @@
 #import <Parse/Parse.h>
 #import "JobCategoryViewController.h"
 #import "AddressLineConverter.h"
+#import "LoginViewController.h"
 
 @interface JobLocationViewController : UIViewController <MKMapViewDelegate,CLLocationManagerDelegate>
 
@@ -25,6 +26,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *resetToMyLocationButton;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *jobLocationAddressFetchActivityIndicator;
 @property (weak, nonatomic) IBOutlet UITextView *jobLocationAddressTextView;
+@property (weak, nonatomic) IBOutlet UIView *userIsAnonymousView;
+@property (weak, nonatomic) IBOutlet UIButton *registerButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *nextButton;
 
 
 
@@ -34,5 +38,6 @@
 - (IBAction)selectMapTypePressed:(UISegmentedControl *)sender;
 - (IBAction)restetToMyLocationButtonPressed:(UIButton *)sender;
 
+- (IBAction)registerButtonPressed:(UIButton *)sender;
 
 @end

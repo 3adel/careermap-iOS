@@ -445,10 +445,21 @@
 
 - (IBAction)createCVButtonPressed:(UIButton *)sender {
     
+    //if user is anonymous, prompt for login
+    if ([PFAnonymousUtils isLinkedWithUser:[PFUser currentUser]]) {
+        _registerAlert.delegate = self;
+        _registerAlert =[[UIAlertView alloc] initWithTitle:@"Register" message:@"Please create a user account first" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Register", nil];
+        [_registerAlert show];
+    }
     
-    //instantiate cv creation
-     CreateCVViewController *createCVInstance = [[CreateCVViewController alloc] initWithNibName:@"CreateCVView" bundle:nil];
-     [self presentViewController:createCVInstance animated:YES completion:nil];
+    else{
+
+        //instantiate cv creation
+        CreateCVViewController *createCVInstance = [[CreateCVViewController alloc] initWithNibName:@"CreateCVView" bundle:nil];
+        [self presentViewController:createCVInstance animated:YES completion:nil];
+
+    }
+
     
 
 }
@@ -560,5 +571,30 @@
 
     
 }
+
+
+//handle different alert views
+-(void)alertView:(UIAlertView *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+
+    if(actionSheet== _registerAlert) {//alertLogout
+        if (buttonIndex == 0){
+            NSLog(@"0: Cancel");
+            
+        }
+        
+        else if(buttonIndex==1){
+            
+            NSLog(@"Register");
+            LoginViewController *registerViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"registrationViewController"];
+            //  UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:registerViewController];
+            //[self.navigationController pushViewController:navi animated:YES];
+            [self presentViewController:registerViewController animated:YES completion:nil];
+            
+        }
+    }
+    
+    
+}
+
 
 @end

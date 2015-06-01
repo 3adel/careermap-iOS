@@ -17,22 +17,43 @@
 - (void)viewDidLoad {
    
     [super viewDidLoad];
-    self.jobMap.delegate =self;
-    self.jobMap.showsUserLocation = YES;
-    _selectMapTypeSegmentedControl.selectedSegmentIndex =0;
-
+    
+    //style
+    _registerButton.layer.cornerRadius = 5.0f;
+    
+    //check if user is registered
+    if ([PFAnonymousUtils isLinkedWithUser:[PFUser currentUser]]) {
+        _userIsAnonymousView.hidden =NO;
+        _nextButton.enabled = NO;
+    }
+    
+    else{
+        _userIsAnonymousView.hidden =YES;
+        _nextButton.enabled = YES;
+        self.jobMap.delegate =self;
+        self.jobMap.showsUserLocation = YES;
+        _selectMapTypeSegmentedControl.selectedSegmentIndex =0;
+        
+        
+        
+        // Some style setup.
+        _resetToMyLocationButton.layer.cornerRadius=5.0f;
+        _jobLocationAddressTextView.layer.cornerRadius=5.0f;
+        
+        
+        
+        //initialize location manager
+        _locationManager = [[CLLocationManager alloc] init];
+        [_locationManager requestWhenInUseAuthorization];
+        _locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
+        
+        
+    }
     
     
-    // Some style setup.
-    _resetToMyLocationButton.layer.cornerRadius=5.0f;
-    _jobLocationAddressTextView.layer.cornerRadius=5.0f;
-
     
     
-    //initialize location manager
-    _locationManager = [[CLLocationManager alloc] init];
-    [_locationManager requestWhenInUseAuthorization];
-    _locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
+    
     
 }
 
@@ -166,6 +187,19 @@
 - (IBAction)restetToMyLocationButtonPressed:(UIButton *)sender {
     
     [self zoomToUserLocationPoint];
+}
+
+- (IBAction)registerButtonPressed:(UIButton *)sender {
+    
+    
+    LoginViewController *registerViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"registrationViewController"];
+    //  UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:registerViewController];
+    //[self.navigationController pushViewController:navi animated:YES];
+    [self presentViewController:registerViewController animated:YES completion:nil];
+
+    NSLog(@"Register");
+
+    
 }
 
 

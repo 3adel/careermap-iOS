@@ -11,7 +11,7 @@
 #import <Parse/Parse.h>
 #import "AppHorizontalMessage.h"
 #import "MBProgressHUD.h"
-
+#import "LoginViewController.h"
 
 @interface ViewEditMyCVViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIView *noCVFoundView;
@@ -29,6 +29,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *CVJobSeekerDegreeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *CVJobSeekerYearsOfExperienceLabel;
 @property (weak, nonatomic) IBOutlet UIButton *createCVButton;
+@property (strong, nonatomic) UIAlertView *registerAlert;
 
 
 @property (weak, nonatomic) IBOutlet UITextView *jobSkillsTextView;

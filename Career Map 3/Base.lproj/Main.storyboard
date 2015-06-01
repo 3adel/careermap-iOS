@@ -815,8 +815,18 @@
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lrq-3r-0dO" userLabel="No CV Found View">
                                 <rect key="frame" x="16" y="64" width="568" height="1136"/>
                                 <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Tell us a bit about yourself. What you write here will be seen by potential employers. So impress! :)" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I5s-gV-Zpp" userLabel="No cv found text">
+                                        <rect key="frame" x="159" y="100" width="250" height="70"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="250" id="h0Z-YF-bNY"/>
+                                        </constraints>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="311-t7-crG">
-                                        <rect key="frame" x="209" y="193" width="150" height="45"/>
+                                        <rect key="frame" x="209" y="190" width="150" height="45"/>
                                         <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="165" id="2l1-db-Jqb"/>
@@ -832,6 +842,7 @@
                                         <variation key="default">
                                             <mask key="constraints">
                                                 <exclude reference="2l1-db-Jqb"/>
+                                                <exclude reference="2t5-Fs-zWZ"/>
                                                 <exclude reference="MUg-3T-cD8"/>
                                             </mask>
                                         </variation>
@@ -839,22 +850,12 @@
                                             <action selector="createCVButtonPressed:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="drL-Xv-Hvb"/>
                                         </connections>
                                     </button>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Tell us a bit about yourself. What you write here will be seen by potential employers. So impress! :)" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I5s-gV-Zpp" userLabel="No cv found text">
-                                        <rect key="frame" x="159" y="100" width="250" height="70"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="250" id="h0Z-YF-bNY"/>
-                                        </constraints>
-                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="centerX" secondItem="I5s-gV-Zpp" secondAttribute="centerX" id="6X1-Ep-0Gy"/>
                                     <constraint firstItem="I5s-gV-Zpp" firstAttribute="top" secondItem="lrq-3r-0dO" secondAttribute="top" constant="100" id="BpF-bG-DP1"/>
                                     <constraint firstAttribute="centerX" secondItem="311-t7-crG" secondAttribute="centerX" id="ShH-4L-rxr"/>
-                                    <constraint firstItem="311-t7-crG" firstAttribute="top" secondItem="I5s-gV-Zpp" secondAttribute="bottom" constant="23" id="T7X-Eu-b8g"/>
+                                    <constraint firstItem="311-t7-crG" firstAttribute="top" secondItem="I5s-gV-Zpp" secondAttribute="bottom" constant="20" id="T7X-Eu-b8g"/>
                                     <constraint firstItem="311-t7-crG" firstAttribute="top" secondItem="I5s-gV-Zpp" secondAttribute="bottom" constant="20" id="ZFE-LF-twn"/>
                                     <constraint firstAttribute="centerX" secondItem="311-t7-crG" secondAttribute="centerX" id="oNG-F2-dhg"/>
                                 </constraints>
@@ -1151,31 +1152,74 @@
                                     <action selector="restetToMyLocationButtonPressed:" destination="gU1-YK-m0e" eventType="touchUpInside" id="jRQ-Aw-sTQ"/>
                                 </connections>
                             </button>
+                            <view hidden="YES" alpha="0.89999999999999991" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="diR-SL-C3n" userLabel="User not logged in view">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oJS-dc-cAu">
+                                        <rect key="frame" x="210" y="250" width="180" height="45"/>
+                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="180" id="fv6-Sz-gRX"/>
+                                            <constraint firstAttribute="height" constant="45" id="rwb-DR-gsc"/>
+                                        </constraints>
+                                        <state key="normal" title="Register to Add Jobs">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="registerButtonPressed:" destination="gU1-YK-m0e" eventType="touchUpInside" id="vBz-dp-5vZ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="1Qx-mt-fvA"/>
+                                    <constraint firstAttribute="centerY" secondItem="oJS-dc-cAu" secondAttribute="centerY" id="DMM-dX-XUE"/>
+                                    <constraint firstAttribute="height" constant="300" id="TU7-DO-Au0"/>
+                                    <constraint firstAttribute="centerX" secondItem="oJS-dc-cAu" secondAttribute="centerX" id="WdV-Mw-Byy"/>
+                                    <constraint firstItem="oJS-dc-cAu" firstAttribute="top" secondItem="diR-SL-C3n" secondAttribute="top" constant="250" id="xXG-Yf-qcq"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="1Qx-mt-fvA"/>
+                                        <exclude reference="TU7-DO-Au0"/>
+                                        <exclude reference="DMM-dX-XUE"/>
+                                    </mask>
+                                </variation>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="B7a-hN-ple" firstAttribute="bottom" secondItem="jF4-cN-WGm" secondAttribute="bottomMargin" id="0bw-0b-MHd"/>
+                            <constraint firstItem="diR-SL-C3n" firstAttribute="top" secondItem="he8-2f-FcZ" secondAttribute="bottom" id="101-5s-Txy"/>
                             <constraint firstAttribute="centerX" secondItem="hbp-EW-Rob" secondAttribute="centerX" id="5SX-jD-uGH"/>
                             <constraint firstItem="B7a-hN-ple" firstAttribute="top" secondItem="0cn-L3-0Ks" secondAttribute="bottom" id="5W6-Kr-O2i"/>
+                            <constraint firstAttribute="centerY" secondItem="diR-SL-C3n" secondAttribute="centerY" id="I14-qd-81b"/>
                             <constraint firstItem="B7a-hN-ple" firstAttribute="leading" relation="lessThanOrEqual" secondItem="hbp-EW-Rob" secondAttribute="trailing" constant="20" id="IQr-lX-MJf"/>
                             <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="hbp-EW-Rob" secondAttribute="trailing" constant="20" id="LIA-CX-wiK"/>
                             <constraint firstAttribute="bottomMargin" secondItem="B7a-hN-ple" secondAttribute="bottom" id="LOj-yb-XEf"/>
+                            <constraint firstItem="Wnx-Sg-mkG" firstAttribute="top" secondItem="diR-SL-C3n" secondAttribute="bottom" id="OCm-kX-gUP"/>
                             <constraint firstItem="B7a-hN-ple" firstAttribute="leading" secondItem="jF4-cN-WGm" secondAttribute="leadingMargin" constant="-16" id="ODP-O1-Xdv"/>
                             <constraint firstAttribute="trailingMargin" secondItem="gOj-E6-hl7" secondAttribute="trailing" constant="-6" id="ROb-NX-XEf"/>
+                            <constraint firstItem="diR-SL-C3n" firstAttribute="leading" secondItem="jF4-cN-WGm" secondAttribute="leadingMargin" constant="-16" id="ZdY-9g-eac"/>
                             <constraint firstAttribute="centerX" secondItem="WjZ-SL-ZYK" secondAttribute="centerX" id="byb-cA-Q70"/>
                             <constraint firstItem="hbp-EW-Rob" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="jF4-cN-WGm" secondAttribute="leadingMargin" constant="20" id="ded-tF-non"/>
                             <constraint firstItem="WjZ-SL-ZYK" firstAttribute="top" secondItem="hbp-EW-Rob" secondAttribute="bottom" constant="5" id="hDj-Xh-FEB"/>
                             <constraint firstItem="B7a-hN-ple" firstAttribute="bottom" secondItem="jF4-cN-WGm" secondAttribute="bottomMargin" id="iJf-Nn-soc"/>
+                            <constraint firstItem="diR-SL-C3n" firstAttribute="top" secondItem="jF4-cN-WGm" secondAttribute="topMargin" id="kdw-IV-1yj"/>
                             <constraint firstItem="Wnx-Sg-mkG" firstAttribute="top" secondItem="gOj-E6-hl7" secondAttribute="bottom" constant="10" id="lo5-PG-WHC"/>
                             <constraint firstAttribute="centerX" secondItem="he8-2f-FcZ" secondAttribute="centerX" id="lyH-1v-ha5"/>
                             <constraint firstItem="B7a-hN-ple" firstAttribute="leading" relation="lessThanOrEqual" secondItem="hbp-EW-Rob" secondAttribute="trailing" constant="20" id="phj-5u-Ljw"/>
                             <constraint firstAttribute="centerY" secondItem="WjZ-SL-ZYK" secondAttribute="centerY" id="qv5-5H-4Nw"/>
+                            <constraint firstAttribute="centerX" secondItem="diR-SL-C3n" secondAttribute="centerX" id="tP5-iR-dfz"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="diR-SL-C3n" secondAttribute="trailing" constant="-16" id="tQM-gR-vS2"/>
                             <constraint firstAttribute="trailingMargin" secondItem="B7a-hN-ple" secondAttribute="trailing" constant="-16" id="u3P-TK-hos"/>
                             <constraint firstItem="he8-2f-FcZ" firstAttribute="top" secondItem="0cn-L3-0Ks" secondAttribute="bottom" constant="8" id="u4v-Jl-9qk"/>
                             <constraint firstItem="B7a-hN-ple" firstAttribute="top" secondItem="0cn-L3-0Ks" secondAttribute="bottom" id="wNs-I2-6ao"/>
                             <constraint firstItem="Wnx-Sg-mkG" firstAttribute="top" secondItem="B7a-hN-ple" secondAttribute="bottom" id="wQT-aV-Aga"/>
                             <constraint firstItem="B7a-hN-ple" firstAttribute="leading" secondItem="hbp-EW-Rob" secondAttribute="trailing" constant="-400" id="x9c-j6-mPe"/>
                             <constraint firstItem="B7a-hN-ple" firstAttribute="top" secondItem="0cn-L3-0Ks" secondAttribute="bottom" id="xWe-W5-E76"/>
+                            <constraint firstItem="Wnx-Sg-mkG" firstAttribute="top" secondItem="diR-SL-C3n" secondAttribute="bottom" id="y4o-14-JVS"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -1187,6 +1231,10 @@
                                 <exclude reference="wNs-I2-6ao"/>
                                 <exclude reference="x9c-j6-mPe"/>
                                 <exclude reference="xWe-W5-E76"/>
+                                <exclude reference="101-5s-Txy"/>
+                                <exclude reference="I14-qd-81b"/>
+                                <exclude reference="tP5-iR-dfz"/>
+                                <exclude reference="OCm-kX-gUP"/>
                             </mask>
                         </variation>
                     </view>
@@ -1201,8 +1249,11 @@
                     <connections>
                         <outlet property="jobLocationAddressTextView" destination="hbp-EW-Rob" id="shE-TI-dU6"/>
                         <outlet property="jobMap" destination="B7a-hN-ple" id="Dpe-nX-b5i"/>
+                        <outlet property="nextButton" destination="qbU-U9-HaF" id="MCb-s8-sWK"/>
+                        <outlet property="registerButton" destination="oJS-dc-cAu" id="9wr-6L-9vD"/>
                         <outlet property="resetToMyLocationButton" destination="gOj-E6-hl7" id="SqP-Xx-pVi"/>
                         <outlet property="selectMapTypeSegmentedControl" destination="he8-2f-FcZ" id="29V-Ib-9Rb"/>
+                        <outlet property="userIsAnonymousView" destination="diR-SL-C3n" id="oiC-u2-Eef"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="usb-tX-FP1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1451,7 +1502,7 @@
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Tb-63-d0c">
                                 <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                                 <items>
-                                    <navigationItem id="guo-Km-Yy4">
+                                    <navigationItem title="Login" id="guo-Km-Yy4">
                                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="dJi-QQ-uzx">
                                             <connections>
                                                 <action selector="cancelButtonPressed:" destination="1Ke-aG-mbt" id="6f4-hf-A8G"/>
@@ -1545,7 +1596,7 @@
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wid-3P-Ck6">
                                 <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                                 <items>
-                                    <navigationItem id="kkS-hD-Lcs">
+                                    <navigationItem title="Register a New User" id="kkS-hD-Lcs">
                                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="XEO-cj-nOL">
                                             <connections>
                                                 <action selector="cancelButtonPressed:" destination="LvE-VE-i2d" id="aEi-sx-Jx2"/>
