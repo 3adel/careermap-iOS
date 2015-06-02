@@ -79,7 +79,6 @@
     _jobObject =nil;
     [self getUserLocationPoint];
 
-   // [[NSNotificationCenter defaultCenter] removeObserver:self name:@"jobDetailsUpdatedNotification" object:nil];
 }
 
 
