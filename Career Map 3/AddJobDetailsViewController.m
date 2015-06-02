@@ -140,7 +140,8 @@ int addSkillButtonTapCountJobCreation = 0;
     
     
     //this should be set by the previous VC. This init is temporary
-    _existingSkills =[[NSMutableArray alloc] init];
+    _existingSkills =[[NSMutableArray alloc] initWithArray:[_jobObject objectForKey:@"skillsRequired"]];
+
     if ([_existingSkills count]>0) {
         
         
