@@ -19,7 +19,7 @@
     [super viewDidLoad];
     
 
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resetJoObject) name:@"jobDetailsUpdatedNotification" object:nil];
     
     
     
@@ -74,11 +74,19 @@
     
 }
 
+- (void)resetJoObject{
+    
+    _jobObject =nil;
+    [self getUserLocationPoint];
+
+   // [[NSNotificationCenter defaultCenter] removeObserver:self name:@"jobDetailsUpdatedNotification" object:nil];
+}
+
 
 - (void) viewDidAppear:(BOOL)animated{
     
     
-
+    NSLog(@"view did appear");
     
 }
 

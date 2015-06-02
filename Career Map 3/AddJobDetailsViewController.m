@@ -107,6 +107,7 @@ int addSkillButtonTapCountJobCreation = 0;
     
 
     //populate existing fields
+    [self populateExistingFieldsValues];
     [self addExistingSkillTextField];
     
 }
@@ -131,17 +132,57 @@ int addSkillButtonTapCountJobCreation = 0;
 }
 
 
+//reload existing fields
+- (void)populateExistingFieldsValues{
+    
+    
+    
+    if (![[_jobObject objectForKey:@"title"] isEqualToString:@""]) {
+        _jobJobTitle.text =[_jobObject objectForKey:@"title"];
+    }
+    
+    if (![[_jobObject objectForKey:@"businessName"] isEqualToString:@""]) {
+        _jobBusinessName.text =[_jobObject objectForKey:@"businessName"];
+    }
+    
+    if (![[_jobObject objectForKey:@"description"] isEqualToString:@""]) {
+        _jobJobDescription.text =[_jobObject objectForKey:@"description"];
+    }
+    
+    if (![[_jobObject objectForKey:@"rolesAndResponsibilities"] isEqualToString:@""]) {
+        _jobRolesAndResponsibilities.text =[_jobObject objectForKey:@"rolesAndResponsibilities"];
+    }
+    
+    if (![[_jobObject objectForKey:@"compensation"] isEqualToString:@""]) {
+        _jobCompensation.text =[_jobObject objectForKey:@"compensation"];
+    }
+    
+    if (![[_jobObject objectForKey:@"employmentType"] isEqualToString:@""]) {
+        _employmentTypeTextField.text =[_jobObject objectForKey:@"employmentType"];
+    }
+    
+    
+    if (![[_jobObject objectForKey:@"degreeRequired"] isEqualToString:@""]) {
+        _degreeRequiredTextField.text =[_jobObject objectForKey:@"degreeRequired"];
+    }
+    
+    
+    if (![[_jobObject objectForKey:@"jobLevel"] isEqualToString:@""]) {
+        _jobLevelTextField.text =[_jobObject objectForKey:@"jobLevel"];
+    }
+
+
+    
+    
+}
+
 //Reload existing skills
 - (void) addExistingSkillTextField{
     //reset counter
     addSkillButtonTapCountJobCreation = 0;
     
     //setup skills fields and their buttons
-    
-    
-    //this should be set by the previous VC. This init is temporary
     _existingSkills =[[NSMutableArray alloc] initWithArray:[_jobObject objectForKey:@"skillsRequired"]];
-
     if ([_existingSkills count]>0) {
         
         
@@ -588,10 +629,112 @@ int addSkillButtonTapCountJobCreation = 0;
     
     
     
-    
+    //existing record
     if ([_jobObject objectId]) {
         NSLog(@"object has object id");
-        //update the job object
+        //update the job object only
+        {
+            
+            //save skills to parse
+            NSMutableArray *existingSkillsArray = [[NSMutableArray alloc] init];
+            for (UITextField *skillTextField in _arrayOfSkillTextViews) {
+                //prevent empty skills
+                if (![skillTextField.text isEqualToString:@""]) {
+                    [existingSkillsArray addObject:skillTextField.text];
+                    
+                }
+                
+                
+            }
+            
+            _jobObject[@"skillsRequired"] = existingSkillsArray;
+
+            if (![_jobJobTitle.text isEqualToString:@""]) {
+                _jobObject[@"title"] = _jobJobTitle.text;
+            }
+            
+            if (![_jobBusinessName.text isEqualToString:@""]) {
+                _jobObject[@"businessName"] = _jobBusinessName.text;
+            }
+            
+            if (![_jobJobDescription.text isEqualToString:@""]) {
+                _jobObject[@"description"] = _jobJobDescription.text;
+            }
+            
+            if (![_jobRolesAndResponsibilities.text isEqualToString:@""]) {
+                _jobObject[@"rolesAndResponsibilities"] = _jobRolesAndResponsibilities.text;
+            }
+            
+            if (![_jobCompensation.text isEqualToString:@""]) {
+                _jobObject[@"compensation"] = _jobCompensation.text;
+            }
+            
+            if (![_employmentTypeTextField.text isEqualToString:@""]) {
+                _jobObject[@"employmentType"] = _employmentTypeTextField.text;
+            }
+            
+            if (![_degreeRequiredTextField.text isEqualToString:@""]) {
+                _jobObject[@"degreeRequired"] = _degreeRequiredTextField.text;
+            }
+            
+            if (![_jobLevelTextField.text isEqualToString:@""]) {
+                _jobObject[@"jobLevel"] = _jobLevelTextField.text;
+            }
+            
+
+            [_jobObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                if (succeeded) {
+                    NSLog(@"updated skills to parse successfully");
+                    
+                    //job added, update the UI
+                    UIImage *progressIndicatorDoneImage = [UIImage imageNamed:@"37x-Checkmark.png"];
+                    UIImageView *progressIndicatorDoneImageView = [[UIImageView alloc] initWithImage:progressIndicatorDoneImage];
+                    _HUDProgressIndicator.customView = progressIndicatorDoneImageView;
+                    _HUDProgressIndicator.mode = MBProgressHUDModeCustomView;
+                    _HUDProgressIndicator.labelText = @"Job udpated";
+
+                    
+                    [[ NSNotificationCenter defaultCenter] postNotificationName:@"jobDetailsUpdatedNotification" object:nil];
+                    
+                    
+                    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 3.0 * NSEC_PER_SEC);
+                    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                        // Do something...
+                        _HUDProgressIndicator.hidden = YES;
+                        
+                        
+                        /*
+                        //reset the navigation to job location view to add a new job
+                        UIViewController *viewController = [[self storyboard] instantiateViewControllerWithIdentifier:@"jobLocationViewController"];
+                        UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:viewController];
+                        [self.navigationController pushViewController:navi animated:YES];
+                        */
+                        
+
+                        
+                        
+                    });
+                    
+                    
+                    
+                    
+                    
+                    
+                }
+                
+                else{
+                    
+                    NSLog(@"error saving skills successfully to parse");
+                }
+            }];
+            
+            
+            
+            // NSLog(@"%@", [_jobObject objectForKey:@"jobIndustry"]);
+            
+            
+        }
+        
 
     }else{
         
@@ -663,20 +806,21 @@ int addSkillButtonTapCountJobCreation = 0;
                 UIImageView *progressIndicatorDoneImageView = [[UIImageView alloc] initWithImage:progressIndicatorDoneImage];
                 _HUDProgressIndicator.customView = progressIndicatorDoneImageView;
                 _HUDProgressIndicator.mode = MBProgressHUDModeCustomView;
-                _HUDProgressIndicator.labelText = @"Job saved to job list";
+                _HUDProgressIndicator.labelText = @"Job added to job list";
                 
+                [[ NSNotificationCenter defaultCenter] postNotificationName:@"jobDetailsUpdatedNotification" object:nil];
                 dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 3.0 * NSEC_PER_SEC);
                 dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
                     // Do something...
                     _HUDProgressIndicator.hidden = YES;
                     
-                    
+                    /*
                     //reset the navigation to job location view to add a new job
                     UIViewController *viewController = [[self storyboard] instantiateViewControllerWithIdentifier:@"jobLocationViewController"];
                     UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:viewController];
                     [self.navigationController pushViewController:navi animated:YES];
     
-                    
+                    */
                 });
                 
 
