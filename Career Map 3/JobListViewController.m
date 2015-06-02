@@ -407,6 +407,8 @@ bool messageIsReceived = NO;
          {
              //you're the job poster
              cell.jobPostedByUsernameLabel.font = [UIFont boldSystemFontOfSize:10.0];
+             //light blue
+             [cell setBackgroundColor:[UIColor colorWithRed:220.0/255.0 green:234.0/255.0 blue:254.0/255.0 alpha:1]];
              if ([PFAnonymousUtils isLinkedWithUser:[PFUser currentUser]]) {
              
                  cell.jobPostedByUsernameLabel.text = @"You (Anonymous)";
@@ -427,6 +429,8 @@ bool messageIsReceived = NO;
 
              //you're not the job poster
              cell.jobPostedByUsernameLabel.font = [UIFont systemFontOfSize:10.0];
+             cell.backgroundColor = [UIColor whiteColor];
+
              if ([[jobObject[@"postedByUser"] objectForKey:@"signedUp"] isEqual:@YES] ) {
                  cell.jobPostedByUsernameLabel.text = [jobObject[@"postedByUser"] objectForKey:@"username"];
 

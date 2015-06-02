@@ -35,6 +35,7 @@
 		F537FF731B1A3373001862D9 /* AddressLineConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = F537FF721B1A3373001862D9 /* AddressLineConverter.m */; };
 		F53EABF11B020F5900CCB97C /* MessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F53EABF01B020F5900CCB97C /* MessagesViewController.m */; };
 		F53EABF41B020F8700CCB97C /* MessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F53EABF31B020F8700CCB97C /* MessageCell.m */; };
+		F56EA2011B1D8D7A00350CBF /* MyJobsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F56EA2001B1D8D7A00350CBF /* MyJobsListViewController.m */; };
 		F59584851B1347A900B06778 /* TabBar-AddJob.png in Resources */ = {isa = PBXBuildFile; fileRef = F59584821B1347A800B06778 /* TabBar-AddJob.png */; };
 		F59584861B1347A900B06778 /* TabBar-AddJob@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F59584831B1347A900B06778 /* TabBar-AddJob@2x.png */; };
 		F59584871B1347A900B06778 /* TabBar-AddJob@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F59584841B1347A900B06778 /* TabBar-AddJob@3x.png */; };
@@ -158,6 +159,8 @@
 		F53EABF01B020F5900CCB97C /* MessagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessagesViewController.m; sourceTree = "<group>"; };
 		F53EABF21B020F8700CCB97C /* MessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageCell.h; sourceTree = "<group>"; };
 		F53EABF31B020F8700CCB97C /* MessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageCell.m; sourceTree = "<group>"; };
+		F56EA1FF1B1D8D7A00350CBF /* MyJobsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyJobsListViewController.h; sourceTree = "<group>"; };
+		F56EA2001B1D8D7A00350CBF /* MyJobsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyJobsListViewController.m; sourceTree = "<group>"; };
 		F59584821B1347A800B06778 /* TabBar-AddJob.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBar-AddJob.png"; sourceTree = "<group>"; };
 		F59584831B1347A900B06778 /* TabBar-AddJob@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBar-AddJob@2x.png"; sourceTree = "<group>"; };
 		F59584841B1347A900B06778 /* TabBar-AddJob@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBar-AddJob@3x.png"; sourceTree = "<group>"; };
@@ -428,6 +431,15 @@
 			name = Messages;
 			sourceTree = "<group>";
 		};
+		F56EA2021B1D8D8200350CBF /* My Jobs */ = {
+			isa = PBXGroup;
+			children = (
+				F56EA1FF1B1D8D7A00350CBF /* MyJobsListViewController.h */,
+				F56EA2001B1D8D7A00350CBF /* MyJobsListViewController.m */,
+			);
+			name = "My Jobs";
+			sourceTree = "<group>";
+		};
 		F59584881B134B9E00B06778 /* Add Job */ = {
 			isa = PBXGroup;
 			children = (
@@ -480,6 +492,7 @@
 				F59758B11AC159B40099A978 /* AppDelegate.m */,
 				F59758B91AC159B40099A978 /* Main.storyboard */,
 				F59758B01AC159B40099A978 /* AppDelegate.h */,
+				F56EA2021B1D8D8200350CBF /* My Jobs */,
 				F59584881B134B9E00B06778 /* Add Job */,
 				F53EABEE1B020F2800CCB97C /* Messages */,
 				F535ABB61ADE49460091E70B /* Conversation */,
@@ -814,6 +827,7 @@
 				F52DC4901AE4D80800693911 /* ViewEditMyCVViewController.m in Sources */,
 				F597592F1AC1D7F00099A978 /* JobListViewController.m in Sources */,
 				F5EB65C01AECF6BD0026B988 /* GCPlaceholderTextView.m in Sources */,
+				F56EA2011B1D8D7A00350CBF /* MyJobsListViewController.m in Sources */,
 				F59759321AC1DBDF0099A978 /* Job.m in Sources */,
 				F595849E1B15BC7C00B06778 /* AddJobDetailsViewController.m in Sources */,
 				F5EB65FF1AEEB0770026B988 /* AppHorizontalMessage.m in Sources */,

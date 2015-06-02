@@ -42,6 +42,9 @@
 @property (weak, nonatomic) IBOutlet UITextView *jobCompensationTextView;
 @property (weak, nonatomic) IBOutlet UITextView *jobEmploymentTypeTextView;
 @property (weak, nonatomic) IBOutlet UITextView *jobIndustryTypeTextView;
+@property (weak, nonatomic) IBOutlet UIButton *editJobButton;
+@property (weak, nonatomic) IBOutlet UIButton *deleteJobButton;
+
 
 
 
@@ -88,5 +91,6 @@
 - (IBAction)chatWithEmployerButtonPressed:(UIButton *)sender;
 - (IBAction)applyWithCVButtonPressed:(UIButton *)sender;
 - (IBAction)reportJobButtonPressed:(UIBarButtonItem *)sender;
+- (IBAction)editJobButtonPressed:(UIButton *)sender;
 
 @end

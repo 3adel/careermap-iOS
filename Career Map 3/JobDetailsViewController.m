@@ -27,9 +27,24 @@
     //styles
     _applyWithCVButton.layer.cornerRadius =5.0f;
     _messageEmployerButton.layer.cornerRadius =5.0f;
+    _editJobButton.layer.cornerRadius = 5.0f;
+    _deleteJobButton.layer.cornerRadius = 5.0f;
 
     
     
+        
+    //check if the user is me, enable edit and delete buttons and disable apply and message buttons
+    if ([[_jobPosterPFUser objectId] isEqualToString:[[PFUser currentUser] objectId]]) {
+        _editJobButton.hidden = NO;
+        _deleteJobButton.hidden = NO;
+        
+        _applyWithCVButton.enabled = NO;
+        _applyWithCVButton.backgroundColor = [UIColor grayColor];
+        _messageEmployerButton.enabled = NO;
+        _messageEmployerButton.backgroundColor = [UIColor grayColor];
+
+
+    }
     
     
     // Do any additional setup after loading the view.
@@ -529,6 +544,9 @@
     
     
     
+}
+
+- (IBAction)editJobButtonPressed:(UIButton *)sender {
 }
 
 
