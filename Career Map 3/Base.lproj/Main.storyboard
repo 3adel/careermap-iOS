@@ -316,7 +316,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Actions" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M9A-ys-fIZ" userLabel="Job Education label">
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Actions" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M9A-ys-fIZ" userLabel="Job Education label">
                                         <rect key="frame" x="0.0" y="837" width="174" height="17"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -470,6 +470,7 @@
                         <outlet property="applyWithCVButton" destination="xMH-5h-pDA" id="yqm-zN-KGi"/>
                         <outlet property="deleteJobButton" destination="kSM-lC-fit" id="pbg-Mq-qqb"/>
                         <outlet property="editJobButton" destination="Ois-HI-aMu" id="k2b-S8-ewi"/>
+                        <outlet property="jobActionsLabel" destination="M9A-ys-fIZ" id="BpJ-8z-Adc"/>
                         <outlet property="jobAreaLabel" destination="SJl-Rf-FBT" id="onM-Zn-lKn"/>
                         <outlet property="jobCompensationTextView" destination="GOb-4X-C9H" id="X43-6C-5Y4"/>
                         <outlet property="jobDateAddedLabel" destination="so5-tk-zYr" id="Rf1-Ee-3gv"/>

@@ -37,6 +37,7 @@
     if ([[_jobPosterPFUser objectId] isEqualToString:[[PFUser currentUser] objectId]]) {
         _editJobButton.hidden = NO;
         _deleteJobButton.hidden = NO;
+        _jobActionsLabel.hidden = NO;
         
         _applyWithCVButton.enabled = NO;
         _applyWithCVButton.backgroundColor = [UIColor grayColor];

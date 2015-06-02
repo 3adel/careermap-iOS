@@ -44,6 +44,7 @@
 @property (weak, nonatomic) IBOutlet UITextView *jobIndustryTypeTextView;
 @property (weak, nonatomic) IBOutlet UIButton *editJobButton;
 @property (weak, nonatomic) IBOutlet UIButton *deleteJobButton;
+@property (weak, nonatomic) IBOutlet UILabel *jobActionsLabel;
 
 
 
