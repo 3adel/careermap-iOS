@@ -60,6 +60,20 @@
 
 - (void) viewDidAppear:(BOOL)animated{
     
+    
+    NSLog(@"this is the job object passed = %@", _jobObject);
+    if ([_jobObject objectForKey:@"geolocation"]) {
+        //zoom to the job location only and keep the job object as it is
+        
+        //but still get the user location
+    }
+    
+    //else
+    //get user location
+    //zoom to user location
+    
+
+    
     [self getUserLocationPoint];
     
 

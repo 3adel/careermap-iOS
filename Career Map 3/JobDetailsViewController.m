@@ -548,6 +548,26 @@
 }
 
 - (IBAction)editJobButtonPressed:(UIButton *)sender {
+    //pass the job object to job location edit view
+
+    
+    NSLog(@"this is the job object to edit %@", _jobObject);
+    
+    
+    
+    JobLocationViewController *jobLocationVC = [self.storyboard instantiateViewControllerWithIdentifier:@"jobLocationViewController"];
+    //here where you pass the job object
+    if (_jobObject) {
+            jobLocationVC.jobObject = _jobObject;
+    }
+
+    UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:jobLocationVC];
+    [self.navigationController pushViewController:navi animated:YES];
+    
+    
+    
+    
+    
 }
 
 
