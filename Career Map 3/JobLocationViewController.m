@@ -51,8 +51,19 @@
     }
     
     
+    //zoom job job location if the job location is already there
+    NSLog(@"this is the job object passed = %@", _jobObject);
+    if ([_jobObject objectForKey:@"geolocation"]) {
+        //zoom to the job location only and keep the job object as it is
+        [self zoomToLocationPoint:(PFGeoPoint *)[_jobObject objectForKey:@"geolocation"]];
+        NSLog(@"this is the point  %@",[_jobObject objectForKey:@"geolocation"]);
+        
+        
+    }
     
     
+    [self getUserLocationPoint];
+
     
     
 }
@@ -61,22 +72,8 @@
 - (void) viewDidAppear:(BOOL)animated{
     
     
-    NSLog(@"this is the job object passed = %@", _jobObject);
-    if ([_jobObject objectForKey:@"geolocation"]) {
-        //zoom to the job location only and keep the job object as it is
-        
-        //but still get the user location
-    }
-    
-    //else
-    //get user location
-    //zoom to user location
-    
 
     
-    [self getUserLocationPoint];
-    
-
 }
 
 - (void)didReceiveMemoryWarning {
@@ -85,17 +82,17 @@
 }
 
 
-- (void) zoomToUserLocationPoint{
+- (void) zoomToLocationPoint:(PFGeoPoint *)point{
     //zoom to job location
     
-    CLLocationCoordinate2D userZoomLocation;
-    userZoomLocation.latitude = _userLocationPoint.latitude;
-    userZoomLocation.longitude =_userLocationPoint.longitude;
-    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(userZoomLocation, 400, 400);
+    CLLocationCoordinate2D zoomLocation;
+    zoomLocation.latitude = point.latitude;
+    zoomLocation.longitude =point.longitude;
+    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(zoomLocation, 400, 400);
     [_jobMap setRegion:viewRegion animated:YES];
     [_jobMap setScrollEnabled:YES];
-    MKPointAnnotation *userPoint = [[MKPointAnnotation alloc] init];
-    [_jobMap addAnnotation:userPoint];
+    MKPointAnnotation *annotPoint = [[MKPointAnnotation alloc] init];
+    [_jobMap addAnnotation:annotPoint];
 }
 
 
@@ -106,7 +103,7 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         
         [_jobLocationAddressFetchActivityIndicator startAnimating];
-        _jobLocationAddressTextView.text = @"Getting location ...";
+        _jobLocationAddressTextView.text = @"Getting user location ...";
         
     });
     
@@ -116,28 +113,31 @@
         if (!error) {
             
             _userLocationPoint=geoPoint;
-            _jobLocationPoint =geoPoint;
             
-            [self zoomToUserLocationPoint];
-            
-            
-            _jobObject = [[PFObject alloc] initWithClassName:@"Job"];
-            [_jobObject setValue:_userLocationPoint forKey:@"userLocation"];
-            [_jobObject setValue:_jobLocationPoint forKey:@"geolocation"];
-            NSLog(@"Job Object = %@", _jobObject );
-            
-            
-            
-            //update ui with found user location
-            dispatch_async(dispatch_get_main_queue(), ^{
+            //set job object location only when it's missing
+            if (!_jobObject) {
+                _jobLocationPoint =geoPoint;
+                _jobObject = [[PFObject alloc] initWithClassName:@"Job"];
+                [_jobObject setValue:_jobLocationPoint forKey:@"geolocation"];
+                [_jobObject setValue:_userLocationPoint forKey:@"userLocation"];
+               // NSLog(@"Job Object = %@", _jobObject );
+                [self zoomToLocationPoint:_userLocationPoint];
                 
-                _jobLocationAddressTextView.text = @"Location found";
                 
-                //get the address of the location
-                CLLocation *userLocation = [[CLLocation alloc] initWithLatitude:_userLocationPoint.latitude longitude:_userLocationPoint.longitude];
-                [self convertLocationToAddress:userLocation];
+                //update ui with found user location
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    
+                    _jobLocationAddressTextView.text = @"Location found";
+                    
+                    //get the address of the location
+                    CLLocation *userLocation = [[CLLocation alloc] initWithLatitude:_userLocationPoint.latitude longitude:_userLocationPoint.longitude];
+                    [self convertLocationToAddress:userLocation];
+                    
+                });
+
                 
-            });
+            }
+
             
 
         }
@@ -154,9 +154,7 @@
 
 - (void) getJobLocationPoint{
     
-    _jobLocationAddressTextView.text =@"Loading location ...";
-
-    
+    //_jobLocationAddressTextView.text =@"Loading location ...";
     _jobLocationPoint = [[PFGeoPoint alloc] init];
     _jobLocationPoint.latitude =_jobMap.centerCoordinate.latitude;
     _jobLocationPoint.longitude =_jobMap.centerCoordinate.longitude;
@@ -164,7 +162,7 @@
     
     //update job object with new job location
     [_jobObject setValue:_jobLocationPoint forKey:@"geolocation"];
-    NSLog(@"Job object after pan = %@", _jobObject );
+   // NSLog(@"Job object after pan = %@", _jobObject );
     
     
     //get the address of the job location
@@ -200,7 +198,7 @@
 
 - (IBAction)restetToMyLocationButtonPressed:(UIButton *)sender {
     
-    [self zoomToUserLocationPoint];
+    [self zoomToLocationPoint:_userLocationPoint];
 }
 
 - (IBAction)registerButtonPressed:(UIButton *)sender {
@@ -226,6 +224,12 @@
     
     NSLog(@"finished dragging the map ...");
     [self getJobLocationPoint];
+    
+    
+    NSLog(@"job location = %@", [_jobObject objectForKey:@"geolocation"]);
+    NSLog(@"user location = %@", _userLocationPoint);
+
+    
 
     //get the center location of the map
     
@@ -264,14 +268,14 @@
                 //add the address line as a component
                 NSArray *lines = placemark.addressDictionary[ @"FormattedAddressLines"];
                 NSString *addressString = [lines componentsJoinedByString:@", "];
-                NSLog(@"Address: %@", addressString);
-                NSLog(@"Addressline: %@", placemark.addressDictionary);
+               // NSLog(@"Address: %@", addressString);
+                //NSLog(@"Addressline: %@", placemark.addressDictionary);
 
                 _jobLocationAddressTextView.text =addressString;
                 
             }
             else{
-                NSLog(@"no address found");
+                //NSLog(@"no address found");
                 _jobLocationAddressTextView.text = @"No address found";
                 
                 

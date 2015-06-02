@@ -33,7 +33,7 @@
 
 
 //MARK: Actions
-- (void) zoomToUserLocationPoint;
+- (void) zoomToLocationPoint:(PFGeoPoint *) point;
 - (void) getJobLocationPoint;
 - (IBAction)selectMapTypePressed:(UISegmentedControl *)sender;
 - (IBAction)restetToMyLocationButtonPressed:(UIButton *)sender;
