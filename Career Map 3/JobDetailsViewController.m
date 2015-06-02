@@ -553,6 +553,9 @@
     
     NSLog(@"this is the job object to edit %@", _jobObject);
     
+
+    
+    
     
     JobLocationViewController *jobLocationVC = [[JobLocationViewController alloc] init];
     jobLocationVC = [self.storyboard instantiateViewControllerWithIdentifier:@"jobLocationViewController"];

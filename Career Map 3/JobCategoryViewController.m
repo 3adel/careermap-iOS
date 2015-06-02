@@ -23,6 +23,9 @@
     
     //get parse job categories
     [self retrieveJobCategoriesFromParse];
+    
+    
+
 
 
   
@@ -68,6 +71,18 @@
         [_jobCategoryButton addTarget:self action:@selector(jobCategoryButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
         [_jobCategoryButton setTag:i];
         [_jobCategoryScrollView addSubview:_jobCategoryButton];
+        
+        //if the job categeory is passed from the previous VC, highlight
+        if ([[[_jobObject objectForKey:@"jobIndustry"] objectId] isEqualToString:        [[_jobCategoriesArray objectAtIndex:i] objectId]
+             ]) {
+            //highlight button and set it as selected
+            _jobCategoryButton.backgroundColor =[UIColor colorWithRed:0/255.0 green:128.0/255.0 blue:0.0/255.0 alpha:1.0];
+            ;
+            _PreviouslySelectedJobCategoryButton = _jobCategoryButton;
+
+        }
+        
+        
     }
     
     //hide progress indicator

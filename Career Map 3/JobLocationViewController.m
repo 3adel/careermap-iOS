@@ -18,6 +18,11 @@
    
     [super viewDidLoad];
     
+
+    
+    
+    
+    
     //style
     _registerButton.layer.cornerRadius = 5.0f;
     
@@ -65,6 +70,7 @@
     [self getUserLocationPoint];
 
     
+ 
     
 }
 
