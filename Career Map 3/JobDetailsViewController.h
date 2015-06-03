@@ -53,6 +53,8 @@
 @property (strong, nonatomic) UIAlertView *createCVAlert;
 @property (strong, nonatomic) UIAlertView *registerAlert;
 @property (strong, nonatomic) UIAlertView *deleteJobAlert;
+@property (strong, nonatomic) UIAlertView *reportJobAlert;
+
 
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *reportJobBarButton;
@@ -92,6 +94,7 @@
 
 - (void) showJobDirection;
 - (void) deleteJob;
+- (void) reportJob;
 
 - (IBAction)chatWithEmployerButtonPressed:(UIButton *)sender;
 - (IBAction)applyWithCVButtonPressed:(UIButton *)sender;

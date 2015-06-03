@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Career Map 3/JobLocationViewController.m"
-            timestampString = "454940532.183122"
+            filePath = "Career Map 3/MessagesViewController.m"
+            timestampString = "455023962.777043"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
-            landmarkName = "-viewDidLoad"
+            startingLineNumber = "682"
+            endingLineNumber = "682"
+            landmarkName = "-retrieveMessages"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

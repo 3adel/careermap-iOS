@@ -482,69 +482,10 @@
 
 - (IBAction)reportJobButtonPressed:(UIBarButtonItem *)sender {
     
-    //if the user already voted up, mark upvote button as selected
-    PFQuery *votedQuery = [PFQuery queryWithClassName:@"_User"];
-    [votedQuery whereKey:@"jobVotedDown" equalTo:_jobObject.objectId];
-    [votedQuery whereKey:@"objectId" equalTo:[[PFUser currentUser] objectId] ];
+    _reportJobAlert = [[UIAlertView alloc] initWithTitle:@"Report job!" message:@"Are you sure you want to do this?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Yes   ", nil];
+    [_reportJobAlert show];
     
-    //progress spinner initialization
-     MBProgressHUD *HUDProgressIndicator = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    HUDProgressIndicator.labelText = @"Thanks for reporting";
-    HUDProgressIndicator.detailsLabelText = @"We'll take care of this";
-    HUDProgressIndicator.mode = MBProgressHUDModeIndeterminate;
-    //orange color
-   // [_HUDProgressIndicator setColor:[UIColor colorWithRed:255/255.0 green:149.0/255.0 blue:0.0/0.0 alpha:0.8]];
-    
-    
-    [votedQuery getObjectInBackgroundWithId:[[PFUser currentUser] objectId] block:^(PFObject *object, NSError *error) {
-        
-        if (!error) {
-            
-            
-            [_jobObject incrementKey:@"reportCount" byAmount:[NSNumber numberWithInteger:1]];
-            
-            [_jobObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                if (succeeded) {
-                    [[PFUser currentUser] addObject:_jobObject.objectId forKey:@"jobVotedDown"];
-                    [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                        if (!error) {
-                            
-                            //update job object array
-                            [_jobObject setObject:@"1" forKey:@"currentUserVotedDownThisJob"];
-                            
-                            
-                            dispatch_async(dispatch_get_main_queue(), ^{
-                                
-                                _reportJobBarButton.enabled =NO;
-                                [HUDProgressIndicator setHidden:YES];
-                                
-                            });
-                            
-                            
-                        }
-                    }];
-                    
-                    
-                } else {
-                    NSLog(@"Error saving career object");
-                }
-                
-            }];
-            
-            
-        }
-        
-        
-        
-        
-        
-        
-        
-    }];
-    
-    
-    
-    
+
 }
 
 
@@ -654,6 +595,28 @@
             
         }
     }
+    
+    
+    else if(actionSheet== _reportJobAlert) {//alertLogout
+        if (buttonIndex == 0){
+            NSLog(@"0: Cancel");
+            
+        }
+        
+        else if(buttonIndex==1){
+            
+            [self reportJob];
+            
+            NSLog(@"delete job tapped");
+            
+        }
+    }
+    
+    
+    
+    
+    
+    
 
     
 }
@@ -708,6 +671,69 @@
             
         }
     }];
+
+}
+
+
+
+- (void) reportJob{
+    
+
+    //if the user already voted up, mark upvote button as selected
+    PFQuery *votedQuery = [PFQuery queryWithClassName:@"_User"];
+    [votedQuery whereKey:@"jobVotedDown" equalTo:_jobObject.objectId];
+    [votedQuery whereKey:@"objectId" equalTo:[[PFUser currentUser] objectId] ];
+    
+    //progress spinner initialization
+    MBProgressHUD *HUDProgressIndicator = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    HUDProgressIndicator.labelText = @"Thanks for reporting";
+    HUDProgressIndicator.detailsLabelText = @"We'll take care of this";
+    HUDProgressIndicator.mode = MBProgressHUDModeIndeterminate;
+    //orange color
+    // [_HUDProgressIndicator setColor:[UIColor colorWithRed:255/255.0 green:149.0/255.0 blue:0.0/0.0 alpha:0.8]];
+    
+    
+    [votedQuery getObjectInBackgroundWithId:[[PFUser currentUser] objectId] block:^(PFObject *object, NSError *error) {
+        
+        if (!error) {
+            
+            
+            [_jobObject incrementKey:@"reportCount" byAmount:[NSNumber numberWithInteger:1]];
+            
+            [_jobObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                if (succeeded) {
+                    [[PFUser currentUser] addObject:_jobObject.objectId forKey:@"jobVotedDown"];
+                    [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                        if (!error) {
+                            
+                            //update job object array
+                            [_jobObject setObject:@"1" forKey:@"currentUserVotedDownThisJob"];
+                            
+                            
+                            dispatch_async(dispatch_get_main_queue(), ^{
+                                
+                                _reportJobBarButton.enabled =NO;
+                                [HUDProgressIndicator setHidden:YES];
+                                
+                            });
+                            
+                            
+                        }
+                    }];
+                    
+                    
+                } else {
+                    NSLog(@"Error saving career object");
+                }
+                
+            }];
+            
+            
+        }
+        
+
+    }];
+
 
 }
 

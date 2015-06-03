@@ -34,7 +34,7 @@
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (nonatomic,strong) CLLocationManager* locationManager;
 @property (nonatomic, strong) PFGeoPoint *userLocation;
-
+@property (nonatomic, strong) LoadingJobListEmptyView *noJobsView;
 
 @property (nonatomic, strong) NSMutableArray *jobsArray;
 @property (nonatomic, strong) NSMutableArray *jobsArrayWithUsersVotesVolatile;

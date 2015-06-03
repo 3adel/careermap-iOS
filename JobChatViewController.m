@@ -864,10 +864,9 @@
 - (void) scrollToLastMessage{
     
     
+    NSLog(@"Size of arrray = %lu", (unsigned long)[_messagesArray count]);
     
     
-    
-    NSLog(@"Size of arrray = %ld", [_messagesArray count]);
     NSIndexPath *scrollIndexPath = [NSIndexPath indexPathForRow:([_messagesArray count] - 1) inSection:0];
     [[self jobChatTable] scrollToRowAtIndexPath:scrollIndexPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
     //[[self jobChatTable]

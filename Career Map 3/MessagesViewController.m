@@ -679,10 +679,10 @@ forRowAtIndexPath: (NSIndexPath*)indexPath
                     if ([_UnreadMessagesCountBooleansArray count] >0) {
                         
                         
-                        [[[[tbc tabBar] items] objectAtIndex:3] setBadgeValue:[NSString stringWithFormat:@"%ld", [_UnreadMessagesCountBooleansArray count]]];
+                        [[[[tbc tabBar] items] objectAtIndex:3] setBadgeValue:[NSString stringWithFormat:@"%lu", (unsigned long)[_UnreadMessagesCountBooleansArray count]]];
                         [[UIApplication sharedApplication] setApplicationIconBadgeNumber:[_UnreadMessagesCountBooleansArray count]];
                         
-                        NSLog(@"counttttttt = %ld", count);
+                        NSLog(@"counttttttt = %ld", (long)count);
                     }
                     else{
                         

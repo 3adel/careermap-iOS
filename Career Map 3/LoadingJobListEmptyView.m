@@ -23,9 +23,12 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        
+
         [[NSBundle mainBundle] loadNibNamed:@"LoadingJobListEmptyView" owner:self options:nil];
+        self.mainView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
         [self addSubview:self.mainView];
-        self.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
+
         
     }
     return self;

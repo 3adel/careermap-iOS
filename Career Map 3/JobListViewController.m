@@ -53,6 +53,9 @@ bool messageIsReceived = NO;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    _noJobsView = [[LoadingJobListEmptyView alloc] init];
+
+    
     //if the user is coming from message push notif, show the message dialog first
     if (messageIsReceived) {
         
@@ -150,167 +153,205 @@ bool messageIsReceived = NO;
     
     [retrieveJobs findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
-            jobsArray = [[NSMutableArray alloc] initWithArray:objects];
-            //NSLog(@"%lu", (unsigned long)jobsArray.count);
             
-            
-            //Moved inside the block. This will prevent the a crash at job list tableview
-            jobsArrayWithUsersVotesVolatile= [[NSMutableArray alloc] init];
-            
-            NSUInteger count = 0;
-            for (PFObject *i in jobsArray) {
-                [jobsArrayWithUsersVotesVolatile addObject:i];
-                CLLocation  *jobLocation = [[CLLocation alloc] initWithLatitude:[[i objectForKey:@"geolocation"] latitude] longitude:[[i objectForKey:@"geolocation"] longitude]];
-                CLGeocoder *geocoder = [[CLGeocoder alloc] init];
-                [geocoder reverseGeocodeLocation:jobLocation completionHandler:^(NSArray *placemarks, NSError *error) {
-                    if (error == nil && [placemarks count] > 0)
-                    {
-                        
-                        CLPlacemark *placemark = [placemarks lastObject];
-                        if ([[placemarks lastObject] locality] != nil ) {
-                            [(PFObject *)[jobsArrayWithUsersVotesVolatile objectAtIndex:count] setObject:[placemark locality] forKey:@"area"];
-                            
-                            //add the address line as a component
-                            NSArray *lines = placemark.addressDictionary[ @"FormattedAddressLines"];
-                            NSString *addressString = [lines componentsJoinedByString:@", "];
-                            
-                            [(PFObject *)[jobsArrayWithUsersVotesVolatile objectAtIndex:count] setObject:addressString forKey:@"addressLine"];
-                            
-                        }
-                        else{
-                            [(PFObject *)[jobsArrayWithUsersVotesVolatile objectAtIndex:count] setObject:@"N/A" forKey:@"area"];
-                            
-                        }
-                        
-                        
-                    }
-                    
-                    else{
-                        
-                        NSLog(@"Error = %@", error);
-                        // cell.jobArea.text =@"-";
-                    }
-                    
-                }];
-                
-                
-                PFQuery *votedQuery = [PFQuery queryWithClassName:@"_User"];
-                
-                [votedQuery whereKey:@"jobVotedUp" equalTo:i.objectId];
-                [votedQuery getObjectInBackgroundWithId:[[PFUser currentUser] objectId] block:^(PFObject *object, NSError *error) {
-                    
-                    
-                    if (!error) {
-                        
-                        if ([[object objectForKey:@"jobVotedUp"] containsObject:i.objectId]) {
-                            
-                            
-                            [(PFObject *)[jobsArrayWithUsersVotesVolatile objectAtIndex:count] setObject:@"1" forKey:@"currentUserVotedUpThisJob"];
-                            
-                        }
-                        
-                        else{
-                            
-                            [(PFObject *)[jobsArrayWithUsersVotesVolatile objectAtIndex:count] setObject:@"0" forKey:@"currentUserVotedUpThisJob"];
-                            
-                        }
-                        
-                        
-                    }
-                    
-                    
-                    
-                    NSIndexPath* cellIndexPath1= [NSIndexPath indexPathForRow:count inSection:0];
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        
-                        [self.jobTable beginUpdates];
-                        [self.jobTable reloadRowsAtIndexPaths:@[cellIndexPath1] withRowAnimation:UITableViewRowAnimationNone];
-                        [self.jobTable endUpdates];
-                    });
-                    
-                }];
-                
-                
-                
-                
-                
-                //query for voting down
-                PFQuery *votedQuery2 = [PFQuery queryWithClassName:@"_User"];
-                [votedQuery2 whereKey:@"jobVotedDown" equalTo:i.objectId];
-                [votedQuery2 getObjectInBackgroundWithId:[[PFUser currentUser] objectId] block:^(PFObject *object, NSError *error) {
-                    
-                    
-                    if (!error) {
-                        
-                        if ([[object objectForKey:@"jobVotedDown"] containsObject:i.objectId]) {
-                            
-                            
-                            
-                            [(PFObject *)[jobsArrayWithUsersVotesVolatile objectAtIndex:count] setObject:@"1" forKey:@"currentUserVotedDownThisJob"];
-                            
-                            
-                            
-                        }
-                        
-                        else{
-                            
-                            [(PFObject *)[jobsArrayWithUsersVotesVolatile objectAtIndex:count] setObject:@"0" forKey:@"currentUserVotedDownThisJob"];
-                            
-                        }
-                        
-                        
-                    }
-                    
-                    
-                    NSIndexPath* cellIndexPath1= [NSIndexPath indexPathForRow:count inSection:0];
-                    
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        
-                        [self.jobTable beginUpdates];
-                        [self.jobTable reloadRowsAtIndexPaths:@[cellIndexPath1] withRowAnimation:UITableViewRowAnimationNone];
-                        [self.jobTable endUpdates];
-                    });
-                    
-                    
-                }];
-                
-                
-                count++;
-                
-                if (count == jobsArray.count) {
-                    //NSLog(@"LAST ITEM REACHED=%ld",(unsigned long)count);
-                    
-                    //end refreshing
+            if (objects.count==0) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [_HUDProgressIndicator hide:YES];
                     if (self.refreshControl) {
-                        
+                        NSLog(@"no jobs around you");
                         [self.refreshControl endRefreshing];
+                        
+                        //call empty view message
+                        
+                        [_jobTable addSubview:_noJobsView];
+                        
+
+                    }
+                    
+
+                });
+
+            } else{
+
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if (_noJobsView) {
+                        [_noJobsView removeFromSuperview];
+                    }
+                    
+                });
+                
+                
+
+                
+                
+                jobsArray = [[NSMutableArray alloc] initWithArray:objects];
+                //NSLog(@"%lu", (unsigned long)jobsArray.count);
+                
+                
+                //Moved inside the block. This will prevent the a crash at job list tableview
+                jobsArrayWithUsersVotesVolatile= [[NSMutableArray alloc] init];
+                
+                NSUInteger count = 0;
+                for (PFObject *i in jobsArray) {
+                    [jobsArrayWithUsersVotesVolatile addObject:i];
+                    CLLocation  *jobLocation = [[CLLocation alloc] initWithLatitude:[[i objectForKey:@"geolocation"] latitude] longitude:[[i objectForKey:@"geolocation"] longitude]];
+                    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+                    [geocoder reverseGeocodeLocation:jobLocation completionHandler:^(NSArray *placemarks, NSError *error) {
+                        if (error == nil && [placemarks count] > 0)
+                        {
+                            
+                            CLPlacemark *placemark = [placemarks lastObject];
+                            if ([[placemarks lastObject] locality] != nil ) {
+                                [(PFObject *)[jobsArrayWithUsersVotesVolatile objectAtIndex:count] setObject:[placemark locality] forKey:@"area"];
+                                
+                                //add the address line as a component
+                                NSArray *lines = placemark.addressDictionary[ @"FormattedAddressLines"];
+                                NSString *addressString = [lines componentsJoinedByString:@", "];
+                                
+                                [(PFObject *)[jobsArrayWithUsersVotesVolatile objectAtIndex:count] setObject:addressString forKey:@"addressLine"];
+                                
+                            }
+                            else{
+                                [(PFObject *)[jobsArrayWithUsersVotesVolatile objectAtIndex:count] setObject:@"N/A" forKey:@"area"];
+                                
+                            }
+                            
+                            
+                        }
+                        
+                        else{
+                            
+                            NSLog(@"Error = %@", error);
+                            // cell.jobArea.text =@"-";
+                        }
+                        
+                    }];
+                    
+                    
+                    PFQuery *votedQuery = [PFQuery queryWithClassName:@"_User"];
+                    
+                    [votedQuery whereKey:@"jobVotedUp" equalTo:i.objectId];
+                    [votedQuery getObjectInBackgroundWithId:[[PFUser currentUser] objectId] block:^(PFObject *object, NSError *error) {
+                        
+                        
+                        if (!error) {
+                            
+                            if ([[object objectForKey:@"jobVotedUp"] containsObject:i.objectId]) {
+                                
+                                
+                                [(PFObject *)[jobsArrayWithUsersVotesVolatile objectAtIndex:count] setObject:@"1" forKey:@"currentUserVotedUpThisJob"];
+                                
+                            }
+                            
+                            else{
+                                
+                                [(PFObject *)[jobsArrayWithUsersVotesVolatile objectAtIndex:count] setObject:@"0" forKey:@"currentUserVotedUpThisJob"];
+                                
+                            }
+                            
+                            
+                        }
+                        
+                        
+                        
+                        NSIndexPath* cellIndexPath1= [NSIndexPath indexPathForRow:count inSection:0];
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            
+                            [self.jobTable beginUpdates];
+                            [self.jobTable reloadRowsAtIndexPaths:@[cellIndexPath1] withRowAnimation:UITableViewRowAnimationNone];
+                            [self.jobTable endUpdates];
+                        });
+                        
+                    }];
+                    
+                    
+                    
+                    
+                    
+                    //query for voting down
+                    PFQuery *votedQuery2 = [PFQuery queryWithClassName:@"_User"];
+                    [votedQuery2 whereKey:@"jobVotedDown" equalTo:i.objectId];
+                    [votedQuery2 getObjectInBackgroundWithId:[[PFUser currentUser] objectId] block:^(PFObject *object, NSError *error) {
+                        
+                        
+                        if (!error) {
+                            
+                            if ([[object objectForKey:@"jobVotedDown"] containsObject:i.objectId]) {
+                                
+                                
+                                
+                                [(PFObject *)[jobsArrayWithUsersVotesVolatile objectAtIndex:count] setObject:@"1" forKey:@"currentUserVotedDownThisJob"];
+                                
+                                
+                                
+                            }
+                            
+                            else{
+                                
+                                [(PFObject *)[jobsArrayWithUsersVotesVolatile objectAtIndex:count] setObject:@"0" forKey:@"currentUserVotedDownThisJob"];
+                                
+                            }
+                            
+                            
+                        }
+                        
+                        
+                        NSIndexPath* cellIndexPath1= [NSIndexPath indexPathForRow:count inSection:0];
+                        
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            
+                            [self.jobTable beginUpdates];
+                            [self.jobTable reloadRowsAtIndexPaths:@[cellIndexPath1] withRowAnimation:UITableViewRowAnimationNone];
+                            [self.jobTable endUpdates];
+                        });
+                        
+                        
+                    }];
+                    
+                    
+                    count++;
+                    
+                    if (count == jobsArray.count) {
+                        //NSLog(@"LAST ITEM REACHED=%ld",(unsigned long)count);
+                        
+                        //end refreshing
+                        if (self.refreshControl) {
+                            
+                            [self.refreshControl endRefreshing];
+                        }
+                        
+                        
                     }
                     
                     
                 }
                 
+                //this will guarantee a stable index for the jobs table view.
+                jobsArrayWithUsersVotesStable = [[NSMutableArray alloc] initWithArray:jobsArrayWithUsersVotesVolatile];
+                
             }
             
-            //this will guarantee a stable index for the jobs table view.
-            jobsArrayWithUsersVotesStable = [[NSMutableArray alloc] initWithArray:jobsArrayWithUsersVotesVolatile];
             
-        }
-        
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.jobTable reloadData];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.jobTable reloadData];
+                
+                [_HUDProgressIndicator hide:YES];
+                self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+                
+                
+                
+                //refresh unread messages badge
+                MessagesViewController *messaagesVC = [[MessagesViewController alloc] init];
+                [messaagesVC getUsersWhoBlockedMe];
+                
+                
+            });
+                
+            }
             
-            [_HUDProgressIndicator hide:YES];
-            self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
             
-            
-            
-            //refresh unread messages badge
-            MessagesViewController *messaagesVC = [[MessagesViewController alloc] init];
-            [messaagesVC getUsersWhoBlockedMe];
-            
-            
-        });
+ 
         
     }];
     

@@ -98,7 +98,9 @@
     //will run only the first time use taps on category
     if (!_PreviouslySelectedJobCategoryButton) {
         _PreviouslySelectedJobCategoryButton = sender;
-        NSLog(@"First time chose a category = %ld", sender.tag);
+        NSLog(@"First time chose a category = %ld", (long)sender.tag);
+        
+        
         //green
         sender.backgroundColor =[UIColor colorWithRed:0/255.0 green:128.0/255.0 blue:0.0/255.0 alpha:1.0];
 
@@ -111,7 +113,8 @@
         
         //green
         sender.backgroundColor =[UIColor colorWithRed:0.0/255.0 green:128.0/255.0 blue:0.0/255.0 alpha:1.0];
-        NSLog(@"Job category index selected = %ld", sender.tag);
+        NSLog(@"Job category index selected = %ld", (long)sender.tag);
+        
         _PreviouslySelectedJobCategoryButton = sender;
 
     }
