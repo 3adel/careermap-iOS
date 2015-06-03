@@ -547,6 +547,18 @@
     
 }
 
+
+
+- (IBAction)deleteJobButtonPressed:(UIButton *)sender {
+    //pass the job object to job location edit view
+    _deleteJobAlert = [[UIAlertView alloc] initWithTitle:@"Delete job!" message:@"Are you sure you want to delete this job?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Delete job", nil];
+    [_deleteJobAlert show];
+    
+    
+    
+}
+
+
 - (IBAction)editJobButtonPressed:(UIButton *)sender {
     //pass the job object to job location edit view
 
@@ -627,8 +639,76 @@
 
         }
     }
+    
+    else if(actionSheet== _deleteJobAlert) {//alertLogout
+        if (buttonIndex == 0){
+            NSLog(@"0: Cancel");
+            
+        }
+        
+        else if(buttonIndex==1){
+            
+            [self deleteJob];
+            
+            NSLog(@"delete job tapped");
+            
+        }
+    }
 
     
+}
+
+
+
+- (void) deleteJob{
+    
+    //progress spinner initialization
+    _HUDProgressIndicator = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    _HUDProgressIndicator.labelText = @"Deleting job ...";
+    _HUDProgressIndicator.mode = MBProgressHUDModeIndeterminate;
+    
+    
+    [_jobObject deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (succeeded) {
+            NSLog(@"job deletion success");
+
+            //job added, update the UI
+            UIImage *progressIndicatorDoneImage = [UIImage imageNamed:@"37x-Checkmark.png"];
+            UIImageView *progressIndicatorDoneImageView = [[UIImageView alloc] initWithImage:progressIndicatorDoneImage];
+            _editJobButton.backgroundColor = [UIColor grayColor];
+            _editJobButton.enabled = NO;
+            _deleteJobButton.backgroundColor = [UIColor grayColor];
+            _deleteJobButton.enabled = NO;
+            _reportJobBarButton.enabled = NO;
+            _HUDProgressIndicator.customView = progressIndicatorDoneImageView;
+            _HUDProgressIndicator.mode = MBProgressHUDModeCustomView;
+            _HUDProgressIndicator.labelText = @"Job deleted";
+            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 3.0 * NSEC_PER_SEC);
+            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                _HUDProgressIndicator.hidden = YES;
+                
+ 
+            });
+
+            
+        }
+        else{
+            
+            NSLog(@"job delettion fail ");
+            
+            //job added, update the UI
+
+            _HUDProgressIndicator.labelText = @"Error deleting job";
+            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 3.0 * NSEC_PER_SEC);
+            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                _HUDProgressIndicator.hidden = YES;
+                
+            });
+            
+            
+        }
+    }];
+
 }
 
 

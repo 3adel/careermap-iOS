@@ -52,6 +52,7 @@
 
 @property (strong, nonatomic) UIAlertView *createCVAlert;
 @property (strong, nonatomic) UIAlertView *registerAlert;
+@property (strong, nonatomic) UIAlertView *deleteJobAlert;
 
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *reportJobBarButton;
@@ -84,15 +85,18 @@
 @property (nonatomic, strong) NSArray *jobAppliedByUsers;
 @property (nonatomic,strong) PFObject *jobObject;
 @property BOOL jobIsReportedByThisUser;
+@property (nonatomic, strong) MBProgressHUD *HUDProgressIndicator;
 
 
 //methods
 
 - (void) showJobDirection;
+- (void) deleteJob;
 
 - (IBAction)chatWithEmployerButtonPressed:(UIButton *)sender;
 - (IBAction)applyWithCVButtonPressed:(UIButton *)sender;
 - (IBAction)reportJobButtonPressed:(UIBarButtonItem *)sender;
 - (IBAction)editJobButtonPressed:(UIButton *)sender;
+- (IBAction)deleteJobButtonPressed:(UIButton *)sender;
 
 @end
