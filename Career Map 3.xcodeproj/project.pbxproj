@@ -36,6 +36,7 @@
 		F53EABF11B020F5900CCB97C /* MessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F53EABF01B020F5900CCB97C /* MessagesViewController.m */; };
 		F53EABF41B020F8700CCB97C /* MessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F53EABF31B020F8700CCB97C /* MessageCell.m */; };
 		F56EA2011B1D8D7A00350CBF /* MyJobsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F56EA2001B1D8D7A00350CBF /* MyJobsListViewController.m */; };
+		F584F4111B1E531B00A0AF00 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F584F4101B1E531B00A0AF00 /* GameKit.framework */; };
 		F59584851B1347A900B06778 /* TabBar-AddJob.png in Resources */ = {isa = PBXBuildFile; fileRef = F59584821B1347A800B06778 /* TabBar-AddJob.png */; };
 		F59584861B1347A900B06778 /* TabBar-AddJob@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F59584831B1347A900B06778 /* TabBar-AddJob@2x.png */; };
 		F59584871B1347A900B06778 /* TabBar-AddJob@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F59584841B1347A900B06778 /* TabBar-AddJob@3x.png */; };
@@ -161,6 +162,7 @@
 		F53EABF31B020F8700CCB97C /* MessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageCell.m; sourceTree = "<group>"; };
 		F56EA1FF1B1D8D7A00350CBF /* MyJobsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyJobsListViewController.h; sourceTree = "<group>"; };
 		F56EA2001B1D8D7A00350CBF /* MyJobsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyJobsListViewController.m; sourceTree = "<group>"; };
+		F584F4101B1E531B00A0AF00 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		F59584821B1347A800B06778 /* TabBar-AddJob.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBar-AddJob.png"; sourceTree = "<group>"; };
 		F59584831B1347A900B06778 /* TabBar-AddJob@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBar-AddJob@2x.png"; sourceTree = "<group>"; };
 		F59584841B1347A900B06778 /* TabBar-AddJob@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBar-AddJob@3x.png"; sourceTree = "<group>"; };
@@ -271,6 +273,7 @@
 				F5BAC3C31AC7EDEF003E899C /* ParseFacebookUtils.framework in Frameworks */,
 				F5BAC3C41AC7EDEF003E899C /* ParseUI.framework in Frameworks */,
 				F59759241AC1D3DD0099A978 /* StoreKit.framework in Frameworks */,
+				F584F4111B1E531B00A0AF00 /* GameKit.framework in Frameworks */,
 				F59759221AC1D3D40099A978 /* Security.framework in Frameworks */,
 				F59759201AC1D3CB0099A978 /* QuartzCore.framework in Frameworks */,
 				F597591E1AC1D3C10099A978 /* MobileCoreServices.framework in Frameworks */,
@@ -470,6 +473,7 @@
 		F59758A01AC159B40099A978 = {
 			isa = PBXGroup;
 			children = (
+				F584F4101B1E531B00A0AF00 /* GameKit.framework */,
 				F535AAD91AD947BF0091E70B /* MapKit.framework */,
 				F59758AB1AC159B40099A978 /* Career Map 3 */,
 				F59758C81AC159B40099A978 /* Career Map 3Tests */,
@@ -701,6 +705,11 @@
 					F59758A81AC159B40099A978 = {
 						CreatedOnToolsVersion = 6.2;
 						DevelopmentTeam = 2UB7THC2G3;
+						SystemCapabilities = {
+							com.apple.GameCenter = {
+								enabled = 1;
+							};
+						};
 					};
 					F59758C41AC159B40099A978 = {
 						CreatedOnToolsVersion = 6.2;
@@ -910,7 +919,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "e3fb2ce2-9d18-462e-97ce-db024db105e1";
+				PROVISIONING_PROFILE = "82ef7f29-c1cb-45b5-a6a7-598a4f735d2e";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -932,8 +941,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: adel Shehadeh (L5Q8244UR2)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: adel Shehadeh (L5Q8244UR2)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: adel Shehadeh (2UB7THC2G3)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: adel Shehadeh (2UB7THC2G3)";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -946,7 +955,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "e3fb2ce2-9d18-462e-97ce-db024db105e1";
+				PROVISIONING_PROFILE = "0b8f79a0-2bd9-4822-8e8e-b916850918ed";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -972,7 +981,7 @@
 				INFOPLIST_FILE = "Career Map 3/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "bf71e249-2206-4c19-9d0b-5caa0445a978";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -983,6 +992,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Distribution: adel Shehadeh (2UB7THC2G3)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -997,7 +1007,7 @@
 				INFOPLIST_FILE = "Career Map 3/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "bf71e249-2206-4c19-9d0b-5caa0445a978";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
