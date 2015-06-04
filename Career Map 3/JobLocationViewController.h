@@ -13,7 +13,7 @@
 #import "AddressLineConverter.h"
 #import "LoginViewController.h"
 
-@interface JobLocationViewController : UIViewController <MKMapViewDelegate,CLLocationManagerDelegate>
+@interface JobLocationViewController : UIViewController <MKMapViewDelegate,CLLocationManagerDelegate, UISearchBarDelegate>
 
 
 //MARK: Properties
@@ -30,6 +30,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *registerButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *nextButton;
 
+@property (weak, nonatomic) IBOutlet UISearchBar *mapSearchBar;
 
 
 //MARK: Actions

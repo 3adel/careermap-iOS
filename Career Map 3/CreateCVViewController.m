@@ -387,7 +387,7 @@ int addSkillButtonTapCount = 0;
     self.skillTextField.translatesAutoresizingMaskIntoConstraints =NO;
     [self.skillTextField setTextColor:[UIColor blackColor]];
     [self.skillTextField setTag:withAddDeleteSkillTally];
-    [self.skillTextField setPlaceholder:[NSString stringWithFormat:@"Add skill #%ld",self.skillTextField.tag+1]];
+    [self.skillTextField setPlaceholder:[NSString stringWithFormat:@"Add skill #%ld",(long)self.skillTextField.tag+1]];
     
     //skill text field style
     self.skillTextField.layer.borderColor=[[UIColor lightGrayColor]CGColor];
@@ -457,7 +457,7 @@ int addSkillButtonTapCount = 0;
     
     
     [(UITextField *)[_arrayOfSkillTextViews objectAtIndex:sender.tag] setText:@""];
-    [(UITextField *)[_arrayOfSkillTextViews objectAtIndex:sender.tag] setPlaceholder:[NSString stringWithFormat:@"Add skill #%ld", sender.tag+1]];
+    [(UITextField *)[_arrayOfSkillTextViews objectAtIndex:sender.tag] setPlaceholder:[NSString stringWithFormat:@"Add skill #%ld", (long)sender.tag+1]];
     
 }
 
@@ -512,7 +512,7 @@ int addSkillButtonTapCount = 0;
         
         if ([textField.text isEqual:@""]) {
            // [textField setText:[NSString stringWithFormat:@"Tag: %ld",indexCounter-2]];
-            [textField setPlaceholder:[NSString stringWithFormat:@"Add skill #%lu",indexCounter+1]];
+            [textField setPlaceholder:[NSString stringWithFormat:@"Add skill #%lu",(unsigned long)indexCounter+1]];
             
         }
         

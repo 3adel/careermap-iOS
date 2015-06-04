@@ -36,6 +36,7 @@
         _userIsAnonymousView.hidden =YES;
         _nextButton.enabled = YES;
         self.jobMap.delegate =self;
+        self.mapSearchBar.delegate =self;
         self.jobMap.showsUserLocation = YES;
         _selectMapTypeSegmentedControl.selectedSegmentIndex =0;
         
@@ -280,9 +281,10 @@
                 
                 //add the address line as a component
                 NSArray *lines = placemark.addressDictionary[ @"FormattedAddressLines"];
+                
                 NSString *addressString = [lines componentsJoinedByString:@", "];
                // NSLog(@"Address: %@", addressString);
-                //NSLog(@"Addressline: %@", placemark.addressDictionary);
+                NSLog(@"Addressline: %@", placemark);
 
                 _jobLocationAddressTextView.text =addressString;
                 
@@ -309,7 +311,33 @@
     return @"";
 }
 
+/*
+-(void)searchBarSearchButtonClicked:(UISearchBar *)theSearchBar
+{
+    
+    NSLog(@"search bar button method called");
+    [theSearchBar resignFirstResponder];
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+    [geocoder geocodeAddressString:theSearchBar.text completionHandler:^(NSArray *placemarks, NSError *error) {
+        //Error checking
+        
+        CLPlacemark *placemark = [placemarks objectAtIndex:0];
+        
+        
+        CLLocationCoordinate2D region;
+        //region.center.latitude
+        region.latitude = placemark.location.coordinate.latitude;
+        region.longitude = placemark.location.coordinate.longitude;
+        MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(region, 400, 400);
+        [_jobMap setRegion:viewRegion animated:YES];
+        [_jobMap setScrollEnabled:YES];
+        
+ 
+    }];
+}
 
+
+*/
 
 
 
