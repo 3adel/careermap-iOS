@@ -58,11 +58,11 @@
     
     
     //zoom job job location if the job location is already there
-    NSLog(@"this is the job object passed = %@", _jobObject);
+    //NSLog(@"this is the job object passed = %@", _jobObject);
     if ([_jobObject objectForKey:@"geolocation"]) {
         //zoom to the job location only and keep the job object as it is
         [self zoomToLocationPoint:(PFGeoPoint *)[_jobObject objectForKey:@"geolocation"]];
-        NSLog(@"this is the point  %@",[_jobObject objectForKey:@"geolocation"]);
+        //NSLog(@"this is the point  %@",[_jobObject objectForKey:@"geolocation"]);
         
         
     }
@@ -86,7 +86,7 @@
 - (void) viewDidAppear:(BOOL)animated{
     
     
-    NSLog(@"view did appear");
+    //NSLog(@"view did appear");
     
 }
 
@@ -223,7 +223,7 @@
     //[self.navigationController pushViewController:navi animated:YES];
     [self presentViewController:registerViewController animated:YES completion:nil];
 
-    NSLog(@"Register");
+    //NSLog(@"Register");
 
     
 }
@@ -231,17 +231,17 @@
 
 - (void)mapView:(MKMapView *)mapView regionWillChangeAnimated:(BOOL)animated{
     
-    NSLog(@"started dragging the map ...");
+   // NSLog(@"started dragging the map ...");
 }
 
 -(void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated{
     
-    NSLog(@"finished dragging the map ...");
+   // NSLog(@"finished dragging the map ...");
     [self getJobLocationPoint];
     
     
-    NSLog(@"job location = %@", [_jobObject objectForKey:@"geolocation"]);
-    NSLog(@"user location = %@", _userLocationPoint);
+   // NSLog(@"job location = %@", [_jobObject objectForKey:@"geolocation"]);
+   // NSLog(@"user location = %@", _userLocationPoint);
 
     
 
@@ -284,7 +284,7 @@
                 
                 NSString *addressString = [lines componentsJoinedByString:@", "];
                // NSLog(@"Address: %@", addressString);
-                NSLog(@"Addressline: %@", placemark);
+               // NSLog(@"Addressline: %@", placemark);
 
                 _jobLocationAddressTextView.text =addressString;
                 

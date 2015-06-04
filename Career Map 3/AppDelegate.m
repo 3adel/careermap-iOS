@@ -42,7 +42,8 @@
     [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded) {
            // PFUser *currentUse = [PFUser currentUser];
-            NSLog(@"%@", [[PFUser currentUser] objectId]);
+            //NSLog(@"%@", [[PFUser currentUser] objectId]);
+            ;
             
             
         }
@@ -159,7 +160,8 @@
     installation[@"user"] = [PFUser currentUser];
     [installation saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded) {
-            NSLog(@"saving user to parse installation table succeeded");
+            //NSLog(@"saving user to parse installation table succeeded");
+            ;
         }
         
         else{

@@ -46,8 +46,8 @@
     }
 
 
-    NSLog(@"Job Employer who posted the job User ID = %@", _jobEmployerUserObjectID);
-    NSLog(@"Curernt User  objectID = %@", [[PFUser currentUser] objectId]);
+    //NSLog(@"Job Employer who posted the job User ID = %@", _jobEmployerUserObjectID);
+    //NSLog(@"Curernt User  objectID = %@", [[PFUser currentUser] objectId]);
     
     
     [super viewDidLoad];
@@ -89,7 +89,7 @@
         
         
         if (!error) {
-            NSLog(@"users: %@",[objects objectAtIndex:0]);
+            //NSLog(@"users: %@",[objects objectAtIndex:0]);
             
         //turn block button to unblock and disable chat
             if (objects.count>0) {
@@ -173,7 +173,7 @@
     
     if ([PFAnonymousUtils isLinkedWithUser:[PFUser currentUser]]) {
         
-        NSLog(@"userID: %@", [[chatMessageObject objectForKey:@"messageFrom"] objectId]);
+        //NSLog(@"userID: %@", [[chatMessageObject objectForKey:@"messageFrom"] objectId]);
         
         
         if ([[[PFUser currentUser] objectId] isEqualToString:[[chatMessageObject objectForKey:@"messageFrom"] objectId]] ) {
@@ -196,12 +196,12 @@
             //if that user is registered, show their username. Otherwise show anonymous
             
             if ([[[chatMessageObject objectForKey:@"messageFrom"] objectForKey:@"signedUp"]   isEqual:@YES] ) {
-                NSLog(@"other user is registered");
+                //NSLog(@"other user is registered");
                 cell.messageAuthorLable.text = [[chatMessageObject objectForKey:@"messageFrom"] objectForKey:@"username"];
             }
             
             else{
-                NSLog(@"other user is not registered");
+                //NSLog(@"other user is not registered");
                 cell.messageAuthorLable.text = @"Anonymous";
                 
             }
@@ -226,7 +226,7 @@
             
             //cell.messageAuthorLable.font = [UIFont fontWithName:@"TrebuchetMS-Bold" size:18];
             
-            NSLog(@"user = %@", [[chatMessageObject objectForKey:@"messageFrom"] objectId]);
+            //NSLog(@"user = %@", [[chatMessageObject objectForKey:@"messageFrom"] objectId]);
             
         }
         
@@ -282,7 +282,7 @@
     
     if ([_blockUserButton.title  isEqual: @"Block"]) {
         
-        NSLog(@"title is blck");
+        //NSLog(@"title is blck");
         //block user
         
         //progress spinner initialization
@@ -307,7 +307,7 @@
                 
                 [object saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                     if (succeeded) {
-                        NSLog(@"user blocked now");
+                        //NSLog(@"user blocked now");
                         _blockUserButton.title = @"Unblock";
                         _messageTextField.enabled = NO;
                         _messageTextField.text = @"You blocked this user";
@@ -345,7 +345,7 @@
     
     else if ([_blockUserButton.title  isEqual: @"Unblock"]) {
         
-        NSLog(@"title is unblck");
+        //NSLog(@"title is unblck");
         //block user
         
         //progress spinner initialization
@@ -370,7 +370,7 @@
                 
                 [object saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                     if (succeeded) {
-                        NSLog(@"user unblocked now");
+                        //NSLog(@"user unblocked now");
                         _blockUserButton.title = @"Block";
                         _messageTextField.enabled = YES;
                         _messageTextField.text = @"";
@@ -531,7 +531,7 @@
                         NSLog(@"found 1 conversation object");
                         
                         
-                        NSLog(@"userA: %@", [[objects objectAtIndex:0] objectForKey:@"userA"]);
+                        //NSLog(@"userA: %@", [[objects objectAtIndex:0] objectForKey:@"userA"]);
                         
                         
                         if ([[[[objects objectAtIndex:0] objectForKey:@"userA"] objectId] isEqualToString:[[PFUser currentUser] objectId]]) {
@@ -917,7 +917,7 @@
                 NSLog(@"found 1 conversation object");
                 
                 
-                NSLog(@"userA: %@", [[objects objectAtIndex:0] objectForKey:@"userA"]);
+                //NSLog(@"userA: %@", [[objects objectAtIndex:0] objectForKey:@"userA"]);
                 
                 
                 if ([[[[objects objectAtIndex:0] objectForKey:@"userA"] objectId] isEqualToString:[[PFUser currentUser] objectId]]) {

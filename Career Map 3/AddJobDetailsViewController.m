@@ -524,7 +524,7 @@ int addSkillButtonTapCountJobCreation = 0;
         
         [textField setTag:indexCounter];
         [textField.removeSkillButton setTag:indexCounter];
-        NSLog(@"Index Counter = %ld", (unsigned long)indexCounter);
+        //NSLog(@"Index Counter = %ld", (unsigned long)indexCounter);
         
         //  [self.skillTextField setPlaceholder:[NSString stringWithFormat:@"Add skill #%ld",self.skillTextField.tag+2]];
         
@@ -597,7 +597,7 @@ int addSkillButtonTapCountJobCreation = 0;
     else{
 
 
-        NSLog(@"Save job to backend");
+       // NSLog(@"Save job to backend");
         //[[NSNotificationCenter defaultCenter]postNotificationName:@"saveCVButtonPressed" object:nil];
         [self saveCVToParse];
 
@@ -631,7 +631,7 @@ int addSkillButtonTapCountJobCreation = 0;
     
     //existing record
     if ([_jobObject objectId]) {
-        NSLog(@"object has object id");
+        //NSLog(@"object has object id");
         //update the job object only
         {
             
@@ -684,7 +684,7 @@ int addSkillButtonTapCountJobCreation = 0;
 
             [_jobObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 if (succeeded) {
-                    NSLog(@"updated skills to parse successfully");
+                   // NSLog(@"updated skills to parse successfully");
                     
                     //job added, update the UI
                     UIImage *progressIndicatorDoneImage = [UIImage imageNamed:@"37x-Checkmark.png"];
@@ -738,10 +738,10 @@ int addSkillButtonTapCountJobCreation = 0;
 
     }else{
         
-        NSLog(@"object has no object id");
+        //NSLog(@"object has no object id");
         //create and save job object to parse
         
-        NSLog(@"Array of text views %@",[_arrayOfSkillTextViews objectAtIndex:0]);
+       // NSLog(@"Array of text views %@",[_arrayOfSkillTextViews objectAtIndex:0]);
         //
         
         
@@ -799,7 +799,7 @@ int addSkillButtonTapCountJobCreation = 0;
         
         [_jobObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (succeeded) {
-                NSLog(@"saved skills to parse successfully");
+                //NSLog(@"saved skills to parse successfully");
                 
                 //job added, update the UI
                 UIImage *progressIndicatorDoneImage = [UIImage imageNamed:@"37x-Checkmark.png"];
@@ -859,7 +859,7 @@ int addSkillButtonTapCountJobCreation = 0;
 
 -(void) selectEmploymentType{
 
-    NSLog(@"Select cv degrees");
+   // NSLog(@"Select cv degrees");
 
     // _employmentTypeTextField.text = @"Sample degree";
     _employmentTypeTextField.text = [self.employmentTypeList objectAtIndex:[self.employmentTypePicker selectedRowInComponent:0]];
@@ -869,7 +869,7 @@ int addSkillButtonTapCountJobCreation = 0;
 
 -(void) selectDegreeRequiredType{
     
-    NSLog(@"Select degree required");
+    //NSLog(@"Select degree required");
     
     _degreeRequiredTextField.text = [self.degreeRequiredList objectAtIndex:[self.degreeRequiredPicker selectedRowInComponent:0]];
     
@@ -878,7 +878,7 @@ int addSkillButtonTapCountJobCreation = 0;
 
 -(void) selectJobLevel{
     
-    NSLog(@"Select job level required");
+   // NSLog(@"Select job level required");
     
     _jobLevelTextField.text = [self.jobLevelList objectAtIndex:[self.jobLevelPicker selectedRowInComponent:0]];
     

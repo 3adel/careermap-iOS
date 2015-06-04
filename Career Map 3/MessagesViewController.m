@@ -576,7 +576,7 @@ forRowAtIndexPath: (NSIndexPath*)indexPath
                         NSLog(@"found 1 conversation object");
                         
                         
-                        NSLog(@"userA: %@", [[objects objectAtIndex:0] objectForKey:@"userA"]);
+                        //NSLog(@"userA: %@", [[objects objectAtIndex:0] objectForKey:@"userA"]);
                         
                         
                         if ([[[[objects objectAtIndex:0] objectForKey:@"userA"] objectId] isEqualToString:[[PFUser currentUser] objectId]]) {

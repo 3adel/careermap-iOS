@@ -45,7 +45,7 @@
     [PFUser logInWithUsernameInBackground:[_loginUsernameField.text lowercaseString] password:_loginPasswordField.text block:^(PFUser *user, NSError *error) {
         
         if (!error) {
-            NSLog(@"Success: Logged the user");
+            //NSLog(@"Success: Logged the user");
             
             //reset fields
             _loginUsernameField.text = nil;
@@ -57,7 +57,8 @@
             installation[@"user"] = [PFUser currentUser];
             [installation saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 if (succeeded) {
-                    NSLog(@"saving user to parse installation table succeeded");
+                    ;
+                    //NSLog(@"saving user to parse installation table succeeded");
                 }
                 
                 else{

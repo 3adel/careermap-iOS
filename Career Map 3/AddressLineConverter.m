@@ -26,7 +26,7 @@
                 //add the address line as a component
                 NSArray *lines = placemark.addressDictionary[ @"FormattedAddressLines"];
                 NSString *addressString = [lines componentsJoinedByString:@"\n"];
-                NSLog(@"Address: %@", addressString);
+               // NSLog(@"Address: %@", addressString);
                 addressFromBlock = addressString;
                 
             }
