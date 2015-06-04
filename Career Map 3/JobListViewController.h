@@ -37,8 +37,6 @@
 @property (nonatomic, strong) LoadingJobListEmptyView *noJobsView;
 
 @property (nonatomic, strong) NSMutableArray *jobsArray;
-@property (nonatomic, strong) NSMutableArray *jobsArrayWithUsersVotesVolatile;
-@property (nonatomic, strong) NSMutableArray *jobsArrayWithUsersVotesStable;
 @property (nonatomic, strong) NSDateFormatter *formatter;
 @property (nonatomic, strong) NSArray *jobRequireSkills;
 @property (nonatomic, strong) NSString *jobEmployerUserObjectID;

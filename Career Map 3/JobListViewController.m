@@ -25,8 +25,6 @@ bool messageIsReceived = NO;
 @synthesize refreshControl;
 @synthesize userLocation;
 @synthesize jobsArray;
-@synthesize jobsArrayWithUsersVotesVolatile;
-@synthesize jobsArrayWithUsersVotesStable;
 @synthesize formatter;
 
 
@@ -133,7 +131,6 @@ bool messageIsReceived = NO;
 
 - (void) retrieveFromParse {
     
-    NSLog(@"Retrive from parse called");
     
     //query #1 for jobs
     NSPredicate *predicate = [NSPredicate predicateWithFormat:
@@ -146,7 +143,7 @@ bool messageIsReceived = NO;
     [retrieveJobs includeKey:@"jobIndustry"];
 
 
-    [retrieveJobs whereKey:@"geolocation" nearGeoPoint:self.userLocation withinKilometers:10000];
+    [retrieveJobs whereKey:@"geolocation" nearGeoPoint:self.userLocation withinKilometers:100000];
     retrieveJobs.limit =1000;
     //[retrieveJobs orderByDescending:@"createdAt"];
     
@@ -158,7 +155,6 @@ bool messageIsReceived = NO;
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [_HUDProgressIndicator hide:YES];
                     if (self.refreshControl) {
-                        NSLog(@"no jobs around you");
                         [self.refreshControl endRefreshing];
                         
                         //call empty view message
@@ -186,15 +182,11 @@ bool messageIsReceived = NO;
                 
                 
                 jobsArray = [[NSMutableArray alloc] initWithArray:objects];
-                //NSLog(@"%lu", (unsigned long)jobsArray.count);
                 
-                
-                //Moved inside the block. This will prevent the a crash at job list tableview
-                jobsArrayWithUsersVotesVolatile= [[NSMutableArray alloc] init];
+
                 
                 NSUInteger count = 0;
                 for (PFObject *i in jobsArray) {
-                    [jobsArrayWithUsersVotesVolatile addObject:i];
                     CLLocation  *jobLocation = [[CLLocation alloc] initWithLatitude:[[i objectForKey:@"geolocation"] latitude] longitude:[[i objectForKey:@"geolocation"] longitude]];
                     CLGeocoder *geocoder = [[CLGeocoder alloc] init];
                     [geocoder reverseGeocodeLocation:jobLocation completionHandler:^(NSArray *placemarks, NSError *error) {
@@ -203,17 +195,31 @@ bool messageIsReceived = NO;
                             
                             CLPlacemark *placemark = [placemarks lastObject];
                             if ([[placemarks lastObject] locality] != nil ) {
-                                [(PFObject *)[jobsArrayWithUsersVotesVolatile objectAtIndex:count] setObject:[placemark locality] forKey:@"area"];
+                                [(PFObject *)[jobsArray objectAtIndex:count] setObject:[placemark locality] forKey:@"area"];
                                 
                                 //add the address line as a component
                                 NSArray *lines = placemark.addressDictionary[ @"FormattedAddressLines"];
                                 NSString *addressString = [lines componentsJoinedByString:@", "];
                                 
-                                [(PFObject *)[jobsArrayWithUsersVotesVolatile objectAtIndex:count] setObject:addressString forKey:@"addressLine"];
+                                [(PFObject *)[jobsArray objectAtIndex:count] setObject:addressString forKey:@"addressLine"];
+                                
+                                
+                                //when area is available, update the respective cell
+                                NSIndexPath* cellIndexPath1= [NSIndexPath indexPathForRow:count inSection:0];
+                                
+                                dispatch_async(dispatch_get_main_queue(), ^{
+                                    
+                                    [self.jobTable beginUpdates];
+                                    [self.jobTable reloadRowsAtIndexPaths:@[cellIndexPath1] withRowAnimation:UITableViewRowAnimationNone];
+                                    [self.jobTable endUpdates];
+                                });
+                                
+                                
+                                
                                 
                             }
                             else{
-                                [(PFObject *)[jobsArrayWithUsersVotesVolatile objectAtIndex:count] setObject:@"N/A" forKey:@"area"];
+                                [(PFObject *)[jobsArray objectAtIndex:count] setObject:@"N/A" forKey:@"area"];
                                 
                             }
                             
@@ -229,6 +235,8 @@ bool messageIsReceived = NO;
                     }];
                     
                     
+                    /*
+                    //query voted up
                     PFQuery *votedQuery = [PFQuery queryWithClassName:@"_User"];
                     
                     [votedQuery whereKey:@"jobVotedUp" equalTo:i.objectId];
@@ -240,13 +248,13 @@ bool messageIsReceived = NO;
                             if ([[object objectForKey:@"jobVotedUp"] containsObject:i.objectId]) {
                                 
                                 
-                                [(PFObject *)[jobsArrayWithUsersVotesVolatile objectAtIndex:count] setObject:@"1" forKey:@"currentUserVotedUpThisJob"];
+                                [(PFObject *)[jobsArray objectAtIndex:count] setObject:@"1" forKey:@"currentUserVotedUpThisJob"];
                                 
                             }
                             
                             else{
                                 
-                                [(PFObject *)[jobsArrayWithUsersVotesVolatile objectAtIndex:count] setObject:@"0" forKey:@"currentUserVotedUpThisJob"];
+                                [(PFObject *)[jobsArray objectAtIndex:count] setObject:@"0" forKey:@"currentUserVotedUpThisJob"];
                                 
                             }
                             
@@ -281,7 +289,7 @@ bool messageIsReceived = NO;
                                 
                                 
                                 
-                                [(PFObject *)[jobsArrayWithUsersVotesVolatile objectAtIndex:count] setObject:@"1" forKey:@"currentUserVotedDownThisJob"];
+                                [(PFObject *)[jobsArray objectAtIndex:count] setObject:@"1" forKey:@"currentUserVotedDownThisJob"];
                                 
                                 
                                 
@@ -289,7 +297,7 @@ bool messageIsReceived = NO;
                             
                             else{
                                 
-                                [(PFObject *)[jobsArrayWithUsersVotesVolatile objectAtIndex:count] setObject:@"0" forKey:@"currentUserVotedDownThisJob"];
+                                [(PFObject *)[jobsArray objectAtIndex:count] setObject:@"0" forKey:@"currentUserVotedDownThisJob"];
                                 
                             }
                             
@@ -308,7 +316,7 @@ bool messageIsReceived = NO;
                         
                         
                     }];
-                    
+                    */
                     
                     count++;
                     
@@ -327,8 +335,7 @@ bool messageIsReceived = NO;
                     
                 }
                 
-                //this will guarantee a stable index for the jobs table view.
-                jobsArrayWithUsersVotesStable = [[NSMutableArray alloc] initWithArray:jobsArrayWithUsersVotesVolatile];
+
                 
             }
             
@@ -355,7 +362,6 @@ bool messageIsReceived = NO;
         
     }];
     
-    NSLog(@"end of parse data reached");
     
 }
 
@@ -384,7 +390,7 @@ bool messageIsReceived = NO;
     
     static NSString *CellIdentifier = @"jobCell";
     JobCustomTableViewCell *cell = [_jobTable dequeueReusableCellWithIdentifier:CellIdentifier];
-    PFObject *jobObject = [jobsArrayWithUsersVotesStable objectAtIndex:indexPath.row];
+    PFObject *jobObject = [jobsArray objectAtIndex:indexPath.row];
     
    // NSLog(@"JobObject Applied by = %@", [jobObject objectForKey:@"appliedByUsers"]);
     
@@ -551,7 +557,7 @@ bool messageIsReceived = NO;
     if ([segue.identifier isEqualToString:@"showJob"]) {
         
         NSIndexPath *indexPath = [self.jobTable indexPathForSelectedRow];
-        PFObject *jobObject = [jobsArrayWithUsersVotesVolatile objectAtIndex:indexPath.row];
+        PFObject *jobObject = [jobsArray objectAtIndex:indexPath.row];
         
         JobDetailsViewController *destViewController = segue.destinationViewController;
         // Recipe *recipe = [recipes objectAtIndex:indexPath.row];
@@ -617,7 +623,6 @@ bool messageIsReceived = NO;
         
         
         
-        NSLog(@"%@", jobObject);
         
 
         //NSLog(@"Posted by User: username: %@ objectID: %@", [[jobObject objectForKey:@"postedByUser"] objectForKey:@"username"],[[jobObject objectForKey:@"postedByUser"] objectId] );
@@ -649,7 +654,6 @@ bool messageIsReceived = NO;
             
             CLPlacemark *placemark = [placemarks lastObject];
             if ([[placemarks lastObject] locality] != nil ) {
-                NSLog(@"My city is %@", placemark.locality);
                 
                 _HUDProgressIndicator.detailsLabelText = placemark.locality;
                 

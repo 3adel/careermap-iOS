@@ -822,11 +822,11 @@ forRowAtIndexPath: (NSIndexPath*)indexPath
         
 
         if (!error) {
-            NSLog(@"users who blocked me: %lu", (unsigned long)objects.count);
+            //NSLog(@"users who blocked me: %lu", (unsigned long)objects.count);
             
 
             for (PFUser *user in objects) {
-                NSLog(@"users who blocked me: %lu", (unsigned long)objects.count);
+               // NSLog(@"users who blocked me: %lu", (unsigned long)objects.count);
  
                 
                 [_usersWhoBlockedMeList addObject:[user objectId]];
