@@ -110,8 +110,10 @@
                 _messageTextField.placeholder = @"Type a message ...";
                 _messageTextField.backgroundColor = [UIColor whiteColor];
                 _messageTextField.textColor = [UIColor blackColor];
-                _sendButton.enabled = YES;
-                _sendButton.backgroundColor = [UIColor colorWithRed:22.0/255.0 green:126.0/255.0 blue:251.0/255 alpha:1.0];
+                _sendButton.enabled = NO;
+                _sendButton.backgroundColor = [UIColor lightGrayColor];
+
+
             }
             
         }
@@ -411,11 +413,13 @@
 
 - (IBAction)sendButtonPressed:(UIButton *)sender {
     
+    
+    _sendButton.enabled = NO;
+    _sendButton.backgroundColor = [UIColor lightGrayColor];
+
+
     //done editing
     [self.messageTextField resignFirstResponder];
-    
-    
-    
     //disable send button and text field temporarily as the data is being posted
     [self.messageTextField setEnabled:NO];
     [self.sendButton setEnabled:NO];
@@ -640,6 +644,10 @@
             
         } else {
             NSLog(@"Error saving message object");
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:error.localizedDescription delegate:self cancelButtonTitle:@"cancel" otherButtonTitles:nil, nil];
+            
+            [alert show];
+        
         }
         
         //Reenable send button and text field after process is done
@@ -724,7 +732,61 @@
         
     } completion:nil];
     
+    
+
+    
 }
+
+
+//detect if the user is typing
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    
+    NSLog(@"range = %lu", (unsigned long)range.location);
+    
+   // NSLog(@"string value = %@", [NSString stringWithFormat:@"%@%@",_messageTextField.text, string]);
+    
+    NSString *rawText =[NSString stringWithFormat:@"%@%@",_messageTextField.text, string];
+    NSCharacterSet *whiteSpace = [NSCharacterSet whitespaceAndNewlineCharacterSet];
+    NSString *trimmed = [rawText stringByTrimmingCharactersInSet:whiteSpace];
+    
+    if (trimmed.length == 0) {
+        _sendButton.enabled = NO;
+        _sendButton.backgroundColor = [UIColor lightGrayColor];
+
+    }
+    
+    else if (trimmed.length == 1) {
+        
+        if ([string isEqualToString:@""]) {
+            _sendButton.enabled = NO;
+            _sendButton.backgroundColor = [UIColor lightGrayColor];
+            
+        }
+        else{
+            
+            _sendButton.enabled = YES;
+            _sendButton.backgroundColor = [UIColor colorWithRed:22.0/255.0 green:126.0/255.0 blue:251.0/255 alpha:1.0];
+            
+            
+        }
+        
+        
+        NSLog(@"replacement string = '%@'", string);
+
+        
+    }
+
+    else{
+        _sendButton.enabled = YES;
+        _sendButton.backgroundColor = [UIColor colorWithRed:22.0/255.0 green:126.0/255.0 blue:251.0/255 alpha:1.0];
+
+    }
+
+    
+    return YES;
+}
+
 
 - (void) textFieldDidEndEditing:(UITextField *)textField{
     
@@ -827,7 +889,7 @@
             _messageTextField.backgroundColor = [UIColor whiteColor];
             _messageTextField.textColor = [UIColor blackColor];
             _sendButton.enabled = YES;
-            _sendButton.backgroundColor = [UIColor colorWithRed:22.0/255.0 green:126.0/255.0 blue:251.0/255 alpha:1.0];
+            //_sendButton.backgroundColor = [UIColor colorWithRed:22.0/255.0 green:126.0/255.0 blue:251.0/255 alpha:1.0];
             
         }
         
@@ -842,7 +904,7 @@
                 _messageTextField.backgroundColor = [UIColor redColor];
                 _messageTextField.textColor = [UIColor whiteColor];
                 _sendButton.enabled = NO;
-                _sendButton.backgroundColor = [UIColor lightGrayColor];
+                //_sendButton.backgroundColor = [UIColor lightGrayColor];
             }
             
 
