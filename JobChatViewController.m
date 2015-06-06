@@ -816,17 +816,23 @@
         if(IS_IPAD)
         {
             _dockViewHightConstraint.constant =50;
+            _tableViewTopConstraint.constant =0;
+
         }
         
         if(IS_IPHONE_4_OR_LESS)
         {
             //NSLog(@"IS_IPHONE_4_OR_LESS");
             _dockViewHightConstraint.constant =50;
+            _tableViewTopConstraint.constant =0;
+
         }
         if(IS_IPHONE_5)
         {
             // NSLog(@"IS_IPHONE_5");
             _dockViewHightConstraint.constant =50;
+            _tableViewTopConstraint.constant =0;
+
         }
         if(IS_IPHONE_6)
         {
@@ -839,6 +845,8 @@
         {
             //NSLog(@"IS_IPHONE_6P");
             _dockViewHightConstraint.constant =50;
+            _tableViewTopConstraint.constant =0;
+
         }
         
         //        NSLog(@"SCREEN_WIDTH: %f", SCREEN_WIDTH);
@@ -866,17 +874,24 @@
         if(IS_IPAD)
         {
             _dockViewHightConstraint.constant =50;
+            _tableViewTopConstraint.constant =0;
+
+            
         }
         
         if(IS_IPHONE_4_OR_LESS)
         {
             //NSLog(@"IS_IPHONE_4_OR_LESS");
             _dockViewHightConstraint.constant =50;
+            _tableViewTopConstraint.constant =0;
+
         }
         if(IS_IPHONE_5)
         {
             // NSLog(@"IS_IPHONE_5");
             _dockViewHightConstraint.constant =50;
+            _tableViewTopConstraint.constant =0;
+
         }
         if(IS_IPHONE_6)
         {
@@ -889,6 +904,8 @@
         {
             //NSLog(@"IS_IPHONE_6P");
             _dockViewHightConstraint.constant =50;
+            _tableViewTopConstraint.constant =0;
+
         }
         
         //        NSLog(@"SCREEN_WIDTH: %f", SCREEN_WIDTH);
