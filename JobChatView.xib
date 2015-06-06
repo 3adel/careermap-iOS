@@ -13,6 +13,7 @@
                 <outlet property="jobChatTable" destination="trT-Vz-UHI" id="0Bq-zr-Ueo"/>
                 <outlet property="messageTextField" destination="n0g-nL-4fU" id="psJ-bS-hk3"/>
                 <outlet property="sendButton" destination="R48-Ym-p9e" id="1l2-hO-Hiz"/>
+                <outlet property="tableViewTopConstraint" destination="X0g-vF-9fY" id="MGX-oQ-q9Z"/>
                 <outlet property="view" destination="oLo-7F-q2H" id="yqF-l7-eWA"/>
             </connections>
         </placeholder>
@@ -54,8 +55,15 @@
                         <constraint firstItem="n0g-nL-4fU" firstAttribute="leading" secondItem="NIA-Hp-y9m" secondAttribute="leading" constant="10" id="yWf-iu-KcN"/>
                     </constraints>
                 </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="trT-Vz-UHI">
+                    <rect key="frame" x="8" y="78" width="304" height="440"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
                 <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fuy-ZB-dYL">
-                    <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="64" id="cza-am-l6O"/>
+                    </constraints>
                     <items>
                         <navigationItem title="Job Chat" id="6cW-aV-ReA">
                             <barButtonItem key="leftBarButtonItem" title="Close" id="pe5-Kd-Qij">
@@ -72,10 +80,6 @@
                         </navigationItem>
                     </items>
                 </navigationBar>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="trT-Vz-UHI">
-                    <rect key="frame" x="8" y="78" width="304" height="440"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
@@ -83,7 +87,7 @@
                 <constraint firstAttribute="trailing" secondItem="Fuy-ZB-dYL" secondAttribute="trailing" id="ObI-gz-K6b"/>
                 <constraint firstItem="trT-Vz-UHI" firstAttribute="top" secondItem="oLo-7F-q2H" secondAttribute="topMargin" constant="70" id="X0g-vF-9fY"/>
                 <constraint firstAttribute="bottom" secondItem="NIA-Hp-y9m" secondAttribute="bottom" id="Z8y-v9-kAX"/>
-                <constraint firstItem="Fuy-ZB-dYL" firstAttribute="top" secondItem="oLo-7F-q2H" secondAttribute="top" constant="20" id="bkd-Vd-nDn"/>
+                <constraint firstItem="Fuy-ZB-dYL" firstAttribute="top" secondItem="oLo-7F-q2H" secondAttribute="top" id="bkd-Vd-nDn"/>
                 <constraint firstItem="Fuy-ZB-dYL" firstAttribute="leading" secondItem="oLo-7F-q2H" secondAttribute="leading" id="cid-Ph-F6U"/>
                 <constraint firstItem="NIA-Hp-y9m" firstAttribute="top" secondItem="trT-Vz-UHI" secondAttribute="bottom" id="eAH-D7-RAe"/>
                 <constraint firstAttribute="trailing" secondItem="NIA-Hp-y9m" secondAttribute="trailing" id="egT-OU-rAX"/>
