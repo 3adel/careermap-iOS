@@ -413,255 +413,271 @@
 
 - (IBAction)sendButtonPressed:(UIButton *)sender {
     
-    
-    _sendButton.enabled = NO;
-    _sendButton.backgroundColor = [UIColor lightGrayColor];
+
+    dispatch_async(dispatch_get_main_queue(), ^{
+        _sendButton.enabled = NO;
+        _sendButton.backgroundColor = [UIColor lightGrayColor];
+        
+        
+    });
 
 
-    //done editing
-    [self.messageTextField resignFirstResponder];
-    //disable send button and text field temporarily as the data is being posted
-    [self.messageTextField setEnabled:NO];
-    [self.sendButton setEnabled:NO];
-    
-    //post the message to parse
-    PFObject *newMessageObject = [PFObject objectWithClassName:@"Messages" ];
-    newMessageObject[@"messageContent"]= _messageTextField.text;
-    newMessageObject[@"messageFrom"]= [PFUser currentUser];
-    newMessageObject[@"messageTo"]=_jobPosterPFUser;
-    [newMessageObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        if (succeeded) {
-            NSLog(@"Success saving message object");
-            [self retrieveMessages];
-            
-            NSLog(@"The other user is %@", [_jobPosterPFUser objectId]);
-            
-            
-            
-            
-            
-            //send push notification to the other user
-            PFQuery *uQuery = [PFUser query];
-            [uQuery whereKey:@"objectId" equalTo:[_jobPosterPFUser objectId]];
-            
-            PFQuery *pushQuery = [PFInstallation query];
-            [pushQuery whereKey:@"user" matchesQuery:uQuery];
-            
-            
-            
-            // PFPush *push = [[PFPush alloc] init];
-            
-            NSString *pushMessage = [[NSString alloc] init];
-            
-            
-            
-            
-            PFPush *push = [PFPush new];
-            NSTimeInterval pushExpiryInterval = 60.*60.*24*2; //2 days expiry
-            [push expireAfterTimeInterval:pushExpiryInterval];
-            
-            
-            [push setQuery:pushQuery];
-            // [push setData:<#(NSDictionary *)#>]
-            
-            
-            if ([PFAnonymousUtils isLinkedWithUser:[PFUser currentUser]]) {
+
+    if (![_messageTextField.text isEqualToString:@""]) {
+        
+        //done editing
+        [self.messageTextField resignFirstResponder];
+        //disable send button and text field temporarily as the data is being posted
+        [self.messageTextField setEnabled:NO];
+        
+        //post the message to parse
+        PFObject *newMessageObject = [PFObject objectWithClassName:@"Messages" ];
+        newMessageObject[@"messageContent"]= _messageTextField.text;
+        newMessageObject[@"messageFrom"]= [PFUser currentUser];
+        newMessageObject[@"messageTo"]=_jobPosterPFUser;
+        [newMessageObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (succeeded) {
+               // NSLog(@"Success saving message object");
+                [self retrieveMessages];
                 
-                pushMessage =  @"Anonymous user sent you a message";
+               // NSLog(@"The other user is %@", [_jobPosterPFUser objectId]);
                 
-            }else{
-                // [push setData:pushData];
                 
-                pushMessage =  [NSString stringWithFormat:@"%@ sent you a message", [[PFUser currentUser] objectForKey:@"username"]];
-            }
-            
-            
-            NSDictionary *pushData = @{@"message": newMessageObject[@"messageContent"],
-                                       @"alert" : pushMessage,
-                                       @"sound": @"complete.m4r",
-                                       @"otherPFUser": [PFUser currentUser]
-                                       };
-            [push setData:pushData];
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            [push sendPushInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                if (succeeded) {
-                    NSLog(@"sending push notification succeedd");
-                }
-                else{
+                
+                
+                
+                //send push notification to the other user
+                PFQuery *uQuery = [PFUser query];
+                [uQuery whereKey:@"objectId" equalTo:[_jobPosterPFUser objectId]];
+                
+                PFQuery *pushQuery = [PFInstallation query];
+                [pushQuery whereKey:@"user" matchesQuery:uQuery];
+                
+                
+                
+                // PFPush *push = [[PFPush alloc] init];
+                
+                NSString *pushMessage = [[NSString alloc] init];
+                
+                
+                
+                
+                PFPush *push = [PFPush new];
+                NSTimeInterval pushExpiryInterval = 60.*60.*24*2; //2 days expiry
+                [push expireAfterTimeInterval:pushExpiryInterval];
+                
+                
+                [push setQuery:pushQuery];
+                // [push setData:<#(NSDictionary *)#>]
+                
+                
+                if ([PFAnonymousUtils isLinkedWithUser:[PFUser currentUser]]) {
                     
-                    NSLog(@"sending push notification failed: %@", error.localizedDescription);
-                }
-            }];
-            
-            
-            
-            
-            //************
-            //now set the respective readbyUser flag to false
-            //check if there's already an existing 1 conversation
-            PFQuery *query1 =[PFQuery queryWithClassName:@"Conversation"];
-            [query1 whereKey:@"userA"
-                     equalTo:[PFObject objectWithoutDataWithClassName:@"_User" objectId:[[PFUser currentUser] objectId]]];
-            PFQuery *query2 =[query1 whereKey:@"userB"
-                                      equalTo:[PFObject objectWithoutDataWithClassName:@"_User" objectId:_jobEmployerUserObjectID]];
-            
-            PFQuery *query3 =[PFQuery queryWithClassName:@"Conversation"];
-            [query3 whereKey:@"userA"
-                     equalTo:[PFObject objectWithoutDataWithClassName:@"_User" objectId:_jobEmployerUserObjectID]];
-            PFQuery *query4 =[query3 whereKey:@"userB"
-                                      equalTo:[PFObject objectWithoutDataWithClassName:@"_User" objectId:[[PFUser currentUser] objectId]]];
-            
-            //combin the two queries in an OR operation
-            PFQuery *conversationQuery = [PFQuery orQueryWithSubqueries:@[query2,query4]];
-            [conversationQuery includeKey:@"userA"];
-            [conversationQuery includeKey:@"userB"];
-            conversationQuery.limit =10;
-            
-            [conversationQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-                
-                if (!error) {
-                    NSLog(@"Conversation objects %@", objects);
+                    pushMessage =  @"Anonymous user sent you a message";
                     
-                    //if one conversation found, change the readBy to NO to the respective user in the TO column
-                    if (objects.count ==1) {
-                        NSLog(@"found 1 conversation object");
+                }else{
+                    // [push setData:pushData];
+                    
+                    pushMessage =  [NSString stringWithFormat:@"%@ sent you a message", [[PFUser currentUser] objectForKey:@"username"]];
+                }
+                
+                
+                NSDictionary *pushData = @{@"message": newMessageObject[@"messageContent"],
+                                           @"alert" : pushMessage,
+                                           @"sound": @"complete.m4r",
+                                           @"otherPFUser": [PFUser currentUser]
+                                           };
+                [push setData:pushData];
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                [push sendPushInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                    if (succeeded) {
+                       // NSLog(@"sending push notification succeedd");
+                        ;
+                    }
+                    else{
                         
+                        NSLog(@"sending push notification failed: %@", error.localizedDescription);
+                    }
+                }];
+                
+                
+                
+                
+                //************
+                //now set the respective readbyUser flag to false
+                //check if there's already an existing 1 conversation
+                PFQuery *query1 =[PFQuery queryWithClassName:@"Conversation"];
+                [query1 whereKey:@"userA"
+                         equalTo:[PFObject objectWithoutDataWithClassName:@"_User" objectId:[[PFUser currentUser] objectId]]];
+                PFQuery *query2 =[query1 whereKey:@"userB"
+                                          equalTo:[PFObject objectWithoutDataWithClassName:@"_User" objectId:_jobEmployerUserObjectID]];
+                
+                PFQuery *query3 =[PFQuery queryWithClassName:@"Conversation"];
+                [query3 whereKey:@"userA"
+                         equalTo:[PFObject objectWithoutDataWithClassName:@"_User" objectId:_jobEmployerUserObjectID]];
+                PFQuery *query4 =[query3 whereKey:@"userB"
+                                          equalTo:[PFObject objectWithoutDataWithClassName:@"_User" objectId:[[PFUser currentUser] objectId]]];
+                
+                //combin the two queries in an OR operation
+                PFQuery *conversationQuery = [PFQuery orQueryWithSubqueries:@[query2,query4]];
+                [conversationQuery includeKey:@"userA"];
+                [conversationQuery includeKey:@"userB"];
+                conversationQuery.limit =10;
+                
+                [conversationQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+                    
+                    if (!error) {
+                       // NSLog(@"Conversation objects %@", objects);
                         
-                        //NSLog(@"userA: %@", [[objects objectAtIndex:0] objectForKey:@"userA"]);
-                        
-                        
-                        if ([[[[objects objectAtIndex:0] objectForKey:@"userA"] objectId] isEqualToString:[[PFUser currentUser] objectId]]) {
-                            
-                            //set readByUserB to False
-                            
-                            PFObject *conversationObject =[objects objectAtIndex:0];
-                            conversationObject[@"readByUserB"] = @NO;
+                        //if one conversation found, change the readBy to NO to the respective user in the TO column
+                        if (objects.count ==1) {
+                           // NSLog(@"found 1 conversation object");
                             
                             
-                            NSLog(@"current user is userA");
+                            //NSLog(@"userA: %@", [[objects objectAtIndex:0] objectForKey:@"userA"]);
                             
-                            [conversationObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                                if (succeeded) {
-                                    NSLog(@"saving conversation unnread status to userB success");
-                                }
+                            
+                            if ([[[[objects objectAtIndex:0] objectForKey:@"userA"] objectId] isEqualToString:[[PFUser currentUser] objectId]]) {
                                 
-                                else{
+                                //set readByUserB to False
+                                
+                                PFObject *conversationObject =[objects objectAtIndex:0];
+                                conversationObject[@"readByUserB"] = @NO;
+                                
+                                
+                                //NSLog(@"current user is userA");
+                                
+                                [conversationObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                                    if (succeeded) {
+                                        //NSLog(@"saving conversation unnread status to userB success");
+                                        ;
+                                    }
                                     
-                                    NSLog(@"saving conversation unread status to userB FAILED");
-                                    
-                                    
-                                    
-                                }
-                            }];
+                                    else{
+                                        
+                                        NSLog(@"saving conversation unread status to userB FAILED");
+                                        
+                                        
+                                        
+                                    }
+                                }];
+                                
+                                
+                                
+                            }
                             
+                            else{
+                                
+                               // NSLog(@"current user NOT  userA");
+                                //set readByUserA to False
+                                
+                                
+                                PFObject *conversationObject =[objects objectAtIndex:0];
+                                conversationObject[@"readByUserA"] = @NO;
+                                
+                                
+                             //   NSLog(@"current user is userB");
+                                
+                                [conversationObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                                    if (succeeded) {
+                                        //NSLog(@"saving conversation unnread status to userA success");
+                                        ;
+                                    }
+                                    
+                                    else{
+                                        
+                                        NSLog(@"saving conversation unread status to userA FAILED");
+                                        
+                                        
+                                        
+                                    }
+                                }];
+                                
+                                
+                            }
                             
                             
                         }
                         
                         else{
-                            
-                            NSLog(@"current user NOT  userA");
-                            //set readByUserA to False
-                            
-                            
-                            PFObject *conversationObject =[objects objectAtIndex:0];
+                            //no conversation found
+                            //create a conversation object and update the readByValues
+                            PFObject *conversationObject =[PFObject objectWithClassName:@"Conversation"];
+                            conversationObject[@"readByUserB"] = @NO;
                             conversationObject[@"readByUserA"] = @NO;
+                            conversationObject[@"userA"] = [PFUser currentUser];
+                            conversationObject[@"userB"] = _jobPosterPFUser;
                             
                             
-                            NSLog(@"current user is userB");
                             
                             [conversationObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                                 if (succeeded) {
-                                    NSLog(@"saving conversation unnread status to userA success");
+                                   // NSLog(@"saving conversation unread status for two users success");
+                                    ;
                                 }
                                 
                                 else{
                                     
-                                    NSLog(@"saving conversation unread status to userA FAILED");
+                                    NSLog(@"saving conversation unread status for two users FAILED");
                                     
                                     
                                     
                                 }
                             }];
-                            
-                            
                         }
                         
                         
                     }
                     
                     else{
-                        //no conversation found
-                        //create a conversation object and update the readByValues
-                        PFObject *conversationObject =[PFObject objectWithClassName:@"Conversation"];
-                        conversationObject[@"readByUserB"] = @NO;
-                        conversationObject[@"readByUserA"] = @NO;
-                        conversationObject[@"userA"] = [PFUser currentUser];
-                        conversationObject[@"userB"] = _jobPosterPFUser;
                         
-                        
-                        
-                        [conversationObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                            if (succeeded) {
-                                NSLog(@"saving conversation unread status for two users success");
-                            }
-                            
-                            else{
-                                
-                                NSLog(@"saving conversation unread status for two users FAILED");
-                                
-                                
-                                
-                            }
-                        }];
+                        NSLog(@"error retrieving conversation objects");
                     }
                     
-                    
-                }
+                }];
                 
-                else{
-                    
-                    NSLog(@"error retrieving conversation objects");
-                }
                 
-            }];
+                //************
+                
+                
+                
+                
+                
+                
+            } else {
+                NSLog(@"Error saving message object");
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:error.localizedDescription delegate:self cancelButtonTitle:@"cancel" otherButtonTitles:nil, nil];
+                
+                [alert show];
+                
+            }
+            
+            //Reenable send button and text field after process is done
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.messageTextField setEnabled:YES];
+                //[self.sendButton setEnabled:YES];
+                self.messageTextField.text = @"";
+                
+                
+            });
             
             
-            //************
             
-            
-            
-            
-            
-            
-        } else {
-            NSLog(@"Error saving message object");
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:error.localizedDescription delegate:self cancelButtonTitle:@"cancel" otherButtonTitles:nil, nil];
-            
-            [alert show];
+        }];
+
         
-        }
         
-        //Reenable send button and text field after process is done
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.messageTextField setEnabled:YES];
-            [self.sendButton setEnabled:YES];
-            self.messageTextField.text = @"";
-            
-            
-        });
-        
-        
-        
-    }];
+    }
+    
+    
     
     
 }
@@ -742,7 +758,9 @@
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
     
-    NSLog(@"range = %lu", (unsigned long)range.location);
+    
+    
+   // NSLog(@"range = %lu", (unsigned long)range.location);
     
    // NSLog(@"string value = %@", [NSString stringWithFormat:@"%@%@",_messageTextField.text, string]);
     
@@ -767,12 +785,10 @@
             
             _sendButton.enabled = YES;
             _sendButton.backgroundColor = [UIColor colorWithRed:22.0/255.0 green:126.0/255.0 blue:251.0/255 alpha:1.0];
-            
-            
+
         }
-        
-        
-        NSLog(@"replacement string = '%@'", string);
+
+       // NSLog(@"replacement string = '%@'", string);
 
         
     }
@@ -803,7 +819,7 @@
 - (void) tableViewTapped{
     
     [self.messageTextField resignFirstResponder];
-    NSLog(@"table tapppe");
+   // NSLog(@"table tapppe");
 }
 
 
@@ -881,14 +897,14 @@
         
         //no blocked users found
         if (!objects.count) {
-            NSLog(@"Congrats. The user did not block you");
+           // NSLog(@"Congrats. The user did not block you");
             
             _messageTextField.enabled = YES;
             _messageTextField.text = @"";
             _messageTextField.placeholder = @"Type a message ...";
             _messageTextField.backgroundColor = [UIColor whiteColor];
             _messageTextField.textColor = [UIColor blackColor];
-            _sendButton.enabled = YES;
+           // _sendButton.enabled = YES;
             //_sendButton.backgroundColor = [UIColor colorWithRed:22.0/255.0 green:126.0/255.0 blue:251.0/255 alpha:1.0];
             
         }
@@ -903,7 +919,7 @@
                 _messageTextField.text = @"You can't message this user";
                 _messageTextField.backgroundColor = [UIColor redColor];
                 _messageTextField.textColor = [UIColor whiteColor];
-                _sendButton.enabled = NO;
+                //_sendButton.enabled = NO;
                 //_sendButton.backgroundColor = [UIColor lightGrayColor];
             }
             
@@ -926,7 +942,7 @@
 - (void) scrollToLastMessage{
     
     
-    NSLog(@"Size of arrray = %lu", (unsigned long)[_messagesArray count]);
+   // NSLog(@"Size of arrray = %lu", (unsigned long)[_messagesArray count]);
     
     
     NSIndexPath *scrollIndexPath = [NSIndexPath indexPathForRow:([_messagesArray count] - 1) inSection:0];
@@ -972,11 +988,11 @@
     [conversationQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         
         if (!error) {
-            NSLog(@"Conversation objects %@", objects);
+          //  NSLog(@"Conversation objects %@", objects);
             
             //if one conversation found, change the readBy to YES of current user
             if (objects.count ==1) {
-                NSLog(@"found 1 conversation object");
+              //  NSLog(@"found 1 conversation object");
                 
                 
                 //NSLog(@"userA: %@", [[objects objectAtIndex:0] objectForKey:@"userA"]);
@@ -990,12 +1006,12 @@
                     conversationObject[@"readByUserA"] = @YES;
                     
                     
-                    NSLog(@"current user is userA");
+                   // NSLog(@"current user is userA");
                     
                     [conversationObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                         if (succeeded) {
-                            NSLog(@"saving conversation unnread status to userA success");
-                            
+                           // NSLog(@"saving conversation unnread status to userA success");
+                            ;
                             //refresh messages list
                           //  MessagesViewController *messagesVC = [[MessagesViewController alloc] init];
                             
@@ -1027,7 +1043,7 @@
                 
                 else{
                     
-                    NSLog(@"current user NOT  userA");
+                  //  NSLog(@"current user NOT  userA");
                     //set readByUserA to False
                     
                     
@@ -1035,11 +1051,11 @@
                     conversationObject[@"readByUserB"] = @YES;
                     
                     
-                    NSLog(@"current user is userB");
+                  //  NSLog(@"current user is userB");
                     
                     [conversationObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                         if (succeeded) {
-                            NSLog(@"saving conversation unnnnnead status to userB success");
+                            //NSLog(@"saving conversation unnnnnead status to userB success");
                             
                             //refresh messages list
                             //UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
