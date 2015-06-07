@@ -371,6 +371,7 @@ forRowAtIndexPath: (NSIndexPath*)indexPath
     [query orderByDescending:@"createdAt"];
     [query includeKey:@"messageFrom"];
     [query includeKey:@"messageTo"];
+    [query setLimit:1000];
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
@@ -548,21 +549,28 @@ forRowAtIndexPath: (NSIndexPath*)indexPath
             PFQuery *query1 =[PFQuery queryWithClassName:@"Conversation"];
             [query1 whereKey:@"userA"
                      equalTo:[PFObject objectWithoutDataWithClassName:@"_User" objectId:[[PFUser currentUser] objectId]]];
+            //[query1 setLimit:1000];
+
             PFQuery *query2 =[query1 whereKey:@"userB"
                                       equalTo: user];
-            
+            //[query2 setLimit:1000];
+
             PFQuery *query3 =[PFQuery queryWithClassName:@"Conversation"];
             [query3 whereKey:@"userA"
                      equalTo:user];
+            //[query3 setLimit:1000];
+
             PFQuery *query4 =[query3 whereKey:@"userB"
                                       equalTo:[PFObject objectWithoutDataWithClassName:@"_User" objectId:[[PFUser currentUser] objectId]]];
+           // [query4 setLimit:1000];
+
             
             
             //combin the two queries in an OR operation
             PFQuery *conversationQuery = [PFQuery orQueryWithSubqueries:@[query2,query4]];
             [conversationQuery includeKey:@"userA"];
             [conversationQuery includeKey:@"userB"];
-            conversationQuery.limit =10;
+            conversationQuery.limit =1000;
             
             
             
@@ -814,7 +822,8 @@ forRowAtIndexPath: (NSIndexPath*)indexPath
     PFQuery *blockedUsersQuery = [PFQuery queryWithClassName:@"_User"];
     [blockedUsersQuery includeKey:@"blockedUsers"];
     [blockedUsersQuery whereKey:@"blockedUsers" equalTo:[[PFUser currentUser] objectId]];
-    
+    [blockedUsersQuery setLimit:1000];
+
     _usersWhoBlockedMeList = [[NSMutableArray alloc] init];
     
     
