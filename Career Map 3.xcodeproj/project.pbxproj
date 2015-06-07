@@ -35,6 +35,7 @@
 		F537FF731B1A3373001862D9 /* AddressLineConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = F537FF721B1A3373001862D9 /* AddressLineConverter.m */; };
 		F53EABF11B020F5900CCB97C /* MessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F53EABF01B020F5900CCB97C /* MessagesViewController.m */; };
 		F53EABF41B020F8700CCB97C /* MessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F53EABF31B020F8700CCB97C /* MessageCell.m */; };
+		F55DF45B1B24D6B900EACD26 /* MyJobTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F55DF45A1B24D6B900EACD26 /* MyJobTableViewCell.m */; };
 		F56EA2011B1D8D7A00350CBF /* MyJobsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F56EA2001B1D8D7A00350CBF /* MyJobsListViewController.m */; };
 		F584F4111B1E531B00A0AF00 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F584F4101B1E531B00A0AF00 /* GameKit.framework */; };
 		F59584851B1347A900B06778 /* TabBar-AddJob.png in Resources */ = {isa = PBXBuildFile; fileRef = F59584821B1347A800B06778 /* TabBar-AddJob.png */; };
@@ -160,6 +161,8 @@
 		F53EABF01B020F5900CCB97C /* MessagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessagesViewController.m; sourceTree = "<group>"; };
 		F53EABF21B020F8700CCB97C /* MessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageCell.h; sourceTree = "<group>"; };
 		F53EABF31B020F8700CCB97C /* MessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageCell.m; sourceTree = "<group>"; };
+		F55DF4591B24D6B900EACD26 /* MyJobTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyJobTableViewCell.h; sourceTree = "<group>"; };
+		F55DF45A1B24D6B900EACD26 /* MyJobTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyJobTableViewCell.m; sourceTree = "<group>"; };
 		F56EA1FF1B1D8D7A00350CBF /* MyJobsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyJobsListViewController.h; sourceTree = "<group>"; };
 		F56EA2001B1D8D7A00350CBF /* MyJobsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyJobsListViewController.m; sourceTree = "<group>"; };
 		F584F4101B1E531B00A0AF00 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
@@ -439,6 +442,8 @@
 			children = (
 				F56EA1FF1B1D8D7A00350CBF /* MyJobsListViewController.h */,
 				F56EA2001B1D8D7A00350CBF /* MyJobsListViewController.m */,
+				F55DF4591B24D6B900EACD26 /* MyJobTableViewCell.h */,
+				F55DF45A1B24D6B900EACD26 /* MyJobTableViewCell.m */,
 			);
 			name = "My Jobs";
 			sourceTree = "<group>";
@@ -840,6 +845,7 @@
 				F59759321AC1DBDF0099A978 /* Job.m in Sources */,
 				F595849E1B15BC7C00B06778 /* AddJobDetailsViewController.m in Sources */,
 				F5EB65FF1AEEB0770026B988 /* AppHorizontalMessage.m in Sources */,
+				F55DF45B1B24D6B900EACD26 /* MyJobTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

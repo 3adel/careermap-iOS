@@ -8,8 +8,18 @@
 
 #import <UIKit/UIKit.h>
 #import "JobLocationViewController.h"
+#import "MyJobTableViewCell.h"
 
-@interface MyJobsListViewController : UIViewController
+@interface MyJobsListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+
+@property (weak, nonatomic) IBOutlet UITableView *myJobsTable;
+
+
+
+//data
+@property (strong, nonatomic) NSMutableArray *myJobsArray;
+
+
 - (IBAction)takeMeToJobEditor:(UIButton *)sender;
-
+- (void) retrieveMyJobsFromParse;
 @end
