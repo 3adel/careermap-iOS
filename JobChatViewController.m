@@ -380,8 +380,8 @@
                         _messageTextField.placeholder = @"Type a message ...";
                         _messageTextField.backgroundColor = [UIColor whiteColor];
                         _messageTextField.textColor = [UIColor blackColor];
-                        _sendButton.enabled = YES;
-                        _sendButton.backgroundColor = [UIColor colorWithRed:22.0/255.0 green:126.0/255.0 blue:251.0/255 alpha:1.0];
+                       // _sendButton.enabled = YES;
+                       // _sendButton.backgroundColor = [UIColor colorWithRed:22.0/255.0 green:126.0/255.0 blue:251.0/255 alpha:1.0];
                         
                         [HUDProgressIndicator setHidden:YES];
                     }
