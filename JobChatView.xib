@@ -26,12 +26,12 @@
                     <rect key="frame" x="0.0" y="518" width="320" height="50"/>
                     <subviews>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type a message ..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="n0g-nL-4fU">
-                            <rect key="frame" x="10" y="10" width="220" height="30"/>
+                            <rect key="frame" x="10" y="5" width="220" height="30"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
                         <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R48-Ym-p9e" userLabel="send">
-                            <rect key="frame" x="240" y="10" width="70" height="30"/>
+                            <rect key="frame" x="240" y="5" width="70" height="30"/>
                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="70" id="z0W-4M-zyQ"/>
@@ -48,10 +48,10 @@
                     </subviews>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="X4T-c9-1Z1"/>
-                        <constraint firstItem="n0g-nL-4fU" firstAttribute="top" secondItem="NIA-Hp-y9m" secondAttribute="top" constant="10" id="aef-VT-sZe"/>
+                        <constraint firstItem="n0g-nL-4fU" firstAttribute="top" secondItem="NIA-Hp-y9m" secondAttribute="top" constant="5" id="aef-VT-sZe"/>
                         <constraint firstItem="R48-Ym-p9e" firstAttribute="leading" secondItem="n0g-nL-4fU" secondAttribute="trailing" constant="10" id="fTP-FV-jix"/>
                         <constraint firstAttribute="trailing" secondItem="R48-Ym-p9e" secondAttribute="trailing" constant="10" id="fkF-uk-acz"/>
-                        <constraint firstItem="R48-Ym-p9e" firstAttribute="top" secondItem="NIA-Hp-y9m" secondAttribute="top" constant="10" id="ulu-u1-OYd"/>
+                        <constraint firstItem="R48-Ym-p9e" firstAttribute="top" secondItem="NIA-Hp-y9m" secondAttribute="top" constant="5" id="ulu-u1-OYd"/>
                         <constraint firstItem="n0g-nL-4fU" firstAttribute="leading" secondItem="NIA-Hp-y9m" secondAttribute="leading" constant="10" id="yWf-iu-KcN"/>
                     </constraints>
                 </view>
