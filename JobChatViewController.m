@@ -270,6 +270,7 @@
     
     return _messagesArray.count;
     
+    
 }
 
 
@@ -420,15 +421,35 @@
         
         
     });
-
+    
 
 
     if (![_messageTextField.text isEqualToString:@""]) {
         
+        //now add the message typed statically to the table view. Will not be saved on parse.
+        PFObject *messageToAdd = [[PFObject alloc] initWithClassName:@"Conversation"];
+        [messageToAdd setObject:_messageTextField.text forKey:@"messageContent"];
+        [messageToAdd setObject:[PFUser currentUser] forKey:@"messageFrom"];
+        [messageToAdd setObject:_jobPosterPFUser forKey:@"messageTo"];
+        [_messagesArray addObject:messageToAdd];
+
+        NSIndexPath* cellIndexPathToAdd= [NSIndexPath indexPathForRow:([_messagesArray count]-1) inSection:0];
+
+        [_jobChatTable beginUpdates];
+        NSArray *rowIndexPathsToInsert = [[NSArray alloc] initWithObjects:cellIndexPathToAdd, nil];
+        [_jobChatTable insertRowsAtIndexPaths:rowIndexPathsToInsert withRowAnimation:UITableViewRowAnimationBottom];
+        [_jobChatTable endUpdates];
+        
+        [ self scrollToLastMessage];
+        
+        
+        
+        
+        
         //done editing
-        [self.messageTextField resignFirstResponder];
+        //[self.messageTextField resignFirstResponder];
         //disable send button and text field temporarily as the data is being posted
-        [self.messageTextField setEnabled:NO];
+        //[self.messageTextField setEnabled:NO];
         
         //post the message to parse
         PFObject *newMessageObject = [PFObject objectWithClassName:@"Messages" ];
@@ -438,7 +459,7 @@
         [newMessageObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (succeeded) {
                // NSLog(@"Success saving message object");
-                [self retrieveMessages];
+               // [self retrieveMessages];
                 
                // NSLog(@"The other user is %@", [_jobPosterPFUser objectId]);
                 
@@ -808,6 +829,7 @@
 
 - (void) textFieldDidEndEditing:(UITextField *)textField{
     
+    /*
     [self.view layoutIfNeeded];
     [UIView animateWithDuration:.25 animations:^{
         
@@ -858,6 +880,7 @@
         
         
     } completion:nil];
+     */
     
 }
 
@@ -959,6 +982,8 @@
             for (id message in objects) {
                 
                 [self.messagesArray addObject:message ];
+                
+                //NSLog(@"message: %@", _messagesArray);
                 
             }
         }
