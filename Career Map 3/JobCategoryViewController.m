@@ -18,8 +18,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    NSLog(@" job category view did load called");
-    NSLog(@"job object passed from job location view = %@", _jobObject);
+   // NSLog(@" job category view did load called");
+   // NSLog(@"job object passed from job location view = %@", _jobObject);
     
     //get parse job categories
     [self retrieveJobCategoriesFromParse];

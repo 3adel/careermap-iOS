@@ -45,7 +45,7 @@
 
 -  (void) saveCVButtonPressedNotifSelector{
     
-    NSLog(@"save button tapped notification");
+   // NSLog(@"save button tapped notification");
     
     //progress spinner initialization
     _MBProgressHUDSaveButtonPressedIndicator = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -80,7 +80,7 @@
 -(void) viewWillAppear:(BOOL)animated{
     
     
-    NSLog(@"view will appear");
+    //NSLog(@"view will appear");
 
     //add NSNotificatin selector for CV Edit (should refactor using delegation)
     [super viewWillAppear:animated];
@@ -102,7 +102,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSLog(@"view did load called");
+  //  NSLog(@"view did load called");
     // Do any additional setup after loading the view.
     
     
@@ -167,12 +167,12 @@
             
             if ([object objectForKey:@"aJobSeekerID"]) {
                 //user does have CV
-                NSLog(@"job seeker ID found = %@", [[object objectForKey:@"aJobSeekerID"] objectId]);
+                //NSLog(@"job seeker ID found = %@", [[object objectForKey:@"aJobSeekerID"] objectId]);
                 
-                NSLog(@"job seeker name = %@", [[object objectForKey:@"aJobSeekerID"] objectForKey:@"firstName"]);
+               // NSLog(@"job seeker name = %@", [[object objectForKey:@"aJobSeekerID"] objectForKey:@"firstName"]);
                 
                 
-                NSLog(@"job seeker object = *%@",[object objectForKey:@"aJobSeekerID" ] );
+              //  NSLog(@"job seeker object = *%@",[object objectForKey:@"aJobSeekerID" ] );
                 
                 
                 
@@ -319,7 +319,7 @@
                     PFFile *CVThumbImageFile = [[object objectForKey:@"aJobSeekerID"] objectForKey:@"jobSeekerThumb"];
                     [CVThumbImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
                         if (!error) {
-                            NSLog(@"success updating seeker cv image");
+                           // NSLog(@"success updating seeker cv image");
                              _aJobSeekerThumb.image = [UIImage imageWithData:imageData];
                             
                            // = ;
@@ -371,7 +371,7 @@
             else{
                 
                // _createCVAlert.delegate = self;
-                NSLog(@"No cv has been found, create one then");
+                //NSLog(@"No cv has been found, create one then");
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
                     
@@ -400,7 +400,7 @@
         
         //return YES;
         
-        NSLog(@"done retrieveing date");
+        //NSLog(@"done retrieveing date");
         
         dispatch_async(dispatch_get_main_queue(), ^{
          //  [_CVDataLoadingIndicator stopAnimating];
@@ -511,7 +511,7 @@
         PFFile *CVThumbImageFile = [[_jobSeekerObject objectForKey:@"aJobSeekerID"] objectForKey:@"jobSeekerThumb"];
         [CVThumbImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
             if (!error) {
-                NSLog(@"success updating seeker cv image");
+                //NSLog(@"success updating seeker cv image");
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
                     
@@ -578,13 +578,14 @@
 
     if(actionSheet== _registerAlert) {//alertLogout
         if (buttonIndex == 0){
-            NSLog(@"0: Cancel");
+            //NSLog(@"0: Cancel");
+            ;
             
         }
         
         else if(buttonIndex==1){
             
-            NSLog(@"Register");
+           // NSLog(@"Register");
             LoginViewController *registerViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"registrationViewController"];
             //  UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:registerViewController];
             //[self.navigationController pushViewController:navi animated:YES];

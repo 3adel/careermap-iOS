@@ -647,7 +647,7 @@
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WmF-te-Ccs" userLabel="Job Seeker Thumb">
                                         <rect key="frame" x="236" y="22" width="95" height="95"/>
-                                        <color key="backgroundColor" red="1" green="0.50196081399917603" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="95" id="EP1-PE-JxE"/>
                                             <constraint firstAttribute="width" constant="95" id="NmY-8y-hcn"/>

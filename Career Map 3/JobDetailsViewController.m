@@ -149,7 +149,7 @@
     
     //if the user already applied, disable apply button
     if ([[_jobObject objectForKey:@"appliedByUsers"] containsObject:[[PFUser currentUser] objectId]]) {
-        NSLog(@"user already applied");
+       // NSLog(@"user already applied");
         [_applyWithCVButton setTitle:@"You Applied" forState:UIControlStateNormal];
         [_applyWithCVButton setBackgroundColor:[UIColor grayColor]];
         self.applyWithCVButton.enabled =NO;
@@ -250,7 +250,7 @@
            //     permittedArrowDirections:UIPopoverArrowDirectionAny
                       //          animated:YES];
     
-    NSLog(@"map annotation selected selected");
+    //NSLog(@"map annotation selected selected");
 
 }
 
@@ -276,7 +276,7 @@
 
 - (void) showJobDirection{
     
-    NSLog(@"show me job directions please");
+    //NSLog(@"show me job directions please");
         [self performSegueWithIdentifier:@"jobMap" sender:self];
 }
 
@@ -291,7 +291,7 @@
         JobMapViewController *destViewController = segue.destinationViewController;
         destViewController.jobLocation = self.jobLocation;
         
-        NSLog(@"go to map");
+       // NSLog(@"go to map");
     }
 }
 
@@ -308,7 +308,7 @@
     }
     else{
         
-        NSLog(@"Chat with employer button pressed");
+        //NSLog(@"Chat with employer button pressed");
         
         JobChatViewController  *jobChatScreen = [[JobChatViewController alloc] initWithNibName:@"JobChatView" bundle:nil];
         /*
@@ -357,19 +357,19 @@
                 
                 if ([object objectForKey:@"aJobSeekerID"]) {
                     //user does have CV
-                    NSLog(@"job seeker ID found = %@", [[object objectForKey:@"aJobSeekerID"] objectId]);
-                    NSLog(@"People who applied to this job = %@", [_jobObject objectForKey:@"appliedByUsers"]);
+                   // NSLog(@"job seeker ID found = %@", [[object objectForKey:@"aJobSeekerID"] objectId]);
+                   // NSLog(@"People who applied to this job = %@", [_jobObject objectForKey:@"appliedByUsers"]);
                     
                     //did the user apply with their CV?
                     if ([[_jobObject objectForKey:@"appliedByUsers"] containsObject:[[PFUser currentUser] objectId]]) {
                         //user already applied. Do nothing. viewDidLoad took care of updating ui.
-                        NSLog(@"user already applied");
+                       // NSLog(@"user already applied");
                         
                         
                     }
                     
                     else{
-                        NSLog(@"user did not apply");
+                       // NSLog(@"user did not apply");
                         //user has cv but did NOT apply apply
                         //Make them apply now
                         
@@ -382,7 +382,7 @@
                                 [jobObject addUniqueObject:[[PFUser currentUser] objectId] forKey:@"appliedByUsers"];
                                 [jobObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                                     if (succeeded) {
-                                        NSLog(@"Applied to job successfully");
+                                        //NSLog(@"Applied to job successfully");
                                         
                                         
                                         
@@ -405,7 +405,7 @@
                                         //now sync the local _job object to reflect the job application
                                         
                                         
-                                        NSLog(@"applied by user: %@",[_jobObject objectForKey:@"appliedByUsers"]  );
+                                        //NSLog(@"applied by user: %@",[_jobObject objectForKey:@"appliedByUsers"]  );
                                         
                                         
                                     } else {
@@ -436,7 +436,7 @@
                     [HUDProgressIndicator setHidden:YES];
                     
                     _createCVAlert.delegate = self;
-                    NSLog(@"No cv has been found, create one then");
+                    //NSLog(@"No cv has been found, create one then");
                     _createCVAlert =[[UIAlertView alloc] initWithTitle:@"No CV found" message:@"Please create a CV so you can apply" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Create My CV ", nil];
                     
                     
@@ -504,7 +504,7 @@
     //pass the job object to job location edit view
 
     
-    NSLog(@"this is the job object to edit %@", _jobObject);
+   // NSLog(@"this is the job object to edit %@", _jobObject);
     
 
     
@@ -545,13 +545,14 @@
 -(void)alertView:(UIAlertView *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     if(actionSheet== _createCVAlert) {//alertLogout
         if (buttonIndex == 0){
-            NSLog(@"0: Cancel");
+            //NSLog(@"0: Cancel");
+            ;
             
         }
         
         else if(buttonIndex==1){
             
-            NSLog(@"Create CV flow");
+            //NSLog(@"Create CV flow");
             
            // CreateCVViewController *createCVScreen = [[CreateCVViewController alloc] initWithNibName:@"CreateCVView" bundle:nil];
             
@@ -566,13 +567,14 @@
     
     else if(actionSheet== _registerAlert) {//alertLogout
         if (buttonIndex == 0){
-            NSLog(@"0: Cancel");
+            //NSLog(@"0: Cancel");
+            ;
             
         }
         
         else if(buttonIndex==1){
             
-            NSLog(@"Register");
+            //NSLog(@"Register");
             LoginViewController *registerViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"registrationViewController"];
           //  UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:registerViewController];
             //[self.navigationController pushViewController:navi animated:YES];
@@ -583,7 +585,8 @@
     
     else if(actionSheet== _deleteJobAlert) {//alertLogout
         if (buttonIndex == 0){
-            NSLog(@"0: Cancel");
+            //NSLog(@"0: Cancel");
+            ;
             
         }
         
@@ -591,7 +594,7 @@
             
             [self deleteJob];
             
-            NSLog(@"delete job tapped");
+            //NSLog(@"delete job tapped");
             
         }
     }
@@ -599,7 +602,8 @@
     
     else if(actionSheet== _reportJobAlert) {//alertLogout
         if (buttonIndex == 0){
-            NSLog(@"0: Cancel");
+            //NSLog(@"0: Cancel");
+            ;
             
         }
         
@@ -607,7 +611,7 @@
             
             [self reportJob];
             
-            NSLog(@"delete job tapped");
+            //NSLog(@"delete job tapped");
             
         }
     }
@@ -633,7 +637,7 @@
     
     [_jobObject deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded) {
-            NSLog(@"job deletion success");
+           // NSLog(@"job deletion success");
 
             //job added, update the UI
             UIImage *progressIndicatorDoneImage = [UIImage imageNamed:@"37x-Checkmark.png"];

@@ -384,7 +384,7 @@ forRowAtIndexPath: (NSIndexPath*)indexPath
             for (PFObject *object in objects) {
                 
                 
-                NSLog(@"object= %@", object);
+                //NSLog(@"object= %@", object);
                 // NSLog(@"messageFrom = %@", [[object objectForKey:@"messageFrom"] objectForKey:@"username"]);
                 //NSLog(@"messageTo = %@", [[object objectForKey:@"messageTo"] objectId]);
                 // NSLog(@"message = %@ \n\n", [object objectForKey:@"messageContent"]);
@@ -405,7 +405,7 @@ forRowAtIndexPath: (NSIndexPath*)indexPath
                         
                        // [[[_usersWhoBlockedmePFUsersList objectAtIndex:counter2] objectId] isEqualToString:[[object objectForKey:@"messageTo"] objectId]]
                         
-                        NSLog(@"object = %@", [[object objectForKey:@"messageTo"] objectId]);
+                        //NSLog(@"object = %@", [[object objectForKey:@"messageTo"] objectId]);
                         
                         if (![_usersWhoBlockedMeList containsObject:[[object objectForKey:@"messageTo"] objectId]]) {
                             
@@ -420,7 +420,8 @@ forRowAtIndexPath: (NSIndexPath*)indexPath
                         
                         else{
                             
-                            NSLog(@"founddddd a blocked user");
+                            
+                            ;
                         }
                         
                         
@@ -449,7 +450,7 @@ forRowAtIndexPath: (NSIndexPath*)indexPath
                         
                         else{
                             
-                            NSLog(@"found a blocked user");
+                           // NSLog(@"found a blocked user");
                         }
                         
                         
@@ -577,11 +578,11 @@ forRowAtIndexPath: (NSIndexPath*)indexPath
             [conversationQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
                 
                 if (!error) {
-                    NSLog(@"Conversation objects %@", objects);
+                    //NSLog(@"Conversation objects %@", objects);
                     
                     //if one conversation found, change the readBy to NO to the respective user in the TO column
                     if (objects.count ==1) {
-                        NSLog(@"found 1 conversation object");
+                       // NSLog(@"found 1 conversation object");
                         
                         
                         //NSLog(@"userA: %@", [[objects objectAtIndex:0] objectForKey:@"userA"]);
@@ -589,14 +590,14 @@ forRowAtIndexPath: (NSIndexPath*)indexPath
                         
                         if ([[[[objects objectAtIndex:0] objectForKey:@"userA"] objectId] isEqualToString:[[PFUser currentUser] objectId]]) {
                             
-                            NSLog(@"current user is userA");
+                            //NSLog(@"current user is userA");
                             //check if the read flag is false
-                            NSLog(@"conversation %@", [[objects objectAtIndex:0] objectForKey:@"readByUserA"]);
+                            //NSLog(@"conversation %@", [[objects objectAtIndex:0] objectForKey:@"readByUserA"]);
                             
                             
                             if ([[[objects objectAtIndex:0] objectForKey:@"readByUserA"]  isEqual: @NO]) {
                                 
-                                NSLog(@"read by user A = False");
+                                //NSLog(@"read by user A = False");
                                 //cell.usernameLabel.font = [UIFont boldSystemFontOfSize:17.0];
                                  [_UnreadMessagesCountBooleansArray addObject:[NSNumber numberWithBool:NO]];
                                 [_conversationReadUnreadBooleansDictonary setValue:[NSNumber numberWithBool:NO] forKey:[user objectId]];
@@ -613,7 +614,7 @@ forRowAtIndexPath: (NSIndexPath*)indexPath
                             
                             
                             else{
-                                NSLog(@"read by user A = True");
+                                //NSLog(@"read by user A = True");
                                 //cell.usernameLabel.font = [UIFont systemFontOfSize:17.0];
                               // [_conversationReadUnreadBooleansArray addObject:[NSNumber numberWithBool:YES]];
                                 
@@ -631,7 +632,7 @@ forRowAtIndexPath: (NSIndexPath*)indexPath
                         }
                         else{
                             
-                            NSLog(@"current user is userB");
+                            //NSLog(@"current user is userB");
                             if ([[[objects objectAtIndex:0] objectForKey:@"readByUserB"]  isEqual: @NO]) {
                                 [_UnreadMessagesCountBooleansArray addObject:[NSNumber numberWithBool:NO]];
                                 [_conversationReadUnreadBooleansDictonary setValue:[NSNumber numberWithBool:NO] forKey:[user objectId]];
@@ -661,7 +662,8 @@ forRowAtIndexPath: (NSIndexPath*)indexPath
                     
                     else{
                         //no conversation found. should never execute this
-                        NSLog(@"no conversations found");
+                       // NSLog(@"no conversations found");
+                        ;
                         
                         
                         
@@ -678,7 +680,7 @@ forRowAtIndexPath: (NSIndexPath*)indexPath
                 
                 //update the badge of messages tab bar item
                 if (count == _chatUsersPFUsersList.count-1 ) {
-                    NSLog(@"update unread tab bar badge now");
+                   // NSLog(@"update unread tab bar badge now");
                     //[[[[[self tabBarController] tabBar] items] objectAtIndex:2] setBadgeValue:[NSString stringWithFormat:@"%ld", [_UnreadMessagesCountBooleansArray count]]];
                     
                     
@@ -690,7 +692,7 @@ forRowAtIndexPath: (NSIndexPath*)indexPath
                         [[[[tbc tabBar] items] objectAtIndex:3] setBadgeValue:[NSString stringWithFormat:@"%lu", (unsigned long)[_UnreadMessagesCountBooleansArray count]]];
                         [[UIApplication sharedApplication] setApplicationIconBadgeNumber:[_UnreadMessagesCountBooleansArray count]];
                         
-                        NSLog(@"counttttttt = %ld", (long)count);
+                        //NSLog(@"counttttttt = %ld", (long)count);
                     }
                     else{
                         
@@ -747,7 +749,7 @@ forRowAtIndexPath: (NSIndexPath*)indexPath
                 
    
                     
-                    NSLog(@"message list reload data called");
+                 //   NSLog(@"message list reload data called");
                     [_messagesTable reloadData];
 
                 
