@@ -460,7 +460,14 @@
             
             [_jobChatTable endUpdates];
             
-            [ self scrollToLastMessage];
+            
+            if ([_messagesArray count] >0) {
+                [ self scrollToLastMessage];
+
+            
+            }
+
+            
         });
         
         
@@ -809,8 +816,10 @@
     
     dispatch_async(dispatch_get_main_queue(), ^{
         
-        [self scrollToLastMessage];
+        if ([_messagesArray count] >0) {
+            [ self scrollToLastMessage];
 
+        }
     });
     
     
@@ -1126,6 +1135,7 @@
     
     NSLog(@"scroll to last message called");
    // NSLog(@"Size of arrray = %lu", (unsigned long)[_messagesArray count]);
+    
     
     
     NSIndexPath *scrollIndexPath = [NSIndexPath indexPathForRow:([_messagesArray count] - 1) inSection:0];
