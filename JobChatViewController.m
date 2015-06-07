@@ -431,6 +431,9 @@
         _sendButton.enabled = NO;
         _sendButton.backgroundColor = [UIColor lightGrayColor];
         
+        _messageTextField.text = @"";
+        _messageTextField.placeholder = @"Type a message ...";
+        
         
     });
     
@@ -1091,8 +1094,6 @@
            // NSLog(@"Congrats. The user did not block you");
             
             _messageTextField.enabled = YES;
-            _messageTextField.text = @"";
-            _messageTextField.placeholder = @"Type a message ...";
             _messageTextField.backgroundColor = [UIColor whiteColor];
             _messageTextField.textColor = [UIColor blackColor];
            // _sendButton.enabled = YES;
