@@ -443,16 +443,29 @@
         [messageToAdd setObject:_messageTextField.text forKey:@"messageContent"];
         [messageToAdd setObject:[PFUser currentUser] forKey:@"messageFrom"];
         [messageToAdd setObject:_jobPosterPFUser forKey:@"messageTo"];
+
         [_messagesArray addObject:messageToAdd];
 
         NSIndexPath* cellIndexPathToAdd= [NSIndexPath indexPathForRow:([_messagesArray count]-1) inSection:0];
-
-        [_jobChatTable beginUpdates];
-        NSArray *rowIndexPathsToInsert = [[NSArray alloc] initWithObjects:cellIndexPathToAdd, nil];
-        [_jobChatTable insertRowsAtIndexPaths:rowIndexPathsToInsert withRowAnimation:UITableViewRowAnimationBottom];
-        [_jobChatTable endUpdates];
         
-        [ self scrollToLastMessage];
+        
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            [_jobChatTable beginUpdates];
+            NSArray *rowIndexPathsToInsert = [[NSArray alloc] initWithObjects:cellIndexPathToAdd, nil];
+            [_jobChatTable insertRowsAtIndexPaths:rowIndexPathsToInsert withRowAnimation:UITableViewRowAnimationBottom];
+            
+            
+            
+            [_jobChatTable endUpdates];
+            
+            [ self scrollToLastMessage];
+        });
+        
+        
+
+
         
         
         
@@ -477,8 +490,11 @@
                 
                 
                 
-                
-                
+                //updated date label from parse
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self refreshTable];
+                });
+
                 //send push notification to the other user
                 PFQuery *uQuery = [PFUser query];
                 [uQuery whereKey:@"objectId" equalTo:[_jobPosterPFUser objectId]];
@@ -791,7 +807,12 @@
     } completion:nil];
     
     
-    [self scrollToLastMessage];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        [self scrollToLastMessage];
+
+    });
+    
     
     
     
