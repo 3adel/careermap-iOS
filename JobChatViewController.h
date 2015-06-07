@@ -11,6 +11,7 @@
 #import "JobChatMessageCell.h"
 #import "MessagesViewController.h"
 #import "DateConverter.h"
+#import "MBProgressHUD.h"
 
 @interface JobChatViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *dockViewHightConstraint;
@@ -33,6 +34,8 @@
 @property (weak, nonatomic) IBOutlet UITableView *jobChatTable;
 @property (strong, nonatomic) NSMutableArray *messagesArray;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *blockUserButton;
+@property (nonatomic, strong) MBProgressHUD *HUDProgressIndicator;
+
 
 
 

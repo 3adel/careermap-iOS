@@ -33,6 +33,16 @@
 
 - (void)viewDidLoad {
     
+    
+    //start animating progress indicator
+    _HUDProgressIndicator = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    _HUDProgressIndicator.labelText = @"Loading thread ...";
+    _HUDProgressIndicator.mode = MBProgressHUDModeIndeterminate;
+    
+
+    
+    
+    
     //style
     _sendButton.layer.cornerRadius = 5.0f;
 
@@ -133,6 +143,8 @@
 -(void) viewDidAppear:(BOOL)animated{
     
     //scroll to the last message in the array
+    
+
     
     
 }
@@ -728,6 +740,9 @@
 //MARK: Textfield delegate methods
 - (void)textFieldDidBeginEditing:(UITextField *)textField{
     
+    
+    NSLog(@"did begin editing");
+    
     [self.view layoutIfNeeded];
     [UIView animateWithDuration:.25 animations:^{
         
@@ -752,7 +767,11 @@
         {
             //NSLog(@"IS_IPHONE_6");
             _dockViewHightConstraint.constant =[UIScreen mainScreen].bounds.size.height*.45;
-            _tableViewTopConstraint.constant =-[UIScreen mainScreen].bounds.size.height*.45;
+            
+            
+            
+            //_tableViewTopConstraint.constant =-[UIScreen mainScreen].bounds.size.height*.45;
+            
 
         }
         if(IS_IPHONE_6P)
@@ -770,6 +789,12 @@
         
         
     } completion:nil];
+    
+    
+    [self scrollToLastMessage];
+    
+    
+    
     
     
 
@@ -977,6 +1002,13 @@
     [messageQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         
         if (!error) {
+            
+            //start animating progress indicator
+            _HUDProgressIndicator.hidden=YES;
+            
+
+            
+            
             //clear the message array first
             self.messagesArray = [NSMutableArray new];
             for (id message in objects) {
@@ -1071,6 +1103,7 @@
 - (void) scrollToLastMessage{
     
     
+    NSLog(@"scroll to last message called");
    // NSLog(@"Size of arrray = %lu", (unsigned long)[_messagesArray count]);
     
     
