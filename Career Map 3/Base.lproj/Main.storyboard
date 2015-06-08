@@ -142,7 +142,7 @@
         <!--Job Details View Controller-->
         <scene sceneID="04e-1I-DIt">
             <objects>
-                <viewController id="oBD-2n-Moc" customClass="JobDetailsViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="jobDetailsViewController" id="oBD-2n-Moc" customClass="JobDetailsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="b7N-fe-EAJ"/>
                         <viewControllerLayoutGuide type="bottom" id="zZB-0S-X7L"/>

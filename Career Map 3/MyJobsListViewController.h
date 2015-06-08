@@ -9,11 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "JobLocationViewController.h"
 #import "MyJobTableViewCell.h"
+#import "JobDetailsViewController.h"
 
 @interface MyJobsListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *myJobsTable;
-
+@property (weak, nonatomic) PFObject *myJobPFObject;
+@property (nonatomic, strong) PFGeoPoint *userLocation;
 
 
 //data
@@ -22,4 +24,7 @@
 
 - (IBAction)takeMeToJobEditor:(UIButton *)sender;
 - (void) retrieveMyJobsFromParse;
+- (PFGeoPoint *) getUserLocation;
+- (void) getUserCity:(PFGeoPoint *)userGeoPoint;
+
 @end

@@ -318,6 +318,50 @@ bool messageIsReceived = NO;
                     }];
                     */
                     
+                    
+                    //Reporting a job query
+                    PFQuery *votedQuery2 = [PFQuery queryWithClassName:@"_User"];
+                    [votedQuery2 whereKey:@"jobVotedDown" equalTo:i.objectId];
+                    [votedQuery2 getObjectInBackgroundWithId:[[PFUser currentUser] objectId] block:^(PFObject *object, NSError *error) {
+                        
+                        
+                        if (!error) {
+                            
+                            if ([[object objectForKey:@"jobVotedDown"] containsObject:i.objectId]) {
+                                
+                                
+                                
+                                [(PFObject *)[jobsArray objectAtIndex:count] setObject:@"1" forKey:@"currentUserVotedDownThisJob"];
+                                
+                                
+                                
+                            }
+                            
+                            else{
+                                
+                                [(PFObject *)[jobsArray objectAtIndex:count] setObject:@"0" forKey:@"currentUserVotedDownThisJob"];
+                                
+                            }
+                            
+                            
+                        }
+                        
+                        
+                        NSIndexPath* cellIndexPath1= [NSIndexPath indexPathForRow:count inSection:0];
+                        
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            
+                            [self.jobTable beginUpdates];
+                            [self.jobTable reloadRowsAtIndexPaths:@[cellIndexPath1] withRowAnimation:UITableViewRowAnimationNone];
+                            [self.jobTable endUpdates];
+                        });
+                        
+                        
+                    }];
+                    
+                    
+                    
+                    
                     count++;
                     
                     if (count == jobsArray.count) {
@@ -616,13 +660,14 @@ bool messageIsReceived = NO;
         
         if ([[jobObject objectForKey:@"currentUserVotedDownThisJob"] isEqualToString:@"1"]) {
             destViewController.reportJobBarButton.enabled =NO;
+            [destViewController.reportJobBarButton setTintColor:[UIColor redColor]];
         } else{
             
             destViewController.reportJobBarButton.enabled =YES;
         }
         
         
-        
+        //set the style of the button update the report button.
         
 
         //NSLog(@"Posted by User: username: %@ objectID: %@", [[jobObject objectForKey:@"postedByUser"] objectForKey:@"username"],[[jobObject objectForKey:@"postedByUser"] objectId] );

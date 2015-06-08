@@ -20,7 +20,7 @@
     
     NSLog(@"my jobs list view did load");
     
-    
+    [self getUserLocation];
     [self retrieveMyJobsFromParse];
 }
 
@@ -63,16 +63,72 @@
     
     
     
-    PFObject *myJobPFObject = [_myJobsArray objectAtIndex:indexPath.row];
-    
-    cell.jobTitle.text = [myJobPFObject objectForKey:@"title"];
-    
-    
+    _myJobPFObject = [_myJobsArray objectAtIndex:indexPath.row];
+    cell.jobTitle.text = [_myJobPFObject objectForKey:@"title"];
     
     return cell;
     
+
+}
+
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    NSLog(@"index path: %ld", indexPath.row);
+    PFObject *jobObject = [_myJobsArray objectAtIndex:indexPath.row];
+
     
     
+    JobDetailsViewController *jobDetailsVC = [[JobDetailsViewController alloc] init];
+    jobDetailsVC = [self.storyboard instantiateViewControllerWithIdentifier:@"jobDetailsViewController"];
+    
+    [jobDetailsVC.reportJobBarButton setEnabled:NO];
+    jobDetailsVC.jobObject = [_myJobsArray objectAtIndex:indexPath.row];
+    jobDetailsVC.jobTitle = [jobObject objectForKey:@"title"];
+    jobDetailsVC.jobDescription = [jobObject objectForKey:@"description"];
+    jobDetailsVC.jobDistanceFromUser = [NSString stringWithFormat:@"%@ km",[NSString stringWithFormat:@"%.2f",[self.userLocation distanceInKilometersTo:[jobObject objectForKey:@"geolocation"]]] ];
+    jobDetailsVC.jobArea =[jobObject objectForKey:@"addressLine"];
+    jobDetailsVC.jobEmployer =[jobObject objectForKey:@"businessName"];
+    DateConverter *dateConverter = [[DateConverter alloc]init];
+    jobDetailsVC.jobDateAdded = [dateConverter convertDateToLocalTime:[jobObject createdAt]];
+    
+    
+    jobDetailsVC.jobRequiredSkills = [jobObject objectForKey:@"skillsRequired"];
+    jobDetailsVC.jobEducation =[jobObject objectForKey:@"degreeRequired"];
+    jobDetailsVC.userLocation = self.userLocation;
+    
+    jobDetailsVC.jobRolesAndResponsibilities =[jobObject objectForKey:@"rolesAndResponsibilities"];
+    jobDetailsVC.jobCompensation =[jobObject objectForKey:@"compensation"];
+    jobDetailsVC.jobEmploymentType =[jobObject objectForKey:@"employmentType"];
+    jobDetailsVC.jobIndustryType =[[jobObject objectForKey:@"jobIndustry"] objectForKey:@"name"];
+    
+    
+    CLLocation  *jobLocation = [[CLLocation alloc] initWithLatitude:[[jobObject objectForKey:@"geolocation"] latitude] longitude:[[jobObject objectForKey:@"geolocation"] longitude]];
+    jobDetailsVC.jobLocation = jobLocation;
+    
+    
+    jobDetailsVC.jobAddressLine = [jobObject objectForKey:@"addressLine"];
+    
+    //this is basically an employer userID from the users table
+    jobDetailsVC.jobEmployerUserObjectID= [[jobObject objectForKey:@"postedByUser"] objectId];
+    jobDetailsVC.jobPosterPFUser =[jobObject objectForKey:@"postedByUser"];
+    
+    jobDetailsVC.jobAppliedByUsers =[jobObject objectForKey:@"appliedByUsers"];
+    // NSLog(@"Before segue: job applied by = %@",[jobObject objectForKey:@"appliedByUsers"] );
+    
+    //actually it's better to pass the entire pf object to the destination
+    
+    
+    //set the flag bar menu button according to reporting status
+    
+
+    
+
+    UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:jobDetailsVC];
+    [self.navigationController pushViewController:navi animated:YES];
+    
+  
 }
 
 - (void) retrieveMyJobsFromParse{
@@ -87,16 +143,79 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             ///NSLog(@"objects : %@", objects);
+
             
             
-            
-            _myJobsArray = [NSMutableArray new];
-            for (id myJob in objects) {
+            if (objects.count == 0) {
+                //show empty view
+            }
+            else{
                 
-                [_myJobsArray addObject:myJob ];
+                _myJobsArray = [[NSMutableArray alloc] initWithArray:objects];
                 
-                NSLog(@"message: %@", _myJobsArray);
                 
+                NSUInteger count = 0;
+                for (PFObject *i in _myJobsArray) {
+                    CLLocation  *jobLocation = [[CLLocation alloc] initWithLatitude:[[i objectForKey:@"geolocation"] latitude] longitude:[[i objectForKey:@"geolocation"] longitude]];
+                    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+                    [geocoder reverseGeocodeLocation:jobLocation completionHandler:^(NSArray *placemarks, NSError *error) {
+                        if (error == nil && [placemarks count] > 0)
+                        {
+                            
+                            CLPlacemark *placemark = [placemarks lastObject];
+                            if ([[placemarks lastObject] locality] != nil ) {
+                                [(PFObject *)[_myJobsArray objectAtIndex:count] setObject:[placemark locality] forKey:@"area"];
+                                
+                                //add the address line as a component
+                                NSArray *lines = placemark.addressDictionary[ @"FormattedAddressLines"];
+                                NSString *addressString = [lines componentsJoinedByString:@", "];
+                                
+                                [(PFObject *)[_myJobsArray objectAtIndex:count] setObject:addressString forKey:@"addressLine"];
+                                
+                                
+                                
+                                
+                                
+                            }
+                            else{
+                                [(PFObject *)[_myJobsArray objectAtIndex:count] setObject:@"N/A" forKey:@"area"];
+                                
+                            }
+                            
+                            
+                        }
+                        
+                        else{
+                            
+                            NSLog(@"Error = %@", error);
+                            // cell.jobArea.text =@"-";
+                        }
+                        
+                    }];
+                    
+                    
+                    count++;
+                    
+                    if (count == _myJobsArray.count) {
+                        //NSLog(@"LAST ITEM REACHED=%ld",(unsigned long)count);
+//                        
+//                        //end refreshing
+//                        if (self.refreshControl) {
+//                            
+//                            [self.refreshControl endRefreshing];
+//                        }
+                        
+                        
+                    }
+                    
+                    
+                }
+
+                
+                
+                
+                
+
             }
 
 
@@ -124,6 +243,11 @@
     JobLocationViewController *jobLocationVC = [self.storyboard instantiateViewControllerWithIdentifier:@"jobLocationViewController"];
     
     
+    
+    
+    
+    
+    
     //here where you pass the job object
     
     //go
@@ -132,4 +256,66 @@
 
 
 }
+
+
+- (PFGeoPoint *) getUserLocation{
+    
+    //retrieve user location
+    [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *geoPoint, NSError *error) {
+        if (!error) {
+            
+            _userLocation= geoPoint;
+
+            [self getUserCity:self.userLocation];
+            
+            [_myJobsTable reloadData];
+            
+        }
+        
+        else{
+            NSLog(@"Error getting user location: %@", error);
+        }
+    }];
+    
+    return _userLocation;
+    
+}
+
+- (void) getUserCity:(PFGeoPoint *)userGeoPoint{
+    
+    
+    CLLocation  *myLocation = [[CLLocation alloc] initWithLatitude:userGeoPoint.latitude longitude:userGeoPoint.longitude];
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+    [geocoder reverseGeocodeLocation:myLocation completionHandler:^(NSArray *placemarks, NSError *error) {
+        if (error == nil && [placemarks count] > 0)
+        {
+            
+            CLPlacemark *placemark = [placemarks lastObject];
+            if ([[placemarks lastObject] locality] != nil ) {
+                
+               // _HUDProgressIndicator.detailsLabelText = placemark.locality;
+                
+            }
+            else{
+                NSLog(@"error getting the city");
+                
+            }
+            
+        }
+        
+        else{
+            
+            NSLog(@"Error = %@", error);
+        }
+        
+    }];
+    
+    
+    
+}
+
+
+
+
+
 @end

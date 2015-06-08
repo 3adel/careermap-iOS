@@ -158,17 +158,8 @@
     
     
     
-    //set the style of the button update the report button.
-    
-    [_reportJobBarButton setTintColor:[UIColor redColor]];
-    if ([[_jobObject objectForKey:@"currentUserVotedDownThisJob"] isEqualToString:@"1"]) {
-        _reportJobBarButton.enabled =NO;
-    } else{
-        
-        _reportJobBarButton.enabled =YES;
-    }
-    
-    
+
+
     
 }
 
