@@ -20,9 +20,31 @@
     
     NSLog(@"my jobs list view did load");
     
+    //style
+    _myJobsTable.estimatedRowHeight = 73.0 ;
+    self.myJobsTable.rowHeight = UITableViewAutomaticDimension;
+    
+    
+    // Initialize the refresh control.
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    self.refreshControl.tintColor = [UIColor colorWithRed:220.0/255.0 green:234.0/255 blue:255.0/255.0 alpha:1];
+    [self.refreshControl addTarget:self
+                            action:@selector(retrieveMyJobsFromParse)
+                  forControlEvents:UIControlEventValueChanged];
+    [self.myJobsTable addSubview:self.refreshControl];
+    
+    
+    
     [self getUserLocation];
     [self retrieveMyJobsFromParse];
 }
+
+- (void)viewDidAppear:(BOOL)animated{
+    
+   // [_myJobsTable reloadData];
+}
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -66,6 +88,16 @@
     _myJobPFObject = [_myJobsArray objectAtIndex:indexPath.row];
     cell.jobTitle.text = [_myJobPFObject objectForKey:@"title"];
     
+    if ([[_myJobPFObject objectForKey:@"appliedByUsers"] count] ==0) {
+            cell.jobAppliedCount.text =@"No applicants";
+        cell.jobAppliedCount.textColor = [UIColor lightGrayColor];
+    }
+    else{
+
+        cell.jobAppliedCount.text =[NSString stringWithFormat:@"%lu applied",(unsigned long)[[_myJobPFObject objectForKey:@"appliedByUsers"] count]];
+    }
+
+
     return cell;
     
 
@@ -128,6 +160,7 @@
     UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:jobDetailsVC];
     [self.navigationController pushViewController:navi animated:YES];
     
+
   
 }
 
@@ -137,7 +170,7 @@
     [query includeKey:@"jobIndustry"];
     [query whereKey:@"postedByUser"
              equalTo: [PFUser currentUser]];
-    [query orderByAscending:@"createdAt"];
+    [query orderByDescending:@"updatedAt"];
     query.limit =1000;
 
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -148,6 +181,26 @@
             
             if (objects.count == 0) {
                 //show empty view
+                
+                
+                
+                
+                //hide refresh control if no users exist
+
+                    if (self.refreshControl) {
+                        
+                        [self.refreshControl endRefreshing];
+
+                        //also show the no messages view
+                        //[_noMessagesYetView setHidden:NO];
+                        
+                        
+                        //[_HUDProgressIndicator hide:YES];
+                        
+                    }
+
+
+                
             }
             else{
                 
@@ -228,6 +281,17 @@
         
         
         //reload table
+        if (self.refreshControl) {
+            
+            [self.refreshControl endRefreshing];
+            
+            //also show the no messages view
+            //[_noMessagesYetView setHidden:NO];
+            
+            
+            //[_HUDProgressIndicator hide:YES];
+            
+        }
         [_myJobsTable reloadData];
     }];
     

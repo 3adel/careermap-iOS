@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *myJobsTable;
 @property (weak, nonatomic) PFObject *myJobPFObject;
 @property (nonatomic, strong) PFGeoPoint *userLocation;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 
 
 //data

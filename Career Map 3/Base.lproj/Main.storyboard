@@ -973,7 +973,7 @@
         <!--My Jobs-->
         <scene sceneID="YQf-kU-0er">
             <objects>
-                <viewController id="ePu-Mc-Fqo" customClass="MyJobsListViewController" sceneMemberID="viewController">
+                <viewController title="My Jobs" id="ePu-Mc-Fqo" customClass="MyJobsListViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ZjX-yg-Z57"/>
                         <viewControllerLayoutGuide type="bottom" id="X5r-cs-aQG"/>
@@ -982,30 +982,40 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="74" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="bMZ-hY-372">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="73" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="bMZ-hY-372">
                                 <rect key="frame" x="16" y="0.0" width="568" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyJobCell" rowHeight="74" id="jvY-iz-g8J" customClass="MyJobTableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyJobCell" rowHeight="73" id="jvY-iz-g8J" customClass="MyJobTableViewCell">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jvY-iz-g8J" id="zQj-h4-cb3">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Job Title" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gEU-6g-thD">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="applyCount" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iaK-IT-NiP" userLabel="appliedCount">
+                                                    <rect key="frame" x="8" y="34" width="80" height="30"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" red="0.25098040700000002" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Job Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gEU-6g-thD">
                                                     <rect key="frame" x="8" y="8" width="552" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="gEU-6g-thD" firstAttribute="leading" secondItem="zQj-h4-cb3" secondAttribute="leadingMargin" id="779-lO-Ko6"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="iaK-IT-NiP" secondAttribute="bottom" id="Haa-uF-ea8"/>
+                                                <constraint firstItem="iaK-IT-NiP" firstAttribute="leading" secondItem="gEU-6g-thD" secondAttribute="leading" id="aI2-a8-tt0"/>
+                                                <constraint firstItem="iaK-IT-NiP" firstAttribute="top" secondItem="gEU-6g-thD" secondAttribute="bottom" constant="5" id="otq-9Z-Rpn"/>
                                                 <constraint firstItem="gEU-6g-thD" firstAttribute="top" secondItem="zQj-h4-cb3" secondAttribute="topMargin" id="w4y-UU-fIL"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="gEU-6g-thD" secondAttribute="trailing" id="yuV-4a-SKT"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="jobAppliedCount" destination="iaK-IT-NiP" id="PIG-ld-LNs"/>
                                             <outlet property="jobTitle" destination="gEU-6g-thD" id="RB5-MZ-Zom"/>
                                         </connections>
                                     </tableViewCell>

@@ -10,5 +10,7 @@
 
 @interface MyJobTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *jobTitle;
+@property (weak, nonatomic) IBOutlet UILabel *jobAppliedCount;
+
 
 @end
