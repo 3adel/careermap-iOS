@@ -89,7 +89,7 @@
     cell.jobTitle.text = [_myJobPFObject objectForKey:@"title"];
     
     if ([[_myJobPFObject objectForKey:@"appliedByUsers"] count] ==0) {
-            cell.jobAppliedCount.text =@"No applicants";
+            cell.jobAppliedCount.text =@"No applicants yet";
         cell.jobAppliedCount.textColor = [UIColor lightGrayColor];
     }
     else{
@@ -116,6 +116,7 @@
     jobDetailsVC = [self.storyboard instantiateViewControllerWithIdentifier:@"jobDetailsViewController"];
     
     [jobDetailsVC.reportJobBarButton setEnabled:NO];
+    
     jobDetailsVC.jobObject = [_myJobsArray objectAtIndex:indexPath.row];
     jobDetailsVC.jobTitle = [jobObject objectForKey:@"title"];
     jobDetailsVC.jobDescription = [jobObject objectForKey:@"description"];

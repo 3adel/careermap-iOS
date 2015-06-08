@@ -29,21 +29,67 @@
     _messageEmployerButton.layer.cornerRadius =5.0f;
     _editJobButton.layer.cornerRadius = 5.0f;
     _deleteJobButton.layer.cornerRadius = 5.0f;
+    _showApplicantsButton.layer.cornerRadius = 5.0f;
+    
+    
+    //disable reporting button if the user is anonymous
+    if ([PFAnonymousUtils isLinkedWithUser:[PFUser currentUser]]) {
+        _reportJobBarButton.enabled = NO;
+    }
 
+    
     
     
         
     //check if the user is me, enable edit and delete buttons and disable apply and message buttons
     if ([[_jobPosterPFUser objectId] isEqualToString:[[PFUser currentUser] objectId]]) {
+        
+        _reportJobBarButton.enabled = NO;
+
         _editJobButton.hidden = NO;
         _deleteJobButton.hidden = NO;
         _jobActionsLabel.hidden = NO;
         
+        _applyWithCVButton.hidden = YES;
         _applyWithCVButton.enabled = NO;
-        _applyWithCVButton.backgroundColor = [UIColor grayColor];
+        _messageEmployerButton.hidden = YES;
         _messageEmployerButton.enabled = NO;
-        _messageEmployerButton.backgroundColor = [UIColor grayColor];
+        
+        _showApplicantsButton.hidden = NO;
 
+        
+        
+        
+        
+        
+        if ([[_jobObject objectForKey:@"appliedByUsers"] count] ==0) {
+            
+            _showApplicantsButton.hidden = NO;
+            
+            
+        }
+        else{
+            _showApplicantsButton.hidden = NO;
+            
+            
+            if ([[_jobObject objectForKey:@"appliedByUsers"] count] ==1) {
+                
+                [_showApplicantsButton setTitle:[NSString stringWithFormat:@"%lu candidate applied",(unsigned long)[[_jobObject objectForKey:@"appliedByUsers"] count]] forState:UIControlStateNormal];
+            }
+            else{
+                
+                [_showApplicantsButton setTitle:[NSString stringWithFormat:@"%lu candidates applied",(unsigned long)[[_jobObject objectForKey:@"appliedByUsers"] count]] forState:UIControlStateNormal];
+ 
+            }
+            
+
+            //light blue
+
+             _showApplicantsButton.backgroundColor = [UIColor colorWithRed:0.0/255.0 green:128.0/255.0 blue:0.0/255.0 alpha:1.0];
+        }
+        
+
+        
 
     }
     
@@ -488,6 +534,11 @@
     
     
     
+}
+
+- (IBAction)showApplicantsButtonPressed:(UIButton *)sender {
+    
+    NSLog(@"show job applicants pressed");
 }
 
 

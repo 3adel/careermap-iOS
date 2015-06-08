@@ -33,6 +33,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *applyWithCVButton;
 @property (weak, nonatomic) IBOutlet UIButton *messageEmployerButton;
 ;
+@property (weak, nonatomic) IBOutlet UIButton *showApplicantsButton;
 
 @property (weak, nonatomic) IBOutlet MKMapView *jobMap;
 @property (weak, nonatomic) IBOutlet UIView *jobSkillsView;
@@ -101,5 +102,6 @@
 - (IBAction)reportJobButtonPressed:(UIBarButtonItem *)sender;
 - (IBAction)editJobButtonPressed:(UIButton *)sender;
 - (IBAction)deleteJobButtonPressed:(UIButton *)sender;
+- (IBAction)showApplicantsButtonPressed:(UIButton *)sender;
 
 @end

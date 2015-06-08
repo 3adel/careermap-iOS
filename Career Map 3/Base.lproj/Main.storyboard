@@ -352,6 +352,18 @@
                                             <action selector="editJobButtonPressed:" destination="oBD-2n-Moc" eventType="touchUpInside" id="b2N-Mi-zAU"/>
                                         </connections>
                                     </button>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1UB-PS-HfH">
+                                        <rect key="frame" x="0.0" y="51" width="558" height="44"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <state key="normal" title="No applicants yet">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="showApplicantsButtonPressed:" destination="oBD-2n-Moc" eventType="touchUpInside" id="goc-DM-m1D"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -387,6 +399,7 @@
                                     <constraint firstItem="xMH-5h-pDA" firstAttribute="leading" secondItem="PjM-Ma-zcP" secondAttribute="leading" id="NGK-Ea-hZ9"/>
                                     <constraint firstItem="425-g7-Lvz" firstAttribute="top" secondItem="Dr1-So-jUU" secondAttribute="bottom" constant="15" id="Nz8-pG-MRp"/>
                                     <constraint firstItem="Fnf-Tg-gS2" firstAttribute="top" secondItem="i08-Sy-DYc" secondAttribute="bottom" constant="5" id="PLg-mW-VSh"/>
+                                    <constraint firstItem="1UB-PS-HfH" firstAttribute="height" secondItem="xMH-5h-pDA" secondAttribute="height" id="Qlj-hs-bDO"/>
                                     <constraint firstItem="SJl-Rf-FBT" firstAttribute="leading" secondItem="xMH-5h-pDA" secondAttribute="leading" id="Tzh-wN-18C"/>
                                     <constraint firstItem="i08-Sy-DYc" firstAttribute="trailing" secondItem="IGm-Je-t0e" secondAttribute="trailing" id="UCe-5g-HN4"/>
                                     <constraint firstItem="cVp-jb-txK" firstAttribute="top" secondItem="cGp-XX-uyV" secondAttribute="bottom" constant="5" id="UNV-yq-ba7"/>
@@ -404,6 +417,7 @@
                                     <constraint firstAttribute="trailing" secondItem="ol1-9c-Ylq" secondAttribute="trailing" id="eDy-vT-6bM"/>
                                     <constraint firstItem="i08-Sy-DYc" firstAttribute="top" secondItem="4IS-Nq-Qj6" secondAttribute="bottom" constant="15" id="ebh-cF-VSt"/>
                                     <constraint firstItem="Ois-HI-aMu" firstAttribute="centerY" secondItem="kSM-lC-fit" secondAttribute="centerY" id="eht-VO-cw4"/>
+                                    <constraint firstItem="1UB-PS-HfH" firstAttribute="centerY" secondItem="dS8-uI-oid" secondAttribute="centerY" id="fFt-po-Ou7"/>
                                     <constraint firstAttribute="trailing" secondItem="dS8-uI-oid" secondAttribute="trailing" constant="10" id="fLU-EK-D5H"/>
                                     <constraint firstItem="uMM-d7-kxx" firstAttribute="top" secondItem="425-g7-Lvz" secondAttribute="bottom" constant="5" id="gED-qi-EBo"/>
                                     <constraint firstAttribute="trailing" secondItem="cVp-jb-txK" secondAttribute="trailing" constant="5" id="gql-tt-3a0"/>
@@ -414,6 +428,7 @@
                                     <constraint firstAttribute="trailing" secondItem="4IS-Nq-Qj6" secondAttribute="trailing" constant="5" id="i7K-3H-7fB"/>
                                     <constraint firstItem="GOb-4X-C9H" firstAttribute="top" secondItem="IGm-Je-t0e" secondAttribute="bottom" constant="5" id="kCB-05-vku"/>
                                     <constraint firstItem="02Z-qn-g5b" firstAttribute="trailing" secondItem="425-g7-Lvz" secondAttribute="trailing" id="kVW-pL-oHa"/>
+                                    <constraint firstItem="1UB-PS-HfH" firstAttribute="trailing" secondItem="dS8-uI-oid" secondAttribute="trailing" id="kyX-ky-Prt"/>
                                     <constraint firstAttribute="trailing" secondItem="SJl-Rf-FBT" secondAttribute="trailing" id="liz-E6-dIl"/>
                                     <constraint firstItem="Ois-HI-aMu" firstAttribute="leading" secondItem="M9A-ys-fIZ" secondAttribute="leading" id="lxq-Ez-ftD"/>
                                     <constraint firstItem="4IS-Nq-Qj6" firstAttribute="leading" secondItem="PjM-Ma-zcP" secondAttribute="leading" id="meF-iM-UI6"/>
@@ -421,6 +436,7 @@
                                     <constraint firstItem="GOb-4X-C9H" firstAttribute="top" secondItem="IGm-Je-t0e" secondAttribute="bottom" constant="8" id="nBB-Rf-7o1"/>
                                     <constraint firstItem="Sny-d6-UOB" firstAttribute="top" secondItem="SJl-Rf-FBT" secondAttribute="bottom" constant="5" id="oFF-rL-SlJ"/>
                                     <constraint firstItem="02Z-qn-g5b" firstAttribute="top" secondItem="PAy-ON-HxY" secondAttribute="bottom" constant="15" id="oGA-rk-kCH"/>
+                                    <constraint firstItem="1UB-PS-HfH" firstAttribute="leading" secondItem="xMH-5h-pDA" secondAttribute="leading" id="owO-SP-V1k"/>
                                     <constraint firstItem="cGp-XX-uyV" firstAttribute="top" secondItem="UYU-RF-twJ" secondAttribute="bottom" constant="15" id="pmB-C0-jgb"/>
                                     <constraint firstItem="ol1-9c-Ylq" firstAttribute="leading" secondItem="PjM-Ma-zcP" secondAttribute="leading" id="qE5-HL-3DF"/>
                                     <constraint firstItem="ol1-9c-Ylq" firstAttribute="top" secondItem="PjM-Ma-zcP" secondAttribute="top" constant="-50" id="qMl-hD-Gjm"/>
@@ -491,6 +507,7 @@
                         <outlet property="jobsSkillsTextView" destination="PAy-ON-HxY" id="8AI-8a-jnz"/>
                         <outlet property="messageEmployerButton" destination="dS8-uI-oid" id="mhr-Up-JTP"/>
                         <outlet property="reportJobBarButton" destination="leh-Ub-ROv" id="6dY-pG-24d"/>
+                        <outlet property="showApplicantsButton" destination="1UB-PS-HfH" id="BRf-hb-Mt1"/>
                         <segue destination="f8E-eG-jBp" kind="presentation" identifier="jobMap" modalTransitionStyle="coverVertical" id="jiS-YI-dCJ"/>
                     </connections>
                 </viewController>
