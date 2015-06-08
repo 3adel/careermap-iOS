@@ -660,10 +660,11 @@ bool messageIsReceived = NO;
         
         if ([[jobObject objectForKey:@"currentUserVotedDownThisJob"] isEqualToString:@"1"]) {
             destViewController.reportJobBarButton.enabled =NO;
-            [destViewController.reportJobBarButton setTintColor:[UIColor redColor]];
         } else{
             
             destViewController.reportJobBarButton.enabled =YES;
+            [destViewController.reportJobBarButton setTintColor:[UIColor redColor]];
+
         }
         
         
