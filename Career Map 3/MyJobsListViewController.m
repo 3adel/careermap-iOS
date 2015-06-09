@@ -95,6 +95,8 @@
     else{
 
         cell.jobAppliedCount.text =[NSString stringWithFormat:@"%lu applied",(unsigned long)[[_myJobPFObject objectForKey:@"appliedByUsers"] count]];
+        //green
+        cell.jobAppliedCount.textColor =[UIColor colorWithRed:0/255.0 green:128.0/255.0 blue:0.0/255.0 alpha:1.0];
     }
 
 
