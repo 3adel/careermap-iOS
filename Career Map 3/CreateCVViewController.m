@@ -47,6 +47,9 @@ int addSkillButtonTapCount = 0;
     _CVAboutMeTextView.layer.borderColor = [[UIColor lightGrayColor] CGColor];
     
     
+    _CVjobSeekerThumb.layer.cornerRadius = _CVjobSeekerThumb.frame.size.width/2;
+    _CVjobSeekerThumb.clipsToBounds = YES;
+    
     //detect when theview is tapped while the text is being edited
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapped)];
     [self.view addGestureRecognizer:tapGesture];

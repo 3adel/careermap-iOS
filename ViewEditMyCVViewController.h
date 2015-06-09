@@ -40,12 +40,21 @@
 @property (strong, nonatomic) MBProgressHUD *MBProgressHUDLoadingCV;
 
 //data
+@property (strong, nonatomic) PFObject *jobCandidateObject;
 @property (strong, nonatomic) PFObject *jobSeekerObject;
+@property (weak, nonatomic) IBOutlet UINavigationBar *CVViewNavigationBar;
+@property BOOL cominfFromApplicantsList;
+@property (weak, nonatomic) IBOutlet UIButton *messageCandidateButton;
 
 
 //actions
 -(void) CVViewEdit;
+-(void) fillCandidateCV;
+
+
 - (IBAction)createCVButtonPressed:(UIButton *)sender;
 - (IBAction)editCVButtonPressed:(UIBarButtonItem *)sender;
+- (IBAction)messageCandidateButtonPressed:(UIButton *)sender;
+@property (weak, nonatomic) IBOutlet UINavigationItem *CVNavigationItem;
 
 @end

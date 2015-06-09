@@ -33,6 +33,7 @@
     
     //this will guaranteed that the activity indicator is shown while the data is loading
     _CVContentScrollView.hidden =YES;
+    [_editCVButton setEnabled:YES];
     _noCVFoundView.hidden =YES;
     [_editCVButton setEnabled:NO];
    // [_CVDataLoadingIndicator startAnimating];
@@ -104,8 +105,35 @@
     [super viewDidLoad];
   //  NSLog(@"view did load called");
     // Do any additional setup after loading the view.
+    //_CVViewNavigationBar.hidden = YES;
+    //[_CVViewNavigationBar removeFromSuperview];
+
     
     
+    
+    //style
+    _aJobSeekerThumb.layer.cornerRadius = _aJobSeekerThumb.frame.size.width/2;
+    _aJobSeekerThumb.clipsToBounds = YES;
+    _messageCandidateButton.layer.cornerRadius = 5.0f;
+    NSLog(@"coming from applicant list?: %d", _cominfFromApplicantsList);
+    
+    
+    
+    if (_cominfFromApplicantsList) {
+        _editCVButton.title = @"Close";
+        _CVNavigationItem.title =[NSString stringWithFormat:@"%@ %@",[[_jobCandidateObject objectForKey:@"aJobSeekerID"] objectForKey:@"firstName"],[[_jobCandidateObject objectForKey:@"aJobSeekerID"] objectForKey:@"lastName"]];
+        _messageCandidateButton.enabled = YES;
+        _messageCandidateButton.hidden = NO;
+
+        
+
+    }
+    else{
+        _editCVButton.title = @"Edit";
+        [_editCVButton setEnabled:NO];
+
+    }
+
     //check if the user has a cv already
     //instantiate CreateCV
     
@@ -123,9 +151,24 @@
     
     
     //[_CVDataLoadingIndicator startAnimating];
-    [_editCVButton setEnabled:NO];
 
-    [self CVViewEdit];
+    
+    
+    if (_cominfFromApplicantsList) {
+        //fill candidates field
+        
+        [self fillCandidateCV];
+        
+    }
+    
+    else{
+        //fill cv fields
+        
+        [self CVViewEdit];
+
+    }
+    
+
     
         // if they don't have a cv, disable the edit button inititate cv creation flow
             //when done, dismiss the cv creation screen
@@ -148,6 +191,170 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+
+
+-(void)fillCandidateCV{
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        
+        [_MBProgressHUDLoadingCV setHidden:YES];
+        _CVContentScrollView.hidden = NO;
+        _noCVFoundView.hidden =YES;
+
+    });
+    
+
+    _fullNameLabel.text = [_jobCandidateObject objectForKey:@"username"];
+    
+    
+    if (![[[_jobCandidateObject objectForKey:@"aJobSeekerID"] objectForKey:@"firstName"] isEqualToString:@""]) {
+        _fullNameLabel.text = @"";
+        _fullNameLabel.text =[NSString stringWithFormat:@"%@ %@",[[_jobCandidateObject objectForKey:@"aJobSeekerID"] objectForKey:@"firstName"],[[_jobCandidateObject objectForKey:@"aJobSeekerID"] objectForKey:@"lastName"]];
+        _fullNameLabel.textColor = [UIColor blackColor];
+    }
+    else{
+        _fullNameLabel.text = @"None";
+        _fullNameLabel.textColor = [UIColor orangeColor];
+        
+        
+    }
+    
+    if (![[[_jobCandidateObject objectForKey:@"aJobSeekerID"] objectForKey:@"currentTitle"] isEqualToString:@""]) {
+        _CVJobSeekerCurrentTitleLabel.text = @"";
+        _CVJobSeekerCurrentTitleLabel.text =[[_jobCandidateObject objectForKey:@"aJobSeekerID"] objectForKey:@"currentTitle"];
+        _CVJobSeekerCurrentTitleLabel.textColor = [UIColor blackColor];
+        
+    }
+    else{
+        _CVJobSeekerCurrentTitleLabel.text = @"None";
+        _CVJobSeekerCurrentTitleLabel.textColor = [UIColor orangeColor];
+        
+        
+        
+    }
+    
+    if (![[[_jobCandidateObject objectForKey:@"aJobSeekerID"] objectForKey:@"jobSeekerAbout"] isEqualToString:@""]) {
+        _CVJobSeekerAboutMeTextView.text = @"";
+        _CVJobSeekerAboutMeTextView.text =[[_jobCandidateObject objectForKey:@"aJobSeekerID"] objectForKey:@"jobSeekerAbout"];
+        _CVJobSeekerAboutMeTextView.textColor = [UIColor blackColor];
+        
+    }
+    else{
+        _CVJobSeekerAboutMeTextView.text = @"None";
+        _CVJobSeekerAboutMeTextView.textColor = [UIColor orangeColor];
+        
+        
+        
+    }
+    
+    
+    if (![[[_jobCandidateObject objectForKey:@"aJobSeekerID"] objectForKey:@"jobSeekerEducation"] isEqualToString:@""]) {
+        _CVJobSeekerEducationLabel.text = @"";
+        _CVJobSeekerEducationLabel.text =[[_jobCandidateObject objectForKey:@"aJobSeekerID"] objectForKey:@"jobSeekerEducation"];
+        _CVJobSeekerEducationLabel.textColor = [UIColor blackColor];
+        
+    }
+    else{
+        _CVJobSeekerEducationLabel.text = @"None";
+        _CVJobSeekerEducationLabel.textColor = [UIColor orangeColor];
+        
+        
+        
+    }
+    
+    if (![[[_jobCandidateObject objectForKey:@"aJobSeekerID"] objectForKey:@"jobSeekerEducationDegree"] isEqualToString:@""]) {
+        _CVJobSeekerDegreeLabel.text = @"";
+        _CVJobSeekerDegreeLabel.text =[[_jobCandidateObject objectForKey:@"aJobSeekerID"] objectForKey:@"jobSeekerEducationDegree"];
+        _CVJobSeekerDegreeLabel.textColor = [UIColor blackColor];
+        
+    }
+    else{
+        _CVJobSeekerDegreeLabel.text = @"None";
+        _CVJobSeekerDegreeLabel.textColor = [UIColor orangeColor];
+        
+        
+        
+    }
+    
+    if (![[[_jobCandidateObject objectForKey:@"aJobSeekerID"] objectForKey:@"school"] isEqualToString:@""]) {
+        _CVJobSeekerSchool.text = @"";
+        _CVJobSeekerSchool.text =[[_jobCandidateObject objectForKey:@"aJobSeekerID"] objectForKey:@"school"];
+        _CVJobSeekerSchool.textColor = [UIColor blackColor];
+        
+    }
+    else{
+        _CVJobSeekerSchool.text = @"None";
+        _CVJobSeekerSchool.textColor = [UIColor orangeColor];
+        
+        
+        
+    }
+    
+    
+    
+    
+    
+    
+    // _CVJobSeekerEducationLabel.text =[[object objectForKey:@"aJobSeekerID"] objectForKey:@"jobSeekerEducation"];
+    // _CVJobSeekerDegreeLabel.text =[[object objectForKey:@"aJobSeekerID"] objectForKey:@"jobSeekerEducationDegree"];
+    _CVJobSeekerYearsOfExperienceLabel.text =[[[_jobCandidateObject objectForKey:@"aJobSeekerID"] objectForKey:@"jobSeekerYearsOfExperience"] stringValue];
+    
+    //update skills
+    
+    
+    
+    if ([(NSArray *)[[_jobCandidateObject objectForKey:@"aJobSeekerID"] objectForKey:@"skills"] count]>0) {
+        
+        _jobSkillsTextView.text = @"";
+        _jobSkillsTextView.textColor = [UIColor blackColor];
+        int count =0;
+        for (NSString *skill in (NSArray *)[[_jobCandidateObject objectForKey:@"aJobSeekerID"] objectForKey:@"skills"]) {
+            
+            
+            
+            
+            _jobSkillsTextView.text = [_jobSkillsTextView.text stringByAppendingString:[NSString stringWithFormat:@"- %@",skill]];
+            
+            if (!(count == ([(NSArray *)[[_jobCandidateObject objectForKey:@"aJobSeekerID"] objectForKey:@"skills"] count])-1)) {
+                _jobSkillsTextView.text = [_jobSkillsTextView.text stringByAppendingString:@"\n"];
+            }
+            
+            count++;
+        }
+        
+    }
+    
+    else{
+        _jobSkillsTextView.text = @"No skills yet";
+        _jobSkillsTextView.textColor = [UIColor orangeColor];
+        
+        
+        
+        
+    }
+
+    //update cv image thumb
+    PFFile *CVThumbImageFile = [[_jobCandidateObject objectForKey:@"aJobSeekerID"] objectForKey:@"jobSeekerThumb"];
+    [CVThumbImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+        if (!error) {
+            // NSLog(@"success updating seeker cv image");
+            _aJobSeekerThumb.image = [UIImage imageWithData:imageData];
+            
+            // = ;
+        }
+        else{
+            
+            NSLog(@"Error updating seeker cv image");
+        }
+        
+        
+    }];
+
+    
+}
+
 
 
 - (void) CVViewEdit{
@@ -467,109 +674,128 @@
 - (IBAction)editCVButtonPressed:(UIBarButtonItem *)sender {
     
     
-    //update the cv fields in the CreateCV VC
-    CreateCVViewController *createCVInstance = [[CreateCVViewController alloc] initWithNibName:@"CreateCVView" bundle:nil];
     
-    //Get the existing skills of job seeker
-    if ([[[NSMutableArray alloc] initWithArray:[[_jobSeekerObject objectForKey:@"aJobSeekerID"] objectForKey:@"skills"]] count]>0){
-        
-        createCVInstance.existingSkills =[[NSMutableArray alloc] initWithArray:[[_jobSeekerObject objectForKey:@"aJobSeekerID"] objectForKey:@"skills"]];
+    
+    if (_cominfFromApplicantsList) {
+    
+        [self dismissViewControllerAnimated:YES completion:nil];
 
+        
     }
     
     else{
-        createCVInstance.existingSkills =[[NSMutableArray alloc] init];
         
+        //update the cv fields in the CreateCV VC
+        CreateCVViewController *createCVInstance = [[CreateCVViewController alloc] initWithNibName:@"CreateCVView" bundle:nil];
         
-    }
-    
-    
-    
-
-    
-    [self presentViewController:createCVInstance animated:YES completion:nil];
-    
-    
-    
-    //populate edit cv screen with existing values
-    if (_jobSeekerObject) {
+        //Get the existing skills of job seeker
+        if ([[[NSMutableArray alloc] initWithArray:[[_jobSeekerObject objectForKey:@"aJobSeekerID"] objectForKey:@"skills"]] count]>0){
+            
+            createCVInstance.existingSkills =[[NSMutableArray alloc] initWithArray:[[_jobSeekerObject objectForKey:@"aJobSeekerID"] objectForKey:@"skills"]];
+            
+        }
         
-
-        createCVInstance.CVjobSeekerFirstNameTextView.text =[[_jobSeekerObject objectForKey:@"aJobSeekerID"] objectForKey:@"firstName"];
-        createCVInstance.CVjobSeekerLastNameTextView.text =[[_jobSeekerObject objectForKey:@"aJobSeekerID"] objectForKey:@"lastName"];
-        createCVInstance.CVjobSeekerCurrentTitleTextView.text =[[_jobSeekerObject objectForKey:@"aJobSeekerID"] objectForKey:@"currentTitle"];
-        createCVInstance.CVAboutMeTextView.text=[[_jobSeekerObject objectForKey:@"aJobSeekerID"] objectForKey:@"jobSeekerAbout"];
-        createCVInstance.CVEducationTextField.text=[[_jobSeekerObject objectForKey:@"aJobSeekerID"] objectForKey:@"jobSeekerEducation"];
-        createCVInstance.CVDegreeTextField.text=[[_jobSeekerObject objectForKey:@"aJobSeekerID"] objectForKey:@"jobSeekerEducationDegree"];
-        createCVInstance.yearsOfExperienceLabel.text=[[[_jobSeekerObject objectForKey:@"aJobSeekerID"] objectForKey:@"jobSeekerYearsOfExperience"] stringValue];
-        createCVInstance.CVSchoolTextField.text =  createCVInstance.CVSchoolTextField.text=[[_jobSeekerObject objectForKey:@"aJobSeekerID"] objectForKey:@"school"];
-
+        else{
+            createCVInstance.existingSkills =[[NSMutableArray alloc] init];
+            
+            
+        }
         
         
         
-        //update cv image thumb
-        PFFile *CVThumbImageFile = [[_jobSeekerObject objectForKey:@"aJobSeekerID"] objectForKey:@"jobSeekerThumb"];
-        [CVThumbImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
-            if (!error) {
-                //NSLog(@"success updating seeker cv image");
-                
-                dispatch_async(dispatch_get_main_queue(), ^{
+        
+        
+        [self presentViewController:createCVInstance animated:YES completion:nil];
+        
+        
+        
+        //populate edit cv screen with existing values
+        if (_jobSeekerObject) {
+            
+            
+            createCVInstance.CVjobSeekerFirstNameTextView.text =[[_jobSeekerObject objectForKey:@"aJobSeekerID"] objectForKey:@"firstName"];
+            createCVInstance.CVjobSeekerLastNameTextView.text =[[_jobSeekerObject objectForKey:@"aJobSeekerID"] objectForKey:@"lastName"];
+            createCVInstance.CVjobSeekerCurrentTitleTextView.text =[[_jobSeekerObject objectForKey:@"aJobSeekerID"] objectForKey:@"currentTitle"];
+            createCVInstance.CVAboutMeTextView.text=[[_jobSeekerObject objectForKey:@"aJobSeekerID"] objectForKey:@"jobSeekerAbout"];
+            createCVInstance.CVEducationTextField.text=[[_jobSeekerObject objectForKey:@"aJobSeekerID"] objectForKey:@"jobSeekerEducation"];
+            createCVInstance.CVDegreeTextField.text=[[_jobSeekerObject objectForKey:@"aJobSeekerID"] objectForKey:@"jobSeekerEducationDegree"];
+            createCVInstance.yearsOfExperienceLabel.text=[[[_jobSeekerObject objectForKey:@"aJobSeekerID"] objectForKey:@"jobSeekerYearsOfExperience"] stringValue];
+            createCVInstance.CVSchoolTextField.text =  createCVInstance.CVSchoolTextField.text=[[_jobSeekerObject objectForKey:@"aJobSeekerID"] objectForKey:@"school"];
+            
+            
+            
+            
+            //update cv image thumb
+            PFFile *CVThumbImageFile = [[_jobSeekerObject objectForKey:@"aJobSeekerID"] objectForKey:@"jobSeekerThumb"];
+            [CVThumbImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+                if (!error) {
+                    //NSLog(@"success updating seeker cv image");
                     
-                    createCVInstance.CVjobSeekerThumb.image = [UIImage imageWithData:imageData];
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        
+                        createCVInstance.CVjobSeekerThumb.image = [UIImage imageWithData:imageData];
+                        
+                    });
                     
-                });
-
-            }
-            else{
+                }
+                else{
+                    
+                    NSLog(@"Error updating seeker cv image");
+                }
                 
-                NSLog(@"Error updating seeker cv image");
-            }
+                
+            }];
             
             
-        }];
-        
-        
-        /*
-        //update skills
-        
-        NSLog(@"job seeker object skills =%@", [[_jobSeekerObject objectForKey:@"aJobSeekerID"] objectForKey:@"skills"]);
-        
-        
-        createCVInstance.jobSeekerSkills =[[_jobSeekerObject objectForKey:@"aJobSeekerID"] objectForKey:@"skills"];
-        
-        int count =0;
-        for (NSString *skill in createCVInstance.jobSeekerSkills) {
-            // NSLog(@"Job skills array =%@", skill);
-            
-            //add skills to the skills view
-            
+            /*
+             //update skills
+             
+             NSLog(@"job seeker object skills =%@", [[_jobSeekerObject objectForKey:@"aJobSeekerID"] objectForKey:@"skills"]);
+             
+             
+             createCVInstance.jobSeekerSkills =[[_jobSeekerObject objectForKey:@"aJobSeekerID"] objectForKey:@"skills"];
+             
+             int count =0;
+             for (NSString *skill in createCVInstance.jobSeekerSkills) {
+             // NSLog(@"Job skills array =%@", skill);
+             
+             //add skills to the skills view
+             
              UITextField *skillTextField = [[UITextField alloc] initWithFrame:CGRectMake(5, 50*count, 200, 40)];
-            //[skillTextField setuse]
+             //[skillTextField setuse]
              [skillTextField setBackgroundColor:[UIColor grayColor]];
              [skillTextField setFont:[UIFont systemFontOfSize:18]];
              skillTextField.text = skill;
              [createCVInstance.jobSkillsView addSubview:skillTextField];
+             
+             
+             
+             
+             
+             count++;
+             }
+             
+             
+             */
             
-
             
             
             
-            count++;
+            
         }
         
         
-        */
-        
-        
-        
+
         
         
     }
     
-
     
 
     
+}
+
+- (IBAction)messageCandidateButtonPressed:(UIButton *)sender {
 }
 
 

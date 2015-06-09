@@ -7,7 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JobApplicantTableViewCell.h"
+#import <Parse/Parse.h>
+#import "ViewEditMyCVViewController.h"
 
-@interface JobApplicantsListViewController : UIViewController
+@interface JobApplicantsListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@property (weak, nonatomic) IBOutlet UITableView *jobApplicantsListTable;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
+@property (nonatomic, strong) NSMutableArray *jobApplicantsArray;
+@property (weak, nonatomic) PFObject *jobApplicant;
+@property (weak, nonatomic) PFObject *jobPFObject;
+
+
+
+//Mark: Actions
+- (void) retrieveJobApplicantsFromParse;
+
 
 @end

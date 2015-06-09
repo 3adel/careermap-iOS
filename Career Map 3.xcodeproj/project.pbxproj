@@ -37,6 +37,7 @@
 		F53EABF41B020F8700CCB97C /* MessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F53EABF31B020F8700CCB97C /* MessageCell.m */; };
 		F55DF45B1B24D6B900EACD26 /* MyJobTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F55DF45A1B24D6B900EACD26 /* MyJobTableViewCell.m */; };
 		F55DF4941B26C2D500EACD26 /* JobApplicantsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F55DF4921B26C2D500EACD26 /* JobApplicantsListViewController.m */; };
+		F55DF4981B26C9BB00EACD26 /* JobApplicantTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F55DF4971B26C9BB00EACD26 /* JobApplicantTableViewCell.m */; };
 		F56EA2011B1D8D7A00350CBF /* MyJobsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F56EA2001B1D8D7A00350CBF /* MyJobsListViewController.m */; };
 		F584F4111B1E531B00A0AF00 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F584F4101B1E531B00A0AF00 /* GameKit.framework */; };
 		F59584851B1347A900B06778 /* TabBar-AddJob.png in Resources */ = {isa = PBXBuildFile; fileRef = F59584821B1347A800B06778 /* TabBar-AddJob.png */; };
@@ -166,6 +167,8 @@
 		F55DF45A1B24D6B900EACD26 /* MyJobTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyJobTableViewCell.m; sourceTree = "<group>"; };
 		F55DF4911B26C2D500EACD26 /* JobApplicantsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobApplicantsListViewController.h; sourceTree = "<group>"; };
 		F55DF4921B26C2D500EACD26 /* JobApplicantsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobApplicantsListViewController.m; sourceTree = "<group>"; };
+		F55DF4961B26C9BB00EACD26 /* JobApplicantTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobApplicantTableViewCell.h; sourceTree = "<group>"; };
+		F55DF4971B26C9BB00EACD26 /* JobApplicantTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobApplicantTableViewCell.m; sourceTree = "<group>"; };
 		F56EA1FF1B1D8D7A00350CBF /* MyJobsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyJobsListViewController.h; sourceTree = "<group>"; };
 		F56EA2001B1D8D7A00350CBF /* MyJobsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyJobsListViewController.m; sourceTree = "<group>"; };
 		F584F4101B1E531B00A0AF00 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
@@ -449,6 +452,8 @@
 				F55DF45A1B24D6B900EACD26 /* MyJobTableViewCell.m */,
 				F55DF4911B26C2D500EACD26 /* JobApplicantsListViewController.h */,
 				F55DF4921B26C2D500EACD26 /* JobApplicantsListViewController.m */,
+				F55DF4961B26C9BB00EACD26 /* JobApplicantTableViewCell.h */,
+				F55DF4971B26C9BB00EACD26 /* JobApplicantTableViewCell.m */,
 			);
 			name = "My Jobs";
 			sourceTree = "<group>";
@@ -837,6 +842,7 @@
 				F59758B21AC159B40099A978 /* AppDelegate.m in Sources */,
 				F5BAC3D11AC85BB7003E899C /* LoginViewController.m in Sources */,
 				F535AA721AD449BA0091E70B /* JobDetailsViewController.m in Sources */,
+				F55DF4981B26C9BB00EACD26 /* JobApplicantTableViewCell.m in Sources */,
 				F535AAE61ADC38580091E70B /* JobMapViewController.m in Sources */,
 				F595849B1B14680400B06778 /* JobCategoryViewController.m in Sources */,
 				F55DF4941B26C2D500EACD26 /* JobApplicantsListViewController.m in Sources */,

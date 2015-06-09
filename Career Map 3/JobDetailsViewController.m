@@ -546,6 +546,7 @@
     
     JobApplicantsListViewController *jobApplicantsListVC = [[JobApplicantsListViewController alloc] init];
     jobApplicantsListVC = [self.storyboard instantiateViewControllerWithIdentifier:@"JobApplicantsList"];
+    jobApplicantsListVC.jobPFObject = _jobObject;
     
 
     UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:jobApplicantsListVC];
