@@ -352,7 +352,7 @@
                                             <action selector="editJobButtonPressed:" destination="oBD-2n-Moc" eventType="touchUpInside" id="b2N-Mi-zAU"/>
                                         </connections>
                                     </button>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1UB-PS-HfH">
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1UB-PS-HfH">
                                         <rect key="frame" x="0.0" y="51" width="558" height="44"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -1059,6 +1059,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8aQ-KB-Xij" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="934" y="2900"/>
+        </scene>
+        <!--Job Applicants List-->
+        <scene sceneID="JZj-ng-dlO">
+            <objects>
+                <viewController storyboardIdentifier="JobApplicantsList" title="Job Applicants List" id="O6t-is-9Oh" userLabel="Job Applicants List" customClass="JobApplicantsListViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="HWg-75-QuR"/>
+                        <viewControllerLayoutGuide type="bottom" id="Pxt-Kg-zNk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hzP-bd-P2a">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.25837619645522181" green="1" blue="0.18027839134981039" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0yj-Ko-qBn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1563" y="2899"/>
         </scene>
         <!--Messages-->
         <scene sceneID="dfI-PK-hV2">

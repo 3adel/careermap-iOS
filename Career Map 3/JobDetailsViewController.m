@@ -63,11 +63,15 @@
         if ([[_jobObject objectForKey:@"appliedByUsers"] count] ==0) {
             
             _showApplicantsButton.hidden = NO;
+            _showApplicantsButton.enabled = NO;
+
             
             
         }
         else{
             _showApplicantsButton.hidden = NO;
+            _showApplicantsButton.enabled = YES;
+
             
             
             if ([[_jobObject objectForKey:@"appliedByUsers"] count] ==1) {
@@ -537,6 +541,18 @@
 - (IBAction)showApplicantsButtonPressed:(UIButton *)sender {
     
     NSLog(@"show job applicants pressed");
+    
+    
+    
+    JobApplicantsListViewController *jobApplicantsListVC = [[JobApplicantsListViewController alloc] init];
+    jobApplicantsListVC = [self.storyboard instantiateViewControllerWithIdentifier:@"JobApplicantsList"];
+    
+
+    UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:jobApplicantsListVC];
+    [self.navigationController pushViewController:navi animated:YES];
+
+    
+    
 }
 
 

@@ -15,6 +15,7 @@
 #import "MBProgressHUD.h"
 #import "LoginViewController.h"
 #import "JobLocationViewController.h"
+#import "JobApplicantsListViewController.h"
 
 @interface JobDetailsViewController : UIViewController <MKMapViewDelegate,CLLocationManagerDelegate,UIAlertViewDelegate>
 
