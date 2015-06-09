@@ -1040,9 +1040,47 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="73" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="bMZ-hY-372">
-                                <rect key="frame" x="16" y="0.0" width="568" height="600"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="73" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="bMZ-hY-372">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <view key="tableFooterView" hidden="YES" contentMode="scaleToFill" id="WuN-8y-iWz" userLabel="No Jobs view">
+                                    <rect key="frame" x="0.0" y="95" width="600" height="457"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" scrollEnabled="NO" editable="NO" text="This is where you manage your jobs, screen applicants and contact them directly." selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zmX-ER-fvm">
+                                            <rect key="frame" x="159" y="100" width="250" height="70"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="250" id="Xri-2R-HSh"/>
+                                            </constraints>
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
+                                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="90Q-pw-EcG">
+                                            <rect key="frame" x="209" y="190" width="150" height="45"/>
+                                            <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="150" id="8fh-ZO-Bbd"/>
+                                                <constraint firstAttribute="height" constant="45" id="nxw-x6-OAS"/>
+                                            </constraints>
+                                            <state key="normal" title="Add Jobs Now">
+                                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="createJobsButtonPressed:" destination="ePu-Mc-Fqo" eventType="touchUpInside" id="nfF-X6-Lv9"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstItem="90Q-pw-EcG" firstAttribute="top" secondItem="zmX-ER-fvm" secondAttribute="bottom" constant="20" id="9TI-8s-BfL"/>
+                                        <constraint firstItem="zmX-ER-fvm" firstAttribute="top" secondItem="WuN-8y-iWz" secondAttribute="top" constant="100" id="dYe-bq-Wj9"/>
+                                        <constraint firstItem="90Q-pw-EcG" firstAttribute="centerX" secondItem="zmX-ER-fvm" secondAttribute="centerX" id="eHR-vJ-J4V"/>
+                                        <constraint firstAttribute="centerX" secondItem="zmX-ER-fvm" secondAttribute="centerX" id="rlR-BW-ay8"/>
+                                    </constraints>
+                                </view>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="MyJobCell" rowHeight="73" id="jvY-iz-g8J" customClass="MyJobTableViewCell">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
@@ -1056,7 +1094,7 @@
                                                     <color key="textColor" red="0.25098040700000002" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Job Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gEU-6g-thD">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Job Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gEU-6g-thD">
                                                     <rect key="frame" x="8" y="8" width="519" height="21"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -1084,17 +1122,19 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="bMZ-hY-372" firstAttribute="leading" secondItem="bIQ-rh-3Xh" secondAttribute="leadingMargin" id="86n-y8-rO9"/>
+                            <constraint firstItem="bMZ-hY-372" firstAttribute="leading" secondItem="bIQ-rh-3Xh" secondAttribute="leadingMargin" constant="-16" id="86n-y8-rO9"/>
                             <constraint firstItem="bMZ-hY-372" firstAttribute="top" secondItem="bIQ-rh-3Xh" secondAttribute="topMargin" id="A81-RD-6Xk"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="bMZ-hY-372" secondAttribute="trailing" id="QKJ-s0-I6Q"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="bMZ-hY-372" secondAttribute="trailing" constant="-16" id="QKJ-s0-I6Q"/>
                             <constraint firstAttribute="bottomMargin" secondItem="bMZ-hY-372" secondAttribute="bottom" id="vB9-Q4-y8H"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="My Jobs" id="XuU-cM-NgQ"/>
                     <connections>
+                        <outlet property="createJobButton" destination="90Q-pw-EcG" id="rLy-rb-6Ud"/>
                         <outlet property="myJobsTable" destination="bMZ-hY-372" id="mJU-xb-anI"/>
+                        <outlet property="noJobsView" destination="WuN-8y-iWz" id="g5v-58-Uw4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8aQ-KB-Xij" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1114,7 +1154,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="72" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="HPE-ZT-gX0">
-                                <rect key="frame" x="16" y="0.0" width="568" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="JobApplicantCell" rowHeight="72" id="q9u-VE-6IN" userLabel="job applicant cell" customClass="JobApplicantTableViewCell">
@@ -1130,7 +1170,7 @@
                                                         <constraint firstAttribute="height" constant="50" id="Ppj-0W-xdX"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Applicant name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jHA-E1-JRE">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Applicant name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jHA-E1-JRE">
                                                     <rect key="frame" x="68" y="25" width="459" height="21"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -1167,12 +1207,12 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" red="0.25837619645522181" green="1" blue="0.18027839134981039" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="HPE-ZT-gX0" firstAttribute="leading" secondItem="hzP-bd-P2a" secondAttribute="leadingMargin" id="CaW-TC-7g7"/>
+                            <constraint firstItem="HPE-ZT-gX0" firstAttribute="leading" secondItem="hzP-bd-P2a" secondAttribute="leadingMargin" constant="-16" id="CaW-TC-7g7"/>
                             <constraint firstItem="HPE-ZT-gX0" firstAttribute="top" secondItem="hzP-bd-P2a" secondAttribute="topMargin" id="XLn-Ap-DGT"/>
                             <constraint firstItem="Pxt-Kg-zNk" firstAttribute="top" secondItem="HPE-ZT-gX0" secondAttribute="bottom" id="m5h-Ih-DMc"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="HPE-ZT-gX0" secondAttribute="trailing" id="w8O-Nc-kkK"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="HPE-ZT-gX0" secondAttribute="trailing" constant="-16" id="w8O-Nc-kkK"/>
                         </constraints>
                     </view>
                     <connections>
@@ -1213,7 +1253,7 @@
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
                                     </subviews>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="centerX" secondItem="VDl-zc-Kev" secondAttribute="centerX" id="Rd8-c3-7Sp"/>
                                         <constraint firstItem="VDl-zc-Kev" firstAttribute="top" secondItem="wFw-yK-Icd" secondAttribute="top" constant="100" id="scX-Zc-KrW"/>
@@ -1316,7 +1356,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="48N-ee-CYs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="541" y="1093"/>
+            <point key="canvasLocation" x="523" y="1101"/>
         </scene>
         <!--Step 1: Job Location-->
         <scene sceneID="tBK-f3-ro2">

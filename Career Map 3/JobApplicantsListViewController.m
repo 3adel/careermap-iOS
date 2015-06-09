@@ -24,7 +24,11 @@
     //_myJobsTable.estimatedRowHeight = 73.0 ;
     //self.myJobsTable.rowHeight = UITableViewAutomaticDimension;
     
-    
+    //progress spinner initialization
+    _jobApplicantsListTable.separatorStyle = UITableViewCellSeparatorStyleNone;
+    _HUDProgressIndicator = [MBProgressHUD showHUDAddedTo:_jobApplicantsListTable animated:YES];
+    _HUDProgressIndicator.labelText = @"Loading applicants ...";
+    _HUDProgressIndicator.mode = MBProgressHUDModeIndeterminate;
     
     
    // NSLog(@"job object = %@", _jobPFObject);
@@ -242,6 +246,8 @@
                 _jobApplicantsArray = [[NSMutableArray alloc] initWithArray:objects];
                 
                 
+                
+                
             }
             
             
@@ -261,10 +267,11 @@
              //also show the no messages view
              //[_noMessagesYetView setHidden:NO];
              
-             
-             //[_HUDProgressIndicator hide:YES];
+
              
          }
+         _jobApplicantsListTable.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+         [_HUDProgressIndicator hide:YES];
          [_jobApplicantsListTable reloadData];
          
          

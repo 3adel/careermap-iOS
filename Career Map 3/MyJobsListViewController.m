@@ -23,6 +23,14 @@
     //style
     _myJobsTable.estimatedRowHeight = 73.0 ;
     self.myJobsTable.rowHeight = UITableViewAutomaticDimension;
+    _createJobButton.layer.cornerRadius = 5.0f;
+    
+    
+    //progress spinner initialization
+    _myJobsTable.separatorStyle = UITableViewCellSeparatorStyleNone;
+    _HUDProgressIndicator = [MBProgressHUD showHUDAddedTo:_myJobsTable animated:YES];
+    _HUDProgressIndicator.labelText = @"Loading your openings ...";
+    _HUDProgressIndicator.mode = MBProgressHUDModeIndeterminate;
     
     
     // Initialize the refresh control.
@@ -179,9 +187,7 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             ///NSLog(@"objects : %@", objects);
-
-            
-            
+   
             if (objects.count == 0) {
                 //show empty view
                 
@@ -195,10 +201,10 @@
                         [self.refreshControl endRefreshing];
 
                         //also show the no messages view
-                        //[_noMessagesYetView setHidden:NO];
+                        [_noJobsView setHidden:NO];
                         
                         
-                        //[_HUDProgressIndicator hide:YES];
+                        [_HUDProgressIndicator hide:YES];
                         
                     }
 
@@ -209,7 +215,10 @@
                 
                 _myJobsArray = [[NSMutableArray alloc] initWithArray:objects];
                 
+                [_noJobsView setHidden:YES];
+
                 
+                /*
                 NSUInteger count = 0;
                 for (PFObject *i in _myJobsArray) {
                     CLLocation  *jobLocation = [[CLLocation alloc] initWithLatitude:[[i objectForKey:@"geolocation"] latitude] longitude:[[i objectForKey:@"geolocation"] longitude]];
@@ -266,7 +275,7 @@
                     
                     
                 }
-
+*/
                 
                 
                 
@@ -289,12 +298,14 @@
             [self.refreshControl endRefreshing];
             
             //also show the no messages view
-            //[_noMessagesYetView setHidden:NO];
+            //[_noJobsView setHidden:NO];
             
             
-            //[_HUDProgressIndicator hide:YES];
+            [_HUDProgressIndicator hide:YES];
             
         }
+        _myJobsTable.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+
         [_myJobsTable reloadData];
     }];
     
@@ -385,4 +396,11 @@
 
 
 
+- (IBAction)createJobsButtonPressed:(UIButton *)sender {
+    
+    [self.tabBarController setSelectedIndex:2];
+
+    
+    
+}
 @end

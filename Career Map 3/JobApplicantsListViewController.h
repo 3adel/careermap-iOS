@@ -17,6 +17,7 @@
 @property (nonatomic, strong) NSMutableArray *jobApplicantsArray;
 @property (weak, nonatomic) PFObject *jobApplicant;
 @property (weak, nonatomic) PFObject *jobPFObject;
+@property (nonatomic, strong) MBProgressHUD *HUDProgressIndicator;
 
 
 

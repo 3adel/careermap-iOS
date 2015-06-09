@@ -17,6 +17,10 @@
 @property (weak, nonatomic) PFObject *myJobPFObject;
 @property (nonatomic, strong) PFGeoPoint *userLocation;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
+@property (weak, nonatomic) IBOutlet UIView *noJobsView;
+- (IBAction)createJobsButtonPressed:(UIButton *)sender;
+@property (weak, nonatomic) IBOutlet UIButton *createJobButton;
+@property (nonatomic, strong) MBProgressHUD *HUDProgressIndicator;
 
 
 //data
