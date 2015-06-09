@@ -533,6 +533,11 @@
                                 <items>
                                     <navigationItem id="O97-VM-5gc">
                                         <nil key="title"/>
+                                        <barButtonItem key="leftBarButtonItem" title="Close" id="hvE-F9-C7O">
+                                            <connections>
+                                                <action selector="closeMapButtonPressed:" destination="f8E-eG-jBp" id="zWr-ZR-4o0"/>
+                                            </connections>
+                                        </barButtonItem>
                                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="au7-N3-buz">
                                             <rect key="frame" x="200" y="7" width="200" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -545,11 +550,6 @@
                                                 <action selector="selectMapTypePressed:" destination="f8E-eG-jBp" eventType="valueChanged" id="jag-ll-O35"/>
                                             </connections>
                                         </segmentedControl>
-                                        <barButtonItem key="rightBarButtonItem" title="Close" id="hvE-F9-C7O">
-                                            <connections>
-                                                <action selector="closeMapButtonPressed:" destination="f8E-eG-jBp" id="zWr-ZR-4o0"/>
-                                            </connections>
-                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -963,6 +963,11 @@
                                 <rect key="frame" x="1" y="20" width="598" height="44"/>
                                 <items>
                                     <navigationItem title="My CV" id="g5r-Ja-6pa">
+                                        <barButtonItem key="leftBarButtonItem" title="Close" id="xUA-I0-vF6">
+                                            <connections>
+                                                <action selector="closeCVButtonPressed:" destination="8rJ-Kc-sve" id="Yia-dF-z0m"/>
+                                            </connections>
+                                        </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Edit" id="9NI-Z9-HLh">
                                             <connections>
                                                 <action selector="editCVButtonPressed:" destination="8rJ-Kc-sve" id="dmO-ch-jeN"/>
@@ -1008,6 +1013,7 @@
                         <outlet property="CVNavigationItem" destination="g5r-Ja-6pa" id="eUS-ql-qM0"/>
                         <outlet property="CVViewNavigationBar" destination="QeX-zq-Wxd" id="dop-Vp-7Az"/>
                         <outlet property="aJobSeekerThumb" destination="WmF-te-Ccs" id="xYi-MW-8yf"/>
+                        <outlet property="closeCVButton" destination="xUA-I0-vF6" id="OIo-tX-prb"/>
                         <outlet property="createCVButton" destination="311-t7-crG" id="hsH-Gd-poH"/>
                         <outlet property="editCVButton" destination="9NI-Z9-HLh" id="k9c-6W-MH8"/>
                         <outlet property="fullNameLabel" destination="9b2-cX-lBC" id="mq8-hX-oeI"/>

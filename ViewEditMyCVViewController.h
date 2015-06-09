@@ -12,6 +12,7 @@
 #import "AppHorizontalMessage.h"
 #import "MBProgressHUD.h"
 #import "LoginViewController.h"
+#import "JobChatViewController.h"
 
 @interface ViewEditMyCVViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIView *noCVFoundView;
@@ -38,9 +39,10 @@
 @property (strong, nonatomic) AppHorizontalMessage *saveCVButtonPressedMessage;
 @property (strong, nonatomic) MBProgressHUD *MBProgressHUDSaveButtonPressedIndicator;
 @property (strong, nonatomic) MBProgressHUD *MBProgressHUDLoadingCV;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *closeCVButton;
 
 //data
-@property (strong, nonatomic) PFObject *jobCandidateObject;
+@property (strong, nonatomic) PFUser *jobCandidateObject;
 @property (strong, nonatomic) PFObject *jobSeekerObject;
 @property (weak, nonatomic) IBOutlet UINavigationBar *CVViewNavigationBar;
 @property BOOL cominfFromApplicantsList;
@@ -52,8 +54,14 @@
 -(void) fillCandidateCV;
 
 
+
+
 - (IBAction)createCVButtonPressed:(UIButton *)sender;
 - (IBAction)editCVButtonPressed:(UIBarButtonItem *)sender;
+- (IBAction)closeCVButtonPressed:(UIBarButtonItem *)sender;
+
+
+
 - (IBAction)messageCandidateButtonPressed:(UIButton *)sender;
 @property (weak, nonatomic) IBOutlet UINavigationItem *CVNavigationItem;
 

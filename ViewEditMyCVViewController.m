@@ -120,17 +120,31 @@
     
     
     if (_cominfFromApplicantsList) {
-        _editCVButton.title = @"Close";
+        //_editCVButton.title = @"Close";
         _CVNavigationItem.title =[NSString stringWithFormat:@"%@ %@",[[_jobCandidateObject objectForKey:@"aJobSeekerID"] objectForKey:@"firstName"],[[_jobCandidateObject objectForKey:@"aJobSeekerID"] objectForKey:@"lastName"]];
         _messageCandidateButton.enabled = YES;
         _messageCandidateButton.hidden = NO;
+        
+        _closeCVButton.enabled = YES;
+        [_closeCVButton setTitle:@"Close"];
+        
+        [_editCVButton setEnabled:NO];
+        [_editCVButton setTitle:@""];
 
         
 
     }
     else{
-        _editCVButton.title = @"Edit";
-        [_editCVButton setEnabled:NO];
+        //_editCVButton.title = @"Edit";
+        [_editCVButton setEnabled:YES];
+        [_editCVButton setTitle:@"Edit"];
+
+        
+        
+        _closeCVButton.enabled = NO;
+        [_closeCVButton setTitle:@""];
+
+
 
     }
 
@@ -675,15 +689,8 @@
     
     
     
-    
-    if (_cominfFromApplicantsList) {
-    
-        [self dismissViewControllerAnimated:YES completion:nil];
 
-        
-    }
-    
-    else{
+
         
         //update the cv fields in the CreateCV VC
         CreateCVViewController *createCVInstance = [[CreateCVViewController alloc] initWithNibName:@"CreateCVView" bundle:nil];
@@ -788,7 +795,7 @@
 
         
         
-    }
+    
     
     
 
@@ -796,6 +803,20 @@
 }
 
 - (IBAction)messageCandidateButtonPressed:(UIButton *)sender {
+    
+    
+    
+    JobChatViewController  *jobChatScreen = [[JobChatViewController alloc] initWithNibName:@"JobChatView" bundle:nil];
+    
+    jobChatScreen.jobEmployerUserObjectID =[_jobCandidateObject objectId];
+    jobChatScreen.jobPosterPFUser = _jobCandidateObject;
+    
+    [self presentViewController:jobChatScreen animated:YES completion:nil];
+    
+    
+    
+    
+    
 }
 
 
@@ -821,6 +842,11 @@
     }
     
     
+}
+
+- (IBAction)closeCVButtonPressed:(UIBarButtonItem *)sender{
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 
