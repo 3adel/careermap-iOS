@@ -37,9 +37,7 @@
         _reportJobBarButton.enabled = NO;
     }
 
-    
-    
-    
+
         
     //check if the user is me, enable edit and delete buttons and disable apply and message buttons
     if ([[_jobPosterPFUser objectId] isEqualToString:[[PFUser currentUser] objectId]]) {
