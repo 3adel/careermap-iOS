@@ -59,6 +59,12 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+
+
+
+
+
 /*
 #pragma mark - Navigation
 
@@ -117,6 +123,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
+    
+    /*
+    
     NSLog(@"index path: %ld", indexPath.row);
     PFObject *jobObject = [_myJobsArray objectAtIndex:indexPath.row];
 
@@ -171,9 +180,72 @@
     UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:jobDetailsVC];
     [self.navigationController pushViewController:navi animated:YES];
     
-
+*/
   
 }
+
+
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"showJob"]) {
+        
+        NSIndexPath *indexPath = [self.myJobsTable indexPathForSelectedRow];
+        PFObject *jobObject = [_myJobsArray objectAtIndex:indexPath.row];
+        
+        JobDetailsViewController *jobDetailsVC = segue.destinationViewController;
+        
+        
+        
+        
+        [jobDetailsVC.reportJobBarButton setEnabled:NO];
+        
+        jobDetailsVC.jobObject = [_myJobsArray objectAtIndex:indexPath.row];
+        jobDetailsVC.jobTitle = [jobObject objectForKey:@"title"];
+        jobDetailsVC.jobDescription = [jobObject objectForKey:@"description"];
+        jobDetailsVC.jobDistanceFromUser = [NSString stringWithFormat:@"%@ km",[NSString stringWithFormat:@"%.2f",[self.userLocation distanceInKilometersTo:[jobObject objectForKey:@"geolocation"]]] ];
+        jobDetailsVC.jobArea =[jobObject objectForKey:@"addressLine"];
+        jobDetailsVC.jobEmployer =[jobObject objectForKey:@"businessName"];
+        DateConverter *dateConverter = [[DateConverter alloc]init];
+        jobDetailsVC.jobDateAdded = [dateConverter convertDateToLocalTime:[jobObject createdAt]];
+        
+        
+        jobDetailsVC.jobRequiredSkills = [jobObject objectForKey:@"skillsRequired"];
+        jobDetailsVC.jobEducation =[jobObject objectForKey:@"degreeRequired"];
+        jobDetailsVC.userLocation = self.userLocation;
+        
+        jobDetailsVC.jobRolesAndResponsibilities =[jobObject objectForKey:@"rolesAndResponsibilities"];
+        jobDetailsVC.jobCompensation =[jobObject objectForKey:@"compensation"];
+        jobDetailsVC.jobEmploymentType =[jobObject objectForKey:@"employmentType"];
+        jobDetailsVC.jobIndustryType =[[jobObject objectForKey:@"jobIndustry"] objectForKey:@"name"];
+        
+        
+        CLLocation  *jobLocation = [[CLLocation alloc] initWithLatitude:[[jobObject objectForKey:@"geolocation"] latitude] longitude:[[jobObject objectForKey:@"geolocation"] longitude]];
+        jobDetailsVC.jobLocation = jobLocation;
+        
+        
+        jobDetailsVC.jobAddressLine = [jobObject objectForKey:@"addressLine"];
+        
+        //this is basically an employer userID from the users table
+        jobDetailsVC.jobEmployerUserObjectID= [[jobObject objectForKey:@"postedByUser"] objectId];
+        jobDetailsVC.jobPosterPFUser =[jobObject objectForKey:@"postedByUser"];
+        
+        jobDetailsVC.jobAppliedByUsers =[jobObject objectForKey:@"appliedByUsers"];
+        // NSLog(@"Before segue: job applied by = %@",[jobObject objectForKey:@"appliedByUsers"] );
+        
+        //actually it's better to pass the entire pf object to the destination
+        
+        
+        //set the flag bar menu button according to reporting status
+        
+
+        
+
+        
+    }
+}
+
+
+
 
 - (void) retrieveMyJobsFromParse{
     

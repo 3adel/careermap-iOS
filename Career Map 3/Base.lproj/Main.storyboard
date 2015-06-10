@@ -1113,6 +1113,7 @@
                                         <connections>
                                             <outlet property="jobAppliedCount" destination="iaK-IT-NiP" id="PIG-ld-LNs"/>
                                             <outlet property="jobTitle" destination="gEU-6g-thD" id="RB5-MZ-Zom"/>
+                                            <segue destination="oBD-2n-Moc" kind="show" identifier="showJob" id="UkH-R4-w2w"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1131,6 +1132,9 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="My Jobs" id="XuU-cM-NgQ"/>
+                    <navigationItem key="navigationItem" title="My Jobs" id="EW7-l9-OfK">
+                        <barButtonItem key="backBarButtonItem" title="back" id="Gmi-GC-g6C"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="createJobButton" destination="90Q-pw-EcG" id="rLy-rb-6Ud"/>
                         <outlet property="myJobsTable" destination="bMZ-hY-372" id="mJU-xb-anI"/>
@@ -1139,7 +1143,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8aQ-KB-Xij" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="934" y="2900"/>
+            <point key="canvasLocation" x="1059" y="2899"/>
         </scene>
         <!--Job Applicants List-->
         <scene sceneID="JZj-ng-dlO">
@@ -1221,7 +1225,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0yj-Ko-qBn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1563" y="2899"/>
+            <point key="canvasLocation" x="1731" y="2899"/>
         </scene>
         <!--Messages-->
         <scene sceneID="dfI-PK-hV2">
@@ -1356,7 +1360,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="48N-ee-CYs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="523" y="1101"/>
+            <point key="canvasLocation" x="617" y="1053"/>
         </scene>
         <!--Step 1: Job Location-->
         <scene sceneID="tBK-f3-ro2">
@@ -1983,13 +1987,30 @@
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
                         <segue destination="cTh-Vs-miG" kind="relationship" relationship="viewControllers" id="KRS-69-hya"/>
                         <segue destination="EwG-gK-NKE" kind="relationship" relationship="viewControllers" id="BN5-a7-A1C"/>
-                        <segue destination="ePu-Mc-Fqo" kind="relationship" relationship="viewControllers" id="03o-Me-lKr"/>
+                        <segue destination="PnY-eA-gkd" kind="relationship" relationship="viewControllers" id="ReU-8y-8CR"/>
                         <segue destination="T0L-SA-EyQ" kind="relationship" relationship="viewControllers" id="fSu-U5-AC5"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="202" y="-46"/>
+        </scene>
+        <!--My Jobs-->
+        <scene sceneID="Pdm-qR-uv5">
+            <objects>
+                <navigationController id="PnY-eA-gkd" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="My Jobs" id="jZs-vg-mHh"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3Oz-qD-JNe">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="ePu-Mc-Fqo" kind="relationship" relationship="rootViewController" id="Zo4-Cl-AFO"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tRo-ll-9oh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="267" y="2899"/>
         </scene>
         <!--Job List-->
         <scene sceneID="jL7-fw-Zcg">
@@ -2045,5 +2066,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="phv-aF-IUg"/>
+        <segue reference="UkH-R4-w2w"/>
     </inferredMetricsTieBreakers>
 </document>
