@@ -416,7 +416,7 @@
             
             _userLocation= geoPoint;
 
-            [self getUserCity:self.userLocation];
+          //  [self getUserCity:self.userLocation];
             
             [_myJobsTable reloadData];
             
@@ -431,6 +431,7 @@
     
 }
 
+/*
 - (void) getUserCity:(PFGeoPoint *)userGeoPoint{
     
     
@@ -464,7 +465,7 @@
     
 }
 
-
+*/
 
 
 

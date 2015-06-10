@@ -30,6 +30,6 @@
 - (IBAction)takeMeToJobEditor:(UIButton *)sender;
 - (void) retrieveMyJobsFromParse;
 - (PFGeoPoint *) getUserLocation;
-- (void) getUserCity:(PFGeoPoint *)userGeoPoint;
+//- (void) getUserCity:(PFGeoPoint *)userGeoPoint;
 
 @end

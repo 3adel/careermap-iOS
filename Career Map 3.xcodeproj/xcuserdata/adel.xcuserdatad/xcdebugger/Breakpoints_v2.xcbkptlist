@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Career Map 3/MyJobsListViewController.m"
-            timestampString = "455617412.012781"
+            timestampString = "455620247.673201"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "479"
-            endingLineNumber = "479">
+            startingLineNumber = "591"
+            endingLineNumber = "591">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
