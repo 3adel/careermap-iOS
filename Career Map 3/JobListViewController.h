@@ -17,6 +17,7 @@
 #import "MBProgressHUD.h"
 #import "LoadingJobListEmptyView.h"
 #import "AppDelegate.h"
+#import "JobsListFilterViewController.h"
 @interface JobListViewController : UITableViewController <CLLocationManagerDelegate,MBProgressHUDDelegate>
 
 {
@@ -48,5 +49,6 @@
 - (void) getUserCity: (PFGeoPoint *) userGeoPoint;
 - (void) changeMessageIsReceivedValue;
 
+- (IBAction)filterJobsButtonPressed:(UIBarButtonItem *)sender;
 
 @end

@@ -138,7 +138,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     
-    NSLog(@"index path: %ld", indexPath.row);
+    //NSLog(@"index path: %ld", indexPath.row);
     
     ViewEditMyCVViewController *jobApplicantVC =[[ViewEditMyCVViewController alloc] init];
     jobApplicantVC = [self.storyboard instantiateViewControllerWithIdentifier:@"ViewEditMyCVViewController"];

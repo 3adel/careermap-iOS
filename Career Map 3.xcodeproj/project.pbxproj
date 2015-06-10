@@ -41,6 +41,8 @@
 		F55DF49C1B282F2D00EACD26 /* TabBar-MyJobs.png in Resources */ = {isa = PBXBuildFile; fileRef = F55DF4991B282F2D00EACD26 /* TabBar-MyJobs.png */; };
 		F55DF49D1B282F2D00EACD26 /* TabBar-MyJobs@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F55DF49A1B282F2D00EACD26 /* TabBar-MyJobs@2x.png */; };
 		F55DF49E1B282F2D00EACD26 /* TabBar-MyJobs@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F55DF49B1B282F2D00EACD26 /* TabBar-MyJobs@3x.png */; };
+		F55DF4A01B285A3E00EACD26 /* JobsListFilterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F55DF49F1B285A3E00EACD26 /* JobsListFilterView.xib */; };
+		F55DF4A31B285A8D00EACD26 /* JobsListFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F55DF4A21B285A8D00EACD26 /* JobsListFilterViewController.m */; };
 		F56EA2011B1D8D7A00350CBF /* MyJobsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F56EA2001B1D8D7A00350CBF /* MyJobsListViewController.m */; };
 		F584F4111B1E531B00A0AF00 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F584F4101B1E531B00A0AF00 /* GameKit.framework */; };
 		F59584851B1347A900B06778 /* TabBar-AddJob.png in Resources */ = {isa = PBXBuildFile; fileRef = F59584821B1347A800B06778 /* TabBar-AddJob.png */; };
@@ -175,6 +177,9 @@
 		F55DF4991B282F2D00EACD26 /* TabBar-MyJobs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBar-MyJobs.png"; sourceTree = "<group>"; };
 		F55DF49A1B282F2D00EACD26 /* TabBar-MyJobs@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBar-MyJobs@2x.png"; sourceTree = "<group>"; };
 		F55DF49B1B282F2D00EACD26 /* TabBar-MyJobs@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBar-MyJobs@3x.png"; sourceTree = "<group>"; };
+		F55DF49F1B285A3E00EACD26 /* JobsListFilterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JobsListFilterView.xib; sourceTree = "<group>"; };
+		F55DF4A11B285A8D00EACD26 /* JobsListFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobsListFilterViewController.h; sourceTree = "<group>"; };
+		F55DF4A21B285A8D00EACD26 /* JobsListFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobsListFilterViewController.m; sourceTree = "<group>"; };
 		F56EA1FF1B1D8D7A00350CBF /* MyJobsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyJobsListViewController.h; sourceTree = "<group>"; };
 		F56EA2001B1D8D7A00350CBF /* MyJobsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyJobsListViewController.m; sourceTree = "<group>"; };
 		F584F4101B1E531B00A0AF00 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
@@ -394,6 +399,9 @@
 				F506DC331AF9504F000ABF49 /* LoadingJobListEmptyView.xib */,
 				F506DC3B1AF952DE000ABF49 /* LoadingJobListEmptyView.h */,
 				F506DC3C1AF952DE000ABF49 /* LoadingJobListEmptyView.m */,
+				F55DF49F1B285A3E00EACD26 /* JobsListFilterView.xib */,
+				F55DF4A11B285A8D00EACD26 /* JobsListFilterViewController.h */,
+				F55DF4A21B285A8D00EACD26 /* JobsListFilterViewController.m */,
 			);
 			name = "Job List";
 			sourceTree = "<group>";
@@ -768,6 +776,7 @@
 			files = (
 				F5CF09431AF1114B00850BB0 /* Icon-60@3x.png in Resources */,
 				F506DC321AF7C1BF000ABF49 /* MenuBar-Report@3x.png in Resources */,
+				F55DF4A01B285A3E00EACD26 /* JobsListFilterView.xib in Resources */,
 				F59584851B1347A900B06778 /* TabBar-AddJob.png in Resources */,
 				F59584971B13A43D00B06778 /* job-annotation-icon@2x.png in Resources */,
 				F5EA83071B1AF59500B5DA41 /* 37x-Checkmark.png in Resources */,
@@ -842,6 +851,7 @@
 				F535ABC41ADE52CF0091E70B /* JobChatViewController.m in Sources */,
 				F595848B1B134BFB00B06778 /* JobLocationViewController.m in Sources */,
 				F59759351AC1DC7D0099A978 /* JobCustomTableViewCell.m in Sources */,
+				F55DF4A31B285A8D00EACD26 /* JobsListFilterViewController.m in Sources */,
 				F535AC511ADEC9B50091E70B /* JobChatMessageCell.m in Sources */,
 				F5EB65BC1AEBDFB60026B988 /* SkillTextField.m in Sources */,
 				F5BAC3D41AC875E5003E899C /* settingsViewController.m in Sources */,

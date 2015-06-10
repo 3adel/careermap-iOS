@@ -143,7 +143,16 @@ bool messageIsReceived = NO;
     [retrieveJobs includeKey:@"jobIndustry"];
 
 
-    [retrieveJobs whereKey:@"geolocation" nearGeoPoint:self.userLocation withinKilometers:100000];
+    
+    /* use this to filter jobs. Should create a property to hold categories selected and use validation
+    NSMutableArray *arrayOfCategoriesSelected = [[NSMutableArray alloc] init];
+    [arrayOfCategoriesSelected addObject:[PFObject objectWithoutDataWithClassName:@"JobIndustry" objectId:@"2IQctpGvTL"]];
+        [arrayOfCategoriesSelected addObject:[PFObject objectWithoutDataWithClassName:@"JobIndustry" objectId:@"r9VDHBPpvR"]];
+    [retrieveJobs whereKey:@"jobIndustry" containedIn:arrayOfCategoriesSelected];
+    */
+    
+    [retrieveJobs whereKey:@"geolocation" nearGeoPoint:self.userLocation withinKilometers:100];
+  
     retrieveJobs.limit =1000;
     //[retrieveJobs orderByDescending:@"createdAt"];
     
@@ -731,6 +740,17 @@ bool messageIsReceived = NO;
 
     messageIsReceived = true;
 
+    
+    
+}
+
+- (IBAction)filterJobsButtonPressed:(UIBarButtonItem *)sender {
+    
+    
+    JobsListFilterViewController *jobsFilterVC = [[JobsListFilterViewController alloc] initWithNibName:@"JobsListFilterView" bundle:nil];
+    
+    [self presentViewController:jobsFilterVC animated:YES completion:nil];
+    
     
     
 }
