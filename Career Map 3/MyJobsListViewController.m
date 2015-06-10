@@ -120,11 +120,11 @@
 }
 
 
-
+/*
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     
-    /*
+    
     
     NSLog(@"index path: %ld", indexPath.row);
     PFObject *jobObject = [_myJobsArray objectAtIndex:indexPath.row];
@@ -180,9 +180,9 @@
     UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:jobDetailsVC];
     [self.navigationController pushViewController:navi animated:YES];
     
-*/
+
   
-}
+}*/
 
 
 

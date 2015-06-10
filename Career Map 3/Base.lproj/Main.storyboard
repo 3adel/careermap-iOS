@@ -1999,7 +1999,7 @@
         <scene sceneID="Pdm-qR-uv5">
             <objects>
                 <navigationController id="PnY-eA-gkd" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="My Jobs" id="jZs-vg-mHh"/>
+                    <tabBarItem key="tabBarItem" title="My Jobs" image="TabBar-MyJobs.png" id="jZs-vg-mHh"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="3Oz-qD-JNe">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -2060,6 +2060,7 @@
         <image name="TabBar-JobList.png" width="45" height="28"/>
         <image name="TabBar-Messages.png" width="45" height="28"/>
         <image name="TabBar-MyCV.png" width="45" height="28"/>
+        <image name="TabBar-MyJobs.png" width="45" height="28"/>
         <image name="TabBar-Settings.png" width="45" height="28"/>
         <image name="job-annotation-icon.png" width="50" height="50"/>
         <image name="myLocation.png" width="44" height="44"/>

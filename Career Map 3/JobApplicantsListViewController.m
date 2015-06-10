@@ -213,7 +213,7 @@
         
         if (!error){
             
-            NSLog(@"users = %@", objects);
+           // NSLog(@"users = %@", objects);
             
             
             
