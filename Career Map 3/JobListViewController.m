@@ -198,7 +198,11 @@ bool messageIsReceived = NO;
                 dispatch_async(dispatch_get_main_queue(), ^{
                     if (_noJobsView) {
                         [_noJobsView removeFromSuperview];
+
                     }
+                    
+                    //update jobs count
+                    _jobListNavigationItem.title = [NSString stringWithFormat:@"%lu Jobs Around You",(unsigned long)[objects count]];
                     
                 });
                 

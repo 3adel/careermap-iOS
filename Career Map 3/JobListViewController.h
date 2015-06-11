@@ -47,6 +47,7 @@
 
 //data
 @property (nonatomic, strong) NSNumber *jobsFilterDistance;
+@property (weak, nonatomic) IBOutlet UINavigationItem *jobListNavigationItem;
 
 
 //track if the user received a message push notif

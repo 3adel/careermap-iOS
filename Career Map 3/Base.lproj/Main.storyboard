@@ -139,6 +139,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="jobListNavigationItem" destination="24u-SN-XwK" id="yXK-Zk-aaf"/>
                         <outlet property="jobTable" destination="oVI-xq-eSF" id="gZ5-Af-aWm"/>
                     </connections>
                 </tableViewController>
