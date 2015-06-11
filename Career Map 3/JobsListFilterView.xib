@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="JobsListFilterViewController">
             <connections>
+                <outlet property="jobCategoriesTable" destination="DCd-jm-EBf" id="FBX-F7-RZe"/>
                 <outlet property="jobDistanceFilterLabel" destination="jwI-RR-YKZ" id="5Ej-4u-qqx"/>
                 <outlet property="jobsDistanceFilterSlider" destination="0hz-OG-7RE" id="wc1-xr-Bix"/>
                 <outlet property="view" destination="iN0-l3-epB" id="7Yp-yK-bhW"/>
@@ -57,6 +58,10 @@
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="DCd-jm-EBf">
                     <rect key="frame" x="0.0" y="170" width="600" height="430"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="J5i-cw-TaP"/>
+                        <outlet property="delegate" destination="-1" id="S3g-u1-yDu"/>
+                    </connections>
                 </tableView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="distanceLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jwI-RR-YKZ">
                     <rect key="frame" x="80" y="74" width="96" height="18"/>

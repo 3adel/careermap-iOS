@@ -791,6 +791,13 @@ bool messageIsReceived = NO;
 }
 
 
+- (void) sendFilterCategoriesSelected: (NSMutableArray *) categoriesSelected{
+    
+    _jobCategoriesSelectedArray =categoriesSelected;
+    
+}
+
+
 
 - (void) reloadDelegateData{
     
@@ -831,10 +838,11 @@ bool messageIsReceived = NO;
             }
             
             
-            //save categories selected to device
-            [[NSUserDefaults standardUserDefaults] setObject:_jobCategoriesSelectedDictionary forKey:@"jobsCategorySelectedDictionaryForFilter"];
+            //save all categories and categories selected to device
+            [[NSUserDefaults standardUserDefaults] setObject:_jobCategoriesSelectedArray forKey:@"jobsCategoriesArray"];
             [[NSUserDefaults standardUserDefaults] setObject:_jobCategoriesSelectedArray forKey:@"jobsCategorySelectedArrayForFilter"];
-            
+            [[NSUserDefaults standardUserDefaults] setObject:_jobCategoriesSelectedDictionary forKey:@"jobsCategorySelectedDictionaryForFilter"];
+
             [[NSUserDefaults standardUserDefaults] synchronize];
             
   

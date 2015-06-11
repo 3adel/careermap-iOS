@@ -24,6 +24,14 @@
     
     _jobDistanceFilterLabel.text = [NSString stringWithFormat:@"%.0f km",[[[NSUserDefaults standardUserDefaults]objectForKey:@"jobDistanceFilterValue"] doubleValue]];
     
+    
+    NSLog(@"%lu Array of default categories %@",(unsigned long)[[[NSUserDefaults standardUserDefaults] objectForKey:@"jobsCategoriesArray"] count], [[NSUserDefaults standardUserDefaults] objectForKey:@"jobsCategoriesArray"]);
+    
+
+    //_jobCategoriesArray =[[NSUserDefaults standardUserDefaults] objectForKey:@"jobsCategoriesArray"];
+   // NSLog(@"%@", _jobCategoriesArray);
+    
+    [self retrieveJobCategoriesFromParse];
 
 }
 
@@ -67,7 +75,23 @@
 
     [_delegate sendFilterDistance:[[[NSUserDefaults standardUserDefaults]
                                        objectForKey:@"jobDistanceFilterValue"] doubleValue]];
+    
+    //this array "testArray" will be replaced by what you have from categories
+    NSMutableArray *testArray = [[NSMutableArray alloc] init];
+    [testArray addObject:@"segXAhy6JS"];
+    [[NSUserDefaults standardUserDefaults] setObject:testArray forKey:@"jobsCategorySelectedArrayForFilter"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+
+    
+    
+    
+    [_delegate sendFilterCategoriesSelected:testArray];
+    
     [_delegate reloadDelegateData];
+
+    //- (void) sendFilterCategoriesSelected: (NSMutableArray *) categoriesSelected;
+
+    
     [self dismissViewControllerAnimated:YES completion:nil];
 
     
@@ -88,4 +112,73 @@
     
     
 }
+
+
+
+- (void) retrieveJobCategoriesFromParse{
+    
+    NSLog(@"rerieve jobs categories from parse called");
+    
+    PFQuery *jobsCategoriesQuery = [PFQuery queryWithClassName:@"JobIndustry"];
+    [jobsCategoriesQuery setLimit:1000];
+    [jobsCategoriesQuery orderByAscending:@"name"];
+    [jobsCategoriesQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            //NSLog(@"object = %@", objects);
+            
+            _jobCategoriesArray = [[NSMutableArray alloc] initWithArray:objects];
+            
+            
+        
+            }
+
+        
+        else{
+            NSLog(@"error finding jobs category objects");
+            
+            
+        }
+        
+        [_jobCategoriesTable reloadData];
+    }];
+    
+    
+}
+
+
+
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    
+    return _jobCategoriesArray.count;
+    
+    
+}
+
+
+
+- (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    PFObject *jobCategoryObject = [_jobCategoriesArray objectAtIndex:indexPath.row];
+    
+    static NSString *simpleTableIdentifier = @"JobChatMessageCell";
+    
+    JobCategoryTableViewCell *cell = (JobCategoryTableViewCell *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+    if (cell == nil)
+    {
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"JobCategoryTableViewCell" owner:self options:nil];
+        cell = [nib objectAtIndex:0];
+    }
+    
+    cell.categoryNameLabel.text = [jobCategoryObject objectForKey:@"name"];
+    
+ 
+    return cell;
+    
+}
+
+
+
+
 @end

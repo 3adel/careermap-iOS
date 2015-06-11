@@ -7,18 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
+#import "JobCategoryTableViewCell.h"
 
 @protocol sendFilterData <NSObject>
 
 - (void) sendFilterDistance: (double) distance;
-- (void) reloadDelegateData;
+- (void) sendFilterCategoriesSelected: (NSMutableArray *) categoriesSelected;
 
+- (void) reloadDelegateData;
+- (void) retrieveJobCategoriesFromParse;
 
 @end
 
 
 
-@interface JobsListFilterViewController : UIViewController
+@interface JobsListFilterViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 
 @property(nonatomic,assign)id delegate;
@@ -26,6 +30,11 @@
 - (IBAction)applyFilterButtonPressed:(UIBarButtonItem *)sender;
 @property (weak, nonatomic) IBOutlet UILabel *jobDistanceFilterLabel;
 @property (weak, nonatomic) IBOutlet UISlider *jobsDistanceFilterSlider;
+@property (nonatomic, strong) NSMutableArray *jobCategoriesArray;
+@property (weak, nonatomic) IBOutlet UITableView *jobCategoriesTable;
+@property (weak, nonatomic) IBOutlet JobCategoryTableViewCell *jobCategoryCellOutlet;
+
+
 - (IBAction)jobsDistanceFilterChanged:(UISlider *)sender;
 
 @end
