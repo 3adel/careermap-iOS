@@ -17,6 +17,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    [_jobsDistanceFilterSlider setValue:[[[NSUserDefaults standardUserDefaults]objectForKey:@"jobDistanceFilterValue"] doubleValue]/100];
+    
+    NSLog(@"current slider value = %f", [[[NSUserDefaults standardUserDefaults]objectForKey:@"jobDistanceFilterValue"] doubleValue]/100);
+    
+    _jobDistanceFilterLabel.text = [NSString stringWithFormat:@"%.0f km",[[[NSUserDefaults standardUserDefaults]objectForKey:@"jobDistanceFilterValue"] doubleValue]];
+    
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -41,11 +49,43 @@
 }
 
 - (IBAction)applyFilterButtonPressed:(UIBarButtonItem *)sender {
+
     
-    [_delegate sendFilterDistance:100];
+    //prevent filter value from being 0
+    if (!_jobsDistanceFilterSlider.value ) {
+        
+        [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithDouble:1] forKey:@"jobDistanceFilterValue"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        
+    }
+    else{
+
+        [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithDouble:_jobsDistanceFilterSlider.value*100] forKey:@"jobDistanceFilterValue"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+
+    }
+
+    [_delegate sendFilterDistance:[[[NSUserDefaults standardUserDefaults]
+                                       objectForKey:@"jobDistanceFilterValue"] doubleValue]];
     [_delegate reloadDelegateData];
     [self dismissViewControllerAnimated:YES completion:nil];
 
+    
+}
+- (IBAction)jobsDistanceFilterChanged:(UISlider *)sender {
+    
+    
+  //  alarmLimit = [sender value]*1000;
+    
+    NSLog(@"slider value = %f", sender.value*100);
+    _jobDistanceFilterLabel.text = [NSString stringWithFormat:@"%.0f km",sender.value*100];
+    
+
+    //[soundLimitValueLabel setText:[NSString stringWithFormat:@"%.0f", [sender value]*1000]];
+    
+
+    
+    
     
 }
 @end

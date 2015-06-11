@@ -34,12 +34,22 @@ bool messageIsReceived = NO;
     if (![@"1" isEqualToString:[[NSUserDefaults standardUserDefaults]
                                 objectForKey:@"screenShown"]]) {
         [[NSUserDefaults standardUserDefaults] setValue:@"1" forKey:@"screenShown"];
+        
+        
+        //do other apps setups the first time
+        [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithDouble:30] forKey:@"jobDistanceFilterValue"];
+
         [[NSUserDefaults standardUserDefaults] synchronize];
         
         WelcomeAppChoiceViewController  *appChoice = [[WelcomeAppChoiceViewController alloc] initWithNibName:@"WelcomeAppChoiceView" bundle:nil];
         [self.tabBarController presentViewController:appChoice
                                             animated:YES
                                           completion:nil];
+        
+        
+        
+        
+        
         
     }
     
@@ -54,8 +64,8 @@ bool messageIsReceived = NO;
     
     
     //filter parameters
-    _jobsFilterDistance = [NSNumber numberWithDouble:10];
-    
+    _jobsFilterDistance =[[NSUserDefaults standardUserDefaults] objectForKey:@"jobDistanceFilterValue" ];
+
     
     _noJobsView = [[LoadingJobListEmptyView alloc] init];
 
@@ -763,6 +773,7 @@ bool messageIsReceived = NO;
 
 - (void) sendFilterDistance: (double) distance{
     
+
     _jobsFilterDistance = [NSNumber numberWithDouble:distance];
     
     NSLog(@"delegate called with value, %f", distance);
@@ -773,6 +784,11 @@ bool messageIsReceived = NO;
 - (void) reloadDelegateData{
     
     NSLog(@"reload data called");
+    
+
+    _HUDProgressIndicator = [MBProgressHUD showHUDAddedTo:_jobTable animated:YES];
+    _HUDProgressIndicator.labelText = @"Filtering data ...";
+    _HUDProgressIndicator.mode = MBProgressHUDModeIndeterminate;
     
     [self retrieveFromParse];
 }

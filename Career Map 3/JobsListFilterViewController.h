@@ -24,5 +24,8 @@
 @property(nonatomic,assign)id delegate;
 - (IBAction)cancelFilterButtonPressed:(UIBarButtonItem *)sender;
 - (IBAction)applyFilterButtonPressed:(UIBarButtonItem *)sender;
+@property (weak, nonatomic) IBOutlet UILabel *jobDistanceFilterLabel;
+@property (weak, nonatomic) IBOutlet UISlider *jobsDistanceFilterSlider;
+- (IBAction)jobsDistanceFilterChanged:(UISlider *)sender;
 
 @end
