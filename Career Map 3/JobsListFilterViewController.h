@@ -31,6 +31,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *jobDistanceFilterLabel;
 @property (weak, nonatomic) IBOutlet UISlider *jobsDistanceFilterSlider;
 @property (nonatomic, strong) NSMutableArray *jobCategoriesArray;
+@property (nonatomic, strong) NSMutableArray *jobCategoriesSelectedArray;
+@property (nonatomic, strong) NSMutableArray *updatedJobCategoriesSelectedArray;
+
+
+
+
 @property (weak, nonatomic) IBOutlet UITableView *jobCategoriesTable;
 @property (weak, nonatomic) IBOutlet JobCategoryTableViewCell *jobCategoryCellOutlet;
 

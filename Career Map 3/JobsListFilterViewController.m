@@ -16,6 +16,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    _updatedJobCategoriesSelectedArray = [[NSMutableArray alloc] init];
+
     // Do any additional setup after loading the view.
     
     [_jobsDistanceFilterSlider setValue:[[[NSUserDefaults standardUserDefaults]objectForKey:@"jobDistanceFilterValue"] doubleValue]/100];
@@ -26,10 +29,11 @@
     
     
     NSLog(@"%lu Array of default categories %@",(unsigned long)[[[NSUserDefaults standardUserDefaults] objectForKey:@"jobsCategoriesArray"] count], [[NSUserDefaults standardUserDefaults] objectForKey:@"jobsCategoriesArray"]);
+    _jobCategoriesSelectedArray =[[NSUserDefaults standardUserDefaults] objectForKey:@"jobsCategoriesArray"];
+   
     
-
-    //_jobCategoriesArray =[[NSUserDefaults standardUserDefaults] objectForKey:@"jobsCategoriesArray"];
-   // NSLog(@"%@", _jobCategoriesArray);
+    
+    // NSLog(@"%@", _jobCategoriesArray);
     
     [self retrieveJobCategoriesFromParse];
 
@@ -77,15 +81,11 @@
                                        objectForKey:@"jobDistanceFilterValue"] doubleValue]];
     
     //this array "testArray" will be replaced by what you have from categories
-    NSMutableArray *testArray = [[NSMutableArray alloc] init];
-    [testArray addObject:@"segXAhy6JS"];
-    [[NSUserDefaults standardUserDefaults] setObject:testArray forKey:@"jobsCategorySelectedArrayForFilter"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-
+    //NSMutableArray *testArray = [[NSMutableArray alloc] init];
+   // [testArray addObject:@"segXAhy6JS"];
     
-    
-    
-    [_delegate sendFilterCategoriesSelected:testArray];
+    [[NSUserDefaults standardUserDefaults] setObject:_updatedJobCategoriesSelectedArray forKey:@"jobsCategorySelectedArrayForFilter"];
+    [_delegate sendFilterCategoriesSelected:_updatedJobCategoriesSelectedArray];
     
     [_delegate reloadDelegateData];
 
@@ -173,10 +173,37 @@
     
     cell.categoryNameLabel.text = [jobCategoryObject objectForKey:@"name"];
     
+    
+    
+    if ([[jobCategoryObject objectId] isEqualToString:[_jobCategoriesSelectedArray objectAtIndex:indexPath.row]]) {
+        cell.backgroundColor = [UIColor greenColor];
+        NSLog(@"found");
+    }
+    
+    else{
+        cell.backgroundColor = [UIColor whiteColor];
+
+        NSLog(@"not found");
+    }
+    
  
     return cell;
     
 }
+
+
+- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    [_updatedJobCategoriesSelectedArray addObject:[[_jobCategoriesArray objectAtIndex:indexPath.row] objectId]];
+    
+    return indexPath;
+   
+    
+}
+
+
+
+
 
 
 

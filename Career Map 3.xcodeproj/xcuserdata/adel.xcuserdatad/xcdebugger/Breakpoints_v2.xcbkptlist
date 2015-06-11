@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Career Map 3/JobsListFilterViewController.m"
-            timestampString = "455717737.300264"
+            timestampString = "455721232.43388"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "131"
-            endingLineNumber = "131"
-            landmarkName = "-retrieveJobCategoriesFromParse"
+            startingLineNumber = "199"
+            endingLineNumber = "199"
+            landmarkName = "-tableView:willSelectRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

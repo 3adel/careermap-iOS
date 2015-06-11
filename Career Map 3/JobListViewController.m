@@ -191,6 +191,8 @@ bool messageIsReceived = NO;
                         
                         [_jobTable addSubview:_noJobsView];
                         
+                        _jobListNavigationItem.title = [NSString stringWithFormat:@"%d Jobs Around You",0];
+                        
 
                     }
                     
