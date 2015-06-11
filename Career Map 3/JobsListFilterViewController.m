@@ -39,4 +39,13 @@
     [self dismissViewControllerAnimated:YES completion:nil];
     
 }
+
+- (IBAction)applyFilterButtonPressed:(UIBarButtonItem *)sender {
+    
+    [_delegate sendFilterDistance:100];
+    [_delegate reloadDelegateData];
+    [self dismissViewControllerAnimated:YES completion:nil];
+
+    
+}
 @end

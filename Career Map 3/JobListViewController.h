@@ -18,7 +18,7 @@
 #import "LoadingJobListEmptyView.h"
 #import "AppDelegate.h"
 #import "JobsListFilterViewController.h"
-@interface JobListViewController : UITableViewController <CLLocationManagerDelegate,MBProgressHUDDelegate>
+@interface JobListViewController : UITableViewController <CLLocationManagerDelegate,MBProgressHUDDelegate, sendFilterData>
 
 {
     
@@ -43,6 +43,11 @@
 @property (nonatomic, strong) NSString *jobEmployerUserObjectID;
 @property (nonatomic, strong) PFUser *jobPosterPFUser;
 @property (nonatomic, strong) MBProgressHUD *HUDProgressIndicator;
+
+
+//data
+@property (nonatomic, strong) NSNumber *jobsFilterDistance;
+
 
 //track if the user received a message push notif
 

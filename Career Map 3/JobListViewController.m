@@ -51,6 +51,12 @@ bool messageIsReceived = NO;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
+    
+    //filter parameters
+    _jobsFilterDistance = [NSNumber numberWithDouble:10];
+    
+    
     _noJobsView = [[LoadingJobListEmptyView alloc] init];
 
     
@@ -151,7 +157,7 @@ bool messageIsReceived = NO;
     [retrieveJobs whereKey:@"jobIndustry" containedIn:arrayOfCategoriesSelected];
     */
     
-    [retrieveJobs whereKey:@"geolocation" nearGeoPoint:self.userLocation withinKilometers:100];
+    [retrieveJobs whereKey:@"geolocation" nearGeoPoint:self.userLocation withinKilometers:_jobsFilterDistance.doubleValue];
   
     retrieveJobs.limit =1000;
     //[retrieveJobs orderByDescending:@"createdAt"];
@@ -749,13 +755,27 @@ bool messageIsReceived = NO;
     
     JobsListFilterViewController *jobsFilterVC = [[JobsListFilterViewController alloc] initWithNibName:@"JobsListFilterView" bundle:nil];
     
+    jobsFilterVC.delegate = self;
     [self presentViewController:jobsFilterVC animated:YES completion:nil];
-    
     
     
 }
 
+- (void) sendFilterDistance: (double) distance{
+    
+    _jobsFilterDistance = [NSNumber numberWithDouble:distance];
+    
+    NSLog(@"delegate called with value, %f", distance);
+}
 
+
+
+- (void) reloadDelegateData{
+    
+    NSLog(@"reload data called");
+    
+    [self retrieveFromParse];
+}
 
 
 

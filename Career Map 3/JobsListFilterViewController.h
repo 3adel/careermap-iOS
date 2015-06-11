@@ -8,7 +8,21 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol sendFilterData <NSObject>
+
+- (void) sendFilterDistance: (double) distance;
+- (void) reloadDelegateData;
+
+
+@end
+
+
+
 @interface JobsListFilterViewController : UIViewController
+
+
+@property(nonatomic,assign)id delegate;
 - (IBAction)cancelFilterButtonPressed:(UIBarButtonItem *)sender;
+- (IBAction)applyFilterButtonPressed:(UIBarButtonItem *)sender;
 
 @end

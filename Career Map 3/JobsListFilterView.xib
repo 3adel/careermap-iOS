@@ -26,7 +26,11 @@
                                     <action selector="cancelFilterButtonPressed:" destination="-1" id="euu-21-lEy"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem key="rightBarButtonItem" title="Apply" id="wKW-KN-aoo"/>
+                            <barButtonItem key="rightBarButtonItem" title="Apply" id="wKW-KN-aoo">
+                                <connections>
+                                    <action selector="applyFilterButtonPressed:" destination="-1" id="czy-gB-hPN"/>
+                                </connections>
+                            </barButtonItem>
                         </navigationItem>
                     </items>
                 </navigationBar>
