@@ -48,6 +48,11 @@
 //data
 @property (nonatomic, strong) NSNumber *jobsFilterDistance;
 @property (weak, nonatomic) IBOutlet UINavigationItem *jobListNavigationItem;
+@property (nonatomic, strong) NSMutableArray *jobCategoriesArray;
+@property (nonatomic, strong) NSMutableArray *jobCategoriesSelectedArray;
+@property (nonatomic, strong) NSMutableDictionary *jobCategoriesSelectedDictionary;
+
+
 
 
 //track if the user received a message push notif
@@ -56,5 +61,6 @@
 - (void) changeMessageIsReceivedValue;
 
 - (IBAction)filterJobsButtonPressed:(UIBarButtonItem *)sender;
+- (void) retrieveJobCategoriesFromParse;
 
 @end

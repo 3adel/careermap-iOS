@@ -41,6 +41,9 @@ bool messageIsReceived = NO;
 
         [[NSUserDefaults standardUserDefaults] synchronize];
         
+        
+        [self retrieveJobCategoriesFromParse];
+
         WelcomeAppChoiceViewController  *appChoice = [[WelcomeAppChoiceViewController alloc] initWithNibName:@"WelcomeAppChoiceView" bundle:nil];
         [self.tabBarController presentViewController:appChoice
                                             animated:YES
@@ -65,8 +68,9 @@ bool messageIsReceived = NO;
     
     //filter parameters
     _jobsFilterDistance =[[NSUserDefaults standardUserDefaults] objectForKey:@"jobDistanceFilterValue" ];
+    _jobCategoriesSelectedArray =[[NSUserDefaults standardUserDefaults] objectForKey:@"jobsCategorySelectedArrayForFilter" ];
 
-    
+
     _noJobsView = [[LoadingJobListEmptyView alloc] init];
 
     
@@ -160,13 +164,14 @@ bool messageIsReceived = NO;
 
 
     
-    /* use this to filter jobs. Should create a property to hold categories selected and use validation
-    NSMutableArray *arrayOfCategoriesSelected = [[NSMutableArray alloc] init];
-    [arrayOfCategoriesSelected addObject:[PFObject objectWithoutDataWithClassName:@"JobIndustry" objectId:@"2IQctpGvTL"]];
-        [arrayOfCategoriesSelected addObject:[PFObject objectWithoutDataWithClassName:@"JobIndustry" objectId:@"r9VDHBPpvR"]];
-    [retrieveJobs whereKey:@"jobIndustry" containedIn:arrayOfCategoriesSelected];
-    */
-    
+    //Prepare filterd categories
+    NSMutableArray *arrayOfCategoriesSelectedAsPFObjects = [[NSMutableArray alloc] init];
+    for (NSString *categoryObject in _jobCategoriesSelectedArray) {
+   [arrayOfCategoriesSelectedAsPFObjects addObject:[PFObject objectWithoutDataWithClassName:@"JobIndustry" objectId:categoryObject]];
+
+    }
+
+    [retrieveJobs whereKey:@"jobIndustry" containedIn:arrayOfCategoriesSelectedAsPFObjects];
     [retrieveJobs whereKey:@"geolocation" nearGeoPoint:self.userLocation withinKilometers:_jobsFilterDistance.doubleValue];
   
     retrieveJobs.limit =1000;
@@ -435,6 +440,8 @@ bool messageIsReceived = NO;
         
     }];
     
+    NSLog(@"retrieve from parse called")
+    ;
     
 }
 
@@ -795,6 +802,55 @@ bool messageIsReceived = NO;
     _HUDProgressIndicator.mode = MBProgressHUDModeIndeterminate;
     
     [self retrieveFromParse];
+}
+
+
+
+- (void) retrieveJobCategoriesFromParse{
+    
+    NSLog(@"rerieve jobs categories from parse called");
+    
+    PFQuery *jobsCategoriesQuery = [PFQuery queryWithClassName:@"JobIndustry"];
+    [jobsCategoriesQuery setLimit:1000];
+    [jobsCategoriesQuery orderByAscending:@"name"];
+    [jobsCategoriesQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            //NSLog(@"object = %@", objects);
+            
+            _jobCategoriesArray = [[NSMutableArray alloc] initWithArray:
+                                   objects];
+            _jobCategoriesSelectedArray = [[NSMutableArray alloc] init];
+            _jobCategoriesSelectedDictionary =[[NSMutableDictionary alloc] init];
+            
+            int count =0;
+            for (PFObject *categoryObject in _jobCategoriesArray) {
+                [_jobCategoriesSelectedArray addObject:[categoryObject objectId]];
+                [_jobCategoriesSelectedDictionary setValue:[categoryObject objectForKey:@"name"] forKey:[categoryObject objectId]];
+                
+                count++;
+            }
+            
+            
+            //save categories selected to device
+            [[NSUserDefaults standardUserDefaults] setObject:_jobCategoriesSelectedDictionary forKey:@"jobsCategorySelectedDictionaryForFilter"];
+            [[NSUserDefaults standardUserDefaults] setObject:_jobCategoriesSelectedArray forKey:@"jobsCategorySelectedArrayForFilter"];
+            
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            
+  
+            //refresh once categories are availabe for the first time
+            [self retrieveFromParse];
+            
+        }
+        
+        else{
+            NSLog(@"error finding jobs category objects");
+            
+            
+        }
+    }];
+    
+    
 }
 
 
