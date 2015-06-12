@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 #import "JobCategoryTableViewCell.h"
+#import "MBProgressHUD.h"
 
 @protocol sendFilterData <NSObject>
 
@@ -40,6 +41,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *jobCategoriesTable;
 @property (weak, nonatomic) IBOutlet JobCategoryTableViewCell *jobCategoryCellOutlet;
+@property (nonatomic, strong) MBProgressHUD *HUDProgressIndicator;
 
 
 - (IBAction)jobsDistanceFilterChanged:(UISlider *)sender;

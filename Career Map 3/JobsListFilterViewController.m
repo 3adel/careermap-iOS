@@ -127,6 +127,13 @@ _updatedJobCategoriesSelectedArray= [[[NSUserDefaults standardUserDefaults] obje
 
 - (void) retrieveJobCategoriesFromParse{
     
+    //start animating progress indicator
+    _HUDProgressIndicator = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    _HUDProgressIndicator.labelText = @"Loading industries ...";
+    _HUDProgressIndicator.mode = MBProgressHUDModeIndeterminate;
+    
+    
+    
     NSLog(@"rerieve jobs categories from parse called");
     
     PFQuery *jobsCategoriesQuery = [PFQuery queryWithClassName:@"JobIndustry"];
@@ -137,7 +144,7 @@ _updatedJobCategoriesSelectedArray= [[[NSUserDefaults standardUserDefaults] obje
             //NSLog(@"object = %@", objects);
             
             _jobCategoriesArray = [[NSMutableArray alloc] initWithArray:objects];
-            
+            _HUDProgressIndicator.hidden =YES;
             
         
             }
@@ -145,7 +152,7 @@ _updatedJobCategoriesSelectedArray= [[[NSUserDefaults standardUserDefaults] obje
         
         else{
             NSLog(@"error finding jobs category objects");
-            
+            _HUDProgressIndicator.hidden =YES;
             
         }
         
