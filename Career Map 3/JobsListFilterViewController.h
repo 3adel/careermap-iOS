@@ -33,6 +33,7 @@
 @property (nonatomic, strong) NSMutableArray *jobCategoriesArray;
 @property (nonatomic, strong) NSMutableArray *jobCategoriesSelectedArray;
 @property (nonatomic, strong) NSMutableArray *updatedJobCategoriesSelectedArray;
+@property (nonatomic, strong) NSMutableArray *removeCategoriesArray;
 
 
 

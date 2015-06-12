@@ -17,8 +17,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _updatedJobCategoriesSelectedArray = [[NSMutableArray alloc] init];
 
+    _removeCategoriesArray = [[NSMutableArray alloc] init];
     // Do any additional setup after loading the view.
     
     [_jobsDistanceFilterSlider setValue:[[[NSUserDefaults standardUserDefaults]objectForKey:@"jobDistanceFilterValue"] doubleValue]/100];
@@ -28,10 +28,12 @@
     _jobDistanceFilterLabel.text = [NSString stringWithFormat:@"%.0f km",[[[NSUserDefaults standardUserDefaults]objectForKey:@"jobDistanceFilterValue"] doubleValue]];
     
     
-    NSLog(@"%lu Array of default categories %@",(unsigned long)[[[NSUserDefaults standardUserDefaults] objectForKey:@"jobsCategoriesArray"] count], [[NSUserDefaults standardUserDefaults] objectForKey:@"jobsCategoriesArray"]);
+    //NSLog(@"%lu Array of default categories %@",(unsigned long)[[[NSUserDefaults standardUserDefaults] objectForKey:@"jobsCategoriesArray"] count], [[NSUserDefaults standardUserDefaults] objectForKey:@"jobsCategoriesArray"]);
     _jobCategoriesSelectedArray =[[NSUserDefaults standardUserDefaults] objectForKey:@"jobsCategoriesArray"];
-   
     
+    
+   // _updatedJobCategoriesSelectedArray = [_jobCategoriesSelectedArray mutableCopy];
+_updatedJobCategoriesSelectedArray= [[[NSUserDefaults standardUserDefaults] objectForKey:@"jobsCategorySelectedArrayForFilter"] mutableCopy];
     
     // NSLog(@"%@", _jobCategoriesArray);
     
@@ -84,7 +86,15 @@
     //NSMutableArray *testArray = [[NSMutableArray alloc] init];
    // [testArray addObject:@"segXAhy6JS"];
     
+    
+    //remove selected items from array
+   // [_updatedJobCategoriesSelectedArray removeObjectsInArray:_removeCategoriesArray];
+    
+    
     [[NSUserDefaults standardUserDefaults] setObject:_updatedJobCategoriesSelectedArray forKey:@"jobsCategorySelectedArrayForFilter"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+
+    
     [_delegate sendFilterCategoriesSelected:_updatedJobCategoriesSelectedArray];
     
     [_delegate reloadDelegateData];
@@ -173,18 +183,26 @@
     
     cell.categoryNameLabel.text = [jobCategoryObject objectForKey:@"name"];
     
-    
-    
-    if ([[jobCategoryObject objectId] isEqualToString:[_jobCategoriesSelectedArray objectAtIndex:indexPath.row]]) {
-        cell.backgroundColor = [UIColor greenColor];
+    if ([_updatedJobCategoriesSelectedArray containsObject:[_jobCategoriesSelectedArray objectAtIndex:indexPath.row]]){
+       // cell.backgroundColor = [UIColor greenColor];
+        [cell setBackgroundColor:[UIColor colorWithRed:220.0/255.0 green:234.0/255.0 blue:254.0/255.0 alpha:1]];
+        cell.categoryNameLabel.font = [UIFont boldSystemFontOfSize:17.0];
+        
         NSLog(@"found");
+        
+    }
+    else{
+        
+        cell.backgroundColor = [UIColor whiteColor];
+        cell.categoryNameLabel.font = [UIFont systemFontOfSize:17.0];
+
+        
+        NSLog(@"not found");
+        
+        
     }
     
-    else{
-        cell.backgroundColor = [UIColor whiteColor];
-
-        NSLog(@"not found");
-    }
+    
     
  
     return cell;
@@ -194,7 +212,59 @@
 
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    [_updatedJobCategoriesSelectedArray addObject:[[_jobCategoriesArray objectAtIndex:indexPath.row] objectId]];
+    
+    
+   // _updatedJobCategoriesSelectedArray= [[NSMutableArray alloc] init];
+    //[_updatedJobCategoriesSelectedArray addObject:[[_jobCategoriesArray objectAtIndex:indexPath.row] objectId]];
+    
+
+   // if (<#condition#>) {
+     //   <#statements#>
+   // }
+    //if the row tapped exists already in the updated job categories array
+        //don'e add it,
+    
+    
+    if ([_updatedJobCategoriesSelectedArray containsObject:[[_jobCategoriesArray objectAtIndex:indexPath.row] objectId]]) {
+        
+        //[_updatedJobCategoriesSelectedArray removeObjectIdenticalTo:[[_jobCategoriesArray objectAtIndex:indexPath.row] objectId]];
+        
+        [_updatedJobCategoriesSelectedArray removeObject:[[_jobCategoriesArray objectAtIndex:indexPath.row] objectId]];
+        
+
+        //set  cell color to gray
+        
+        //when area is available, update the respective cell
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            [_jobCategoriesTable beginUpdates];
+            [_jobCategoriesTable reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+            [_jobCategoriesTable endUpdates];
+        });
+        
+        
+        
+        
+        //[_removeCategoriesArray addObject:[[_jobCategoriesArray objectAtIndex:indexPath.row] objectId]];
+        //store indices
+        //do nothing
+    }
+    else{
+        
+        [_updatedJobCategoriesSelectedArray addObject:[[_jobCategoriesArray objectAtIndex:indexPath.row] objectId]];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            [_jobCategoriesTable beginUpdates];
+            [_jobCategoriesTable reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+            [_jobCategoriesTable endUpdates];
+        });
+        
+        //set  cell color to green
+
+    }
+    
     
     return indexPath;
    

@@ -843,7 +843,7 @@ bool messageIsReceived = NO;
             //save all categories and categories selected to device
             [[NSUserDefaults standardUserDefaults] setObject:_jobCategoriesSelectedArray forKey:@"jobsCategoriesArray"];
             [[NSUserDefaults standardUserDefaults] setObject:_jobCategoriesSelectedArray forKey:@"jobsCategorySelectedArrayForFilter"];
-            [[NSUserDefaults standardUserDefaults] setObject:_jobCategoriesSelectedDictionary forKey:@"jobsCategorySelectedDictionaryForFilter"];
+           // [[NSUserDefaults standardUserDefaults] setObject:_jobCategoriesSelectedDictionary forKey:@"jobsCategorySelectedDictionaryForFilter"];
 
             [[NSUserDefaults standardUserDefaults] synchronize];
             
