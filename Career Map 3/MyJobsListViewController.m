@@ -288,6 +288,9 @@
                         
                         [_HUDProgressIndicator hide:YES];
                         
+                        _myJobsArray = [[NSMutableArray alloc] init];
+
+
                         
                         
                     }
@@ -298,6 +301,7 @@
             else{
                 
                 _myJobsArray = [[NSMutableArray alloc] initWithArray:objects];
+                
                 
                 [_noJobsView setHidden:YES];
 
