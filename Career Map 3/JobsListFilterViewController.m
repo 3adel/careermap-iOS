@@ -65,45 +65,58 @@ _updatedJobCategoriesSelectedArray= [[[NSUserDefaults standardUserDefaults] obje
 - (IBAction)applyFilterButtonPressed:(UIBarButtonItem *)sender {
 
     
-    //prevent filter value from being 0
-    if (!_jobsDistanceFilterSlider.value ) {
-        
-        [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithDouble:1] forKey:@"jobDistanceFilterValue"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-        
+    if (_updatedJobCategoriesSelectedArray.count ==0) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Select an industry" message:@"Please select at least one industry" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        [alert show];
     }
+    
     else{
-
-        [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithDouble:_jobsDistanceFilterSlider.value*100] forKey:@"jobDistanceFilterValue"];
+        
+        //prevent filter value from being 0
+        if (!_jobsDistanceFilterSlider.value ) {
+            
+            [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithDouble:1] forKey:@"jobDistanceFilterValue"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            
+        }
+        else{
+            
+            [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithDouble:_jobsDistanceFilterSlider.value*100] forKey:@"jobDistanceFilterValue"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            
+        }
+        
+        [_delegate sendFilterDistance:[[[NSUserDefaults standardUserDefaults]
+                                        objectForKey:@"jobDistanceFilterValue"] doubleValue]];
+        
+        //this array "testArray" will be replaced by what you have from categories
+        //NSMutableArray *testArray = [[NSMutableArray alloc] init];
+        // [testArray addObject:@"segXAhy6JS"];
+        
+        
+        //remove selected items from array
+        // [_updatedJobCategoriesSelectedArray removeObjectsInArray:_removeCategoriesArray];
+        
+        
+        [[NSUserDefaults standardUserDefaults] setObject:_updatedJobCategoriesSelectedArray forKey:@"jobsCategorySelectedArrayForFilter"];
         [[NSUserDefaults standardUserDefaults] synchronize];
+        
+        
+        [_delegate sendFilterCategoriesSelected:_updatedJobCategoriesSelectedArray];
+        
+        [_delegate reloadDelegateData];
+        
+        //- (void) sendFilterCategoriesSelected: (NSMutableArray *) categoriesSelected;
+        
+        
+        [self dismissViewControllerAnimated:YES completion:nil];
+        
 
+        
+        
     }
-
-    [_delegate sendFilterDistance:[[[NSUserDefaults standardUserDefaults]
-                                       objectForKey:@"jobDistanceFilterValue"] doubleValue]];
-    
-    //this array "testArray" will be replaced by what you have from categories
-    //NSMutableArray *testArray = [[NSMutableArray alloc] init];
-   // [testArray addObject:@"segXAhy6JS"];
     
     
-    //remove selected items from array
-   // [_updatedJobCategoriesSelectedArray removeObjectsInArray:_removeCategoriesArray];
-    
-    
-    [[NSUserDefaults standardUserDefaults] setObject:_updatedJobCategoriesSelectedArray forKey:@"jobsCategorySelectedArrayForFilter"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-
-    
-    [_delegate sendFilterCategoriesSelected:_updatedJobCategoriesSelectedArray];
-    
-    [_delegate reloadDelegateData];
-
-    //- (void) sendFilterCategoriesSelected: (NSMutableArray *) categoriesSelected;
-
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
-
     
 }
 - (IBAction)jobsDistanceFilterChanged:(UISlider *)sender {
@@ -218,44 +231,20 @@ _updatedJobCategoriesSelectedArray= [[[NSUserDefaults standardUserDefaults] obje
 
 
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    
-    
-   // _updatedJobCategoriesSelectedArray= [[NSMutableArray alloc] init];
-    //[_updatedJobCategoriesSelectedArray addObject:[[_jobCategoriesArray objectAtIndex:indexPath.row] objectId]];
-    
 
-   // if (<#condition#>) {
-     //   <#statements#>
-   // }
     //if the row tapped exists already in the updated job categories array
         //don'e add it,
-    
-    
     if ([_updatedJobCategoriesSelectedArray containsObject:[[_jobCategoriesArray objectAtIndex:indexPath.row] objectId]]) {
-        
-        //[_updatedJobCategoriesSelectedArray removeObjectIdenticalTo:[[_jobCategoriesArray objectAtIndex:indexPath.row] objectId]];
-        
-        [_updatedJobCategoriesSelectedArray removeObject:[[_jobCategoriesArray objectAtIndex:indexPath.row] objectId]];
-        
 
-        //set  cell color to gray
-        
-        //when area is available, update the respective cell
-        
+        [_updatedJobCategoriesSelectedArray removeObject:[[_jobCategoriesArray objectAtIndex:indexPath.row] objectId]];
+
         dispatch_async(dispatch_get_main_queue(), ^{
             
             [_jobCategoriesTable beginUpdates];
             [_jobCategoriesTable reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
             [_jobCategoriesTable endUpdates];
         });
-        
-        
-        
-        
-        //[_removeCategoriesArray addObject:[[_jobCategoriesArray objectAtIndex:indexPath.row] objectId]];
-        //store indices
-        //do nothing
+
     }
     else{
         
@@ -285,4 +274,24 @@ _updatedJobCategoriesSelectedArray= [[[NSUserDefaults standardUserDefaults] obje
 
 
 
+- (IBAction)selectAllCategoriesSwitchValueChanged:(UISwitch *)sender {
+    
+    if (sender.isOn) {
+        NSLog(@"on");
+        _updatedJobCategoriesSelectedArray = [_jobCategoriesSelectedArray mutableCopy];
+        
+        [_jobCategoriesTable reloadData];
+    }
+    else if (!sender.isOn){
+        NSLog(@"off");
+        
+         [_updatedJobCategoriesSelectedArray removeAllObjects];
+
+        [_jobCategoriesTable reloadData];
+
+
+    }
+    
+    
+}
 @end

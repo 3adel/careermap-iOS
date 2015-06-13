@@ -69,6 +69,12 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="51r-gV-BPc">
+                    <rect key="frame" x="184" y="131" width="51" height="31"/>
+                    <connections>
+                        <action selector="selectAllCategoriesSwitchValueChanged:" destination="-1" eventType="valueChanged" id="ApY-xp-FLh"/>
+                    </connections>
+                </switch>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
