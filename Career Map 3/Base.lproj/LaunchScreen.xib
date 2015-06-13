@@ -23,8 +23,8 @@
                         <constraint firstAttribute="height" constant="200" id="64s-zc-uGk"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Areeb" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Nz-yB-JiE">
-                    <rect key="frame" x="201" y="350" width="78" height="36"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Career Map" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Nz-yB-JiE">
+                    <rect key="frame" x="163" y="350" width="155" height="36"/>
                     <fontDescription key="fontDescription" type="system" pointSize="30"/>
                     <color key="textColor" red="0.21251562866614726" green="0.63967899732533706" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
