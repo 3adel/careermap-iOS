@@ -37,7 +37,7 @@ bool messageIsReceived = NO;
         
         
         //do other apps setups the first time
-        [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithDouble:30] forKey:@"jobDistanceFilterValue"];
+        [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithDouble:100] forKey:@"jobDistanceFilterValue"];
 
         [[NSUserDefaults standardUserDefaults] synchronize];
         
@@ -806,8 +806,8 @@ bool messageIsReceived = NO;
     NSLog(@"reload data called");
     
 
-    _HUDProgressIndicator = [MBProgressHUD showHUDAddedTo:_jobTable animated:YES];
-    _HUDProgressIndicator.labelText = @"Filtering data ...";
+    _HUDProgressIndicator = [MBProgressHUD showHUDAddedTo:[_jobTable superview] animated:YES];
+    _HUDProgressIndicator.labelText = @"Filtering jobs ...";
     _HUDProgressIndicator.mode = MBProgressHUDModeIndeterminate;
     
     [self retrieveFromParse];

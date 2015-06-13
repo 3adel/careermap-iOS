@@ -111,6 +111,7 @@
     
     if (self.jobTitle) {
         self.jobTitleTextView.text= self.jobTitle;
+        self.jobDetailsNavigationItem.title =self.jobTitle;
     }
     
     if (self.jobArea) {

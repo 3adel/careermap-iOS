@@ -502,6 +502,7 @@
                         <outlet property="jobCompensationTextView" destination="GOb-4X-C9H" id="X43-6C-5Y4"/>
                         <outlet property="jobDateAddedLabel" destination="so5-tk-zYr" id="Rf1-Ee-3gv"/>
                         <outlet property="jobDescriptionLabel" destination="4IS-Nq-Qj6" id="fBj-Wr-hyJ"/>
+                        <outlet property="jobDetailsNavigationItem" destination="Vjd-w7-ijy" id="QLm-Od-JJF"/>
                         <outlet property="jobDetailsScrollView" destination="PjM-Ma-zcP" id="75T-Iz-tHr"/>
                         <outlet property="jobDistanceFromUserLabel" destination="8KK-5d-Dtd" id="KaC-NT-fNs"/>
                         <outlet property="jobEducationTextView" destination="Dr1-So-jUU" id="nd8-jG-Crh"/>
@@ -662,7 +663,7 @@
                             <scrollView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ll-3J-egv">
                                 <rect key="frame" x="16" y="64" width="568" height="1087"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WmF-te-Ccs" userLabel="Job Seeker Thumb">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Default_Profile_Picture@3x.png" translatesAutoresizingMaskIntoConstraints="NO" id="WmF-te-Ccs" userLabel="Job Seeker Thumb">
                                         <rect key="frame" x="236" y="22" width="95" height="95"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>

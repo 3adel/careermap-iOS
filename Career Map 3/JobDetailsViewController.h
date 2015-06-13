@@ -90,6 +90,7 @@
 @property (nonatomic,strong) PFObject *jobObject;
 @property BOOL jobIsReportedByThisUser;
 @property (nonatomic, strong) MBProgressHUD *HUDProgressIndicator;
+@property (weak, nonatomic) IBOutlet UINavigationItem *jobDetailsNavigationItem;
 
 
 //methods

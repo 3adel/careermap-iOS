@@ -138,6 +138,9 @@
     _HUDProgressIndicator.labelText = @"Loading industries ...";
     _HUDProgressIndicator.mode = MBProgressHUDModeIndeterminate;
     
+    
+    
+    
     PFQuery *jobsCategoriesQuery = [PFQuery queryWithClassName:@"JobIndustry"];
     [jobsCategoriesQuery setLimit:1000];
     [jobsCategoriesQuery orderByAscending:@"name"];

@@ -49,14 +49,14 @@
                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="2" translatesAutoresizingMaskIntoConstraints="NO" id="0hz-OG-7RE">
+                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="0hz-OG-7RE">
                     <rect key="frame" x="8" y="97" width="574" height="31"/>
                     <connections>
                         <action selector="jobsDistanceFilterChanged:" destination="-1" eventType="valueChanged" id="Qnd-Mn-BLk"/>
                     </connections>
                 </slider>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="DCd-jm-EBf">
-                    <rect key="frame" x="0.0" y="170" width="600" height="430"/>
+                    <rect key="frame" x="0.0" y="208" width="600" height="392"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="J5i-cw-TaP"/>
@@ -69,8 +69,14 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="51r-gV-BPc">
-                    <rect key="frame" x="184" y="131" width="51" height="31"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select All" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r85-zh-6aJ">
+                    <rect key="frame" x="8" y="175" width="64" height="18"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="51r-gV-BPc">
+                    <rect key="frame" x="82" y="168" width="51" height="31"/>
                     <connections>
                         <action selector="selectAllCategoriesSwitchValueChanged:" destination="-1" eventType="valueChanged" id="ApY-xp-FLh"/>
                     </connections>
@@ -83,21 +89,27 @@
                 <constraint firstAttribute="trailing" secondItem="DCd-jm-EBf" secondAttribute="trailing" id="4Jf-85-dB7"/>
                 <constraint firstItem="DCd-jm-EBf" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="4Rm-x5-k1l"/>
                 <constraint firstItem="0hz-OG-7RE" firstAttribute="leading" secondItem="aec-Dw-X1g" secondAttribute="leading" id="CV3-BR-M8M"/>
-                <constraint firstItem="DCd-jm-EBf" firstAttribute="top" secondItem="OxQ-iB-VfL" secondAttribute="bottom" constant="10" id="Df0-SB-kre"/>
+                <constraint firstItem="51r-gV-BPc" firstAttribute="leading" secondItem="r85-zh-6aJ" secondAttribute="trailing" constant="10" id="DOP-Gw-7u4"/>
+                <constraint firstItem="DCd-jm-EBf" firstAttribute="top" secondItem="OxQ-iB-VfL" secondAttribute="bottom" constant="70" id="Df0-SB-kre"/>
+                <constraint firstItem="51r-gV-BPc" firstAttribute="centerY" secondItem="r85-zh-6aJ" secondAttribute="centerY" constant="-0.5" id="EAY-Mu-Zqj"/>
                 <constraint firstItem="jwI-RR-YKZ" firstAttribute="leading" secondItem="aec-Dw-X1g" secondAttribute="trailing" constant="10" id="EB2-oJ-Vtp"/>
+                <constraint firstItem="DCd-jm-EBf" firstAttribute="top" secondItem="r85-zh-6aJ" secondAttribute="bottom" constant="15" id="H6U-7I-lf4"/>
                 <constraint firstAttribute="trailing" secondItem="tTq-mf-Cds" secondAttribute="trailing" id="KA6-oj-WTk"/>
                 <constraint firstItem="OxQ-iB-VfL" firstAttribute="top" secondItem="0hz-OG-7RE" secondAttribute="bottom" constant="15" id="MKj-0s-SUj"/>
                 <constraint firstItem="aec-Dw-X1g" firstAttribute="leading" secondItem="OxQ-iB-VfL" secondAttribute="leading" constant="2" id="MwL-T5-Mzm"/>
+                <constraint firstItem="r85-zh-6aJ" firstAttribute="top" secondItem="OxQ-iB-VfL" secondAttribute="bottom" constant="15" id="WYg-WD-NcI"/>
                 <constraint firstAttribute="bottom" secondItem="DCd-jm-EBf" secondAttribute="bottom" id="a3k-A9-K0c"/>
                 <constraint firstItem="DCd-jm-EBf" firstAttribute="top" secondItem="tTq-mf-Cds" secondAttribute="bottom" id="bHp-wq-07Z"/>
                 <constraint firstItem="aec-Dw-X1g" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="bXT-Io-IZ2"/>
                 <constraint firstItem="aec-Dw-X1g" firstAttribute="top" secondItem="tTq-mf-Cds" secondAttribute="bottom" constant="10" id="fdL-9a-W0X"/>
                 <constraint firstItem="tTq-mf-Cds" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="i2x-JD-ffS"/>
+                <constraint firstItem="OxQ-iB-VfL" firstAttribute="leading" secondItem="r85-zh-6aJ" secondAttribute="leading" id="lEn-Kc-BhA"/>
                 <constraint firstItem="jwI-RR-YKZ" firstAttribute="centerY" secondItem="aec-Dw-X1g" secondAttribute="centerY" id="wYh-bF-Vne"/>
                 <constraint firstItem="0hz-OG-7RE" firstAttribute="top" secondItem="aec-Dw-X1g" secondAttribute="bottom" constant="5" id="wj5-ZT-Cyu"/>
             </constraints>
             <variation key="default">
                 <mask key="constraints">
+                    <exclude reference="Df0-SB-kre"/>
                     <exclude reference="bHp-wq-07Z"/>
                 </mask>
             </variation>

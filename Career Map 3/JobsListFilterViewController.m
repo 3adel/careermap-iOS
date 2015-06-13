@@ -66,7 +66,7 @@ _updatedJobCategoriesSelectedArray= [[[NSUserDefaults standardUserDefaults] obje
 
     
     if (_updatedJobCategoriesSelectedArray.count ==0) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Select an industry" message:@"Please select at least one industry" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error!" message:@"Please select at least one job industry" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
         [alert show];
     }
     
@@ -144,8 +144,8 @@ _updatedJobCategoriesSelectedArray= [[[NSUserDefaults standardUserDefaults] obje
     _HUDProgressIndicator = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     _HUDProgressIndicator.labelText = @"Loading industries ...";
     _HUDProgressIndicator.mode = MBProgressHUDModeIndeterminate;
-    
-    
+    [_jobCategoriesTable setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    [_jobsDistanceFilterSlider setEnabled:NO];
     
     NSLog(@"rerieve jobs categories from parse called");
     
@@ -159,6 +159,8 @@ _updatedJobCategoriesSelectedArray= [[[NSUserDefaults standardUserDefaults] obje
             _jobCategoriesArray = [[NSMutableArray alloc] initWithArray:objects];
             _HUDProgressIndicator.hidden =YES;
             
+            [_jobCategoriesTable setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
+            [_jobsDistanceFilterSlider setEnabled:YES];
         
             }
 
@@ -166,6 +168,8 @@ _updatedJobCategoriesSelectedArray= [[[NSUserDefaults standardUserDefaults] obje
         else{
             NSLog(@"error finding jobs category objects");
             _HUDProgressIndicator.hidden =YES;
+            [_jobCategoriesTable setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
+            [_jobsDistanceFilterSlider setEnabled:YES];
             
         }
         
