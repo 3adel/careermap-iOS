@@ -141,7 +141,7 @@ _updatedJobCategoriesSelectedArray= [[[NSUserDefaults standardUserDefaults] obje
 - (void) retrieveJobCategoriesFromParse{
     
     //start animating progress indicator
-    _HUDProgressIndicator = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    _HUDProgressIndicator = [MBProgressHUD showHUDAddedTo:_jobCategoriesTable animated:YES];
     _HUDProgressIndicator.labelText = @"Loading industries ...";
     _HUDProgressIndicator.mode = MBProgressHUDModeIndeterminate;
     [_jobCategoriesTable setSeparatorStyle:UITableViewCellSeparatorStyleNone];

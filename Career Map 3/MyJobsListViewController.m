@@ -15,6 +15,8 @@
 @implementation MyJobsListViewController
 
 - (void)viewDidLoad {
+    
+    
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
@@ -47,9 +49,17 @@
     [self retrieveMyJobsFromParse];
 }
 
+- (void) viewWillAppear:(BOOL)animated{
+    NSLog(@"view will appear");
+
+    
+}
+
 - (void)viewDidAppear:(BOOL)animated{
     
    // [_myJobsTable reloadData];
+    
+    NSLog(@"view did appear");
 }
 
 
@@ -78,10 +88,14 @@
 #pragma mark - Table View
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
+
+    
     return _myJobsArray.count;
     
 }
@@ -262,12 +276,8 @@
    
             if (objects.count == 0) {
                 //show empty view
-                
-                
-                
-                
                 //hide refresh control if no users exist
-
+                
                     if (self.refreshControl) {
                         
                         [self.refreshControl endRefreshing];
@@ -277,6 +287,8 @@
                         
                         
                         [_HUDProgressIndicator hide:YES];
+                        
+                        
                         
                     }
 
