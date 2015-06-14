@@ -107,8 +107,8 @@
                         <constraint firstAttribute="width" constant="45" id="miH-3k-n6R"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Axeer" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yEN-Hw-s1b">
-                    <rect key="frame" x="226" y="50" width="148" height="72"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Career Map" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yEN-Hw-s1b">
+                    <rect key="frame" x="149" y="50" width="303" height="72"/>
                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="60"/>
                     <color key="textColor" red="0.21251562869999999" green="0.6396789973" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
