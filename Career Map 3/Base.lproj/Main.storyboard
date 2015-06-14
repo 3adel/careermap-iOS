@@ -625,15 +625,57 @@
                                     <action selector="loginButtonPressed:" destination="T0L-SA-EyQ" eventType="touchUpInside" id="mjN-3O-A9q"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PEn-FR-QYd">
+                                <rect key="frame" x="16" y="30" width="568" height="45"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="nJQ-zx-kY8"/>
+                                </constraints>
+                                <state key="normal" title="   Send us feedback">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vRi-gG-qUy">
+                                <rect key="frame" x="16" y="85" width="568" height="45"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="W0w-fe-wLw"/>
+                                </constraints>
+                                <state key="normal" title="   Follow us on twitter">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hht-Qm-Mto">
+                                <rect key="frame" x="16" y="140" width="568" height="45"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="MIm-Ij-doc"/>
+                                </constraints>
+                                <state key="normal" title="   FAQ">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="PEn-FR-QYd" firstAttribute="leading" secondItem="vRi-gG-qUy" secondAttribute="leading" id="2Vx-Co-LKC"/>
+                            <constraint firstItem="PEn-FR-QYd" firstAttribute="leading" secondItem="9f3-ii-TC2" secondAttribute="leading" id="7k6-Ns-W20"/>
                             <constraint firstItem="9f3-ii-TC2" firstAttribute="trailing" secondItem="2zg-aD-6qS" secondAttribute="trailing" id="CHw-kY-IWY"/>
                             <constraint firstItem="9f3-ii-TC2" firstAttribute="leading" secondItem="2zg-aD-6qS" secondAttribute="leading" id="DFb-7N-uT6"/>
+                            <constraint firstItem="PEn-FR-QYd" firstAttribute="trailing" secondItem="9f3-ii-TC2" secondAttribute="trailing" id="FcW-pt-Qt8"/>
                             <constraint firstItem="X0l-eH-wba" firstAttribute="top" secondItem="2zg-aD-6qS" secondAttribute="bottom" constant="20" id="GtI-IZ-Sq6"/>
                             <constraint firstAttribute="trailingMargin" secondItem="2zg-aD-6qS" secondAttribute="trailing" id="TKl-q6-XHW"/>
                             <constraint firstItem="X0l-eH-wba" firstAttribute="top" secondItem="9f3-ii-TC2" secondAttribute="bottom" constant="20" id="geS-Jp-JFr"/>
+                            <constraint firstItem="vRi-gG-qUy" firstAttribute="top" secondItem="PEn-FR-QYd" secondAttribute="bottom" constant="10" id="jwg-8e-brW"/>
                             <constraint firstItem="2zg-aD-6qS" firstAttribute="leading" secondItem="LGa-cj-DDk" secondAttribute="leadingMargin" id="opQ-0l-Mvp"/>
+                            <constraint firstItem="hht-Qm-Mto" firstAttribute="top" secondItem="vRi-gG-qUy" secondAttribute="bottom" constant="10" id="ors-Qm-Ac2"/>
+                            <constraint firstItem="PEn-FR-QYd" firstAttribute="trailing" secondItem="vRi-gG-qUy" secondAttribute="trailing" id="s1L-jN-Lzn"/>
+                            <constraint firstItem="vRi-gG-qUy" firstAttribute="leading" secondItem="hht-Qm-Mto" secondAttribute="leading" id="tE2-fF-bDf"/>
+                            <constraint firstItem="vRi-gG-qUy" firstAttribute="trailing" secondItem="hht-Qm-Mto" secondAttribute="trailing" id="yh1-nh-bSK"/>
+                            <constraint firstItem="PEn-FR-QYd" firstAttribute="top" secondItem="qng-CE-1A6" secondAttribute="bottom" constant="10" id="yps-6n-VP1"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" image="TabBar-Settings.png" id="cBR-XE-qPT"/>
