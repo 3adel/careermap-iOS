@@ -241,7 +241,6 @@
 		F5BAC3C91AC7EDFE003E899C /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseUI.framework; path = "../../Libraries/iOS/parse-library-1.6.3/ParseUI.framework"; sourceTree = "<group>"; };
 		F5BAC3CF1AC85BB7003E899C /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		F5BAC3D01AC85BB7003E899C /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
-		F5BAC3D21AC875E5003E899C /* settingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = settingsViewController.h; sourceTree = "<group>"; };
 		F5BAC3D31AC875E5003E899C /* settingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = settingsViewController.m; sourceTree = "<group>"; };
 		F5CB2BF91B0DDB2500275850 /* DateConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateConverter.h; sourceTree = "<group>"; };
 		F5CB2BFA1B0DDB2500275850 /* DateConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateConverter.m; sourceTree = "<group>"; };
@@ -261,6 +260,7 @@
 		F5CF11F61AFD50AC00FD0FCA /* TabBar-Messages@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBar-Messages@2x.png"; sourceTree = "<group>"; };
 		F5CF11F71AFD50AC00FD0FCA /* TabBar-Messages@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBar-Messages@3x.png"; sourceTree = "<group>"; };
 		F5E655631B04EF9B0025F219 /* complete.m4r */ = {isa = PBXFileReference; lastKnownFileType = file; path = complete.m4r; sourceTree = "<group>"; };
+		F5EA515A1B2DB27100BCEA06 /* settingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = settingsViewController.h; sourceTree = "<group>"; };
 		F5EA83041B1AF59500B5DA41 /* 37x-Checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37x-Checkmark.png"; sourceTree = "<group>"; };
 		F5EA83051B1AF59500B5DA41 /* 37x-Checkmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37x-Checkmark@2x.png"; sourceTree = "<group>"; };
 		F5EA83061B1AF59500B5DA41 /* 37x-Checkmark@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37x-Checkmark@3x.png"; sourceTree = "<group>"; };
@@ -367,8 +367,8 @@
 		F535AA6A1AD4380A0091E70B /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				F5EA515A1B2DB27100BCEA06 /* settingsViewController.h */,
 				F5BAC3D31AC875E5003E899C /* settingsViewController.m */,
-				F5BAC3D21AC875E5003E899C /* settingsViewController.h */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
