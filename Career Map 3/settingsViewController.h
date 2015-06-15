@@ -21,5 +21,6 @@
 - (IBAction)loginButtonPressed:(UIButton *)sender;
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
 - (IBAction)sendFeedbackButtonPressed:(UIButton *)sender;
+- (IBAction)followUsOnTwitterButtonPressed:(UIButton *)sender;
 
 @end

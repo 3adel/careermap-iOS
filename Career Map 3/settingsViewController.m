@@ -155,4 +155,12 @@
     
     
 }
+
+- (IBAction)followUsOnTwitterButtonPressed:(UIButton *)sender {
+    
+    NSURL *urlApp = [NSURL URLWithString: [NSString stringWithFormat:@"%@", @"twitter:///user?screen_name=CareerMapApp"]];
+    [[UIApplication sharedApplication] openURL:urlApp];
+    
+    
+}
 @end
