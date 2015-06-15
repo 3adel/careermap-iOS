@@ -115,4 +115,44 @@
 
 
 
+- (IBAction)sendFeedbackButtonPressed:(UIButton *)sender {
+    
+    //extract device information
+    
+    //send message to adel
+    
+    //progress spinner initialization
+
+    _HUDProgressIndicator = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    _HUDProgressIndicator.labelText = @"Waking agent up ...";
+    _HUDProgressIndicator.detailsLabelText = @"He's sleeping";
+    _HUDProgressIndicator.mode = MBProgressHUDModeIndeterminate;
+    
+    JobChatViewController  *jobChatScreen = [[JobChatViewController alloc] initWithNibName:@"JobChatView" bundle:nil];
+    jobChatScreen.jobEmployerUserObjectID =@"Tagh5ekfHg";
+
+    PFQuery *adminUserQuery = [PFQuery queryWithClassName:@"_User"];
+    [adminUserQuery getObjectInBackgroundWithId:@"Tagh5ekfHg" block:^(PFObject *object, NSError *error) {
+        if (!error) {
+            
+            _HUDProgressIndicator.hidden = YES;
+
+            jobChatScreen.jobPosterPFUser = (PFUser *)object;
+            [self presentViewController:jobChatScreen animated:YES completion:nil];
+        }
+        
+        else{
+            
+            NSLog(@"can't get admin user");
+        }
+    }];
+    
+
+    
+    
+    
+    
+    
+    
+}
 @end
