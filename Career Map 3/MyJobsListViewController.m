@@ -22,7 +22,7 @@
     
     NSLog(@"my jobs list view did load");
     
-    //style
+    //stylec
     _myJobsTable.estimatedRowHeight = 73.0 ;
     self.myJobsTable.rowHeight = UITableViewAutomaticDimension;
     _createJobButton.layer.cornerRadius = 5.0f;
