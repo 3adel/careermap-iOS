@@ -30,32 +30,6 @@ bool messageIsReceived = NO;
 
 - (void) viewDidAppear:(BOOL)animated{
 
-    //make sure the app choice screen shows one time only
-    if (![@"1" isEqualToString:[[NSUserDefaults standardUserDefaults]
-                                objectForKey:@"screenShown"]]) {
-        [[NSUserDefaults standardUserDefaults] setValue:@"1" forKey:@"screenShown"];
-        
-        
-        //do other apps setups the first time
-        [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithDouble:100] forKey:@"jobDistanceFilterValue"];
-
-        [[NSUserDefaults standardUserDefaults] synchronize];
-        
-        
-        [self retrieveJobCategoriesFromParse];
-
-        WelcomeAppChoiceViewController  *appChoice = [[WelcomeAppChoiceViewController alloc] initWithNibName:@"WelcomeAppChoiceView" bundle:nil];
-        [self.tabBarController presentViewController:appChoice
-                                            animated:YES
-                                          completion:nil];
-        
-        
-        
-        
-        
-        
-    }
-    
     
     
     
@@ -63,6 +37,33 @@ bool messageIsReceived = NO;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
+    
+    //make sure the app choice screen shows one time only
+    if (![@"1" isEqualToString:[[NSUserDefaults standardUserDefaults]
+                                objectForKey:@"screenShown"]]) {
+        [[NSUserDefaults standardUserDefaults] setValue:@"1" forKey:@"screenShown"];
+        
+        
+        //do other apps setups the first time
+        [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithDouble:3000] forKey:@"jobDistanceFilterValue"];
+        
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        
+        
+        [self retrieveJobCategoriesFromParse];
+        
+        WelcomeAppChoiceViewController  *appChoice = [[WelcomeAppChoiceViewController alloc] initWithNibName:@"WelcomeAppChoiceView" bundle:nil];
+        [self.tabBarController presentViewController:appChoice
+                                            animated:YES
+                                          completion:nil];
+        
+        
+        
+    }
+    
+
     
     
     
@@ -173,6 +174,9 @@ bool messageIsReceived = NO;
 
     [retrieveJobs whereKey:@"jobIndustry" containedIn:arrayOfCategoriesSelectedAsPFObjects];
     [retrieveJobs whereKey:@"geolocation" nearGeoPoint:self.userLocation withinKilometers:_jobsFilterDistance.doubleValue];
+    
+    
+    
   
     retrieveJobs.limit =1000;
     //[retrieveJobs orderByDescending:@"createdAt"];
