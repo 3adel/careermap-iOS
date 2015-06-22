@@ -28,17 +28,22 @@ bool messageIsReceived = NO;
 @synthesize formatter;
 
 
-- (void) viewDidAppear:(BOOL)animated{
+- (void) viewWillAppear:(BOOL)animated{
 
     
+    
+    
+    
+
     
     
 }
 
+
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    
     
     //make sure the app choice screen shows one time only
     if (![@"1" isEqualToString:[[NSUserDefaults standardUserDefaults]
@@ -62,9 +67,7 @@ bool messageIsReceived = NO;
         
         
     }
-    
 
-    
     
     
     //filter parameters
