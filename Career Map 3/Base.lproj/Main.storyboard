@@ -1484,7 +1484,7 @@
                                             <constraint firstAttribute="width" constant="180" id="fv6-Sz-gRX"/>
                                             <constraint firstAttribute="height" constant="45" id="rwb-DR-gsc"/>
                                         </constraints>
-                                        <state key="normal" title="Register to Add Jobs">
+                                        <state key="normal" title="Register to Create Jobs">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -1954,7 +1954,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="GJ1-hT-5qu"/>
                                 </constraints>
-                                <state key="normal" title="I have an account already">
+                                <state key="normal" title="I already have a username">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -2075,11 +2075,11 @@
             </objects>
             <point key="canvasLocation" x="1221" y="-218.24999999999994"/>
         </scene>
-        <!--Add Job-->
+        <!--Create Job-->
         <scene sceneID="XFp-PJ-bUk">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cTh-Vs-miG" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Add Job" image="TabBar-AddJob.png" id="mn5-Br-ZnA"/>
+                    <tabBarItem key="tabBarItem" title="Create Job" image="TabBar-AddJob.png" id="mn5-Br-ZnA"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="C99-wG-9Sg">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -2108,7 +2108,7 @@
         <image name="myLocation.png" width="44" height="44"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="phv-aF-IUg"/>
+        <segue reference="0do-qJ-Jzh"/>
         <segue reference="UkH-R4-w2w"/>
     </inferredMetricsTieBreakers>
 </document>
