@@ -12,5 +12,10 @@
 - (IBAction)jobSeekerButtonPressed:(UIButton *)sender;
 - (IBAction)employerButtonPressed:(UIButton *)sender;
 @property (weak, nonatomic) IBOutlet UIButton *startNowButton;
+@property (weak, nonatomic) IBOutlet UIImageView *jobListImage;
+@property (weak, nonatomic) IBOutlet UIImageView *addJobImage;
+@property (weak, nonatomic) IBOutlet UIImageView *messagesImage;
+@property (weak, nonatomic) IBOutlet UIImageView *privacyImage;
+@property (weak, nonatomic) IBOutlet UIImageView *myCVImage;
 
 @end
