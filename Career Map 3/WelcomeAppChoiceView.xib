@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WelcomeAppChoiceViewController">
@@ -15,12 +15,16 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchImageCustom" translatesAutoresizingMaskIntoConstraints="NO" id="mpR-zL-Ezt" userLabel="Background">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mO0-ja-7c2">
-                    <rect key="frame" x="16" y="412" width="568" height="45"/>
+                    <rect key="frame" x="225" y="409" width="150" height="45"/>
                     <color key="backgroundColor" red="0.0" green="0.50196081399917603" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="40" id="7sQ-fb-25j"/>
                         <constraint firstAttribute="height" constant="45" id="Utb-si-Rm4"/>
+                        <constraint firstAttribute="width" constant="150" id="zQN-Lx-Y7I"/>
                     </constraints>
                     <state key="normal" title="Start Now!">
                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -36,39 +40,39 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Find jobs in your area" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gn4-Nn-INd">
-                    <rect key="frame" x="200" y="142" width="200" height="26"/>
+                    <rect key="frame" x="200" y="142" width="200" height="25.5"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="200" id="blT-jM-Baa"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="21"/>
-                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Post vacancies" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="duw-AV-lCO">
-                    <rect key="frame" x="200" y="178" width="200" height="26"/>
+                    <rect key="frame" x="200" y="177" width="200" height="25.5"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="200" id="xbb-DZ-pu7"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="21"/>
-                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message job seekers and employers" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ke-Ok-xng">
-                    <rect key="frame" x="200" y="214" width="200" height="51"/>
+                    <rect key="frame" x="200" y="212" width="200" height="50.5"/>
                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="21"/>
-                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Strict spam control" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sjW-Ti-rRo">
-                    <rect key="frame" x="200" y="275" width="200" height="26"/>
+                    <rect key="frame" x="200" y="273" width="200" height="25.5"/>
                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="21"/>
-                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create your CV in seconds" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UeZ-Oa-1yI">
-                    <rect key="frame" x="200" y="311" width="200" height="51"/>
+                    <rect key="frame" x="200" y="308" width="200" height="50.5"/>
                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="21"/>
-                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TabBar-JobList.png" translatesAutoresizingMaskIntoConstraints="NO" id="WVd-n2-09q">
@@ -79,21 +83,21 @@
                     </constraints>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TabBar-AddJob.png" translatesAutoresizingMaskIntoConstraints="NO" id="HlV-u4-ZLo">
-                    <rect key="frame" x="150" y="177" width="45" height="28"/>
+                    <rect key="frame" x="150" y="176" width="45" height="28"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="45" id="NfX-CA-dE5"/>
                         <constraint firstAttribute="height" constant="28" id="aIY-X5-TIX"/>
                     </constraints>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TabBar-Messages.png" translatesAutoresizingMaskIntoConstraints="NO" id="zd2-1c-xv7">
-                    <rect key="frame" x="150" y="213" width="45" height="28"/>
+                    <rect key="frame" x="150" y="212" width="45" height="28"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="45" id="3tp-6j-y9u"/>
                         <constraint firstAttribute="height" constant="28" id="Ef8-25-UUK"/>
                     </constraints>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TabBar-Privacy.png" translatesAutoresizingMaskIntoConstraints="NO" id="i6V-QK-rcn">
-                    <rect key="frame" x="152" y="273" width="45" height="28"/>
+                    <rect key="frame" x="152" y="271" width="45" height="28"/>
                     <color key="tintColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="28" id="Z5q-6K-Uz7"/>
@@ -101,16 +105,16 @@
                     </constraints>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TabBar-MyCV.png" translatesAutoresizingMaskIntoConstraints="NO" id="oyR-oW-d8o">
-                    <rect key="frame" x="152" y="309" width="45" height="28"/>
+                    <rect key="frame" x="152" y="307" width="45" height="28"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="28" id="8TQ-pM-Ke5"/>
                         <constraint firstAttribute="width" constant="45" id="miH-3k-n6R"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Career Map" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yEN-Hw-s1b">
-                    <rect key="frame" x="149" y="50" width="303" height="72"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CareerMap" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yEN-Hw-s1b">
+                    <rect key="frame" x="157.5" y="50" width="286.5" height="72"/>
                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="60"/>
-                    <color key="textColor" red="0.21251562869999999" green="0.6396789973" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
@@ -120,6 +124,7 @@
                 <constraint firstItem="HlV-u4-ZLo" firstAttribute="centerY" secondItem="duw-AV-lCO" secondAttribute="centerY" id="98L-jV-eIx"/>
                 <constraint firstItem="UeZ-Oa-1yI" firstAttribute="top" secondItem="sjW-Ti-rRo" secondAttribute="bottom" constant="10" id="Cny-2h-SQw"/>
                 <constraint firstItem="mO0-ja-7c2" firstAttribute="top" secondItem="yTl-9f-h8Z" secondAttribute="top" constant="100" id="Cp2-nh-OPx"/>
+                <constraint firstAttribute="bottom" secondItem="mpR-zL-Ezt" secondAttribute="bottom" id="DEv-4t-b9a"/>
                 <constraint firstItem="mO0-ja-7c2" firstAttribute="top" secondItem="UeZ-Oa-1yI" secondAttribute="bottom" constant="50" id="Goh-fb-ZJZ"/>
                 <constraint firstItem="UeZ-Oa-1yI" firstAttribute="leading" secondItem="sjW-Ti-rRo" secondAttribute="leading" id="HbT-yU-YTY"/>
                 <constraint firstItem="sjW-Ti-rRo" firstAttribute="top" secondItem="2ke-Ok-xng" secondAttribute="bottom" constant="10" id="JEU-yU-YzC"/>
@@ -133,15 +138,18 @@
                 <constraint firstItem="HlV-u4-ZLo" firstAttribute="leading" secondItem="zd2-1c-xv7" secondAttribute="leading" id="adu-B2-gSs"/>
                 <constraint firstItem="Gn4-Nn-INd" firstAttribute="leading" secondItem="duw-AV-lCO" secondAttribute="leading" id="ayY-jJ-diE"/>
                 <constraint firstItem="yEN-Hw-s1b" firstAttribute="leading" secondItem="Gn4-Nn-INd" secondAttribute="trailing" constant="-131" id="b3N-ZN-dKk"/>
+                <constraint firstItem="mpR-zL-Ezt" firstAttribute="leading" secondItem="yTl-9f-h8Z" secondAttribute="leading" id="cLY-bp-qby"/>
                 <constraint firstAttribute="centerX" secondItem="Gn4-Nn-INd" secondAttribute="centerX" id="dMO-Fk-MmF"/>
                 <constraint firstItem="WVd-n2-09q" firstAttribute="top" secondItem="Gn4-Nn-INd" secondAttribute="top" id="drZ-oc-J6A"/>
                 <constraint firstAttribute="trailing" secondItem="mO0-ja-7c2" secondAttribute="trailing" constant="16" id="eZO-Td-G2z"/>
+                <constraint firstAttribute="trailing" secondItem="mpR-zL-Ezt" secondAttribute="trailing" id="fTH-h9-1tP"/>
                 <constraint firstItem="2ke-Ok-xng" firstAttribute="width" secondItem="sjW-Ti-rRo" secondAttribute="width" id="hFN-tO-nhN"/>
                 <constraint firstItem="i6V-QK-rcn" firstAttribute="centerY" secondItem="sjW-Ti-rRo" secondAttribute="centerY" constant="-1" id="hFY-fY-Knq"/>
                 <constraint firstAttribute="centerX" secondItem="yEN-Hw-s1b" secondAttribute="centerX" id="ih2-vq-eWy"/>
                 <constraint firstItem="UeZ-Oa-1yI" firstAttribute="width" secondItem="sjW-Ti-rRo" secondAttribute="width" id="kbr-4E-1wD"/>
                 <constraint firstItem="zd2-1c-xv7" firstAttribute="top" secondItem="HlV-u4-ZLo" secondAttribute="bottom" constant="8" id="oJy-Ag-jKc"/>
                 <constraint firstItem="mO0-ja-7c2" firstAttribute="leading" secondItem="yTl-9f-h8Z" secondAttribute="leading" constant="16" id="r7v-Vd-mQW"/>
+                <constraint firstItem="mpR-zL-Ezt" firstAttribute="top" secondItem="yTl-9f-h8Z" secondAttribute="top" id="rHk-NP-uoi"/>
                 <constraint firstItem="oyR-oW-d8o" firstAttribute="top" secondItem="i6V-QK-rcn" secondAttribute="bottom" constant="35" id="tdj-GA-pY2"/>
                 <constraint firstItem="WVd-n2-09q" firstAttribute="leading" secondItem="HlV-u4-ZLo" secondAttribute="leading" id="tqp-fu-tSC"/>
                 <constraint firstItem="Gn4-Nn-INd" firstAttribute="leading" secondItem="WVd-n2-09q" secondAttribute="trailing" constant="5" id="vTl-gd-H23"/>
@@ -150,21 +158,25 @@
                 <constraint firstItem="oyR-oW-d8o" firstAttribute="leading" secondItem="i6V-QK-rcn" secondAttribute="leading" id="x8d-zu-ckj"/>
                 <constraint firstItem="i6V-QK-rcn" firstAttribute="top" secondItem="zd2-1c-xv7" secondAttribute="bottom" constant="32" id="xXh-Rp-3tX"/>
                 <constraint firstItem="Gn4-Nn-INd" firstAttribute="top" secondItem="yEN-Hw-s1b" secondAttribute="bottom" constant="20" id="xYj-ql-O7f"/>
+                <constraint firstAttribute="centerX" secondItem="mO0-ja-7c2" secondAttribute="centerX" id="ync-GP-pIV"/>
             </constraints>
             <variation key="default">
                 <mask key="constraints">
+                    <exclude reference="b3N-ZN-dKk"/>
                     <exclude reference="drZ-oc-J6A"/>
                     <exclude reference="JFT-u0-JaR"/>
                     <exclude reference="xXh-Rp-3tX"/>
                     <exclude reference="tdj-GA-pY2"/>
-                    <exclude reference="b3N-ZN-dKk"/>
                     <exclude reference="Cp2-nh-OPx"/>
+                    <exclude reference="eZO-Td-G2z"/>
+                    <exclude reference="r7v-Vd-mQW"/>
                 </mask>
             </variation>
             <point key="canvasLocation" x="297" y="-6"/>
         </view>
     </objects>
     <resources>
+        <image name="LaunchImageCustom" width="320" height="480"/>
         <image name="TabBar-AddJob.png" width="45" height="28"/>
         <image name="TabBar-JobList.png" width="45" height="28"/>
         <image name="TabBar-Messages.png" width="45" height="28"/>

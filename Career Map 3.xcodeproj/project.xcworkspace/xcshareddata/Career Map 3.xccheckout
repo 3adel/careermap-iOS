@@ -11,7 +11,7 @@
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>F6D8B937BC062AA919311243D59CEBE9EA73BF09</key>
-		<string>github.com:3adel/CareerMap3.git</string>
+		<string>https://github.com/3adel/CareerMap3.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Career Map 3.xcodeproj</string>
@@ -21,7 +21,7 @@
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>github.com:3adel/CareerMap3.git</string>
+	<string>https://github.com/3adel/CareerMap3.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
