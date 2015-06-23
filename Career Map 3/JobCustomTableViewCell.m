@@ -33,7 +33,20 @@ NSLog(@"INIIIIIIT");
     }
     return self;
 }
+ 
+
 
 
 */
+
+
+- (void)awakeFromNib {
+    // Initialization code
+    _jobPosterImageView.layer.cornerRadius = _jobPosterImageView.frame.size.width/2;
+    _jobPosterImageView.clipsToBounds = YES;
+    
+    
+    
+    
+}
 @end

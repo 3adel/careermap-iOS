@@ -38,11 +38,14 @@
 @property (nonatomic, strong) LoadingJobListEmptyView *noJobsView;
 
 @property (nonatomic, strong) NSMutableArray *jobsArray;
+
 @property (nonatomic, strong) NSDateFormatter *formatter;
 @property (nonatomic, strong) NSArray *jobRequireSkills;
 @property (nonatomic, strong) NSString *jobEmployerUserObjectID;
 @property (nonatomic, strong) PFUser *jobPosterPFUser;
 @property (nonatomic, strong) MBProgressHUD *HUDProgressIndicator;
+
+
 
 
 //data

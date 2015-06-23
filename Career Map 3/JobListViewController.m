@@ -225,9 +225,10 @@ bool messageIsReceived = NO;
                 
                 
                 jobsArray = [[NSMutableArray alloc] initWithArray:objects];
-                
 
                 
+                
+                //get job area and update ui
                 NSUInteger count = 0;
                 for (PFObject *i in jobsArray) {
                     CLLocation  *jobLocation = [[CLLocation alloc] initWithLatitude:[[i objectForKey:@"geolocation"] latitude] longitude:[[i objectForKey:@"geolocation"] longitude]];
@@ -278,92 +279,9 @@ bool messageIsReceived = NO;
                     }];
                     
                     
-                    /*
-                    //query voted up
-                    PFQuery *votedQuery = [PFQuery queryWithClassName:@"_User"];
-                    
-                    [votedQuery whereKey:@"jobVotedUp" equalTo:i.objectId];
-                    [votedQuery getObjectInBackgroundWithId:[[PFUser currentUser] objectId] block:^(PFObject *object, NSError *error) {
-                        
-                        
-                        if (!error) {
-                            
-                            if ([[object objectForKey:@"jobVotedUp"] containsObject:i.objectId]) {
-                                
-                                
-                                [(PFObject *)[jobsArray objectAtIndex:count] setObject:@"1" forKey:@"currentUserVotedUpThisJob"];
-                                
-                            }
-                            
-                            else{
-                                
-                                [(PFObject *)[jobsArray objectAtIndex:count] setObject:@"0" forKey:@"currentUserVotedUpThisJob"];
-                                
-                            }
-                            
-                            
-                        }
-                        
-                        
-                        
-                        NSIndexPath* cellIndexPath1= [NSIndexPath indexPathForRow:count inSection:0];
-                        dispatch_async(dispatch_get_main_queue(), ^{
-                            
-                            [self.jobTable beginUpdates];
-                            [self.jobTable reloadRowsAtIndexPaths:@[cellIndexPath1] withRowAnimation:UITableViewRowAnimationNone];
-                            [self.jobTable endUpdates];
-                        });
-                        
-                    }];
-                    
-                    
-                    
-                    
-                    
-                    //query for voting down
-                    PFQuery *votedQuery2 = [PFQuery queryWithClassName:@"_User"];
-                    [votedQuery2 whereKey:@"jobVotedDown" equalTo:i.objectId];
-                    [votedQuery2 getObjectInBackgroundWithId:[[PFUser currentUser] objectId] block:^(PFObject *object, NSError *error) {
-                        
-                        
-                        if (!error) {
-                            
-                            if ([[object objectForKey:@"jobVotedDown"] containsObject:i.objectId]) {
-                                
-                                
-                                
-                                [(PFObject *)[jobsArray objectAtIndex:count] setObject:@"1" forKey:@"currentUserVotedDownThisJob"];
-                                
-                                
-                                
-                            }
-                            
-                            else{
-                                
-                                [(PFObject *)[jobsArray objectAtIndex:count] setObject:@"0" forKey:@"currentUserVotedDownThisJob"];
-                                
-                            }
-                            
-                            
-                        }
-                        
-                        
-                        NSIndexPath* cellIndexPath1= [NSIndexPath indexPathForRow:count inSection:0];
-                        
-                        dispatch_async(dispatch_get_main_queue(), ^{
-                            
-                            [self.jobTable beginUpdates];
-                            [self.jobTable reloadRowsAtIndexPaths:@[cellIndexPath1] withRowAnimation:UITableViewRowAnimationNone];
-                            [self.jobTable endUpdates];
-                        });
-                        
-                        
-                    }];
-                    */
-                    
-                    
                     //Reporting a job query
                     PFQuery *votedQuery2 = [PFQuery queryWithClassName:@"_User"];
+                    //[votedQuery2 includeKey:@"aJobSeekerID"];
                     [votedQuery2 whereKey:@"jobVotedDown" equalTo:i.objectId];
                     [votedQuery2 getObjectInBackgroundWithId:[[PFUser currentUser] objectId] block:^(PFObject *object, NSError *error) {
                         
@@ -375,6 +293,7 @@ bool messageIsReceived = NO;
                                 
                                 
                                 [(PFObject *)[jobsArray objectAtIndex:count] setObject:@"1" forKey:@"currentUserVotedDownThisJob"];
+                              //  [(PFObject *)[jobsArray objectAtIndex:count] setObject:[object objectForKey:@"aJobSeekerID"] forKey:@"jobSeekerID"];
                                 
                                 
                                 
@@ -401,6 +320,73 @@ bool messageIsReceived = NO;
                         
                         
                     }];
+                    
+#pragma mark - Get thumb data
+                    PFQuery *query =[PFQuery queryWithClassName:@"_User"];
+                    [query includeKey:@"aJobSeekerID"];
+                    
+                    [query getObjectInBackgroundWithId:[[i objectForKey: @"postedByUser"] objectId] block:^(PFObject *object, NSError *error) {
+                        
+                        
+                        
+                        if (!error) {
+                            
+                            if ([object objectForKey:@"aJobSeekerID"]) {
+                               // NSLog(@"object has job seeker id");
+                                
+                                
+
+                                [(PFObject *)[jobsArray objectAtIndex:count] setObject:[object objectForKey:@"aJobSeekerID"] forKey:@"jobSeeker"];
+                                
+                               // NSLog(@"array object = %@", [jobsArray objectAtIndex:count]);
+  
+      
+                                
+                                NSIndexPath* cellIndexPath1= [NSIndexPath indexPathForRow:count inSection:0];
+                                
+                                dispatch_async(dispatch_get_main_queue(), ^{
+                                    
+                                    [self.jobTable beginUpdates];
+                                    [self.jobTable reloadRowsAtIndexPaths:@[cellIndexPath1] withRowAnimation:UITableViewRowAnimationNone];
+                                    [self.jobTable endUpdates];
+                                });
+                                
+                                
+                                
+                                
+                            }
+                            
+                            else{
+                                
+                            //    NSLog(@"object has NO job seeker id");
+
+                                                                [(PFObject *)[jobsArray objectAtIndex:count] setObject:@"" forKey:@"jobSeeker"];
+                                
+                                
+                           //     NSLog(@"array object = %@", [jobsArray objectAtIndex:count]);
+
+                 
+                            }
+                            
+
+                        }
+                        
+                        else{
+                            
+                            NSLog(@"error");
+                        }
+                        
+                        
+                        
+                        
+                        
+                    }];
+                    
+                    
+                    
+
+                    
+                    
                     
                     
                     
@@ -421,6 +407,11 @@ bool messageIsReceived = NO;
                     
                     
                 }
+                
+                
+
+                
+                
                 
 
                 
@@ -480,6 +471,9 @@ bool messageIsReceived = NO;
     static NSString *CellIdentifier = @"jobCell";
     JobCustomTableViewCell *cell = [_jobTable dequeueReusableCellWithIdentifier:CellIdentifier];
     PFObject *jobObject = [jobsArray objectAtIndex:indexPath.row];
+    
+    //NSLog(@"Job object = %@", jobObject);
+    
     
    // NSLog(@"JobObject Applied by = %@", [jobObject objectForKey:@"appliedByUsers"]);
     
@@ -598,15 +592,67 @@ bool messageIsReceived = NO;
     //set job area
     cell.jobArea.text =[jobObject objectForKey:@"area"];
     
-    //if the user already voted up, mark upvote button as selected
-    PFQuery *votedQuery = [PFQuery queryWithClassName:@"_User"];
-    [votedQuery whereKey:@"jobVotedUp" equalTo:jobObject.objectId];
+
+    //set thumbnails
+    if ([jobObject objectForKey:@"jobSeeker"]) {
+       // NSLog(@"job seeker found, %@",[jobObject objectForKey:@"jobSeeker"]);
+        
+        [[jobObject objectForKey:@"jobSeeker"] fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+            if (!error) {
+                
+                //update cv image thumb
+                PFFile *CVThumbImageFile = [object objectForKey:@"jobSeekerThumb"];
+                
+                [CVThumbImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+                    if (!error) {
+                        
+
+                        
+
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            cell.jobPosterImageView.image = [UIImage imageWithData:imageData];
+
+                        });
+                        
+                        
+
+                        
+                    }
+                    else{
+                        
+
+                        NSLog(@"Error updating seeker cv image");
+                    }
+                    
+                }];
+                
+                
+                
+                
+                
+            }
+        }];
+        
+        
+    }
     
-    //add a tag to the voting button to indicate the current row index
-    [cell.jobVoteUpButton setTag:indexPath.row];
-    //[cell.jobVoteUpButton addTarget:self action:@selector(jobVoteUpPressed:) forControlEvents:UIControlEventTouchUpInside];
-    [cell.jobVoteDownButton setTag:indexPath.row];
-    //[cell.jobVoteDownButton addTarget:self action:@selector(jobVoteDownPressed:) forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    else{
+        cell.jobPosterImageView.image = [UIImage imageNamed:@"Default_Profile_Picture@3x.png"];
+
+        //NSLog(@"job seeker not found");
+        
+    }
+    
+    
+    
+    
+    
+    
+
+    
+    
     
     return cell;
     

@@ -20,31 +20,45 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="255" verticalCompressionResistancePriority="751" text="Job Title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N0w-wi-4Fa">
-                                            <rect key="frame" x="8" y="8" width="551" height="21"/>
+                                            <rect key="frame" x="8" y="8" width="551" height="20.5"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="254" verticalCompressionResistancePriority="752" text="Status" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Qa-a6-TFF">
-                                            <rect key="frame" x="84" y="96" width="31" height="12"/>
+                                            <rect key="frame" x="84" y="95" width="30.5" height="12"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date Added" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="awk-od-Uke">
-                                            <rect key="frame" x="8" y="93" width="56" height="17"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Date Added" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="awk-od-Uke">
+                                            <rect key="frame" x="8" y="92" width="56" height="17.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="255" verticalCompressionResistancePriority="752" text="Distance" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aU7-0p-S2X">
-                                            <rect key="frame" x="8" y="39" width="57" height="17"/>
+                                            <rect key="frame" x="8" y="38" width="56.5" height="17"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="253" verticalCompressionResistancePriority="753" text="Employer" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3sW-hB-upE">
+                                            <rect key="frame" x="8" y="65" width="551" height="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Default_Profile_Picture@3x.png" translatesAutoresizingMaskIntoConstraints="NO" id="cjB-sO-bL6">
+                                            <rect key="frame" x="461" y="70.5" width="40" height="40"/>
+                                            <color key="backgroundColor" red="0.97953344669999998" green="0.97829060219999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="40" id="Hf1-eI-fby"/>
+                                                <constraint firstAttribute="width" constant="40" id="WoJ-tw-H3n"/>
+                                            </constraints>
+                                        </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" verticalHuggingPriority="253" verticalCompressionResistancePriority="753" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LyN-oZ-hMV">
-                                            <rect key="frame" x="511" y="96" width="48" height="12"/>
+                                            <rect key="frame" x="511" y="84" width="48" height="12"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="100" id="ZFa-jG-taU"/>
                                                 <constraint firstAttribute="width" constant="100" id="dVG-wj-Rgs"/>
@@ -58,12 +72,6 @@
                                                     <exclude reference="dVG-wj-Rgs"/>
                                                 </mask>
                                             </variation>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="253" verticalCompressionResistancePriority="753" text="Employer" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3sW-hB-upE">
-                                            <rect key="frame" x="8" y="66" width="551" height="17"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
@@ -85,15 +93,19 @@
                                         <constraint firstItem="awk-od-Uke" firstAttribute="leading" secondItem="Bsq-Cm-a6P" secondAttribute="leadingMargin" id="Yf5-jT-gG0"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="N0w-wi-4Fa" secondAttribute="trailing" id="Z9e-yO-AVO"/>
                                         <constraint firstItem="1Qa-a6-TFF" firstAttribute="centerY" secondItem="LyN-oZ-hMV" secondAttribute="centerY" id="ZMO-yz-qoH"/>
+                                        <constraint firstItem="cjB-sO-bL6" firstAttribute="centerY" secondItem="LyN-oZ-hMV" secondAttribute="centerY" id="bwZ-ff-Wgn"/>
                                         <constraint firstItem="N0w-wi-4Fa" firstAttribute="top" secondItem="Bsq-Cm-a6P" secondAttribute="topMargin" id="djT-HL-hRI"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="3sW-hB-upE" secondAttribute="trailing" id="eT4-FI-EFm"/>
                                         <constraint firstItem="awk-od-Uke" firstAttribute="centerY" secondItem="1Qa-a6-TFF" secondAttribute="centerY" id="flc-P2-zcT"/>
                                         <constraint firstItem="awk-od-Uke" firstAttribute="top" secondItem="3sW-hB-upE" secondAttribute="bottom" constant="10" id="j2g-7w-bfR"/>
                                         <constraint firstItem="N0w-wi-4Fa" firstAttribute="leading" secondItem="Bsq-Cm-a6P" secondAttribute="leadingMargin" id="ls4-b4-ADa"/>
                                         <constraint firstItem="1Qa-a6-TFF" firstAttribute="leading" secondItem="awk-od-Uke" secondAttribute="trailing" constant="20" id="mSC-8p-ASU"/>
+                                        <constraint firstItem="LyN-oZ-hMV" firstAttribute="leading" secondItem="cjB-sO-bL6" secondAttribute="trailing" constant="10" id="mcB-dl-uoe"/>
                                         <constraint firstItem="awk-od-Uke" firstAttribute="top" secondItem="aU7-0p-S2X" secondAttribute="bottom" constant="10" id="uIY-zE-gGz"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="cjB-sO-bL6" secondAttribute="bottom" constant="5" id="umY-nQ-xQX"/>
                                         <constraint firstItem="LyN-oZ-hMV" firstAttribute="leading" secondItem="1Qa-a6-TFF" secondAttribute="trailing" constant="20" id="vxf-DB-SfA"/>
                                         <constraint firstItem="N0w-wi-4Fa" firstAttribute="leading" secondItem="3sW-hB-upE" secondAttribute="leading" id="wiM-dn-Wdw"/>
+                                        <constraint firstItem="cjB-sO-bL6" firstAttribute="centerY" secondItem="LyN-oZ-hMV" secondAttribute="centerY" id="xBZ-Pr-EFa"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="LyN-oZ-hMV" secondAttribute="trailing" id="zCs-hu-a7w"/>
                                         <constraint firstItem="aU7-0p-S2X" firstAttribute="top" secondItem="N0w-wi-4Fa" secondAttribute="bottom" constant="5" id="zck-z3-MpV"/>
                                     </constraints>
@@ -110,6 +122,8 @@
                                             <exclude reference="CmC-QO-dzh"/>
                                             <exclude reference="Hfe-Jr-AaK"/>
                                             <exclude reference="uIY-zE-gGz"/>
+                                            <exclude reference="ZMO-yz-qoH"/>
+                                            <exclude reference="bwZ-ff-Wgn"/>
                                             <exclude reference="V9K-Tm-etU"/>
                                             <exclude reference="vxf-DB-SfA"/>
                                         </mask>
@@ -120,6 +134,7 @@
                                     <outlet property="jobDistanceFromUser" destination="aU7-0p-S2X" id="gNe-Iw-BOJ"/>
                                     <outlet property="jobEmployer" destination="3sW-hB-upE" id="YU3-vv-PD3"/>
                                     <outlet property="jobPostedByUsernameLabel" destination="LyN-oZ-hMV" id="LUa-Yb-GS3"/>
+                                    <outlet property="jobPosterImageView" destination="cjB-sO-bL6" id="TJg-HP-pgt"/>
                                     <outlet property="jobStatus" destination="1Qa-a6-TFF" id="oCs-Bd-7FT"/>
                                     <outlet property="jobTitleLabel" destination="N0w-wi-4Fa" id="Waq-fs-b9q"/>
                                     <segue destination="oBD-2n-Moc" kind="show" identifier="showJob" id="LBn-AI-AAP"/>
@@ -2109,6 +2124,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="0do-qJ-Jzh"/>
-        <segue reference="UkH-R4-w2w"/>
+        <segue reference="LBn-AI-AAP"/>
     </inferredMetricsTieBreakers>
 </document>
