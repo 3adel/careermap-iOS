@@ -385,7 +385,7 @@
                                             <action selector="showApplicantsButtonPressed:" destination="oBD-2n-Moc" eventType="touchUpInside" id="goc-DM-m1D"/>
                                         </connections>
                                     </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Default_Profile_Picture@3x.png" translatesAutoresizingMaskIntoConstraints="NO" id="MOY-Vd-l0P">
+                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Default_Profile_Picture@3x.png" translatesAutoresizingMaskIntoConstraints="NO" id="MOY-Vd-l0P">
                                         <rect key="frame" x="0.0" y="50" width="30" height="30"/>
                                         <color key="backgroundColor" red="1" green="0.40695333280000001" blue="0.39170486640000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -393,8 +393,8 @@
                                             <constraint firstAttribute="height" constant="30" id="gtt-LV-YWH"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="employerusername" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hSH-1f-z5d">
-                                        <rect key="frame" x="38" y="56" width="123.5" height="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="employerusername" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hSH-1f-z5d">
+                                        <rect key="frame" x="35" y="56" width="123.5" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>

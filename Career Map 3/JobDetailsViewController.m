@@ -33,12 +33,25 @@
     _jobPosterImage.layer.cornerRadius = _jobPosterImage.frame.size.width/2;
     _jobPosterImage.clipsToBounds = YES;
     
+    
+    
+    //set gesgure reconizer to show job poster CV
+    UITapGestureRecognizer *jobPosterImageTapped = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(jobPosterImageTappedSelector)];
+    [_jobPosterImage setUserInteractionEnabled:YES];
+    [_jobPosterImage addGestureRecognizer:jobPosterImageTapped];
+    
+    UITapGestureRecognizer *jobPosterUsernameTapped = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(jobPosterImageTappedSelector)];
+    [_jobPosterUserNameLabel setUserInteractionEnabled:YES];
+    [_jobPosterUserNameLabel addGestureRecognizer:jobPosterUsernameTapped];
+    
     //disable reporting button if the user is anonymous
     if ([PFAnonymousUtils isLinkedWithUser:[PFUser currentUser]]) {
         _reportJobBarButton.enabled = NO;
     }
 
 
+    
+    
         
     //check if the user is me, enable edit and delete buttons and disable apply and message buttons
     if ([[_jobPosterPFUser objectId] isEqualToString:[[PFUser currentUser] objectId]]) {
@@ -57,6 +70,8 @@
         _showApplicantsButton.hidden = NO;
 
         
+        
+
         
         
         
@@ -105,10 +120,7 @@
     
     //set user thumb
     if (_userProfileThumbFile) {
-        
-        
-        
-        
+
         [_userProfileThumbFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
             if (!error) {
                 
@@ -848,6 +860,63 @@
 
     }];
 
+
+}
+
+- (void) jobPosterImageTappedSelector{
+    
+    //NSLog(@"index path: %ld", indexPath.row);
+    //progress spinner initialization
+    _retrieveCVHUDProgressIndicator = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    _retrieveCVHUDProgressIndicator.labelText = @"Loading CV ...";
+    _retrieveCVHUDProgressIndicator.mode = MBProgressHUDModeIndeterminate;
+    
+    
+    
+
+    
+    
+     PFQuery *query =[PFQuery queryWithClassName:@"_User"];
+     [query includeKey:@"aJobSeekerID"];
+     
+     [query getObjectInBackgroundWithId:[_jobPosterPFUser objectId] block:^(PFObject *object, NSError *error) {
+     if (!error) {
+         
+         
+         if ([object objectForKey:@"aJobSeekerID"]) {
+             
+             _retrieveCVHUDProgressIndicator.hidden = YES;
+             
+             ViewEditMyCVViewController *jobApplicantVC =[[ViewEditMyCVViewController alloc] init];
+             jobApplicantVC = [self.storyboard instantiateViewControllerWithIdentifier:@"ViewEditMyCVViewController"];
+             jobApplicantVC.cominfFromApplicantsList = YES;
+             jobApplicantVC.jobCandidateObject = (PFUser *)object;
+             [self presentViewController:jobApplicantVC animated:YES completion:nil];
+
+         }
+         
+         else{
+             
+             _retrieveCVHUDProgressIndicator.hidden = YES;
+             
+             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No CV" message:@"User did not create a CV yet" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+             
+             [alert show];
+         }
+         
+
+         
+     }
+         
+     else{
+         
+         NSLog(@"error");
+         
+         _retrieveCVHUDProgressIndicator.hidden = YES;
+
+     }
+     }];
+    
 
 }
 

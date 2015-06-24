@@ -94,6 +94,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *jobPosterImage;
 @property (weak, nonatomic) IBOutlet UILabel *jobPosterUserNameLabel;
 @property (nonatomic, strong) PFFile *userProfileThumbFile;
+@property (nonatomic, strong) MBProgressHUD *retrieveCVHUDProgressIndicator;
 
 
 //methods
@@ -101,6 +102,9 @@
 - (void) showJobDirection;
 - (void) deleteJob;
 - (void) reportJob;
+- (void) jobPosterImageTappedSelector;
+
+
 
 - (IBAction)chatWithEmployerButtonPressed:(UIButton *)sender;
 - (IBAction)applyWithCVButtonPressed:(UIButton *)sender;
