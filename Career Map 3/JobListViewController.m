@@ -322,8 +322,9 @@ bool messageIsReceived = NO;
                     }];
                     
 #pragma mark - Get thumb data
+                    
+                    /*
                     PFQuery *query =[PFQuery queryWithClassName:@"_User"];
-                    [query includeKey:@"aJobSeekerID"];
                     
                     [query getObjectInBackgroundWithId:[[i objectForKey: @"postedByUser"] objectId] block:^(PFObject *object, NSError *error) {
                         
@@ -331,7 +332,7 @@ bool messageIsReceived = NO;
                         
                         if (!error) {
                             
-                            if ([object objectForKey:@"aJobSeekerID"]) {
+                            if ([object objectForKey:@"userThumb"]) {
                                // NSLog(@"object has job seeker id");
                                 
                                 
@@ -382,7 +383,7 @@ bool messageIsReceived = NO;
                         
                     }];
                     
-                    
+                    */
                     
 
                     
@@ -593,58 +594,61 @@ bool messageIsReceived = NO;
     cell.jobArea.text =[jobObject objectForKey:@"area"];
     
 
+    
+    
     //set thumbnails
-    if ([jobObject objectForKey:@"jobSeeker"]) {
-       // NSLog(@"job seeker found, %@",[jobObject objectForKey:@"jobSeeker"]);
+    if ([[jobObject objectForKey:@"postedByUser"] objectForKey:@"userThumb"]) {
+           // NSLog(@"job object = %@", [[jobObject objectForKey:@"postedByUser"] objectForKey:@"userThumb"]);
         
-        [[jobObject objectForKey:@"jobSeeker"] fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+        
+
+        
+        
+        //update cv image thumb
+        PFFile *userProfileThumbFile= [[jobObject objectForKey:@"postedByUser"] objectForKey:@"userThumb"];
+        [userProfileThumbFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
             if (!error) {
                 
-                //update cv image thumb
-                PFFile *CVThumbImageFile = [object objectForKey:@"jobSeekerThumb"];
-                
-                [CVThumbImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
-                    if (!error) {
-                        
-
-                        
-
-                        dispatch_async(dispatch_get_main_queue(), ^{
-                            cell.jobPosterImageView.image = [UIImage imageWithData:imageData];
-
-                        });
-                        
-                        
-
-                        
-                    }
-                    else{
-                        
-
-                        NSLog(@"Error updating seeker cv image");
-                    }
+                if (imageData) {
                     
-                }];
-                
-                
-                
-                
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        
+                        cell.jobPosterImageView.image = [UIImage imageWithData:imageData];
+ 
+                        
+                    });
+                }
+                else{
+                    
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        
+                    cell.jobPosterImageView.image = [UIImage imageNamed:@"Default_Profile_Picture@3x.png"];                        
+                        
+                    });
+                    
+
+                    
+                }
                 
             }
+            else{
+                
+                NSLog(@"Error updating seeker cv image");
+            }
+            
         }];
         
+
+        
         
     }
-    
-    
     
     else{
+        
         cell.jobPosterImageView.image = [UIImage imageNamed:@"Default_Profile_Picture@3x.png"];
-
-        //NSLog(@"job seeker not found");
+        
         
     }
-    
     
     
     

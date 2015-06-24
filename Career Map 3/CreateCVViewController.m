@@ -688,24 +688,36 @@ int addSkillButtonTapCount = 0;
                     PFFile *imageFile = [PFFile fileWithName:@"CVThumbnail.png" data:imageData];
                     jobSeekerObject[@"jobSeekerThumb"] = imageFile;
                     
-                    
-                    
-                    
-                    
                     //**************
                     //jobSeekerObject[@"score"] = @1338;
                     [jobSeekerObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                         if (succeeded) {
-                            //[appMessage hideMessage];
-                            NSLog(@"Success: CV edited");
                             
-                            [saveCVActivityIndicator stopAnimating];
-                            [saveCVActivityIndicator setHidesWhenStopped:YES];
+                            //save user thumb to parse
+                            object[@"userThumb"]=imageFile;
+                            [object saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                                if (succeeded) {
+                                    //[appMessage hideMessage];
+                                    NSLog(@"Success: CV edited");
+                                    
+                                    [saveCVActivityIndicator stopAnimating];
+                                    [saveCVActivityIndicator setHidesWhenStopped:YES];
+                                    
+                                    //notify the system that the edit is successful
+                                    [[NSNotificationCenter defaultCenter]postNotificationName:@"CVEditedSuccessNotification" object:nil];
+                                    
+                                    
+                                }
+                                
+                                else{
+                                    
+                                    NSLog(@"failed to save thumb");
+                                }
+                            }];
                             
-                            //notify the system that the edit is successful
-                            [[NSNotificationCenter defaultCenter]postNotificationName:@"CVEditedSuccessNotification" object:nil];
+                            
+                            
 
-                            
                             
                             
                             
@@ -781,31 +793,53 @@ int addSkillButtonTapCount = 0;
                         NSLog(@"success saving new cv");
                        // [appMessage hideMessage];
                         
-                        
+                        object[@"userThumb"]=imageFile;
 
-                        
-                        
-                        //now update the user table accordingly
-                        PFQuery *query = [PFQuery queryWithClassName:@"_User"];
-                        [query getObjectInBackgroundWithId:[[PFUser currentUser] objectId] block:^(PFObject *userObject, NSError *error) {
-                            userObject[@"aJobSeekerID"] = cvObject;
-                            [userObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                                if (succeeded) {
-                                    NSLog(@"user table updated successfully with a new cv reference");
-                                    //notify the system that the edit is successful
-                                    [[NSNotificationCenter defaultCenter]postNotificationName:@"CVEditedSuccessNotification" object:nil];
-                                    
+                        [object saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                            if (succeeded) {
+                                //[appMessage hideMessage];
+                                NSLog(@"Success: CV edited");
+                                
+                                
+                                //now update the user table accordingly
+                                PFQuery *query = [PFQuery queryWithClassName:@"_User"];
+                                [query getObjectInBackgroundWithId:[[PFUser currentUser] objectId] block:^(PFObject *userObject, NSError *error) {
+                                    userObject[@"aJobSeekerID"] = cvObject;
+                                    [userObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                                        if (succeeded) {
+                                            NSLog(@"user table updated successfully with a new cv reference");
+                                            //notify the system that the edit is successful
+                                            [[NSNotificationCenter defaultCenter]postNotificationName:@"CVEditedSuccessNotification" object:nil];
+                                            
+                                            
+                                        } else{
+                                            
+                                            NSLog(@"Error: user table update with cv reference: %@", error);
+                                            
+                                        }
+                                    }];
+                                }];
+                                
+                                
+                                [self dismissViewControllerAnimated:YES completion:nil];
+                                
 
-                                } else{
-                                    
-                                    NSLog(@"Error: user table update with cv reference: %@", error);
-                                    
-                                }
-                            }];
+                                
+                                
+                            }
+                            
+                            else{
+                                
+                                NSLog(@"failed to save thumb");
+                            }
                         }];
                         
                         
-                        [self dismissViewControllerAnimated:YES completion:nil];
+                        
+
+                        
+                        
+   
                     }
                     
                     else{

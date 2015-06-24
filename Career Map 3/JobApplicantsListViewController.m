@@ -109,11 +109,26 @@
         if (!error) {
             
             if (imageData) {
-                cell.jobCandidateThumb.image = [UIImage imageWithData:imageData];
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    
+                    cell.jobCandidateThumb.image = [UIImage imageWithData:imageData];
+
+                    
+                });
+                
+                
             }
             else{
                 
+
+                
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    
                 cell.jobCandidateThumb.image = [UIImage imageNamed:@"Default_Profile_Picture@3x.png"];
+                    
+                });
 
             }
 
