@@ -244,13 +244,37 @@
         jobDetailsVC.jobPosterPFUser =[jobObject objectForKey:@"postedByUser"];
         
         jobDetailsVC.jobAppliedByUsers =[jobObject objectForKey:@"appliedByUsers"];
-        // NSLog(@"Before segue: job applied by = %@",[jobObject objectForKey:@"appliedByUsers"] );
+
         
-        //actually it's better to pass the entire pf object to the destination
+        //update cv image thumb
+        
+
+        
+        //set thumbnails
+        if ([[jobObject objectForKey:@"postedByUser"] objectForKey:@"userThumb"]) {
+            // NSLog(@"job object = %@", [[jobObject objectForKey:@"postedByUser"] objectForKey:@"userThumb"]);
+            
+            
+            
+            jobDetailsVC.userProfileThumbFile =[[jobObject objectForKey:@"postedByUser"] objectForKey:@"userThumb"];;
+            
+            
+
+            
+            
+            
+            
+        }
         
         
-        //set the flag bar menu button according to reporting status
         
+        
+        
+        
+        
+        
+        
+
 
         
 
@@ -265,6 +289,7 @@
     
     PFQuery *query =[PFQuery queryWithClassName:@"Job"];
     [query includeKey:@"jobIndustry"];
+    [query includeKey:@"postedByUser"];
     [query whereKey:@"postedByUser"
              equalTo: [PFUser currentUser]];
     [query orderByDescending:@"updatedAt"];

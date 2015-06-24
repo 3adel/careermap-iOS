@@ -605,8 +605,11 @@ bool messageIsReceived = NO;
         
         
         //update cv image thumb
-        PFFile *userProfileThumbFile= [[jobObject objectForKey:@"postedByUser"] objectForKey:@"userThumb"];
-        [userProfileThumbFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+        _userProfileThumbFile= [[jobObject objectForKey:@"postedByUser"] objectForKey:@"userThumb"];
+        
+        
+        
+        [_userProfileThumbFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
             if (!error) {
                 
                 if (imageData) {
@@ -740,6 +743,13 @@ bool messageIsReceived = NO;
         //this is basically an employer userID from the users table
         destViewController.jobEmployerUserObjectID= [[jobObject objectForKey:@"postedByUser"] objectId];
         destViewController.jobPosterPFUser =[jobObject objectForKey:@"postedByUser"];
+        
+        
+        if ([[jobObject objectForKey:@"postedByUser"] objectForKey:@"userThumb"]) {
+            destViewController.userProfileThumbFile =[[jobObject objectForKey:@"postedByUser"] objectForKey:@"userThumb"];;
+            
+
+        }
         
         //NSLog(@"Employer User = %@", [jobObject objectForKey:@"postedByUser"]);
        // destViewController.

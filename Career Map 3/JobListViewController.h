@@ -48,12 +48,14 @@
 
 
 
+
 //data
 @property (nonatomic, strong) NSNumber *jobsFilterDistance;
 @property (weak, nonatomic) IBOutlet UINavigationItem *jobListNavigationItem;
 @property (nonatomic, strong) NSMutableArray *jobCategoriesArray;
 @property (nonatomic, strong) NSMutableArray *jobCategoriesSelectedArray;
 @property (nonatomic, strong) NSMutableDictionary *jobCategoriesSelectedDictionary;
+@property (nonatomic, strong) PFFile *userProfileThumbFile;
 
 
 

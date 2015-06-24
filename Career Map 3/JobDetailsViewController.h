@@ -91,6 +91,9 @@
 @property BOOL jobIsReportedByThisUser;
 @property (nonatomic, strong) MBProgressHUD *HUDProgressIndicator;
 @property (weak, nonatomic) IBOutlet UINavigationItem *jobDetailsNavigationItem;
+@property (weak, nonatomic) IBOutlet UIImageView *jobPosterImage;
+@property (weak, nonatomic) IBOutlet UILabel *jobPosterUserNameLabel;
+@property (nonatomic, strong) PFFile *userProfileThumbFile;
 
 
 //methods

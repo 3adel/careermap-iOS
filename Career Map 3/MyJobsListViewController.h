@@ -21,6 +21,7 @@
 - (IBAction)createJobsButtonPressed:(UIButton *)sender;
 @property (weak, nonatomic) IBOutlet UIButton *createJobButton;
 @property (nonatomic, strong) MBProgressHUD *HUDProgressIndicator;
+@property (nonatomic, strong) PFFile *userProfileThumbFile;
 
 
 //data

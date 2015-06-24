@@ -30,7 +30,8 @@
     _editJobButton.layer.cornerRadius = 5.0f;
     _deleteJobButton.layer.cornerRadius = 5.0f;
     _showApplicantsButton.layer.cornerRadius = 5.0f;
-    
+    _jobPosterImage.layer.cornerRadius = _jobPosterImage.frame.size.width/2;
+    _jobPosterImage.clipsToBounds = YES;
     
     //disable reporting button if the user is anonymous
     if ([PFAnonymousUtils isLinkedWithUser:[PFUser currentUser]]) {
@@ -101,8 +102,59 @@
     //zoom to job location
     [self zoomToJobLocation];
     
-    //set the values of view controller
-   // self.jobTitleLabel.text = self.jobTitle;
+    
+    //set user thumb
+    if (_userProfileThumbFile) {
+        
+        
+        
+        
+        [_userProfileThumbFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+            if (!error) {
+                
+                if (imageData) {
+                    
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        
+                        _jobPosterImage.image = [UIImage imageWithData:imageData];
+                        
+                        
+                    });
+                }
+                else{
+                    
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        
+                        _jobPosterImage.image = [UIImage imageNamed:@"Default_Profile_Picture@3x.png"];
+                        
+                    });
+                    
+                    
+                    
+                }
+                
+            }
+            else{
+                
+                NSLog(@"Error updating seeker cv image");
+            }
+            
+        }];
+        
+        
+        
+
+
+    }
+    else{
+        
+        _jobPosterImage.image = [UIImage imageNamed:@"Default_Profile_Picture@3x.png"];
+    }
+    
+    
+    if ([[_jobObject objectForKey:@"postedByUser"] objectForKey:@"username"]) {
+        _jobPosterUserNameLabel.text =[[_jobObject objectForKey:@"postedByUser"] objectForKey:@"username"];
+    }
     
     
     if (self.jobDescription) {
