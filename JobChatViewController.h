@@ -35,6 +35,7 @@
 @property (strong, nonatomic) NSMutableArray *messagesArray;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *blockUserButton;
 @property (nonatomic, strong) MBProgressHUD *HUDProgressIndicator;
+@property (nonatomic, strong) PFFile *userProfileThumbFile;
 
 
 
