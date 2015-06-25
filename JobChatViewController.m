@@ -179,59 +179,36 @@
     }
     
     //set thumbs
-        if ([[chatMessageObject objectForKey:@"messageFrom"] objectForKey:@"userThumb"]) {
-            _userProfileThumbFile= [[chatMessageObject objectForKey:@"messageFrom"] objectForKey:@"userThumb"];
-            [_userProfileThumbFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
-                if (!error) {
-                    
-                    if (imageData) {
-                        
-                        dispatch_async(dispatch_get_main_queue(), ^{
-                            
-                            cell.messageAuthorImage.image = [UIImage imageWithData:imageData];
-                            
-                            
-                        });
-                    }
-                    else{
-                        
-                        dispatch_async(dispatch_get_main_queue(), ^{
-                            
-                            cell.messageAuthorImage.image = [UIImage imageNamed:@"Default_Profile_Picture@3x.png"];
-                            
-                        });
-                        
-                        
-                        
-                    }
-                    
+    if ([[chatMessageObject objectForKey:@"messageFrom"] objectForKey:@"userThumb"]) {
+        _userProfileThumbFile= [[chatMessageObject objectForKey:@"messageFrom"] objectForKey:@"userThumb"];
+        [_userProfileThumbFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+            if (!error) {
+                if (imageData) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        cell.messageAuthorImage.image = [UIImage imageWithData:imageData];
+                    });
                 }
                 else{
-                    
-                    NSLog(@"Error updating seeker cv image");
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        cell.messageAuthorImage.image = [UIImage imageNamed:@"Default_Profile_Picture@3x.png"];
+                    });
                 }
+            }
+            else{
                 
-            }];
+                NSLog(@"Error updating seeker cv image");
+            }
             
-            
-            
-            
-            
-            
-        }
-        
-        else{
-            
-            cell.messageAuthorImage.image = [UIImage imageNamed:@"Default_Profile_Picture@3x.png"];
-            
-            
-        }
+        }];
+    }
     
- 
+    else{
+        
+        cell.messageAuthorImage.image = [UIImage imageNamed:@"Default_Profile_Picture@3x.png"];
+    }
     
     cell.messageContentTextView.text = [chatMessageObject objectForKey:@"messageContent"];
     
-    // cell.messageAuthorLable.text = [[chatMessageObject objectForKey:@"messageFrom"] objectForKey:@"username"];
     
     if ([PFAnonymousUtils isLinkedWithUser:[PFUser currentUser]]) {
         
