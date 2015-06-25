@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
@@ -18,38 +18,51 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ty-ix-qEP">
-                        <rect key="frame" x="8" y="13" width="200" height="21"/>
+                        <rect key="frame" x="33" y="13" width="150" height="20.5"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="200" id="EZs-T4-Lnl"/>
+                            <constraint firstAttribute="width" constant="150" id="EZs-T4-Lnl"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date Posted" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vfL-Gx-X8m">
-                        <rect key="frame" x="248" y="17" width="64" height="14"/>
+                        <rect key="frame" x="248" y="17" width="64" height="13.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7o3-LA-nYR">
-                        <rect key="frame" x="8" y="40" width="304" height="51"/>
+                        <rect key="frame" x="-2" y="45" width="314" height="46.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
                     </textView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GJT-WS-TTz">
+                        <rect key="frame" x="-2" y="9" width="30" height="30"/>
+                        <color key="backgroundColor" red="1" green="0.18073758149999999" blue="0.1849385969" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="30" id="iwo-HR-UBw"/>
+                            <constraint firstAttribute="height" constant="30" id="xAD-Zn-gFl"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="GJT-WS-TTz" firstAttribute="leading" secondItem="UAu-fb-2Wi" secondAttribute="leadingMargin" constant="-10" id="42x-AO-CkI"/>
                     <constraint firstItem="6ty-ix-qEP" firstAttribute="top" secondItem="UAu-fb-2Wi" secondAttribute="topMargin" constant="5" id="88h-1W-ITA"/>
                     <constraint firstItem="6ty-ix-qEP" firstAttribute="leading" secondItem="vfL-Gx-X8m" secondAttribute="leading" id="Fxi-FH-ZAr"/>
                     <constraint firstItem="7o3-LA-nYR" firstAttribute="top" secondItem="6ty-ix-qEP" secondAttribute="bottom" constant="6" id="GaF-JH-vrG"/>
                     <constraint firstItem="7o3-LA-nYR" firstAttribute="leading" secondItem="6ty-ix-qEP" secondAttribute="leading" id="OjE-ep-4gc"/>
                     <constraint firstItem="6ty-ix-qEP" firstAttribute="centerY" secondItem="vfL-Gx-X8m" secondAttribute="centerY" id="Owp-Uv-86o"/>
+                    <constraint firstItem="6ty-ix-qEP" firstAttribute="leading" secondItem="GJT-WS-TTz" secondAttribute="trailing" constant="5" id="Xt1-9S-Mra"/>
+                    <constraint firstItem="GJT-WS-TTz" firstAttribute="centerY" secondItem="6ty-ix-qEP" secondAttribute="centerY" id="Zyf-dP-H8j"/>
+                    <constraint firstItem="GJT-WS-TTz" firstAttribute="leading" secondItem="7o3-LA-nYR" secondAttribute="leading" id="hs5-UJ-4en"/>
                     <constraint firstAttribute="trailingMargin" secondItem="7o3-LA-nYR" secondAttribute="trailing" id="jrp-QJ-fEh"/>
                     <constraint firstItem="6ty-ix-qEP" firstAttribute="leading" secondItem="UAu-fb-2Wi" secondAttribute="leadingMargin" id="kou-l4-K3n"/>
                     <constraint firstItem="6ty-ix-qEP" firstAttribute="leading" secondItem="UAu-fb-2Wi" secondAttribute="leadingMargin" id="nFJ-6Z-brs"/>
                     <constraint firstAttribute="bottomMargin" secondItem="7o3-LA-nYR" secondAttribute="bottom" id="oAX-b2-o7Y"/>
                     <constraint firstItem="6ty-ix-qEP" firstAttribute="top" secondItem="UAu-fb-2Wi" secondAttribute="topMargin" constant="5" id="p5s-Qd-3jQ"/>
+                    <constraint firstItem="7o3-LA-nYR" firstAttribute="top" secondItem="GJT-WS-TTz" secondAttribute="bottom" constant="6" id="uEx-5r-qQf"/>
                     <constraint firstItem="vfL-Gx-X8m" firstAttribute="leading" secondItem="6ty-ix-qEP" secondAttribute="trailing" constant="40" id="vWD-Jr-X0P"/>
                     <constraint firstAttribute="trailingMargin" secondItem="vfL-Gx-X8m" secondAttribute="trailing" id="xiV-7g-7sK"/>
                     <constraint firstItem="7o3-LA-nYR" firstAttribute="top" secondItem="6ty-ix-qEP" secondAttribute="bottom" constant="5" id="zWs-9r-jcx"/>
@@ -57,16 +70,20 @@
                 </constraints>
                 <variation key="default">
                     <mask key="constraints">
+                        <exclude reference="GaF-JH-vrG"/>
+                        <exclude reference="OjE-ep-4gc"/>
+                        <exclude reference="zWs-9r-jcx"/>
                         <exclude reference="88h-1W-ITA"/>
                         <exclude reference="Fxi-FH-ZAr"/>
+                        <exclude reference="kou-l4-K3n"/>
                         <exclude reference="nFJ-6Z-brs"/>
-                        <exclude reference="zWs-9r-jcx"/>
                         <exclude reference="vWD-Jr-X0P"/>
                         <exclude reference="zcx-wR-vYh"/>
                     </mask>
                 </variation>
             </tableViewCellContentView>
             <connections>
+                <outlet property="messageAuthorImage" destination="GJT-WS-TTz" id="7wr-ye-PG5"/>
                 <outlet property="messageAuthorLable" destination="6ty-ix-qEP" id="N1w-MB-N24"/>
                 <outlet property="messageContentTextView" destination="7o3-LA-nYR" id="ofz-g5-2FW"/>
                 <outlet property="messagePostDateLabel" destination="vfL-Gx-X8m" id="zRn-Sz-c2C"/>

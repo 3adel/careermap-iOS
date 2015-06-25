@@ -17,6 +17,11 @@
     self.messageContentTextView.layer.cornerRadius=5.0f;
     
     
+    _messageAuthorImage.layer.cornerRadius = _messageAuthorImage.frame.size.width/2;
+    _messageAuthorImage.clipsToBounds = YES;
+    
+    
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

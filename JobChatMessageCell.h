@@ -12,5 +12,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *messageAuthorLable;
 @property (weak, nonatomic) IBOutlet UILabel *messagePostDateLabel;
 @property (weak, nonatomic) IBOutlet UITextView *messageContentTextView;
+@property (weak, nonatomic) IBOutlet UIImageView *messageAuthorImage;
 
 @end
