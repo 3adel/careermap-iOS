@@ -1316,6 +1316,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6zR-fY-Isc">
+                                <rect key="frame" x="0.0" y="20" width="600" height="48"/>
+                                <items>
+                                    <navigationItem title="Messages" id="CDz-Ti-faA"/>
+                                </items>
+                            </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="69" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="6iW-So-kGy">
                                 <rect key="frame" x="0.0" y="68" width="600" height="483"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1348,27 +1354,39 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T2Q-Il-YH0">
-                                                    <rect key="frame" x="8" y="8" width="584" height="21"/>
+                                                    <rect key="frame" x="68" y="8" width="524" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="last message" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sri-ZI-iFx">
-                                                    <rect key="frame" x="8" y="39" width="574" height="18"/>
+                                                    <rect key="frame" x="68" y="39" width="514" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fnz-9G-cpc">
+                                                    <rect key="frame" x="13" y="10" width="50" height="50"/>
+                                                    <color key="backgroundColor" red="1" green="0.09971142073" blue="0.18281041340000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="50" id="2fp-xG-ul5"/>
+                                                        <constraint firstAttribute="height" constant="50" id="s65-vw-bcc"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="T2Q-Il-YH0" firstAttribute="leading" secondItem="cEm-38-vzM" secondAttribute="leadingMargin" id="1yt-DQ-Doi"/>
+                                                <constraint firstItem="T2Q-Il-YH0" firstAttribute="leading" secondItem="fnz-9G-cpc" secondAttribute="trailing" constant="5" id="2BU-OU-6tj"/>
+                                                <constraint firstItem="fnz-9G-cpc" firstAttribute="leading" secondItem="cEm-38-vzM" secondAttribute="leadingMargin" constant="5" id="CX5-NH-eF1"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="sri-ZI-iFx" secondAttribute="bottom" constant="21" id="Cd6-6n-OTO"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="sri-ZI-iFx" secondAttribute="trailing" constant="10" id="DNG-9P-AjD"/>
                                                 <constraint firstItem="T2Q-Il-YH0" firstAttribute="top" secondItem="cEm-38-vzM" secondAttribute="topMargin" id="Es6-8F-gnA"/>
                                                 <constraint firstItem="T2Q-Il-YH0" firstAttribute="leading" secondItem="cEm-38-vzM" secondAttribute="leadingMargin" id="IQk-5E-dzV"/>
+                                                <constraint firstItem="sri-ZI-iFx" firstAttribute="leading" secondItem="T2Q-Il-YH0" secondAttribute="leading" id="P3m-Tf-P3Y"/>
                                                 <constraint firstItem="T2Q-Il-YH0" firstAttribute="top" secondItem="cEm-38-vzM" secondAttribute="topMargin" id="T4J-iB-nvj"/>
                                                 <constraint firstItem="sri-ZI-iFx" firstAttribute="trailing" secondItem="T2Q-Il-YH0" secondAttribute="trailing" id="aTB-5r-VS4"/>
                                                 <constraint firstItem="sri-ZI-iFx" firstAttribute="leading" secondItem="T2Q-Il-YH0" secondAttribute="leading" id="lMD-up-Pfm"/>
+                                                <constraint firstAttribute="centerY" secondItem="fnz-9G-cpc" secondAttribute="centerY" id="n0S-NF-Ne9"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="T2Q-Il-YH0" secondAttribute="trailing" id="q6h-ZE-Bg4"/>
                                                 <constraint firstItem="sri-ZI-iFx" firstAttribute="leading" secondItem="cEm-38-vzM" secondAttribute="leadingMargin" id="s0O-qg-rzo"/>
                                                 <constraint firstItem="sri-ZI-iFx" firstAttribute="top" secondItem="T2Q-Il-YH0" secondAttribute="bottom" constant="10" id="tDg-wo-8HL"/>
@@ -1378,15 +1396,18 @@
                                                 <mask key="constraints">
                                                     <exclude reference="1yt-DQ-Doi"/>
                                                     <exclude reference="Es6-8F-gnA"/>
+                                                    <exclude reference="IQk-5E-dzV"/>
                                                     <exclude reference="Cd6-6n-OTO"/>
                                                     <exclude reference="aTB-5r-VS4"/>
                                                     <exclude reference="lMD-up-Pfm"/>
+                                                    <exclude reference="s0O-qg-rzo"/>
                                                     <exclude reference="upF-9o-TfM"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="lastMessageLabel" destination="sri-ZI-iFx" id="aeX-V1-v6z"/>
+                                            <outlet property="messageCompanionImage" destination="fnz-9G-cpc" id="HPo-5Z-3O8"/>
                                             <outlet property="usernameLabel" destination="T2Q-Il-YH0" id="Fic-3R-0gG"/>
                                         </connections>
                                     </tableViewCell>
@@ -1396,12 +1417,6 @@
                                     <outlet property="delegate" destination="EwG-gK-NKE" id="VR6-sz-yGJ"/>
                                 </connections>
                             </tableView>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6zR-fY-Isc">
-                                <rect key="frame" x="0.0" y="20" width="600" height="48"/>
-                                <items>
-                                    <navigationItem title="Messages" id="CDz-Ti-faA"/>
-                                </items>
-                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>

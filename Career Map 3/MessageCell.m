@@ -12,6 +12,11 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    
+    _messageCompanionImage.layer.cornerRadius = _messageCompanionImage.frame.size.width/2;
+    _messageCompanionImage.clipsToBounds = YES;
+    
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

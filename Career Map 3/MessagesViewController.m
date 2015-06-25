@@ -80,6 +80,64 @@
     MessageCell  *cell = (MessageCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     
+    if (_chatUsersPFUsersList.count) { //prevent a crash
+        if ([[_chatUsersPFUsersList objectAtIndex:indexPath.row] objectForKey:@"userThumb"]) {
+            _userProfileThumbFile= [[_chatUsersPFUsersList objectAtIndex:indexPath.row] objectForKey:@"userThumb"];
+            [_userProfileThumbFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+                if (!error) {
+                    
+                    if (imageData) {
+                        
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            
+                            cell.messageCompanionImage.image = [UIImage imageWithData:imageData];
+                            
+                            
+                        });
+                    }
+                    else{
+                        
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            
+                            cell.messageCompanionImage.image = [UIImage imageNamed:@"Default_Profile_Picture@3x.png"];
+                            
+                        });
+                        
+                        
+                        
+                    }
+                    
+                }
+                else{
+                    
+                    NSLog(@"Error updating seeker cv image");
+                }
+                
+            }];
+            
+            
+            
+            
+            
+            
+        }
+        
+        else{
+            
+            cell.messageCompanionImage.image = [UIImage imageNamed:@"Default_Profile_Picture@3x.png"];
+            
+            
+        }
+    }
+    
+    
+
+    
+    
+    
+
+
+
     if (!(!_chatUsersNamesList || !_chatUsersNamesList.count)) {
         cell.usernameLabel.text = [_chatUsersNamesList objectAtIndex:indexPath.row];
         
@@ -548,6 +606,8 @@
     [blockedUsersQuery includeKey:@"blockedUsers"];
     [blockedUsersQuery whereKey:@"blockedUsers" equalTo:[[PFUser currentUser] objectId]];
     [blockedUsersQuery setLimit:1000];
+    
+    
     
     _usersWhoBlockedMeList = [[NSMutableArray alloc] init];
     

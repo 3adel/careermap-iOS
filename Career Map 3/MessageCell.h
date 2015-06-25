@@ -12,6 +12,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *lastMessageLabel;
 @property (weak, nonatomic) IBOutlet UILabel *userObjectIdLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *messageCompanionImage;
 
 
 @end

@@ -30,6 +30,7 @@
 @property (weak, nonatomic) IBOutlet UIView *noMessagesYetView;
 @property (nonatomic, strong) MBProgressHUD *HUDProgressIndicator;
 
+@property (nonatomic, strong) PFFile *userProfileThumbFile;
 
 
 //methods
