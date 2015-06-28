@@ -87,7 +87,7 @@ int addSkillButtonTapCountJobCreation = 0;
     [degreeRequiredPickerToolbar setItems:[NSArray arrayWithObjects:degreeRequiredspace, degreeRequiredDoneBtn, nil]];
     [_degreeRequiredTextField setInputAccessoryView:degreeRequiredPickerToolbar];
     _degreeRequiredPicker.delegate =self;
-    self.degreeRequiredList = @[@"Primary School",@"High/Secondary School", @"Associate's Degree (Diploma)",@"Bachelor's Degree",@"Master's Degree",@"PhD", @"None"];
+    self.degreeRequiredList = @[@"Primary School",@"High/Secondary School", @"Associate's Degree (Diploma)",@"Bachelor's Degree",@"Master's Degree",@"PhD",@"In Progress", @"None"];
 
     //setup job level picker
     _jobLevelTextField.delegate =self;

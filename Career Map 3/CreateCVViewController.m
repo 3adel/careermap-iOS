@@ -83,7 +83,7 @@ int addSkillButtonTapCount = 0;
     [CVPickerToolbar setItems:[NSArray arrayWithObjects:space, doneBtn, nil]];
     [_CVDegreeTextField setInputAccessoryView:CVPickerToolbar];
     _CVDegreePicker.delegate =self;
-    self.educationDegreesList = @[@"Primary School",@"High/Secondary School", @"Associate's Degree (Diploma)",@"Bachelor's Degree",@"Master's Degree",@"PhD", @"None"];
+    self.educationDegreesList = @[@"Primary School",@"High/Secondary School", @"Associate's Degree (Diploma)",@"Bachelor's Degree",@"Master's Degree",@"PhD",@"In Progress",@"None"];
     
     
     
