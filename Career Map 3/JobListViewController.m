@@ -273,6 +273,10 @@ bool messageIsReceived = NO;
                         else{
                             
                             NSLog(@"Error = %@", error);
+                            
+                            UIAlertView *alert= [[UIAlertView alloc]initWithTitle:@"Error!" message:[[error userInfo] objectForKey:@"error"] delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
+                            [alert show];
+                            
                             // cell.jobArea.text =@"-";
                         }
                         
@@ -637,6 +641,8 @@ bool messageIsReceived = NO;
             else{
                 
                 NSLog(@"Error updating seeker cv image");
+                UIAlertView *alert= [[UIAlertView alloc]initWithTitle:@"Error!" message:[[error userInfo] objectForKey:@"error"] delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
+                [alert show];
             }
             
         }];
@@ -681,6 +687,8 @@ bool messageIsReceived = NO;
         
         else{
             NSLog(@"Error getting user location: %@", error);
+            UIAlertView *alert= [[UIAlertView alloc]initWithTitle:@"Error!" message:[[error userInfo] objectForKey:@"error"] delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
+            [alert show];
         }
     }];
     
@@ -816,6 +824,8 @@ bool messageIsReceived = NO;
             }
             else{
                 NSLog(@"error getting the city");
+                UIAlertView *alert= [[UIAlertView alloc]initWithTitle:@"Error!" message:[[error userInfo] objectForKey:@"error"] delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
+                [alert show];
                 
             }
             
@@ -824,6 +834,8 @@ bool messageIsReceived = NO;
         else{
             
             NSLog(@"Error = %@", error);
+            UIAlertView *alert= [[UIAlertView alloc]initWithTitle:@"Error!" message:[[error userInfo] objectForKey:@"error"] delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
+            [alert show];
         }
         
     }];
@@ -922,6 +934,8 @@ bool messageIsReceived = NO;
         
         else{
             NSLog(@"error finding jobs category objects");
+            UIAlertView *alert= [[UIAlertView alloc]initWithTitle:@"Error!" message:[[error userInfo] objectForKey:@"error"] delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
+            [alert show];
             
             
         }
