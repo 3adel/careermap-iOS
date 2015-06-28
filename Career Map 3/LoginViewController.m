@@ -214,7 +214,7 @@
         else{
             
             NSLog(@"Registration error: %@", error);
-            UIAlertView *alert= [[UIAlertView alloc]initWithTitle:@"Error!" message:error.description delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
+                        UIAlertView *alert= [[UIAlertView alloc]initWithTitle:@"Error!" message:[[error userInfo] objectForKey:@"error"] delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
             
             [alert show];
 

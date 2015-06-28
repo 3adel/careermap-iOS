@@ -28,8 +28,7 @@
     _HUDProgressIndicator.labelText = @"Loading messages ...";
     _HUDProgressIndicator.mode = MBProgressHUDModeIndeterminate;
     
-    
-    
+
     //add an ovserver to monitor upcoming message through push notifications while the message conversation window is visible to the user
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshMessages) name:@"getLatestMessage" object:nil];
 
