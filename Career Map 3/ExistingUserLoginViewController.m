@@ -101,4 +101,50 @@
     //[self performSegueWithIdentifier:@"loginSuccess" sender:self];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+- (IBAction)lostPasswordButtonPressed:(UIButton *)sender {
+    
+    _passwordResetAlert = [[UIAlertView alloc]initWithTitle:@"Lost password" message:@"Please enter your email address" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Reset password", nil];
+    _passwordResetAlert.alertViewStyle = UIAlertViewStylePlainTextInput;
+    [_passwordResetAlert textFieldAtIndex:0].delegate = self;
+    [_passwordResetAlert show];
+    
+    
+}
+
+
+//handle different alert views
+-(void)alertView:(UIAlertView *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    if(actionSheet== _passwordResetAlert) {//alertLogout
+        if (buttonIndex == 1){
+         
+            NSLog(@"text email field = %@", [_passwordResetAlert textFieldAtIndex:0].text);
+            
+            //send reset password
+            [PFUser requestPasswordResetForEmailInBackground:[_passwordResetAlert textFieldAtIndex:0].text block:^(BOOL succeeded, NSError *error) {
+                if (succeeded) {
+                    UIAlertView *alert= [[UIAlertView alloc]initWithTitle:@"Success" message:@"Check your email to reset password" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                    [alert show];
+                }
+                
+                else {
+                    
+                    UIAlertView *alert= [[UIAlertView alloc]initWithTitle:@"Error!" message:[[error userInfo] objectForKey:@"error"] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                    [alert show];
+                    
+                    
+                }
+            }];
+            
+            
+        }
+        
+        
+    }
+    
+    
+}
+
+
 @end

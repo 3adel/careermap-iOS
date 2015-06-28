@@ -10,12 +10,16 @@
 #import <Parse/Parse.h>
 #import "LoginViewController.h"
 
-@interface ExistingUserLoginViewController : UIViewController
+@interface ExistingUserLoginViewController : UIViewController<UITextFieldDelegate,UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
 @property (weak, nonatomic) IBOutlet UITextField *loginUsernameField;
 @property (weak, nonatomic) IBOutlet UITextField *loginPasswordField;
+@property (strong, nonatomic) UIAlertView *passwordResetAlert;
+
+
 - (IBAction)loginButton:(UIButton *)sender;
 - (IBAction)dismissLoginScreen:(UIButton *)sender;
 - (IBAction)cancelButtonPressed:(UIBarButtonItem *)sender;
+- (IBAction)lostPasswordButtonPressed:(UIButton *)sender;
 
 @end
