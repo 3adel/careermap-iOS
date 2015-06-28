@@ -104,9 +104,13 @@
 
 - (IBAction)lostPasswordButtonPressed:(UIButton *)sender {
     
+    
+    
+    
     _passwordResetAlert = [[UIAlertView alloc]initWithTitle:@"Lost password" message:@"Please enter your email address" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Reset password", nil];
     _passwordResetAlert.alertViewStyle = UIAlertViewStylePlainTextInput;
     [_passwordResetAlert textFieldAtIndex:0].delegate = self;
+    [_passwordResetAlert textFieldAtIndex:0].placeholder = @"Email";
     [_passwordResetAlert show];
     
     
@@ -118,17 +122,25 @@
     
     if(actionSheet== _passwordResetAlert) {//alertLogout
         if (buttonIndex == 1){
+            
+            
+            _HUDProgressIndicator = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            _HUDProgressIndicator.labelText = @"Sending password reset email...";_HUDProgressIndicator.mode = MBProgressHUDModeIndeterminate;
+            
          
             NSLog(@"text email field = %@", [_passwordResetAlert textFieldAtIndex:0].text);
             
             //send reset password
             [PFUser requestPasswordResetForEmailInBackground:[_passwordResetAlert textFieldAtIndex:0].text block:^(BOOL succeeded, NSError *error) {
                 if (succeeded) {
+                    _HUDProgressIndicator.hidden= YES;
+                    
                     UIAlertView *alert= [[UIAlertView alloc]initWithTitle:@"Success" message:@"Check your email to reset password" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
                     [alert show];
                 }
                 
                 else {
+                    _HUDProgressIndicator.hidden= YES;
                     
                     UIAlertView *alert= [[UIAlertView alloc]initWithTitle:@"Error!" message:[[error userInfo] objectForKey:@"error"] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
                     [alert show];
