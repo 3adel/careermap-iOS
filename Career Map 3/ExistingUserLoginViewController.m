@@ -127,9 +127,6 @@
             _HUDProgressIndicator = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
             _HUDProgressIndicator.labelText = @"Sending password reset email...";_HUDProgressIndicator.mode = MBProgressHUDModeIndeterminate;
             
-         
-            NSLog(@"text email field = %@", [_passwordResetAlert textFieldAtIndex:0].text);
-            
             //send reset password
             [PFUser requestPasswordResetForEmailInBackground:[_passwordResetAlert textFieldAtIndex:0].text block:^(BOOL succeeded, NSError *error) {
                 if (succeeded) {
