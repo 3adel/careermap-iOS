@@ -9,7 +9,6 @@
 #import "JobDetailsViewController.h"
 #import "JobChatViewController.h"
 #import "AppHorizontalMessage.h"
-
 @interface JobDetailsViewController ()
 
 @end
@@ -273,6 +272,20 @@
     
 
 
+    
+}
+
+
+
+- (void) viewWillAppear:(BOOL)animated{
+    
+    
+    //Screen count with google anlaytics
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker set:kGAIScreenName value:@"Job Details Screen"];
+    [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
+    
+    
     
 }
 

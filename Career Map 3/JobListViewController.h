@@ -18,6 +18,7 @@
 #import "LoadingJobListEmptyView.h"
 #import "AppDelegate.h"
 #import "JobsListFilterViewController.h"
+#import <Google/Analytics.h>
 @interface JobListViewController : UITableViewController <CLLocationManagerDelegate,MBProgressHUDDelegate, sendFilterData>
 
 {

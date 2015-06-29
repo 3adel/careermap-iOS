@@ -16,6 +16,7 @@
 #import "LoginViewController.h"
 #import "JobLocationViewController.h"
 #import "JobApplicantsListViewController.h"
+#import <Google/Analytics.h>
 
 @interface JobDetailsViewController : UIViewController <MKMapViewDelegate,CLLocationManagerDelegate,UIAlertViewDelegate>
 

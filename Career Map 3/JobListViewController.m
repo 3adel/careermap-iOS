@@ -31,11 +31,12 @@ bool messageIsReceived = NO;
 - (void) viewWillAppear:(BOOL)animated{
 
     
-    
-    
+    //Screen count with google anlaytics
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker set:kGAIScreenName value:@"Job List Screen"];
+    [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
     
 
-    
     
 }
 

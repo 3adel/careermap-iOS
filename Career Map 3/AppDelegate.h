@@ -11,6 +11,8 @@
 #import <ParseUI/ParseUI.h>
 #import "JobListViewController.h"
 #import "MessagesViewController.h"
+#import <Google/Analytics.h>
+
 
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
