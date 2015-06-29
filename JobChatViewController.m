@@ -39,13 +39,13 @@
     _HUDProgressIndicator.labelText = @"Loading thread ...";
     _HUDProgressIndicator.mode = MBProgressHUDModeIndeterminate;
     
-
+    
     
     
     
     //style
     _sendButton.layer.cornerRadius = 5.0f;
-
+    
     _jobChatTable.estimatedRowHeight = 80.0;
     self.jobChatTable.rowHeight = UITableViewAutomaticDimension;
     [_jobChatTable setSeparatorStyle:UITableViewCellSeparatorStyleNone];
@@ -54,8 +54,8 @@
     if ([_jobPosterPFUser objectForKey:@"username"]) {
         _jobChatNavigationItem.title = [_jobPosterPFUser objectForKey:@"username"];
     }
-
-
+    
+    
     //NSLog(@"Job Employer who posted the job User ID = %@", _jobEmployerUserObjectID);
     //NSLog(@"Curernt User  objectID = %@", [[PFUser currentUser] objectId]);
     
@@ -101,12 +101,12 @@
         if (!error) {
             //NSLog(@"users: %@",[objects objectAtIndex:0]);
             
-        //turn block button to unblock and disable chat
+            //turn block button to unblock and disable chat
             if (objects.count>0) {
                 _blockUserButton.title = @"Unblock";
                 _messageTextField.enabled = NO;
                 _messageTextField.text = @"You blocked this user";
-               // _messageTextField.placeholder = @"User is blocked";
+                // _messageTextField.placeholder = @"User is blocked";
                 _messageTextField.backgroundColor = [UIColor redColor];
                 _messageTextField.textColor = [UIColor whiteColor];
                 _sendButton.enabled = NO;
@@ -122,8 +122,8 @@
                 _messageTextField.textColor = [UIColor blackColor];
                 _sendButton.enabled = NO;
                 _sendButton.backgroundColor = [UIColor lightGrayColor];
-
-
+                
+                
             }
             
         }
@@ -133,7 +133,7 @@
             NSLog(@"error retrieving blocked users %@", error);
         }
         
-       
+        
     }];
     
     
@@ -144,7 +144,7 @@
     
     //scroll to the last message in the array
     
-
+    
     
     
 }
@@ -252,7 +252,9 @@
         
         
         
-    } else {
+    }
+    
+    else {
         
         //change the color of chat cell background
         
@@ -260,7 +262,7 @@
             
             //light blue
             [cell.messageContentTextView setBackgroundColor:[UIColor colorWithRed:220.0/255.0 green:234.0/255.0 blue:254.0/255.0 alpha:1]];
-
+            
             //[cell.messageAuthorLable ]
             
             //cell.messageAuthorLable.font = [UIFont fontWithName:@"TrebuchetMS-Bold" size:18];
@@ -276,12 +278,15 @@
         }
         
         
-        if ([[[chatMessageObject objectForKey:@"messageFrom"] objectForKey:@"signedUp"]   isEqual:@YES] ) {
-            cell.messageAuthorLable.text = [[chatMessageObject objectForKey:@"messageFrom"] objectForKey:@"username"];
+        if ([[[chatMessageObject objectForKey:@"messageFrom"] objectForKey:@"signedUp"]   isEqual:@NO] ) {
+            
+            cell.messageAuthorLable.text = @"Anonymous";
+            
+            
         }
         
         else{
-            cell.messageAuthorLable.text = @"Anonymous";
+            cell.messageAuthorLable.text = [[chatMessageObject objectForKey:@"messageFrom"] objectForKey:@"username"];
             
         }
         
@@ -317,7 +322,7 @@
 
 
 - (IBAction)blockUserButtonPressed:(UIBarButtonItem *)sender {
-
+    
     
     
     if ([_blockUserButton.title  isEqual: @"Block"]) {
@@ -332,7 +337,7 @@
         
         
         PFQuery *blockQuery = [PFQuery queryWithClassName:@"_User"];
-
+        
         
         
         
@@ -358,7 +363,7 @@
                         
                         
                         [HUDProgressIndicator setHidden:YES];
-
+                        
                         
                     }
                     
@@ -417,8 +422,8 @@
                         _messageTextField.placeholder = @"Type a message ...";
                         _messageTextField.backgroundColor = [UIColor whiteColor];
                         _messageTextField.textColor = [UIColor blackColor];
-                       // _sendButton.enabled = YES;
-                       // _sendButton.backgroundColor = [UIColor colorWithRed:22.0/255.0 green:126.0/255.0 blue:251.0/255 alpha:1.0];
+                        // _sendButton.enabled = YES;
+                        // _sendButton.backgroundColor = [UIColor colorWithRed:22.0/255.0 green:126.0/255.0 blue:251.0/255 alpha:1.0];
                         
                         [HUDProgressIndicator setHidden:YES];
                     }
@@ -451,7 +456,7 @@
 
 - (IBAction)sendButtonPressed:(UIButton *)sender {
     
-
+    
     dispatch_async(dispatch_get_main_queue(), ^{
         _sendButton.enabled = NO;
         _sendButton.backgroundColor = [UIColor lightGrayColor];
@@ -462,8 +467,8 @@
         
     });
     
-
-
+    
+    
     if (![_messageTextField.text isEqualToString:@""]) {
         
         //now add the message typed statically to the table view. Will not be saved on parse.
@@ -471,9 +476,9 @@
         [messageToAdd setObject:_messageTextField.text forKey:@"messageContent"];
         [messageToAdd setObject:[PFUser currentUser] forKey:@"messageFrom"];
         [messageToAdd setObject:_jobPosterPFUser forKey:@"messageTo"];
-
+        
         [_messagesArray addObject:messageToAdd];
-
+        
         NSIndexPath* cellIndexPathToAdd= [NSIndexPath indexPathForRow:([_messagesArray count]-1) inSection:0];
         
         
@@ -491,16 +496,16 @@
             
             if ([_messagesArray count] >0) {
                 [ self scrollToLastMessage];
-
-            
+                
+                
             }
-
+            
             
         });
         
         
-
-
+        
+        
         
         
         
@@ -518,10 +523,10 @@
         newMessageObject[@"messageTo"]=_jobPosterPFUser;
         [newMessageObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (succeeded) {
-               // NSLog(@"Success saving message object");
-               // [self retrieveMessages];
+                // NSLog(@"Success saving message object");
+                // [self retrieveMessages];
                 
-               // NSLog(@"The other user is %@", [_jobPosterPFUser objectId]);
+                // NSLog(@"The other user is %@", [_jobPosterPFUser objectId]);
                 
                 
                 
@@ -529,7 +534,7 @@
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self refreshTable];
                 });
-
+                
                 //send push notification to the other user
                 PFQuery *uQuery = [PFUser query];
                 [uQuery whereKey:@"objectId" equalTo:[_jobPosterPFUser objectId]];
@@ -583,7 +588,7 @@
                 
                 [push sendPushInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                     if (succeeded) {
-                       // NSLog(@"sending push notification succeedd");
+                        // NSLog(@"sending push notification succeedd");
                         ;
                     }
                     else{
@@ -619,11 +624,11 @@
                 [conversationQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
                     
                     if (!error) {
-                       // NSLog(@"Conversation objects %@", objects);
+                        // NSLog(@"Conversation objects %@", objects);
                         
                         //if one conversation found, change the readBy to NO to the respective user in the TO column
                         if (objects.count ==1) {
-                           // NSLog(@"found 1 conversation object");
+                            // NSLog(@"found 1 conversation object");
                             
                             
                             //NSLog(@"userA: %@", [[objects objectAtIndex:0] objectForKey:@"userA"]);
@@ -660,7 +665,7 @@
                             
                             else{
                                 
-                               // NSLog(@"current user NOT  userA");
+                                // NSLog(@"current user NOT  userA");
                                 //set readByUserA to False
                                 
                                 
@@ -668,7 +673,7 @@
                                 conversationObject[@"readByUserA"] = @NO;
                                 
                                 
-                             //   NSLog(@"current user is userB");
+                                //   NSLog(@"current user is userB");
                                 
                                 [conversationObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                                     if (succeeded) {
@@ -704,7 +709,7 @@
                             
                             [conversationObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                                 if (succeeded) {
-                                   // NSLog(@"saving conversation unread status for two users success");
+                                    // NSLog(@"saving conversation unread status for two users success");
                                     ;
                                 }
                                 
@@ -756,7 +761,7 @@
             
             
         }];
-
+        
         
         
     }
@@ -774,16 +779,16 @@
     
     
     [self markConversationAsRead];
-
     
-
+    
+    
     
     
 }
 
 - (void) viewDidDisappear:(BOOL)animated{
     
-
+    
 }
 
 
@@ -803,7 +808,7 @@
         {
             _dockViewHightConstraint.constant =[UIScreen mainScreen].bounds.size.height*.35;
         }
-
+        
         if(IS_IPHONE_4_OR_LESS)
         {
             //NSLog(@"IS_IPHONE_4_OR_LESS");
@@ -811,7 +816,7 @@
         }
         if(IS_IPHONE_5)
         {
-           // NSLog(@"IS_IPHONE_5");
+            // NSLog(@"IS_IPHONE_5");
             _dockViewHightConstraint.constant =[UIScreen mainScreen].bounds.size.height*.55;
         }
         if(IS_IPHONE_6)
@@ -823,7 +828,7 @@
             
             //_tableViewTopConstraint.constant =-[UIScreen mainScreen].bounds.size.height*.45;
             
-
+            
         }
         if(IS_IPHONE_6P)
         {
@@ -831,11 +836,11 @@
             _dockViewHightConstraint.constant =[UIScreen mainScreen].bounds.size.height*.45;
         }
         
-//        NSLog(@"SCREEN_WIDTH: %f", SCREEN_WIDTH);
-//        NSLog(@"SCREEN_HEIGHT: %f", SCREEN_HEIGHT);
-//        NSLog(@"SCREEN_MAX_LENGTH: %f", SCREEN_MAX_LENGTH);
-//        NSLog(@"SCREEN_MIN_LENGTH: %f", SCREEN_MIN_LENGTH);
-
+        //        NSLog(@"SCREEN_WIDTH: %f", SCREEN_WIDTH);
+        //        NSLog(@"SCREEN_HEIGHT: %f", SCREEN_HEIGHT);
+        //        NSLog(@"SCREEN_MAX_LENGTH: %f", SCREEN_MAX_LENGTH);
+        //        NSLog(@"SCREEN_MIN_LENGTH: %f", SCREEN_MIN_LENGTH);
+        
         [self.view layoutIfNeeded];
         
         
@@ -846,7 +851,7 @@
         
         if ([_messagesArray count] >0) {
             [ self scrollToLastMessage];
-
+            
         }
     });
     
@@ -855,7 +860,7 @@
     
     
     
-
+    
     
 }
 
@@ -866,9 +871,9 @@
     
     
     
-   // NSLog(@"range = %lu", (unsigned long)range.location);
+    // NSLog(@"range = %lu", (unsigned long)range.location);
     
-   // NSLog(@"string value = %@", [NSString stringWithFormat:@"%@%@",_messageTextField.text, string]);
+    // NSLog(@"string value = %@", [NSString stringWithFormat:@"%@%@",_messageTextField.text, string]);
     
     NSString *rawText =[NSString stringWithFormat:@"%@%@",_messageTextField.text, string];
     NSCharacterSet *whiteSpace = [NSCharacterSet whitespaceAndNewlineCharacterSet];
@@ -877,7 +882,7 @@
     if (trimmed.length == 0) {
         _sendButton.enabled = NO;
         _sendButton.backgroundColor = [UIColor lightGrayColor];
-
+        
     }
     
     else if (trimmed.length == 1) {
@@ -891,20 +896,20 @@
             
             _sendButton.enabled = YES;
             _sendButton.backgroundColor = [UIColor colorWithRed:22.0/255.0 green:126.0/255.0 blue:251.0/255 alpha:1.0];
-
+            
         }
-
-       // NSLog(@"replacement string = '%@'", string);
-
+        
+        // NSLog(@"replacement string = '%@'", string);
+        
         
     }
-
+    
     else{
         _sendButton.enabled = YES;
         _sendButton.backgroundColor = [UIColor colorWithRed:22.0/255.0 green:126.0/255.0 blue:251.0/255 alpha:1.0];
-
+        
     }
-
+    
     
     return YES;
 }
@@ -913,56 +918,56 @@
 - (void) textFieldDidEndEditing:(UITextField *)textField{
     
     /*
-    [self.view layoutIfNeeded];
-    [UIView animateWithDuration:.25 animations:^{
-        
-        
-        //adapt to screen size
-        if(IS_IPAD)
-        {
-            _dockViewHightConstraint.constant =50;
-            _tableViewTopConstraint.constant =0;
-
-        }
-        
-        if(IS_IPHONE_4_OR_LESS)
-        {
-            //NSLog(@"IS_IPHONE_4_OR_LESS");
-            _dockViewHightConstraint.constant =50;
-            _tableViewTopConstraint.constant =0;
-
-        }
-        if(IS_IPHONE_5)
-        {
-            // NSLog(@"IS_IPHONE_5");
-            _dockViewHightConstraint.constant =50;
-            _tableViewTopConstraint.constant =0;
-
-        }
-        if(IS_IPHONE_6)
-        {
-            //NSLog(@"IS_IPHONE_6");
-            _dockViewHightConstraint.constant =50;
-            _tableViewTopConstraint.constant =0;
-            
-        }
-        if(IS_IPHONE_6P)
-        {
-            //NSLog(@"IS_IPHONE_6P");
-            _dockViewHightConstraint.constant =50;
-            _tableViewTopConstraint.constant =0;
-
-        }
-        
-        //        NSLog(@"SCREEN_WIDTH: %f", SCREEN_WIDTH);
-        //        NSLog(@"SCREEN_HEIGHT: %f", SCREEN_HEIGHT);
-        //        NSLog(@"SCREEN_MAX_LENGTH: %f", SCREEN_MAX_LENGTH);
-        //        NSLog(@"SCREEN_MIN_LENGTH: %f", SCREEN_MIN_LENGTH);
-        
-        [self.view layoutIfNeeded];
-        
-        
-    } completion:nil];
+     [self.view layoutIfNeeded];
+     [UIView animateWithDuration:.25 animations:^{
+     
+     
+     //adapt to screen size
+     if(IS_IPAD)
+     {
+     _dockViewHightConstraint.constant =50;
+     _tableViewTopConstraint.constant =0;
+     
+     }
+     
+     if(IS_IPHONE_4_OR_LESS)
+     {
+     //NSLog(@"IS_IPHONE_4_OR_LESS");
+     _dockViewHightConstraint.constant =50;
+     _tableViewTopConstraint.constant =0;
+     
+     }
+     if(IS_IPHONE_5)
+     {
+     // NSLog(@"IS_IPHONE_5");
+     _dockViewHightConstraint.constant =50;
+     _tableViewTopConstraint.constant =0;
+     
+     }
+     if(IS_IPHONE_6)
+     {
+     //NSLog(@"IS_IPHONE_6");
+     _dockViewHightConstraint.constant =50;
+     _tableViewTopConstraint.constant =0;
+     
+     }
+     if(IS_IPHONE_6P)
+     {
+     //NSLog(@"IS_IPHONE_6P");
+     _dockViewHightConstraint.constant =50;
+     _tableViewTopConstraint.constant =0;
+     
+     }
+     
+     //        NSLog(@"SCREEN_WIDTH: %f", SCREEN_WIDTH);
+     //        NSLog(@"SCREEN_HEIGHT: %f", SCREEN_HEIGHT);
+     //        NSLog(@"SCREEN_MAX_LENGTH: %f", SCREEN_MAX_LENGTH);
+     //        NSLog(@"SCREEN_MIN_LENGTH: %f", SCREEN_MIN_LENGTH);
+     
+     [self.view layoutIfNeeded];
+     
+     
+     } completion:nil];
      */
     
 }
@@ -981,7 +986,7 @@
         {
             _dockViewHightConstraint.constant =50;
             _tableViewTopConstraint.constant =0;
-
+            
             
         }
         
@@ -990,14 +995,14 @@
             //NSLog(@"IS_IPHONE_4_OR_LESS");
             _dockViewHightConstraint.constant =50;
             _tableViewTopConstraint.constant =0;
-
+            
         }
         if(IS_IPHONE_5)
         {
             // NSLog(@"IS_IPHONE_5");
             _dockViewHightConstraint.constant =50;
             _tableViewTopConstraint.constant =0;
-
+            
         }
         if(IS_IPHONE_6)
         {
@@ -1011,7 +1016,7 @@
             //NSLog(@"IS_IPHONE_6P");
             _dockViewHightConstraint.constant =50;
             _tableViewTopConstraint.constant =0;
-
+            
         }
         
         //        NSLog(@"SCREEN_WIDTH: %f", SCREEN_WIDTH);
@@ -1026,10 +1031,10 @@
     
     
     
-
     
     
-   // NSLog(@"table tapppe");
+    
+    // NSLog(@"table tapppe");
 }
 
 
@@ -1064,7 +1069,7 @@
             //start animating progress indicator
             _HUDProgressIndicator.hidden=YES;
             
-
+            
             
             
             //clear the message array first
@@ -1087,7 +1092,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.jobChatTable reloadData];
             
-
+            
             
         });
         
@@ -1100,8 +1105,8 @@
             });
         }
         
-
-
+        
+        
     }];
     
     
@@ -1116,12 +1121,12 @@
         
         //no blocked users found
         if (!objects.count) {
-           // NSLog(@"Congrats. The user did not block you");
+            // NSLog(@"Congrats. The user did not block you");
             
             _messageTextField.enabled = YES;
             _messageTextField.backgroundColor = [UIColor whiteColor];
             _messageTextField.textColor = [UIColor blackColor];
-           // _sendButton.enabled = YES;
+            // _sendButton.enabled = YES;
             //_sendButton.backgroundColor = [UIColor colorWithRed:22.0/255.0 green:126.0/255.0 blue:251.0/255 alpha:1.0];
             
         }
@@ -1140,7 +1145,7 @@
                 //_sendButton.backgroundColor = [UIColor lightGrayColor];
             }
             
-
+            
             
         }
         
@@ -1151,16 +1156,16 @@
         
         
     }];
-
     
-  
+    
+    
 }
 
 - (void) scrollToLastMessage{
     
     
     NSLog(@"scroll to last message called");
-   // NSLog(@"Size of arrray = %lu", (unsigned long)[_messagesArray count]);
+    // NSLog(@"Size of arrray = %lu", (unsigned long)[_messagesArray count]);
     
     
     
@@ -1207,11 +1212,11 @@
     [conversationQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         
         if (!error) {
-          //  NSLog(@"Conversation objects %@", objects);
+            //  NSLog(@"Conversation objects %@", objects);
             
             //if one conversation found, change the readBy to YES of current user
             if (objects.count ==1) {
-              //  NSLog(@"found 1 conversation object");
+                //  NSLog(@"found 1 conversation object");
                 
                 
                 //NSLog(@"userA: %@", [[objects objectAtIndex:0] objectForKey:@"userA"]);
@@ -1225,25 +1230,25 @@
                     conversationObject[@"readByUserA"] = @YES;
                     
                     
-                   // NSLog(@"current user is userA");
+                    // NSLog(@"current user is userA");
                     
                     [conversationObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                         if (succeeded) {
-                           // NSLog(@"saving conversation unnread status to userA success");
+                            // NSLog(@"saving conversation unnread status to userA success");
                             ;
                             //refresh messages list
-                          //  MessagesViewController *messagesVC = [[MessagesViewController alloc] init];
+                            //  MessagesViewController *messagesVC = [[MessagesViewController alloc] init];
                             
                             
                             
                             
-                           // UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-                           // MessagesViewController *messagesVC = (MessagesViewController *)[sb instantiateViewControllerWithIdentifier:@"MessagesVC"];
-
+                            // UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                            // MessagesViewController *messagesVC = (MessagesViewController *)[sb instantiateViewControllerWithIdentifier:@"MessagesVC"];
+                            
                             //[ messagesVC.messagesTable  reloadData];
                             
                             [[ NSNotificationCenter defaultCenter] postNotificationName:@"getLatestMessage" object:nil];
-
+                            
                             
                         }
                         
@@ -1262,7 +1267,7 @@
                 
                 else{
                     
-                  //  NSLog(@"current user NOT  userA");
+                    //  NSLog(@"current user NOT  userA");
                     //set readByUserA to False
                     
                     
@@ -1270,7 +1275,7 @@
                     conversationObject[@"readByUserB"] = @YES;
                     
                     
-                  //  NSLog(@"current user is userB");
+                    //  NSLog(@"current user is userB");
                     
                     [conversationObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                         if (succeeded) {
@@ -1279,9 +1284,9 @@
                             //refresh messages list
                             //UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
                             //MessagesViewController *messagesVC = (MessagesViewController *)[sb instantiateViewControllerWithIdentifier:@"MessagesVC"];
-                           // [ messagesVC.messagesTable  reloadData];
+                            // [ messagesVC.messagesTable  reloadData];
                             [[ NSNotificationCenter defaultCenter] postNotificationName:@"updateReadUnreadStatus" object:nil];
-
+                            
                         }
                         
                         else{
@@ -1318,7 +1323,7 @@
     
     //************
     
-
+    
     
     
     
