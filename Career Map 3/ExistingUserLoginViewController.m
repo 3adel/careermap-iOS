@@ -145,6 +145,7 @@
                         UIAlertView *alert= [[UIAlertView alloc]initWithTitle:@"Error!" message:@"The Internet connection appears to be offline." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
                         
                         
+                        
                         [alert show];
                     }
                     
