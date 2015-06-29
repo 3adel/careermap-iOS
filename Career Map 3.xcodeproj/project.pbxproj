@@ -77,7 +77,6 @@
 		F597592F1AC1D7F00099A978 /* JobListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F597592E1AC1D7F00099A978 /* JobListViewController.m */; };
 		F59759321AC1DBDF0099A978 /* Job.m in Sources */ = {isa = PBXBuildFile; fileRef = F59759311AC1DBDF0099A978 /* Job.m */; };
 		F59759351AC1DC7D0099A978 /* JobCustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F59759341AC1DC7D0099A978 /* JobCustomTableViewCell.m */; };
-		F5B123BB1B403C990001BB04 /* myLocation.gpx in Resources */ = {isa = PBXBuildFile; fileRef = F5B123BA1B403C990001BB04 /* myLocation.gpx */; };
 		F5BAC3C01AC7EDEF003E899C /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5BAC3BB1AC7EDEF003E899C /* Bolts.framework */; };
 		F5BAC3C11AC7EDEF003E899C /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5BAC3BC1AC7EDEF003E899C /* Parse.framework */; };
 		F5BAC3C21AC7EDEF003E899C /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5BAC3BD1AC7EDEF003E899C /* ParseCrashReporting.framework */; };
@@ -230,7 +229,6 @@
 		F59759311AC1DBDF0099A978 /* Job.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Job.m; sourceTree = "<group>"; };
 		F59759331AC1DC7D0099A978 /* JobCustomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobCustomTableViewCell.h; sourceTree = "<group>"; };
 		F59759341AC1DC7D0099A978 /* JobCustomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobCustomTableViewCell.m; sourceTree = "<group>"; };
-		F5B123BA1B403C990001BB04 /* myLocation.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = myLocation.gpx; sourceTree = "<group>"; };
 		F5BAC3BB1AC7EDEF003E899C /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "../../Libraries/iOS/parse-library-1.6.3/Bolts.framework"; sourceTree = "<group>"; };
 		F5BAC3BC1AC7EDEF003E899C /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = "../../Libraries/iOS/parse-library-1.6.3/Parse.framework"; sourceTree = "<group>"; };
 		F5BAC3BD1AC7EDEF003E899C /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseCrashReporting.framework; path = "../../Libraries/iOS/parse-library-1.6.3/ParseCrashReporting.framework"; sourceTree = "<group>"; };
@@ -512,7 +510,6 @@
 		F59758A01AC159B40099A978 = {
 			isa = PBXGroup;
 			children = (
-				F5B123BA1B403C990001BB04 /* myLocation.gpx */,
 				F584F4101B1E531B00A0AF00 /* GameKit.framework */,
 				F535AAD91AD947BF0091E70B /* MapKit.framework */,
 				F59758AB1AC159B40099A978 /* Career Map 3 */,
@@ -799,7 +796,6 @@
 				F50142D91ACD19CD000DDBE3 /* JobVoteDwn-no-selected@3x.png in Resources */,
 				F535AA641AD3CE270091E70B /* WelcomeAppChoiceView.xib in Resources */,
 				F59758C01AC159B40099A978 /* LaunchScreen.xib in Resources */,
-				F5B123BB1B403C990001BB04 /* myLocation.gpx in Resources */,
 				F5EA83141B1B915700B5DA41 /* TabBar-Block@2x.png in Resources */,
 				F5CF094B1AF2820500850BB0 /* TabBar-JobList@2x.png in Resources */,
 				F5EB66031AEEB1A60026B988 /* AppHorizontalMessageView.xib in Resources */,
