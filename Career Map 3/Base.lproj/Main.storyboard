@@ -817,6 +817,7 @@
                                         <string key="text">this is about me hjkhjk hjk hjk hjk this is about me hjkhjk hjk hjk hjk this is about me hjkhjk hjk hjk hjk this is about me hjkhjk hjk hjk hjk this is about me hjkhjk hjk hjk hjk this is about me hjkhjk hjk hjk hjk this is about me hjkhjk hjk hjk hjk this is about me hjkhjk hjk hjk hjk this is about me hjkhjk hjk hjk hjk this is about me hjkhjk hjk hjk hjk </string>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
                                     </textView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="15X-mB-TGn" userLabel="Skills text view">
                                         <rect key="frame" x="0.0" y="681" width="568" height="37.5"/>
