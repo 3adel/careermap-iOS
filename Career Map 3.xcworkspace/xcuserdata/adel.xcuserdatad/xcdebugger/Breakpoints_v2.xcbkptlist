@@ -26,12 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Career Map 3/JobCategoryViewController.m"
-            timestampString = "457344021.512321"
+            timestampString = "457346848.124888"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "159"
-            endingLineNumber = "159"
-            landmarkName = "-retrieveJobCategoriesFromParse"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
+            landmarkName = "-addjobCategoryButtonWithArray:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

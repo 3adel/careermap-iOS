@@ -1663,32 +1663,34 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Xm-an-SeU">
-                                <rect key="frame" x="16" y="121" width="568" height="435"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </scrollView>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="tCA-bq-9oN">
-                                <rect key="frame" x="16" y="77" width="568" height="44"/>
+                            <searchBar contentMode="redraw" placeholder="Search job industries" translatesAutoresizingMaskIntoConstraints="NO" id="tCA-bq-9oN">
+                                <rect key="frame" x="16" y="69" width="568" height="44"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="NNd-9K-gIg" id="1dw-pg-8LJ"/>
                                 </connections>
                             </searchBar>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Xm-an-SeU">
+                                <rect key="frame" x="16" y="121" width="568" height="435"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="4Xm-an-SeU" firstAttribute="top" secondItem="VJm-Hx-Vov" secondAttribute="bottom" constant="57" id="3hm-MJ-TjA"/>
                             <constraint firstItem="vyM-bn-4wp" firstAttribute="top" secondItem="4Xm-an-SeU" secondAttribute="bottom" id="Aj2-sA-XqV"/>
                             <constraint firstItem="tCA-bq-9oN" firstAttribute="leading" secondItem="uEV-3R-59o" secondAttribute="leadingMargin" id="JOZ-xG-HjP"/>
                             <constraint firstItem="4Xm-an-SeU" firstAttribute="top" secondItem="tCA-bq-9oN" secondAttribute="bottom" id="b64-f3-iIn"/>
                             <constraint firstAttribute="trailingMargin" secondItem="tCA-bq-9oN" secondAttribute="trailing" id="fTj-by-xzr"/>
                             <constraint firstItem="4Xm-an-SeU" firstAttribute="top" secondItem="uEV-3R-59o" secondAttribute="topMargin" constant="200" id="mGf-I2-XHe"/>
                             <constraint firstAttribute="centerX" secondItem="4Xm-an-SeU" secondAttribute="centerX" id="npP-cA-UcM"/>
-                            <constraint firstItem="tCA-bq-9oN" firstAttribute="top" secondItem="VJm-Hx-Vov" secondAttribute="bottom" constant="13" id="qhP-36-8rG"/>
+                            <constraint firstItem="tCA-bq-9oN" firstAttribute="top" secondItem="VJm-Hx-Vov" secondAttribute="bottom" constant="5" id="qhP-36-8rG"/>
                             <constraint firstAttribute="trailingMargin" secondItem="4Xm-an-SeU" secondAttribute="trailing" id="tzq-8u-IOf"/>
                             <constraint firstItem="4Xm-an-SeU" firstAttribute="leading" secondItem="uEV-3R-59o" secondAttribute="leadingMargin" id="wvu-fp-eAA"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="b64-f3-iIn"/>
                                 <exclude reference="mGf-I2-XHe"/>
                             </mask>
                         </variation>

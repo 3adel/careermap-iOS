@@ -58,6 +58,8 @@
         //button styles
         _jobCategoryScrollView.contentSize =CGSizeMake([UIScreen mainScreen].bounds.size.width-32, (i+1)*55);
         _jobCategoryButton = [[UIButton alloc] initWithFrame:CGRectMake(0, i*55, _jobCategoryScrollView.contentSize.width, 45)];
+        
+        
         [_jobCategoryButton.titleLabel setLineBreakMode:NSLineBreakByTruncatingTail];
         [_jobCategoryButton.titleLabel setFont:[UIFont systemFontOfSize:15]];
         _jobCategoryButton.layer.cornerRadius=5.0f;
@@ -126,7 +128,7 @@
     
     
     //save the selected category to jobObject
-    [_jobObject setValue:[_jobCategoriesArray objectAtIndex:sender.tag] forKey:@"jobIndustry"];
+    [_jobObject setValue:[_filteredJobCategoriesArray objectAtIndex:sender.tag] forKey:@"jobIndustry"];
     NSLog(@"%@", [_jobObject objectForKey:@"jobIndustry"]);
 
 }
@@ -155,7 +157,8 @@
             
             _jobCategoriesArray = [[NSMutableArray alloc] initWithArray:
                                    objects];
-            
+            _filteredJobCategoriesArray = [[NSMutableArray alloc] initWithArray:_jobCategoriesArray];
+
             
             
 
@@ -223,20 +226,33 @@
     
 }
 
--(NSMutableArray *)filterJobCategoriesArrayByContains:(NSString *)containsString
+-(void)filterJobCategoriesArrayByContains:(NSString *)containsString
 
 {
     //take the string
     
+    
+    _filteredJobCategoriesArray = [[NSMutableArray alloc] initWithArray:_jobCategoriesArray];
+    
     //iterat over job categories array,
         //when object at @name is a match //save to the new array
-    _filteredJobCategoriesArray = [[NSMutableArray alloc] init];
     
     for (PFObject *category in _jobCategoriesArray) {
         
-        if ([[category objectForKey:@"name"] containsString:containsString]) {
-            [_filteredJobCategoriesArray addObject:category];
+        /*
+        if (![[category objectForKey:@"name"] containsString:containsString]) {
+            [_filteredJobCategoriesArray removeObject:category];
+        }*/
+
+        //[category objectForKey:@"name"] rangeOfString:<#(NSString *)#>
+        
+        //case insinsitive search
+        if (([[category objectForKey:@"name"] rangeOfString:containsString options:NSCaseInsensitiveSearch].location == NSNotFound)) {
+            [_filteredJobCategoriesArray removeObject:category];
         }
+        
+       //  "if ([string rangeOfString:@"bla" options:NSCaseInsensitiveSearch].location != NSNotFound)"
+        
         
     }
     
@@ -254,10 +270,38 @@
         [self addjobCategoryButtonWithArray:_filteredJobCategoriesArray];
 
     }
+
+    else{
+        
+        
+        if (![containsString isEqualToString:@""]) {
+            //clear views
+            
+            [_jobCategoryScrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+            
+            //show that there are no results.
+            UILabel *noResultsLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 40)];
+            [noResultsLabel setFont:[UIFont systemFontOfSize:14]];
+            noResultsLabel.text = @"No results found";
+            noResultsLabel.textColor = [UIColor lightGrayColor];
+            [_jobCategoryScrollView addSubview:noResultsLabel];
+            
+
+
+        }
+        
+        else{
+            
+            [self addjobCategoryButtonWithArray:_jobCategoriesArray];
+
+        }
+        
+        
+        
+    }
     
 
-    
-    return _filteredJobCategoriesArray;
+
 }
 
 
