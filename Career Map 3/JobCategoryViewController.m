@@ -45,10 +45,15 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void) addjobCategoryButton{
+- (void) addjobCategoryButtonWithArray:(NSMutableArray *)array{
 
 
-    for (int i=0; i<=_jobCategoriesArray.count-1; i++) {
+    
+    //refresh scroll view
+    [_jobCategoryScrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    
+    
+    for (int i=0; i<=array.count-1; i++) {
         
         //button styles
         _jobCategoryScrollView.contentSize =CGSizeMake([UIScreen mainScreen].bounds.size.width-32, (i+1)*55);
@@ -63,7 +68,7 @@
         [_jobCategoryButton setTitleColor:[UIColor whiteColor]
                                  forState:UIControlStateNormal];
         [_jobCategoryButton setTitle:
-         [[_jobCategoriesArray objectAtIndex:i] objectForKey:@"name"]
+         [[array objectAtIndex:i] objectForKey:@"name"]
                             forState:
          UIControlStateNormal];
 
@@ -73,7 +78,7 @@
         [_jobCategoryScrollView addSubview:_jobCategoryButton];
         
         //if the job categeory is passed from the previous VC, highlight
-        if ([[[_jobObject objectForKey:@"jobIndustry"] objectId] isEqualToString:        [[_jobCategoriesArray objectAtIndex:i] objectId]
+        if ([[[_jobObject objectForKey:@"jobIndustry"] objectId] isEqualToString:        [[array objectAtIndex:i] objectId]
              ]) {
             //highlight button and set it as selected
             _jobCategoryButton.backgroundColor =[UIColor colorWithRed:0/255.0 green:128.0/255.0 blue:0.0/255.0 alpha:1.0];
@@ -151,8 +156,12 @@
             _jobCategoriesArray = [[NSMutableArray alloc] initWithArray:
                                    objects];
             
+            
+            
+
+            
             //add job category buttons
-            [self addjobCategoryButton];
+            [self addjobCategoryButtonWithArray:_jobCategoriesArray];
         }
         
         else{
@@ -199,6 +208,56 @@
             
         }
 
+}
+
+- (void) searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
+    
+    /*
+    if (searchText.length>=3 && _jobCategoriesArray) {
+        NSLog(@"user is typing=%@", [self filterJobCategoriesArrayByContains:searchText inputArray:_jobCategoriesNamesFilteredArray]);
+        
+
+    }*/
+    
+    [self filterJobCategoriesArrayByContains:searchText];
+    
+}
+
+-(NSMutableArray *)filterJobCategoriesArrayByContains:(NSString *)containsString
+
+{
+    //take the string
+    
+    //iterat over job categories array,
+        //when object at @name is a match //save to the new array
+    _filteredJobCategoriesArray = [[NSMutableArray alloc] init];
+    
+    for (PFObject *category in _jobCategoriesArray) {
+        
+        if ([[category objectForKey:@"name"] containsString:containsString]) {
+            [_filteredJobCategoriesArray addObject:category];
+        }
+        
+    }
+    
+    
+    
+    /*
+    
+    NSString *filter=[NSString stringWithFormat:@"SELF contains '%@'",containsString];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:filter];
+    NSMutableArray *filteredJobCategoriesArray = [[inputArray filteredArrayUsingPredicate:predicate] mutableCopy];*/
+    
+    NSLog(@"filtered = %@", _filteredJobCategoriesArray);
+    
+    if (_filteredJobCategoriesArray.count) {
+        [self addjobCategoryButtonWithArray:_filteredJobCategoriesArray];
+
+    }
+    
+
+    
+    return _filteredJobCategoriesArray;
 }
 
 

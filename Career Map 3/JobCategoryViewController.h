@@ -11,7 +11,7 @@
 #import "AddJobDetailsViewController.h"
 #import "MBProgressHUD.h"
 
-@interface JobCategoryViewController : UIViewController
+@interface JobCategoryViewController : UIViewController<UISearchBarDelegate>
 
 
 
@@ -22,17 +22,21 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *jobCategoryScrollView;
 @property (nonatomic, strong) MBProgressHUD *HUDProgressIndicator;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *nextButton;
+@property (weak, nonatomic) IBOutlet UISearchBar *jobCategoriesSearchBar;
 
 
 //MARK: Data
 @property (nonatomic, strong) PFObject *jobObject;
 @property (nonatomic, strong) NSMutableArray *jobCategoriesArray;
+@property (nonatomic, strong) NSMutableArray *filteredJobCategoriesArray;
+
 
 //MARK: Methods
 - (void) jobCategoryButtonPressed: (UIButton *) sender;
 - (void) retrieveJobCategoriesFromParse;
 
 - (IBAction)nextButtonPressed:(UIBarButtonItem *)sender;
+- (void) addjobCategoryButtonWithArray: (NSMutableArray *) array;
 
 
 @end

@@ -1664,18 +1664,34 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Xm-an-SeU">
-                                <rect key="frame" x="16" y="10" width="568" height="546"/>
+                                <rect key="frame" x="16" y="121" width="568" height="435"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </scrollView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="tCA-bq-9oN">
+                                <rect key="frame" x="16" y="77" width="568" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="NNd-9K-gIg" id="1dw-pg-8LJ"/>
+                                </connections>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="vyM-bn-4wp" firstAttribute="top" secondItem="4Xm-an-SeU" secondAttribute="bottom" id="Aj2-sA-XqV"/>
-                            <constraint firstItem="4Xm-an-SeU" firstAttribute="top" secondItem="uEV-3R-59o" secondAttribute="topMargin" constant="10" id="mGf-I2-XHe"/>
+                            <constraint firstItem="tCA-bq-9oN" firstAttribute="leading" secondItem="uEV-3R-59o" secondAttribute="leadingMargin" id="JOZ-xG-HjP"/>
+                            <constraint firstItem="4Xm-an-SeU" firstAttribute="top" secondItem="tCA-bq-9oN" secondAttribute="bottom" id="b64-f3-iIn"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="tCA-bq-9oN" secondAttribute="trailing" id="fTj-by-xzr"/>
+                            <constraint firstItem="4Xm-an-SeU" firstAttribute="top" secondItem="uEV-3R-59o" secondAttribute="topMargin" constant="200" id="mGf-I2-XHe"/>
                             <constraint firstAttribute="centerX" secondItem="4Xm-an-SeU" secondAttribute="centerX" id="npP-cA-UcM"/>
+                            <constraint firstItem="tCA-bq-9oN" firstAttribute="top" secondItem="VJm-Hx-Vov" secondAttribute="bottom" constant="13" id="qhP-36-8rG"/>
                             <constraint firstAttribute="trailingMargin" secondItem="4Xm-an-SeU" secondAttribute="trailing" id="tzq-8u-IOf"/>
                             <constraint firstItem="4Xm-an-SeU" firstAttribute="leading" secondItem="uEV-3R-59o" secondAttribute="leadingMargin" id="wvu-fp-eAA"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="mGf-I2-XHe"/>
+                            </mask>
+                        </variation>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Step 2: Job Industry" id="DmH-wO-zzj">
@@ -1688,6 +1704,7 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="jobCategoriesSearchBar" destination="tCA-bq-9oN" id="rN2-0G-7u8"/>
                         <outlet property="jobCategoryScrollView" destination="4Xm-an-SeU" id="FoL-IP-wlP"/>
                         <outlet property="nextButton" destination="z4i-uC-Wac" id="uM9-G3-3Tb"/>
                         <segue destination="F7J-24-Ch6" kind="show" identifier="addJobDetailsSegue" id="euJ-XS-G45"/>
