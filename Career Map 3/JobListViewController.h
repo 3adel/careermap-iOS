@@ -19,6 +19,8 @@
 #import "AppDelegate.h"
 #import "JobsListFilterViewController.h"
 #import <Google/Analytics.h>
+#import "ConnectivityCheck.h"
+
 @interface JobListViewController : UITableViewController <CLLocationManagerDelegate,MBProgressHUDDelegate, sendFilterData>
 
 {
