@@ -21,7 +21,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mO0-ja-7c2">
-                    <rect key="frame" x="225" y="415" width="150" height="45"/>
+                    <rect key="frame" x="225" y="409" width="150" height="45"/>
                     <color key="backgroundColor" red="0.0" green="0.50196081399917603" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="40" id="7sQ-fb-25j"/>
@@ -42,62 +42,62 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Find jobs in your area" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gn4-Nn-INd">
-                    <rect key="frame" x="200" y="143" width="200" height="26.5"/>
+                    <rect key="frame" x="200" y="142" width="200" height="25.5"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="200" id="blT-jM-Baa"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="21"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
-                    <color key="shadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <size key="shadowOffset" width="0.0" height="0.0"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Post vacancies" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="duw-AV-lCO">
-                    <rect key="frame" x="200" y="179" width="200" height="26.5"/>
+                    <rect key="frame" x="200" y="177" width="200" height="25.5"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="200" id="xbb-DZ-pu7"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="21"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
-                    <color key="shadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <size key="shadowOffset" width="0.0" height="0.0"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message job seekers and employers" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ke-Ok-xng">
-                    <rect key="frame" x="200" y="215" width="200" height="51.5"/>
+                    <rect key="frame" x="200" y="212" width="200" height="50.5"/>
                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="21"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
-                    <color key="shadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <size key="shadowOffset" width="0.0" height="0.0"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Strict spam control" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sjW-Ti-rRo">
-                    <rect key="frame" x="200" y="277" width="200" height="26.5"/>
+                    <rect key="frame" x="200" y="273" width="200" height="25.5"/>
                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="21"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
-                    <color key="shadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <size key="shadowOffset" width="0.0" height="0.0"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TabBar-JobList.png" translatesAutoresizingMaskIntoConstraints="NO" id="WVd-n2-09q">
-                    <rect key="frame" x="150" y="142" width="45" height="28"/>
+                    <rect key="frame" x="150" y="140.5" width="45" height="28"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="28" id="9Dh-eY-mkJ"/>
                         <constraint firstAttribute="width" constant="45" id="dTx-5Y-bEq"/>
                     </constraints>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TabBar-AddJob.png" translatesAutoresizingMaskIntoConstraints="NO" id="HlV-u4-ZLo">
-                    <rect key="frame" x="150" y="178" width="45" height="28"/>
+                    <rect key="frame" x="150" y="175.5" width="45" height="28"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="45" id="NfX-CA-dE5"/>
                         <constraint firstAttribute="height" constant="28" id="aIY-X5-TIX"/>
                     </constraints>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TabBar-Messages.png" translatesAutoresizingMaskIntoConstraints="NO" id="zd2-1c-xv7">
-                    <rect key="frame" x="150" y="214" width="45" height="28"/>
+                    <rect key="frame" x="150" y="211.5" width="45" height="28"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="45" id="3tp-6j-y9u"/>
                         <constraint firstAttribute="height" constant="28" id="Ef8-25-UUK"/>
                     </constraints>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TabBar-Privacy.png" translatesAutoresizingMaskIntoConstraints="NO" id="i6V-QK-rcn">
-                    <rect key="frame" x="152" y="275" width="45" height="28"/>
+                    <rect key="frame" x="152" y="270.5" width="45" height="28"/>
                     <color key="tintColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="28" id="Z5q-6K-Uz7"/>
@@ -105,28 +105,28 @@
                     </constraints>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TabBar-MyCV.png" translatesAutoresizingMaskIntoConstraints="NO" id="oyR-oW-d8o">
-                    <rect key="frame" x="152" y="311" width="45" height="28"/>
+                    <rect key="frame" x="152" y="306.5" width="45" height="28"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="28" id="8TQ-pM-Ke5"/>
                         <constraint firstAttribute="width" constant="45" id="miH-3k-n6R"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CareerMap" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yEN-Hw-s1b">
-                    <rect key="frame" x="157" y="50" width="286.5" height="73"/>
+                    <rect key="frame" x="157" y="50" width="286.5" height="72"/>
                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="60"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
-                    <color key="shadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <size key="shadowOffset" width="0.0" height="0.0"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create your mini-CV in seconds" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UeZ-Oa-1yI">
-                    <rect key="frame" x="200" y="313.5" width="200" height="51.5"/>
+                    <rect key="frame" x="200" y="308.5" width="200" height="50.5"/>
                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="21"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
-                    <color key="shadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <size key="shadowOffset" width="0.0" height="0.0"/>
                 </label>
             </subviews>
-            <color key="backgroundColor" red="0.2627450980392157" green="0.69019607843137254" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="0.2627450980392157" green="0.69019607843137254" blue="0.93725490196078431" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="2ke-Ok-xng" firstAttribute="top" secondItem="duw-AV-lCO" secondAttribute="bottom" constant="10" id="3mg-bb-PnA"/>
                 <constraint firstItem="HlV-u4-ZLo" firstAttribute="centerY" secondItem="duw-AV-lCO" secondAttribute="centerY" id="98L-jV-eIx"/>
