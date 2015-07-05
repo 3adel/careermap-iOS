@@ -47,6 +47,7 @@
 @property (nonatomic, strong) NSString *jobEmployerUserObjectID;
 @property (nonatomic, strong) PFUser *jobPosterPFUser;
 @property (nonatomic, strong) MBProgressHUD *HUDProgressIndicator;
+@property (strong, nonatomic) UIAlertView *noInternetConnectionAlert;
 
 
 
@@ -70,5 +71,5 @@
 
 - (IBAction)filterJobsButtonPressed:(UIBarButtonItem *)sender;
 - (void) retrieveJobCategoriesFromParse;
-
+- (void) initializeView;
 @end

@@ -22,38 +22,7 @@
     //configure parse project
     [Parse setApplicationId:@"tlHTprDlMSewDUTLFD0IiXchTlAmG43nHKbPiOxD" clientKey:@"pEFQ3jdtGu7L9q3P13kfdX6pwZMp2i3e3M0bH9OV"];
     
-    //creae an automatic user
-    if (![PFUser currentUser]) {
-        [PFUser enableAutomaticUser];
-        [[PFUser currentUser] saveInBackground];
-    }
-    
-    //refactor
-    while (![[PFUser currentUser] objectId]) {
-        ;
-        //NSLog(@"creating user ...");
-    }
-    
-    
 
-    
-    
-    
-    [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        if (succeeded) {
-           // PFUser *currentUse = [PFUser currentUser];
-            //NSLog(@"%@", [[PFUser currentUser] objectId]);
-            ;
-            
-            
-        }
-        
-        else{
-
-            NSLog(@"fail");
-        }
-    }];
-    
 
     
 
@@ -65,8 +34,10 @@
     //setup push notifications
     UIUserNotificationType userNotificationTypes = (UIUserNotificationTypeAlert | UIUserNotificationTypeBadge| UIUserNotificationTypeSound);
     UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:userNotificationTypes categories:nil];
-    [application registerUserNotificationSettings:settings];
-    [application registerForRemoteNotifications];
+    
+
+    
+
     
 
     //check if opening the app is a result of remote notification
@@ -86,69 +57,41 @@
     // Parse your string to dictionary
     
 
-
-    if (_notificationPayload) {
     
-      //  NSDictionary *userInfo = [launchOptions valueForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
-       // NSDictionary *apsInfo = [userInfo objectForKey:@"aps"];
         
+        [application registerUserNotificationSettings:settings];
+        [application registerForRemoteNotifications];
         
-      //  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"title" message:[notificationPayload objectForKey:@"message"] delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil, nil];
-        //[alert show];
-        
-        
-        
-        
-        //invoke the job chat view, but with the userIDs
-        //JobChatViewController  *jobChatScreen = [[JobChatViewController alloc] initWithNibName:@"JobChatView" bundle:nil];
-        //jobChatScreen.jobEmployerUserObjectID = [[notificationPayload valueForKey:@"otherPFUser"] objectForKey:@"objectId"];
-       // jobChatScreen.jobPosterPFUser = [notificationPayload valueForKey:@"otherPFUser"];
-      
-       // [self.window makeKeyAndVisible];
-       // [self.window.rootViewController presentViewController:jobChatScreen animated:YES completion:nil];
-
-       // UIViewController *newRoot = jobChatScreen;
-        //self.window.rootViewController = jobChatScreen;
-        
-        
-      // [[[[UIApplication sharedApplication] keyWindow] rootViewController] presentViewController:newRoot animated:YES completion:nil];
-        
-
-       // UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:jobChatScreen];
-        //[self.window addSubview:navigationController.view];
-        
+        if (_notificationPayload) {
+            
+            JobListViewController *jobListVC = (JobListViewController *)[sb instantiateViewControllerWithIdentifier:@"JobListViewController"];
+            
+            //change notification payload to view controller
+            [jobListVC changeMessageIsReceivedValue];
+            
+            
 
         
         
-        JobListViewController *jobListVC = (JobListViewController *)[sb instantiateViewControllerWithIdentifier:@"JobListViewController"];
+        //google analytics config
+        // Configure tracker from GoogleService-Info.plist.
+        NSError *configureError;
+        [[GGLContext sharedInstance] configureWithError:&configureError];
+        NSAssert(!configureError, @"Error configuring Google services: %@", configureError);
         
-        //change notification payload to view controller
+        // Optional: configure GAI options.
+        GAI *gai = [GAI sharedInstance];
+        gai.trackUncaughtExceptions = YES;  // report uncaught exceptions
+        gai.logger.logLevel = kGAILogLevelVerbose;  // remove before app release
         
         
-        [jobListVC changeMessageIsReceivedValue];
-        
- 
-        
-        
-        
-     
+
         
         
     }
-    
-    
-    //google analytics config
-    // Configure tracker from GoogleService-Info.plist.
-    NSError *configureError;
-    [[GGLContext sharedInstance] configureWithError:&configureError];
-    NSAssert(!configureError, @"Error configuring Google services: %@", configureError);
-    
-    // Optional: configure GAI options.
-    GAI *gai = [GAI sharedInstance];
-    gai.trackUncaughtExceptions = YES;  // report uncaught exceptions
-    gai.logger.logLevel = kGAILogLevelVerbose;  // remove before app release
-    
 
+    
+    
     
   
     
@@ -189,6 +132,9 @@
 }
 
 - (void) application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{
+    
+    
+    
     
     
     

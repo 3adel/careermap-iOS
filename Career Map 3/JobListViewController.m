@@ -31,10 +31,14 @@ bool messageIsReceived = NO;
 - (void) viewWillAppear:(BOOL)animated{
 
     
-    //Screen count with google anlaytics
-    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-    [tracker set:kGAIScreenName value:@"Job List Screen"];
-    [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
+    if ([ConnectivityCheck ConnectivityStatus]) {
+        //Screen count with google anlaytics
+        id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+        [tracker set:kGAIScreenName value:@"Job List Screen"];
+        [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
+        
+
+    }
     
 
     
@@ -46,68 +50,10 @@ bool messageIsReceived = NO;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //make sure the app choice screen shows one time only
-    if (![@"1" isEqualToString:[[NSUserDefaults standardUserDefaults]
-                                objectForKey:@"screenShown"]]) {
-        [[NSUserDefaults standardUserDefaults] setValue:@"1" forKey:@"screenShown"];
-        
-        
-        //do other apps setups the first time
-        [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithDouble:3000] forKey:@"jobDistanceFilterValue"];
-        
-        [[NSUserDefaults standardUserDefaults] synchronize];
-        
-        
-        [self retrieveJobCategoriesFromParse];
-        
-        WelcomeAppChoiceViewController  *appChoice = [[WelcomeAppChoiceViewController alloc] initWithNibName:@"WelcomeAppChoiceView" bundle:nil];
-        [self.tabBarController presentViewController:appChoice
-                                            animated:YES
-                                          completion:nil];
-        
-        
-        
-    }
-
-    
-    
-    //filter parameters
-    _jobsFilterDistance =[[NSUserDefaults standardUserDefaults] objectForKey:@"jobDistanceFilterValue" ];
-    _jobCategoriesSelectedArray =[[NSUserDefaults standardUserDefaults] objectForKey:@"jobsCategorySelectedArrayForFilter" ];
-
-
-    _noJobsView = [[LoadingJobListEmptyView alloc] init];
-
-    
-    //if the user is coming from message push notif, show the message dialog first
-    if (messageIsReceived) {
-        
-        //get notif payload that was set in app delegate
-        AppDelegate *appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
-        NSDictionary *notificationPayload = appDelegate.notificationPayload;
-        JobChatViewController  *jobChatScreen = [[JobChatViewController alloc] initWithNibName:@"JobChatView" bundle:nil];
-        jobChatScreen.jobEmployerUserObjectID = [[notificationPayload valueForKey:@"otherPFUser"] objectForKey:@"objectId"];
-        jobChatScreen.jobPosterPFUser = [notificationPayload valueForKey:@"otherPFUser"];
-        [self presentViewController:jobChatScreen animated:YES completion:nil];
-        
-    }
-    
-    
-    //table cell autolayout
-    _jobTable.estimatedRowHeight = 100.0;
-    self.jobTable.rowHeight = UITableViewAutomaticDimension;
-
-    //progress spinner initialization
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    _HUDProgressIndicator = [MBProgressHUD showHUDAddedTo:_jobTable animated:YES];
-    _HUDProgressIndicator.labelText = @"Loading jobs around you...";
-    _HUDProgressIndicator.detailsLabelText = @"Locating you ...";
-    _HUDProgressIndicator.mode = MBProgressHUDModeIndeterminate;
-
     // Initialize the refresh control.
     self.refreshControl = [[UIRefreshControl alloc] init];
     //self.refreshControl.backgroundColor = [UIColor colorWithRed:255/255.0 green:149.0/255.0 blue:0.0/0.0 alpha:0.8];
-
+    
     self.refreshControl.tintColor = [UIColor colorWithRed:220.0/255.0 green:234.0/255 blue:255.0/255.0 alpha:1];
     [self.refreshControl addTarget:self
                             action:@selector(reloadData)
@@ -115,41 +61,8 @@ bool messageIsReceived = NO;
     [self.jobTable addSubview:self.refreshControl];
     
     
+    [self initializeView];
     
-    
-    
-    
-    self.locationManager = [[CLLocationManager alloc] init];
-    [self.locationManager requestWhenInUseAuthorization];
-    self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
-    
-    [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *geoPoint, NSError *error) {
-        if (!error) {
-            self.userLocation = geoPoint;
-            
-            //get user city
-            [self getUserCity:self.userLocation];
-
-            [self reloadData];
-            
- 
-        }
-        else{
-            UIAlertView *needUserLocationAlert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"You need to enable user location for this app to function properly" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-            
-            [needUserLocationAlert show];
-            
-            NSLog(@"Can't get user location");
-        }
-    }];
-    
-    
-    
-    //update message tabbar item with how many unread messages
-    MessagesViewController *messaagesVC = [[MessagesViewController alloc] init];
-    
-    
-    [messaagesVC getUsersWhoBlockedMe];
     
     
 }
@@ -441,6 +354,16 @@ bool messageIsReceived = NO;
             });
                 
             }
+        
+        else{
+            
+            if (self.refreshControl) {
+                
+                [self.refreshControl endRefreshing];
+                _HUDProgressIndicator.hidden =YES;
+                
+            }
+        }
             
             
  
@@ -804,8 +727,32 @@ bool messageIsReceived = NO;
 
 -(void) reloadData{
     
+
+
+    
     // Reload table data
-    [self retrieveFromParse];
+    
+    if ([ConnectivityCheck ConnectivityStatus]) {
+        [self retrieveFromParse];
+
+    }
+    else{
+        if (self.refreshControl) {
+            
+            [self.refreshControl endRefreshing];
+            _HUDProgressIndicator.hidden =YES;
+
+        }
+        
+        
+        _noInternetConnectionAlert.delegate = self;
+        _noInternetConnectionAlert =[[UIAlertView alloc] initWithTitle:@"No Connection!" message:@"Please check your internet connection." delegate:self cancelButtonTitle:@"Refresh" otherButtonTitles:nil, nil];
+        [_noInternetConnectionAlert show];
+
+        
+        
+    }
+    
     
 }
 
@@ -950,6 +897,174 @@ bool messageIsReceived = NO;
     
     
 }
+
+- (void) initializeView{
+    
+    
+    
+    
+    if ([ConnectivityCheck ConnectivityStatus]) {
+        
+        
+        //creae an automatic user
+        if (![PFUser currentUser]) {
+            [PFUser enableAutomaticUser];
+            [[PFUser currentUser] saveInBackground];
+        }
+        
+        //refactor
+        while (![[PFUser currentUser] objectId]) {
+            ;
+            //NSLog(@"creating user ...");
+        }
+        
+        
+        [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (succeeded) {
+                // PFUser *currentUse = [PFUser currentUser];
+                //NSLog(@"%@", [[PFUser currentUser] objectId]);
+                ;
+                
+                
+            }
+            
+            else{
+                
+                NSLog(@"fail");
+            }
+        }];
+
+        
+        //make sure the app choice screen shows one time only
+        if (![@"1" isEqualToString:[[NSUserDefaults standardUserDefaults]
+                                    objectForKey:@"screenShown"]]) {
+            [[NSUserDefaults standardUserDefaults] setValue:@"1" forKey:@"screenShown"];
+            
+            
+            //do other apps setups the first time
+            [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithDouble:3000] forKey:@"jobDistanceFilterValue"];
+            
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            
+            
+            [self retrieveJobCategoriesFromParse];
+            
+            WelcomeAppChoiceViewController  *appChoice = [[WelcomeAppChoiceViewController alloc] initWithNibName:@"WelcomeAppChoiceView" bundle:nil];
+            [self.tabBarController presentViewController:appChoice
+                                                animated:YES
+                                              completion:nil];
+            
+            
+            
+        }
+        
+        
+        
+        //filter parameters
+        _jobsFilterDistance =[[NSUserDefaults standardUserDefaults] objectForKey:@"jobDistanceFilterValue" ];
+        _jobCategoriesSelectedArray =[[NSUserDefaults standardUserDefaults] objectForKey:@"jobsCategorySelectedArrayForFilter" ];
+        
+        
+        _noJobsView = [[LoadingJobListEmptyView alloc] init];
+        
+        
+        //if the user is coming from message push notif, show the message dialog first
+        if (messageIsReceived) {
+            
+            //get notif payload that was set in app delegate
+            AppDelegate *appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
+            NSDictionary *notificationPayload = appDelegate.notificationPayload;
+            JobChatViewController  *jobChatScreen = [[JobChatViewController alloc] initWithNibName:@"JobChatView" bundle:nil];
+            jobChatScreen.jobEmployerUserObjectID = [[notificationPayload valueForKey:@"otherPFUser"] objectForKey:@"objectId"];
+            jobChatScreen.jobPosterPFUser = [notificationPayload valueForKey:@"otherPFUser"];
+            [self presentViewController:jobChatScreen animated:YES completion:nil];
+            
+        }
+        
+        
+        //table cell autolayout
+        _jobTable.estimatedRowHeight = 100.0;
+        self.jobTable.rowHeight = UITableViewAutomaticDimension;
+        
+        //progress spinner initialization
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        _HUDProgressIndicator = [MBProgressHUD showHUDAddedTo:_jobTable animated:YES];
+        _HUDProgressIndicator.labelText = @"Loading jobs around you...";
+        _HUDProgressIndicator.detailsLabelText = @"Locating you ...";
+        _HUDProgressIndicator.mode = MBProgressHUDModeIndeterminate;
+        
+
+        
+        
+        
+        
+        
+        
+        self.locationManager = [[CLLocationManager alloc] init];
+        [self.locationManager requestWhenInUseAuthorization];
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
+        
+        [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *geoPoint, NSError *error) {
+            if (!error) {
+                self.userLocation = geoPoint;
+                
+                //get user city
+                [self getUserCity:self.userLocation];
+                
+                [self reloadData];
+                
+                
+            }
+            else{
+                UIAlertView *needUserLocationAlert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"You need to enable user location for this app to function properly" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                
+                [needUserLocationAlert show];
+                
+                NSLog(@"Can't get user location");
+            }
+        }];
+        
+        
+        
+        //update message tabbar item with how many unread messages
+        MessagesViewController *messaagesVC = [[MessagesViewController alloc] init];
+        
+        
+        [messaagesVC getUsersWhoBlockedMe];
+    }
+    
+    else{
+        
+        //
+        
+        _noInternetConnectionAlert.delegate = self;
+        _noInternetConnectionAlert =[[UIAlertView alloc] initWithTitle:@"No Connection!" message:@"Please check your internet connection." delegate:self cancelButtonTitle:@"Refresh" otherButtonTitles:nil, nil];
+        [_noInternetConnectionAlert show];
+        
+    }
+    
+
+    
+    
+}
+
+
+//handle different alert views
+-(void)alertView:(UIAlertView *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    if(actionSheet== _noInternetConnectionAlert) {//alertLogout
+        if (buttonIndex == 0){
+            //NSLog(@"0: Cancel");
+            
+            [self initializeView];
+            
+        }
+        
+    }
+    
+    
+}
+
 
 
 
